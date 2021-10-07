@@ -14,3 +14,12 @@ PS1="$_RED\$(__git_ps1 '[%s] ')$_RESET$PS1"
 if [[ $TILIX_ID ]]; then
     source /etc/profile.d/vte.sh
 fi
+
+# fzf
+fbr() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
