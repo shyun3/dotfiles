@@ -1,5 +1,7 @@
 tags
 !tags/
 
+.cache/
+
 compile_flags.txt
 .projections.json
