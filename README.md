@@ -1,6 +1,7 @@
 # Installation
 
-The following instructions assume the use of Ubuntu Linux.
+The following instructions assume the use of Ubuntu Linux unless otherwise
+specified.
 
 ## .bashrc
 
@@ -26,16 +27,27 @@ ln -sf /path/to/fdignore_global ~/.config/fd/ignore
 
 ## .gitconfig
 
-Add the following line at the end of `.gitconfig`:
-```gitconfig
-[include]
-	path = /path/to/gitconfig-common
+Update the global include path:
+```bash
+# Bash
+git config --global include.path "/path/to/gitconfig-common"
 ```
 
 Symlink the global ignore file:
 ```bash
+# Bash
 ln -sf /path/to/gitignore_global ~/.gitignore_global
 ```
+
+When using PowerShell and referencing WSL paths, the equivalent commands may
+look like:
+```powershell
+git config --global include.path "\\wsl`$\Ubuntu\path\to\gitconfig-common"
+
+New-Item -Type SymbolicLink -Path "C:\path\to\USERPROFILE\.gitignore_global"
+    -Target "\\wsl`$\Ubuntu\path\to\gitignore_global"
+```
+PowerShell must be run as administrator to create symbolic links.
 
 ## .projections.json
 
