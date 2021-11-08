@@ -9,6 +9,10 @@ Add the following line at the end of `.bashrc`:
 source /path/to/bashrc-common.sh
 ```
 
+## .clangd
+
+Copy script to C/C++ project root and customize. For use with `clangd`.
+
 ## compile_flags.txt
 
 Copy script to C/C++ project root and customize. For use with `clangd`.
