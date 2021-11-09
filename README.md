@@ -29,13 +29,11 @@ ln -sf /path/to/fdignore_global ~/.config/fd/ignore
 
 Update the global include path:
 ```bash
-# Bash
 git config --global include.path "/path/to/gitconfig-common"
 ```
 
 Symlink the global ignore file:
 ```bash
-# Bash
 ln -sf /path/to/gitignore_global ~/.gitignore_global
 ```
 
