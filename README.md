@@ -62,6 +62,20 @@ Copy script to Neovim config directory and customize:
 cp /path/to/projects.vim ~/.config/nvim
 ```
 
+# Setup
+
+Update Git config:
+```
+git config --global user.name "username"
+git config --global user.email "user@mail.com"
+
+# Linux
+git config --global core.autocrlf input
+
+# Windows
+git config --global core.autocrlf true
+```
+
 [clangd]: https://clangd.llvm.org/
 [fd]: https://github.com/sharkdp/fd
 [vim-projectionist]: https://github.com/tpope/vim-projectionist
