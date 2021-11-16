@@ -47,7 +47,7 @@ look like:
 ```powershell
 git config --global include.path "\\wsl`$\Ubuntu\path\to\gitconfig-common"
 
-New-Item -Type SymbolicLink -Path "$Env:UserProfile\.gitignore_global"
+New-Item -Type SymbolicLink -Path "$Env:UserProfile\.gitignore_global" `
     -Target "\\wsl`$\Ubuntu\path\to\gitignore_global"
 ```
 PowerShell must be run as administrator to create symbolic links.
@@ -69,16 +69,16 @@ cp /path/to/projects.vim ~/.config/nvim
 ## settings.json
 
 First, make sure Windows Terminal is not running. Then, remove existing
-settings:
+settings using PowerShell as administrator:
 ```powershell
 rm $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\*
 ```
 
 Symlink the settings file:
 ```powershell
-New-Item -Type SymbolicLink
-    -Path $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
-    -Target "\\wsl`$\Ubuntu\home\mhyun\projects\dotfiles\winterm-settings.json"
+New-Item -Type SymbolicLink `
+    -Path $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json `
+    -Target "\\wsl`$\Ubuntu\path\to\winterm-settings.json"
 ```
 
 # Setup
