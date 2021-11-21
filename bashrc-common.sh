@@ -1,6 +1,8 @@
 export EDITOR=nvim
 export VISUAL=nvim
 
+export BAT_THEME=OneHalfDark
+
 HISTSIZE=20000
 HISTFILESIZE=20000
 
