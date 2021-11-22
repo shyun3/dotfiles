@@ -66,6 +66,10 @@ Copy script to Neovim config directory and customize:
 cp /path/to/projects.vim ~/.config/nvim
 ```
 
+## pyrightconfig.json
+
+Copy script to Python project root and customize.
+
 ## settings.json
 
 First, make sure Windows Terminal is not running. Then, remove existing

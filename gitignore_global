@@ -6,3 +6,4 @@ tags
 .clangd
 compile_flags.txt
 .projections.json
+pyrightconfig.json
