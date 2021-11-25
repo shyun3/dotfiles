@@ -2,8 +2,10 @@ tags
 !tags/
 
 .cache/
+.vim/
 
 .clangd
 compile_flags.txt
+compile_commands.json
 .projections.json
 pyrightconfig.json
