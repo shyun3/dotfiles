@@ -37,7 +37,10 @@
     "copyFormatting": "none",
     "copyOnSelect": true,
     "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-    "disabledProfileSources": [ "Windows.Terminal.Wsl" ],
+    "disabledProfileSources": 
+    [
+        "Windows.Terminal.Wsl"
+    ],
     "experimental.rendering.forceFullRepaint": false,
     "experimental.rendering.software": false,
     "profiles": 
@@ -83,6 +86,7 @@
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
                 "intenseTextStyle": "all",
                 "name": "Ubuntu",
+                "scrollbarState": "hidden",
                 "useAcrylic": true
             }
         ]
