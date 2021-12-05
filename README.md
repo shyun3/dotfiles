@@ -46,19 +46,31 @@ New-Item -Type SymbolicLink -Path "$Env:UserProfile\.gitignore_global" `
 ```
 PowerShell must be run as administrator to create symbolic links.
 
+## profile.ps1
+
+Symlink the user PowerShell 7 profile (running as administrator may be
+required):
+```powershell
+New-Item -Type SymbolicLink `
+    -Path "$home\Documents\PowerShell\profile.ps1" `
+    -Target "\\wsl`$\LinuxDistro\path\to\profile.ps1"
+```
+
+Make sure that PowerShell's execution policy is not set to `Restricted`.
+
 ## Windows Terminal settings
 
 First, make sure Windows Terminal is not running. Then, remove existing
-settings using PowerShell as administrator:
+settings using PowerShell:
 ```powershell
 rm $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\*
 ```
 
-Symlink the settings file:
+Now, symlink the settings file:
 ```powershell
 New-Item -Type SymbolicLink `
     -Path $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json `
-    -Target "\\wsl`$\path\to\winterm-settings.json"
+    -Target "\\wsl`$\LinuxDistro\path\to\winterm-settings.json"
 ```
 
 # Setup
