@@ -46,6 +46,13 @@ New-Item -Type SymbolicLink -Path "$Env:UserProfile\.gitignore_global" `
 ```
 PowerShell must be run as administrator to create symbolic links.
 
+## .inputrc
+
+Symlink the `readline` initialization file:
+```bash
+ln -s /path/to/inputrc ~/.inputrc
+```
+
 ## profile.ps1
 
 Symlink the user PowerShell 7 profile (running as administrator may be
