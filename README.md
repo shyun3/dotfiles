@@ -80,6 +80,13 @@ New-Item -Type SymbolicLink `
     -Target "\\wsl`$\LinuxDistro\path\to\winterm-settings.json"
 ```
 
+## wsl.conf
+
+Symlink the [WSL config file][wsl-conf]:
+```bash
+sudo ln -s /path/to/wsl.conf /etc/wsl.conf
+```
+
 # Setup
 
 Update Git config:
@@ -96,3 +103,4 @@ git config --global core.autocrlf true
 
 [black]: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#where-black-looks-for-the-file
 [fd]: https://github.com/sharkdp/fd
+[wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
