@@ -3,6 +3,7 @@ tags
 
 .cache/
 .vim/
+typings/
 
 .clangd
 compile_flags.txt
