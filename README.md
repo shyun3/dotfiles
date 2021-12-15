@@ -10,6 +10,13 @@ Add the following line at the end of `.bashrc`:
 source /path/to/bashrc-common.sh
 ```
 
+## `ctags` global option file
+
+Symlink the [Universal Ctags][univ-ctags] global option file:
+```bash
+ln -s /path/to/global.ctags ~/.ctags.d/global.ctags
+```
+
 ## `black` global configuration file
 
 Symlink the [black][] global configuration file:
@@ -103,4 +110,5 @@ git config --global core.autocrlf true
 
 [black]: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#where-black-looks-for-the-file
 [fd]: https://github.com/sharkdp/fd
+[univ-ctags]: https://docs.ctags.io/en/latest/option-file.html#order-of-loading-option-files
 [wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
