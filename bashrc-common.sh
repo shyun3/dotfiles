@@ -14,6 +14,8 @@ export BAT_THEME=OneHalfDark
 HISTSIZE=20000
 HISTFILESIZE=20000
 
+PROMPT_COMMAND='history -a; history -r'
+
 #######################################################################
 # Prompt
 _RED='\[$(tput setaf 1)\]'
