@@ -11,3 +11,4 @@ compile_commands.json
 .ignore
 .projections.json
 pyrightconfig.json
+.python-version
