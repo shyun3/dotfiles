@@ -39,7 +39,7 @@
     "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
     "disabledProfileSources": 
     [
-        "Windows.Terminal.Wsl"
+        "Windows.Terminal.Wsl", "Windows.Terminal.Azure"
     ],
     "experimental.rendering.forceFullRepaint": false,
     "experimental.rendering.software": false,
@@ -93,6 +93,11 @@
                 "name": "Ubuntu",
                 "scrollbarState": "hidden",
                 "useAcrylic": true
+            },
+            {
+                "guid": "{46af493b-200e-5587-a7ef-e49657b123f8}",
+                "name": "MSYS2",
+                "source": "MinGW"
             }
         ]
     },
