@@ -9,6 +9,7 @@ $origPrompt = (Get-Command Prompt).ScriptBlock
 
 function prompt
 {
+    # Make sure Windows Terminal duplicates new tabs/panes in same directory
     # https://docs.microsoft.com/en-us/windows/terminal/tutorials/new-tab-same-directory#powershell-with-posh-git
     $loc = Get-Location
     $cwdSeq = "$([char]27)]9;12$([char]7)"

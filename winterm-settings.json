@@ -39,7 +39,7 @@
     "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
     "disabledProfileSources": 
     [
-        "Windows.Terminal.Wsl", "Windows.Terminal.Azure"
+        "Windows.Terminal.Azure"
     ],
     "experimental.rendering.forceFullRepaint": false,
     "experimental.rendering.software": false,
@@ -78,7 +78,7 @@
                 "antialiasingMode": "cleartype",
                 "bellStyle": "taskbar",
                 "colorScheme": "Campbell",
-                "commandline": "wsl.exe ~",
+                "commandline": "wsl.exe",
                 "cursorShape": "bar",
                 "font": 
                 {
@@ -91,11 +91,13 @@
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
                 "intenseTextStyle": "all",
                 "name": "Ubuntu",
+                "source": "Windows.Terminal.Wsl",
                 "scrollbarState": "hidden",
                 "useAcrylic": true
             },
             {
                 "guid": "{46af493b-200e-5587-a7ef-e49657b123f8}",
+                "hidden": false,
                 "name": "MSYS2",
                 "source": "MinGW"
             }
