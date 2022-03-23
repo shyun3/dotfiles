@@ -15,9 +15,9 @@ Summarizing from the docs, extensions for the current user would be added as:
 The `{app-name}` must match the corresponding `source` field of the profile in
 the main Windows Terminal `settings.json`.
 
-For this case, the Ubuntu fragment would be added as:
+For this case, the MSYS2 fragment would be added as:
 
-`$Env:LocalAppData/Microsoft/Windows Terminal/Fragments/Windows.Terminal.Wsl/Ubuntu.json`
+`$Env:LocalAppData/Microsoft/Windows Terminal/Fragments/MinGW/MSYS2.json`
 
 Recall from the docs that the actual file name of the JSON does not matter.
 
