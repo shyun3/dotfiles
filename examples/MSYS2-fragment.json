@@ -1,0 +1,10 @@
+{
+    "profiles": [
+        {
+            "name": "MSYS2",
+            "commandline": "C:/path/to/msys/bash.exe -li",
+            "icon": "C:/path/to/msys.ico",
+            "startingDirectory": "C:/path/to/msys/home/user"
+        }
+    ]
+}
