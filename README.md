@@ -62,10 +62,13 @@ ln -s /path/to/inputrc ~/.inputrc
 
 ## profile.ps1
 
+Make sure that PowerShell's execution policy is not set to `Restricted`.
+
 Install the following prerequisistes through PowerShell 7:
 ```powershell
 Install-Module oh-my-posh -Scope CurrentUser
 Install-Module -Name Terminal-Icons -Repository PSGallery
+Install-Module posh-git -Scope CurrentUser -Force
 ```
 
 Add the following line at the end of the user PowerShell profile located at
@@ -74,7 +77,6 @@ Add the following line at the end of the user PowerShell profile located at
 . "\\wsl`$\LinuxDistro\path\to\profile-common.ps1"
 ```
 
-Make sure that PowerShell's execution policy is not set to `Restricted`.
 Changes may require restarting Windows Terminal to take effect.
 
 ## Windows Terminal settings

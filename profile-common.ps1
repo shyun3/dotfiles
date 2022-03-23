@@ -1,9 +1,13 @@
+#######################################################################
+# Prompt
+# See https://docs.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup
+
+Import-Module posh-git
+
 Import-Module oh-my-posh
 Set-PoshPrompt -Theme paradox
 
 Import-Module -Name Terminal-Icons
-
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 $origPrompt = (Get-Command Prompt).ScriptBlock
 
@@ -20,6 +24,10 @@ function prompt
 
     ($origPrompt | Invoke-Expression) + $cwdSeq
 }
+
+#######################################################################
+
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 # See https://stackoverflow.com/a/16949127
 function which($name)
