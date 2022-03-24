@@ -5,6 +5,14 @@ specified.
 
 ## .bashrc
 
+Install the prerequisite [Oh My Posh](https://ohmyposh.dev/docs/linux). This
+will require [Homebrew](https://brew.sh/).
+
+Symlink the prompt theme:
+```bash
+ln -s /path/to/mytheme.omp.json ~/.mytheme.omp.json
+```
+
 Add the following line at the end of `.bashrc`:
 ```bash
 source /path/to/bashrc-common.sh
@@ -60,11 +68,11 @@ Symlink the `readline` initialization file:
 ln -s /path/to/inputrc ~/.inputrc
 ```
 
-## profile.ps1
+## PowerShell user profile
 
 Make sure that PowerShell's execution policy is not set to `Restricted`.
 
-Install the following prerequisistes through PowerShell 7:
+Install the following prerequisites through PowerShell 7:
 ```powershell
 Install-Module oh-my-posh -Scope CurrentUser
 Install-Module -Name Terminal-Icons -Repository PSGallery
