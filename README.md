@@ -129,10 +129,7 @@ git config --global core.autocrlf true
 The current user Bash startup script and PowerShell profile specify the config
 as a remote URL. Oh My Posh downloads the config once and caches it. The cache
 must be cleared for the config to receive further updates. This can be done
-with the following command in either shell:
-```
-rm "$(oh-my-posh cache path)/*.json"
-```
+by removing the version numbered JSON files under `$(oh-my-posh cache path)`.
 
 Make sure the latest Oh My Posh is installed and to restart the shell after
 clearing the cache.
