@@ -8,20 +8,16 @@
           "background": "#ffe9aa",
           "foreground": "#100e23",
           "powerline_symbol": "\ue0b0",
-          "properties": {
-            "template": "\u2800\uf0e7\u2800"
-          },
           "style": "powerline",
+          "template": "\u2800\uf0e7\u2800",
           "type": "root"
         },
         {
           "background": "#ffffff",
           "foreground": "#100e23",
           "powerline_symbol": "\ue0b0",
-          "properties": {
-            "template": "\u2800{{ .UserName }}@{{ .HostName }}\u2800"
-          },
           "style": "powerline",
+          "template": "\u2800{{ .UserName }}@{{ .HostName }}\u2800",
           "type": "session"
         },
         {
@@ -31,40 +27,34 @@
           "properties": {
             "folder_icon": "\uf115",
             "folder_separator_icon": " \ue0b1 ",
-            "style": "full",
-            "template": "\u2800{{ .Path }}\u2800"
+            "style": "full"
           },
           "style": "powerline",
+          "template": "\u2800{{ .Path }}\u2800",
           "type": "path"
         },
         {
           "background": "#95ffa4",
           "foreground": "#193549",
           "powerline_symbol": "\ue0b0",
-          "properties": {
-            "template": "\u2800{{ .HEAD }}\u2800"
-          },
           "style": "powerline",
+          "template": "\u2800{{ .HEAD }}\u2800",
           "type": "git"
         },
         {
           "background": "#906cff",
           "foreground": "#100e23",
           "powerline_symbol": "\ue0b0",
-          "properties": {
-            "template": "\u2800\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}\u2800"
-          },
           "style": "powerline",
+          "template": "\u2800\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}\u2800",
           "type": "python"
         },
         {
           "background": "#ff8080",
           "foreground": "#ffffff",
           "powerline_symbol": "\ue0b0",
-          "properties": {
-            "template": "\u2800\ue20f\u2800"
-          },
           "style": "powerline",
+          "template": "\u2800\ue20f\u2800",
           "type": "exit"
         }
       ],
@@ -76,15 +66,13 @@
       "segments": [
         {
           "foreground": "#007ACC",
-          "properties": {
-            "template": "\u276f "
-          },
           "style": "plain",
+          "template": "\u276f\u2800",
           "type": "text"
         }
       ],
       "type": "prompt"
     }
   ],
-  "version": 1
+  "version": 2
 }
