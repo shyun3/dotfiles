@@ -8,11 +8,6 @@ specified.
 Install the prerequisite [Oh My Posh](https://ohmyposh.dev/docs/linux). This
 will require [Homebrew](https://brew.sh/).
 
-Symlink the prompt theme:
-```bash
-ln -s /path/to/mytheme.omp.json ~/.mytheme.omp.json
-```
-
 Add the following line at the end of `.bashrc`:
 ```bash
 source /path/to/bashrc-common.sh
