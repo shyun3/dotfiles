@@ -6,3 +6,4 @@
     prune = 1
 [alias]
     l = log --graph --oneline --decorate
+    root = rev-parse --show-toplevel
