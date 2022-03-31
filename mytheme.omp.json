@@ -69,7 +69,7 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "style": "powerline",
-          "template": "\u2800\uf64f {{ .Format }}\u2800",
+          "template": "\u2800\uf64f {{ .CurrentDate | date .Format }}\u2800",
           "type": "time"
         }
       ],
