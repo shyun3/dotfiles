@@ -20,13 +20,6 @@ Symlink the [Universal Ctags][univ-ctags] global option file:
 ln -s /path/to/global.ctags ~/.ctags.d/global.ctags
 ```
 
-## `black` global configuration file
-
-Symlink the [black][] global configuration file:
-```bash
-ln -s /path/to/black.toml ${XDG_CONFIG_HOME:-~/.config}/black
-```
-
 ## `fd` global ignore file
 
 Symlink the [fd][] global ignore file (supported in v8.1 or later):
@@ -141,7 +134,6 @@ clearing the cache.
 * To regenerate dynamic profiles that have been deleted, remove
   `$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\state.json`
 
-[black]: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#where-black-looks-for-the-file
 [fd]: https://github.com/sharkdp/fd
 [univ-ctags]: https://docs.ctags.io/en/latest/option-file.html#order-of-loading-option-files
 [wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
