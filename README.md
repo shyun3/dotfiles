@@ -5,8 +5,8 @@ specified.
 
 ## .bashrc
 
-Install the prerequisite [Oh My Posh](https://ohmyposh.dev/docs/linux). This
-will require [Homebrew](https://brew.sh/).
+Install [Oh My Posh](https://ohmyposh.dev/docs/installation/linux). This will
+require [Homebrew](https://brew.sh/).
 
 Add the following line at the end of `.bashrc`:
 ```bash
@@ -60,9 +60,10 @@ ln -s /path/to/inputrc ~/.inputrc
 
 Make sure that PowerShell's execution policy is not set to `Restricted`.
 
+Install [Oh My Posh](https://ohmyposh.dev/docs/installation/windows).
+
 Install the following prerequisites through PowerShell 7:
 ```powershell
-Install-Module oh-my-posh -Scope CurrentUser
 Install-Module -Name Terminal-Icons -Repository PSGallery
 Install-Module posh-git -Scope CurrentUser -Force
 ```
