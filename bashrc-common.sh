@@ -38,6 +38,9 @@ fi
 
 #######################################################################
 # fzf
+
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:wrap --bind '?:toggle-preview'"
+
 fbr() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
