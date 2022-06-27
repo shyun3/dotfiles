@@ -4,9 +4,7 @@
 
 Import-Module posh-git
 
-oh-my-posh init pwsh `
-    --config 'https://raw.githubusercontent.com/shyun3/dotfiles/main/mytheme.omp.json' |
-    Invoke-Expression
+oh-my-posh init pwsh --config "$DOTFILES/mytheme.omp.json" | Invoke-Expression
 
 Import-Module -Name Terminal-Icons
 
