@@ -10,6 +10,7 @@ compile_flags.txt
 compile_commands.json
 .gutctags
 .ignore
+.prettierrc.json
 .projections.json
 pyrightconfig.json
 .python-version
