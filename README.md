@@ -116,7 +116,7 @@ git config --global user.email "user@mail.com"
 git config --global core.autocrlf input
 
 # Windows
-git config --global core.autocrlf true
+git config --global core.autocrlf input
 ```
 
 # Tips
