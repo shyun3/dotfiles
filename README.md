@@ -12,7 +12,10 @@ Install [Oh My Zsh](https://ohmyz.sh/).
 Remove the created `.zshrc` and create some symlinks:
 ```zsh
 ln -s /path/to/dotfiles/zshrc ~/.zshrc
+ln -s /path/to/dotfiles/p10k.zsh ~/.p10k.zsh
 ```
+
+Install [Powerlevel10k](https://github.com/romkatv/powerlevel10k).
 
 ## `ctags` global option file
 
