@@ -115,8 +115,6 @@ fi
 #######################################################################
 # PATH
 
-export PATH=~/bin/node-v16.13.0-linux-x64/bin:$PATH
-
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
