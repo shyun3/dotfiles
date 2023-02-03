@@ -92,7 +92,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump colored-man-pages fzf)
+plugins=(colored-man-pages fzf zsh-interactive-cd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -156,6 +156,8 @@ setopt histignorealldups incappendhistory sharehistory
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+eval "$(zoxide init zsh)"
 
 #######################################################################
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
