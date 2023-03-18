@@ -122,6 +122,13 @@ git config --global core.autocrlf input
 git config --global core.autocrlf input
 ```
 
+Make sure `zsh` sources `/etc/profile` by adding the following line to
+`/etc/zsh/zprofile`:
+```zsh
+emulate sh -c 'source /etc/profile'
+```
+Taken from this [bug report][zsh-profile-bug].
+
 # Tips
 
 ## Windows Terminal
@@ -131,6 +138,11 @@ git config --global core.autocrlf input
 * To regenerate dynamic profiles that have been deleted, remove
   `$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\state.json`
 
+## Zsh
+
+* Place machine-specific settings in `~/.zshenv`.
+
 [fd]: https://github.com/sharkdp/fd
 [univ-ctags]: https://docs.ctags.io/en/latest/option-file.html#order-of-loading-option-files
 [wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
+[zsh-profile-bug]: https://bugs.launchpad.net/ubuntu/+source/zsh/+bug/1800280
