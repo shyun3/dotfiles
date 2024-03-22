@@ -14,6 +14,28 @@ fbr() {
 }
 
 #######################################################################
+# PATH
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+#######################################################################
+# pyenv
+
+# Taken from zsh plugin warning
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+#######################################################################
+#######################################################################
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -87,7 +109,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man-pages fzf poetry zsh-interactive-cd)
+plugins=(colored-man-pages fzf pyenv poetry nvm zoxide zsh-interactive-cd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,27 +137,6 @@ if [[ -x $(which wslpath) ]]; then
 fi
 
 #######################################################################
-# PATH
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-#######################################################################
 # Shell settings
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -158,8 +159,6 @@ setopt histignorealldups incappendhistory sharehistory
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-eval "$(zoxide init zsh)"
 
 #######################################################################
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
