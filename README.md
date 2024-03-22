@@ -9,13 +9,35 @@ Install `zsh`: `apt install zsh`.
 
 Install [Oh My Zsh](https://ohmyz.sh/).
 
-Remove the created `.zshrc` and create some symlinks:
+Make some symlinks, overwriting the created `.zshrc`:
 ```zsh
-ln -s /path/to/dotfiles/zshrc ~/.zshrc
+ln -sf /path/to/dotfiles/zshrc ~/.zshrc
 ln -s /path/to/dotfiles/p10k.zsh ~/.p10k.zsh
 ```
 
-Install [Powerlevel10k](https://github.com/romkatv/powerlevel10k).
+Install [Powerlevel10k](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#oh-my-zsh).
+
+### Plugin Notes
+
+If using Ubuntu 22.04, consider installing `fzf` through `apt`. If installing
+through Git, there is no need to run the `install` script as this is covered by
+the plugin.
+
+Prefer the automatic installer for [pyenv][]. This will also install
+`pyenv-virtualenv`. Make sure to install the [Python build
+dependencies][python-build-deps]. Prefer the latest Python and set it as the
+global version:
+```zsh
+pyenv install 3
+pyenv global 3
+```
+
+When installing [nvm][], make sure not to update the shell config (see
+[additional notes][nvm-install-notes]):
+```zsh
+# Fill in the version
+PROFILE=/dev/null bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/<VERSION>/install.sh | bash'
+```
 
 ## `ctags` global option file
 
@@ -145,11 +167,14 @@ Taken from this [bug report][zsh-profile-bug].
 ## Zsh
 
 * Place machine-specific settings in `~/.zshenv`
-* For [Poetry](https://python-poetry.org/) completions, follow the instructions
-  in their [documentation](https://python-poetry.org/docs/#oh-my-zsh)
-  * See also this [Oh My Zsh issue](https://github.com/ohmyzsh/ohmyzsh/issues/11145)
+* The directories `$HOME/bin` and `$HOME/.local/bin` are only added to the
+  `PATH` if they exist
 
 [fd]: https://github.com/sharkdp/fd
+[pyenv]: https://github.com/pyenv/pyenv?tab=readme-ov-file#automatic-installer
+[python-build-deps]: https://github.com/pyenv/pyenv?tab=readme-ov-file#install-python-build-dependencies
+[nvm]: https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script
+[nvm-install-notes]: https://github.com/nvm-sh/nvm?tab=readme-ov-file#additional-notes
 [univ-ctags]: https://docs.ctags.io/en/latest/option-file.html#order-of-loading-option-files
 [wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
