@@ -4,6 +4,14 @@
     "actions": 
     [
         {
+            "command": "unbound",
+            "keys": "ctrl+c"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+v"
+        },
+        {
             "command": 
             {
                 "action": "copy",
@@ -14,18 +22,6 @@
             "command": "paste"
         },
         {
-            "command": "unbound",
-            "keys": "ctrl+c"
-        },
-        {
-            "command": "unbound",
-            "keys": "ctrl+v"
-        },
-        {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
             "command": 
             {
                 "action": "splitPane",
@@ -33,6 +29,10 @@
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
         }
     ],
     "copyFormatting": "none",
@@ -46,6 +46,12 @@
     "experimental.rendering.forceFullRepaint": false,
     "experimental.rendering.software": false,
     "launchMode": "maximized",
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
     "profiles": 
     {
         "defaults": 
@@ -62,7 +68,7 @@
                 "font": 
                 {
                     "face": "JetBrainsMonoNL NF",
-                    "size": 10
+                    "size": 10.0
                 },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
@@ -84,7 +90,7 @@
                 "font": 
                 {
                     "face": "JetBrainsMonoNL NF",
-                    "size": 9,
+                    "size": 9.0,
                     "weight": "normal"
                 },
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
@@ -94,20 +100,9 @@
                 "name": "WSL",
                 "opacity": 75,
                 "scrollbarState": "hidden",
+                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
                 "startingDirectory": "/home/default",
                 "useAcrylic": true
-            },
-            {
-                "guid": "{46af493b-200e-5587-a7ef-e49657b123f8}",
-                "hidden": false,
-                "name": "MSYS2",
-                "source": "MinGW"
-            },
-            {
-                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-                "hidden": false,
-                "name": "Git Bash",
-                "source": "Git"
             }
         ]
     },
@@ -298,6 +293,29 @@
             "yellow": "#C4A000"
         },
         {
+            "background": "#300A24",
+            "black": "#171421",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#08458F",
+            "brightCyan": "#2C9FB3",
+            "brightGreen": "#26A269",
+            "brightPurple": "#A347BA",
+            "brightRed": "#C01C28",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#A2734C",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#FFFFFF",
+            "green": "#26A269",
+            "name": "Ubuntu-ColorScheme",
+            "purple": "#881798",
+            "red": "#C21A23",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#A2734C"
+        },
+        {
             "background": "#000000",
             "black": "#000000",
             "blue": "#000080",
@@ -321,5 +339,6 @@
             "yellow": "#808000"
         }
     ],
-    "tabWidthMode": "titleLength"
+    "tabWidthMode": "titleLength",
+    "themes": []
 }
