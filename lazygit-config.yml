@@ -1,0 +1,5 @@
+gui:
+  theme:
+    optionsTextColor:
+      # The default of blue was hard to see with a dark terminal background
+      - cyan
