@@ -1,7 +1,4 @@
-tags
-!tags/
-tags.lock
-tags.temp
+.gutentags*
 
 .cache/
 .vim/
