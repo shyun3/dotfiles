@@ -1,17 +1,24 @@
-.gutentags*
+.ignore
+.prettierrc.json
+.python-version     # pyenv-virtualenv
 
+# Bloom
+.bloom/
+bloom.yaml
+
+# clangd
 .cache/
-.vim/
-typings/
-
-*_jsondb.json
-
 .clangd
 compile_flags.txt
 compile_commands.json
+
+# nvim
+.gutentags*
 .gutctags
-.ignore
-.prettierrc.json
 .projections.json
+
+# pyright
+typings/
 pyrightconfig.json
-.python-version
+
+# vim: ft=gitignore
