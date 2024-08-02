@@ -10,6 +10,14 @@ export FZF_CTRL_R_OPTS="
   --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
+
+# Preview file content using bat, derived from:
+# https://junegunn.github.io/fzf/shell-integration/#ctrl-t
+# https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#preview
+export FZF_CTRL_T_OPTS="
+  --preview '(bat -n --color=always {} 2> /dev/null || tree -C {}) 2> /dev/null | head -200'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
 # Taken from: https://github.com/junegunn/fzf/wiki/Examples#git
 # fbr - checkout git branch
 fbr() {
