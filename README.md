@@ -19,9 +19,8 @@ Install [Powerlevel10k](https://github.com/romkatv/powerlevel10k?tab=readme-ov-f
 
 ### Plugin Notes
 
-If using Ubuntu 22.04, consider installing `fzf` through `apt`. If installing
-through Git, there is no need to run the `install` script as this is covered by
-the plugin.
+Prefer the latest binary for `fzf`. If installing through Git, there is no need
+to run the `install` script as this is covered by the plugin.
 
 Prefer the automatic installer for [pyenv][]. This will also install
 `pyenv-virtualenv`. Make sure to install the [Python build
