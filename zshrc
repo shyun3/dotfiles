@@ -18,6 +18,10 @@ export FZF_CTRL_T_OPTS="
   --preview '(bat -n --color=always {} 2> /dev/null || tree -C {}) 2> /dev/null | head -200'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
+# Print tree structure in the preview window, derived from:
+# https://junegunn.github.io/fzf/shell-integration/#alt-c
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
 # Taken from: https://github.com/junegunn/fzf/wiki/Examples#git
 # fbr - checkout git branch
 fbr() {
