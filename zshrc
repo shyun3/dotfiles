@@ -20,6 +20,12 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 #######################################################################
+# nvm
+
+# Taken from: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/nvm#lazy-startup
+zstyle ':omz:plugins:nvm' lazy yes
+
+#######################################################################
 #######################################################################
 
 # If you come from bash you might have to change your $PATH.
