@@ -35,6 +35,12 @@ eval "$(pyenv init --path)"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+# MH: To ensure cache directory is defined for compdump directory
+ZSH_CACHE_DIR=$ZSH/cache
+
+# MH: Taken from https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#completion-settings
+ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
