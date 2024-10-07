@@ -12,11 +12,11 @@ source /path/to/bashrc-common.sh
 
 ## .clangd
 
-Copy script to C/C++ project root and customize. For use with `clangd`.
+Copy script to C/C++ project root and customize. For use with [clangd][].
 
-## compile_flags.txt
+## compile\_flags.txt
 
-Copy script to C/C++ project root and customize. For use with `clangd`.
+Copy script to C/C++ project root and customize. For use with [clangd][].
 
 ## \*/fd/ignore
 
@@ -49,7 +49,7 @@ PowerShell must be run as administrator to create symbolic links.
 
 ## .projections.json
 
-Copy script to project root and customize. For use with `vim-projectionist`:
+Copy script to project root and customize. For use with [vim-projectionist][]:
 ```bash
 cp /path/to/projections.json /path/to/project/.projections.json
 ```
@@ -60,3 +60,6 @@ Copy script to Neovim config directory and customize:
 ```bash
 cp /path/to/projects.vim ~/.config/nvim
 ```
+
+[clangd]: https://clangd.llvm.org/
+[vim-projectionist]: https://github.com/tpope/vim-projectionist
