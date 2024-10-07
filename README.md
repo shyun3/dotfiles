@@ -66,6 +66,21 @@ Copy script to Neovim config directory and customize:
 cp /path/to/projects.vim ~/.config/nvim
 ```
 
+## settings.json
+
+First, make sure Windows Terminal is not running. Then, remove existing
+settings:
+```powershell
+rm $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\*
+```
+
+Symlink the settings file:
+```powershell
+New-Item -Type SymbolicLink
+    -Path $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+    -Target "\\wsl`$\Ubuntu\home\mhyun\projects\dotfiles\winterm-settings.json"
+```
+
 # Setup
 
 Update Git config:
