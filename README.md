@@ -132,6 +132,16 @@ Taken from this [bug report][zsh-profile-bug].
 * To regenerate dynamic profiles that have been deleted, remove
   `$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\state.json`
 
+## WSL
+
+* If Windows applications cannot be called from WSL, try entering the
+  following:
+  ```sh
+  sudo systemctl mask systemd-binfmt.service
+  ```
+  Taken from this [comment][wsl-interop-comment]. More details can be found in
+  issue [#8843](https://github.com/microsoft/WSL/issues/8843).
+
 ## Zsh
 
 * Place machine-specific settings in `~/.zshenv`
@@ -142,4 +152,5 @@ Taken from this [bug report][zsh-profile-bug].
 [fd]: https://github.com/sharkdp/fd
 [univ-ctags]: https://docs.ctags.io/en/latest/option-file.html#order-of-loading-option-files
 [wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
+[wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
 [zsh-profile-bug]: https://bugs.launchpad.net/ubuntu/+source/zsh/+bug/1800280
