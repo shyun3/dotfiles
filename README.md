@@ -3,41 +3,41 @@
 The following instructions assume the use of Ubuntu Linux unless otherwise
 specified.
 
-## .bashrc
+## .zshrc
 
-Install [Oh My Posh](https://ohmyposh.dev/docs/installation/linux). This will
-require [Homebrew](https://brew.sh/).
+Install `zsh`: `apt install zsh`.
 
-Add the following lines at the end of `.bashrc`:
-```bash
-DOTFILES=/path/to/dotfiles/
-source $DOTFILES/bashrc-common.sh
+Install [Oh My Zsh](https://ohmyz.sh/).
+
+Remove the created `.zshrc` and create some symlinks:
+```zsh
+ln -s /path/to/dotfiles/zshrc ~/.zshrc
 ```
 
 ## `ctags` global option file
 
 Symlink the [Universal Ctags][univ-ctags] global option file:
-```bash
-ln -s $DOTFILES/global.ctags ~/.ctags.d/global.ctags
+```zsh
+ln -s /path/to/dotfiles/global.ctags ~/.ctags.d/global.ctags
 ```
 
 ## `fd` global ignore file
 
 Symlink the [fd][] global ignore file (supported in v8.1 or later):
-```bash
-ln -s $DOTFILES/fdignore_global ~/.config/fd/ignore
+```zsh
+ln -s /path/to/dotfiles/fdignore_global ~/.config/fd/ignore
 ```
 
 ## .gitconfig
 
 Update the global include path:
-```bash
+```zsh
 git config --global include.path "/path/to/gitconfig-common"
 ```
 
 Symlink the global ignore file:
-```bash
-ln -s $DOTFILES/gitignore_global ~/.gitignore_global
+```zsh
+ln -s /path/to/dotfiles/gitignore_global ~/.gitignore_global
 ```
 
 When using PowerShell and referencing WSL paths, the equivalent commands may
@@ -53,8 +53,8 @@ PowerShell must be run as administrator to create symbolic links.
 ## .inputrc
 
 Symlink the `readline` initialization file:
-```bash
-ln -s $DOTFILES/inputrc ~/.inputrc
+```zsh
+ln -s /path/to/dotfiles/inputrc ~/.inputrc
 ```
 
 ## PowerShell user profile
@@ -94,15 +94,15 @@ New-Item -Type SymbolicLink `
 ```
 
 After starting WSL, symlink the `default` home directory:
-```bash
+```zsh
 sudo ln -s /home/<user> /home/default
 ```
 
 ## wsl.conf
 
 Symlink the [WSL config file][wsl-conf]:
-```bash
-sudo ln -s $DOTFILES/wsl.conf /etc/wsl.conf
+```zsh
+sudo ln -s /path/to/dotfiles/wsl.conf /etc/wsl.conf
 ```
 
 # Setup
