@@ -251,10 +251,3 @@ function ranger {
     fi
     command rm -f -- "$tempfile" 2>/dev/null
 }
-
-#######################################################################
-# Run commands in separate file after all other contents of .zshrc
-
-if [[ -f ~/.zshpost ]]; then
-    source ~/.zshpost
-fi
