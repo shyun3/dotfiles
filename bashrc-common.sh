@@ -9,6 +9,8 @@ export VISUAL=nvim
 
 export BAT_THEME=OneHalfDark
 
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
 #######################################################################
 # Shell variables
 HISTSIZE=20000
