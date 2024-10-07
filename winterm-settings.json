@@ -39,6 +39,7 @@
     "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
     "disabledProfileSources": 
     [
+        "Windows.Terminal.Wsl",
         "Windows.Terminal.Azure"
     ],
     "experimental.rendering.forceFullRepaint": false,
@@ -90,8 +91,8 @@
                 "hidden": false,
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
                 "intenseTextStyle": "all",
-                "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl",
+                "name": "WSL",
+                "startingDirectory" : "/home/default",
                 "scrollbarState": "hidden",
                 "useAcrylic": true
             },

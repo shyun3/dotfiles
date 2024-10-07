@@ -92,6 +92,11 @@ New-Item -Type SymbolicLink `
     -Target "\\wsl`$\LinuxDistro\path\to\winterm-settings.json"
 ```
 
+After starting WSL, symlink the `default` home directory:
+```bash
+sudo ln -s /home/<user> /home/default
+```
+
 ## wsl.conf
 
 Symlink the [WSL config file][wsl-conf]:
