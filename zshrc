@@ -172,3 +172,10 @@ setopt histignorealldups incappendhistory sharehistory
 
 alias cdgitroot='cd "$(git rev-parse --show-cdup)"'
 alias lg='lazygit'
+
+#######################################################################
+# Run commands in separate file after all other contents of .zshrc
+
+if [[ -f ~/.zshpost ]]; then
+    source ~/.zshpost
+fi
