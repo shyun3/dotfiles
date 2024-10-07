@@ -1,11 +1,14 @@
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+
 function prompt
 {
-    if ($nestedpromptlevel -ge 1) { return '>> ' }
-
     # `poetry shell` does not change the prompt, so add the virtualenv name
-    $venv = $env:VIRTUAL_ENV
-    $venvPrompt = $env:POETRY_ACTIVE -eq 1 -and $venv ?
-        '(' + (Get-Item $venv).BaseName + ') ' : ''
+    $venvPrompt = $env:POETRY_ACTIVE -eq 1 -and $env:VIRTUAL_ENV ?
+        '(' + (Get-Item $env:VIRTUAL_ENV).BaseName + ') ' : ''
 
-    $venvPrompt + 'PS ' + $(pwd) + '> '
+    $defaultPrompt = 'PS ' +
+        $($executionContext.SessionState.Path.CurrentLocation) +
+        "$('>' * ($nestedPromptLevel + 1)) "
+
+    $venvPrompt + $defaultPrompt
 }
