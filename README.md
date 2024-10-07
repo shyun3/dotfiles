@@ -46,10 +46,10 @@ ln -s /path/to/gitignore_global ~/.gitignore_global
 When using PowerShell and referencing WSL paths, the equivalent commands may
 look like:
 ```powershell
-git config --global include.path "\\wsl`$\path\to\gitconfig-common"
+git config --global include.path "\\wsl`$\LinuxDistro\path\to\gitconfig-common"
 
 New-Item -Type SymbolicLink -Path "$Env:UserProfile\.gitignore_global" `
-    -Target "\\wsl`$\path\to\gitignore_global"
+    -Target "\\wsl`$\LinuxDistro\path\to\gitignore_global"
 ```
 PowerShell must be run as administrator to create symbolic links.
 
@@ -62,13 +62,20 @@ ln -s /path/to/inputrc ~/.inputrc
 
 ## profile.ps1
 
-Add the following line at the end of the user PowerShell 7 profile located at
-`$home\Documents\PowerShell\profile.ps1`:
+Install the following prerequisistes through PowerShell 7:
 ```powershell
-. "\path\to\profile-common.ps1"
+Install-Module oh-my-posh -Scope CurrentUser
+Install-Module -Name Terminal-Icons -Repository PSGallery
+```
+
+Add the following line at the end of the user PowerShell profile located at
+`$PROFILE`:
+```powershell
+. "\\wsl`$\LinuxDistro\path\to\profile-common.ps1"
 ```
 
 Make sure that PowerShell's execution policy is not set to `Restricted`.
+Changes may require restarting Windows Terminal to take effect.
 
 ## Windows Terminal settings
 
