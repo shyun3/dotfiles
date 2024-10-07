@@ -16,6 +16,12 @@ HISTFILESIZE=20000
 
 PROMPT_COMMAND='history -a; history -r'
 
+# Make sure Windows Terminal duplicates new WSL tabs/panes in same directory
+# https://docs.microsoft.com/en-us/windows/terminal/tutorials/new-tab-same-directory#bash
+if [[ -n "$(which wslpath)" ]]; then
+    PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
+fi
+
 #######################################################################
 # Prompt
 _RED='\[$(tput setaf 1)\]'
