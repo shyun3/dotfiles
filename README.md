@@ -117,16 +117,12 @@ git config --global core.autocrlf true
 
 ## Windows Terminal
 
-* To specify machine-specific profiles, use
-  [JSON fragment extensions][winterm-json-fragment]. For where to place the
-  fragments, see the instructions in the
-  [Applications installed from the web][winterm-json-fragment-loc] section.
+* To specify machine-specific profiles, use JSON fragment extensions. For more
+  info and examples, see the [examples](examples/) directory.
 * To regenerate dynamic profiles that have been deleted, remove
   `$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\state.json`
 
 [black]: https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#where-black-looks-for-the-file
 [fd]: https://github.com/sharkdp/fd
-[winterm-json-fragment]: https://docs.microsoft.com/en-us/windows/terminal/json-fragment-extensions
-[winterm-json-fragment-loc]: https://docs.microsoft.com/en-us/windows/terminal/json-fragment-extensions#applications-installed-from-the-web
 [univ-ctags]: https://docs.ctags.io/en/latest/option-file.html#order-of-loading-option-files
 [wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
