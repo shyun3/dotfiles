@@ -14,6 +14,9 @@ export BAT_THEME=OneHalfDark
 HISTSIZE=20000
 HISTFILESIZE=20000
 
+#######################################################################
+# Prompt
+
 PROMPT_COMMAND='history -a; history -r'
 
 # Make sure Windows Terminal duplicates new WSL tabs/panes in same directory
@@ -22,13 +25,7 @@ if [[ -n "$(which wslpath)" ]]; then
     PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
 fi
 
-#######################################################################
-# Prompt
-_RED='\[$(tput setaf 1)\]'
-_RESET='\[$(tput sgr0)\]'
-
-# Add red git branch in front of prompt
-PS1="$_RED\$(__git_ps1 '[%s] ')$_RESET$PS1"
+eval "$(oh-my-posh prompt init bash --config ~/.mytheme.omp.json)"
 
 #######################################################################
 # Tilix
