@@ -12,8 +12,12 @@ source /path/to/bashrc-common.sh
 
 ## .clangd
 
-Copy script to C/C++ project root and customize. For use with [clangd][] (v11
-or later).
+Copy script to C/C++ project root and customize:
+```bash
+cp /path/to/clangd-config /path/to/project/.clangd
+```
+
+For use with [clangd][] (v11 or later).
 
 ## compile\_flags.txt
 
