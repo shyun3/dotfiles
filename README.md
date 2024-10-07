@@ -11,6 +11,7 @@ Install [Oh My Zsh](https://ohmyz.sh/).
 
 Make some symlinks, overwriting the created `.zshrc`:
 ```zsh
+ln -sf /path/to/dotfiles/zprofile ~/.zprofile
 ln -sf /path/to/dotfiles/zshrc ~/.zshrc
 ln -s /path/to/dotfiles/p10k.zsh ~/.p10k.zsh
 ```
@@ -152,13 +153,6 @@ git config --global user.name "username"
 git config --global user.email "user@mail.com"
 ```
 
-Make sure `zsh` sources `/etc/profile` by adding the following line to
-`/etc/zsh/zprofile`:
-```zsh
-emulate sh -c 'source /etc/profile'
-```
-Taken from this [bug report][zsh-profile-bug].
-
 # Tips
 
 ## Windows Terminal
@@ -190,4 +184,3 @@ Taken from this [bug report][zsh-profile-bug].
 [univ-ctags]: https://docs.ctags.io/en/latest/option-file.html#order-of-loading-option-files
 [wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
-[zsh-profile-bug]: https://bugs.launchpad.net/ubuntu/+source/zsh/+bug/1800280
