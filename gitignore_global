@@ -1,5 +1,7 @@
 tags
 !tags/
+tags.lock
+tags.temp
 
 .cache/
 .vim/
