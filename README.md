@@ -112,6 +112,11 @@ Symlink the [ranger](https://ranger.github.io/index.html) directory:
 ln -s /path/to/dotfiles/ranger ~/.config
 ```
 
+Suggested dependencies for enhanced functionality:
+* [atool](https://www.nongnu.org/atool/)
+* [AVFS](https://avf.sourceforge.net/)
+* [ranger-zoxide](https://github.com/jchook/ranger-zoxide)
+
 ## Windows Terminal settings
 
 First, make sure Windows Terminal is not running. Then, remove existing
@@ -176,8 +181,6 @@ Taken from this [bug report][zsh-profile-bug].
 ## Zsh
 
 * Place machine-specific settings in `~/.zshenv`
-* The directories `$HOME/bin` and `$HOME/.local/bin` are only added to the
-  `PATH` if they exist
 
 [fd]: https://github.com/sharkdp/fd
 [pyenv]: https://github.com/pyenv/pyenv?tab=readme-ov-file#automatic-installer

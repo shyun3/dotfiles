@@ -1,3 +1,7 @@
+command_exists() {
+  command -v "$@" >/dev/null 2>&1
+}
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -24,7 +28,9 @@ fi
 # Taken from zsh plugin warning
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+if command_exists pyenv; then
+  eval "$(pyenv init --path)"
+fi
 
 #######################################################################
 #######################################################################
@@ -109,7 +115,9 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(colored-man-pages fzf pyenv poetry nvm zoxide zsh-interactive-cd)
 
-source $ZSH/oh-my-zsh.sh
+if [[ -f $ZSH/oh-my-zsh.sh ]]; then
+  source $ZSH/oh-my-zsh.sh
+fi
 
 #######################################################################
 #######################################################################
@@ -120,7 +128,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Make sure Windows Terminal duplicates new WSL tabs/panes in same directory
 # https://learn.microsoft.com/en-us/windows/terminal/tutorials/new-tab-same-directory#zsh
-if [[ -x $(which wslpath) ]]; then
+if command_exists wslpath; then
     keep_current_path() {
       printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
     }
@@ -166,8 +174,8 @@ alias lg='lazygit'
 
 #######################################################################
 # avfs
-if hash mountpoint 2> /dev/null; then
-  mountpoint -q "~/.avfs" || command -v mountavfs > /dev/null 2>&1 && mountavfs
+if command_exists mountpoint; then
+  mountpoint -q "~/.avfs" || command_exists mountavfs && mountavfs
 fi
 
 #######################################################################
