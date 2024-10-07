@@ -1,5 +1,7 @@
 # Installation
 
+The following instructions assume the use of Ubuntu Linux.
+
 ## .bashrc
 
 Add the following line at the end of `.bashrc`:
@@ -7,12 +9,16 @@ Add the following line at the end of `.bashrc`:
 source /path/to/bashrc-common.sh
 ```
 
-Note that this common script was written assuming that Ubuntu Linux was being
-used.
-
 ## compile_flags.txt
 
 Copy script to C/C++ project root and customize. For use with `clangd`.
+
+## \*/fd/ignore
+
+Symlink the global `fd` ignore file:
+```bash
+ln -sf /path/to/fdignore_global ~/.config/fd/ignore
+```
 
 ## .gitconfig
 
@@ -27,7 +33,7 @@ Symlink the global ignore file:
 ln -sf /path/to/gitignore_global ~/.gitignore_global
 ```
 
-## projections.json
+## .projections.json
 
 Copy script to project root and customize. For use with `vim-projectionist`:
 ```bash
