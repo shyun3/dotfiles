@@ -14,7 +14,7 @@ fbr() {
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-# Taken from: https://github.com/junegunn/fzf/wiki/Examples#changing-directory
+# Derived from: https://github.com/junegunn/fzf/wiki/Examples#changing-directory
 # fdr - cd to selected parent directory
 fdr() {
   local declare dirs=()
@@ -26,7 +26,7 @@ fdr() {
       get_parent_dirs $(dirname "$1")
     fi
   }
-  local DIR=$(get_parent_dirs $(realpath "${1:-$PWD}") | fzf-tmux --tac)
+  local DIR=$(get_parent_dirs $(realpath "${1:-$PWD}") | fzf --height 40% --tac)
   cd "$DIR"
 }
 
