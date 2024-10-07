@@ -10,7 +10,7 @@ require [Homebrew](https://brew.sh/).
 
 Add the following lines at the end of `.bashrc`:
 ```bash
-export DOTFILES=/path/to/dotfiles/
+DOTFILES=/path/to/dotfiles/
 source $DOTFILES/bashrc-common.sh
 ```
 
