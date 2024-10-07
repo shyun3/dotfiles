@@ -62,12 +62,10 @@ ln -s /path/to/inputrc ~/.inputrc
 
 ## profile.ps1
 
-Symlink the user PowerShell 7 profile (running as administrator may be
-required):
+Add the following line at the end of the user PowerShell 7 profile located at
+`$home\Documents\PowerShell\profile.ps1`:
 ```powershell
-New-Item -Type SymbolicLink `
-    -Path "$home\Documents\PowerShell\profile.ps1" `
-    -Target "\\wsl`$\LinuxDistro\path\to\profile.ps1"
+. "\path\to\profile-common.ps1"
 ```
 
 Make sure that PowerShell's execution policy is not set to `Restricted`.
