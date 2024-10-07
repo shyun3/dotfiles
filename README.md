@@ -68,23 +68,19 @@ ln -s /path/to/dotfiles/gitignore_global ~/.gitignore_global
 When using PowerShell and referencing WSL paths, the equivalent commands may
 look like:
 ```powershell
-git config --global include.path "\\wsl`$\LinuxDistro\path\to\gitconfig-common"
+git config --global include.path "\\wsl.localhost\LinuxDistro\path\to\gitconfig-common"
 
 New-Item -Type SymbolicLink -Path "$Env:UserProfile\.gitignore_global" `
-    -Target "\\wsl`$\LinuxDistro\path\to\gitignore_global"
-```
-PowerShell must be run as administrator to create symbolic links.
-
-## .inputrc
-
-Symlink the `readline` initialization file:
-```zsh
-ln -s /path/to/dotfiles/inputrc ~/.inputrc
+    -Target "\\wsl.localhost\LinuxDistro\path\to\gitignore_global"
 ```
 
 ## PowerShell user profile
 
-Make sure that PowerShell's execution policy is not set to `Restricted`.
+Make sure that PowerShell's execution policy is not set to `Restricted`. For
+example:
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser Bypass
+```
 
 Install [Oh My Posh](https://ohmyposh.dev/docs/installation/windows).
 
@@ -97,7 +93,7 @@ Install-Module posh-git -Scope CurrentUser -Force
 Add the following lines at the end of the user PowerShell profile located at
 `$PROFILE`:
 ```powershell
-$DOTFILES = "\\wsl`$\LinuxDistro\path\to\dotfiles\"
+$DOTFILES = "\\wsl.localhost\LinuxDistro\path\to\dotfiles\"
 . "$DOTFILES\profile-common.ps1"
 ```
 
