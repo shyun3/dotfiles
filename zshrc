@@ -175,7 +175,7 @@ alias lg='lazygit'
 #######################################################################
 # avfs
 if command_exists mountpoint; then
-  mountpoint -q "~/.avfs" || command_exists mountavfs && mountavfs
+  mountpoint -q ~/.avfs || command_exists mountavfs && mountavfs
 fi
 
 #######################################################################
