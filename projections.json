@@ -6,5 +6,7 @@
     "*.h": {
         "alternate": "{}.c",
         "type": "hdr"
-    }
+    },
+    "**/src/*.c": { "alternate": "{dirname}/inc/{basename}.h" },
+    "**/inc/*.h": { "alternate": "{dirname}/src/{basename}.c" }
 }
