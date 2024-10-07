@@ -69,11 +69,11 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "properties": {
-            "threshold": 500,
-            "style": "austin"
+            "threshold": 1000,
+            "style": "round"
           },
           "style": "powerline",
-          "template": "\u2800\uf64f {{ .FormattedMs }}\u2800",
+          "template": "\u2800\uf252 {{ .FormattedMs }}\u2800",
           "type": "executiontime"
         },
         {
