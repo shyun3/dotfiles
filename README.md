@@ -114,12 +114,6 @@ Update Git config:
 ```
 git config --global user.name "username"
 git config --global user.email "user@mail.com"
-
-# Linux
-git config --global core.autocrlf input
-
-# Windows
-git config --global core.autocrlf input
 ```
 
 Make sure `zsh` sources `/etc/profile` by adding the following line to
