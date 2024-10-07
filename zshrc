@@ -2,6 +2,9 @@
 export FZF_BASE=~/.fzf
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:wrap --bind '?:toggle-preview'"
 
+# Same as default except with `-j` to improve performance, see fd issue #1131
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude .git -j4"
+
 # Taken from: https://github.com/junegunn/fzf/wiki/Examples#git
 fbr() {
   local branches branch
