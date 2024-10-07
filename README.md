@@ -10,19 +10,6 @@ Add the following line at the end of `.bashrc`:
 source /path/to/bashrc-common.sh
 ```
 
-## .clangd
-
-Copy script to C/C++ project root and customize:
-```bash
-cp /path/to/clangd-config /path/to/project/.clangd
-```
-
-For use with [clangd][] (v11 or later).
-
-## compile\_flags.txt
-
-Copy script to C/C++ project root and customize. For use with [clangd][].
-
 ## \*/fd/ignore
 
 Symlink the global [fd][] ignore file (supported in v8.1 or later):
@@ -51,24 +38,6 @@ New-Item -Type SymbolicLink -Path "$Env:UserProfile\.gitignore_global" `
     -Target "\\wsl`$\path\to\gitignore_global"
 ```
 PowerShell must be run as administrator to create symbolic links.
-
-## .projections.json
-
-Copy script to project root and customize. For use with [vim-projectionist][]:
-```bash
-cp /path/to/projections.json /path/to/project/.projections.json
-```
-
-## projects.vim
-
-Copy script to Neovim config directory and customize:
-```bash
-cp /path/to/projects.vim ~/.config/nvim
-```
-
-## pyrightconfig.json
-
-Copy script to Python project root and customize.
 
 ## settings.json
 
@@ -99,6 +68,4 @@ git config --global core.autocrlf input
 git config --global core.autocrlf true
 ```
 
-[clangd]: https://clangd.llvm.org/
 [fd]: https://github.com/sharkdp/fd
-[vim-projectionist]: https://github.com/tpope/vim-projectionist
