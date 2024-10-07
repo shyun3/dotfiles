@@ -74,6 +74,13 @@ New-Item -Type SymbolicLink -Path "$Env:UserProfile\.gitignore_global" `
     -Target "\\wsl.localhost\LinuxDistro\path\to\gitignore_global"
 ```
 
+## `lazygit` config file
+
+Symlink the [lazygit](https://github.com/jesseduffield/lazygit) config file:
+```zsh
+ln -sf /path/to/dotfiles/lazygit-config.yml ~/.config/lazygit/config.yml
+```
+
 ## PowerShell user profile
 
 Make sure that PowerShell's execution policy is not set to `Restricted`. For

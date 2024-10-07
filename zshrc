@@ -171,3 +171,4 @@ setopt histignorealldups incappendhistory sharehistory
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias cdgitroot='cd "$(git rev-parse --show-cdup)"'
+alias lg='lazygit'
