@@ -8,5 +8,6 @@ typings/
 .clangd
 compile_flags.txt
 compile_commands.json
+.ignore
 .projections.json
 pyrightconfig.json
