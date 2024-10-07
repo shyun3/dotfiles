@@ -64,6 +64,19 @@
       "alignment": "right",
       "segments": [
         {
+          "background": "#8800dd",
+          "foreground": "#ffffff",
+          "invert_powerline": true,
+          "powerline_symbol": "\ue0b2",
+          "properties": {
+            "threshold": 500,
+            "style": "austin"
+          },
+          "style": "powerline",
+          "template": "\u2800\uf64f {{ .FormattedMs }}\u2800",
+          "type": "executiontime"
+        },
+        {
           "background": "#003543",
           "foreground": "#fff",
           "invert_powerline": true,
