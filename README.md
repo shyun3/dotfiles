@@ -12,7 +12,8 @@ source /path/to/bashrc-common.sh
 
 ## .clangd
 
-Copy script to C/C++ project root and customize. For use with [clangd][].
+Copy script to C/C++ project root and customize. For use with [clangd][] (v11
+or later).
 
 ## compile\_flags.txt
 
@@ -20,7 +21,7 @@ Copy script to C/C++ project root and customize. For use with [clangd][].
 
 ## \*/fd/ignore
 
-Symlink the global `fd` ignore file:
+Symlink the global [fd][] ignore file (supported in v8.1 or later):
 ```bash
 ln -sf /path/to/fdignore_global ~/.config/fd/ignore
 ```
@@ -62,4 +63,5 @@ cp /path/to/projects.vim ~/.config/nvim
 ```
 
 [clangd]: https://clangd.llvm.org/
+[fd]: https://github.com/sharkdp/fd
 [vim-projectionist]: https://github.com/tpope/vim-projectionist
