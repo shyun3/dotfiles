@@ -1,8 +1,8 @@
 # vim: set ft=gitconfig:
 
 [core]
-	excludesfile = ~/.gitignore_global
+    excludesfile = ~/.gitignore_global
 [fetch]
-	prune = 1
+    prune = 1
 [alias]
-	l = log --graph --oneline --decorate
+    l = log --graph --oneline --decorate
