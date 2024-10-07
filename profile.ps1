@@ -1,3 +1,5 @@
+$env:Path += ";$env:APPDATA\Python\Scripts"
+
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 function prompt
