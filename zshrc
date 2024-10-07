@@ -159,6 +159,10 @@ alias cdgitroot='cd "$(git rev-parse --show-cdup)"'
 alias lg='lazygit'
 
 #######################################################################
+# avfs
+mountpoint -q "~/.avfs" || command -v mountavfs > /dev/null 2>&1 && mountavfs
+
+#######################################################################
 # fzf
 
 # Display full command on preview window, taken from:
