@@ -3,5 +3,6 @@ tags
 
 .cache/
 
+.clangd
 compile_flags.txt
 .projections.json
