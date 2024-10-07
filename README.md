@@ -45,10 +45,10 @@ ln -sf /path/to/gitignore_global ~/.gitignore_global
 When using PowerShell and referencing WSL paths, the equivalent commands may
 look like:
 ```powershell
-git config --global include.path "\\wsl`$\Ubuntu\path\to\gitconfig-common"
+git config --global include.path "\\wsl`$\path\to\gitconfig-common"
 
 New-Item -Type SymbolicLink -Path "$Env:UserProfile\.gitignore_global" `
-    -Target "\\wsl`$\Ubuntu\path\to\gitignore_global"
+    -Target "\\wsl`$\path\to\gitignore_global"
 ```
 PowerShell must be run as administrator to create symbolic links.
 
@@ -78,7 +78,7 @@ Symlink the settings file:
 ```powershell
 New-Item -Type SymbolicLink `
     -Path $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json `
-    -Target "\\wsl`$\Ubuntu\path\to\winterm-settings.json"
+    -Target "\\wsl`$\path\to\winterm-settings.json"
 ```
 
 # Setup
