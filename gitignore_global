@@ -5,6 +5,8 @@ tags
 .vim/
 typings/
 
+*_jsondb.json
+
 .clangd
 compile_flags.txt
 compile_commands.json
