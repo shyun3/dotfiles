@@ -61,6 +61,21 @@
       "type": "prompt"
     },
     {
+      "alignment": "right",
+      "segments": [
+        {
+          "background": "#003543",
+          "foreground": "#fff",
+          "invert_powerline": true,
+          "powerline_symbol": "\ue0b2",
+          "style": "powerline",
+          "template": "\u2800\uf64f {{ .Format }}\u2800",
+          "type": "time"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
       "alignment": "left",
       "newline": true,
       "segments": [
@@ -74,5 +89,6 @@
       "type": "prompt"
     }
   ],
+  "console_title_template": "{{.UserName}}@{{.HostName}}:{{.PWD}}",
   "version": 2
 }
