@@ -27,7 +27,7 @@ if [[ -n "$(which wslpath)" ]]; then
     PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
 fi
 
-eval "$(oh-my-posh prompt init bash --config 'https://raw.githubusercontent.com/shyun3/dotfiles/main/mytheme.omp.json')"
+eval "$(oh-my-posh prompt init bash --config "$DOTFILES/mytheme.omp.json")"
 
 #######################################################################
 # Tilix
