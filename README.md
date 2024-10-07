@@ -10,11 +10,11 @@ Add the following line at the end of `.bashrc`:
 source /path/to/bashrc-common.sh
 ```
 
-## \*/fd/ignore
+## `fd` global ignore file
 
-Symlink the global [fd][] ignore file (supported in v8.1 or later):
+Symlink the [fd][] global ignore file (supported in v8.1 or later):
 ```bash
-ln -sf /path/to/fdignore_global ~/.config/fd/ignore
+ln -s /path/to/fdignore_global ~/.config/fd/ignore
 ```
 
 ## .gitconfig
@@ -26,7 +26,7 @@ git config --global include.path "/path/to/gitconfig-common"
 
 Symlink the global ignore file:
 ```bash
-ln -sf /path/to/gitignore_global ~/.gitignore_global
+ln -s /path/to/gitignore_global ~/.gitignore_global
 ```
 
 When using PowerShell and referencing WSL paths, the equivalent commands may
@@ -39,7 +39,7 @@ New-Item -Type SymbolicLink -Path "$Env:UserProfile\.gitignore_global" `
 ```
 PowerShell must be run as administrator to create symbolic links.
 
-## settings.json
+## Windows Terminal settings
 
 First, make sure Windows Terminal is not running. Then, remove existing
 settings using PowerShell as administrator:
