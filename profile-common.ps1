@@ -8,24 +8,26 @@ oh-my-posh init pwsh --config "$DOTFILES/mytheme.omp.json" | Invoke-Expression
 
 Import-Module -Name Terminal-Icons
 
-function prompt
+function promptFunc
 {
     # Make sure Windows Terminal duplicates new tabs/panes in same directory
     # https://docs.microsoft.com/en-us/windows/terminal/tutorials/new-tab-same-directory#powershell-with-posh-git
     $loc = Get-Location
 
-    $prompt = & (Get-Module oh-my-posh-core).ExportedCommands['prompt']
+    $nextPrompt = & $Function:prompt
 
-    $prompt += "$([char]27)]9;12$([char]7)"
+    $nextPrompt += "$([char]27)]9;12$([char]7)"
     if ($loc.Provider.Name -eq "FileSystem")
     {
-        $prompt += "$([char]27)]9;9;`"$($loc.Path)`"$([char]7)"
+        $nextPrompt += "$([char]27)]9;9;`"$($loc.Path)`"$([char]7)"
     }
 
-    $prompt
+    $nextPrompt
 }
 
-#######################################################################
+Set-Alias -Name prompt -Value promptFunc
+
+#####################################################################
 
 # Use menus for tab completion
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
