@@ -1,0 +1,10 @@
+{
+    "*.c": {
+        "alternate": "{}.h",
+        "type": "src"
+    },
+    "*.h": {
+        "alternate": "{}.c",
+        "type": "hdr"
+    }
+}

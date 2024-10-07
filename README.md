@@ -27,6 +27,13 @@ Symlink the global ignore file:
 ln -sf /path/to/gitignore_global ~/.gitignore_global
 ```
 
+## projections.json
+
+Copy script to project root and customize. For use with `vim-projectionist`:
+```bash
+cp /path/to/projections.json /path/to/project/.projections.json
+```
+
 ## projects.vim
 
 Copy script to Neovim config directory and customize:
