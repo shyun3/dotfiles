@@ -3,40 +3,15 @@
 The following instructions assume the use of Ubuntu Linux unless otherwise
 specified.
 
+First, run `setup.sh` to install the prerequisites.
+
 ## .zshrc
-
-Install `zsh`: `apt install zsh`.
-
-Install [Oh My Zsh](https://ohmyz.sh/).
 
 Make some symlinks, overwriting the created `.zshrc`:
 ```zsh
 ln -sf /path/to/dotfiles/zprofile ~/.zprofile
 ln -sf /path/to/dotfiles/zshrc ~/.zshrc
 ln -s /path/to/dotfiles/p10k.zsh ~/.p10k.zsh
-```
-
-Install [Powerlevel10k](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#oh-my-zsh).
-
-### Plugin Notes
-
-Prefer the latest binary for `fzf`. If installing through Git, there is no need
-to run the `install` script as this is covered by the plugin.
-
-Prefer the automatic installer for [pyenv][]. This will also install
-`pyenv-virtualenv`. Make sure to install the [Python build
-dependencies][python-build-deps]. Prefer the latest Python and set it as the
-global version:
-```zsh
-pyenv install 3
-pyenv global 3
-```
-
-When installing [nvm][], make sure not to update the shell config (see
-[additional notes][nvm-install-notes]):
-```zsh
-# Fill in the version
-PROFILE=/dev/null bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/<VERSION>/install.sh | bash'
 ```
 
 ## `ctags` global option file
@@ -113,11 +88,6 @@ Symlink the [ranger](https://ranger.github.io/index.html) directory:
 ln -s /path/to/dotfiles/ranger ~/.config
 ```
 
-Suggested dependencies for enhanced functionality:
-* [atool](https://www.nongnu.org/atool/)
-* [AVFS](https://avf.sourceforge.net/)
-* [ranger-zoxide](https://github.com/jchook/ranger-zoxide)
-
 ## Windows Terminal settings
 
 First, make sure Windows Terminal is not running. Then, remove existing
@@ -155,6 +125,15 @@ git config --global user.email "user@mail.com"
 
 # Tips
 
+## pyenv
+
+Make sure to install the [Python build dependencies][python-build-deps]. Prefer
+the latest Python and set it as the global version:
+```zsh
+pyenv install 3
+pyenv global 3
+```
+
 ## Windows Terminal
 
 * To specify machine-specific profiles, use JSON fragment extensions. For more
@@ -177,10 +156,7 @@ git config --global user.email "user@mail.com"
 * Place machine-specific settings in `~/.zshenv`
 
 [fd]: https://github.com/sharkdp/fd
-[pyenv]: https://github.com/pyenv/pyenv?tab=readme-ov-file#automatic-installer
 [python-build-deps]: https://github.com/pyenv/pyenv?tab=readme-ov-file#install-python-build-dependencies
-[nvm]: https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script
-[nvm-install-notes]: https://github.com/nvm-sh/nvm?tab=readme-ov-file#additional-notes
 [univ-ctags]: https://docs.ctags.io/en/latest/option-file.html#order-of-loading-option-files
 [wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
