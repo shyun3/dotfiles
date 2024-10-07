@@ -69,7 +69,7 @@
                 "antialiasingMode": "cleartype",
                 "bellStyle": "taskbar",
                 "colorScheme": "Campbell",
-                "commandline": "wsl.exe -d Ubuntu",
+                "commandline": "wsl.exe ~",
                 "cursorShape": "bar",
                 "font": 
                 {
@@ -82,7 +82,6 @@
                 "intenseTextStyle": "all",
                 "name": "Ubuntu",
                 "source": "Windows.Terminal.Wsl",
-                "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\mhyun",
                 "useAcrylic": true
             }
         ]
