@@ -1,7 +1,15 @@
 {
+    "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "actions": 
     [
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            }
+        },
         {
             "command": "unbound",
             "keys": "ctrl+c"
@@ -9,13 +17,6 @@
         {
             "command": "unbound",
             "keys": "ctrl+v"
-        },
-        {
-            "command": 
-            {
-                "action": "copy",
-                "singleLine": false
-            }
         },
         {
             "command": "paste"
@@ -49,9 +50,9 @@
     {
         "defaults": 
         {
-            "acrylicOpacity": 0.75,
             "bellStyle": "taskbar",
             "intenseTextStyle": "bright",
+            "opacity": 75,
             "useAcrylic": true
         },
         "list": 
@@ -70,13 +71,11 @@
                 "startingDirectory": "C:\\"
             },
             {
-                "commandline": "cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
                 "name": "Command Prompt"
             },
             {
-                "acrylicOpacity": 0.75,
                 "antialiasingMode": "cleartype",
                 "bellStyle": "taskbar",
                 "colorScheme": "Campbell",
@@ -93,8 +92,9 @@
                 "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
                 "intenseTextStyle": "all",
                 "name": "WSL",
-                "startingDirectory" : "/home/default",
+                "opacity": 75,
                 "scrollbarState": "hidden",
+                "startingDirectory": "/home/default",
                 "useAcrylic": true
             },
             {
