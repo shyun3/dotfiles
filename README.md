@@ -105,6 +105,13 @@ $DOTFILES = "\\wsl.localhost\LinuxDistro\path\to\dotfiles\"
 
 Changes may require restarting Windows Terminal to take effect.
 
+## ranger
+
+Symlink the [ranger](https://ranger.github.io/index.html) directory:
+```sh
+ln -s /path/to/dotfiles/ranger ~/.config
+```
+
 ## Windows Terminal settings
 
 First, make sure Windows Terminal is not running. Then, remove existing
