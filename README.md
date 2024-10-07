@@ -140,7 +140,10 @@ Taken from this [bug report][zsh-profile-bug].
 
 ## Zsh
 
-* Place machine-specific settings in `~/.zshenv`.
+* Place machine-specific settings in `~/.zshenv`
+* For [Poetry](https://python-poetry.org/) completions, follow the instructions
+  in their [documentation](https://python-poetry.org/docs/#oh-my-zsh)
+  * See also this [Oh My Zsh issue](https://github.com/ohmyzsh/ohmyzsh/issues/11145)
 
 [fd]: https://github.com/sharkdp/fd
 [univ-ctags]: https://docs.ctags.io/en/latest/option-file.html#order-of-loading-option-files
