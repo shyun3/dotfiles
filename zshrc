@@ -166,7 +166,9 @@ alias lg='lazygit'
 
 #######################################################################
 # avfs
-mountpoint -q "~/.avfs" || command -v mountavfs > /dev/null 2>&1 && mountavfs
+if hash mountpoint 2> /dev/null; then
+  mountpoint -q "~/.avfs" || command -v mountavfs > /dev/null 2>&1 && mountavfs
+fi
 
 #######################################################################
 # fzf

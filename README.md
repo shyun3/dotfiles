@@ -105,7 +105,7 @@ $DOTFILES = "\\wsl.localhost\LinuxDistro\path\to\dotfiles\"
 
 Changes may require restarting Windows Terminal to take effect.
 
-## ranger
+## `ranger`
 
 Symlink the [ranger](https://ranger.github.io/index.html) directory:
 ```sh
