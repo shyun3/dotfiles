@@ -58,8 +58,8 @@ fi
 
 # nvm
 if [[ -z "$NVM_DIR" ]]; then
-    nvm_ver="$(read_latest_github_tag 'nvm-sh/nvm')"
-    PROFILE=/dev/null bash -c "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$nvm_ver/install.sh | bash"
+    NVM_VER="$(read_latest_github_tag 'nvm-sh/nvm')"
+    PROFILE=/dev/null bash -c "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VER/install.sh | bash"
 fi
 
 # Oh My Zsh
@@ -72,7 +72,7 @@ fi
 case "$SHELL" in
 */zsh) ;;
 *)
-    echo "Changing shell to zsh.."
+    echo "Changing shell to zsh..."
     sudo chsh -s "$(which zsh)"
     ;;
 esac
