@@ -6,7 +6,7 @@
 set -eo pipefail
 
 cmd_exists() {
-    hash "$1" 2>/dev/null
+    hash "$1" 2> /dev/null
 }
 
 yes_install() {
@@ -42,7 +42,7 @@ cmd_exists fd || {
 cmd_exists mountavfs || yes_install avfs
 
 git clone git@github.com:jchook/ranger-zoxide.git \
-    ~/.config/ranger/plugins/zoxide 2>/dev/null || true
+    ~/.config/ranger/plugins/zoxide 2> /dev/null || true
 
 # lazygit
 if ! cmd_exists lazygit; then
@@ -66,13 +66,13 @@ fi
 [[ -n "$ZSH" ]] ||
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 [[ -n "$ZSH" ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
-    "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" 2>/dev/null || true
+    "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" 2> /dev/null || true
 
 # chsh (should probably be last)
 case "$SHELL" in
-*/zsh) ;;
-*)
-    echo "Changing shell to zsh..."
-    sudo chsh -s "$(which zsh)"
-    ;;
+    */zsh) ;;
+    *)
+        echo "Changing shell to zsh..."
+        sudo chsh -s "$(which zsh)"
+        ;;
 esac
