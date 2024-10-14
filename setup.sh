@@ -63,10 +63,13 @@ if [[ -z "$NVM_DIR" ]]; then
 fi
 
 # Oh My Zsh
-[[ -n "$ZSH" ]] ||
+if [[ -z "$ZSH" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-[[ -n "$ZSH" ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
-    "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" 2> /dev/null || true
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
+        "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" 2> /dev/null || true
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+        "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" 2> /dev/null || true
+fi
 
 # chsh (should probably be last)
 case "$SHELL" in

@@ -113,7 +113,8 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man-pages fzf pyenv poetry nvm zoxide zsh-interactive-cd)
+plugins=(colored-man-pages fzf pyenv poetry nvm zoxide zsh-interactive-cd
+    zsh-syntax-highlighting)
 
 if [[ -f $ZSH/oh-my-zsh.sh ]]; then
   source $ZSH/oh-my-zsh.sh

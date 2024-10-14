@@ -115,7 +115,7 @@ Symlink the [WSL config file][wsl-conf]:
 sudo ln -s /path/to/dotfiles/wsl.conf /etc/wsl.conf
 ```
 
-# Setup
+# Suggestions
 
 Update Git config:
 ```
@@ -123,16 +123,14 @@ git config --global user.name "username"
 git config --global user.email "user@mail.com"
 ```
 
-# Tips
-
-## pyenv
-
-Make sure to install the [Python build dependencies][python-build-deps]. Prefer
-the latest Python and set it as the global version:
+Install the [Python build dependencies][python-build-deps]. Prefer the latest
+Python and set it as the global version:
 ```zsh
 pyenv install 3
 pyenv global 3
 ```
+
+# Tips
 
 ## Windows Terminal
 
