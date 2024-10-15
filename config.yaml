@@ -1,0 +1,11 @@
+config:
+  banner: false
+  dotpath: rc
+dotfiles:
+  f_gitignore_global:
+    src: gitignore_global
+    dst: ~/.gitignore_global
+profiles:
+  linux:
+    dotfiles:
+    - f_gitignore_global
