@@ -1,7 +1,31 @@
 # Installation
 
-The following instructions assume the use of Ubuntu Linux unless otherwise
-specified.
+These dotfiles are deployed using [dotdrop](https://dotdrop.readthedocs.io/en/latest/).
+
+# Windows
+
+Install [Scoop](https://scoop.sh/) by running the following in PowerShell:
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser Bypass
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+```
+This will also install Git.
+
+Clone the repo:
+```powershell
+git clone https://github.com/shyun3/dotfiles.git
+$Env:UserProfile/.config/dotdrop
+```
+
+Run `bootstrap.ps1`. This will install `dotdrop` and all dependencies. The
+script assumes [WinGet][] is installed.
+
+To deploy the dotfiles, call `dotdrop`:
+```powershell
+dotdrop -p windows install
+```
+
+# Ubuntu
 
 First, run `setup.sh` to install the prerequisites.
 
@@ -54,12 +78,6 @@ ln -sf /path/to/dotfiles/lazygit-config.yml ~/.config/lazygit/config.yml
 ```
 
 ## PowerShell user profile
-
-Make sure that PowerShell's execution policy is not set to `Restricted`. For
-example:
-```powershell
-Set-ExecutionPolicy -Scope CurrentUser Bypass
-```
 
 Install [Oh My Posh](https://ohmyposh.dev/docs/installation/windows).
 
@@ -142,3 +160,4 @@ pyenv global 3
 [univ-ctags]: https://docs.ctags.io/en/latest/option-file.html#order-of-loading-option-files
 [wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
+[winget]: https://learn.microsoft.com/en-us/windows/package-manager/winget/
