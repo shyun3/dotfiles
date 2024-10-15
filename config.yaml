@@ -5,7 +5,14 @@ dotfiles:
   f_gitignore_global:
     src: gitignore_global
     dst: ~/.gitignore_global
+  f_winterm_settings.json:
+    src: winterm-settings.json
+    dst: "{{@@ env['LocalAppData'] @@}}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 profiles:
   linux:
     dotfiles:
-    - f_gitignore_global
+      - f_gitignore_global
+  windows:
+    dotfiles:
+      - f_gitignore_global
+      - f_winterm_settings.json

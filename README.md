@@ -44,9 +44,6 @@ When using PowerShell and referencing WSL paths, the equivalent commands may
 look like:
 ```powershell
 git config --global include.path "\\wsl.localhost\LinuxDistro\path\to\gitconfig-common"
-
-New-Item -Type SymbolicLink -Path "$Env:UserProfile\.gitignore_global" `
-    -Target "\\wsl.localhost\LinuxDistro\path\to\gitignore_global"
 ```
 
 ## `lazygit` config file
@@ -89,19 +86,6 @@ ln -s /path/to/dotfiles/ranger ~/.config
 ```
 
 ## Windows Terminal settings
-
-First, make sure Windows Terminal is not running. Then, remove existing
-settings using PowerShell:
-```powershell
-rm $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\*
-```
-
-Now, symlink the settings file:
-```powershell
-New-Item -Type SymbolicLink `
-    -Path $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json `
-    -Target "$DOTFILES\winterm-settings.json"
-```
 
 After starting WSL, symlink the `default` home directory:
 ```zsh
