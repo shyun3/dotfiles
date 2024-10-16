@@ -68,15 +68,6 @@ Install-Module -Name Terminal-Icons -Repository PSGallery
 Install-Module posh-git -Scope CurrentUser -Force
 ```
 
-Add the following lines at the end of the user PowerShell profile located at
-`$PROFILE`:
-```powershell
-$DOTFILES = "\\wsl.localhost\LinuxDistro\path\to\dotfiles\"
-. "$DOTFILES\profile-common.ps1"
-```
-
-Changes may require restarting Windows Terminal to take effect.
-
 ## `ranger`
 
 Symlink the [ranger](https://ranger.github.io/index.html) directory:

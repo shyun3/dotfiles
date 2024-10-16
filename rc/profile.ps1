@@ -21,7 +21,7 @@ if (Check-Command oh-my-posh) {
         Invoke-Expression
 }
 
-if (Get-Module posh-git) { Import-Module -Name Terminal-Icons }
+if (Get-Module Terminal-Icons) { Import-Module -Name Terminal-Icons }
 
 function promptFunc
 {
