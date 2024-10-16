@@ -1,12 +1,27 @@
+# See https://stackoverflow.com/a/29424207
+function Check-Command($cmdname)
+{
+    return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
+}
+
+# See https://stackoverflow.com/a/16949127
+function which($name)
+{
+    Get-Command $name | Select-Object -ExpandProperty Definition
+}
+
 #######################################################################
 # Prompt
 # See https://docs.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup
 
-Import-Module posh-git
+if (Get-Module posh-git) { Import-Module posh-git }
 
-oh-my-posh init pwsh --config "$DOTFILES/mytheme.omp.json" | Invoke-Expression
+if (Check-Command oh-my-posh) {
+    oh-my-posh init pwsh --config "{{@@ _dotdrop_dotpath @@}}/mytheme.omp.json" |
+        Invoke-Expression
+}
 
-Import-Module -Name Terminal-Icons
+if (Get-Module posh-git) { Import-Module -Name Terminal-Icons }
 
 function promptFunc
 {
@@ -42,10 +57,4 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
         winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
             [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
         }
-}
-
-# See https://stackoverflow.com/a/16949127
-function which($name)
-{
-    Get-Command $name | Select-Object -ExpandProperty Definition
 }

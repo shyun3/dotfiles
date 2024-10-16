@@ -1,5 +1,5 @@
 variables:
-  # Can be overriden
+  # To be overriden locally
   git_name: ""
   git_email: ""
 config:
@@ -14,6 +14,9 @@ dotfiles:
   f_gitignore_global:
     src: gitignore_global
     dst: ~/.gitignore_global
+  f_profile.ps1:
+    src: profile.ps1
+    dst: "{{@@ env['UserProfile'] @@}}/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
   f_winterm_settings.json:
     src: winterm-settings.json
     dst: "{{@@ env['LocalAppData'] @@}}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
@@ -26,4 +29,5 @@ profiles:
     dotfiles:
       - f_gitconfig
       - f_gitignore_global
+      - f_profile.ps1
       - f_winterm_settings.json
