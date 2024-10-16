@@ -13,8 +13,7 @@ This will also install Git.
 
 Clone the repo:
 ```pwsh
-git clone https://github.com/shyun3/dotfiles.git
-$Env:UserProfile/.config/dotdrop
+git clone https://github.com/shyun3/dotfiles.git $Env:UserProfile/.config/dotdrop
 ```
 
 Run `bootstrap.ps1`. This will install `dotdrop` and all dependencies.
@@ -56,16 +55,6 @@ ln -s /path/to/dotfiles/fdignore_global ~/.config/fd/ignore
 Symlink the [lazygit](https://github.com/jesseduffield/lazygit) config file:
 ```zsh
 ln -sf /path/to/dotfiles/lazygit-config.yml ~/.config/lazygit/config.yml
-```
-
-## PowerShell user profile
-
-Install [Oh My Posh](https://ohmyposh.dev/docs/installation/windows).
-
-Install the following prerequisites through PowerShell 7:
-```powershell
-Install-Module -Name Terminal-Icons -Repository PSGallery
-Install-Module posh-git -Scope CurrentUser -Force
 ```
 
 ## `ranger`

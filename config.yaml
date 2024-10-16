@@ -2,6 +2,9 @@ variables:
   # To be overriden locally
   git_name: ""
   git_email: ""
+actions:
+  pre:
+    setup_windows: powershell -File "{{@@ _dotdrop_cfgpath @@}}/setup.ps1"
 config:
   banner: false
   dotpath: rc
@@ -26,3 +29,5 @@ profiles:
       - f_gitconfig
       - f_profile.ps1
       - f_winterm_settings.json
+    actions:
+      - setup_windows
