@@ -4,7 +4,7 @@
     name = {{@@ _vars["git_name"] @@}}
     email = {{@@ _vars["git_email"] @@}}
 [core]
-    excludesfile = ~/.gitignore_global
+    excludesfile = {{@@ _dotdrop_dotpath @@}}/.gitignore_global
     autocrlf = input
 [fetch]
     prune = 1

@@ -11,9 +11,6 @@ dotfiles:
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
-  f_gitignore_global:
-    src: gitignore_global
-    dst: ~/.gitignore_global
   f_profile.ps1:
     src: profile.ps1
     dst: "{{@@ env['UserProfile'] @@}}/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
@@ -24,10 +21,8 @@ profiles:
   linux:
     dotfiles:
       - f_gitconfig
-      - f_gitignore_global
   windows:
     dotfiles:
       - f_gitconfig
-      - f_gitignore_global
       - f_profile.ps1
       - f_winterm_settings.json
