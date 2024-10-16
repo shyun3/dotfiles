@@ -1,7 +1,16 @@
+variables:
+  # Can be overriden
+  git_name: ""
+  git_email: ""
 config:
   banner: false
   dotpath: rc
+  import_variables:
+    - .local_vars.yaml:optional
 dotfiles:
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
   f_gitignore_global:
     src: gitignore_global
     dst: ~/.gitignore_global
@@ -11,8 +20,10 @@ dotfiles:
 profiles:
   linux:
     dotfiles:
+      - f_gitconfig
       - f_gitignore_global
   windows:
     dotfiles:
+      - f_gitconfig
       - f_gitignore_global
       - f_winterm_settings.json

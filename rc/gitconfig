@@ -1,5 +1,8 @@
-# vim: set ft=gitconfig:
-
+{#@@ vim: ft=gitconfig
+@@#}
+[user]
+    name = {{@@ _vars["git_name"] @@}}
+    email = {{@@ _vars["git_email"] @@}}
 [core]
     excludesfile = ~/.gitignore_global
     autocrlf = input

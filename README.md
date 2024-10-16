@@ -5,23 +5,22 @@ These dotfiles are deployed using [dotdrop](https://dotdrop.readthedocs.io/en/la
 # Windows
 
 Install [Scoop](https://scoop.sh/) by running the following in PowerShell:
-```powershell
+```pwsh
 Set-ExecutionPolicy -Scope CurrentUser Bypass
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 ```
 This will also install Git.
 
 Clone the repo:
-```powershell
+```pwsh
 git clone https://github.com/shyun3/dotfiles.git
 $Env:UserProfile/.config/dotdrop
 ```
 
-Run `bootstrap.ps1`. This will install `dotdrop` and all dependencies. The
-script assumes [WinGet][] is installed.
+Run `bootstrap.ps1`. This will install `dotdrop` and all dependencies.
 
 To deploy the dotfiles, call `dotdrop`:
-```powershell
+```pwsh
 dotdrop -p windows install
 ```
 
@@ -50,24 +49,6 @@ ln -s /path/to/dotfiles/global.ctags ~/.ctags.d/global.ctags
 Symlink the [fd][] global ignore file (supported in v8.1 or later):
 ```zsh
 ln -s /path/to/dotfiles/fdignore_global ~/.config/fd/ignore
-```
-
-## .gitconfig
-
-Update the global include path:
-```zsh
-git config --global include.path "/path/to/gitconfig-common"
-```
-
-Symlink the global ignore file:
-```zsh
-ln -s /path/to/dotfiles/gitignore_global ~/.gitignore_global
-```
-
-When using PowerShell and referencing WSL paths, the equivalent commands may
-look like:
-```powershell
-git config --global include.path "\\wsl.localhost\LinuxDistro\path\to\gitconfig-common"
 ```
 
 ## `lazygit` config file
@@ -119,11 +100,13 @@ sudo ln -s /path/to/dotfiles/wsl.conf /etc/wsl.conf
 
 # Suggestions
 
-Update Git config:
+Add `.local_vars.yaml` under the repo root with the Git user details defined:
+```yaml
+variables:
+  git_name: My Name
+  git_email: name@email.tld
 ```
-git config --global user.name "username"
-git config --global user.email "user@mail.com"
-```
+Run `dotdrop` install again to regenerate the gitconfig with the user details.
 
 Install the [Python build dependencies][python-build-deps]. Prefer the latest
 Python and set it as the global version:
@@ -160,4 +143,3 @@ pyenv global 3
 [univ-ctags]: https://docs.ctags.io/en/latest/option-file.html#order-of-loading-option-files
 [wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
-[winget]: https://learn.microsoft.com/en-us/windows/package-manager/winget/
