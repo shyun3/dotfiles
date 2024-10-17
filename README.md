@@ -1,8 +1,10 @@
-# Installation
-
 These dotfiles are deployed using [dotdrop](https://dotdrop.readthedocs.io/en/latest/).
 
-# Windows
+# Prerequisites
+
+The following instructions assume a first-time setup is being performed.
+
+## Windows
 
 First, install PowerShell 7 using `cmd` or `powershell`:
 ```pwsh
@@ -23,14 +25,45 @@ git clone https://github.com/shyun3/dotfiles.git $Env:UserProfile/.config/dotdro
 
 Run `bootstrap.ps1`. This will install `dotdrop` and all dependencies.
 
-To deploy the dotfiles, call `dotdrop`:
+## WSL
+
+Assuming the Windows steps above were completed, install WSL using `pwsh`:
+```pwsh
+wsl --install
+```
+
+## Ubuntu
+
+Install `dotdrop`: `sudo apt install dotdrop`
+
+Clone the repo:
+```sh
+git clone git@github.com:shyun3/dotfiles.git ~/.config/dotdrop
+```
+
+Run `setup.sh` to install the prerequisites.
+
+# Installation
+
+To install or update the dotfiles, call `dotdrop` as listed below. A shell
+restart may be needed to apply the latest changes.
+
+## Windows
+
 ```pwsh
 dotdrop -p windows install
 ```
 
-# Ubuntu
+## Linux
 
-First, run `setup.sh` to install the prerequisites.
+```sh
+dotdrop -p linux install
+```
+
+If using WSL, apply the following as well:
+```sh
+sudo dotdrop -p wsl -c ~/.config/dotdrop/config-root.yaml install
+```
 
 # Suggestions
 
