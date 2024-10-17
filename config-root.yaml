@@ -1,0 +1,11 @@
+config:
+  banner: false
+  dotpath: sys
+dotfiles:
+  f_wsl.conf:
+    src: etc/wsl.conf
+    dst: /etc/wsl.conf
+profiles:
+  wsl:
+    dotfiles:
+      - f_wsl.conf

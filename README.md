@@ -32,13 +32,6 @@ dotdrop -p windows install
 
 First, run `setup.sh` to install the prerequisites.
 
-## wsl.conf
-
-Symlink the [WSL config file][wsl-conf]:
-```zsh
-sudo ln -s /path/to/dotfiles/wsl.conf /etc/wsl.conf
-```
-
 # Suggestions
 
 Add `.local_vars.yaml` under the repo root with the Git user details defined:
