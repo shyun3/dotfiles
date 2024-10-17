@@ -4,5 +4,5 @@
 
 $modules = @("Terminal-Icons", "posh-git")
 foreach ($mod in $modules) {
-    if (!(Check-Module $mod)) { Install-Module $mod }
+    if (!(Check-Module $mod)) { Install-Module $mod -Force }
 }
