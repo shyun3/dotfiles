@@ -266,3 +266,13 @@ fzf_zoxide() {
 
 zle -N fzf_zoxide
 bindkey '\ez' fzf_zoxide  # Alt-z
+
+#######################################################################
+# zsh-syntax-highlighting
+
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
+typeset -A ZSH_HIGHLIGHT_STYLES
+
+# blue can be difficult to see on a dark terminal background
+ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=cyan'
