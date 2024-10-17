@@ -32,27 +32,6 @@ dotdrop -p windows install
 
 First, run `setup.sh` to install the prerequisites.
 
-## `ctags` global option file
-
-Symlink the [Universal Ctags][univ-ctags] global option file:
-```zsh
-ln -s /path/to/dotfiles/global.ctags ~/.ctags.d/global.ctags
-```
-
-## `fd` global ignore file
-
-Symlink the [fd][] global ignore file (supported in v8.1 or later):
-```zsh
-ln -s /path/to/dotfiles/fdignore_global ~/.config/fd/ignore
-```
-
-## `lazygit` config file
-
-Symlink the [lazygit](https://github.com/jesseduffield/lazygit) config file:
-```zsh
-ln -sf /path/to/dotfiles/lazygit-config.yml ~/.config/lazygit/config.yml
-```
-
 ## `ranger`
 
 Symlink the [ranger](https://ranger.github.io/index.html) directory:
@@ -114,8 +93,6 @@ pyenv global 3
 
 * Place machine-specific settings in `~/.zshenv`
 
-[fd]: https://github.com/sharkdp/fd
 [python-build-deps]: https://github.com/pyenv/pyenv?tab=readme-ov-file#install-python-build-dependencies
-[univ-ctags]: https://docs.ctags.io/en/latest/option-file.html#order-of-loading-option-files
 [wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222

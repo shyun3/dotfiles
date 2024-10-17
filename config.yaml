@@ -39,6 +39,15 @@ dotfiles:
   f_p10k.zsh:
     src: p10k.zsh
     dst: ~/.p10k.zsh
+  f_global.ctags:
+    src: ctags.d/global.ctags
+    dst: ~/.ctags.d/global.ctags
+  f_ignore:
+    src: config/fd/ignore
+    dst: ~/.config/fd/ignore
+  f_config.yml:
+    src: config/lazygit/config.yml
+    dst: ~/.config/lazygit/config.yml
 profiles:
   linux:
     dotfiles:
@@ -47,6 +56,9 @@ profiles:
       - f_zprofile
       - f_zshrc
       - f_p10k.zsh
+      - f_global.ctags
+      - f_ignore
+      - f_config.yml
   windows:
     dotfiles:
       - f_gitconfig
