@@ -30,11 +30,23 @@ dotfiles:
     dst: "{{@@ env['LocalAppData'] @@}}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
     actions:
       - winget_install wt Microsoft.WindowsTerminal
+  f_zprofile:
+    src: zprofile
+    dst: ~/.zprofile
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
+  f_p10k.zsh:
+    src: p10k.zsh
+    dst: ~/.p10k.zsh
 profiles:
   linux:
     dotfiles:
       - f_gitconfig
       - f_gitignore_global
+      - f_zprofile
+      - f_zshrc
+      - f_p10k.zsh
   windows:
     dotfiles:
       - f_gitconfig

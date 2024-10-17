@@ -32,15 +32,6 @@ dotdrop -p windows install
 
 First, run `setup.sh` to install the prerequisites.
 
-## .zshrc
-
-Make some symlinks, overwriting the created `.zshrc`:
-```zsh
-ln -sf /path/to/dotfiles/zprofile ~/.zprofile
-ln -sf /path/to/dotfiles/zshrc ~/.zshrc
-ln -s /path/to/dotfiles/p10k.zsh ~/.p10k.zsh
-```
-
 ## `ctags` global option file
 
 Symlink the [Universal Ctags][univ-ctags] global option file:
