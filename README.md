@@ -4,7 +4,12 @@ These dotfiles are deployed using [dotdrop](https://dotdrop.readthedocs.io/en/la
 
 # Windows
 
-Install [Scoop](https://scoop.sh/) by running the following in PowerShell:
+First, install PowerShell 7 using `cmd` or `powershell`:
+```pwsh
+winget install --id Microsoft.PowerShell --source winget
+```
+
+Launch PowerShell 7 and install [Scoop](https://scoop.sh/):
 ```pwsh
 Set-ExecutionPolicy -Scope CurrentUser Bypass
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression

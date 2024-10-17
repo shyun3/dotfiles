@@ -1,13 +1,8 @@
 . "$PSScriptRoot/scripts/util.ps1"
 
-function Grab-Module($Name) {
-    if (!(Get-Module $Name)) { Install-Module $Name @args }
-}
-
 $cmd_packs = @{
-    wt = "Microsoft.WindowsTerminal",
-    pwsh = "Microsoft.PowerShell",
-    oh-my-posh = "JanDeDobbeleer.OhMyPosh"
+    wt = "Microsoft.WindowsTerminal";
+    "oh-my-posh" = "JanDeDobbeleer.OhMyPosh"
 }
 
 foreach ($cmd in $cmd_packs.Keys) {
@@ -16,5 +11,5 @@ foreach ($cmd in $cmd_packs.Keys) {
     }
 }
 
-Grab-Module -Name Terminal-Icons -Repository PSGallery
-Grab-Module posh-git -Scope CurrentUser -Force
+Install-Module -Name Terminal-Icons -Repository PSGallery
+Install-Module posh-git -Scope CurrentUser -Force

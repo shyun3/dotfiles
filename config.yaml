@@ -1,10 +1,13 @@
 variables:
+  dotdrop_root: "{{@@ _dotdrop_dotpath @@}}/.."
+  scripts_dir: "{{@@ dotdrop_root @@}}/scripts"
+
   # To be overriden locally
   git_name: ""
   git_email: ""
 actions:
   pre:
-    setup_windows: powershell -File "{{@@ _dotdrop_cfgpath @@}}/setup.ps1"
+    setup_windows: pwsh -nop "{{@@ dotdrop_root @@}}/setup.ps1"
 config:
   banner: false
   dotpath: rc

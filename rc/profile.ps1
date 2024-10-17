@@ -1,4 +1,4 @@
-. "{{@@ _dotdrop_cfgpath @@}}/scripts/util.ps1"
+. "{{@@ scripts_dir @@}}/util.ps1"
 
 #######################################################################
 # Prompt
@@ -6,7 +6,8 @@
 
 if (Get-Module posh-git) { Import-Module posh-git }
 
-if (Check-Command oh-my-posh) {
+if (Check-Command oh-my-posh)
+{
     oh-my-posh init pwsh --config "{{@@ _dotdrop_dotpath @@}}/mytheme.omp.json" |
         Invoke-Expression
 }
