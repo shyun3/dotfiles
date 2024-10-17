@@ -32,13 +32,6 @@ dotdrop -p windows install
 
 First, run `setup.sh` to install the prerequisites.
 
-## `ranger`
-
-Symlink the [ranger](https://ranger.github.io/index.html) directory:
-```sh
-ln -s /path/to/dotfiles/ranger ~/.config
-```
-
 ## Windows Terminal settings
 
 After starting WSL, symlink the `default` home directory:

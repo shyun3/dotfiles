@@ -48,6 +48,16 @@ dotfiles:
   f_config.yml:
     src: config/lazygit/config.yml
     dst: ~/.config/lazygit/config.yml
+  f_commands.py:
+    src: config/ranger/commands.py
+    dst: ~/.config/ranger/commands.py
+  f_rc.conf:
+    src: config/ranger/rc.conf
+    dst: ~/.config/ranger/rc.conf
+  f_scope.sh:
+    src: config/ranger/scope.sh
+    dst: ~/.config/ranger/scope.sh
+    chmod: "755"
 profiles:
   linux:
     dotfiles:
@@ -59,6 +69,9 @@ profiles:
       - f_global.ctags
       - f_ignore
       - f_config.yml
+      - f_commands.py
+      - f_rc.conf
+      - f_scope.sh
   windows:
     dotfiles:
       - f_gitconfig
