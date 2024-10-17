@@ -9,3 +9,8 @@ function which($name)
 {
     Get-Command $name | Select-Object -ExpandProperty Definition
 }
+
+function Check-Module($module)
+{
+    return [bool](Get-Module -ListAvailable -Name $module)
+}

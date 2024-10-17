@@ -4,7 +4,7 @@
 # Prompt
 # See https://docs.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup
 
-if (Get-Module posh-git) { Import-Module posh-git }
+if (Check-Module posh-git) { Import-Module posh-git }
 
 if (Check-Command oh-my-posh)
 {
@@ -12,7 +12,7 @@ if (Check-Command oh-my-posh)
         Invoke-Expression
 }
 
-if (Get-Module Terminal-Icons) { Import-Module -Name Terminal-Icons }
+if (Check-Module Terminal-Icons) { Import-Module -Name Terminal-Icons }
 
 function promptFunc
 {
