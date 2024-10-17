@@ -101,7 +101,7 @@
                 "opacity": 75,
                 "scrollbarState": "hidden",
                 "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
-                "startingDirectory": "/home/default",
+                "startingDirectory": "~",
                 "useAcrylic": true
             }
         ]

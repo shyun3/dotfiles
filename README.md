@@ -32,13 +32,6 @@ dotdrop -p windows install
 
 First, run `setup.sh` to install the prerequisites.
 
-## Windows Terminal settings
-
-After starting WSL, symlink the `default` home directory:
-```zsh
-sudo ln -s /home/<user> /home/default
-```
-
 ## wsl.conf
 
 Symlink the [WSL config file][wsl-conf]:
