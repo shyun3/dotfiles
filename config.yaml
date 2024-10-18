@@ -1,10 +1,6 @@
 variables:
   dotdrop_root: "{{@@ _dotdrop_dotpath @@}}/.."
   scripts_dir: "{{@@ dotdrop_root @@}}/scripts"
-
-  # To be overriden locally
-  git_name: ""
-  git_email: ""
 actions:
   setup_ps: pwsh -nop "{{@@ scripts_dir @@}}/setup_ps.ps1"
   winget_install: pwsh -nop "{{@@ scripts_dir @@}}/install_pkg.ps1" {0} {1}

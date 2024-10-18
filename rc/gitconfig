@@ -1,8 +1,13 @@
 {#@@ vim: ft=gitconfig
 @@#}
 [user]
-    name = {{@@ _vars["git_name"] @@}}
-    email = {{@@ _vars["git_email"] @@}}
+    {%@@ if git_name is defined @@%}
+    name = {{@@ git_name @@}}
+    {%@@ endif @@%}
+    {%@@ if git_email is defined @@%}
+    email = {{@@ git_email @@}}
+    {%@@ endif @@%}
+    useConfigOnly = true
 [core]
     excludesfile = ~/.gitignore_global
     autocrlf = input
@@ -11,3 +16,9 @@
 [alias]
     l = log --graph --oneline --decorate
     root = rev-parse --show-toplevel
+{%@@ if git_profiles is defined @@%}
+{%@@ for dir in git_profiles @@%}
+[includeIf "gitdir:{{@@ dir @@}}/"]
+    path = {{@@ dir @@}}/.gitprofile
+{%@@ endfor @@%}
+{%@@ endif @@%}

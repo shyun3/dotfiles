@@ -73,13 +73,35 @@ sudo dotdrop -p wsl-root -c ~/.config/dotdrop/config.yaml install
 
 ## Suggestions
 
-Add `.local_vars.yaml` under the repo root with the Git user details defined:
+### gitconfig
+
+Add `.local_vars.yaml` under the repo root with the global Git user details
+defined:
 ```yaml
 variables:
   git_name: My Name
   git_email: name@email.tld
 ```
-Run `dotdrop` install again to regenerate the gitconfig with the user details.
+Run `dotdrop` install to regenerate the gitconfig.
+
+Alternatively, if per-directory user details are desired then Git profiles may
+be specified. For example:
+```yaml
+variables:
+  git_name: My Name
+  git_profiles:
+    - ~/projects
+    - ~/personal
+```
+
+The email may be set for any repos under the listed directories by including it
+in a `.gitprofile`:
+```sh
+git config -f ~/projects/.gitprofile user.email real@work.tld
+git config -f ~/personal/.gitprofile user.email fake@priv.tld
+```
+
+### pyenv
 
 Install the [Python build dependencies][python-build-deps]. Prefer the latest
 Python and set it as the global version:
