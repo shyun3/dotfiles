@@ -59,10 +59,8 @@ mkdir -p ~/bin ~/.local/bin
 # Packages
 install_if_missing zsh fzf zoxide ranger atool
 cmd_exists ctags-universal || yes_install universal-ctags
-cmd_exists fd || {
-    yes_install fd-find
-    ln -s "$(which fdfind)" ~/.local/bin/fd
-}
+cmd_exists fd || yes_install fd-find
+
 cmd_exists mountavfs || yes_install avfs
 
 if [[ $(uname -r) =~ WSL ]]; then

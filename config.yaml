@@ -10,9 +10,15 @@ config:
   import_variables:
     - .local_vars.yaml:optional
 dotfiles:
+  # git
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
+  f_git_ignore:
+    src: config/git/ignore
+    dst: ~/.config/git/ignore
+
+  # Windows
   f_profile.ps1:
     src: profile.ps1
     dst: "{{@@ env['UserProfile'] @@}}/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
@@ -23,6 +29,13 @@ dotfiles:
     dst: "{{@@ env['LocalAppData'] @@}}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
     actions:
       - winget_install Microsoft.WindowsTerminal wt
+
+  # WSL
+  f_wsl.conf:
+    src: etc/wsl.conf
+    dst: /etc/wsl.conf
+
+  # zsh
   f_zprofile:
     src: zprofile
     dst: ~/.zprofile
@@ -32,45 +45,49 @@ dotfiles:
   f_p10k.zsh:
     src: p10k.zsh
     dst: ~/.p10k.zsh
-  f_global.ctags:
-    src: ctags.d/global.ctags
-    dst: ~/.ctags.d/global.ctags
-  f_ignore:
+
+  # fd
+  f_fd_ignore:
     src: config/fd/ignore
     dst: ~/.config/fd/ignore
-  f_config.yml:
-    src: config/lazygit/config.yml
-    dst: ~/.config/lazygit/config.yml
-  f_commands.py:
+  f_fd:
+    src: /usr/bin/fdfind
+    dst: ~/.local/bin/fd
+    link: absolute
+
+  # ranger
+  f_ranger_commands.py:
     src: config/ranger/commands.py
     dst: ~/.config/ranger/commands.py
-  f_rc.conf:
+  f_ranger_rc.conf:
     src: config/ranger/rc.conf
     dst: ~/.config/ranger/rc.conf
-  f_scope.sh:
+  f_ranger_scope.sh:
     src: config/ranger/scope.sh
     dst: ~/.config/ranger/scope.sh
     chmod: "755"
-  f_wsl.conf:
-    src: etc/wsl.conf
-    dst: /etc/wsl.conf
-  f_git_ignore:
-    src: config/git/ignore
-    dst: ~/.config/git/ignore
+
+  f_global.ctags:
+    src: ctags.d/global.ctags
+    dst: ~/.ctags.d/global.ctags
+  f_lazygit_config.yml:
+    src: config/lazygit/config.yml
+    dst: ~/.config/lazygit/config.yml
 profiles:
   linux:
     dotfiles:
       - f_gitconfig
+      - f_git_ignore
       - f_zprofile
       - f_zshrc
       - f_p10k.zsh
+      - f_fd_ignore
+      - f_fd
+      - f_ranger_commands.py
+      - f_ranger_rc.conf
+      - f_ranger_scope.sh
       - f_global.ctags
-      - f_ignore
-      - f_config.yml
-      - f_commands.py
-      - f_rc.conf
-      - f_scope.sh
-      - f_git_ignore
+      - f_lazygit_config.yml
   wsl-root:
     dotfiles:
       - f_wsl.conf
