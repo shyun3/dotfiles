@@ -58,6 +58,9 @@ dotfiles:
     src: config/ranger/scope.sh
     dst: ~/.config/ranger/scope.sh
     chmod: "755"
+  f_wsl.conf:
+    src: etc/wsl.conf
+    dst: /etc/wsl.conf
 profiles:
   linux:
     dotfiles:
@@ -72,6 +75,9 @@ profiles:
       - f_commands.py
       - f_rc.conf
       - f_scope.sh
+  wsl-root:
+    dotfiles:
+      - f_wsl.conf
   windows:
     dotfiles:
       - f_gitconfig

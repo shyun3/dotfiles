@@ -1,10 +1,12 @@
+# dotfiles
+
 These dotfiles are deployed using [dotdrop](https://dotdrop.readthedocs.io/en/latest/).
 
-# Prerequisites
+## Prerequisites
 
 The following instructions assume a first-time setup is being performed.
 
-## Windows
+### Windows
 
 First, install PowerShell 7 using `cmd` or `powershell`:
 ```pwsh
@@ -25,16 +27,20 @@ git clone https://github.com/shyun3/dotfiles.git $Env:UserProfile/.config/dotdro
 
 Run `bootstrap.ps1`. This will install `dotdrop` and all dependencies.
 
-## WSL
+### WSL
 
-Assuming the Windows steps above were completed, install WSL using `pwsh`:
+Assuming the Windows steps above were completed, install WSL using `pwsh` in
+**administrator** mode:
 ```pwsh
 wsl --install
 ```
 
-## Ubuntu
+### Ubuntu
 
-Install `dotdrop`: `sudo apt install dotdrop`
+Install `dotdrop`:
+```sh
+sudo apt install dotdrop
+```
 
 Clone the repo:
 ```sh
@@ -43,18 +49,18 @@ git clone git@github.com:shyun3/dotfiles.git ~/.config/dotdrop
 
 Run `setup.sh` to install the prerequisites.
 
-# Installation
+## Installation
 
 To install or update the dotfiles, call `dotdrop` as listed below. A shell
 restart may be needed to apply the latest changes.
 
-## Windows
+### Windows
 
 ```pwsh
 dotdrop -p windows install
 ```
 
-## Linux
+### Linux
 
 ```sh
 dotdrop -p linux install
@@ -62,10 +68,10 @@ dotdrop -p linux install
 
 If using WSL, apply the following as well:
 ```sh
-sudo dotdrop -p wsl -c ~/.config/dotdrop/config-root.yaml install
+sudo dotdrop -p wsl-root -c ~/.config/dotdrop/config.yaml install
 ```
 
-# Suggestions
+## Suggestions
 
 Add `.local_vars.yaml` under the repo root with the Git user details defined:
 ```yaml
@@ -82,16 +88,16 @@ pyenv install 3
 pyenv global 3
 ```
 
-# Tips
+## Tips
 
-## Windows Terminal
+### Windows Terminal
 
 * To specify machine-specific profiles, use JSON fragment extensions. For more
   info and examples, see the [examples](examples/) directory.
 * To regenerate dynamic profiles that have been deleted, remove
   `$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\state.json`
 
-## WSL
+### WSL
 
 * If Windows applications cannot be called from WSL, try entering the
   following:
@@ -101,10 +107,9 @@ pyenv global 3
   Taken from this [comment][wsl-interop-comment]. More details can be found in
   issue [#8843](https://github.com/microsoft/WSL/issues/8843).
 
-## Zsh
+### Zsh
 
 * Place machine-specific settings in `~/.zshenv`
 
 [python-build-deps]: https://github.com/pyenv/pyenv?tab=readme-ov-file#install-python-build-dependencies
-[wsl-conf]: https://docs.microsoft.com/en-us/windows/wsl/wsl-config#per-distribution-configuration-options-with-wslconf
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
