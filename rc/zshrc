@@ -33,6 +33,13 @@ if command_exists pyenv; then
 fi
 
 #######################################################################
+# nvm
+
+# See https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/nvm#lazy-startup
+zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':omz:plugins:nvm' nvim
+
+#######################################################################
 #######################################################################
 
 # If you come from bash you might have to change your $PATH.
