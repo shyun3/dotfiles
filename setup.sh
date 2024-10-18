@@ -41,6 +41,10 @@ cmd_exists fd || {
 }
 cmd_exists mountavfs || yes_install avfs
 
+if [[ $(uname -r) =~ WSL ]]; then
+    cmd_exists wslview || yes_install wslu
+fi
+
 git clone git@github.com:jchook/ranger-zoxide.git \
     ~/.config/ranger/plugins/zoxide 2> /dev/null || true
 
