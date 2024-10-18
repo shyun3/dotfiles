@@ -47,8 +47,6 @@ Clone the repo:
 git clone git@github.com:shyun3/dotfiles.git ~/.config/dotdrop
 ```
 
-Run `setup.sh` to install the prerequisites.
-
 ## Installation
 
 To install or update the dotfiles, call `dotdrop` as listed below. A shell

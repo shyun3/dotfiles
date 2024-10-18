@@ -53,9 +53,12 @@ install_omz_custom() {
     done
 }
 
+#######################################################################
+
 # These bin directories will only be added to PATH if they exist, see zshrc
 mkdir -p ~/bin ~/.local/bin
 
+#######################################################################
 # Packages
 install_if_missing zsh fzf zoxide ranger atool
 cmd_exists ctags-universal || yes_install universal-ctags
@@ -67,6 +70,9 @@ if [[ $(uname -r) =~ WSL ]]; then
     cmd_exists wslview || yes_install wslu
 fi
 
+#######################################################################
+
+# ranger
 git clone git@github.com:jchook/ranger-zoxide.git \
     ~/.config/ranger/plugins/zoxide 2> /dev/null || true
 
@@ -96,6 +102,7 @@ fi
 install_omz_custom themes romkatv/powerlevel10k
 install_omz_custom plugins zsh-users/zsh-syntax-highlighting zsh-users/zsh-autosuggestions
 
+#######################################################################
 # chsh (should probably be last)
 case "$SHELL" in
     */zsh) ;;

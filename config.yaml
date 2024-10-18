@@ -2,6 +2,7 @@ variables:
   dotdrop_root: "{{@@ _dotdrop_dotpath @@}}/.."
   scripts_dir: "{{@@ dotdrop_root @@}}/scripts"
 actions:
+  setup_sh: "{{@@ scripts_dir @@}}/setup.sh"
   setup_ps: pwsh -nop "{{@@ scripts_dir @@}}/setup_ps.ps1"
   winget_install: pwsh -nop "{{@@ scripts_dir @@}}/install_pkg.ps1" {0} {1}
 config:
@@ -88,6 +89,8 @@ profiles:
       - f_ranger_scope.sh
       - f_global.ctags
       - f_lazygit_config.yml
+    actions:
+      - setup_sh
   wsl-root:
     dotfiles:
       - f_wsl.conf
