@@ -120,8 +120,8 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man-pages fzf pyenv poetry nvm zoxide zsh-interactive-cd
-    zsh-syntax-highlighting)
+plugins=(colored-man-pages fzf pyenv poetry nvm zoxide zsh-autosuggestions
+    zsh-interactive-cd zsh-syntax-highlighting)
 
 if [[ -f $ZSH/oh-my-zsh.sh ]]; then
   source $ZSH/oh-my-zsh.sh
@@ -275,11 +275,16 @@ zle -N fzf_zoxide
 bindkey '\ez' fzf_zoxide  # Alt-z
 
 #######################################################################
+# zsh-autosuggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+
+#######################################################################
 # zsh-syntax-highlighting
 
 # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
 typeset -A ZSH_HIGHLIGHT_STYLES
 
-# blue can be difficult to see on a dark terminal background
+# The default of blue can be difficult to see on a dark terminal background
 ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[globbing]='fg=cyan'

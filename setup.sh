@@ -73,6 +73,8 @@ if [[ -z "$ZSH" ]]; then
         "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" 2> /dev/null || true
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
         "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" 2> /dev/null || true
+    git clone https://github.com/zsh-users/zsh-autosuggestions \
+        "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" 2> /dev/null || true
 fi
 
 # chsh (should probably be last)
