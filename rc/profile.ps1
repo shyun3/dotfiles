@@ -1,9 +1,5 @@
 . "{{@@ scripts_dir @@}}/util.ps1"
 
-#######################################################################
-# Prompt
-# See https://docs.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup
-
 if (Check-Module posh-git) { Import-Module posh-git }
 
 if (Check-Command oh-my-posh)
@@ -13,6 +9,10 @@ if (Check-Command oh-my-posh)
 }
 
 if (Check-Module Terminal-Icons) { Import-Module -Name Terminal-Icons }
+
+#######################################################################
+# Prompt
+# See https://docs.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup
 
 function promptFunc
 {

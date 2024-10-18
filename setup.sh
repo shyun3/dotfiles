@@ -29,6 +29,30 @@ read_latest_github_tag() {
     curl -s "https://api.github.com/repos/$1/releases/latest" | grep -Po '"tag_name": "v\K[^"]*'
 }
 
+# Installs Oh My Zsh custom themes or plugins.
+#
+# $1: Customization type, must be "themes" or "plugins".
+# $rest: GitHub slugs in the form "owner/repo".
+install_omz_custom() {
+    local -A types=([themes]=1 [plugins]=1)
+    if [[ -z "${types[$1]}" ]]; then
+        return 1
+    fi
+
+    local custom_type=$1
+    shift
+
+    local custom_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+    local src
+    for slug in "$@"; do
+        src=$(cut -d / -f 2 <<< "$slug")
+        dst="$custom_dir/$custom_type/$src"
+        if [[ ! -d "$dst" ]]; then
+            git clone --depth=1 "https://github.com/$slug" "$dst"
+        fi
+    done
+}
+
 # These bin directories will only be added to PATH if they exist, see zshrc
 mkdir -p ~/bin ~/.local/bin
 
@@ -69,13 +93,10 @@ fi
 # Oh My Zsh
 if [[ -z "$ZSH" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
-        "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" 2> /dev/null || true
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-        "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" 2> /dev/null || true
-    git clone https://github.com/zsh-users/zsh-autosuggestions \
-        "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" 2> /dev/null || true
 fi
+
+install_omz_custom themes romkatv/powerlevel10k
+install_omz_custom plugins zsh-users/zsh-syntax-highlighting zsh-users/zsh-autosuggestions
 
 # chsh (should probably be last)
 case "$SHELL" in

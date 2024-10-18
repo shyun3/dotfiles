@@ -1,4 +1,4 @@
-param ($cmd, $pkg)
+param ($pkg, $cmd)
 
 . $PSScriptRoot/util.ps1
 
