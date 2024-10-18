@@ -13,9 +13,6 @@ dotfiles:
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
-  f_gitignore_global:
-    src: gitignore_global
-    dst: ~/.gitignore_global
   f_profile.ps1:
     src: profile.ps1
     dst: "{{@@ env['UserProfile'] @@}}/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
@@ -57,11 +54,13 @@ dotfiles:
   f_wsl.conf:
     src: etc/wsl.conf
     dst: /etc/wsl.conf
+  f_git_ignore:
+    src: config/git/ignore
+    dst: ~/.config/git/ignore
 profiles:
   linux:
     dotfiles:
       - f_gitconfig
-      - f_gitignore_global
       - f_zprofile
       - f_zshrc
       - f_p10k.zsh
@@ -71,12 +70,13 @@ profiles:
       - f_commands.py
       - f_rc.conf
       - f_scope.sh
+      - f_git_ignore
   wsl-root:
     dotfiles:
       - f_wsl.conf
   windows:
     dotfiles:
       - f_gitconfig
-      - f_gitignore_global
+      - f_git_ignore
       - f_profile.ps1
       - f_winterm_settings.json

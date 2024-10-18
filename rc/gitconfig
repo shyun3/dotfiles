@@ -9,7 +9,6 @@
     {%@@ endif @@%}
     useConfigOnly = true
 [core]
-    excludesfile = ~/.gitignore_global
     autocrlf = input
 [fetch]
     prune = 1
