@@ -89,7 +89,25 @@ if ! cmd_exists lazygit; then
 fi
 
 # pyenv
-[[ -n "$PYENV_ROOT" ]] || curl https://pyenv.run | bash
+if [[ -z "$PYENV_ROOT" ]]; then
+    curl https://pyenv.run | bash
+    sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+        libreadline-dev libsqlite3-dev curl git libncursesw5-dev xz-utils \
+        tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+
+    pyenv install 3
+    pyenv global 3
+
+    pyenv virtualenv 3 neovim
+    pyenv activate neovim
+    pip install pynvim
+    pyenv deactivate
+fi
 
 # Neovim
 if ! cmd_exists nvim; then

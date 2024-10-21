@@ -39,6 +39,7 @@ wsl --install
 
 Install `dotdrop`:
 ```sh
+sudo apt update
 sudo apt install dotdrop
 ```
 
@@ -99,15 +100,6 @@ git config -f ~/projects/.gitprofile user.email real@work.tld
 git config -f ~/personal/.gitprofile user.email fake@priv.tld
 ```
 
-### pyenv
-
-Install the [Python build dependencies][python-build-deps]. Prefer the latest
-Python and set it as the global version:
-```zsh
-pyenv install 3
-pyenv global 3
-```
-
 ## Tips
 
 ### Windows Terminal
@@ -131,5 +123,4 @@ pyenv global 3
 
 * Place machine-specific settings in `~/.zshenv`
 
-[python-build-deps]: https://github.com/pyenv/pyenv?tab=readme-ov-file#install-python-build-dependencies
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
