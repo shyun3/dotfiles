@@ -1,4 +1,4 @@
-# dotfiles
+# Dotfiles
 
 These dotfiles are deployed using [dotdrop](https://dotdrop.readthedocs.io/en/latest/).
 

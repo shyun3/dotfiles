@@ -58,12 +58,15 @@ install_omz_custom() {
 # These bin directories will only be added to PATH if they exist, see zshrc
 mkdir -p ~/bin ~/.local/bin
 
+# Neovim 'undodir'
+mkdir -p ~/.local/share/nvim/undo
+
 #######################################################################
 # Packages
-install_if_missing zsh fzf zoxide ranger atool nodejs npm
+install_if_missing zsh fzf zoxide ranger atool nodejs npm bat xclip
 cmd_exists ctags-universal || yes_install universal-ctags
 cmd_exists fd || yes_install fd-find
-
+cmd_exists rg || yes_install ripgrep
 cmd_exists mountavfs || yes_install avfs
 
 if [[ $(uname -r) =~ WSL ]]; then
@@ -88,6 +91,13 @@ fi
 # pyenv
 [[ -n "$PYENV_ROOT" ]] || curl https://pyenv.run | bash
 
+# Neovim
+if ! cmd_exists nvim; then
+    curl -Lo ~/.local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod u+x ~/.local/bin/nvim
+fi
+
+#######################################################################
 # Oh My Zsh
 if [[ -z "$ZSH" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
