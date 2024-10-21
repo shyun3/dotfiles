@@ -60,7 +60,7 @@ mkdir -p ~/bin ~/.local/bin
 
 #######################################################################
 # Packages
-install_if_missing zsh fzf zoxide ranger atool
+install_if_missing zsh fzf zoxide ranger atool nodejs npm
 cmd_exists ctags-universal || yes_install universal-ctags
 cmd_exists fd || yes_install fd-find
 
@@ -87,12 +87,6 @@ fi
 
 # pyenv
 [[ -n "$PYENV_ROOT" ]] || curl https://pyenv.run | bash
-
-# nvm
-if [[ -z "$NVM_DIR" ]]; then
-    NVM_VER="$(read_latest_github_tag 'nvm-sh/nvm')"
-    PROFILE=/dev/null bash -c "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VER/install.sh | bash"
-fi
 
 # Oh My Zsh
 if [[ -z "$ZSH" ]]; then

@@ -33,13 +33,6 @@ if command_exists pyenv; then
 fi
 
 #######################################################################
-# nvm
-
-# See https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/nvm#lazy-startup
-zstyle ':omz:plugins:nvm' lazy yes
-zstyle ':omz:plugins:nvm' nvim
-
-#######################################################################
 #######################################################################
 
 # If you come from bash you might have to change your $PATH.
@@ -120,7 +113,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man-pages fzf pyenv poetry nvm zoxide zsh-autosuggestions
+plugins=(colored-man-pages fzf pyenv poetry zoxide zsh-autosuggestions
     zsh-interactive-cd zsh-syntax-highlighting)
 
 if [[ -f $ZSH/oh-my-zsh.sh ]]; then
