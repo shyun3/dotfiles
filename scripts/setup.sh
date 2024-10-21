@@ -85,7 +85,7 @@ if ! cmd_exists lazygit; then
     tmpdir="$(mktemp -d)"
     curl -Lo "$tmpdir/lazygit.tar.gz" "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
     tar xf "$tmpdir/lazygit.tar.gz" --directory="$tmpdir" lazygit
-    sudo install "$tmpdir/lazygit" ~/.local/bin
+    install "$tmpdir/lazygit" ~/.local/bin
 fi
 
 # pyenv
