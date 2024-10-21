@@ -63,7 +63,7 @@ mkdir -p ~/.local/share/nvim/undo
 
 #######################################################################
 # Packages
-install_if_missing zsh fzf zoxide ranger atool nodejs npm bat xclip
+install_if_missing zsh fzf zoxide ranger atool nodejs npm bat xclip pipx
 cmd_exists ctags-universal || yes_install universal-ctags
 cmd_exists fd || yes_install fd-find
 cmd_exists rg || yes_install ripgrep
@@ -96,6 +96,12 @@ if ! cmd_exists nvim; then
     curl -Lo ~/.local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     chmod u+x ~/.local/bin/nvim
 fi
+
+# pipx
+pip_pkgs=(ipython poetry)
+for pkg in "${pip_pkgs[@]}"; do
+    cmd_exists "$pkg" || pipx install "$pkg"
+done
 
 #######################################################################
 # Oh My Zsh
