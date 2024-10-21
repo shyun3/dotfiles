@@ -3,7 +3,6 @@ variables:
   scripts_dir: "{{@@ dotdrop_root @@}}/scripts"
 actions:
   setup_sh: "{{@@ scripts_dir @@}}/setup.sh"
-  setup_ps: pwsh -nop "{{@@ scripts_dir @@}}/setup_ps.ps1"
   winget_install: pwsh -nop "{{@@ scripts_dir @@}}/install_pkg.ps1" {0} {1}
 config:
   banner: false
@@ -24,7 +23,7 @@ dotfiles:
     src: profile.ps1
     dst: "{{@@ env['UserProfile'] @@}}/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
     actions:
-      - setup_ps
+      - winget_install JanDeDobbeleer.OhMyPosh oh-my-posh
   f_winterm_settings.json:
     src: winterm-settings.json
     dst: "{{@@ env['LocalAppData'] @@}}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"

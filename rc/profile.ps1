@@ -1,14 +1,10 @@
 . "{{@@ scripts_dir @@}}/util.ps1"
 
-if (Check-Module posh-git) { Import-Module posh-git }
-
 if (Check-Command oh-my-posh)
 {
     oh-my-posh init pwsh --config "{{@@ _dotdrop_dotpath @@}}/mytheme.omp.json" |
         Invoke-Expression
 }
-
-if (Check-Module Terminal-Icons) { Import-Module -Name Terminal-Icons }
 
 #######################################################################
 # Prompt
