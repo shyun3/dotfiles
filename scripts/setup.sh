@@ -90,7 +90,7 @@ fi
 
 # Oh My Zsh
 if [[ -z "$ZSH" ]]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 fi
 
 install_omz_custom themes romkatv/powerlevel10k
