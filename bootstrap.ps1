@@ -1,3 +1,6 @@
+scoop bucket add nerd-fonts
+scoop install JetBrainsMono-NF
+
 scoop install python pipx
 pipx ensurepath
 
