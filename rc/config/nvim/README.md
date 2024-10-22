@@ -2,22 +2,6 @@
 
 Last used with Neovim v0.10.2 on WSL Ubuntu.
 
-## Installation
-
-These instructions assume that [dotfiles](https://github.com/shyun3/dotfiles)
-have been setup on Windows and Ubuntu.
-
-1. Clone this repo to the [proper directory][nvim-config-dir]:
-    ```bash
-    git clone https://github.com/shyun3/nvimrc ~/.config/nvim
-    ```
-
-1. Start Neovim. Plugins should start automatically installing.
-
-1. Run `:checkhealth` and resolve any issues.
-
-1. Restart Neovim. Installation should now be complete.
-
 ## Example configuration files
 
 See the corresponding [README](example-configs/readme.md).

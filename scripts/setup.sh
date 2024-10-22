@@ -116,8 +116,10 @@ fi
 
 # Neovim
 if ! cmd_exists nvim; then
-    curl -Lo ~/.local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    chmod u+x ~/.local/bin/nvim
+    NVIM="$HOME/.local/bin/nvim"
+    curl -Lo "$NVIM" https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod u+x "$NVIM"
+    "$NVIM" --headless +qa
 fi
 
 # pipx
