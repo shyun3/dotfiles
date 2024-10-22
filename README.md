@@ -1,6 +1,6 @@
 # Dotfiles
 
-These dotfiles are deployed using [dotdrop](https://dotdrop.readthedocs.io/en/latest/).
+This project uses [dotdrop](https://dotdrop.readthedocs.io/en/latest/).
 
 ## Prerequisites
 
@@ -50,25 +50,28 @@ git clone git@github.com:shyun3/dotfiles.git ~/.config/dotdrop
 
 ## Installation
 
-To install or update the dotfiles, call `dotdrop` as listed below. A shell
-restart may be needed to apply the latest changes.
+To install or update the dotfiles, call `dotdrop` as listed below.
 
 ### Windows
 
 ```pwsh
 dotdrop -p windows install
 ```
+PowerShell may need restarting to apply all changes.
 
 ### Linux
 
 ```sh
 dotdrop -p linux install
 ```
+Zsh may need restarting to apply all changes.
 
 If using WSL, apply the following as well:
 ```sh
 sudo dotdrop -p wsl-root -c ~/.config/dotdrop/config.yaml install
 ```
+WSL needs restarting to apply all changes. Make sure to wait for at least [8
+seconds][8-sec-rule] after closing ALL shells.
 
 ## Suggestions
 
@@ -124,3 +127,4 @@ git config -f ~/personal/.gitprofile user.email fake@priv.tld
 * Place machine-specific settings in `~/.zshenv`
 
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
+[8-sec-rule]: https://learn.microsoft.com/en-us/windows/wsl/wsl-config#the-8-second-rule-for-configuration-changes
