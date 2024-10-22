@@ -7,6 +7,7 @@ actions:
 config:
   banner: false
   dotpath: rc
+  force_chmod: true
   import_variables:
     - .local_vars.yaml:optional
 dotfiles:
@@ -65,7 +66,7 @@ dotfiles:
   f_ranger_scope.sh:
     src: config/ranger/scope.sh
     dst: ~/.config/ranger/scope.sh
-    chmod: "755"
+    chmod: 755
 
   f_global.ctags:
     src: ctags.d/global.ctags
