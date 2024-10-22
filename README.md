@@ -106,27 +106,6 @@ git config -f ~/projects/.gitprofile user.email real@work.tld
 git config -f ~/personal/.gitprofile user.email fake@priv.tld
 ```
 
-### Python
-
-* Formatter options may be specified through a project top-level
-  `pyproject.toml`, for example:
-    ```
-    [tool.black]
-    unstable = true
-
-    [tool.isort]
-    profile = "black"
-    ```
-  Using the unstable option for black may be useful to have it break long
-  strings, see the [future style docs][black-future]. `isort` can also be
-  configured for `black` compatibility by specifying the profile (see
-  [docs][isort-black]).
-
-### UltiSnips
-
-* Add machine-specific snippets under the `UltiSnips/specific` directory of the
-  Neovim config root. See `g:UltiSnipsSnippetDirectories`.
-
 ### Windows Terminal
 
 * To regenerate dynamic profiles that have been deleted, remove
@@ -147,6 +126,4 @@ git config -f ~/personal/.gitprofile user.email fake@priv.tld
 * Place machine-specific settings in `~/.zshenv`
 
 [8-sec-rule]: https://learn.microsoft.com/en-us/windows/wsl/wsl-config#the-8-second-rule-for-configuration-changes
-[black-future]: https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html
-[isort-black]: https://pycqa.github.io/isort/docs/configuration/black_compatibility.html
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222

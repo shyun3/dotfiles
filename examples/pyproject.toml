@@ -1,0 +1,7 @@
+[tool.black]
+# For breaking long strings
+# See https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html
+unstable = true
+
+[tool.isort]
+profile = "black"
