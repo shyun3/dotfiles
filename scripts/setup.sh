@@ -55,7 +55,7 @@ install_omz_custom() {
 
 #######################################################################
 
-# These bin directories will only be added to PATH if they exist, see zshrc
+# These bin directories will only be added to PATH if they exist, see zprofile
 mkdir -p ~/bin ~/.local/bin
 
 # Neovim 'undodir'
