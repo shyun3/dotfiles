@@ -63,7 +63,8 @@ mkdir -p ~/.local/share/nvim/undo
 
 #######################################################################
 # Packages
-install_if_missing zsh fzf zoxide ranger atool nodejs npm bat xclip pipx
+install_if_missing zsh fzf zoxide ranger atool nodejs npm bat xclip pipx \
+    archivemount
 cmd_exists ctags-universal || yes_install universal-ctags
 cmd_exists fd || yes_install fd-find
 cmd_exists rg || yes_install ripgrep
@@ -91,7 +92,10 @@ fi
 # pyenv
 if [[ -z "$PYENV_ROOT" ]]; then
     curl https://pyenv.run | bash
-    sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+
+    # Install Python build dependencies
+    # See https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+    yes_install build-essential libssl-dev zlib1g-dev libbz2-dev \
         libreadline-dev libsqlite3-dev curl git libncursesw5-dev xz-utils \
         tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
@@ -100,6 +104,7 @@ if [[ -z "$PYENV_ROOT" ]]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 
+    # Installing Python through pyenv sets up shims for `python` and `pip`
     pyenv install 3
     pyenv global 3
 
