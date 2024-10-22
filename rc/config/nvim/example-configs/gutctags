@@ -1,0 +1,4 @@
+-R
+--languages="See --list-languages"
+--exclude=*/path/to/*.ext
+--exclude=more

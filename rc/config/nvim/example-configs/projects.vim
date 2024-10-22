@@ -1,0 +1,1 @@
+Project '~/.config/dotdrop', 'dotfiles'

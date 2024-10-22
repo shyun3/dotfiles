@@ -1,0 +1,26 @@
+{
+  "*.c": {
+    "alternate": "{}.h",
+    "type": "src"
+  },
+  "*.h": {
+    "alternate": ["{}.c", "{}.cpp"],
+    "type": "hdr"
+  },
+  "**/src/*.c": { "alternate": "{dirname}/inc/{basename}.h" },
+  "**/inc/*.h": {
+    "alternate": ["{dirname}/src/{basename}.c", "{dirname}/src/{basename}.cpp"]
+  },
+  "*.cpp": {
+    "alternate": ["{}.hpp", "{}.h"],
+    "type": "src"
+  },
+  "*.hpp": {
+    "alternate": "{}.cpp",
+    "type": "hdr"
+  },
+  "**/src/*.cpp": {
+    "alternate": ["{dirname}/inc/{basename}.hpp", "{dirname}/inc/{basename}.h"]
+  },
+  "**/inc/*.hpp": { "alternate": "{dirname}/src/{basename}.cpp" }
+}

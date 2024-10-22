@@ -1,0 +1,28 @@
+# vim: ft=yaml
+
+CompileFlags:
+  Add:
+    # May not be necessary as it can be deduced from the compiler used in
+    # `compile_commands.json`
+    - --target=arm-none-eabi
+
+    # If cross-compiling, CPU type should be specified
+    - -mcpu=cortex-m4
+
+    # Taken from output of `echo | gcc -E -xc -v -`
+    - isystem/path/to/compiler/include
+
+    - -Wall
+    - -Wextra
+    - -Wpedantic
+
+  CompilationDatabase: /path/to/project
+
+  Remove: [-munknown-arg]
+
+---
+If:
+  PathMatch: /path/to/src
+
+CompileFlags:
+  Add: [-DNDEBUG, -Werror]
