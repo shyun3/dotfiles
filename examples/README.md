@@ -1,6 +1,27 @@
 # Examples
 
-## Windows Terminal JSON Fragment Extensions
+This directory contains examples and templates for various configuration files.
+Using these typically involves copying the files to a project, possibly
+renaming them, and customizing their contents as needed.
+
+| Example name | Destination name | Destination folder | Use with |
+| ------------ | ---------------- | ------------------ | -------- |
+| `_clang-format` | `.clang-format` | Project | `clang-format`
+| `_clangd` | `.clangd` | Project | `clangd` |
+| `_gutctags` | `.gutctags` | Project | `vim-gutentags` |
+| `_projections.json` | `.projections.json` | Project | `vim-projectionist` |
+| `compile_flags.txt` | Same | Project | `clangd` |
+| `projects.vim` | Same | `~/.config/nvim` | `vim-project` |
+| `pyrightconfig.json` | Same | Project | `pyright` |
+
+Additional notes:
+* `.gutctags`: See `g:gutentags_ctags_tagfile`
+* `projects.vim`: See `vim-project` Neovim config
+* `pyrightconfig.json`: `pyright` can read type stubs placed in the `typings`
+  directory. See also the `stubPath` option and [Generating Type
+  Stubs][type-stubs].
+
+## Windows Terminal JSON fragment extensions
 
 Windows Terminal allows profiles to be added or modified outside of the main
 settings file through [JSON fragment extensions][winterm-json-fragment]. Some
@@ -24,6 +45,7 @@ Recall from the docs that the actual file name of the JSON does not matter.
 See also the [Dynamic profiles][winterm-dyn-profiles] page for additional
 examples of JSON contents.
 
-[winterm-json-fragment]: https://docs.microsoft.com/en-us/windows/terminal/json-fragment-extensions
-[winterm-json-fragment-loc]: https://docs.microsoft.com/en-us/windows/terminal/json-fragment-extensions#applications-installed-from-the-web
+[type-stubs]: https://github.com/microsoft/pyright/blob/main/docs/type-stubs.md#generating-type-stubs
 [winterm-dyn-profiles]: https://docs.microsoft.com/en-us/windows/terminal/dynamic-profiles
+[winterm-json-fragment-loc]: https://docs.microsoft.com/en-us/windows/terminal/json-fragment-extensions#applications-installed-from-the-web
+[winterm-json-fragment]: https://docs.microsoft.com/en-us/windows/terminal/json-fragment-extensions

@@ -10,6 +10,7 @@ CompileFlags:
     - -mcpu=cortex-m4
 
     # Taken from output of `echo | gcc -E -xc -v -`
+    # See https://clangd.llvm.org/guides/system-headers
     - isystem/path/to/compiler/include
 
     - -Wall

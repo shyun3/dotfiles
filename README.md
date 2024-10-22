@@ -73,7 +73,10 @@ sudo dotdrop -p wsl-root -c ~/.config/dotdrop/config.yaml install
 WSL needs restarting to apply all changes. Make sure to wait for at least [8
 seconds][8-sec-rule] after closing ALL shells.
 
-## Suggestions
+## Tips
+
+The [examples](examples) directory may also contain several tips, see its
+corresponding [README](examples/README.md).
 
 ### gitconfig
 
@@ -103,12 +106,29 @@ git config -f ~/projects/.gitprofile user.email real@work.tld
 git config -f ~/personal/.gitprofile user.email fake@priv.tld
 ```
 
-## Tips
+### Python
+
+* Formatter options may be specified through a project top-level
+  `pyproject.toml`, for example:
+    ```
+    [tool.black]
+    unstable = true
+
+    [tool.isort]
+    profile = "black"
+    ```
+  Using the unstable option for black may be useful to have it break long
+  strings, see the [future style docs][black-future]. `isort` can also be
+  configured for `black` compatibility by specifying the profile (see
+  [docs][isort-black]).
+
+### UltiSnips
+
+* Add machine-specific snippets under the `UltiSnips/specific` directory of the
+  Neovim config root. See `g:UltiSnipsSnippetDirectories`.
 
 ### Windows Terminal
 
-* To specify machine-specific profiles, use JSON fragment extensions. For more
-  info and examples, see the [examples](examples/) directory.
 * To regenerate dynamic profiles that have been deleted, remove
   `$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\state.json`
 
@@ -126,5 +146,7 @@ git config -f ~/personal/.gitprofile user.email fake@priv.tld
 
 * Place machine-specific settings in `~/.zshenv`
 
-[wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
 [8-sec-rule]: https://learn.microsoft.com/en-us/windows/wsl/wsl-config#the-8-second-rule-for-configuration-changes
+[black-future]: https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html
+[isort-black]: https://pycqa.github.io/isort/docs/configuration/black_compatibility.html
+[wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
