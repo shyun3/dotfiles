@@ -89,6 +89,13 @@ if ! cmd_exists lazygit; then
     install "$tmpdir/lazygit" ~/.local/bin
 fi
 
+# Vivify
+if ! cmd_exists viv; then
+    tmpdir="$(mktemp -d)"
+    curl -Lo "$tmpdir/vivify-linux.tar.gz" https://github.com/jannis-baum/Vivify/releases/latest/download/vivify-linux.tar.gz
+    tar xf "$tmpdir/vivify-linux.tar.gz" --directory ~/.local/bin --strip-components=1
+fi
+
 # pyenv
 if [[ -z "$PYENV_ROOT" ]]; then
     curl https://pyenv.run | bash
