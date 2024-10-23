@@ -71,7 +71,7 @@ If using WSL, apply the following as well:
 sudo dotdrop -p wsl-root -c ~/.config/dotdrop/config.yaml install
 ```
 WSL needs restarting to apply all changes. Make sure to wait for at least [8
-seconds][8-sec-rule] after closing ALL shells.
+seconds][8-sec-rule] after closing all WSL shells.
 
 ## Tips
 
