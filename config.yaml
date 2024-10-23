@@ -21,13 +21,14 @@ dotfiles:
 
   # Windows
   f_profile.ps1:
-    src: profile.ps1
+    src: windows/profile.ps1
     dst: "{{@@ env['UserProfile'] @@}}/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
     actions:
       - winget_install JanDeDobbeleer.OhMyPosh oh-my-posh
   f_winterm_settings.json:
-    src: winterm-settings.json
+    src: windows/settings.json
     dst: "{{@@ env['LocalAppData'] @@}}/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+    link: absolute
     actions:
       - winget_install Microsoft.WindowsTerminal wt
 
