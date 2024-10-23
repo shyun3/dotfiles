@@ -220,4 +220,9 @@ return {
       { "a<Leader>w", "<Plug>WordMotion_aw", mode = { "o", "v" } },
     },
   },
+
+  {
+    "jannis-baum/vivify.vim",
+    ft = "markdown",
+  },
 }
