@@ -37,6 +37,7 @@ vim.opt.shada = {
 
 -- Formatting
 vim.o.wrap = false
+vim.opt.formatoptions:append({ r = true, o = true }) -- Auto comment leaders
 
 -- Search
 vim.o.maxmempattern = 5000
