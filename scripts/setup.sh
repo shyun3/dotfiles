@@ -63,8 +63,8 @@ mkdir -p ~/.local/share/nvim/undo
 
 #######################################################################
 # Packages
-install_if_missing zsh fzf ranger atool nodejs npm bat xclip pipx \
-    archivemount tldr
+install_if_missing zsh ranger atool nodejs npm bat xclip pipx archivemount \
+    tldr
 cmd_exists ctags-universal || yes_install universal-ctags
 cmd_exists fd || yes_install fd-find
 cmd_exists rg || yes_install ripgrep
@@ -75,6 +75,12 @@ if [[ $(uname -r) =~ WSL ]]; then
 fi
 
 #######################################################################
+
+# fzf
+if ! cmd_exists fzf; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install --bin
+fi
 
 # zoxide
 cmd_exists zoxide || curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
