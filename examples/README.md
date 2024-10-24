@@ -16,7 +16,7 @@ renaming them, and customizing their contents as needed.
 | `pyrightconfig.json` | Same | Project | `pyright` |
 
 Additional notes:
-* `.gutctags`: See `g:gutentags_ctags_tagfile`
+* `.gutctags`: See `g:gutentags_project_root`
 * `projects.vim`: See `vim-project` Neovim config
 * `c.snippets`: See `g:UltiSnipsSnippetDirectories`
 * `pyrightconfig.json`: `pyright` can read type stubs placed in the `typings`
