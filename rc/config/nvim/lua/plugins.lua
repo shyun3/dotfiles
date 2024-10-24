@@ -198,7 +198,11 @@ return {
     end,
   },
 
-  { "jeetsukumaran/vim-pythonsense", ft = "python" },
+  {
+    "jeetsukumaran/vim-pythonsense",
+    init = function() vim.g.is_pythonsense_suppress_object_keymaps = 1 end,
+    ft = "python",
+  },
 
   {
     "folke/which-key.nvim",
@@ -223,6 +227,9 @@ return {
 
   {
     "jannis-baum/vivify.vim",
+
+    -- Plugin must be loaded before file load, not on command. Crucial
+    -- autocommands are created on file load, see vivify.vim.
     ft = "markdown",
   },
 }
