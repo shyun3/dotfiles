@@ -1,1 +1,10 @@
+# The fd global ignore file can't really be used to unignore files, see #655.
+# So this is only for fd to continue ignoring when for example, --no-ignore-vcs
+# is being used. As such, it may have overlap with the global gitignore.
+
+.git/
+
+# clangd
 .cache/
+
+# vim: ft=gitignore

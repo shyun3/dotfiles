@@ -2,6 +2,3 @@ UltiSnips/specific/
 
 .local_vars.yaml
 projects.vim
-
-!compile_flags.txt
-!pyrightconfig.json
