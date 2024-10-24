@@ -15,5 +15,6 @@ vim.filetype.add({
   filename = {
     [".clangd"] = "yaml",
     [".clang-format"] = "yaml",
+    [".ignore"] = "gitignore",
   },
 })
