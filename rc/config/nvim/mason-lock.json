@@ -1,7 +1,7 @@
 {
   "bash-language-server": "5.4.2",
   "black": "24.10.0",
-  "clang-format": "19.1.1",
+  "clang-format": "19.1.2",
   "clangd": "19.1.0",
   "isort": "5.13.2",
   "json-lsp": "4.10.0",
