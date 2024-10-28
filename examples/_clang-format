@@ -13,7 +13,9 @@ AlignConsecutiveShortCaseStatements:
   Enabled: false
 AlignEscapedNewlines: LeftWithLastLine
 AlignOperands: Align
-AlignTrailingComments: Never
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 0
 AllowAllArgumentsOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: true
 AllowBreakBeforeNoexceptSpecifier: Always
@@ -161,7 +163,7 @@ SpaceBeforeParensOptions:
 SpaceBeforeRangeBasedForLoopColon: true
 SpaceBeforeSquareBrackets: false
 SpaceInEmptyBlock: false
-SpacesBeforeTrailingComments: 4
+SpacesBeforeTrailingComments: 2
 SpacesInAngles: Never
 SpacesInLineCommentPrefix:
   Minimum: 1
