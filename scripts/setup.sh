@@ -64,7 +64,7 @@ mkdir -p ~/.local/share/nvim/undo
 #######################################################################
 # Packages
 install_if_missing zsh ranger atool nodejs npm bat xclip pipx archivemount \
-    tldr
+    tldr xdg-utils
 cmd_exists ctags-universal || yes_install universal-ctags
 cmd_exists fd || yes_install fd-find
 cmd_exists rg || yes_install ripgrep
