@@ -59,17 +59,17 @@ PowerShell may need restarting to apply all changes.
 
 ### Linux
 
+If using WSL, apply the following as well:
+```sh
+sudo env HOME="$HOME" "$(which dotdrop)" -p wsl-root install
+```
+WSL needs restarting to apply all changes. A distribution can be shutdown in
+PowerShell by running `wsl --terminate <distroName>`.
+
 ```sh
 dotdrop -p linux install
 ```
 Zsh may need restarting to apply all changes.
-
-If using WSL, apply the following as well:
-```sh
-sudo dotdrop -p wsl-root -c ~/.config/dotdrop/config.yaml install
-```
-WSL needs restarting to apply all changes. Make sure to wait for at least [8
-seconds][8-sec-rule] after closing all WSL shells.
 
 ## Tips
 
@@ -127,5 +127,4 @@ Run `:checkhealth` to see if there are issues that need resolving.
 
 * Place machine-specific settings in `~/.zshenv`
 
-[8-sec-rule]: https://learn.microsoft.com/en-us/windows/wsl/wsl-config#the-8-second-rule-for-configuration-changes
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
