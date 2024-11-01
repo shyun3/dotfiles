@@ -104,6 +104,10 @@ git config -f ~/projects/.gitprofile user.email real@work.tld
 git config -f ~/personal/.gitprofile user.email fake@priv.tld
 ```
 
+### Neovim
+
+Run `:checkhealth` to see if there are issues that need resolving.
+
 ### Windows Terminal
 
 * To regenerate dynamic profiles that have been deleted, remove

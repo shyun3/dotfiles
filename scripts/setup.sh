@@ -167,7 +167,6 @@ if ! cmd_exists nvim; then
     NVIM="$HOME/.local/bin/nvim"
     mv "$(download_latest_github_tag 'neovim/neovim' nvim.appimage)" "$NVIM"
     chmod u+x "$NVIM"
-    "$NVIM" --headless +qa
 fi
 
 # pipx
