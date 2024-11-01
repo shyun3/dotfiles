@@ -21,12 +21,38 @@ install_if_missing() {
 
 # Reads the tag of the latest release of a GitHub repo.
 #
-# Assumes that the tag starts with a 'v'. The 'v' is not included in the output.
+# Assumes that the tag starts with a 'v'.
 #
 # $1: GitHub slug in the form "owner/repo".
+#
+# Return: Tag name, without a leading 'v'.
 read_latest_github_tag() {
     # Derived from https://github.com/jesseduffield/lazygit?tab=readme-ov-file#ubuntu
     curl -s "https://api.github.com/repos/$1/releases/latest" | grep -Po '"tag_name": "v\K[^"]*'
+}
+
+# Downloads a file from the latest tag of a GitHub repo.
+#
+# $1: GitHub slug in the form "owner/repo".
+# $2: Base filename to download from the tag.
+#   If the filename contains the version of the latest tag, replace it with the
+#   placeholder string @VERSION@.
+#
+# Return: Path to temporary downloaded file. This will be in $TMPDIR.
+download_latest_github_tag() {
+    local slug=$1
+    local filename="$2"
+
+    if [[ "$filename" =~ @VERSION@ ]]; then
+        local version
+        version="$(read_latest_github_tag "$slug")"
+        filename="${filename/@VERSION@/$version}"
+    fi
+
+    local dst="$TMPDIR/$filename"
+    curl -Lo "$dst" "https://github.com/$slug/releases/latest/download/$filename"
+
+    echo "$dst"
 }
 
 # Installs Oh My Zsh custom themes or plugins.
@@ -65,6 +91,10 @@ mkdir -p "$OMZ_COMPS"
 # Neovim 'undodir'
 mkdir -p ~/.local/share/nvim/undo
 
+# Temporary directory for downloaded files
+TMPDIR="$(mktemp -d /tmp/setup.$$.XXXXXXXX)"
+trap 'rm -rf $TMPDIR' EXIT
+
 #######################################################################
 # Packages
 install_if_missing zsh ranger atool nodejs npm xclip archivemount tldr
@@ -79,23 +109,13 @@ fi
 
 #######################################################################
 
-# bat
-if ! cmd_exists bat; then
-    BAT_VER="$(read_latest_github_tag 'sharkdp/bat')"
-    tmpdir="$(mktemp -d)"
-    curl -Lo "$tmpdir/bat.deb" \
-        "https://github.com/sharkdp/bat/releases/latest/download/bat-musl_${BAT_VER}_amd64.deb"
-    yes_install "$tmpdir/bat.deb"
-fi
-
-# fd
-if ! cmd_exists fd; then
-    FD_VER="$(read_latest_github_tag 'sharkdp/fd')"
-    tmpdir="$(mktemp -d)"
-    curl -Lo "$tmpdir/fd.deb" \
-        "https://github.com/sharkdp/fd/releases/latest/download/fd-musl_${FD_VER}_amd64.deb"
-    yes_install "$tmpdir/fd.deb"
-fi
+cmd_exists bat ||
+    yes_install "$(download_latest_github_tag 'sharkdp/bat' 'bat_@VERSION@_amd64.deb')"
+cmd_exists fd ||
+    yes_install "$(download_latest_github_tag 'sharkdp/fd' 'fd_@VERSION@_amd64.deb')"
+cmd_exists viv ||
+    tar xf "$(download_latest_github_tag 'jannis-baum/Vivify' 'vivify-linux.tar.gz')" \
+        --directory ~/.local/bin --strip-components=1
 
 # fzf
 if ! cmd_exists fzf; then
@@ -112,18 +132,9 @@ git clone git@github.com:jchook/ranger-zoxide.git \
 
 # lazygit
 if ! cmd_exists lazygit; then
-    LAZYGIT_VERSION="$(read_latest_github_tag 'jesseduffield/lazygit')"
-    tmpdir="$(mktemp -d)"
-    curl -Lo "$tmpdir/lazygit.tar.gz" "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-    tar xf "$tmpdir/lazygit.tar.gz" --directory="$tmpdir" lazygit
-    install "$tmpdir/lazygit" ~/.local/bin
-fi
-
-# Vivify
-if ! cmd_exists viv; then
-    tmpdir="$(mktemp -d)"
-    curl -Lo "$tmpdir/vivify-linux.tar.gz" https://github.com/jannis-baum/Vivify/releases/latest/download/vivify-linux.tar.gz
-    tar xf "$tmpdir/vivify-linux.tar.gz" --directory ~/.local/bin --strip-components=1
+    tar xf "$(download_latest_github_tag 'jesseduffield/lazygit' 'lazygit_@VERSION@_Linux_x86_64.tar.gz')" \
+        --directory="$TMPDIR" lazygit
+    install "$TMPDIR/lazygit" ~/.local/bin
 fi
 
 # pyenv
@@ -154,7 +165,7 @@ fi
 # Neovim
 if ! cmd_exists nvim; then
     NVIM="$HOME/.local/bin/nvim"
-    curl -Lo "$NVIM" https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    mv "$(download_latest_github_tag 'neovim/neovim' nvim.appimage)" "$NVIM"
     chmod u+x "$NVIM"
     "$NVIM" --headless +qa
 fi
