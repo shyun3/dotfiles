@@ -64,11 +64,12 @@ mkdir -p ~/.local/share/nvim/undo
 #######################################################################
 # Packages
 install_if_missing zsh ranger atool nodejs npm bat xclip pipx archivemount \
-    tldr xdg-utils
+    tldr
 cmd_exists ctags-universal || yes_install universal-ctags
 cmd_exists fd || yes_install fd-find
 cmd_exists rg || yes_install ripgrep
 cmd_exists mountavfs || yes_install avfs
+cmd_exists xdg-open || yes_install xdg-utils
 
 if [[ $(uname -r) =~ WSL ]]; then
     cmd_exists wslview || yes_install wslu
