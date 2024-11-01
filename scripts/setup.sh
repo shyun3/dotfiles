@@ -67,7 +67,7 @@ mkdir -p ~/.local/share/nvim/undo
 
 #######################################################################
 # Packages
-install_if_missing zsh ranger atool nodejs npm bat xclip archivemount tldr
+install_if_missing zsh ranger atool nodejs npm xclip archivemount tldr
 cmd_exists ctags-universal || yes_install universal-ctags
 cmd_exists fd || yes_install fd-find
 cmd_exists rg || yes_install ripgrep
@@ -79,6 +79,15 @@ if [[ $(uname -r) =~ WSL ]]; then
 fi
 
 #######################################################################
+
+# bat
+if ! cmd_exists bat; then
+    BAT_VER="$(read_latest_github_tag 'sharkdp/bat')"
+    tmpdir="$(mktemp -d)"
+    curl -Lo "$tmpdir/bat.deb" \
+        "https://github.com/sharkdp/bat/releases/latest/download/bat-musl_${BAT_VER}_amd64.deb"
+    yes_install "$tmpdir/bat.deb"
+fi
 
 # fzf
 if ! cmd_exists fzf; then

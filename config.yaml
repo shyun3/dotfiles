@@ -75,10 +75,6 @@ dotfiles:
   f_lazygit_config.yml:
     src: config/lazygit/config.yml
     dst: ~/.config/lazygit/config.yml
-  f_bat:
-    src: /usr/bin/batcat
-    dst: ~/.local/bin/bat
-    link: absolute
   d_nvim:
     src: config/nvim
     dst: ~/.config/nvim
@@ -98,7 +94,6 @@ profiles:
       - f_ranger_scope.sh
       - f_global.ctags
       - f_lazygit_config.yml
-      - f_bat
       - d_nvim
     actions:
       - setup_sh
