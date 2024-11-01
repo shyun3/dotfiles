@@ -69,7 +69,6 @@ mkdir -p ~/.local/share/nvim/undo
 # Packages
 install_if_missing zsh ranger atool nodejs npm xclip archivemount tldr
 cmd_exists ctags-universal || yes_install universal-ctags
-cmd_exists fd || yes_install fd-find
 cmd_exists rg || yes_install ripgrep
 cmd_exists mountavfs || yes_install avfs
 cmd_exists xdg-open || yes_install xdg-utils
@@ -87,6 +86,15 @@ if ! cmd_exists bat; then
     curl -Lo "$tmpdir/bat.deb" \
         "https://github.com/sharkdp/bat/releases/latest/download/bat-musl_${BAT_VER}_amd64.deb"
     yes_install "$tmpdir/bat.deb"
+fi
+
+# fd
+if ! cmd_exists fd; then
+    FD_VER="$(read_latest_github_tag 'sharkdp/fd')"
+    tmpdir="$(mktemp -d)"
+    curl -Lo "$tmpdir/fd.deb" \
+        "https://github.com/sharkdp/fd/releases/latest/download/fd-musl_${FD_VER}_amd64.deb"
+    yes_install "$tmpdir/fd.deb"
 fi
 
 # fzf
