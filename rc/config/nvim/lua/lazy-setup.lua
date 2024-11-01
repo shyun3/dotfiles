@@ -1,12 +1,11 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   local out = vim.fn.system({
     "git",
     "clone",
-    "--filter=blob:none",
+    "--single-branch",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
     lazypath,
   })
 
@@ -18,6 +17,20 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     }, true, {})
     vim.fn.getchar()
     os.exit(1)
+  end
+
+  -- Derived from https://github.com/folke/lazy.nvim/issues/287#issuecomment-1370876298
+  local lock_file = io.open(vim.fn.stdpath("config") .. "/lazy-lock.json", "r")
+  if lock_file then
+    local lock_data = lock_file:read("*a")
+    local lazy_lock = vim.json.decode(lock_data)
+    vim.fn.system({
+      "git",
+      "-C",
+      lazypath,
+      "checkout",
+      lazy_lock["lazy.nvim"].commit,
+    })
   end
 end
 vim.opt.rtp:prepend(lazypath)
