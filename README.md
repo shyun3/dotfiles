@@ -25,7 +25,8 @@ Clone the repo:
 git clone https://github.com/shyun3/dotfiles.git $Env:UserProfile/.config/dotdrop
 ```
 
-Run `bootstrap.ps1`. This will install `dotdrop` and all dependencies.
+Run `bootstrap.ps1`. This will install `dotdrop` and all dependencies. Restart
+PowerShell to apply any changes to `PATH`.
 
 ### WSL
 
@@ -37,11 +38,8 @@ wsl --install
 
 ### Ubuntu
 
-Install `dotdrop`:
-```sh
-sudo apt update
-sudo apt install dotdrop
-```
+Launch Bash and run `bootstrap.sh`. This will install `dotdrop` and all
+dependencies. Restart the shell to apply any changes to `PATH`.
 
 Clone the repo:
 ```sh

@@ -55,16 +55,15 @@ install_omz_custom() {
 
 #######################################################################
 
-# These bin directories will only be added to PATH if they exist, see zprofile
-mkdir -p ~/bin ~/.local/bin
+# This bin directory will only be added to PATH if it exists, see zprofile
+mkdir -p ~/bin
 
 # Neovim 'undodir'
 mkdir -p ~/.local/share/nvim/undo
 
 #######################################################################
 # Packages
-install_if_missing zsh ranger atool nodejs npm bat xclip pipx archivemount \
-    tldr
+install_if_missing zsh ranger atool nodejs npm bat xclip archivemount tldr
 cmd_exists ctags-universal || yes_install universal-ctags
 cmd_exists fd || yes_install fd-find
 cmd_exists rg || yes_install ripgrep
