@@ -3,7 +3,11 @@ return {
 
   config = function()
     vim.fn["project#rc"]()
-    vim.cmd.source(vim.fn.stdpath("config") .. "/projects.vim")
+
+    local projects = vim.fn.stdpath("config") .. "/projects.vim"
+    if vim.fn.filereadable(projects) == 0 then return end
+
+    vim.cmd.source(projects)
 
     if vim.fn.argc(-1) == 0 then
       local group = vim.api.nvim_create_augroup("project", {})
