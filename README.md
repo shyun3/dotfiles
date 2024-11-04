@@ -59,12 +59,14 @@ PowerShell may need restarting to apply all changes.
 
 ### Linux
 
-If using WSL, apply the following as well:
+If using WSL, apply the following first:
 ```sh
 sudo env HOME="$HOME" "$(which dotdrop)" -p wsl-root install
 ```
 WSL needs restarting to apply all changes. A distribution can be shutdown in
 PowerShell by running `wsl --terminate <distroName>`.
+
+---
 
 ```sh
 dotdrop -p linux install

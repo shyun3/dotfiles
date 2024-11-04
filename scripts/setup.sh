@@ -3,10 +3,11 @@
 # Sets up environment, installs packages
 # Should be idempotent
 
-set -eo pipefail
+set -euo pipefail
 
 cmd_exists() {
-    hash "$1" 2> /dev/null
+    local cmd="${1:?empty}"
+    hash "$cmd" 2> /dev/null
 }
 
 yes_install() {
@@ -27,8 +28,11 @@ install_if_missing() {
 #
 # Return: Tag name, without a leading 'v'.
 read_latest_github_tag() {
+    local slug="${1:?empty}"
+
     # Derived from https://github.com/jesseduffield/lazygit?tab=readme-ov-file#ubuntu
-    curl -s "https://api.github.com/repos/$1/releases/latest" | grep -Po '"tag_name": "v\K[^"]*'
+    curl -s "https://api.github.com/repos/$slug/releases/latest" |
+        grep -Po '"tag_name": "v\K[^"]*'
 }
 
 # Downloads a file from the latest tag of a GitHub repo.
@@ -38,18 +42,19 @@ read_latest_github_tag() {
 #   If the filename contains the version of the latest tag, replace it with the
 #   placeholder string @VERSION@.
 #
-# Return: Path to temporary downloaded file. This will be in $TMPDIR.
+# Return: Path to temporary downloaded file. This will be in $SETUP_DIR.
 download_latest_github_tag() {
-    local slug=$1
-    local filename="$2"
+    local slug="${1:?empty}"
+    local filename="${2:?empty}"
 
     if [[ "$filename" =~ @VERSION@ ]]; then
         local version
         version="$(read_latest_github_tag "$slug")"
+
         filename="${filename/@VERSION@/$version}"
     fi
 
-    local dst="$TMPDIR/$filename"
+    local dst="$SETUP_DIR/$filename"
     curl -Lo "$dst" "https://github.com/$slug/releases/latest/download/$filename"
 
     echo "$dst"
@@ -60,13 +65,13 @@ download_latest_github_tag() {
 # $1: Customization type, must be "themes" or "plugins".
 # $rest: GitHub slugs in the form "owner/repo".
 install_omz_custom() {
+    local custom_type="${1:?empty}"
+    shift
+
     local -A types=([themes]=1 [plugins]=1)
-    if [[ -z "${types[$1]}" ]]; then
+    if [[ -z "${types[$custom_type]}" ]]; then
         return 1
     fi
-
-    local custom_type=$1
-    shift
 
     local custom_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
     local src
@@ -92,8 +97,8 @@ mkdir -p "$OMZ_COMPS"
 mkdir -p ~/.local/share/nvim/undo
 
 # Temporary directory for downloaded files
-TMPDIR="$(mktemp -d /tmp/setup.$$.XXXXXXXX)"
-trap 'rm -rf $TMPDIR' EXIT
+SETUP_DIR="$(mktemp -d /tmp/setup.$$.XXXXXXXX)"
+trap 'rm -rf $SETUP_DIR' EXIT
 
 #######################################################################
 # Packages
@@ -133,11 +138,12 @@ git clone git@github.com:jchook/ranger-zoxide.git \
 # lazygit
 if ! cmd_exists lazygit; then
     tar xf "$(download_latest_github_tag 'jesseduffield/lazygit' 'lazygit_@VERSION@_Linux_x86_64.tar.gz')" \
-        --directory="$TMPDIR" lazygit
-    install "$TMPDIR/lazygit" ~/.local/bin
+        --directory="$SETUP_DIR" lazygit
+    install "$SETUP_DIR/lazygit" ~/.local/bin
 fi
 
 # pyenv
+PYENV_ROOT="${PYENV_ROOT:-}"
 if [[ -z "$PYENV_ROOT" ]]; then
     curl https://pyenv.run | bash
 
@@ -177,6 +183,7 @@ done
 
 #######################################################################
 # Oh My Zsh
+ZSH="${ZSH:-}"
 if [[ -z "$ZSH" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 fi
@@ -192,6 +199,7 @@ fi
 
 #######################################################################
 # chsh (should probably be last)
+SHELL="${SHELL:-}"
 case "$SHELL" in
     */zsh) ;;
     *)
