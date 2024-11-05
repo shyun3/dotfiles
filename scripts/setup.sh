@@ -89,10 +89,6 @@ install_omz_custom() {
 # This bin directory will only be added to PATH if it exists, see zprofile
 mkdir -p ~/bin
 
-# For Oh My Zsh completions that are setup
-OMZ_COMPS="$HOME/.oh-my-zsh/completions"
-mkdir -p "$OMZ_COMPS"
-
 # Neovim 'undodir'
 mkdir -p ~/.local/share/nvim/undo
 
@@ -190,6 +186,9 @@ fi
 
 install_omz_custom themes romkatv/powerlevel10k
 install_omz_custom plugins zsh-users/zsh-syntax-highlighting zsh-users/zsh-autosuggestions
+
+OMZ_COMPS="$HOME/.oh-my-zsh/completions"
+mkdir -p "$OMZ_COMPS"
 
 # dotdrop completion
 if [[ ! -f "$OMZ_COMPS/_dotdrop-completion.zsh" ]]; then
