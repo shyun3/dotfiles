@@ -42,17 +42,10 @@ return {
     },
 
     config = function()
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend(
-        "force",
-        capabilities,
-        require("cmp_nvim_lsp").default_capabilities()
-      )
-
       require("mason-lspconfig").setup_handlers({
         function(server_name)
           require("lspconfig")[server_name].setup({
-            capabilities = capabilities,
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
             on_attach = on_lsp_attach,
           })
         end,
