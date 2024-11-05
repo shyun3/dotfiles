@@ -102,7 +102,7 @@ trap 'rm -rf $SETUP_DIR' EXIT
 
 #######################################################################
 # Packages
-install_if_missing zsh ranger atool nodejs npm xclip archivemount tldr
+install_if_missing zsh ranger atool nodejs npm xclip archivemount tldr tree
 cmd_exists ctags-universal || yes_install universal-ctags
 cmd_exists rg || yes_install ripgrep
 cmd_exists mountavfs || yes_install avfs
