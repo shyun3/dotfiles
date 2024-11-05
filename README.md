@@ -38,13 +38,13 @@ wsl --install
 
 ### Ubuntu
 
-Launch Bash and run `bootstrap.sh`. This will install `dotdrop` and all
-dependencies. Restart the shell to apply any changes to `PATH`.
-
 Clone the repo:
 ```sh
 git clone git@github.com:shyun3/dotfiles.git ~/.config/dotdrop
 ```
+
+Launch Bash and run `bootstrap.sh`. This will install `dotdrop` and all
+dependencies. Restart the shell to apply any changes to `PATH`.
 
 ## Installation
 
@@ -66,8 +66,7 @@ sudo env HOME="$HOME" "$(which dotdrop)" -p wsl-root install
 WSL needs restarting to apply all changes. A distribution can be shutdown in
 PowerShell by running `wsl --terminate <distroName>`.
 
----
-
+For all Linux distributions:
 ```sh
 dotdrop -p linux install
 ```

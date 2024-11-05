@@ -137,7 +137,10 @@ return {
         }),
       },
 
-      experimental = { ghost_text = true },
+      experimental = {
+        -- Helpful with previewing LSP snippets
+        ghost_text = true,
+      },
     })
 
     cmp.setup.cmdline({ "/", "?" }, {
