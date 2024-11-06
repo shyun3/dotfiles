@@ -203,6 +203,6 @@ case "$SHELL" in
     */zsh) ;;
     *)
         echo "Changing shell to zsh..."
-        chsh -s "$(which zsh)" "$USER"
+        sudo chsh -s "$(which zsh)" "$USER"
         ;;
 esac
