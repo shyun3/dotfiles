@@ -9,20 +9,6 @@ return {
   },
 
   {
-    "zapling/mason-lock.nvim",
-    dependencies = { "williamboman/mason.nvim" },
-
-    opts = {},
-  },
-
-  {
-    "zapling/mason-conform.nvim",
-    dependencies = { "williamboman/mason.nvim", "stevearc/conform.nvim" },
-
-    opts = {},
-  },
-
-  {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
 
@@ -44,6 +30,19 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     dependencies = { "williamboman/mason.nvim" },
 
-    opts = { ensure_installed = { "shellcheck" } },
+    opts = {
+      ensure_installed = {
+        -- Formatters
+        "black",
+        { "clang-format", version = "19.1.3" },
+        "isort",
+        "prettier",
+        "shfmt",
+        "stylua",
+
+        -- Linters
+        "shellcheck",
+      },
+    },
   },
 }
