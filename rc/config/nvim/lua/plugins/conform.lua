@@ -87,7 +87,7 @@ return {
 
   -- Derived from lazy loading recipe
   event = "BufWritePre",
-  cmd = { "ConformInfo", "Format" },
+  cmd = { "AutoFormatDisable", "AutoFormatEnable", "ConformInfo", "Format" },
 
   keys = {
     {
