@@ -6,7 +6,7 @@
 set -euo pipefail
 
 cmd_exists() {
-    local cmd="${1:?empty}"
+    local cmd="${1:?}"
     hash "$cmd" 2> /dev/null
 }
 
@@ -28,7 +28,7 @@ install_if_missing() {
 #
 # Return: Tag name, without a leading 'v'.
 read_latest_github_tag() {
-    local slug="${1:?empty}"
+    local slug="${1:?}"
 
     # Derived from https://github.com/jesseduffield/lazygit?tab=readme-ov-file#ubuntu
     curl -s "https://api.github.com/repos/$slug/releases/latest" |
@@ -44,8 +44,8 @@ read_latest_github_tag() {
 #
 # Return: Path to temporary downloaded file. This will be in $SETUP_DIR.
 download_latest_github_tag() {
-    local slug="${1:?empty}"
-    local filename="${2:?empty}"
+    local slug="${1:?}"
+    local filename="${2:?}"
 
     if [[ "$filename" =~ @VERSION@ ]]; then
         local version
@@ -65,7 +65,7 @@ download_latest_github_tag() {
 # $1: Customization type, must be "themes" or "plugins".
 # $rest: GitHub slugs in the form "owner/repo".
 install_omz_custom() {
-    local custom_type="${1:?empty}"
+    local custom_type="${1:?}"
     shift
 
     local -A types=([themes]=1 [plugins]=1)
