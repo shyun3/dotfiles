@@ -107,7 +107,8 @@ git config -f ~/personal/.gitprofile user.email fake@priv.tld
 
 ### Neovim
 
-Run `:checkhealth` to see if there are issues that need resolving.
+* Run `:checkhealth` to see if there are issues that need resolving
+* See `$VIMRUNTIME` to access Neovim source files
 
 ### Windows Terminal
 

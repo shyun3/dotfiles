@@ -9,7 +9,7 @@ vim.g.python3_host_prog = "~/.pyenv/versions/neovim/bin/python3"
 -- Derived from https://github.com/neovim/neovim/issues/10223#issuecomment-703544303
 if vim.fn.exists("$DISPLAY") then
   vim.g.clipboard = {
-    name = "xl-clipboard with ^M Trim",
+    name = "xclip with ^M Trim",
     copy = {
       ["+"] = "xclip -i -sel clip",
       ["*"] = "xclip -i",
