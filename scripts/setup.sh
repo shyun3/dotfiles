@@ -107,10 +107,16 @@ fi
 
 #######################################################################
 
-cmd_exists bat ||
+if ! cmd_exists bat; then
     yes_install "$(download_latest_github_tag 'sharkdp/bat' 'bat_@VERSION@_amd64.deb')"
-cmd_exists fd ||
+    sudo apt-mark hold bat # On Ubuntu, the executable is installed as `batcat`
+fi
+
+if ! cmd_exists fd; then
     yes_install "$(download_latest_github_tag 'sharkdp/fd' 'fd_@VERSION@_amd64.deb')"
+    sudo apt-mark hold fd # On Ubuntu, the executable is installed as `fdfind`
+fi
+
 cmd_exists viv ||
     tar xf "$(download_latest_github_tag 'jannis-baum/Vivify' 'vivify-linux.tar.gz')" \
         --directory ~/.local/bin --strip-components=1
