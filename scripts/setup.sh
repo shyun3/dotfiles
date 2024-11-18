@@ -6,8 +6,7 @@
 set -euo pipefail
 
 cmd_exists() {
-    local cmd="${1:?}"
-    hash "$cmd" 2> /dev/null
+    hash "$1" 2> /dev/null
 }
 
 yes_install() {
@@ -28,10 +27,8 @@ install_if_missing() {
 #
 # Return: Tag name, without a leading 'v'.
 read_latest_github_tag() {
-    local slug="${1:?}"
-
     # Derived from https://github.com/jesseduffield/lazygit?tab=readme-ov-file#ubuntu
-    curl -s "https://api.github.com/repos/$slug/releases/latest" |
+    curl -s "https://api.github.com/repos/$1/releases/latest" |
         grep -Po '"tag_name": "v\K[^"]*'
 }
 
