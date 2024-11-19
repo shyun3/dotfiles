@@ -1,12 +1,4 @@
 return {
-  {
-    "tpope/vim-endwise",
-    init = function()
-      -- To disable <CR> from being mapped
-      vim.g.endwise_no_mappings = 1
-    end,
-  },
-
   "tpope/vim-fugitive",
   "tpope/vim-projectionist",
   "tpope/vim-repeat",
