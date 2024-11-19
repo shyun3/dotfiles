@@ -1,6 +1,9 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    "RRethy/nvim-treesitter-endwise",
+  },
   build = ":TSUpdate",
 
   config = function()
@@ -70,6 +73,8 @@ return {
           },
         },
       },
+
+      endwise = { enable = true },
     })
   end,
 }
