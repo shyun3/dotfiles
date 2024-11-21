@@ -36,6 +36,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "b77921fdc44833c994fdb389d658ccbce5490c16" },
   "tagbar": { "branch": "master", "commit": "0815b5455c792a610d28ff3e7981642c9cf05d62" },
   "ultisnips": { "branch": "master", "commit": "49dc8cb2086db19d385791c8e1635723b0fd95c7" },
+  "vim-4dgl": { "branch": "main", "commit": "8bb447d00877bc2651838c2f112c6e87bf11a445" },
   "vim-airline": { "branch": "master", "commit": "16c1638f93f93fad41da8cb6eef2bcd8eed0a57a" },
   "vim-airline-themes": { "branch": "master", "commit": "a9aa25ce323b2dd04a52706f4d1b044f4feb7617" },
   "vim-asterisk": { "branch": "master", "commit": "77e97061d6691637a034258cc415d98670698459" },
