@@ -1,9 +1,22 @@
 return {
   {
     "tpope/vim-endwise",
+
     init = function()
       -- To disable <CR> from being mapped
       vim.g.endwise_no_mappings = 1
+    end,
+
+    config = function()
+      -- Disable filetypes handled by treesitter
+      local disable_langs = { "lua", "vim" }
+      for _, lang in pairs(disable_langs) do
+        vim.api.nvim_clear_autocmds({
+          group = "endwise",
+          event = "FileType",
+          pattern = lang,
+        })
+      end
     end,
   },
 
