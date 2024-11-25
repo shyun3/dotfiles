@@ -5,4 +5,6 @@ vim.opt_local.tabstop = tabstop
 vim.opt_local.softtabstop = tabstop
 vim.opt_local.shiftwidth = tabstop
 
-vim.g.vim_indent_cont = tabstop
+if vim.fn.exists("g:vim_indent_cont") == 0 then
+  vim.g.vim_indent_cont = tabstop
+end
