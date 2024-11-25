@@ -10,21 +10,18 @@ return {
     vim.cmd.source(projects)
 
     if vim.fn.argc(-1) == 0 then
-      local group = vim.api.nvim_create_augroup("project", {})
-
       -- Show welcome screen on startup, making sure to display it on the main
       -- window and not in the Lazy floating window which pops up when
       -- installing missing plugins
       vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
-        group = group,
+        group = vim.api.nvim_create_augroup("project", {}),
         pattern = "*",
+        once = true,
         callback = function()
           if vim.fn.winnr() ~= 1 then return end
 
           -- Derived from project.vim
           if vim.fn.line2byte(vim.fn.line("$")) == -1 then vim.cmd.Welcome() end
-
-          vim.api.nvim_clear_autocmds({ group = group })
         end,
       })
     end

@@ -12,6 +12,8 @@ return {
     -- forced, even though the hop gets cancelled. Of course, this assumes that
     -- the hop uses this function.
     local orig_hint_with_callback = require("hop").hint_with_callback
+
+    ---@diagnostic disable-next-line:duplicate-set-field
     require("hop").hint_with_callback = function(...)
       orig_hint_with_callback(...)
       if not hopped then require("util").reset_forced_motion() end
@@ -21,6 +23,8 @@ return {
     -- Same as `move_cursor_to` but records if a hop was executed. Of course,
     -- this assumes that the hop uses this function.
     local orig_move_cursor_to = require("hop").move_cursor_to
+
+    ---@diagnostic disable-next-line:duplicate-set-field
     require("hop").move_cursor_to = function(...)
       orig_move_cursor_to(...)
       hopped = true
