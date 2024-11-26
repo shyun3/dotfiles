@@ -38,13 +38,16 @@ wsl --install
 
 ### Ubuntu
 
+Install `dotdrop`:
+```sh
+sudo apt update
+sudo apt install dotdrop
+```
+
 Clone the repo:
 ```sh
 git clone git@github.com:shyun3/dotfiles.git ~/.config/dotdrop
 ```
-
-Launch Bash and run `bootstrap.sh`. This will install `dotdrop` and all
-dependencies. Restart the shell to apply any changes to `PATH`.
 
 ## Installation
 

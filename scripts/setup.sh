@@ -83,8 +83,8 @@ install_omz_custom() {
 
 #######################################################################
 
-# This bin directory will only be added to PATH if it exists, see zprofile
-mkdir -p ~/bin
+# These bin directories will only be added to PATH if they exist, see zprofile
+mkdir -p ~/bin ~/.local/bin
 
 # Neovim 'undodir'
 mkdir -p ~/.local/share/nvim/undo
@@ -95,7 +95,7 @@ trap 'rm -rf $SETUP_DIR' EXIT
 
 #######################################################################
 # Packages
-install_if_missing zsh ranger atool nodejs npm xclip archivemount tldr tree
+install_if_missing zsh ranger atool nodejs npm xclip pipx archivemount tldr tree
 cmd_exists ctags-universal || yes_install universal-ctags
 cmd_exists rg || yes_install ripgrep
 cmd_exists mountavfs || yes_install avfs
@@ -175,7 +175,7 @@ if ! cmd_exists nvim; then
 fi
 
 # pipx
-pip_pkgs=(ipython poetry)
+pip_pkgs=(dotdrop ipython poetry)
 for pkg in "${pip_pkgs[@]}"; do
     cmd_exists "$pkg" || pipx install "$pkg"
 done
