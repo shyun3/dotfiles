@@ -1,6 +1,7 @@
 return {
   {
-    "tpope/vim-endwise",
+    "shyun3/vim-endwise",
+    branch = "personal",
 
     init = function()
       -- To disable <CR> from being mapped

@@ -58,7 +58,7 @@ return {
 
   dependencies = {
     "windwp/nvim-autopairs", -- To make sure <CR> gets mapped first
-    "tpope/vim-endwise",
+    "shyun3/vim-endwise",
 
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
