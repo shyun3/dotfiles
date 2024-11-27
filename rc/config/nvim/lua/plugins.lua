@@ -12,7 +12,7 @@ return {
       vim.cmd([[colorscheme molokai]])
 
       -- See `:h treesitter-highlight-groups`
-      vim.cmd.highlight("link @variable NONE")
+      vim.api.nvim_set_hl(0, "@variable", { fg = "fg" })
       vim.cmd.highlight("link @variable.parameter NONE")
 
       -- See `:h lsp-semantic-highlight`
