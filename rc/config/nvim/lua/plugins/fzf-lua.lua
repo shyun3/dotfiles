@@ -64,7 +64,7 @@ return {
       desc = "fzf-lua: Old files",
     },
     {
-      "<Leader>tt",
+      "<A-h>",
       function()
         require("util").go_to_editable_window()
         require("fzf-lua").tags()
@@ -72,7 +72,7 @@ return {
       desc = "fzf-lua: Tags",
     },
     {
-      "<Leader>tb",
+      "<A-k>",
       function()
         -- `FzfLua btags` by default uses an existing tags file
         -- Generate the latest tags for the current file
