@@ -1,6 +1,8 @@
 --map-python=+.pyi
+
 --langdef=4DGL
 --langmap=4DGL:.4dg.4DG.4Dg
---regex-4DGL=/^[[:space:]]*#constant[[:space:]]+([a-zA-Z_][[:alnum:]_]*)/\1/c,constant/
---regex-4DGL=/^[[:space:]]*func[[:space:]]+([a-zA-Z_][[:alnum:]_]*)/\1/f,function/
---regex-4DGL=/^[[:space:]]*#USE[[:space:]]+([a-zA-Z_][[:alnum:]_]*)/\1/u,use/
+--regex-4DGL=/^[ \t]*\/\///x
+--regex-4DGL=/^[ \t]*#constant[ \t]+([a-zA-Z_][[:alnum:]_]*)/\1/c,constant/
+--regex-4DGL=/^[ \t]*func[ \t]+([a-zA-Z_][[:alnum:]_]*)[ \t]*\(/\1/f,function/
+--regex-4DGL=/^[ \t]*#USE[ \t]+([a-zA-Z_][[:alnum:]_]*)/\1/u,use/
