@@ -14,12 +14,16 @@
 --_tabledef-4DGL=constantval
 --_tabledef-4DGL=use
 --_tabledef-4DGL=usecont
+--_tabledef-4DGL=func
+--_tabledef-4DGL=funcparamsstart
+--_tabledef-4DGL=funcparams
+--_tabledef-4DGL=funcbody
 
 --_mtable-regex-4DGL=top/\/\///{tenter=lcomment}
 --_mtable-regex-4DGL=top/\/\*//{tenter=comment}
 --_mtable-regex-4DGL=top/#constant\b//{tenter=constant}
---_mtable-regex-4DGL=top/func[ \t]+([a-zA-Z_]\w*)/\1/f/
 --_mtable-regex-4DGL=top/#USE\b//{tenter=use}
+--_mtable-regex-4DGL=top/func\b//{tenter=func}
 --_mtable-regex-4DGL=top/.//
 
 --_mtable-regex-4DGL=lcomment/\n//{tleave}
@@ -52,3 +56,26 @@
 --_mtable-regex-4DGL=usecont/,//{tjump=use}
 --_mtable-regex-4DGL=usecont/[ \t]+//
 --_mtable-regex-4DGL=usecont/.//{tleave}
+
+--_mtable-regex-4DGL=func/\/\///{tjump=lcomment}
+--_mtable-regex-4DGL=func/\/\*//{tenter=comment}
+--_mtable-regex-4DGL=func/([a-zA-Z_]\w*)/\1/f/{tjump=funcparamsstart}
+--_mtable-regex-4DGL=func/[ \t]+//
+--_mtable-regex-4DGL=func/.//{tleave}
+
+--_mtable-regex-4DGL=funcparamsstart/\/\///{tjump=lcomment}
+--_mtable-regex-4DGL=funcparamsstart/\/\*//{tenter=comment}
+--_mtable-regex-4DGL=funcparamsstart/\(//{tjump=funcparams}
+--_mtable-regex-4DGL=funcparamsstart/.//{tleave}
+
+--_mtable-regex-4DGL=funcparams/\/\///{tjump=lcomment}
+--_mtable-regex-4DGL=funcparams/\/\*//{tenter=comment}
+--_mtable-regex-4DGL=funcparams/\)//{tjump=funcbody}
+--_mtable-regex-4DGL=funcparams/.//
+
+--_mtable-regex-4DGL=funcbody/\/\///{tjump=lcomment}
+--_mtable-regex-4DGL=funcbody/\/\*//{tenter=comment}
+--_mtable-regex-4DGL=funcbody/#constant\b//{tenter=constant}
+--_mtable-regex-4DGL=funcbody/#USE\b//{tenter=use}
+--_mtable-regex-4DGL=funcbody/endfunc//{tleave}
+--_mtable-regex-4DGL=funcbody/.//
