@@ -11,13 +11,14 @@
 --_tabledef-4DGL=lcomment
 --_tabledef-4DGL=comment
 --_tabledef-4DGL=constant
+--_tabledef-4DGL=constantval
 --_tabledef-4DGL=use
 --_tabledef-4DGL=usecont
 
 --_mtable-regex-4DGL=top/\/\///{tenter=lcomment}
 --_mtable-regex-4DGL=top/\/\*//{tenter=comment}
 --_mtable-regex-4DGL=top/#constant\b//{tenter=constant}
---_mtable-regex-4DGL=top/func[ \t]+([a-zA-Z_][[:alnum:]_]*)/\1/f/
+--_mtable-regex-4DGL=top/func[ \t]+([a-zA-Z_]\w*)/\1/f/
 --_mtable-regex-4DGL=top/#USE\b//{tenter=use}
 --_mtable-regex-4DGL=top/.//
 
@@ -29,13 +30,20 @@
 
 --_mtable-regex-4DGL=constant/\/\///{tjump=lcomment}
 --_mtable-regex-4DGL=constant/\/\*//{tenter=comment}
---_mtable-regex-4DGL=constant/([a-zA-Z_][[:alnum:]_]*)/\1/c/{tleave}
+--_mtable-regex-4DGL=constant/([a-zA-Z_]\w*)/\1/c/{tjump=constantval}
 --_mtable-regex-4DGL=constant/[ \t]+//
 --_mtable-regex-4DGL=constant/.//{tleave}
 
+--_mtable-regex-4DGL=constantval/\/\///{tjump=lcomment}
+--_mtable-regex-4DGL=constantval/\/\*//{tenter=comment}
+--_mtable-regex-4DGL=constantval/\$[^\n]*//{tleave}
+--_mtable-regex-4DGL=constantval/,//{tjump=constant}
+--_mtable-regex-4DGL=constantval/\n//{tleave}
+--_mtable-regex-4DGL=constantval/.//
+
 --_mtable-regex-4DGL=use/\/\///{tjump=lcomment}
 --_mtable-regex-4DGL=use/\/\*//{tenter=comment}
---_mtable-regex-4DGL=use/([a-zA-Z_][[:alnum:]_]*)/\1/u/{tjump=usecont}
+--_mtable-regex-4DGL=use/([a-zA-Z_]\w*)/\1/u/{tjump=usecont}
 --_mtable-regex-4DGL=use/[ \t]+//
 --_mtable-regex-4DGL=use/.//{tleave}
 
