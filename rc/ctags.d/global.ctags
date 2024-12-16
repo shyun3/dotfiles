@@ -2,7 +2,31 @@
 
 --langdef=4DGL
 --langmap=4DGL:.4dg.4DG.4Dg
---regex-4DGL=/^[ \t]*\/\///x
---regex-4DGL=/^[ \t]*#constant[ \t]+([a-zA-Z_][[:alnum:]_]*)/\1/c,constant/
---regex-4DGL=/^[ \t]*func[ \t]+([a-zA-Z_][[:alnum:]_]*)[ \t]*\(/\1/f,function/
---regex-4DGL=/^[ \t]*#USE[ \t]+([a-zA-Z_][[:alnum:]_]*)/\1/u,use/
+
+--kinddef-4DGL=c,constant,Constant
+--kinddef-4DGL=f,function,Function
+--kinddef-4DGL=u,use,Use directive
+
+--_tabledef-4DGL=top
+--_tabledef-4DGL=lcomment
+--_tabledef-4DGL=comment
+--_tabledef-4DGL=constant
+
+--_mtable-regex-4DGL=top/\/\///{tenter=lcomment}
+--_mtable-regex-4DGL=top/\/\*//{tenter=comment}
+--_mtable-regex-4DGL=top/#constant\b//{tenter=constant}
+--_mtable-regex-4DGL=top/func[ \t]+([a-zA-Z_][[:alnum:]_]*)/\1/f/
+--_mtable-regex-4DGL=top/#USE[ \t]+([a-zA-Z_][[:alnum:]_]*)/\1/u/
+--_mtable-regex-4DGL=top/.//
+
+--_mtable-regex-4DGL=lcomment/\n//{tleave}
+--_mtable-regex-4DGL=lcomment/.//
+
+--_mtable-regex-4DGL=comment/\*\///{tleave}
+--_mtable-regex-4DGL=comment/.//
+
+--_mtable-regex-4DGL=constant/\/\///{tjump=lcomment}
+--_mtable-regex-4DGL=constant/\/\*//{tenter=comment}
+--_mtable-regex-4DGL=constant/([a-zA-Z_][[:alnum:]_]*)/\1/c/{tleave}
+--_mtable-regex-4DGL=constant/[ \t]+//
+--_mtable-regex-4DGL=constant/.//{tleave}
