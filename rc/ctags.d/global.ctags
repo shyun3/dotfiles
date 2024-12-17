@@ -101,19 +101,15 @@
 
 # Top-level variables
 --_tabledef-4DGL=varcont
-
---_mtable-regex-4DGL=var/;//{tleave}
---_mtable-regex-4DGL=var/\/\///{tenter=lcomment}
---_mtable-regex-4DGL=var/\/\*//{tenter=comment}
---_mtable-regex-4DGL=var/\bprivate\b//
---_mtable-regex-4DGL=var/\b([a-zA-Z_]\w*)\b/\1/v/{tjump=varcont}
---_mtable-regex-4DGL=var/.//
-
 --_mtable-regex-4DGL=varcont/;//{tleave}
---_mtable-regex-4DGL=varcont/\/\///{tenter=lcomment}
---_mtable-regex-4DGL=varcont/\/\*//{tenter=comment}
 --_mtable-regex-4DGL=varcont/,//{tjump=var}
---_mtable-regex-4DGL=varcont/.//
+--_mtable-extend-4DGL=varcont+skip_to_name
+--_mtable-extend-4DGL=varcont+skipquoted
+--_mtable-regex-4DGL=varcont/.[^;,\/"']*//
+
+--_mtable-regex-4DGL=var/private\b//
+--_mtable-regex-4DGL=var/([a-zA-Z_]\w*)/\1/v/{tjump=varcont}
+--_mtable-extend-4DGL=var+skip_to_name
 
 # Functions
 --_mtable-regex-4DGL=func/\/\///{tjump=lcomment}
