@@ -17,7 +17,6 @@
 # Tables
 --_tabledef-4DGL=top
 --_tabledef-4DGL=constant
---_tabledef-4DGL=constantval
 --_tabledef-4DGL=use
 --_tabledef-4DGL=usecont
 --_tabledef-4DGL=var
@@ -72,18 +71,18 @@
 --_mtable-regex-4DGL=top/.[^\/"'#vf]*//
 
 # Single-line constants
---_mtable-regex-4DGL=constant/\/\///{tjump=lcomment}
---_mtable-regex-4DGL=constant/\/\*//{tenter=comment}
---_mtable-regex-4DGL=constant/\b([a-zA-Z_]\w*)\b/\1/c/{tjump=constantval}
---_mtable-regex-4DGL=constant/[ \t]+//
---_mtable-regex-4DGL=constant/.//{tleave}
-
---_mtable-regex-4DGL=constantval/\/\///{tjump=lcomment}
---_mtable-regex-4DGL=constantval/\/\*//{tenter=comment}
---_mtable-regex-4DGL=constantval/\$[^\n]*//{tleave}
---_mtable-regex-4DGL=constantval/,//{tjump=constant}
+--_tabledef-4DGL=constantval
 --_mtable-regex-4DGL=constantval/\n//{tleave}
---_mtable-regex-4DGL=constantval/.//
+--_mtable-regex-4DGL=constantval/,//{tjump=constant}
+--_mtable-regex-4DGL=constantval/\$[^\n]*//
+--_mtable-regex-4DGL=constantval/[ \t]+//
+--_mtable-extend-4DGL=constantval+skipcomment
+--_mtable-extend-4DGL=constantval+skipquoted
+--_mtable-regex-4DGL=constantval/.[^\n$,\/"']*//
+
+--_mtable-regex-4DGL=constant/([a-zA-Z_]\w*)/\1/c/{tjump=constantval}
+--_mtable-regex-4DGL=constant/[ \t]+//
+--_mtable-extend-4DGL=constant+skipcomment
 
 # Use directives
 --_mtable-regex-4DGL=use/\/\///{tjump=lcomment}
