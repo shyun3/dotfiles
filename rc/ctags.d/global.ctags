@@ -2,6 +2,8 @@
 
 #######################################################################
 # 4DGL
+#
+# Derived from https://github.com/universal-ctags/ctags/blob/master/optlib/cmake.ctags
 
 --langdef=4DGL
 --map-4DGL=+.4dg
@@ -62,13 +64,18 @@
 --_mtable-extend-4DGL=lskip_to_name+skipcomment
 
 # Top level
+#
+# The first regex is for improving performance by matching tokens with leading
+# characters that could not possibly match a later regex and just skipping the
+# whole token (with trailing whitespace)
+--_mtable-regex-4DGL=top/[^"'\/#vf \t\n][^"'\/ \t\n]*\s*//
 --_mtable-extend-4DGL=top+skip_to_name
 --_mtable-extend-4DGL=top+skipquoted
---_mtable-regex-4DGL=top/#constant\b//{tenter=constant}
---_mtable-regex-4DGL=top/#USE\b//{tenter=use}
---_mtable-regex-4DGL=top/var\b//{tenter=var}
---_mtable-regex-4DGL=top/func\b//{tenter=func}
---_mtable-regex-4DGL=top/.[^\/"'#vf]*//
+--_mtable-regex-4DGL=top/#constant\b[ \t]*//{tenter=constant}
+--_mtable-regex-4DGL=top/#USE\b[ \t]*//{tenter=use}
+--_mtable-regex-4DGL=top/var\b\s*//{tenter=var}
+--_mtable-regex-4DGL=top/func\b\s*//{tenter=func}
+--_mtable-regex-4DGL=top/.[^"'\/ \t\n]*\s*//
 
 # Single-line constants
 --_tabledef-4DGL=constantval
