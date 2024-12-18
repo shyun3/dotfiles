@@ -18,7 +18,6 @@
 --_tabledef-4DGL=top
 --_tabledef-4DGL=constant
 --_tabledef-4DGL=use
---_tabledef-4DGL=usecont
 --_tabledef-4DGL=var
 --_tabledef-4DGL=func
 
@@ -85,17 +84,14 @@
 --_mtable-extend-4DGL=constant+skipcomment
 
 # Use directives
---_mtable-regex-4DGL=use/\/\///{tjump=lcomment}
---_mtable-regex-4DGL=use/\/\*//{tenter=comment}
---_mtable-regex-4DGL=use/\b([a-zA-Z_]\w*)\b/\1/u/{tjump=usecont}
---_mtable-regex-4DGL=use/[ \t]+//
---_mtable-regex-4DGL=use/.//{tleave}
-
---_mtable-regex-4DGL=usecont/\/\///{tjump=lcomment}
---_mtable-regex-4DGL=usecont/\/\*//{tenter=comment}
+--_tabledef-4DGL=usecont
 --_mtable-regex-4DGL=usecont/,//{tjump=use}
 --_mtable-regex-4DGL=usecont/[ \t]+//
---_mtable-regex-4DGL=usecont/.//{tleave}
+--_mtable-extend-4DGL=usecont+skipcomment
+
+--_mtable-regex-4DGL=use/([a-zA-Z_]\w*)/\1/u/{tjump=usecont}
+--_mtable-regex-4DGL=use/[ \t]+//
+--_mtable-extend-4DGL=use+skipcomment
 
 # Top-level variables
 --_tabledef-4DGL=varcont
