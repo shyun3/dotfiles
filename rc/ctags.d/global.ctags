@@ -53,12 +53,13 @@
 --_mtable-regex-4DGL=skipquoted/"//{tenter=str}
 
 # Utilities
---_tabledef-4DGL=skipws
---_mtable-regex-4DGL=skipws/\s+//
-
 --_tabledef-4DGL=skip_to_name
---_mtable-extend-4DGL=skip_to_name+skipws
+--_mtable-regex-4DGL=skip_to_name/\s+//
 --_mtable-extend-4DGL=skip_to_name+skipcomment
+
+--_tabledef-4DGL=lskip_to_name
+--_mtable-regex-4DGL=lskip_to_name/[ \t]+//
+--_mtable-extend-4DGL=lskip_to_name+skipcomment
 
 # Top level
 --_mtable-extend-4DGL=top+skip_to_name
@@ -74,24 +75,20 @@
 --_mtable-regex-4DGL=constantval/\n//{tleave}
 --_mtable-regex-4DGL=constantval/,//{tjump=constant}
 --_mtable-regex-4DGL=constantval/\$[^\n]*//
---_mtable-regex-4DGL=constantval/[ \t]+//
---_mtable-extend-4DGL=constantval+skipcomment
+--_mtable-extend-4DGL=constantval+lskip_to_name
 --_mtable-extend-4DGL=constantval+skipquoted
 --_mtable-regex-4DGL=constantval/.[^\n$,\/"']*//
 
 --_mtable-regex-4DGL=constant/([a-zA-Z_]\w*)/\1/c/{tjump=constantval}
---_mtable-regex-4DGL=constant/[ \t]+//
---_mtable-extend-4DGL=constant+skipcomment
+--_mtable-extend-4DGL=constant+lskip_to_name
 
 # Use directives
 --_tabledef-4DGL=usecont
 --_mtable-regex-4DGL=usecont/,//{tjump=use}
---_mtable-regex-4DGL=usecont/[ \t]+//
---_mtable-extend-4DGL=usecont+skipcomment
+--_mtable-extend-4DGL=usecont+lskip_to_name
 
 --_mtable-regex-4DGL=use/([a-zA-Z_]\w*)/\1/u/{tjump=usecont}
---_mtable-regex-4DGL=use/[ \t]+//
---_mtable-extend-4DGL=use+skipcomment
+--_mtable-extend-4DGL=use+lskip_to_name
 
 # Top-level variables
 --_tabledef-4DGL=varcont
