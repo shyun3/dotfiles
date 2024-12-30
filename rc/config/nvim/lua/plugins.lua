@@ -140,14 +140,24 @@ return {
 
   {
     "kkoomen/vim-doge",
-    build = function() vim.fn["doge#install"]() end,
+
+    build = function()
+      -- Unknown function call error is emitted if install is run directly on
+      -- build (maybe related to vim-doge#358), so schedule it to run later.
+      -- Make sure plugin is loaded before then or the same error will occur.
+      vim.api.nvim_create_autocmd("VimEnter", {
+        -- For some reason, this autocommand does not get registered when also
+        -- specifying a group
+        pattern = "*",
+        once = true,
+        command = "call doge#install()",
+      })
+    end,
 
     init = function()
       vim.g.doge_doc_standard_python = "google"
       vim.g.doge_comment_jump_modes = { "n", "s" }
     end,
-
-    keys = "<Leader>d",
   },
 
   {
