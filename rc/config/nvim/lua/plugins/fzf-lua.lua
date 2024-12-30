@@ -5,8 +5,12 @@ return {
   dependencies = { { "nvim-tree/nvim-web-devicons", opts = {} } },
 
   opts = {
-    preview_layout = "vertical",
-    default_previewer = "bat",
+    winopts = {
+      preview = {
+        default = "bat",
+        layout = "vertical",
+      },
+    },
 
     previewers = {
       bat = {
