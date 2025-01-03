@@ -41,7 +41,7 @@
   "vim-airline-themes": { "branch": "master", "commit": "a9aa25ce323b2dd04a52706f4d1b044f4feb7617" },
   "vim-asterisk": { "branch": "master", "commit": "77e97061d6691637a034258cc415d98670698459" },
   "vim-cmake-lists": { "branch": "master", "commit": "deb9d670bc3bfb3993f3b2870e2dab5d7fd0d456" },
-  "vim-ctags-mtable": { "branch": "personal", "commit": "b6be987964f19bb99fa84ab93982265c8ae30d72" },
+  "vim-ctags-mtable": { "branch": "personal", "commit": "131d774696bce5c2b1e24dd8805e2a2b2ff2fa28" },
   "vim-devicons": { "branch": "master", "commit": "71f239af28b7214eebb60d4ea5bd040291fb7e33" },
   "vim-doge": { "branch": "master", "commit": "750d17dcd5a38a6afb51ddd07ee7d3e96bab7e9e" },
   "vim-endwise": { "branch": "personal", "commit": "0e5dc1fa88d15c5175fead7f769d9320b03ef25f" },
