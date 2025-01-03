@@ -32,4 +32,16 @@ return {
   },
 
   { "shyun3/vim-4dgl", ft = "4dgl" },
+
+  {
+    "shyun3/vim-ctags-mtable",
+    branch = "personal",
+
+    init = function()
+      -- Full color highlighting of regexes
+      vim.g.ctags_syntax_show_regexp = true
+    end,
+
+    ft = "ctags",
+  },
 }
