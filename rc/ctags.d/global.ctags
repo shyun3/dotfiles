@@ -3,7 +3,7 @@
 #######################################################################
 # 4DGL
 #
-# Derived from https://github.com/universal-ctags/ctags/blob/master/optlib/cmake.ctags
+# Draws from https://github.com/universal-ctags/ctags/blob/2049cb320457b74d9d569570a0fff355228c3c1e/optlib/cmake.ctags
 
 --langdef=4DGL
 --map-4DGL=+.4dg
@@ -18,10 +18,6 @@
 
 # Tables
 --_tabledef-4DGL=top
---_tabledef-4DGL=constant
---_tabledef-4DGL=use
---_tabledef-4DGL=var
---_tabledef-4DGL=func
 
 # Comments
 #
@@ -71,10 +67,22 @@
 --_mtable-regex-4DGL=top/[^"'\/#vf \t\n][^"'\/ \t\n]*\s*//
 --_mtable-extend-4DGL=top+skip_to_name
 --_mtable-extend-4DGL=top+skipquoted
+
+--_tabledef-4DGL=constant
 --_mtable-regex-4DGL=top/#constant\b[ \t]*//{tenter=constant}
+
+--_tabledef-4DGL=const
+--_mtable-regex-4DGL=top/#CONST\b\s*//{tenter=const}
+
+--_tabledef-4DGL=use
 --_mtable-regex-4DGL=top/#USE\b[ \t]*//{tenter=use}
+
+--_tabledef-4DGL=var
 --_mtable-regex-4DGL=top/var\b\s*//{tenter=var}
+
+--_tabledef-4DGL=func
 --_mtable-regex-4DGL=top/func\b\s*//{tenter=func}
+
 --_mtable-regex-4DGL=top/.[^"'\/ \t\n]*\s*//
 
 # Single-line constants
@@ -88,6 +96,11 @@
 
 --_mtable-regex-4DGL=constant/([a-zA-Z_]\w*)/\1/c/{tjump=constantval}
 --_mtable-extend-4DGL=constant+lskip_to_name
+
+# Constant blocks
+--_mtable-regex-4DGL=const/#END\b\s*//{tleave}
+--_mtable-extend-4DGL=const+skip_to_name
+--_mtable-regex-4DGL=const/[a-zA-Z_]//{tenter=constant}{_advanceTo=0start}
 
 # Use directives
 --_tabledef-4DGL=usecont
@@ -118,6 +131,7 @@
 --_mtable-extend-4DGL=funcbody+skip_to_name
 --_mtable-extend-4DGL=funcbody+skipquoted
 --_mtable-regex-4DGL=funcbody/#constant\b[ \t]*//{tenter=constant}
+--_mtable-regex-4DGL=funcbody/#CONST\b\s*//{tenter=const}
 --_mtable-regex-4DGL=funcbody/#USE\b[ \t]*//{tenter=use}
 --_mtable-regex-4DGL=funcbody/endfunc\b\s*//{tleave}
 --_mtable-regex-4DGL=funcbody/.[^"'\/ \t\n]*\s*//
