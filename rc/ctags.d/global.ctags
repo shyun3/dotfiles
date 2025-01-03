@@ -64,18 +64,10 @@
 # The first regex is for improving performance by matching tokens with leading
 # characters that could not possibly match a later regex and just skipping the
 # whole token (with trailing whitespace)
---_mtable-regex-4DGL=top/[^"'\/#vf \t\n][^"'\/ \t\n]*\s*//
---_mtable-extend-4DGL=top+skip_to_name
---_mtable-extend-4DGL=top+skipquoted
+--_mtable-regex-4DGL=top/[^"'\/vf \t\n][^"'\/ \t\n]*[ \t]*//
 
---_tabledef-4DGL=constant
---_mtable-regex-4DGL=top/#constant\b[ \t]*//{tenter=constant}
-
---_tabledef-4DGL=const
---_mtable-regex-4DGL=top/#CONST\b\s*//{tenter=const}
-
---_tabledef-4DGL=use
---_mtable-regex-4DGL=top/#USE\b[ \t]*//{tenter=use}
+--_tabledef-4DGL=preproc
+--_mtable-regex-4DGL=top/\n\s*//{tenter=preproc}
 
 --_tabledef-4DGL=var
 --_mtable-regex-4DGL=top/var\b\s*//{tenter=var}
@@ -83,11 +75,15 @@
 --_tabledef-4DGL=func
 --_mtable-regex-4DGL=top/func\b\s*//{tenter=func}
 
+--_mtable-extend-4DGL=top+lskip_to_name
+--_mtable-extend-4DGL=top+skipquoted
 --_mtable-regex-4DGL=top/.[^"'\/ \t\n]*\s*//
 
 # Single-line constants
+--_tabledef-4DGL=constant
 --_tabledef-4DGL=constantval
---_mtable-regex-4DGL=constantval/\n//{tleave}
+
+--_mtable-regex-4DGL=constantval/\n//{tleave}{_advanceTo=0start}
 --_mtable-regex-4DGL=constantval/,//{tjump=constant}
 --_mtable-regex-4DGL=constantval/\$[^\n]*//
 --_mtable-extend-4DGL=constantval+lskip_to_name
@@ -98,17 +94,26 @@
 --_mtable-extend-4DGL=constant+lskip_to_name
 
 # Constant blocks
---_mtable-regex-4DGL=const/#END\b\s*//{tleave}
+--_tabledef-4DGL=const
+--_mtable-regex-4DGL=const/#END\b[ \t]*//{tleave}
 --_mtable-extend-4DGL=const+skip_to_name
 --_mtable-regex-4DGL=const/[a-zA-Z_]//{tenter=constant}{_advanceTo=0start}
 
 # Use directives
+--_tabledef-4DGL=use
 --_tabledef-4DGL=usecont
+
 --_mtable-regex-4DGL=usecont/,//{tjump=use}
 --_mtable-extend-4DGL=usecont+lskip_to_name
 
 --_mtable-regex-4DGL=use/([a-zA-Z_]\w*)/\1/u/{tjump=usecont}
 --_mtable-extend-4DGL=use+lskip_to_name
+
+# Pre-processor directives
+--_mtable-extend-4DGL=preproc+skip_to_name
+--_mtable-regex-4DGL=preproc/#USE\b[ \t]*//{tjump=use}
+--_mtable-regex-4DGL=preproc/#constant\b[ \t]*//{tjump=constant}
+--_mtable-regex-4DGL=preproc/#CONST\b\s*//{tjump=const}
 
 # Top-level variables
 --_tabledef-4DGL=varcont
@@ -127,12 +132,10 @@
 # Taking special measures to avoid matching tokens starting with "end" that are
 # not `endfunc` since these can commonly occur e.g. `endif`, `endswitch`
 --_tabledef-4DGL=funcbody
---_mtable-regex-4DGL=funcbody/([^#e"'\/ \t\n]|e[^n]|en[^d]|end[^f])[^"'\/ \t\n]*\s*//
+--_mtable-regex-4DGL=funcbody/([^e"'\/ \t\n]|e[^n]|en[^d]|end[^f])[^"'\/ \t\n]*[ \t]*//
+--_mtable-regex-4DGL=funcbody/\n\s*//{tenter=preproc}
 --_mtable-extend-4DGL=funcbody+skip_to_name
 --_mtable-extend-4DGL=funcbody+skipquoted
---_mtable-regex-4DGL=funcbody/#constant\b[ \t]*//{tenter=constant}
---_mtable-regex-4DGL=funcbody/#CONST\b\s*//{tenter=const}
---_mtable-regex-4DGL=funcbody/#USE\b[ \t]*//{tenter=use}
 --_mtable-regex-4DGL=funcbody/endfunc\b\s*//{tleave}
 --_mtable-regex-4DGL=funcbody/.[^"'\/ \t\n]*\s*//
 
