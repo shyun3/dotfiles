@@ -31,5 +31,5 @@ return {
     end,
   },
 
-  "shyun3/vim-4dgl",
+  { "shyun3/vim-4dgl", ft = "4dgl" },
 }
