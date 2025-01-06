@@ -12,6 +12,7 @@
 
 # Kinds
 --kinddef-4DGL=c,constant,Constants
+--kinddef-4DGL=d,data,Data
 --kinddef-4DGL=f,function,Functions
 --kinddef-4DGL=u,use,Use directives
 --kinddef-4DGL=v,variable,Variables
@@ -98,6 +99,23 @@
 --_mtable-extend-4DGL=const+skip_to_name
 --_mtable-regex-4DGL=const/[a-zA-Z_]//{tenter=constant}{_advanceTo=0start}
 
+# Data blocks
+--_tabledef-4DGL=dataname
+--_tabledef-4DGL=dataval
+
+--_mtable-regex-4DGL=dataval/\n//{tleave}
+--_mtable-regex-4DGL=dataval/,//{tjump=dataname}
+--_mtable-extend-4DGL=dataval+lskip_to_name
+--_mtable-extend-4DGL=dataval+skipquoted
+--_mtable-regex-4DGL=dataval/.[^\n,\/"']*//
+
+--_mtable-regex-4DGL=dataname/([a-zA-Z_]\w*)/\1/d/{tjump=dataval}
+--_mtable-extend-4DGL=dataname+skip_to_name
+
+--_tabledef-4DGL=data
+--_mtable-extend-4DGL=data+skip_to_name
+--_mtable-regex-4DGL=data/(byte|word)\b\s*//{tenter=dataname}
+
 # Use directives
 --_tabledef-4DGL=use
 --_tabledef-4DGL=usecont
@@ -113,6 +131,7 @@
 --_mtable-regex-4DGL=preproc/#USE\b[ \t]*//{tjump=use}
 --_mtable-regex-4DGL=preproc/#constant\b[ \t]*//{tjump=constant}
 --_mtable-regex-4DGL=preproc/#CONST\b\s*//{tjump=const}
+--_mtable-regex-4DGL=preproc/#DATA\b\s*//{tjump=data}
 
 # Top-level variables
 --_tabledef-4DGL=varcont
