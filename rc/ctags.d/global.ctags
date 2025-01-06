@@ -1,3 +1,6 @@
+# Helps with making sure identical definitions are included
+--excmd=combine
+
 --map-python=+.pyi
 
 #######################################################################
