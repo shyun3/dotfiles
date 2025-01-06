@@ -95,7 +95,6 @@
 
 # Constant blocks
 --_tabledef-4DGL=const
---_mtable-regex-4DGL=const/#END\b[ \t]*//{tleave}
 --_mtable-extend-4DGL=const+skip_to_name
 --_mtable-regex-4DGL=const/[a-zA-Z_]//{tenter=constant}{_advanceTo=0start}
 
