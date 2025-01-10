@@ -21,15 +21,15 @@ install_if_missing() {
 
 # Reads the tag of the latest release of a GitHub repo.
 #
-# Assumes that the tag starts with a 'v'.
+# Ignores a possible 'v' at the start of the tag.
 #
 # $1: GitHub slug in the form "owner/repo".
 #
-# Return: Tag name, without a leading 'v'.
+# Return: Tag name, without any leading 'v'.
 read_latest_github_tag() {
     # Derived from https://github.com/jesseduffield/lazygit?tab=readme-ov-file#ubuntu
     curl -s "https://api.github.com/repos/$1/releases/latest" |
-        grep -Po '"tag_name": "v\K[^"]*'
+        grep -Po '"tag_name": "v?\K[^"]*'
 }
 
 # Downloads a file from the latest tag of a GitHub repo.
@@ -84,10 +84,13 @@ install_omz_custom() {
 #######################################################################
 
 # These bin directories will only be added to PATH if they exist, see zprofile
-mkdir -p ~/bin ~/.local/bin
+LOCAL="$HOME/.local"
+BIN_HOME="$LOCAL/bin"
+mkdir -p ~/bin "$BIN_HOME"
 
 # Neovim 'undodir'
-mkdir -p ~/.local/share/nvim/undo
+DATA_HOME="$LOCAL/share"
+mkdir -p "$DATA_HOME/nvim/undo"
 
 # Temporary directory for downloaded files
 SETUP_DIR="$(mktemp -d /tmp/setup.$$.XXXXXXXX)"
@@ -117,9 +120,15 @@ if ! cmd_exists fd; then
     sudo apt-mark hold fd # On Ubuntu, the executable is installed as `fdfind`
 fi
 
+if ! cmd_exists delta; then
+    yes_install "$(download_latest_github_tag 'dandavison/delta' 'git-delta_@VERSION@_amd64.deb')"
+    curl --create-dirs -Lo "$DATA_HOME/delta/themes.gitconfig" \
+        https://raw.githubusercontent.com/dandavison/delta/main/themes.gitconfig
+fi
+
 cmd_exists viv ||
     tar xf "$(download_latest_github_tag 'jannis-baum/Vivify' 'vivify-linux.tar.gz')" \
-        --directory ~/.local/bin --strip-components=1
+        --directory "$BIN_HOME" --strip-components=1
 
 # fzf
 if ! cmd_exists fzf; then
@@ -138,7 +147,7 @@ git clone git@github.com:jchook/ranger-zoxide.git \
 if ! cmd_exists lazygit; then
     tar xf "$(download_latest_github_tag 'jesseduffield/lazygit' 'lazygit_@VERSION@_Linux_x86_64.tar.gz')" \
         --directory="$SETUP_DIR" lazygit
-    install "$SETUP_DIR/lazygit" ~/.local/bin
+    install "$SETUP_DIR/lazygit" "$BIN_HOME"
 fi
 
 # pyenv
@@ -169,7 +178,7 @@ fi
 
 # Neovim
 if ! cmd_exists nvim; then
-    NVIM="$HOME/.local/bin/nvim"
+    NVIM="$BIN_HOME/nvim"
     mv "$(download_latest_github_tag 'neovim/neovim' nvim.appimage)" "$NVIM"
     chmod u+x "$NVIM"
 fi
@@ -197,6 +206,11 @@ mkdir -p "$OMZ_COMPS"
 if [[ ! -f "$OMZ_COMPS/_dotdrop-completion.zsh" ]]; then
     curl -Lo "$OMZ_COMPS/_dotdrop-completion.zsh" \
         https://raw.githubusercontent.com/deadc0de6/dotdrop/master/completion/_dotdrop-completion.zsh
+fi
+
+# delta completion
+if [[ ! -f "$OMZ_COMPS/_delta-completion.zsh" ]]; then
+    delta --generate-completion zsh > "$OMZ_COMPS/_delta-completion.zsh"
 fi
 
 #######################################################################

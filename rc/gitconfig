@@ -10,6 +10,20 @@
     useConfigOnly = true
 [core]
     autocrlf = input
+{%@@ if os != 'Windows' @@%}
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[include]
+    path = ~/.local/share/delta/themes.gitconfig
+[delta]
+    features = zebra-dark arctic-fox
+    navigate = true     # use n and N to move between diff sections
+{%@@ endif @@%}
+[diff]
+    colorMoved = default
+[merge]
+    conflictstyle = zdiff3
 [fetch]
     prune = 1
 [alias]

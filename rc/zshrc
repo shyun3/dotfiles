@@ -157,6 +157,13 @@ if command_exists mountpoint; then
 fi
 
 #######################################################################
+# delta
+
+# Completion gets overriden by builtin script, see delta#1022. Re-override to
+# fix completion.
+command_exists delta && _comps[delta]=_delta-completion.zsh
+
+#######################################################################
 # fzf
 
 # Display full command on preview window, taken from:
