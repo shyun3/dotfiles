@@ -144,11 +144,9 @@ git clone git@github.com:jchook/ranger-zoxide.git \
     ~/.config/ranger/plugins/zoxide 2> /dev/null || true
 
 # lazygit
-if ! cmd_exists lazygit; then
+cmd_exists lazygit ||
     tar xf "$(download_latest_github_tag 'jesseduffield/lazygit' 'lazygit_@VERSION@_Linux_x86_64.tar.gz')" \
-        --directory="$SETUP_DIR" lazygit
-    install "$SETUP_DIR/lazygit" "$BIN_HOME"
-fi
+        --directory="$BIN_HOME" lazygit
 
 # pyenv
 PYENV_ROOT="${PYENV_ROOT:-}"
@@ -177,11 +175,9 @@ if [[ -z "$PYENV_ROOT" ]]; then
 fi
 
 # Neovim
-if ! cmd_exists nvim; then
-    NVIM="$BIN_HOME/nvim"
-    mv "$(download_latest_github_tag 'neovim/neovim' nvim.appimage)" "$NVIM"
-    chmod u+x "$NVIM"
-fi
+cmd_exists nvim ||
+    install "$(download_latest_github_tag 'neovim/neovim' nvim.appimage)" \
+        "$BIN_HOME/nvim"
 
 # pipx
 pip_pkgs=(dotdrop ipython poetry)
