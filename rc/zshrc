@@ -210,10 +210,10 @@ fdr() {
     if [[ "${1}" == '/' ]]; then
       for _dir in "${dirs[@]}"; do echo $_dir; done
     else
-      get_parent_dirs $(dirname "$1")
+      get_parent_dirs "$(dirname "$1")"
     fi
   }
-  local DIR=$(get_parent_dirs $(realpath "${1:-$PWD}") | fzf --height 40% --tac)
+  local DIR=$(get_parent_dirs "$(realpath "${1:-$PWD}")" | fzf --height 40% --tac)
   cd "$DIR"
 }
 
