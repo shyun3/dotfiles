@@ -10,7 +10,7 @@
     useConfigOnly = true
 [core]
     autocrlf = input
-{%@@ if os != 'Windows' @@%}
+{%@@ if os | lower != 'windows' @@%}
     pager = delta
 [interactive]
     diffFilter = delta --color-only
