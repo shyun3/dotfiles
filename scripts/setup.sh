@@ -151,7 +151,11 @@ cmd_exists lazygit ||
 # uv
 if ! cmd_exists uv; then
     curl -LsSf https://astral.sh/uv/install.sh | env INSTALLER_NO_MODIFY_PATH=1 sh
-    uv venv ~/.config/nvim/.venv
+
+    cd ~/.config/nvim
+    uv venv
+    uv pip install pynvim
+    cd -
 fi
 
 if cmd_exists uv; then
