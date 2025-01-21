@@ -194,6 +194,12 @@ if [[ ! -f "$OMZ_COMPS/_delta-completion.zsh" ]]; then
     delta --generate-completion zsh > "$OMZ_COMPS/_delta-completion.zsh"
 fi
 
+# meson completion
+if [[ ! -f "$OMZ_COMPS/_meson-completion.zsh" ]]; then
+    curl -Lo "$OMZ_COMPS/_meson-completion.zsh" \
+        https://raw.githubusercontent.com/mesonbuild/meson/refs/heads/master/data/shell-completions/zsh/_meson
+fi
+
 #######################################################################
 # chsh (should probably be last)
 SHELL="${SHELL:-}"
