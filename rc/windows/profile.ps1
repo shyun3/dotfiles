@@ -50,5 +50,5 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
 if (Check-Command uv)
 {
     (& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
-    (& uvx generate-shell-completion powershell) | Out-String | Invoke-Expression
+    (& uvx --generate-shell-completion powershell) | Out-String | Invoke-Expression
 }
