@@ -3,7 +3,7 @@ vim.g.c_gnu = 1
 vim.g.c_no_curly_error = 1
 
 -- Python
-vim.g.python3_host_prog = "~/.pyenv/versions/neovim/bin/python3"
+vim.g.python3_host_prog = vim.fn.stdpath("config") .. "/.venv/bin/python3"
 
 -- Clipboard
 -- Derived from https://github.com/neovim/neovim/issues/10223#issuecomment-703544303

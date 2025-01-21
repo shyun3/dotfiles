@@ -98,7 +98,7 @@ trap 'rm -rf $SETUP_DIR' EXIT
 
 #######################################################################
 # Packages
-install_if_missing zsh ranger atool nodejs npm xclip pipx archivemount tldr tree
+install_if_missing zsh ranger atool nodejs npm xclip archivemount tldr tree
 cmd_exists ctags-universal || yes_install universal-ctags
 cmd_exists rg || yes_install ripgrep
 cmd_exists mountavfs || yes_install avfs
@@ -148,42 +148,23 @@ cmd_exists lazygit ||
     tar xf "$(download_latest_github_tag 'jesseduffield/lazygit' 'lazygit_@VERSION@_Linux_x86_64.tar.gz')" \
         --directory="$BIN_HOME" lazygit
 
-# pyenv
-PYENV_ROOT="${PYENV_ROOT:-}"
-if [[ -z "$PYENV_ROOT" ]]; then
-    curl https://pyenv.run | bash
+# uv
+if ! cmd_exists uv; then
+    curl -LsSf https://astral.sh/uv/install.sh | env INSTALLER_NO_MODIFY_PATH=1 sh
+    uv venv ~/.config/nvim/.venv
+fi
 
-    # Install Python build dependencies
-    # See https://github.com/pyenv/pyenv/wiki#suggested-build-environment
-    yes_install build-essential libssl-dev zlib1g-dev libbz2-dev \
-        libreadline-dev libsqlite3-dev curl git libncursesw5-dev xz-utils \
-        tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-
-    # Installing Python through pyenv sets up shims for `python` and `pip`
-    pyenv install 3
-    pyenv global 3
-
-    pyenv virtualenv 3 neovim
-    pyenv activate neovim
-    pip install pynvim
-    pyenv deactivate
+if cmd_exists uv; then
+    pip_pkgs=(dotdrop ipython)
+    for pkg in "${pip_pkgs[@]}"; do
+        cmd_exists "$pkg" || uv tool install "$pkg"
+    done
 fi
 
 # Neovim
 cmd_exists nvim ||
     install "$(download_latest_github_tag 'neovim/neovim' nvim.appimage)" \
         "$BIN_HOME/nvim"
-
-# pipx
-pip_pkgs=(dotdrop ipython poetry)
-for pkg in "${pip_pkgs[@]}"; do
-    cmd_exists "$pkg" || pipx install "$pkg"
-done
 
 #######################################################################
 # Oh My Zsh

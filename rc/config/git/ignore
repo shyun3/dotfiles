@@ -1,9 +1,6 @@
 .ignore
 .prettierrc.json
 
-# pyenv-virtualenv
-.python-version
-
 # Bloom
 .bloom/
 bloom.yaml
