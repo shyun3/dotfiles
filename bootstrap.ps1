@@ -1,8 +1,6 @@
 scoop bucket add nerd-fonts
 scoop install JetBrainsMono-NF
 
-scoop install python pipx
-pipx ensurepath
-
-scoop install file gow
-pipx install "dotdrop>=1.15"
+# Python installed by uv doesn't seem to be put on the PATH
+scoop install python main/uv file gow
+uv tool install "dotdrop>=1.15"
