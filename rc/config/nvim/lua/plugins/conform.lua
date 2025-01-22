@@ -28,9 +28,18 @@ return {
       json = { "prettier" },
       jsonc = { "prettier" },
       lua = { "stylua" },
+      meson = { "meson-format" },
       python = { "isort", "black" },
       sh = { "shfmt" },
       yaml = { "prettier" },
+    },
+
+    formatters = {
+      ["meson-format"] = {
+        command = "meson",
+        args = { "format", "-i", "$FILENAME" },
+        stdin = false,
+      },
     },
 
     -- Derived from recipe

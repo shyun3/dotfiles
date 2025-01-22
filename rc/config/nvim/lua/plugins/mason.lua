@@ -18,6 +18,7 @@ return {
         "clangd",
         "jsonls",
         "lua_ls",
+        "mesonlsp",
         "pyright",
         "vimls",
         "yamlls",
