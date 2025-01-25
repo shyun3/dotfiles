@@ -16,6 +16,9 @@ compile_commands.json
 .gutctags
 .projections.json
 
+## conform plugin
+.conform.*
+
 # pyright
 typings/
 pyrightconfig.json
