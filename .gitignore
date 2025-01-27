@@ -1,4 +1,2 @@
-UltiSnips/specific/
-
-.local_vars.yaml
-projects.vim
+!.ignore
+/.local_vars.yaml
