@@ -37,8 +37,7 @@ return {
     formatters = {
       ["meson-format"] = {
         command = "meson",
-        args = { "format", "-i", "$FILENAME" },
-        stdin = false,
+        args = { "format", "-" },
       },
     },
 
