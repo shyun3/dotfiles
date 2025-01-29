@@ -1,7 +1,7 @@
 -- Derived from https://github.com/kevinhwang91/nvim-bqf/issues/85#issuecomment-1298008156
 local function qf_sort()
-  local items = vim.fn.getqflist()
-  table.sort(items, function(a, b)
+  local qf = vim.fn.getqflist({ items = 0, title = 0 })
+  table.sort(qf.items, function(a, b)
     if a.bufnr == b.bufnr then
       if a.lnum == b.lnum then
         return a.col < b.col
@@ -12,7 +12,7 @@ local function qf_sort()
       return vim.fn.bufname(a.bufnr) < vim.fn.bufname(b.bufnr)
     end
   end)
-  vim.fn.setqflist(items, "r")
+  vim.fn.setqflist({}, "r", { items = qf.items, title = qf.title })
 end
 
 return {
