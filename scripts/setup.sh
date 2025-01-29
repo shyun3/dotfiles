@@ -167,7 +167,7 @@ fi
 
 # Neovim
 cmd_exists nvim ||
-    install "$(download_latest_github_tag 'neovim/neovim' nvim.appimage)" \
+    install "$(download_latest_github_tag 'neovim/neovim' nvim-linux-x86_64.appimage)" \
         "$BIN_HOME/nvim"
 
 #######################################################################
