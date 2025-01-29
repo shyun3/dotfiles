@@ -188,6 +188,7 @@ return {
     "voldikss/vim-floaterm",
     cmd = "FloatermNew",
     keys = {
+      { "<Leader>t", "<Cmd>FloatermNew<CR>" },
       {
         "<Leader>lg",
         "<Cmd>FloatermNew --height=0.9 --width=0.9 --title=lazygit lazygit<CR>",
