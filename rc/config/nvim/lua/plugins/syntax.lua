@@ -8,6 +8,9 @@ return {
       -- lua: Covered by treesitter
       -- sensible: Do not update vim settings
       vim.g.polyglot_disabled = { "autoindent", "ftdetect", "lua", "sensible" }
+
+      -- vim-markdown
+      vim.g.vim_markdown_no_default_key_mappings = 1
     end,
 
     config = function()

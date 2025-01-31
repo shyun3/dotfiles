@@ -12,7 +12,7 @@ local function qf_sort()
       return vim.fn.bufname(a.bufnr) < vim.fn.bufname(b.bufnr)
     end
   end)
-  vim.fn.setqflist({}, "r", { items = qf.items, title = qf.title })
+  vim.fn.setqflist({}, "r", qf)
 end
 
 return {

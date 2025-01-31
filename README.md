@@ -112,6 +112,8 @@ git config -f ~/personal/.gitprofile user.email fake@priv.tld
 
 * Run `:checkhealth` to see if there are issues that need resolving
 * See `$VIMRUNTIME` to access Neovim source files
+* To activate Gutentags operation, create an appropriate `.gutctags` file, then
+  reload the buffer being edited with `:e`. Finally, run `:GutentagsUpdate!`.
 
 ### Windows Terminal
 
