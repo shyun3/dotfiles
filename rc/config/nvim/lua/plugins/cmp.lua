@@ -1,3 +1,5 @@
+local util = require("util")
+
 local function link_hl(name, link) vim.api.nvim_set_hl(0, name, { link = link }) end
 
 local function highlight_cmp_menu()
@@ -52,6 +54,33 @@ local function highlight_cmp_menu()
   link_hl("CmpItemKindEvent", "@lsp.type.event")
 end
 
+-- Used to temporarily disable the `cinkeys` option before executing a callback.
+--
+-- Inserted text may become corrupted if a C-indent gets triggered. Currently
+-- known problematic completions are the C++ access specifiers i.e. `public:`
+-- etc. These completions are known to be supplied as snippets by clangd.
+--
+-- See nvim-cmp#1035 for more details.
+--
+-- This function was derived from:
+-- https://github.com/hrsh7th/nvim-cmp/issues/1035#issuecomment-1195456419
+local function suppress_cinkeys(callback)
+  local cindent = vim.bo.cindent
+  local cinkeys = vim.bo.cinkeys
+  if cindent then vim.bo.cinkeys = "" end
+
+  callback()
+
+  if cindent then
+    -- Command to restore is fed as keys, otherwise cmp callback does not see
+    -- `cinkeys` as disabled. Maybe because the callback is async?
+    local cmd = util.replace_termcodes(
+      string.format("<Cmd>setlocal cinkeys=%s<CR>", cinkeys)
+    )
+    vim.fn.feedkeys(cmd, "n")
+  end
+end
+
 return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
@@ -86,17 +115,15 @@ return {
 
         ["<CR>"] = function(fallback)
           if cmp.visible() and cmp.get_active_entry() then
-            cmp.confirm({ select = false })
+            suppress_cinkeys(function() cmp.confirm({ select = false }) end)
           else
             fallback()
-            vim.fn.feedkeys(
-              require("util").replace_termcodes("<Plug>DiscretionaryEnd")
-            )
+            vim.fn.feedkeys(util.replace_termcodes("<Plug>DiscretionaryEnd"))
           end
         end,
 
-        ["<Tab>"] = cmp.mapping.select_next_item(),
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+        ["<Tab>"] = function() suppress_cinkeys(cmp.select_next_item) end,
+        ["<S-Tab>"] = function() suppress_cinkeys(cmp.select_prev_item) end,
 
         ["<C-Space>"] = cmp.mapping.complete(),
       }),
