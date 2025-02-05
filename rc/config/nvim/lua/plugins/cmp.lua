@@ -96,6 +96,7 @@ return {
     "folke/lazydev.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "quangnguyen30192/cmp-nvim-tags",
+    "hrsh7th/cmp-omni",
 
     "onsails/lspkind.nvim",
   },
@@ -134,6 +135,7 @@ return {
         { name = "nvim_lsp" },
         { name = "tags" },
         { name = "path" },
+        { name = "omni" },
         {
           name = "buffer",
           option = {
@@ -160,6 +162,7 @@ return {
             path = "[P]",
             buffer = "[B]",
             cmdline = "[CMD]",
+            omni = "[O]",
           },
         }),
       },
