@@ -123,8 +123,19 @@ return {
           end
         end,
 
-        ["<Tab>"] = function() suppress_cinkeys(cmp.select_next_item) end,
-        ["<S-Tab>"] = function() suppress_cinkeys(cmp.select_prev_item) end,
+        ["<Tab>"] = function(fallback)
+          suppress_cinkeys(function()
+            local select_next_item = cmp.mapping.select_next_item()
+            select_next_item(fallback)
+          end)
+        end,
+
+        ["<S-Tab>"] = function(fallback)
+          suppress_cinkeys(function()
+            local select_prev_item = cmp.mapping.select_prev_item()
+            select_prev_item(fallback)
+          end)
+        end,
 
         ["<C-Space>"] = cmp.mapping.complete(),
       }),
