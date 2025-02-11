@@ -137,7 +137,7 @@ return {
     config = function()
       require("undotree").setup()
 
-      -- Taken from https://github.com/jiaoshijie/undotree/issues/23#issuecomment-2602625831
+      -- Derived from https://github.com/jiaoshijie/undotree/issues/23#issuecomment-2602625831
       vim.api.nvim_set_hl(0, "UndotreeDiffAdded", { fg = "#00FF00" })
       vim.api.nvim_set_hl(0, "UndotreeDiffRemoved", { fg = "#FF0000" })
     end,

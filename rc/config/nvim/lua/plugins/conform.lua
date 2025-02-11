@@ -1,21 +1,29 @@
--- Derived from https://github.com/neovim/nvim-lspconfig/wiki/User-contributed-tips#range-formatting-with-a-motion
-local function format_range_operator()
-  local old_func = vim.go.operatorfunc
-  _G.op_func_formatting = function()
-    require("conform").format({
-      async = true,
-      lsp_fallback = true,
-      range = {
-        start = vim.api.nvim_buf_get_mark(0, "["),
-        ["end"] = vim.api.nvim_buf_get_mark(0, "]"),
-      },
-    })
-
-    vim.go.operatorfunc = old_func
-    _G.op_func_formatting = nil
+-- Derived from https://www.vikasraj.dev/blog/vim-dot-repeat
+-- Does not support count, visual blocks, or dot repeat for visuals
+function _G.format_range_operator(motion)
+  local visual = string.match(motion or "", "[vV]")
+  if not visual and motion == nil then
+    vim.o.operatorfunc = "v:lua.format_range_operator"
+    return "g@"
   end
-  vim.go.operatorfunc = "v:lua.op_func_formatting"
-  vim.api.nvim_feedkeys("g@", "n", false)
+
+  local range = {
+    starting = vim.api.nvim_buf_get_mark(0, visual and "<" or "["),
+    ending = vim.api.nvim_buf_get_mark(0, visual and ">" or "]"),
+  }
+  if motion == "V" then
+    -- Use line length instead of v:maxcol (which causes error)
+    range.ending[2] = vim.fn.col({ range.ending[1], "$" })
+  end
+
+  require("conform").format({
+    async = true,
+    lsp_fallback = true,
+    range = {
+      start = range.starting,
+      ["end"] = range.ending,
+    },
+  })
 end
 
 return {
@@ -100,8 +108,16 @@ return {
   keys = {
     {
       "<Leader>gf",
-      format_range_operator,
-      mode = { "n", "x" },
+      _G.format_range_operator,
+      mode = "n",
+      desc = "Format selection",
+      silent = true,
+      expr = true,
+    },
+    {
+      "<Leader>gf",
+      "<Esc><Cmd>lua _G.format_range_operator(vim.fn.visualmode())<CR>",
+      mode = "x",
       desc = "Format selection",
       silent = true,
     },
