@@ -29,12 +29,6 @@ return {
   { "vim-scripts/DoxygenToolkit.vim", cmd = "Dox" },
 
   {
-    "sjl/gundo.vim",
-    init = function() vim.g.gundo_prefer_python3 = 1 end,
-    keys = { { "<F5>", "<Cmd>GundoToggle<CR>" } },
-  },
-
-  {
     "chrishrb/gx.nvim",
 
     init = function() vim.g.netrw_nogx = 1 end,
@@ -133,6 +127,27 @@ return {
       { "gz*", "<Plug>(asterisk-gz*)", mode = "" },
       { "z#", "<Plug>(asterisk-z#)", mode = "" },
       { "gz#", "<Plug>(asterisk-gz#)", mode = "" },
+    },
+  },
+
+  {
+    "jiaoshijie/undotree",
+    dependencies = "nvim-lua/plenary.nvim",
+
+    config = function()
+      require("undotree").setup()
+
+      -- Taken from https://github.com/jiaoshijie/undotree/issues/23#issuecomment-2602625831
+      vim.api.nvim_set_hl(0, "UndotreeDiffAdded", { fg = "#00FF00" })
+      vim.api.nvim_set_hl(0, "UndotreeDiffRemoved", { fg = "#FF0000" })
+    end,
+
+    keys = {
+      {
+        "<Leader>u",
+        function() require("undotree").toggle() end,
+        desc = "Toggle undotree",
+      },
     },
   },
 
