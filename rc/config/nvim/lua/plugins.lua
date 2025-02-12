@@ -83,6 +83,19 @@ return {
   },
 
   {
+    "stevearc/oil.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false, -- To override netrw as early as possible
+
+    opts = {
+      keymaps = {
+        ["<C-p>"] = false, -- Conflicts with fzf-lua
+        gp = "actions.preview",
+      },
+    },
+  },
+
+  {
     "yssl/QFEnter",
     init = function()
       vim.g.qfenter_keymap = { vopen = { "<C-v>" }, hopen = { "<C-s>" } }

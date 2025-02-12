@@ -34,5 +34,4 @@ return {
   },
 
   "tpope/vim-unimpaired",
-  "tpope/vim-vinegar",
 }
