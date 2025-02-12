@@ -176,30 +176,6 @@ return {
   },
 
   {
-    "ryanoasis/vim-devicons",
-
-    -- According to installation instructions, icons should be loaded after
-    -- these other plugins
-    dependencies = { "preservim/nerdtree", "vim-airline/vim-airline" },
-
-    init = function()
-      -- enable folder/directory glyph flag
-      vim.g.WebDevIconsUnicodeDecorateFolderNodes = 1
-
-      -- enable open and close folder/directory glyph flags
-      vim.g.DevIconsEnableFoldersOpenClose = 1
-
-      -- enable file extension pattern matching glyphs on folder/directory
-      vim.g.DevIconsEnableFolderExtensionPatternMatching = 1
-    end,
-
-    -- Note: Loading icons at startup may cause it to improperly
-    -- initialize intermittently. Consequences include brackets appearing
-    -- around Nerd Tree icons.
-    event = "UIEnter",
-  },
-
-  {
     "voldikss/vim-floaterm",
     cmd = "FloatermNew",
     keys = {
