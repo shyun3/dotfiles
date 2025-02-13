@@ -1,8 +1,21 @@
 return {
   "amiorin/vim-project",
+  dependencies = { "stevearc/oil.nvim" },
 
   config = function()
     vim.fn["project#rc"]()
+
+    -- Execute vim-project autocommands for paths in oil.nvim buffers
+    local group = vim.api.nvim_create_augroup("user_project", {})
+    vim.api.nvim_create_autocmd("BufEnter", {
+      group = group,
+      pattern = "oil://*",
+      callback = function(args)
+        local prefix = "oil://"
+        local path = string.sub(args.file, #prefix + 1, -1)
+        vim.cmd.doautocmd({ "vim_project", "BufEnter", path })
+      end,
+    })
 
     local projects = vim.fn.stdpath("config") .. "/projects.vim"
     if vim.fn.filereadable(projects) == 0 then return end
@@ -14,7 +27,7 @@ return {
       -- window and not in the Lazy floating window which pops up when
       -- installing missing plugins
       vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
-        group = vim.api.nvim_create_augroup("project", {}),
+        group = group,
         pattern = "*",
         once = true,
         callback = function()
