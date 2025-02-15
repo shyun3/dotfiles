@@ -105,6 +105,32 @@ return {
   },
 
   {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+
+    opts = {
+      lazygit = {
+        theme = {
+          activeBorderColor = { fg = "Character", bold = true },
+          searchingActiveBorderColor = { fg = "IncSearch", bold = true },
+        },
+      },
+    },
+
+    keys = {
+      {
+        "<Leader>lg",
+        function()
+          -- Using module instead of `Snacks` to avoid undefined global
+          require("snacks").lazygit()
+        end,
+        desc = "Open lazygit",
+      },
+    },
+  },
+
+  {
     "majutsushi/tagbar",
     init = function()
       vim.g.tagbar_autofocus = 1 -- Move to Tagbar window when opened
@@ -193,10 +219,6 @@ return {
     cmd = "FloatermNew",
     keys = {
       { "<Leader>t", "<Cmd>FloatermNew<CR>" },
-      {
-        "<Leader>lg",
-        "<Cmd>FloatermNew --height=0.9 --width=0.9 --title=lazygit lazygit<CR>",
-      },
     },
   },
 
