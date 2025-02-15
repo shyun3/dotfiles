@@ -24,6 +24,9 @@ return {
     },
     oldfiles = {
       include_current_session = true,
+
+      -- Disabled for performance, see #1336
+      stat_file = false,
     },
     tags = {
       git_icons = false,
