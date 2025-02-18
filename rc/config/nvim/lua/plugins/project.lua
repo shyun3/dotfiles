@@ -11,9 +11,11 @@ return {
       group = group,
       pattern = "oil://*",
       callback = function(args)
-        local prefix = "oil://"
-        local path = string.sub(args.file, #prefix + 1, -1)
-        vim.cmd.doautocmd({ "vim_project", "BufEnter", path })
+        vim.cmd.doautocmd({
+          "vim_project",
+          "BufEnter",
+          require("util").oil_filter(args.file),
+        })
       end,
     })
 

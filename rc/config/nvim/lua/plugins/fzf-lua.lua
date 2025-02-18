@@ -50,7 +50,9 @@ return {
       "<C-q>",
       function()
         util.go_to_editable_window()
-        require("fzf-lua").files({ cwd = vim.fn.expand("%:p:h") })
+        require("fzf-lua").files({
+          cwd = util.oil_filter(vim.fn.expand("%:p:h")),
+        })
       end,
       desc = "fzf-lua: Files in current file directory",
     },

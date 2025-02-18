@@ -49,4 +49,12 @@ function M.replace_termcodes(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
+-- Translates paths opened in oil.nvim. Other paths are passed through
+-- unmodified.
+function M.oil_filter(path)
+  local prefix = "oil://"
+  return vim.startswith(path, prefix) and string.sub(path, #prefix + 1, -1)
+    or path
+end
+
 return M
