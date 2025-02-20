@@ -1,0 +1,18 @@
+romkatv/powerlevel10k
+
+deadc0de6/dotdrop kind:fpath path:completion
+mesonbuild/meson kind:fpath path:data/shell-completions/zsh
+
+# Load this before Oh My Zsh
+getantidote/use-omz
+
+ohmyzsh/ohmyzsh path:lib
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/fzf
+ohmyzsh/ohmyzsh path:plugins/ssh-agent
+ohmyzsh/ohmyzsh path:plugins/uv
+ohmyzsh/ohmyzsh path:plugins/zoxide
+ohmyzsh/ohmyzsh path:plugins/zsh-interactive-cd
+
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting

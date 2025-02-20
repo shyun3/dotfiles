@@ -9,6 +9,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Pick up completions
+fpath=(~/.zsh/completion $fpath)
+
 # To prevent conflicts betwen instant prompt and ssh-agent plugin
 zstyle :omz:plugins:ssh-agent quiet yes
 
@@ -18,20 +21,11 @@ zstyle :omz:plugins:ssh-agent quiet yes
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
-# MH: To ensure cache directory is defined for compdump directory
-ZSH_CACHE_DIR=$ZSH/cache
-
-# MH: Taken from https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#completion-settings
-ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -88,16 +82,10 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man-pages fzf ssh-agent uv zoxide zsh-autosuggestions
-    zsh-interactive-cd zsh-syntax-highlighting)
-
-if [[ -f $ZSH/oh-my-zsh.sh ]]; then
-  source $ZSH/oh-my-zsh.sh
+ANTIDOTE_DIR="${ZDOTDIR:-$HOME}/.antidote"
+if [[ -f "$ANTIDOTE_DIR/antidote.zsh" ]]; then
+  source "$ANTIDOTE_DIR/antidote.zsh"
+  antidote load
 fi
 
 #######################################################################
@@ -158,13 +146,6 @@ alias lg='lazygit'
 if command_exists mountpoint; then
   mountpoint -q ~/.avfs || command_exists mountavfs && mountavfs
 fi
-
-#######################################################################
-# delta
-
-# Completion gets overriden by builtin script, see delta#1022. Re-override to
-# fix completion.
-command_exists delta && _comps[delta]=_delta-completion.zsh
 
 #######################################################################
 # fzf

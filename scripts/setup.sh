@@ -57,30 +57,6 @@ download_latest_github_tag() {
     echo "$dst"
 }
 
-# Installs Oh My Zsh custom themes or plugins.
-#
-# $1: Customization type, must be "themes" or "plugins".
-# $rest: GitHub slugs in the form "owner/repo".
-install_omz_custom() {
-    local custom_type="${1:?}"
-    shift
-
-    local -A types=([themes]=1 [plugins]=1)
-    if [[ -z "${types[$custom_type]}" ]]; then
-        return 1
-    fi
-
-    local custom_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
-    local src
-    for slug in "$@"; do
-        src=$(cut -d / -f 2 <<< "$slug")
-        dst="$custom_dir/$custom_type/$src"
-        if [[ ! -d "$dst" ]]; then
-            git clone --depth=1 "https://github.com/$slug" "$dst"
-        fi
-    done
-}
-
 #######################################################################
 
 # These bin directories will only be added to PATH if they exist, see zprofile
@@ -171,33 +147,20 @@ cmd_exists nvim ||
         "$BIN_HOME/nvim"
 
 #######################################################################
-# Oh My Zsh
-ZSH="${ZSH:-}"
-if [[ -z "$ZSH" ]]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+# Antidote
+ANTIDOTE_DIR="${ZDOTDIR:-$HOME}/.antidote"
+if [[ ! -d "$ANTIDOTE_DIR" ]]; then
+    git clone --depth=1 https://github.com/mattmc3/antidote.git "$ANTIDOTE_DIR"
 fi
 
-install_omz_custom themes romkatv/powerlevel10k
-install_omz_custom plugins zsh-users/zsh-syntax-highlighting zsh-users/zsh-autosuggestions
-
-OMZ_COMPS="$HOME/.oh-my-zsh/completions"
-mkdir -p "$OMZ_COMPS"
-
-# dotdrop completion
-if [[ ! -f "$OMZ_COMPS/_dotdrop-completion.zsh" ]]; then
-    curl -Lo "$OMZ_COMPS/_dotdrop-completion.zsh" \
-        https://raw.githubusercontent.com/deadc0de6/dotdrop/master/completion/_dotdrop-completion.zsh
-fi
+#######################################################################
+# Completions
+COMP_DIR="$HOME/.zsh/completion"
+mkdir -p "$COMP_DIR"
 
 # delta completion
-if [[ ! -f "$OMZ_COMPS/_delta-completion.zsh" ]]; then
-    delta --generate-completion zsh > "$OMZ_COMPS/_delta-completion.zsh"
-fi
-
-# meson completion
-if [[ ! -f "$OMZ_COMPS/_meson-completion.zsh" ]]; then
-    curl -Lo "$OMZ_COMPS/_meson-completion.zsh" \
-        https://raw.githubusercontent.com/mesonbuild/meson/refs/heads/master/data/shell-completions/zsh/_meson
+if [[ ! -f "$COMP_DIR/_delta-completion.zsh" ]]; then
+    delta --generate-completion zsh > "$COMP_DIR/_delta-completion.zsh"
 fi
 
 #######################################################################

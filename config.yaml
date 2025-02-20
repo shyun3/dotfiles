@@ -73,6 +73,9 @@ dotfiles:
     src: config/nvim
     dst: ~/.config/nvim
     link: absolute
+  f_zsh_plugins.txt:
+    src: zsh_plugins.txt
+    dst: ~/.zsh_plugins.txt
 profiles:
   linux:
     dotfiles:
@@ -88,6 +91,7 @@ profiles:
       - f_global.ctags
       - f_lazygit_config.yml
       - d_nvim
+      - f_zsh_plugins.txt
     actions:
       - setup_sh
   wsl-root:
