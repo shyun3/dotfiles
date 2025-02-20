@@ -109,14 +109,14 @@ return {
 
     {
       "<Leader>]",
-      "<Cmd>FzfLua lsp_definitions jump_to_single_result=true<CR>",
+      "<Cmd>FzfLua lsp_definitions jump1=true<CR>",
     },
     {
       "<Leader>s]",
       function()
         require("fzf-lua").lsp_definitions({
-          jump_to_single_result = true,
-          jump_to_single_result_action = require("fzf-lua.actions").file_split,
+          jump1 = true,
+          jump1_action = require("fzf-lua.actions").file_split,
         })
       end,
       desc = "LSP: Definition, horizontal split",
@@ -125,8 +125,8 @@ return {
       "<Leader>v]",
       function()
         require("fzf-lua").lsp_definitions({
-          jump_to_single_result = true,
-          jump_to_single_result_action = require("fzf-lua.actions").file_vsplit,
+          jump1 = true,
+          jump1_action = require("fzf-lua.actions").file_vsplit,
         })
       end,
       desc = "LSP: Definition, vertical split",
@@ -134,14 +134,14 @@ return {
 
     {
       "<Leader>D",
-      "<Cmd>FzfLua lsp_typedefs jump_to_single_result=true<CR>",
+      "<Cmd>FzfLua lsp_typedefs jump1=true<CR>",
     },
     {
       "<Leader>sD",
       function()
         require("fzf-lua").lsp_typedefs({
-          jump_to_single_result = true,
-          jump_to_single_result_action = require("fzf-lua.actions").file_split,
+          jump1 = true,
+          jump1_action = require("fzf-lua.actions").file_split,
         })
       end,
       desc = "LSP: Type definition, horizontal split",
@@ -150,8 +150,8 @@ return {
       "<Leader>vD",
       function()
         require("fzf-lua").lsp_typedefs({
-          jump_to_single_result = true,
-          jump_to_single_result_action = require("fzf-lua.actions").file_vsplit,
+          jump1 = true,
+          jump1_action = require("fzf-lua.actions").file_vsplit,
         })
       end,
       desc = "LSP: Type definition, vertical split",
@@ -159,14 +159,14 @@ return {
 
     {
       "<Leader>[",
-      "<Cmd>FzfLua lsp_declarations jump_to_single_result=true<CR>",
+      "<Cmd>FzfLua lsp_declarations jump1=true<CR>",
     },
     {
       "<Leader>s[",
       function()
         require("fzf-lua").lsp_declarations({
-          jump_to_single_result = true,
-          jump_to_single_result_action = require("fzf-lua.actions").file_split,
+          jump1 = true,
+          jump1_action = require("fzf-lua.actions").file_split,
         })
       end,
       desc = "LSP: Declaration, horizontal split",
@@ -175,8 +175,8 @@ return {
       "<Leader>v[",
       function()
         require("fzf-lua").lsp_declarations({
-          jump_to_single_result = true,
-          jump_to_single_result_action = require("fzf-lua.actions").file_vsplit,
+          jump1 = true,
+          jump1_action = require("fzf-lua.actions").file_vsplit,
         })
       end,
       desc = "LSP: Declaration, vertical split",
