@@ -1,12 +1,20 @@
+# Prompt
 romkatv/powerlevel10k
 
+# Completions
+dandavison/delta kind:fpath path:etc/completion
 deadc0de6/dotdrop kind:fpath path:completion
+sharkdp/fd kind:fpath path:contrib/completion
 mesonbuild/meson kind:fpath path:data/shell-completions/zsh
+ajeetdsouza/zoxide kind:fpath path:contrib/completions
 
 # Load this before Oh My Zsh
 getantidote/use-omz
 
+# Use all of Oh My Zsh libs
 ohmyzsh/ohmyzsh path:lib
+
+# Oh My Zsh plugins
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/fzf
 ohmyzsh/ohmyzsh path:plugins/ssh-agent
@@ -14,5 +22,6 @@ ohmyzsh/ohmyzsh path:plugins/uv
 ohmyzsh/ohmyzsh path:plugins/zoxide
 ohmyzsh/ohmyzsh path:plugins/zsh-interactive-cd
 
+# Zsh plugins
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting

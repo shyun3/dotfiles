@@ -19,44 +19,6 @@ install_if_missing() {
     done
 }
 
-# Reads the tag of the latest release of a GitHub repo.
-#
-# Ignores a possible 'v' at the start of the tag.
-#
-# $1: GitHub slug in the form "owner/repo".
-#
-# Return: Tag name, without any leading 'v'.
-read_latest_github_tag() {
-    # Derived from https://github.com/jesseduffield/lazygit?tab=readme-ov-file#ubuntu
-    curl -s "https://api.github.com/repos/$1/releases/latest" |
-        grep -Po '"tag_name": "v?\K[^"]*'
-}
-
-# Downloads a file from the latest tag of a GitHub repo.
-#
-# $1: GitHub slug in the form "owner/repo".
-# $2: Base filename to download from the tag.
-#   If the filename contains the version of the latest tag, replace it with the
-#   placeholder string @VERSION@.
-#
-# Return: Path to temporary downloaded file. This will be in $SETUP_DIR.
-download_latest_github_tag() {
-    local slug="${1:?}"
-    local filename="${2:?}"
-
-    if [[ "$filename" =~ @VERSION@ ]]; then
-        local version
-        version="$(read_latest_github_tag "$slug")"
-
-        filename="${filename/@VERSION@/$version}"
-    fi
-
-    local dst="$SETUP_DIR/$filename"
-    curl -Lo "$dst" "https://github.com/$slug/releases/latest/download/$filename"
-
-    echo "$dst"
-}
-
 #######################################################################
 
 # These bin directories will only be added to PATH if they exist, see zprofile
@@ -67,10 +29,6 @@ mkdir -p ~/bin "$BIN_HOME"
 # Neovim 'undodir'
 DATA_HOME="$LOCAL/share"
 mkdir -p "$DATA_HOME/nvim/undo"
-
-# Temporary directory for downloaded files
-SETUP_DIR="$(mktemp -d /tmp/setup.$$.XXXXXXXX)"
-trap 'rm -rf $SETUP_DIR' EXIT
 
 #######################################################################
 # Packages
@@ -85,53 +43,28 @@ if [[ $(uname -r) =~ WSL ]]; then
 fi
 
 #######################################################################
+# GitHub binaries
+cmd_exists eget || (cd "$BIN_HOME" && curl https://zyedidia.github.io/eget.sh |
+    sh)
 
-if ! cmd_exists bat; then
-    yes_install "$(download_latest_github_tag 'sharkdp/bat' 'bat_@VERSION@_amd64.deb')"
-    sudo apt-mark hold bat # On Ubuntu, the executable is installed as `batcat`
-fi
+export EGET_BIN="$BIN_HOME"
+cmd_exists bat || eget sharkdp/bat --asset=gnu
+cmd_exists fd || eget sharkdp/fd --asset=gnu
+cmd_exists delta || eget dandavison/delta --asset=gnu
+cmd_exists viv || eget jannis-baum/Vivify --all
+cmd_exists fzf || eget junegunn/fzf
+cmd_exists zoxide || eget ajeetdsouza/zoxide
+cmd_exists lazygit || eget jesseduffield/lazygit
+cmd_exists nvim || eget neovim/neovim
+cmd_exists uv || eget astral-sh/uv --asset=gnu --all
+unset EGET_BIN
 
-if ! cmd_exists fd; then
-    yes_install "$(download_latest_github_tag 'sharkdp/fd' 'fd_@VERSION@_amd64.deb')"
-    sudo apt-mark hold fd # On Ubuntu, the executable is installed as `fdfind`
-fi
-
-if ! cmd_exists delta; then
-    yes_install "$(download_latest_github_tag 'dandavison/delta' 'git-delta_@VERSION@_amd64.deb')"
-    curl --create-dirs -Lo "$DATA_HOME/delta/themes.gitconfig" \
-        https://raw.githubusercontent.com/dandavison/delta/main/themes.gitconfig
-fi
-
-cmd_exists viv ||
-    tar xf "$(download_latest_github_tag 'jannis-baum/Vivify' 'vivify-linux.tar.gz')" \
-        --directory "$BIN_HOME" --strip-components=1
-
-# fzf
-if ! cmd_exists fzf; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install --bin
-fi
-
-# zoxide
-cmd_exists zoxide || curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
-
-# ranger
-git clone git@github.com:jchook/ranger-zoxide.git \
-    ~/.config/ranger/plugins/zoxide 2> /dev/null || true
-
-# lazygit
-cmd_exists lazygit ||
-    tar xf "$(download_latest_github_tag 'jesseduffield/lazygit' 'lazygit_@VERSION@_Linux_x86_64.tar.gz')" \
-        --directory="$BIN_HOME" lazygit
-
+#######################################################################
 # uv
-if ! cmd_exists uv; then
-    curl -LsSf https://astral.sh/uv/install.sh | env INSTALLER_NO_MODIFY_PATH=1 sh
-
-    cd ~/.config/nvim
-    uv venv
-    uv pip install pynvim
-    cd -
+NVIM_DIR="$HOME/.config/nvim"
+if [[ ! -d "$NVIM_DIR/.venv" ]]; then
+    uv --directory "$NVIM_DIR" venv
+    uv --directory "$NVIM_DIR" pip install pynvim
 fi
 
 if cmd_exists uv; then
@@ -141,27 +74,32 @@ if cmd_exists uv; then
     done
 fi
 
-# Neovim
-cmd_exists nvim ||
-    install "$(download_latest_github_tag 'neovim/neovim' nvim-linux-x86_64.appimage)" \
-        "$BIN_HOME/nvim"
-
 #######################################################################
-# Antidote
-ANTIDOTE_DIR="${ZDOTDIR:-$HOME}/.antidote"
-if [[ ! -d "$ANTIDOTE_DIR" ]]; then
-    git clone --depth=1 https://github.com/mattmc3/antidote.git "$ANTIDOTE_DIR"
-fi
+# Assets
+[[ -f "$DATA_HOME/delta/themes.gitconfig" ]] || eget dandavison/delta --source \
+    --file=themes.gitconfig --to="$DATA_HOME/delta/themes.gitconfig"
+
+# Performs a shallow git clone.
+#
+# $1: GitHub slug, in the form "owner/repo".
+# $2: Destination directory.
+#   If Destination already exists, errors will be silently suppressed.
+git_take() {
+    local slug="${1:?}"
+    local dir="${2:?}"
+    git clone --depth=1 "https://github.com/${slug}.git" "$dir" 2> /dev/null ||
+        true
+}
+
+git_take jchook/ranger-zoxide ~/.config/ranger/plugins/zoxide
+git_take mattmc3/antidote "${ZDOTDIR:-$HOME}/.antidote"
 
 #######################################################################
 # Completions
 COMP_DIR="$HOME/.zsh/completion"
 mkdir -p "$COMP_DIR"
 
-# delta completion
-if [[ ! -f "$COMP_DIR/_delta-completion.zsh" ]]; then
-    delta --generate-completion zsh > "$COMP_DIR/_delta-completion.zsh"
-fi
+bat --completion zsh > "$COMP_DIR/_bat-completion.zsh"
 
 #######################################################################
 # chsh (should probably be last)
