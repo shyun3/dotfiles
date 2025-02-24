@@ -68,16 +68,19 @@ done
 #######################################################################
 # Assets
 
-# Performs a shallow git clone.
+# Obtains the latest commit of a Git repo.
 #
 # $1: GitHub slug, in the form "owner/repo".
 # $2: Destination directory.
-#   If Destination already exists, errors will be silently suppressed.
 git_take() {
     local slug="${1:?}"
     local dir="${2:?}"
-    git clone --depth=1 "https://github.com/${slug}.git" "$dir" 2> /dev/null ||
-        true
+
+    if [[ ! -d "$dir" ]]; then
+        git clone --depth=1 "https://github.com/${slug}.git" "$dir"
+    else
+        (cd "$dir" && git pull --depth=1 "$dir")
+    fi
 }
 
 git_take jchook/ranger-zoxide ~/.config/ranger/plugins/zoxide
