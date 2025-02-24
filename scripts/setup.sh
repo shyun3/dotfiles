@@ -77,8 +77,6 @@ fi
 
 #######################################################################
 # Assets
-[[ -f "$DATA_HOME/delta/themes.gitconfig" ]] || eget dandavison/delta --source \
-    --file=themes.gitconfig --to="$DATA_HOME/delta/themes.gitconfig"
 
 # Performs a shallow git clone.
 #
@@ -93,7 +91,7 @@ git_take() {
 }
 
 git_take jchook/ranger-zoxide ~/.config/ranger/plugins/zoxide
-git_take mattmc3/antidote "${ZDOTDIR:-$HOME}/.antidote"
+git_take mattmc3/antidote ~/.antidote
 
 #######################################################################
 # Completions

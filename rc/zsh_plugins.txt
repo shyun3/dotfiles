@@ -2,7 +2,7 @@
 romkatv/powerlevel10k
 
 # Completions
-dandavison/delta kind:fpath path:etc/completion
+dandavison/delta kind:fpath path:etc/completion     # Also used for themes
 deadc0de6/dotdrop kind:fpath path:completion
 sharkdp/fd kind:fpath path:contrib/completion
 mesonbuild/meson kind:fpath path:data/shell-completions/zsh

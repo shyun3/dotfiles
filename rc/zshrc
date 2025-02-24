@@ -12,6 +12,9 @@ fi
 # Pick up completions
 fpath=(~/.zsh/completion $fpath)
 
+# Obsolete beginning in antidote 2.0
+zstyle ':antidote:bundle' use-friendly-names 'yes'
+
 # To prevent conflicts betwen instant prompt and Oh My Zsh ssh-agent plugin
 zstyle :omz:plugins:ssh-agent quiet yes
 
@@ -82,9 +85,8 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-ANTIDOTE_DIR="${ZDOTDIR:-$HOME}/.antidote"
-if [[ -f "$ANTIDOTE_DIR/antidote.zsh" ]]; then
-  source "$ANTIDOTE_DIR/antidote.zsh"
+if [[ -f ~/.antidote/antidote.zsh ]]; then
+  source ~/.antidote/antidote.zsh
   antidote load
 fi
 
