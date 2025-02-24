@@ -47,17 +47,18 @@ fi
 cmd_exists eget || (cd "$BIN_HOME" && curl https://zyedidia.github.io/eget.sh |
     sh)
 
-export EGET_BIN="$BIN_HOME"
-cmd_exists bat || eget sharkdp/bat --asset=gnu
-cmd_exists fd || eget sharkdp/fd --asset=gnu
-cmd_exists delta || eget dandavison/delta --asset=gnu
-cmd_exists viv || eget jannis-baum/Vivify --all
-cmd_exists fzf || eget junegunn/fzf
-cmd_exists zoxide || eget ajeetdsouza/zoxide
-cmd_exists lazygit || eget jesseduffield/lazygit
-cmd_exists nvim || eget neovim/neovim
-cmd_exists uv || eget astral-sh/uv --asset=gnu --all
-unset EGET_BIN
+SCRIPT_DIR="$(dirname "$0")"
+EGET_CONFIG="$SCRIPT_DIR/eget.toml" eget --download-all
+
+# Extracted file doesn't get renamed properly
+eget neovim/neovim --asset=x86 --to="$BIN_HOME/nvim" --upgrade-only
+
+# Since the repo name differs from the binary name, specify target file to make
+# sure upgrades work properly. See the following comment:
+# https://github.com/zyedidia/eget/issues/65#issuecomment-2602644737
+for file in viv vivify-server; do
+    eget jannis-baum/Vivify --file=$file --to="$BIN_HOME/$file" --upgrade-only
+done
 
 #######################################################################
 # uv

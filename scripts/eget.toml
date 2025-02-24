@@ -1,0 +1,24 @@
+[global]
+target = "~/.local/bin"
+upgrade_only = true
+
+["zyedidia/eget"]
+
+["sharkdp/bat"]
+asset_filters = ["gnu"]
+
+["sharkdp/fd"]
+asset_filters = ["gnu"]
+
+["dandavison/delta"]
+asset_filters = ["gnu"]
+
+["junegunn/fzf"]
+
+["ajeetdsouza/zoxide"]
+
+["jesseduffield/lazygit"]
+
+["astral-sh/uv"]
+asset_filters = ["gnu"]
+all = true
