@@ -255,3 +255,7 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 # The default of blue can be difficult to see on a dark terminal background
 ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[globbing]='fg=cyan'
+
+# Using pink, as the default of magenta can be difficult to see on a dark
+# terminal background
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter]='fg=177'
