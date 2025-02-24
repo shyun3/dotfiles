@@ -11,15 +11,12 @@ config:
   import_variables:
     - .local_vars.yaml:optional
 dotfiles:
-  # git
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
   f_git_ignore:
     src: config/git/ignore
     dst: ~/.config/git/ignore
-
-  # Windows
   f_profile.ps1:
     src: windows/profile.ps1
     dst: "{{@@ env['UserProfile'] @@}}/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
@@ -31,13 +28,9 @@ dotfiles:
     link: absolute
     actions:
       - winget_install Microsoft.WindowsTerminal wt
-
-  # WSL
   f_wsl.conf:
     src: etc/wsl.conf
     dst: /etc/wsl.conf
-
-  # zsh
   f_zprofile:
     src: zprofile
     dst: ~/.zprofile
@@ -47,8 +40,6 @@ dotfiles:
   f_p10k.zsh:
     src: p10k.zsh
     dst: ~/.p10k.zsh
-
-  # ranger
   f_ranger_commands.py:
     src: config/ranger/commands.py
     dst: ~/.config/ranger/commands.py
@@ -59,7 +50,6 @@ dotfiles:
     src: config/ranger/scope.sh
     dst: ~/.config/ranger/scope.sh
     chmod: 755
-
   f_fd_ignore:
     src: config/fd/ignore
     dst: ~/.config/fd/ignore
@@ -76,6 +66,15 @@ dotfiles:
   f_zsh_plugins.txt:
     src: zsh_plugins.txt
     dst: ~/.zsh_plugins.txt
+  f_init.zsh:
+    src: zsh/init.zsh
+    dst: ~/.zsh/init.zsh
+  f_bat.zsh:
+    src: zsh/plugins/bat.zsh
+    dst: ~/.zsh/plugins/bat.zsh
+  f_delta.zsh:
+    src: zsh/plugins/delta.zsh
+    dst: ~/.zsh/plugins/delta.zsh
 profiles:
   linux:
     dotfiles:
@@ -92,6 +91,9 @@ profiles:
       - f_lazygit_config.yml
       - d_nvim
       - f_zsh_plugins.txt
+      - f_init.zsh
+      - f_bat.zsh
+      - f_delta.zsh
     actions:
       - setup_sh
   wsl-root:

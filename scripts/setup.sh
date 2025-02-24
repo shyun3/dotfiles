@@ -87,13 +87,6 @@ git_take jchook/ranger-zoxide ~/.config/ranger/plugins/zoxide
 git_take mattmc3/antidote ~/.antidote
 
 #######################################################################
-# Completions
-COMP_DIR="$HOME/.zsh/completion"
-mkdir -p "$COMP_DIR"
-
-bat --completion zsh > "$COMP_DIR/_bat-completion.zsh"
-
-#######################################################################
 # chsh (should probably be last)
 SHELL="${SHELL:-}"
 case "$SHELL" in

@@ -9,9 +9,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Pick up completions
-fpath=(~/.zsh/completion $fpath)
-
 # Obsolete beginning in antidote 2.0
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 

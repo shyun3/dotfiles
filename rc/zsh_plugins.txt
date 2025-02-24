@@ -2,11 +2,14 @@
 romkatv/powerlevel10k
 
 # Completions
-dandavison/delta kind:fpath path:etc/completion     # Also used for themes
+~/.zsh/completions kind:fpath
 deadc0de6/dotdrop kind:fpath path:completion
 sharkdp/fd kind:fpath path:contrib/completion
 mesonbuild/meson kind:fpath path:data/shell-completions/zsh
 ajeetdsouza/zoxide kind:fpath path:contrib/completions
+
+# Assets
+dandavison/delta kind:clone     # For themes
 
 # Load this before Oh My Zsh
 getantidote/use-omz
@@ -23,5 +26,7 @@ ohmyzsh/ohmyzsh path:plugins/zoxide
 ohmyzsh/ohmyzsh path:plugins/zsh-interactive-cd
 
 # Zsh plugins
+~/.zsh
+~/.zsh/plugins
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
