@@ -9,13 +9,11 @@ cmd_exists() {
     hash "$1" 2> /dev/null
 }
 
-yes_install() {
-    sudo apt install -y "$@"
-}
-
 install_if_missing() {
+    local pack
     for pack in "$@"; do
-        cmd_exists "$pack" || yes_install "$pack"
+        dpkg-query --show "$pack" 2> /dev/null | grep "$pack" ||
+            sudo apt install -y "$pack"
     done
 }
 
@@ -32,15 +30,9 @@ mkdir -p "$DATA_HOME/nvim/undo"
 
 #######################################################################
 # Packages
-install_if_missing zsh ranger atool nodejs npm xclip archivemount tldr tree
-cmd_exists ctags-universal || yes_install universal-ctags
-cmd_exists rg || yes_install ripgrep
-cmd_exists mountavfs || yes_install avfs
-cmd_exists xdg-open || yes_install xdg-utils
-
-if [[ $(uname -r) =~ WSL ]]; then
-    cmd_exists wslview || yes_install wslu
-fi
+install_if_missing archivemount atool avfs nodejs npm ranger ripgrep tldr tree \
+    universal-ctags xclip xdg-utils zsh
+[[ $(uname -r) =~ WSL ]] && install_if_missing wslu
 
 #######################################################################
 # GitHub binaries
@@ -68,12 +60,10 @@ if [[ ! -d "$NVIM_DIR/.venv" ]]; then
     uv --directory "$NVIM_DIR" pip install pynvim
 fi
 
-if cmd_exists uv; then
-    pip_pkgs=(dotdrop ipython)
-    for pkg in "${pip_pkgs[@]}"; do
-        cmd_exists "$pkg" || uv tool install "$pkg"
-    done
-fi
+pip_pkgs=(dotdrop ipython)
+for pkg in "${pip_pkgs[@]}"; do
+    uv tool install "$pkg"
+done
 
 #######################################################################
 # Assets
