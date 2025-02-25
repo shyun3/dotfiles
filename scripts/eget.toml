@@ -1,6 +1,7 @@
+# Custom keys begin with an underscore, eget should ignore unknown keys
+
 [global]
 target = "~/.local/bin"
-upgrade_only = true
 
 ["zyedidia/eget"]
 
@@ -13,11 +14,21 @@ asset_filters = ["gnu"]
 ["dandavison/delta"]
 asset_filters = ["gnu"]
 
+["jannis-baum/Vivify"]
+# Because the repo name differs from the binary, upgrades will always initiate
+# downloads even if there is no newer release
+_cmd = "viv"
+all = true
+
 ["junegunn/fzf"]
 
 ["ajeetdsouza/zoxide"]
 
 ["jesseduffield/lazygit"]
+
+["neovim/neovim"]
+asset_filters = ["x86"]
+target = "~/.local/bin/nvim"
 
 ["astral-sh/uv"]
 asset_filters = ["gnu"]

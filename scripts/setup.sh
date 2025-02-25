@@ -40,17 +40,7 @@ cmd_exists eget || (cd "$BIN_HOME" && curl https://zyedidia.github.io/eget.sh |
     sh)
 
 SCRIPT_DIR="$(dirname "$0")"
-EGET_CONFIG="$SCRIPT_DIR/eget.toml" eget --download-all
-
-# Extracted file doesn't get renamed properly
-eget neovim/neovim --asset=x86 --to="$BIN_HOME/nvim" --upgrade-only
-
-# Since the repo name differs from the binary name, specify target file to make
-# sure upgrades work properly. See the following comment:
-# https://github.com/zyedidia/eget/issues/65#issuecomment-2602644737
-for file in viv vivify-server; do
-    eget jannis-baum/Vivify --file=$file --to="$BIN_HOME/$file" --upgrade-only
-done
+(cd "$SCRIPT_DIR" && ./eget_noclobber.py eget.toml)
 
 #######################################################################
 # uv
