@@ -12,8 +12,9 @@ cmd_exists() {
 install_if_missing() {
     local pack
     for pack in "$@"; do
-        dpkg-query --show "$pack" 2> /dev/null | grep "$pack" ||
-            sudo apt install -y "$pack"
+        dpkg-query \
+            --showformat '${binary:Package} ${db:Status-Abbrev} ${Version}\n' \
+            --show "$pack" | grep "^$pack ii" || sudo apt install -y "$pack"
     done
 }
 
@@ -25,14 +26,16 @@ BIN_HOME="$LOCAL/bin"
 mkdir -p ~/bin "$BIN_HOME"
 
 # Neovim 'undodir'
-DATA_HOME="$LOCAL/share"
-mkdir -p "$DATA_HOME/nvim/undo"
+mkdir -p "$LOCAL/share/nvim/undo"
 
 #######################################################################
 # Packages
 install_if_missing archivemount atool avfs nodejs npm ranger ripgrep tldr tree \
     universal-ctags xclip xdg-utils zsh
-[[ $(uname -r) =~ WSL ]] && install_if_missing wslu
+
+if [[ $(uname -r) =~ WSL ]]; then
+    install_if_missing wslu
+fi
 
 #######################################################################
 # GitHub binaries
