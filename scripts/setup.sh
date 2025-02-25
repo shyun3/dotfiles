@@ -58,18 +58,16 @@ done
 #######################################################################
 # Assets
 
-# Obtains the latest commit of a Git repo.
+# Performs a shallow git clone.
 #
 # $1: GitHub slug, in the form "owner/repo".
-# $2: Destination directory.
+# $2: Destination directory. Silently skipped if directory exists.
 git_take() {
     local slug="${1:?}"
     local dir="${2:?}"
 
     if [[ ! -d "$dir" ]]; then
-        git clone --depth=1 "https://github.com/${slug}.git" "$dir"
-    else
-        (cd "$dir" && git pull --depth=1 "$dir")
+        git clone --depth=1 "https://github.com/$slug.git" "$dir"
     fi
 }
 
