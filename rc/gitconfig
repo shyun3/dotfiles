@@ -17,7 +17,7 @@
 [include]
     path = ~/.cache/antidote/dandavison/delta/themes.gitconfig
 [delta]
-    features = zebra-dark arctic-fox
+    features = arctic-fox
     navigate = true     # use n and N to move between diff sections
 {%@@ endif @@%}
 [diff]
