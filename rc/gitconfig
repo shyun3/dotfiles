@@ -1,5 +1,4 @@
-{#@@ vim: ft=gitconfig
-@@#}
+{#@@ vim: set ft=gitconfig: @@#}
 [user]
     {%@@ if git_name is defined @@%}
     name = {{@@ git_name @@}}
