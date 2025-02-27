@@ -2,7 +2,6 @@
 romkatv/powerlevel10k
 
 # Completions
-~/.zsh/completions kind:fpath
 deadc0de6/dotdrop kind:fpath path:completion
 sharkdp/fd kind:fpath path:contrib/completion
 mesonbuild/meson kind:fpath path:data/shell-completions/zsh
@@ -26,7 +25,6 @@ ohmyzsh/ohmyzsh path:plugins/zoxide
 ohmyzsh/ohmyzsh path:plugins/zsh-interactive-cd
 
 # Zsh plugins
-~/.zsh
-~/.zsh/plugins
+~/.zsh/plugins  # Refresh static plugins file if updating directory contents
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting

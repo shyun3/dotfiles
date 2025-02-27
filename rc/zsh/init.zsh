@@ -1,1 +1,0 @@
-mkdir -p ~/.zsh/completions

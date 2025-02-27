@@ -66,9 +66,6 @@ dotfiles:
   f_zsh_plugins.txt:
     src: zsh_plugins.txt
     dst: ~/.zsh_plugins.txt
-  f_init.zsh:
-    src: zsh/init.zsh
-    dst: ~/.zsh/init.zsh
   f_bat.zsh:
     src: zsh/plugins/bat.zsh
     dst: ~/.zsh/plugins/bat.zsh
@@ -91,7 +88,6 @@ profiles:
       - f_lazygit_config.yml
       - d_nvim
       - f_zsh_plugins.txt
-      - f_init.zsh
       - f_bat.zsh
       - f_delta.zsh
     actions:
