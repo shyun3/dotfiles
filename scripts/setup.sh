@@ -21,12 +21,12 @@ install_if_missing() {
 #######################################################################
 
 # These bin directories will only be added to PATH if they exist, see zprofile
-LOCAL="$HOME/.local"
-BIN_HOME="$LOCAL/bin"
+LOCAL_DIR="$HOME/.local"
+BIN_HOME="$LOCAL_DIR/bin"
 mkdir -p ~/bin "$BIN_HOME"
 
 # Neovim 'undodir'
-mkdir -p "$LOCAL/share/nvim/undo"
+mkdir -p "$LOCAL_DIR/share/nvim/undo"
 
 #######################################################################
 # Packages

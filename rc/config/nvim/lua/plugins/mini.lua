@@ -1,4 +1,4 @@
--- Derived from example in help
+-- Derived from example in mini.files help
 local map_split = function(buf_id, lhs, direction)
   local rhs = function()
     -- Make new window and set it as target
@@ -17,7 +17,7 @@ local map_split = function(buf_id, lhs, direction)
   vim.keymap.set("n", lhs, rhs, { buffer = buf_id, desc = desc })
 end
 
--- Derived from example in help
+-- Derived from example in mini.files help
 -- Set focused directory as current working directory
 local set_cwd = function()
   local fs_entry = (MiniFiles.get_fs_entry() or {})
@@ -32,58 +32,87 @@ local set_cwd = function()
 end
 
 return {
-  "echasnovski/mini.files",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  version = false, -- Main branch
+  {
+    "echasnovski/mini.files",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    version = false, -- Main branch
 
-  opts = {
-    options = {
-      -- When on opened directory, current window can get closed with Ctrl-P
-      use_as_default_explorer = false,
+    opts = {
+      options = {
+        -- When on opened directory, current window can get closed with fzf-lua
+        -- Ctrl-P
+        use_as_default_explorer = false,
+      },
+      windows = {
+        preview = true,
+      },
     },
-    windows = {
-      preview = true,
+
+    config = function(_, opts)
+      require("mini.files").setup(opts)
+
+      -- Derived from examples in help
+      vim.api.nvim_create_autocmd("User", {
+        group = vim.api.nvim_create_augroup("user_mini_files", {}),
+        pattern = "MiniFilesBufferCreate",
+        callback = function(args)
+          local buf_id = args.data.buf_id
+          map_split(buf_id, "<C-s>", "belowright horizontal")
+          map_split(buf_id, "<C-v>", "belowright vertical")
+          vim.keymap.set(
+            "n",
+            "g~",
+            set_cwd,
+            { buffer = buf_id, desc = "Set cwd" }
+          )
+        end,
+      })
+    end,
+
+    keys = {
+      {
+        "<C-n>",
+        function()
+          -- Derived from example in help
+          if not MiniFiles.close() then MiniFiles.open() end
+        end,
+        desc = "Toggle MiniFiles",
+      },
+      {
+        "<A-n>",
+        function()
+          -- Taken from `MiniFiles.open()` help
+          -- Open current file directory (in last used state) focused on the file
+          MiniFiles.open(vim.api.nvim_buf_get_name(0))
+        end,
+        desc = "Open MiniFiles in directory of current file",
+      },
     },
   },
 
-  config = function(_, opts)
-    require("mini.files").setup(opts)
+  {
+    "echasnovski/mini.ai",
+    version = false, -- Main branch
 
-    -- Derived from examples in help
-    vim.api.nvim_create_autocmd("User", {
-      group = vim.api.nvim_create_augroup("user_mini_files", {}),
-      pattern = "MiniFilesBufferCreate",
-      callback = function(args)
-        local buf_id = args.data.buf_id
-        map_split(buf_id, "<C-s>", "belowright horizontal")
-        map_split(buf_id, "<C-v>", "belowright vertical")
-        vim.keymap.set(
-          "n",
-          "g~",
-          set_cwd,
-          { buffer = buf_id, desc = "Set cwd" }
-        )
-      end,
-    })
-  end,
-
-  keys = {
-    {
-      "<C-n>",
-      function()
-        -- Derived from example in help
-        if not MiniFiles.close() then MiniFiles.open() end
-      end,
-      desc = "Toggle MiniFiles",
-    },
-    {
-      "<A-n>",
-      function()
-        -- Taken from `MiniFiles.open()` help
-        -- Open directory of current file (in last used state) focused on the file
-        MiniFiles.open(vim.api.nvim_buf_get_name(0))
-      end,
-      desc = "Open MiniFiles in directory of current file",
+    opts = {
+      custom_textobjects = {
+        -- Disable built-in text objects
+        ["("] = false,
+        ["["] = false,
+        ["{"] = false,
+        ["<"] = false,
+        [")"] = false,
+        ["]"] = false,
+        ["}"] = false,
+        [">"] = false,
+        b = false,
+        ['"'] = false,
+        ["'"] = false,
+        ["`"] = false,
+        t = false,
+        f = false, -- See treesitter text objects
+        a = false, -- See vim-textobj-parameter
+      },
     },
   },
 }
