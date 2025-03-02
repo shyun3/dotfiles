@@ -1,7 +1,11 @@
+# Using eget v1.3.4
 # Custom keys begin with an underscore, eget should ignore unknown keys
 
 [global]
 target = "~/.local/bin"
+
+# This must be specified here, calling eget with `--download-all --upgrade_only`
+# seems to download unconditionally
 upgrade_only = true
 
 ["zyedidia/eget"]
