@@ -34,7 +34,7 @@ end
 return {
   {
     "echasnovski/mini.files",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "folke/snacks.nvim" },
     version = false, -- Main branch
 
     opts = {
@@ -52,8 +52,9 @@ return {
       require("mini.files").setup(opts)
 
       -- Derived from examples in help
+      local group = vim.api.nvim_create_augroup("user_mini_files", {})
       vim.api.nvim_create_autocmd("User", {
-        group = vim.api.nvim_create_augroup("user_mini_files", {}),
+        group = group,
         pattern = "MiniFilesBufferCreate",
         callback = function(args)
           local buf_id = args.data.buf_id
@@ -65,6 +66,15 @@ return {
             set_cwd,
             { buffer = buf_id, desc = "Set cwd" }
           )
+        end,
+      })
+
+      -- Taken from rename snack
+      vim.api.nvim_create_autocmd("User", {
+        group = group,
+        pattern = "MiniFilesActionRename",
+        callback = function(event)
+          Snacks.rename.on_rename_file(event.data.from, event.data.to)
         end,
       })
     end,
