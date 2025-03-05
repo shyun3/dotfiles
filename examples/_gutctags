@@ -1,4 +1,10 @@
+# vim: ft=ctags
+
 -R
---languages="See --list-languages"
+
+# Default is all languages, can restrict to specified
+# See --list-languages
+--languages=prog,lang
+
 --exclude=*/path/to/*.ext
 --exclude=more

@@ -1,5 +1,5 @@
-# Helps with making sure identical definitions are included
---excmd=combine
+# Helps with making sure identical definitions are included, see vim#1057
+--fields=+line
 
 --map-python=+.pyi
 
