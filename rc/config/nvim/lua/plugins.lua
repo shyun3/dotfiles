@@ -26,7 +26,7 @@ return {
   },
 
   { "numToStr/Comment.nvim", opts = {} },
-  { "vim-scripts/DoxygenToolkit.vim", cmd = "Dox" },
+  { "vim-scripts/DoxygenToolkit.vim" },
 
   {
     "chrishrb/gx.nvim",
@@ -34,7 +34,7 @@ return {
     init = function() vim.g.netrw_nogx = 1 end,
     config = true,
 
-    keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+    keys = { { "gx", "<Cmd>Browse<CR>", mode = { "n", "x" } } },
     cmd = "Browse",
   },
 
