@@ -25,4 +25,7 @@ end
 
 -- Quickfix
 vim.keymap.set("n", "<A-q>", "<Cmd>botright copen<CR>")
-vim.keymap.set("n", "<Leader>q", "<Cmd>cclose<CR>")
+vim.keymap.set("n", "<Leader>qq", "<Cmd>cclose<CR>")
+
+-- Help
+vim.keymap.set("n", "<Leader>qh", "<Cmd>helpclose<CR>")
