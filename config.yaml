@@ -66,15 +66,9 @@ dotfiles:
   f_zsh_plugins.txt:
     src: zsh_plugins.txt
     dst: ~/.zsh_plugins.txt
-  f_bat.zsh:
-    src: zsh/plugins/bat.zsh
-    dst: ~/.zsh/plugins/bat.zsh
-  f_delta.zsh:
-    src: zsh/plugins/delta.zsh
-    dst: ~/.zsh/plugins/delta.zsh
-  f_avfs.zsh:
-    src: zsh/plugins/avfs.zsh
-    dst: ~/.zsh/plugins/avfs.zsh
+  d_plugins:
+    src: zsh/plugins
+    dst: ~/.zsh/plugins
 profiles:
   linux:
     dotfiles:
@@ -91,9 +85,7 @@ profiles:
       - f_lazygit_config.yml
       - d_nvim
       - f_zsh_plugins.txt
-      - f_bat.zsh
-      - f_delta.zsh
-      - f_avfs.zsh
+      - d_plugins
     actions:
       - setup_sh
   wsl-root:
