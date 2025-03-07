@@ -3,7 +3,7 @@ return {
   dependencies = { "stevearc/oil.nvim" },
 
   config = function()
-    vim.fn["project#rc"]()
+    vim.call("project#rc")
 
     -- Execute vim-project autocommands for paths in oil.nvim buffers
     local group = vim.api.nvim_create_augroup("user_project", {})

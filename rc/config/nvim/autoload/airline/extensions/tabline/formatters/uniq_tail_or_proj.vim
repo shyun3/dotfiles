@@ -6,5 +6,3 @@ function! airline#extensions#tabline#formatters#uniq_tail_or_proj#format(bufnr, 
     return projName
   endif
 endfunction
-
-
