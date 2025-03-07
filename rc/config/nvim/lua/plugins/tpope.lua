@@ -28,7 +28,7 @@ return {
   {
     "tpope/vim-surround",
     init = function()
-      -- Mainly so that <C-s> can be used to show signature
+      -- To allow remapping i_<C-s>
       vim.g.surround_no_insert_mappings = 1
     end,
   },
