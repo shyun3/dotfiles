@@ -1,0 +1,15 @@
+# vim: ft=logrotate
+
+# Some LSP servers, like clangd, send all log messages to stderr. These are
+# logged by Neovim as ERROR messages, even though they may not indicate any
+# errors.
+~/.local/state/nvim/lsp.log
+{
+    daily
+    size 2M
+    rotate 1
+    create
+    dateext
+    missingok
+    notifempty
+}
