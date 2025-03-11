@@ -53,6 +53,7 @@
   "vim-fugitive": { "branch": "master", "commit": "b068eaf1e6cbe35d1ac100d435cd7f7b74a5c87d" },
   "vim-grepper": { "branch": "master", "commit": "f1b441c23f0227b28c36be383b562ab47dbecec4" },
   "vim-gutentags": { "branch": "master", "commit": "aa47c5e29c37c52176c44e61c780032dfacef3dd" },
+  "vim-logrotate": { "branch": "master", "commit": "2c59ccd949f3c1d075ce64b7caabf54f1c0e90bf" },
   "vim-polyglot": { "branch": "master", "commit": "f5393cfee07aeb666f4d75f9b3a83163862fb094" },
   "vim-project": { "branch": "master", "commit": "3f9c69f48293dcef67c5eef5b1846eb538431a1e" },
   "vim-projectionist": { "branch": "master", "commit": "5ff7bf79a6ef741036d2038a226bcb5f8b1cd296" },
