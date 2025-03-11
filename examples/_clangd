@@ -17,6 +17,9 @@ CompileFlags:
     - -Wextra
     - -Wpedantic
 
+    # May be helpful with suppressing erroneous "too many errors" diagnostic
+    - -ferror-limit=0
+
   CompilationDatabase: /path/to/project
 
   Remove: [-munknown-arg]

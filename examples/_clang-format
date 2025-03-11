@@ -1,4 +1,4 @@
-# clang-format 19.1.0
+# clang-format 20.1.0
 # vim: ft=yaml
 
 BasedOnStyle: LLVM
@@ -27,6 +27,7 @@ AllowShortFunctionsOnASingleLine: InlineOnly
 AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: true
+AllowShortNamespacesOnASingleLine: false
 AlwaysBreakBeforeMultilineStrings: false
 AttributeMacros: []
 BinPackArguments: true
@@ -58,6 +59,7 @@ BreakBeforeBraces: Custom
 BreakBeforeConceptDeclarations: Always
 BreakBeforeInlineASMColon: OnlyMultiline
 BreakBeforeTernaryOperators: false
+BreakBinaryOperations: Never
 BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterComma
 BreakStringLiterals: true
@@ -88,6 +90,7 @@ IncludeIsMainSourceRegex: ""
 IndentAccessModifiers: false
 IndentCaseBlocks: false
 IndentCaseLabels: true
+IndentExportBlock: false
 IndentExternBlock: NoIndent
 IndentGotoLabels: false
 IndentPPDirectives: AfterHash
@@ -107,6 +110,7 @@ KeepEmptyLines:
   AtEndOfFile: false
   AtStartOfBlock: false
   AtStartOfFile: false
+KeepFormFeed: false
 LambdaBodyIndentation: Signature
 Language: Cpp
 LineEnding: LF
@@ -120,6 +124,7 @@ PPIndentWidth: -1
 PackConstructorInitializers: BinPack
 # PenaltyBreakAssignment:
 # PenaltyBreakBeforeFirstCallParameter:
+# PenaltyBreakBeforeMemberAccess:
 # PenaltyBreakComment:
 # PenaltyBreakFirstLessLess:
 # PenaltyBreakOpenParenthesis:
@@ -136,6 +141,7 @@ RawStringFormats: []
 ReferenceAlignment: Pointer
 ReflowComments: true
 RemoveBracesLLVM: false
+RemoveEmptyLinesInUnwrappedLines: true
 RemoveParentheses: Leave
 RemoveSemicolon: false
 RequiresClausePosition: WithPreceding
@@ -180,7 +186,10 @@ Standard: Auto
 StatementAttributeLikeMacros: []
 StatementMacros: []
 TabWidth: 4
+TemplateNames: []
 TypeNames: []
 TypenameMacros: []
 UseTab: Never
+VariableTemplates: []
 WhitespaceSensitiveMacros: []
+WrapNamespaceBodyWithEmptyLines: Leave
