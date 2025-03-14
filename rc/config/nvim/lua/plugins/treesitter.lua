@@ -22,6 +22,7 @@ return {
 
         "bash",
         "cpp",
+        "meson"
       },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
