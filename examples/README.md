@@ -6,14 +6,15 @@ renaming them, and customizing their contents as needed.
 
 | Example name | Destination name | Destination folder | Use with |
 | ------------ | ---------------- | ------------------ | -------- |
-| `_clang-format` | `.clang-format` | Project | `clang-format`
-| `_clangd` | `.clangd` | Project | `clangd` |
-| `_gutctags` | `.gutctags` | Project | `vim-gutentags` |
-| `_projections.json` | `.projections.json` | Project | `vim-projectionist` |
-| `c.snippets` | Same | `~/.config/nvim/UltiSnips/specific` | `ultisnips`
-| `compile_flags.txt` | Same | Project | `clangd` |
-| `projects.vim` | Same | `~/.config/nvim` | `vim-project` |
-| `pyrightconfig.json` | Same | Project | `pyright` |
+| *_clang-format* | *.clang-format* | Project | `clang-format`
+| *_clangd* | *.clangd* | Project | `clangd` |
+| *_gutctags* | *.gutctags* | Project | vim-gutentags |
+| *_projections.json* | *.projections.json* | Project | vim-projectionist |
+| *c.snippets* | Same | *~/.config/nvim/UltiSnips/specific* | ultisnips
+| *compile_flags.txt* | Same | Project | `clangd` |
+| *projects.vim* | Same | *~/.config/nvim* | vim-project |
+| *pyrightconfig.json* | Same | Project | `pyright` |
+| *ssh-config* | *config* | *~/.ssh* | `ssh-add` |
 
 Additional notes:
 * `.gutctags`: See `g:gutentags_project_root`
