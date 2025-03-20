@@ -54,10 +54,16 @@ return {
   keys = {
     {
       "<Leader><Leader>",
+
       function()
-        require("util").go_to_editable_window()
-        vim.cmd.Grepper()
+        local util = require("util")
+        util.go_to_editable_window()
+
+        local cwd = vim.fn.getcwd()
+        local cd_flag = util.oil_filter(cwd) == cwd and "-cd " .. cwd or ""
+        vim.cmd.Grepper(cd_flag)
       end,
+
       desc = "Grepper: Prompt",
     },
     { "<Leader>*", "<Cmd>Grepper -cword<CR>" },
