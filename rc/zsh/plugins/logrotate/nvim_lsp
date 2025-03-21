@@ -10,6 +10,7 @@
     rotate 1
     create
     dateext
+    dateformat -%Y-%m-%d-%H-%M-%S
     missingok
     notifempty
 }
