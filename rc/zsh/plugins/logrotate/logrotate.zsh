@@ -1,2 +1,2 @@
 mkdir -p ~/.local/state/logrotate
-logrotate "${0:a:h}/nvim_lsp" --state ~/.local/state/logrotate/status
+logrotate "${0:a:h}/nvim_lsp" --skip-state-lock --state ~/.local/state/logrotate/status
