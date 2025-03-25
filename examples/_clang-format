@@ -192,4 +192,4 @@ TypenameMacros: []
 UseTab: Never
 VariableTemplates: []
 WhitespaceSensitiveMacros: []
-WrapNamespaceBodyWithEmptyLines: Leave
+WrapNamespaceBodyWithEmptyLines: Always
