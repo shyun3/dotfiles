@@ -53,7 +53,6 @@ return {
     end,
 
     keys = {
-      { "<Leader>rr", vim.lsp.buf.references, desc = "LSP: References" },
       {
         "<Leader>ri",
         vim.lsp.buf.incoming_calls,
@@ -77,9 +76,6 @@ return {
 
         desc = "LSP: Buffer diagnostics",
       },
-
-      { "<Leader>ca", vim.lsp.buf.code_action, desc = "LSP: Code action" },
-      { "<Leader>rn", vim.lsp.buf.rename, desc = "LSP: Rename" },
 
       {
         "<Leader>ch",
