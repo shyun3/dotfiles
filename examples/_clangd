@@ -24,6 +24,12 @@ CompileFlags:
 
   Remove: [-munknown-arg]
 
+Diagnostics:
+  Suppress: ["warning"]
+
+Style:
+  AngledHeaders: ["lib/.*"]
+
 ---
 If:
   PathMatch: /path/to/src
