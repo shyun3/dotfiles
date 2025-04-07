@@ -6,3 +6,19 @@ gui:
     optionsTextColor:
       # The default of blue was hard to see with a dark terminal background
       - cyan
+customCommands:
+  # Derived from https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium#pushing-a-specific-commit
+  - key: "P"
+    command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
+    context: "commits"
+    loadingText: "Pushing commit..."
+    description: "Push a specific commit (and any preceding)"
+    stream: true
+
+  # Derived from pushing specific commit
+  - key: "P"
+    context: "localBranches"
+    command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalBranch.Name}}"
+    loadingText: "Pushing branch..."
+    description: "Push a specific branch"
+    stream: true
