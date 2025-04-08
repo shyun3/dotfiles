@@ -31,7 +31,7 @@ mkdir -p "$LOCAL_DIR/share/nvim/undo"
 #######################################################################
 # Packages
 install_if_missing archivemount atool avfs nodejs npm ranger ripgrep tldr tree \
-    universal-ctags xclip xdg-utils zsh
+    universal-ctags update-notifier-common xclip xdg-utils zsh
 
 if [[ $(uname -r) =~ WSL ]]; then
     install_if_missing wslu
