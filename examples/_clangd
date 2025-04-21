@@ -17,6 +17,9 @@ CompileFlags:
     - -Wextra
     - -Wpedantic
 
+    # To keep analyzing asserts in release builds
+    - -UNDEBUG
+
     # May be helpful with suppressing erroneous "too many errors" diagnostic
     - -ferror-limit=0
 
