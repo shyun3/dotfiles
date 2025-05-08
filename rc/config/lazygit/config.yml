@@ -13,12 +13,12 @@ customCommands:
     context: "commits"
     loadingText: "Pushing commit..."
     description: "Push a specific commit (and any preceding)"
-    stream: true
 
   # Derived from pushing specific commit
   - key: "P"
     context: "localBranches"
-    command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalBranch.Name}}"
+    command: 'git push
+      {{if eq .SelectedLocalBranch.UpstreamRemote ""}} --set-upstream {{end}}
+      {{.SelectedRemote.Name}} {{.SelectedLocalBranch.Name}}'
     loadingText: "Pushing branch..."
     description: "Push a specific branch"
-    stream: true
