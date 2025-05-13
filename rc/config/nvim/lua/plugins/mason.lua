@@ -34,7 +34,7 @@ return {
       ensure_installed = {
         -- Formatters
         "black",
-        { "clang-format", version = "20.1.3" },
+        { "clang-format", version = "20.1.4" },
         "isort",
         "prettier",
         "shfmt",
