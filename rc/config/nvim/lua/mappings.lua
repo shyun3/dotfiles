@@ -5,6 +5,9 @@ vim.keymap.set({ "n", "v" }, "<C-]>", "g<C-]>")
 vim.keymap.set("n", "<A-]>s", "<Cmd>wincmd g<C-]><CR>")
 vim.keymap.set("n", "<A-]>v", "<Cmd>vertical wincmd g<C-]><CR>")
 
+-- Buffers
+vim.keymap.set("n", "<Leader><BS>", "<Cmd>bdelete<CR>")
+
 -- Window navigation
 vim.keymap.set("n", "]w", "<Cmd>wincmd w<CR>")
 vim.keymap.set("n", "[w", "<Cmd>wincmd W<CR>")
