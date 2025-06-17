@@ -115,6 +115,24 @@ return {
           activeBorderColor = { fg = "Character", bold = true },
           searchingActiveBorderColor = { fg = "IncSearch", bold = true },
         },
+        win = {
+          style = "lazygit",
+
+          -- For some reason, the `WinEnter` event doesn't fire when exiting
+          -- the lazygit window and re-entering the previous one. This is being
+          -- manually fired because there may be some custom autocommands that
+          -- depend on it.
+          on_close = function()
+            local timer = vim.uv.new_timer()
+            timer:start(
+              20,
+              0,
+              vim.schedule_wrap(
+                function() vim.api.nvim_exec_autocmds("WinEnter", {}) end
+              )
+            )
+          end,
+        },
       },
     },
 
