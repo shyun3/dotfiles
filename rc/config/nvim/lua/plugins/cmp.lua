@@ -176,7 +176,7 @@ return {
 
       experimental = {
         -- Helpful with previewing LSP snippets
-        ghost_text = true,
+        ghost_text = { hl_group = "SpecialKey" },
       },
     })
 
