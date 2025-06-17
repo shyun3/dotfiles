@@ -13,6 +13,9 @@ upgrade_only = true
 ["sharkdp/bat"]
 asset_filters = ["gnu"]
 
+["eza-community/eza"]
+asset_filters = ["gnu", "zip"]
+
 ["sharkdp/fd"]
 asset_filters = ["gnu"]
 

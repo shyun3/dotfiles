@@ -3,12 +3,14 @@ romkatv/powerlevel10k
 
 # Completions
 deadc0de6/dotdrop kind:fpath path:completion
+eza-community/eza kind:fpath path:completions/zsh
 sharkdp/fd kind:fpath path:contrib/completion
 mesonbuild/meson kind:fpath path:data/shell-completions/zsh
 ajeetdsouza/zoxide kind:fpath path:contrib/completions
 
 # Assets
 dandavison/delta kind:clone     # For themes
+eza-community/eza-themes kind:clone
 
 # Load this before Oh My Zsh
 getantidote/use-omz
@@ -20,6 +22,7 @@ ohmyzsh/ohmyzsh path:lib
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/copyfile
 ohmyzsh/ohmyzsh path:plugins/direnv
+ohmyzsh/ohmyzsh path:plugins/eza
 ohmyzsh/ohmyzsh path:plugins/fzf
 ohmyzsh/ohmyzsh path:plugins/ssh-agent
 ohmyzsh/ohmyzsh path:plugins/uv
