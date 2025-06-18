@@ -1,3 +1,5 @@
+local lazygit_timer
+
 return {
   -- the colorscheme should be available when starting Neovim
   {
@@ -120,17 +122,17 @@ return {
 
           -- For some reason, the `WinEnter` event doesn't fire when exiting
           -- the lazygit window and re-entering the previous one. This is being
-          -- manually fired because there may be some custom autocommands that
-          -- depend on it.
+          -- manually fired here because there may be some custom autocommands
+          -- that depend on it.
           on_close = function()
-            local timer = vim.uv.new_timer()
-            timer:start(
-              20,
-              0,
-              vim.schedule_wrap(
+            lazygit_timer = vim.uv.new_timer()
+            lazygit_timer:start(20, 0, function()
+              lazygit_timer:stop()
+              lazygit_timer:close()
+              vim.schedule(
                 function() vim.api.nvim_exec_autocmds("WinEnter", {}) end
               )
-            )
+            end)
           end,
         },
       },
