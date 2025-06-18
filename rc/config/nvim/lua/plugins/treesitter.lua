@@ -3,7 +3,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "RRethy/nvim-treesitter-endwise",
     },
     branch = "master",
     build = ":TSUpdate",
@@ -77,10 +76,13 @@ return {
             },
           },
         },
-
-        endwise = { enable = true },
       })
     end,
+  },
+
+  {
+    "RRethy/nvim-treesitter-endwise",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 
   {
