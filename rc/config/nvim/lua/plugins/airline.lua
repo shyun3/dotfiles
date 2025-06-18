@@ -28,6 +28,13 @@ return {
   end,
 
   config = function()
+    -- Work around nvim 0.11 statusline changes, see neovim PR #29976
+    -- Derived from https://github.com/vim-airline/vim-airline/issues/2693#issuecomment-2424151997
+    vim.cmd.highlight("StatusLine cterm=NONE gui=NONE")
+    vim.cmd.highlight("StatusLineNC cterm=NONE gui=NONE")
+    vim.cmd.highlight("TabLine cterm=NONE gui=NONE")
+    vim.cmd.highlight("TabLineFill cterm=NONE gui=NONE")
+
     local group = vim.api.nvim_create_augroup("my_airline", {})
     vim.api.nvim_create_autocmd("User", {
       group = group,
