@@ -52,11 +52,36 @@ return {
     options = { theme = theme },
     sections = {
       lualine_a = { "mode" },
-      lualine_b = { "branch", "diff", "diagnostics" },
+      lualine_b = { "branch", "diff" },
       lualine_c = { "filename" },
       lualine_x = { "filetype" },
       lualine_y = { "encoding", "fileformat" },
-      lualine_z = { "progress", "location" },
+      lualine_z = {
+        "progress",
+        "location",
+        {
+          "diagnostics",
+          sources = { "nvim_diagnostic" },
+          sections = { "warn" },
+          colored = false,
+
+          -- Derived from 'airline_warning'
+          color = { bg = "#df5f00" },
+
+          separator = { left = "" },
+        },
+        {
+          "diagnostics",
+          sources = { "nvim_diagnostic" },
+          sections = { "error" },
+          colored = false,
+
+          -- Derived from 'airline_error'
+          color = { bg = "#990000" },
+
+          separator = { left = "" },
+        },
+      },
     },
     inactive_sections = {
       lualine_a = {},
