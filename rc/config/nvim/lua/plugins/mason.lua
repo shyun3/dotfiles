@@ -1,16 +1,16 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
 
     -- PATH should be updated early
     priority = 100,
 
-    config = true,
+    opts = {},
   },
 
   {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim" },
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
 
     opts = {
       ensure_installed = {
@@ -22,13 +22,12 @@ return {
         "vimls",
         "yamlls",
       },
-      automatic_installation = true,
     },
   },
 
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    dependencies = { "williamboman/mason.nvim" },
+    dependencies = { "mason-org/mason.nvim" },
 
     opts = {
       ensure_installed = {

@@ -1,4 +1,5 @@
 local function on_lsp_attach(client, bufnr)
+  -- Make tag commands only operate on tags, not LSP
   -- Derived from `:h lsp-defaults-disable`
   vim.bo.tagfunc = ""
 
@@ -36,18 +37,21 @@ return {
     "neovim/nvim-lspconfig",
 
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "Issafalcon/lsp-overloads.nvim",
     },
 
     config = function()
-      require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          require("lspconfig")[server_name].setup({
-            capabilities = require("cmp_nvim_lsp").default_capabilities(),
-            on_attach = on_lsp_attach,
-          })
+      vim.lsp.config("*", {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      })
+
+      -- This is not being included in the config above as `on_attach` because
+      -- it would get overriden by any LSP configs provided later
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if client then on_lsp_attach(client, args.buf) end
         end,
       })
     end,
