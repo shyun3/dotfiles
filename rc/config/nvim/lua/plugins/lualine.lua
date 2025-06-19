@@ -50,5 +50,21 @@ return {
 
   opts = {
     options = { theme = theme },
+    sections = {
+      lualine_a = { "mode" },
+      lualine_b = { "branch", "diff", "diagnostics" },
+      lualine_c = { "filename" },
+      lualine_x = { "filetype" },
+      lualine_y = { "encoding", "fileformat" },
+      lualine_z = { "progress", "location" },
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = { "filename" },
+      lualine_x = { "filetype" },
+      lualine_y = { "encoding", "fileformat" },
+      lualine_z = { "progress", "location" },
+    },
   },
 }
