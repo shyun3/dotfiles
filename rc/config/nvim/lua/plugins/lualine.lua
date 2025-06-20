@@ -20,29 +20,27 @@ local theme = {
   },
   insert = {
     a = { fg = colors.black, bg = colors.blue, gui = "bold" },
-    b = { fg = colors.white, bg = colors.dark_gray },
-    c = { fg = colors.white, bg = colors.gray },
   },
   replace = {
     a = { fg = colors.black, bg = colors.red, gui = "bold" },
-    b = { fg = colors.white, bg = colors.dark_gray },
-    c = { fg = colors.white, bg = colors.gray },
   },
   visual = {
     a = { fg = colors.black, bg = colors.green, gui = "bold" },
-    b = { fg = colors.white, bg = colors.dark_gray },
-    c = { fg = colors.white, bg = colors.gray },
   },
   command = {
     a = { fg = colors.black, bg = colors.yellow, gui = "bold" },
-    b = { fg = colors.white, bg = colors.dark_gray },
-    c = { fg = colors.white, bg = colors.gray },
   },
   inactive = {
     a = { fg = colors.light_black, bg = colors.gray },
     b = { fg = colors.light_black, bg = colors.gray },
     c = { fg = colors.light_black, bg = colors.gray },
   },
+}
+
+local filename = {
+  "filename",
+  newfile_status = true,
+  path = 1, -- Relative path
 }
 
 return {
@@ -54,7 +52,7 @@ return {
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff" },
-      lualine_c = { "filename" },
+      lualine_c = { filename },
       lualine_x = { "filetype" },
       lualine_y = { "encoding", "fileformat" },
       lualine_z = {
@@ -87,7 +85,7 @@ return {
     inactive_sections = {
       lualine_a = {},
       lualine_b = {},
-      lualine_c = { "filename" },
+      lualine_c = { filename },
       lualine_x = {},
       lualine_y = {},
       lualine_z = {},
