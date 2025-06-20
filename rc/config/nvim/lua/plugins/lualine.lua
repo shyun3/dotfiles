@@ -1,4 +1,4 @@
--- Derived from molokai in vim-airline-themes
+-- Taken from molokai in vim-airline-themes
 local colors = {
   black = "#080808",
   yellow = "#e6db74",
@@ -11,6 +11,7 @@ local colors = {
   light_black = "#1b1d1e",
 }
 
+-- Taken from molokai in vim-airline-themes
 local theme = {
   normal = {
     a = { fg = colors.black, bg = colors.yellow, gui = "bold" },
@@ -65,7 +66,7 @@ return {
           sections = { "warn" },
           colored = false,
 
-          -- Derived from 'airline_warning'
+          -- Taken from 'airline_warning'
           color = { bg = "#df5f00" },
 
           separator = { left = "" },
@@ -76,7 +77,7 @@ return {
           sections = { "error" },
           colored = false,
 
-          -- Derived from 'airline_error'
+          -- Taken from 'airline_error'
           color = { bg = "#990000" },
 
           separator = { left = "" },
@@ -87,9 +88,9 @@ return {
       lualine_a = {},
       lualine_b = {},
       lualine_c = { "filename" },
-      lualine_x = { "filetype" },
-      lualine_y = { "encoding", "fileformat" },
-      lualine_z = { "progress", "location" },
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {},
     },
   },
 }
