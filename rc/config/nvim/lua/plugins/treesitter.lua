@@ -88,7 +88,7 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     event = "BufWinEnter",
 
-    opts = {},
+    opts = { max_lines = 1 },
 
     keys = {
       {
