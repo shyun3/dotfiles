@@ -118,6 +118,10 @@ return {
         win = {
           style = "lazygit",
 
+          -- Disable <Esc> twice quickly to enter normal mode
+          -- Derived from https://github.com/folke/snacks.nvim/issues/280#issuecomment-2987923844
+          keys = { term_normal = false },
+
           -- For some reason, the `WinEnter` event doesn't fire when exiting
           -- the lazygit window and re-entering the previous one. This is being
           -- manually fired here because there may be some custom autocommands
