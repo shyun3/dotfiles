@@ -123,7 +123,7 @@ return {
       options = { theme = theme },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { "branch", "diff" },
+        lualine_b = { { "branch", draw_empty = true }, "diff" },
         lualine_c = { filename },
         lualine_x = {
           {
