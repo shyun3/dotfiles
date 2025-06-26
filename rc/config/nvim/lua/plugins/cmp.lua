@@ -92,7 +92,7 @@ return {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
-    "quangnguyen30192/cmp-nvim-ultisnips",
+    "saadparwaiz1/cmp_luasnip",
     "folke/lazydev.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "quangnguyen30192/cmp-nvim-tags",
@@ -105,9 +105,10 @@ return {
     highlight_cmp_menu()
 
     local cmp = require("cmp")
+    local luasnip = require("luasnip")
     cmp.setup({
       snippet = {
-        expand = function(args) vim.call("UltiSnips#Anon", args.body) end,
+        expand = function(args) require("luasnip").lsp_expand(args.body) end,
       },
 
       mapping = cmp.mapping.preset.insert({
@@ -116,7 +117,11 @@ return {
 
         ["<CR>"] = function(fallback)
           if cmp.visible() and cmp.get_active_entry() then
-            suppress_cinkeys(function() cmp.confirm({ select = false }) end)
+            if luasnip.expandable() then
+              suppress_cinkeys(luasnip.expand)
+            else
+              suppress_cinkeys(function() cmp.confirm({ select = false }) end)
+            end
           else
             fallback()
             vim.fn.feedkeys(util.replace_termcodes("<Plug>DiscretionaryEnd"))
@@ -141,7 +146,7 @@ return {
       }),
 
       sources = cmp.config.sources({
-        { name = "ultisnips" },
+        { name = "luasnip" },
         { name = "lazydev" },
         { name = "nvim_lsp" },
         { name = "tags" },
@@ -162,7 +167,7 @@ return {
       formatting = {
         format = require("lspkind").cmp_format({
           menu = {
-            ultisnips = "[US]",
+            luasnip = "[LS]",
             lazydev = "[LD]",
             nvim_lsp = "[LSP]",
             tags = "[T]",

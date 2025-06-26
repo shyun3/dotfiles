@@ -1,0 +1,12 @@
+{
+  "include_guard": {
+    "prefix": "includeGuard",
+    "body": [
+      "#ifndef ${1:${TM_FILENAME/(\\w+)[\\.-]?/${1:/upcase}_/g}}",
+      "#define $1",
+      "$0",
+      "#endif    // $1"
+    ],
+    "description": "Include guard"
+  }
+}

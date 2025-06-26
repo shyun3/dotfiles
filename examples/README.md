@@ -10,7 +10,6 @@ renaming them, and customizing their contents as needed.
 | *_clangd* | *.clangd* | Project | `clangd` |
 | *_gutctags* | *.gutctags* | Project | vim-gutentags |
 | *_projections.json* | *.projections.json* | Project | vim-projectionist |
-| *c.snippets* | Same | *~/.config/nvim/UltiSnips/specific* | ultisnips
 | *compile_flags.txt* | Same | Project | `clangd` |
 | *projects.vim* | Same | *~/.config/nvim* | vim-project |
 | *pyrightconfig.json* | Same | Project | `pyright` |
@@ -19,7 +18,6 @@ renaming them, and customizing their contents as needed.
 Additional notes:
 * `.gutctags`: See `g:gutentags_project_root`
 * `projects.vim`: See `vim-project` Neovim config
-* `c.snippets`: See `g:UltiSnipsSnippetDirectories`
 * `pyrightconfig.json`: `pyright` can read type stubs placed in the `typings`
   directory. See also the `stubPath` option and [Generating Type
   Stubs][type-stubs].

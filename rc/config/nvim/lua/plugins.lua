@@ -83,6 +83,70 @@ return {
   },
 
   {
+    "L3MON4D3/LuaSnip",
+    version = "v2.*",
+    build = "make install_jsregexp",
+
+    config = function()
+      for _, fmt in ipairs({ "vscode", "snipmate" }) do
+        local module = string.format("luasnip.loaders.from_%s", fmt)
+        require(module).lazy_load({
+          lazy_paths = { "./snippets/specific" },
+        })
+      end
+
+      -- Update repeated placeholders while typing in insert mode
+      -- Derived from https://github.com/L3MON4D3/LuaSnip/wiki/Migrating-from-UltiSnips#update-placeholders
+      local luasnip = require("luasnip")
+      luasnip.setup({
+        update_events = { "TextChanged", "TextChangedI" },
+      })
+
+      -- Cancel snippet when leaving insert mode
+      -- Derived from https://github.com/L3MON4D3/LuaSnip/issues/656#issuecomment-1500869758
+      vim.api.nvim_create_autocmd("ModeChanged", {
+        group = vim.api.nvim_create_augroup("user_luasnip", {}),
+        pattern = { "s:n", "i:*" },
+        desc = "Forget current snippet when leaving insert mode",
+        callback = function(ev)
+          -- If we have n active nodes, n - 1 will still remain after a `unlink_current()` call.
+          -- We unlink all of them by wrapping the calls in a loop.
+          while true do
+            if
+              luasnip.session
+              and luasnip.session.current_nodes[ev.buf]
+              and not luasnip.session.jump_active
+            then
+              luasnip.unlink_current()
+            else
+              break
+            end
+          end
+        end,
+      })
+    end,
+
+    -- Derived from https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+    -- Expansion is handled by cmp
+    keys = {
+      {
+        "<C-j>",
+        function() require("luasnip").jump(1) end,
+        mode = { "i", "s" },
+        desc = "LuaSnip: Jump forwards",
+        silent = true,
+      },
+      {
+        "<C-k>",
+        function() require("luasnip").jump(-1) end,
+        mode = { "i", "s" },
+        desc = "LuaSnip: Jump backwards",
+        silent = true,
+      },
+    },
+  },
+
+  {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     opts = {},
@@ -180,19 +244,6 @@ return {
     end,
 
     keys = { { "<A-t>", "<Cmd>TagbarToggle<CR>" } },
-  },
-
-  {
-    "SirVer/ultisnips",
-    init = function()
-      vim.g.UltiSnipsSnippetDirectories = { "UltiSnips", "UltiSnips/specific" }
-
-      -- Handled by cmp
-      --
-      -- Note that if triggers are left empty, UltiSnips emits "No mapping
-      -- found" messages. Untypable character is used as a workaround.
-      vim.g.UltiSnipsExpandTrigger = "�"
-    end,
   },
 
   {
