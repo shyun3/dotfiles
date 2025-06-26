@@ -48,7 +48,7 @@ return {
   },
 
   { "numToStr/Comment.nvim", opts = {} },
-  { "vim-scripts/DoxygenToolkit.vim" },
+  "vim-scripts/DoxygenToolkit.vim",
 
   {
     "chrishrb/gx.nvim",

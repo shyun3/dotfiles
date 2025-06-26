@@ -1,3 +1,5 @@
+# vim: ft=antidote
+
 # Prompt
 romkatv/powerlevel10k
 

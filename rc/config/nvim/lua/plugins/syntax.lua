@@ -35,6 +35,7 @@ return {
   },
 
   { "shyun3/vim-4dgl", ft = "4dgl" },
+  { "shyun3/vim-antidote", ft = "antidote" },
 
   {
     "shyun3/vim-ctags-mtable",
