@@ -89,7 +89,7 @@ local function progress()
     percent = curr / total * 100
   end
 
-  return string.format("%2d%%%%", math.floor(percent))
+  return string.format("%d%%%%", math.floor(percent))
 end
 
 -- Derived from location component
@@ -99,7 +99,7 @@ local function location()
   local max_line = vim.fn.line("$")
 
   -- Symbols taken from airline
-  return string.format(":%2d/%d≡ ℅:%d", line, max_line, col)
+  return string.format(":%d/%d≡ ℅:%d", line, max_line, col)
 end
 
 return {
