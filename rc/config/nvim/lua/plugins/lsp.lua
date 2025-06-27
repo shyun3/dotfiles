@@ -36,17 +36,10 @@ return {
   {
     "neovim/nvim-lspconfig",
 
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "Issafalcon/lsp-overloads.nvim",
-    },
+    dependencies = { "Issafalcon/lsp-overloads.nvim" },
 
     config = function()
-      vim.lsp.config("*", {
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
-      })
-
-      -- This is not being included in the config above as `on_attach` because
+      -- This is not being included in a wildcard config as `on_attach` because
       -- it would get overriden by any LSP configs provided later
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
