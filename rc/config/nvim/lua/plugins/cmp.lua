@@ -1,59 +1,5 @@
 local util = require("util")
 
-local function link_hl(name, link) vim.api.nvim_set_hl(0, name, { link = link }) end
-
-local function highlight_cmp_menu()
-  -- Some colors taken from:
-  -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
-
-  link_hl("CmpItemAbbrDeprecated", "@lsp.mod.deprecated")
-
-  -- Taken from CocSearch
-  vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = "#15aabf" })
-  link_hl("CmpItemAbbrMatchFuzzy", "CmpIntemAbbrMatch")
-
-  -- Taken from CocMenuSel
-  vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#13354A" })
-
-  -- gray
-  vim.api.nvim_set_hl(0, "CmpItemMenu", { bg = "NONE", fg = "#808080" })
-
-  link_hl("CmpItemKindFunction", "@lsp.type.function")
-  link_hl("CmpItemKindMethod", "@lsp.type.method")
-  link_hl("CmpItemKindConstructor", "CmpItemKindMethod")
-
-  link_hl("CmpItemKindText", "String")
-
-  link_hl("CmpItemKindProperty", "@lsp.type.property")
-  link_hl("CmpItemKindField", "CmpItemKindProperty")
-
-  link_hl("CmpItemKindVariable", "@lsp.type.variable")
-  link_hl("CmpItemKindTypeParameter", "@lsp.type.parameter")
-  link_hl("CmpItemKindReference", "CmpItemKindVariable")
-
-  link_hl("CmpItemKindClass", "@lsp.type.class")
-  link_hl("CmpItemKindStruct", "@lsp.type.struct")
-  link_hl("CmpItemKindInterface", "@lsp.type.interface")
-  link_hl("CmpItemKindEnum", "@lsp.type.enum")
-
-  link_hl("CmpItemKindKeyword", "@lsp.type.keyword")
-  link_hl("CmpItemKindOperator", "@lsp.type.operator")
-
-  -- front
-  vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { bg = "NONE", fg = "#D4D4D4" })
-
-  link_hl("CmpItemKindModule", "@lsp.type.namespace")
-
-  -- pink
-  vim.api.nvim_set_hl(0, "CmpItemKindFile", { bg = "NONE", fg = "#C586C0" })
-  link_hl("CmpItemKindFolder", "CmpItemKindFile")
-
-  link_hl("CmpItemKindEnumMember", "@lsp.type.enumMember")
-  link_hl("CmpItemKindConstant", "CmpItemKindEnumMember")
-
-  link_hl("CmpItemKindEvent", "@lsp.type.event")
-end
-
 -- Used to temporarily disable the `cinkeys` option before executing a callback.
 --
 -- Inserted text may become corrupted if a C-indent gets triggered. Currently
@@ -103,8 +49,6 @@ return {
   },
 
   config = function()
-    highlight_cmp_menu()
-
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     cmp.setup({
