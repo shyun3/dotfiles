@@ -179,11 +179,6 @@ return {
           },
         }),
       },
-
-      experimental = {
-        -- Helpful with previewing LSP snippets
-        ghost_text = { hl_group = "SpecialKey" },
-      },
     })
 
     cmp.setup.cmdline({ "/", "?" }, {

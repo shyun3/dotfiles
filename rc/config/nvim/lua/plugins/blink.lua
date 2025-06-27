@@ -5,11 +5,26 @@ return {
   opts = {
     keymap = { preset = "enter" },
 
-    -- Default list of enabled providers defined so that you can extend it
-    -- elsewhere in your config, without redefining it, due to `opts_extend`
+    completion = {
+      list = { selection = { preselect = false } },
+
+      menu = {
+        -- nvim-cmp style menu
+        draw = {
+          columns = {
+            { "label", "label_description", gap = 1 },
+            { "kind_icon", "kind", gap = 1 },
+          },
+        },
+      },
+
+      documentation = { auto_show = true, auto_show_delay_ms = 500 },
+    },
+
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
     },
+
+    snippets = { preset = "luasnip" },
   },
-  opts_extend = { "sources.default" },
 }
