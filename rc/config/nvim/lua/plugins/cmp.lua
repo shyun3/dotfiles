@@ -1,40 +1,8 @@
-local util = require("util")
-
--- Used to temporarily disable the `cinkeys` option before executing a callback.
---
--- Inserted text may become corrupted if a C-indent gets triggered. Currently
--- known problematic completions are the C++ access specifiers i.e. `public:`
--- etc. These completions are known to be supplied as snippets by clangd.
---
--- See nvim-cmp#1035 for more details.
---
--- This function was derived from:
--- https://github.com/hrsh7th/nvim-cmp/issues/1035#issuecomment-1195456419
-local function suppress_cinkeys(callback)
-  local cindent = vim.bo.cindent
-  local cinkeys = vim.bo.cinkeys
-  if cindent then vim.bo.cinkeys = "" end
-
-  callback()
-
-  if cindent then
-    -- Command to restore is fed as keys, otherwise cmp callback does not see
-    -- `cinkeys` as disabled. Maybe because the callback is async?
-    local cmd = util.replace_termcodes(
-      string.format("<Cmd>setlocal cinkeys=%s<CR>", cinkeys)
-    )
-    vim.fn.feedkeys(cmd, "n")
-  end
-end
-
 return {
   "hrsh7th/nvim-cmp",
   enabled = false,
 
   dependencies = {
-    "windwp/nvim-autopairs", -- To make sure <CR> gets mapped first
-    "shyun3/vim-endwise",
-
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
@@ -47,45 +15,10 @@ return {
 
   config = function()
     local cmp = require("cmp")
-    local luasnip = require("luasnip")
     cmp.setup({
       snippet = {
         expand = function(args) require("luasnip").lsp_expand(args.body) end,
       },
-
-      mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-
-        ["<CR>"] = function(fallback)
-          if cmp.visible() and cmp.get_active_entry() then
-            if luasnip.expandable() then
-              suppress_cinkeys(luasnip.expand)
-            else
-              suppress_cinkeys(function() cmp.confirm({ select = false }) end)
-            end
-          else
-            fallback()
-            vim.fn.feedkeys(util.replace_termcodes("<Plug>DiscretionaryEnd"))
-          end
-        end,
-
-        ["<Tab>"] = function(fallback)
-          suppress_cinkeys(function()
-            local select_next_item = cmp.mapping.select_next_item()
-            select_next_item(fallback)
-          end)
-        end,
-
-        ["<S-Tab>"] = function(fallback)
-          suppress_cinkeys(function()
-            local select_prev_item = cmp.mapping.select_prev_item()
-            select_prev_item(fallback)
-          end)
-        end,
-
-        ["<C-Space>"] = cmp.mapping.complete(),
-      }),
 
       sources = cmp.config.sources({
         { name = "luasnip" },

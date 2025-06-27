@@ -3,10 +3,9 @@ return {
     "shyun3/vim-endwise",
     branch = "personal",
 
-    init = function()
-      -- To disable <CR> from being mapped
-      vim.g.endwise_no_mappings = 1
-    end,
+    -- Endwise wraps <CR> with its own mapping on startup by default, so make
+    -- sure autopairs performs its wrapping first
+    dependencies = "windwp/nvim-autopairs",
 
     config = function()
       -- Disable filetypes handled by treesitter
