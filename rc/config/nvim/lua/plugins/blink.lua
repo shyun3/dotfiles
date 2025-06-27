@@ -54,6 +54,7 @@ end
 return {
   "saghen/blink.cmp",
   version = "1.*",
+  event = { "InsertEnter", "CmdlineEnter" },
 
   opts = {
     keymap = { preset = "enter" },
@@ -67,6 +68,22 @@ return {
           columns = {
             { "label", "label_description", gap = 1 },
             { "kind_icon", "kind", gap = 1 },
+            { "source_name" },
+          },
+
+          components = {
+            source_name = {
+              text = function(ctx)
+                local name = string.lower(ctx.source_name)
+                local map = {
+                  lsp = "[LSP]",
+                  path = "[P]",
+                  snippets = "[SNIP]",
+                  buffer = "[B]",
+                }
+                return vim.tbl_get(map, name) or ""
+              end,
+            },
           },
         },
       },

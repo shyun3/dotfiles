@@ -35,7 +35,6 @@ end
 return {
   {
     "neovim/nvim-lspconfig",
-
     dependencies = { "Issafalcon/lsp-overloads.nvim" },
 
     config = function()
