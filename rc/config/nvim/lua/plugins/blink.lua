@@ -54,6 +54,7 @@ end
 return {
   "saghen/blink.cmp",
   version = "1.*",
+  dependencies = "onsails/lspkind.nvim",
   event = { "InsertEnter", "CmdlineEnter" },
 
   opts = {
@@ -64,6 +65,7 @@ return {
 
       menu = {
         -- nvim-cmp style menu
+        -- Derived from https://cmp.saghen.dev/configuration/general.html
         draw = {
           columns = {
             { "label", "label_description", gap = 1 },
@@ -72,6 +74,16 @@ return {
           },
 
           components = {
+            -- Derived from https://cmp.saghen.dev/recipes#nvim-web-devicons-lspkind
+            kind_icon = {
+              text = function(ctx)
+                return require("lspkind").symbolic(
+                  ctx.kind,
+                  { mode = "symbol" }
+                ) .. ctx.icon_gap
+              end,
+            },
+
             source_name = {
               text = function(ctx)
                 local name = string.lower(ctx.source_name)

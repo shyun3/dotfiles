@@ -43,8 +43,6 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "quangnguyen30192/cmp-nvim-tags",
     "hrsh7th/cmp-omni",
-
-    "onsails/lspkind.nvim",
   },
 
   config = function()
