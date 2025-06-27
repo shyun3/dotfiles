@@ -54,7 +54,12 @@ end
 return {
   "saghen/blink.cmp",
   version = "1.*",
-  dependencies = "onsails/lspkind.nvim",
+  dependencies = {
+    "L3MON4D3/LuaSnip",
+    "folke/lazydev.nvim",
+    "onsails/lspkind.nvim",
+  },
+
   event = { "InsertEnter", "CmdlineEnter" },
 
   opts = {
@@ -102,6 +107,8 @@ return {
                   path = "[P]",
                   snippets = "[SNIP]",
                   buffer = "[B]",
+                  omni = "[O]",
+                  lazydev = "[LD]",
                 }
                 return vim.tbl_get(map, name) or ""
               end,
@@ -114,7 +121,39 @@ return {
     },
 
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "snippets", "buffer", "omni" },
+
+      per_filetype = {
+        lua = { inherit_defaults = true, "lazydev" },
+      },
+
+      providers = {
+        lsp = {
+          -- Always show buffer source
+          fallbacks = {},
+        },
+
+        path = { fallbacks = {} },
+
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          score_offset = 100,
+        },
+
+        buffer = {
+          opts = {
+            -- Gets all "normal" buffers
+            -- Taken from https://cmp.saghen.dev/recipes#buffer-completion-from-all-open-buffers
+            get_bufnrs = function()
+              return vim.tbl_filter(
+                function(bufnr) return vim.bo[bufnr].buftype == "" end,
+                vim.api.nvim_list_bufs()
+              )
+            end,
+          },
+        },
+      },
     },
 
     snippets = { preset = "luasnip" },

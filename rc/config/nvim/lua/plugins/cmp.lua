@@ -3,14 +3,8 @@ return {
   enabled = false,
 
   dependencies = {
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
-    "saadparwaiz1/cmp_luasnip",
-    "folke/lazydev.nvim",
-    "hrsh7th/cmp-nvim-lsp",
     "quangnguyen30192/cmp-nvim-tags",
-    "hrsh7th/cmp-omni",
   },
 
   config = function()
