@@ -66,6 +66,8 @@ return {
 
       ["<C-j>"] = { "snippet_forward", "fallback" },
       ["<C-k>"] = { "snippet_backward", "fallback" },
+
+      ["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
     },
 
     completion = {
@@ -116,6 +118,8 @@ return {
     },
 
     snippets = { preset = "luasnip" },
+
+    signature = { enabled = true, window = { show_documentation = true } },
   },
 
   config = function(_, opts)
