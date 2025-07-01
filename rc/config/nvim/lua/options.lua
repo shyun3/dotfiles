@@ -23,6 +23,7 @@ vim.o.cmdheight = 2
 vim.opt.shortmess:append("c") -- Don't give completion menu messages
 vim.o.signcolumn = "number" -- Replace line number with diagnostic mark
 vim.o.showmode = false -- Mode is in status line
+vim.o.winborder = "single"
 
 -- File settings
 vim.o.autowriteall = true
