@@ -42,7 +42,13 @@ return {
         function()
           local diag = vim.diagnostic.get(0)
           local qf = vim.diagnostic.toqflist(diag)
-          vim.fn.setqflist(qf)
+          vim.fn.setqflist({}, " ", {
+            items = qf,
+            title = "Buffer diagnostics",
+
+            ---@diagnostic disable-next-line: assign-type-mismatch
+            nr = "$",
+          })
           vim.cmd("botright copen")
         end,
 
