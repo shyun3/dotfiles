@@ -1,4 +1,4 @@
-local function on_lsp_attach(client, bufnr)
+local function on_lsp_attach(client)
   -- Make tag commands only operate on tags, not LSP
   -- Derived from `:h lsp-defaults-disable`
   vim.bo.tagfunc = ""
@@ -7,51 +7,19 @@ local function on_lsp_attach(client, bufnr)
     -- Derived from `:h vim.lsp.semantic_tokens.start()`
     client.server_capabilities.semanticTokensProvider = nil
   end
-
-  if client.server_capabilities.signatureHelpProvider then
-    ---@diagnostic disable-next-line: missing-fields
-    require("lsp-overloads").setup(client, {
-      ---@diagnostic disable-next-line: missing-fields
-      ui = { floating_window_above_cur_line = true },
-      keymaps = {
-        next_signature = "<C-n>",
-        previous_signature = "<C-p>",
-        next_parameter = "<C-l>",
-        previous_parameter = "<C-h>",
-        close_signature = "<C-s>",
-      },
-      display_automatically = false,
-    })
-
-    vim.keymap.set(
-      { "n", "i", "v" },
-      "<C-s>",
-      "<Cmd>LspOverloadsSignature<CR>",
-      { silent = true, buffer = bufnr }
-    )
-  end
 end
 
 return {
   {
     "neovim/nvim-lspconfig",
 
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "Issafalcon/lsp-overloads.nvim",
-    },
-
     config = function()
-      vim.lsp.config("*", {
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
-      })
-
-      -- This is not being included in the config above as `on_attach` because
+      -- This is not being included in a wildcard config as `on_attach` because
       -- it would get overriden by any LSP configs provided later
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
-          if client then on_lsp_attach(client, args.buf) end
+          if client then on_lsp_attach(client) end
         end,
       })
     end,
