@@ -56,7 +56,10 @@ return {
   version = "1.*",
   dependencies = {
     "L3MON4D3/LuaSnip",
+
     "folke/lazydev.nvim",
+    "shyun3/blink-cmp-ctags",
+
     "onsails/lspkind.nvim",
   },
 
@@ -109,6 +112,7 @@ return {
                   buffer = "[B]",
                   omni = "[O]",
                   lazydev = "[LD]",
+                  ctags = "[T]",
                 }
                 return vim.tbl_get(map, name) or ""
               end,
@@ -121,7 +125,7 @@ return {
     },
 
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "omni" },
+      default = { "lsp", "path", "snippets", "buffer", "omni", "ctags" },
 
       per_filetype = {
         lua = { inherit_defaults = true, "lazydev" },
@@ -130,7 +134,12 @@ return {
       providers = {
         lsp = {
           -- Always show buffer source
-          fallbacks = {},
+          fallbacks = { "ctags" },
+        },
+
+        ctags = {
+          name = "Ctags",
+          module = "blink-cmp-ctags",
         },
 
         path = { fallbacks = {} },
