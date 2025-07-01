@@ -86,6 +86,7 @@ return {
     "L3MON4D3/LuaSnip",
     version = "v2.*",
     build = "make install_jsregexp",
+    lazy = true,
 
     config = function()
       for _, fmt in ipairs({ "vscode", "snipmate" }) do
