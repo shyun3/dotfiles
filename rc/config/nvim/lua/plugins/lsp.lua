@@ -104,8 +104,6 @@ return {
       symbol_in_winbar = { folder_level = 0 },
       lightbulb = { virtual_text = false },
       beacon = { enable = false },
-
-      rename = { auto_save = true, keys = { quit = "<A-c>" } },
     },
 
     keys = {
@@ -113,7 +111,6 @@ return {
       { "<Leader>fD", "<Cmd>Lspsaga peek_type_definition<CR>" },
 
       { "<Leader>o", "<Cmd>Lspsaga outline<CR>" },
-      { "grn", "<Cmd>Lspsaga rename<CR>" },
     },
   },
 }
