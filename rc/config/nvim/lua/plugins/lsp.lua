@@ -65,6 +65,15 @@ return {
 
         desc = "LSP: Toggle inlay hints",
       },
+
+      {
+        "<C-s>",
+
+        -- Already mapped by default for insert mode, see `lsp-defaults`
+        function() vim.lsp.buf.signature_help() end,
+
+        desc = "LSP: Signature help",
+      },
     },
   },
 
