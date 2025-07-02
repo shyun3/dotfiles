@@ -100,7 +100,7 @@ return {
       desc = "fzf-lua: Buffer tags",
     },
     { "<C-j>", "<Cmd>FzfLua blines show_unlisted=true<CR>" },
-    { "<Leader>f", "<Cmd>FzfLua builtin<CR>" },
+    { "<Leader>fl", "<Cmd>FzfLua builtin<CR>" },
     { "<Leader>;", "<Cmd>FzfLua command_history<CR>" },
     { "<Leader>/", "<Cmd>FzfLua search_history<CR>" },
     { "<Leader>h", "<Cmd>FzfLua help_tags<CR>" },
@@ -191,5 +191,7 @@ return {
       end,
       desc = "LSP: Workspace symbols",
     },
+
+    { "gra", "<Cmd> FzfLua lsp_code_actions silent=true<CR>" },
   },
 }
