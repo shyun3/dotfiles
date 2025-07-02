@@ -10,4 +10,6 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.HINT] = "󰌶 ",
     },
   },
+
+  jump = { float = true },
 })
