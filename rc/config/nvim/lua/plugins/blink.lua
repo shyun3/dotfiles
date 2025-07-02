@@ -72,8 +72,6 @@ return {
 
       ["<C-j>"] = { "snippet_forward", "fallback_to_mappings" },
       ["<C-k>"] = { "snippet_backward", "fallback_to_mappings" },
-
-      ["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
     },
 
     completion = {
@@ -179,8 +177,6 @@ return {
     },
 
     snippets = { preset = "luasnip" },
-
-    signature = { enabled = true, window = { show_documentation = true } },
 
     cmdline = {
       completion = {

@@ -59,20 +59,10 @@ return {
         "<Leader>ch",
 
         function()
-          ---@diagnostic disable-next-line: missing-parameter
           vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
         end,
 
         desc = "LSP: Toggle inlay hints",
-      },
-
-      {
-        "<C-s>",
-
-        -- Already mapped by default for insert mode, see `lsp-defaults`
-        function() vim.lsp.buf.signature_help() end,
-
-        desc = "LSP: Signature help",
       },
     },
   },
@@ -89,8 +79,6 @@ return {
       },
     },
   },
-
-  { "j-hui/fidget.nvim", opts = {} },
 
   {
     "nvimdev/lspsaga.nvim",

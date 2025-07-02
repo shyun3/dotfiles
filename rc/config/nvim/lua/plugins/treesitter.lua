@@ -24,6 +24,7 @@ return {
 
           "bash",
           "cpp",
+          "regex", -- Recommended by noice
           "meson",
         },
 

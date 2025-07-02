@@ -104,7 +104,7 @@ end
 
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "nvim-tree/nvim-web-devicons", "folke/noice.nvim" },
 
   config = function()
     local quickfix = require("lualine.extensions.quickfix")
@@ -120,11 +120,27 @@ return {
     }
 
     require("lualine").setup({
-      options = { theme = theme },
+      options = { theme = theme, refresh = { statusline = 100 } },
+
       sections = {
         lualine_a = { "mode" },
         lualine_b = { { "branch", draw_empty = true }, "diff" },
-        lualine_c = { filename },
+        lualine_c = {
+          filename,
+
+          {
+            -- Show @recording messages
+            -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#-statusline-components
+
+            ---@diagnostic disable-next-line: undefined-field
+            require("noice").api.status.mode.get,
+
+            ---@diagnostic disable-next-line: undefined-field
+            cond = require("noice").api.status.mode.has,
+
+            color = { fg = "#ff9e64" },
+          },
+        },
         lualine_x = {
           {
             "lsp_status",
