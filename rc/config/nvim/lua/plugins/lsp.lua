@@ -76,7 +76,7 @@ return {
     event = "LspAttach",
 
     opts = {
-      symbol_in_winbar = { folder_level = 0 },
+      symbol_in_winbar = { enable = false },
       lightbulb = { enable = false },
       beacon = { enable = false },
     },

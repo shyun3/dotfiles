@@ -22,6 +22,8 @@ return {
       -- Taken from default vscode theme (Dark Modern)
       vim.cmd.highlight("IndentLine guifg=#404040")
       vim.cmd.highlight("IndentLineCurrent guifg=#707070")
+
+      vim.cmd.highlight("link WinBarNC Comment")
     end,
   },
 

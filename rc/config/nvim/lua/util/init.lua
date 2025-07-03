@@ -57,4 +57,6 @@ function M.oil_filter(path)
     or path
 end
 
+function M.link_hl(name, link) vim.api.nvim_set_hl(0, name, { link = link }) end
+
 return M

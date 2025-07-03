@@ -1,9 +1,8 @@
-local function link_hl(name, link) vim.api.nvim_set_hl(0, name, { link = link }) end
-
 local function highlight_cmp_menu()
   -- Some colors taken from:
   -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
 
+  local link_hl = require("util").link_hl
   link_hl("BlinkCmpLabelDeprecated", "@lsp.mod.deprecated")
 
   -- Taken from CocSearch
