@@ -25,26 +25,6 @@ return {
     end,
   },
 
-  {
-    "okuuva/auto-save.nvim",
-
-    opts = {
-      trigger_events = {
-        -- Not including `QuitPre`, otherwise conform format doesn't apply
-        -- before exiting
-        immediate_save = { "VimSuspend" },
-
-        defer_save = { "BufLeave", "FocusLost" },
-      },
-
-      condition = function(buf)
-        return vim.fn.bufname(buf) ~= "" and vim.bo[buf].buftype == ""
-      end,
-
-      debounce_delay = 20,
-    },
-  },
-
   { "numToStr/Comment.nvim", opts = {} },
   "vim-scripts/DoxygenToolkit.vim",
 
