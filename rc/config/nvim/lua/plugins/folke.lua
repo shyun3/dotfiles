@@ -65,6 +65,14 @@ return {
         },
       },
 
+      -- Taken from https://github.com/folke/noice.nvim/wiki/Configuration-Recipes#show-recording-messages
+      routes = {
+        {
+          view = "notify",
+          filter = { event = "msg_showmode" },
+        },
+      },
+
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
 
