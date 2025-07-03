@@ -83,21 +83,4 @@ return {
       })
     end,
   },
-
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    event = "BufWinEnter",
-
-    opts = { max_lines = 1 },
-
-    keys = {
-      {
-        "[c",
-        function() require("treesitter-context").go_to_context(vim.v.count1) end,
-        desc = "Jump to context (upwards)",
-        silent = true,
-      },
-    },
-  },
 }
