@@ -82,9 +82,6 @@ return {
     },
 
     keys = {
-      { "<Leader>f]", "<Cmd>Lspsaga peek_definition<CR>" },
-      { "<Leader>fD", "<Cmd>Lspsaga peek_type_definition<CR>" },
-
       { "<Leader>o", "<Cmd>Lspsaga outline<CR>" },
     },
   },
@@ -126,6 +123,23 @@ return {
         updatetime = -1,
         events = { "CursorHold", "CursorHoldI", "CursorMoved", "CursorMovedI" },
       },
+    },
+  },
+
+  {
+    "rmagatti/goto-preview",
+    dependencies = "rmagatti/logger.nvim",
+    event = "BufEnter",
+
+    opts = {
+      default_mappings = true,
+      references = { provider = "fzf_lua" },
+      vim_ui_input = false, -- Handled by noice
+
+      -- Derived from https://github.com/rmagatti/goto-preview/issues/64
+      post_open_hook = function(_, win)
+        vim.api.nvim_set_option_value("winhighlight", "Normal:", { win = win })
+      end,
     },
   },
 }
