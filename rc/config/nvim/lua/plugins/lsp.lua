@@ -88,4 +88,33 @@ return {
       { "<Leader>o", "<Cmd>Lspsaga outline<CR>" },
     },
   },
+
+  {
+    "smjonas/inc-rename.nvim",
+
+    opts = {
+      post_hook = function(result)
+        for uri, _ in pairs(result.documentChanges or result.changes) do
+          local file = vim.uri_to_fname(uri)
+          if file ~= uri then
+            vim.cmd.write(file)
+          else
+            vim.notify(
+              string.format('Could not save "%s"', uri),
+              vim.log.levels.WARN
+            )
+          end
+        end
+      end,
+    },
+
+    keys = {
+      {
+        "grn",
+        function() return ":IncRename " .. vim.fn.expand("<cword>") end,
+        desc = "IncRename",
+        expr = true,
+      },
+    },
+  },
 }
