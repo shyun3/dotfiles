@@ -50,7 +50,7 @@ vim.o.softtabstop = vim.o.tabstop -- Tab stop positions for spaces
 vim.o.shiftwidth = vim.o.tabstop
 
 -- Timing
-vim.o.updatetime = 300
+vim.o.updatetime = 200
 
 -- Windows
 vim.o.splitright = true

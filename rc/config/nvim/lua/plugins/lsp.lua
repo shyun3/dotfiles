@@ -77,7 +77,7 @@ return {
 
     opts = {
       symbol_in_winbar = { folder_level = 0 },
-      lightbulb = { virtual_text = false },
+      lightbulb = { enable = false },
       beacon = { enable = false },
     },
 
@@ -114,6 +114,17 @@ return {
         function() return ":IncRename " .. vim.fn.expand("<cword>") end,
         desc = "IncRename",
         expr = true,
+      },
+    },
+  },
+
+  {
+    "kosayoda/nvim-lightbulb",
+    opts = {
+      autocmd = {
+        enabled = true,
+        updatetime = -1,
+        events = { "CursorHold", "CursorHoldI", "CursorMoved", "CursorMovedI" },
       },
     },
   },
