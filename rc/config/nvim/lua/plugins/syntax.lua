@@ -49,5 +49,5 @@ return {
     ft = "ctags",
   },
 
-  "moon-musick/vim-logrotate",
+  { "moon-musick/vim-logrotate", ft = "logrotate" },
 }
