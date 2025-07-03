@@ -32,3 +32,12 @@ vim.keymap.set("n", "<Leader>qq", "<Cmd>cclose<CR>")
 
 -- Help
 vim.keymap.set("n", "<Leader>qh", "<Cmd>helpclose<CR>")
+
+-- Select mode
+-- Derived from https://github.com/Saghen/blink.cmp/issues/830#issuecomment-2566814094
+vim.keymap.set(
+  "s",
+  "<BS>",
+  "<C-g>c",
+  { desc = "Delete selection and enter insert mode" }
+)
