@@ -68,25 +68,6 @@ return {
   },
 
   {
-    "nvimdev/lspsaga.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
-    event = "LspAttach",
-
-    opts = {
-      symbol_in_winbar = { enable = false },
-      lightbulb = { enable = false },
-      beacon = { enable = false },
-    },
-
-    keys = {
-      { "<Leader>o", "<Cmd>Lspsaga outline<CR>" },
-    },
-  },
-
-  {
     "smjonas/inc-rename.nvim",
 
     opts = {
