@@ -13,3 +13,5 @@ vim.diagnostic.config({
 
   jump = { float = true },
 })
+
+vim.loader.enable(true)
