@@ -139,7 +139,14 @@ return {
             ---@diagnostic disable-next-line: undefined-field
             cond = require("noice").api.status.mode.has,
 
-            color = { fg = "#ff9e64" },
+            color = function()
+              -- For some reason, the fg color isn't inherited from the theme
+              -- if the gui option is specified
+              return {
+                fg = vim.bo.modified and colors.black or colors.white,
+                gui = "bold",
+              }
+            end,
           },
         },
         lualine_x = {
