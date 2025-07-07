@@ -121,7 +121,11 @@ return {
     }
 
     require("lualine").setup({
-      options = { theme = theme, refresh = { statusline = 100 } },
+      options = {
+        theme = theme,
+        globalstatus = true,
+        refresh = { statusline = 100 },
+      },
 
       sections = {
         lualine_a = { "mode" },
