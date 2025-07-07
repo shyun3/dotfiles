@@ -269,6 +269,13 @@ return {
   },
 
   {
+    "tadaa/vimade",
+    event = "VeryLazy",
+
+    opts = { ncmode = "windows", fadelevel = 0.6 },
+  },
+
+  {
     "jannis-baum/vivify.vim",
 
     -- Plugin must be loaded before file load, not on command. Crucial
