@@ -43,6 +43,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
+    event = "BufWinEnter",
 
     opts = {
       indent = {
@@ -116,6 +117,7 @@ return {
 
   {
     "norcalli/nvim-colorizer.lua",
+    event = "BufWinEnter",
 
     init = function()
       -- 'termguicolors' is auto-detected as of nvim 0.10, but the plugin
@@ -203,6 +205,7 @@ return {
 
   {
     "kkoomen/vim-doge",
+    lazy = false,
 
     build = function()
       -- Unknown function call error is emitted if install is run directly on

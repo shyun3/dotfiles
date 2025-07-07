@@ -1,6 +1,7 @@
 return {
   "vim-airline/vim-airline",
-  dependencies = { "vim-airline/vim-airline-themes" },
+  dependencies = "vim-airline/vim-airline-themes",
+  event = "UIEnter",
 
   init = function()
     vim.g.airline_theme = "molokai"

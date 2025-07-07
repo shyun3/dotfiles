@@ -1,6 +1,7 @@
 return {
   {
     "sheerun/vim-polyglot",
+    event = "FileType",
 
     init = function()
       -- autoindent: Can lead to slow buffer enter

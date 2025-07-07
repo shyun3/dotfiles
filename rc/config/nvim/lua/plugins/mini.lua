@@ -74,7 +74,10 @@ return {
         group = group,
         pattern = "MiniFilesActionRename",
         callback = function(event)
-          Snacks.rename.on_rename_file(event.data.from, event.data.to)
+          require("snacks").rename.on_rename_file(
+            event.data.from,
+            event.data.to
+          )
         end,
       })
     end,
@@ -103,6 +106,7 @@ return {
   {
     "echasnovski/mini.ai",
     version = false, -- Main branch
+    event = "ModeChanged",
 
     opts = {
       custom_textobjects = {

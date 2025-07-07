@@ -65,7 +65,7 @@ end
 return {
   "Bekaboo/dropbar.nvim",
   dependencies = "nvim-tree/nvim-web-devicons",
-  lazy = false,
+  event = "BufWinEnter",
 
   opts = {
     icons = {

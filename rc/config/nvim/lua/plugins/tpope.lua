@@ -2,6 +2,7 @@ return {
   {
     "shyun3/vim-endwise",
     branch = "personal",
+    lazy = false,
 
     -- Endwise wraps <CR> with its own mapping on startup by default, so make
     -- sure autopairs performs its wrapping first
@@ -32,5 +33,5 @@ return {
     end,
   },
 
-  "tpope/vim-unimpaired",
+  { "tpope/vim-unimpaired", event = "BufEnter" },
 }

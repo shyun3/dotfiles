@@ -1,6 +1,7 @@
 return {
   "amiorin/vim-project",
-  dependencies = { "stevearc/oil.nvim" },
+  dependencies = "stevearc/oil.nvim",
+  event = "VimEnter",
 
   config = function()
     vim.call("project#rc")
