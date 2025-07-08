@@ -165,22 +165,6 @@ return {
   },
 
   {
-    "haya14busa/vim-asterisk",
-    init = function() vim.g["asterisk#keeppos"] = 1 end,
-
-    keys = {
-      { "*", "<Plug>(asterisk-*)", mode = "" },
-      { "#", "<Plug>(asterisk-#)", mode = "" },
-      { "g*", "<Plug>(asterisk-g*)", mode = "" },
-      { "g#", "<Plug>(asterisk-g#)", mode = "" },
-      { "z*", "<Plug>(asterisk-z*)", mode = "" },
-      { "gz*", "<Plug>(asterisk-gz*)", mode = "" },
-      { "z#", "<Plug>(asterisk-z#)", mode = "" },
-      { "gz#", "<Plug>(asterisk-gz#)", mode = "" },
-    },
-  },
-
-  {
     "jiaoshijie/undotree",
     dependencies = "nvim-lua/plenary.nvim",
 
