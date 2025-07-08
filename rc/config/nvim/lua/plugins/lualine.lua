@@ -155,9 +155,19 @@ return {
         },
         lualine_x = {
           {
+            -- Search count messages
+            -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#-statusline-components
+
+            ---@diagnostic disable-next-line: undefined-field
+            require("noice").api.status.search.get,
+
+            ---@diagnostic disable-next-line: undefined-field
+            cond = require("noice").api.status.search.has,
+          },
+          {
             "lsp_status",
             symbols = {
-              -- Remove spinner and done symbols (covered by fidget.nvim)
+              -- Remove spinner and done symbols (covered by noice)
               spinner = {},
               done = "",
 
