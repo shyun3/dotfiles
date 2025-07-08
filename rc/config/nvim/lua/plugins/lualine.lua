@@ -109,7 +109,6 @@ return {
         lualine_b = { { "branch", draw_empty = true }, "diff" },
         lualine_c = {
           filename,
-
           {
             -- Show @recording messages
             -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#-statusline-components
@@ -121,12 +120,13 @@ return {
             cond = require("noice").api.status.mode.has,
 
             color = function()
-              -- For some reason, the fg color isn't inherited from the theme
-              -- if the gui option is specified
-              return {
-                fg = vim.bo.modified and colors.black or colors.white,
-                gui = "bold",
-              }
+              local hl = vim.api.nvim_get_hl(0, { name = "ModeMsg" })
+
+              -- For some reason, the `fg` field is returned as a number and
+              -- not a hex color code
+              local fg = string.format("#%s", require("bit").tohex(hl.fg, 6))
+
+              return { fg = fg, gui = hl.bold and "bold" or "" }
             end,
           },
         },
@@ -140,6 +140,8 @@ return {
 
             ---@diagnostic disable-next-line: undefined-field
             cond = require("noice").api.status.search.has,
+
+            color = { fg = "#ff9e64" },
           },
           {
             "lsp_status",
