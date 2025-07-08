@@ -178,6 +178,10 @@ return {
     snippets = { preset = "luasnip" },
 
     cmdline = {
+      keymap = {
+        ["<Left>"] = false,
+        ["<Right>"] = false,
+      },
       completion = {
         list = { selection = { preselect = false } },
 
