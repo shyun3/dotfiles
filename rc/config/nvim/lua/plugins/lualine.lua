@@ -16,42 +16,19 @@ local theme = {
   normal = {
     a = { fg = colors.black, bg = colors.yellow, gui = "bold" },
     b = { fg = colors.white, bg = colors.dark_gray },
-    c = function()
-      return vim.bo.modified and { fg = colors.black, bg = colors.yellow }
-        or { fg = colors.white, bg = colors.gray }
-    end,
+    c = { fg = colors.white, bg = colors.gray },
   },
   insert = {
     a = { fg = colors.black, bg = colors.blue, gui = "bold" },
-
-    c = function()
-      return vim.bo.modified and { fg = colors.black, bg = colors.blue }
-        or { fg = colors.white, bg = colors.gray }
-    end,
   },
   replace = {
     a = { fg = colors.black, bg = colors.red, gui = "bold" },
-
-    c = function()
-      return vim.bo.modified and { fg = colors.black, bg = colors.red }
-        or { fg = colors.white, bg = colors.gray }
-    end,
   },
   visual = {
     a = { fg = colors.black, bg = colors.green, gui = "bold" },
-
-    c = function()
-      return vim.bo.modified and { fg = colors.black, bg = colors.green }
-        or { fg = colors.white, bg = colors.gray }
-    end,
   },
   command = {
     a = { fg = colors.black, bg = colors.yellow, gui = "bold" },
-
-    c = function()
-      return vim.bo.modified and { fg = colors.black, bg = colors.yellow }
-        or { fg = colors.white, bg = colors.gray }
-    end,
   },
   inactive = {
     a = { fg = colors.light_black, bg = colors.gray },
