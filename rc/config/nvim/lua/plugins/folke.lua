@@ -1,5 +1,3 @@
-local lazygit_timer
-
 return {
   {
     "folke/snacks.nvim",
@@ -16,21 +14,6 @@ return {
           -- Disable <Esc> twice quickly to enter normal mode
           -- Derived from https://github.com/folke/snacks.nvim/issues/280#issuecomment-2987923844
           keys = { term_normal = false },
-
-          -- For some reason, the `WinEnter` event doesn't fire when exiting
-          -- the lazygit window and re-entering the previous one. This is being
-          -- manually fired here because there may be some custom autocommands
-          -- that depend on it.
-          on_close = function()
-            lazygit_timer = vim.uv.new_timer()
-            lazygit_timer:start(20, 0, function()
-              lazygit_timer:stop()
-              lazygit_timer:close()
-              vim.schedule(
-                function() vim.api.nvim_exec_autocmds("WinEnter", {}) end
-              )
-            end)
-          end,
         },
       },
     },
