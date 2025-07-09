@@ -75,7 +75,8 @@ local filetype = {
   colored = false,
 }
 
--- Derived from progress component
+-- Same as progress component, except 0% and 100% are used instead of "Top" and
+-- "Bot"
 local function progress()
   local curr = vim.fn.line(".")
   local total = vim.fn.line("$")
@@ -104,12 +105,114 @@ end
 
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons", "folke/noice.nvim" },
+  dependencies = "nvim-tree/nvim-web-devicons",
   event = "UIEnter",
 
-  config = function()
-    local quickfix = require("lualine.extensions.quickfix")
-    quickfix.sections.lualine_z = { progress, location }
+  opts = {
+    options = {
+      theme = theme,
+      globalstatus = true,
+      refresh = { statusline = 100 },
+    },
+
+    sections = {
+      lualine_a = { "mode" },
+      lualine_b = { { "branch", draw_empty = true }, "diff" },
+      lualine_c = {
+        filename,
+        {
+          -- Show @recording messages
+          -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#-statusline-components
+
+          function()
+            ---@diagnostic disable-next-line: undefined-field
+            return require("noice").api.status.mode.get()
+          end,
+
+          cond = function()
+            ---@diagnostic disable-next-line: undefined-field
+            return require("noice").api.status.mode.has()
+          end,
+
+          color = function()
+            -- For some reason, the fg color isn't inherited from the theme
+            -- if the gui option is specified
+            return {
+              fg = vim.bo.modified and colors.black or colors.white,
+              gui = "bold",
+            }
+          end,
+        },
+      },
+      lualine_x = {
+        {
+          -- Search count messages
+          -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#-statusline-components
+
+          function()
+            ---@diagnostic disable-next-line: undefined-field
+            return require("noice").api.status.search.get()
+          end,
+
+          cond = function()
+            ---@diagnostic disable-next-line: undefined-field
+            return require("noice").api.status.search.has()
+          end,
+        },
+        {
+          "lsp_status",
+          symbols = {
+            -- Remove spinner and done symbols (covered by noice)
+            spinner = {},
+            done = "",
+
+            separator = " ",
+          },
+        },
+        filetype,
+      },
+      lualine_y = { "encoding", "fileformat" },
+      lualine_z = {
+        progress,
+        location,
+        {
+          "diagnostics",
+          sources = { "nvim_diagnostic" },
+          sections = { "warn" },
+          colored = false,
+
+          -- Taken from 'airline_warning'
+          color = { bg = "#df5f00" },
+
+          separator = { left = "" },
+        },
+        {
+          "diagnostics",
+          sources = { "nvim_diagnostic" },
+          sections = { "error" },
+          colored = false,
+
+          -- Taken from 'airline_error'
+          color = { bg = "#990000" },
+
+          separator = { left = "" },
+        },
+      },
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = { filename },
+      lualine_x = { filetype, location },
+      lualine_y = {},
+      lualine_z = {},
+    },
+    extensions = { "oil", "quickfix" },
+  },
+
+  config = function(_, opts)
+    require("lualine.extensions.quickfix").sections.lualine_z =
+      { progress, location }
 
     local oil = require("lualine.extensions.oil")
     oil.sections = {
@@ -120,99 +223,6 @@ return {
       lualine_z = { progress, location },
     }
 
-    require("lualine").setup({
-      options = {
-        theme = theme,
-        globalstatus = true,
-        refresh = { statusline = 100 },
-      },
-
-      sections = {
-        lualine_a = { "mode" },
-        lualine_b = { { "branch", draw_empty = true }, "diff" },
-        lualine_c = {
-          filename,
-
-          {
-            -- Show @recording messages
-            -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#-statusline-components
-
-            ---@diagnostic disable-next-line: undefined-field
-            require("noice").api.status.mode.get,
-
-            ---@diagnostic disable-next-line: undefined-field
-            cond = require("noice").api.status.mode.has,
-
-            color = function()
-              -- For some reason, the fg color isn't inherited from the theme
-              -- if the gui option is specified
-              return {
-                fg = vim.bo.modified and colors.black or colors.white,
-                gui = "bold",
-              }
-            end,
-          },
-        },
-        lualine_x = {
-          {
-            -- Search count messages
-            -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#-statusline-components
-
-            ---@diagnostic disable-next-line: undefined-field
-            require("noice").api.status.search.get,
-
-            ---@diagnostic disable-next-line: undefined-field
-            cond = require("noice").api.status.search.has,
-          },
-          {
-            "lsp_status",
-            symbols = {
-              -- Remove spinner and done symbols (covered by noice)
-              spinner = {},
-              done = "",
-
-              separator = " ",
-            },
-          },
-          filetype,
-        },
-        lualine_y = { "encoding", "fileformat" },
-        lualine_z = {
-          progress,
-          location,
-          {
-            "diagnostics",
-            sources = { "nvim_diagnostic" },
-            sections = { "warn" },
-            colored = false,
-
-            -- Taken from 'airline_warning'
-            color = { bg = "#df5f00" },
-
-            separator = { left = "" },
-          },
-          {
-            "diagnostics",
-            sources = { "nvim_diagnostic" },
-            sections = { "error" },
-            colored = false,
-
-            -- Taken from 'airline_error'
-            color = { bg = "#990000" },
-
-            separator = { left = "" },
-          },
-        },
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { filename },
-        lualine_x = { filetype, location },
-        lualine_y = {},
-        lualine_z = {},
-      },
-      extensions = { oil, quickfix },
-    })
+    require("lualine").setup(opts)
   end,
 }
