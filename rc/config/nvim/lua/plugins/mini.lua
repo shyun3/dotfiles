@@ -34,7 +34,6 @@ end
 return {
   {
     "echasnovski/mini.files",
-    dependencies = { "nvim-tree/nvim-web-devicons", "folke/snacks.nvim" },
     version = false, -- Main branch
 
     opts = {

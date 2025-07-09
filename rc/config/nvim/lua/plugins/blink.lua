@@ -109,7 +109,7 @@ return {
                   lazydev = "[LD]",
                   ctags = "[T]",
                 }
-                return vim.tbl_get(map, name) or ""
+                return map[name] or ""
               end,
             },
           },
@@ -199,7 +199,6 @@ return {
 
   config = function(_, opts)
     highlight_cmp_menu()
-
     require("blink.cmp").setup(opts)
   end,
 }
