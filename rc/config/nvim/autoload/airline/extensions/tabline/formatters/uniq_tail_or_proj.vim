@@ -3,6 +3,6 @@ function! airline#extensions#tabline#formatters#uniq_tail_or_proj#format(bufnr, 
   if empty(projName)
     return airline#extensions#tabline#formatters#unique_tail_improved#format(a:bufnr, a:buffers)
   else
-    return projName
+    return projName . (getbufvar(a:bufnr, '&modified') ? g:airline_symbols.modified : '')
   endif
 endfunction
