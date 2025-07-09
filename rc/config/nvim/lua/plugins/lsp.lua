@@ -71,6 +71,8 @@ return {
     "smjonas/inc-rename.nvim",
 
     opts = {
+      save_in_cmdline_history = false,
+
       post_hook = function(result)
         for uri, _ in pairs(result.documentChanges or result.changes) do
           local file = vim.uri_to_fname(uri)
@@ -89,7 +91,17 @@ return {
     keys = {
       {
         "grn",
-        function() return ":IncRename " .. vim.fn.expand("<cword>") end,
+
+        function()
+          -- Workaround for #86
+          --
+          -- Request references but do nothing with them. If none are found, a
+          -- message will be emitted.
+          vim.lsp.buf.references(nil, { on_list = function() end })
+
+          return ":IncRename " .. vim.fn.expand("<cword>")
+        end,
+
         desc = "IncRename",
         expr = true,
       },
