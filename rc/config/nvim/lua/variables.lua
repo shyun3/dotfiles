@@ -17,14 +17,14 @@ if vim.fn.exists("$DISPLAY") then
     paste = {
       ["+"] = function()
         return vim.fn.systemlist(
-          'xclip -o -sel clip -r -t UTF8_STRING 2>/dev/null | sed -e "s/\r$//"',
+          'xclip -o -sel clip -t UTF8_STRING 2>/dev/null | sed -e "s/\r$//"',
           "",
           1
         )
       end,
       ["*"] = function()
         return vim.fn.systemlist(
-          'xclip -o -r -t UTF8_STRING 2>/dev/null | sed -e "s/\r$//"',
+          'xclip -o -t UTF8_STRING 2>/dev/null | sed -e "s/\r$//"',
           "",
           1
         )
