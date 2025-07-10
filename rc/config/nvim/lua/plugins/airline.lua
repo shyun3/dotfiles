@@ -1,5 +1,6 @@
 return {
   "vim-airline/vim-airline",
+  enabled = false,
   dependencies = "vim-airline/vim-airline-themes",
   event = "UIEnter",
 
