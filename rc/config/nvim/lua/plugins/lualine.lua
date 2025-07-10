@@ -1,62 +1,65 @@
--- Taken from molokai in vim-airline-themes
+local molokai = require("util.colors").molokai
+
 local colors = {
-  black = "#080808",
-  yellow = "#e6db74",
-  white = "#f8f8f0",
-  dark_gray = "#232526",
-  gray = "#465457",
-  blue = "#66d9ef",
-  red = "#f92672",
-  green = "#a6e22e",
-  light_black = "#1b1d1e",
+  dark_fg = molokai.black,
+  light_fg = molokai.white,
+  inactive_fg = molokai.light_black,
+
+  dark_bg = molokai.dark_gray,
+  gray_bg = molokai.gray,
+
+  normal = molokai.yellow,
+  insert = molokai.blue,
+  replace = molokai.red,
+  select = molokai.green,
 }
 
 -- Taken from molokai in vim-airline-themes
 local theme = {
   normal = {
-    a = { fg = colors.black, bg = colors.yellow, gui = "bold" },
-    b = { fg = colors.white, bg = colors.dark_gray },
+    a = { fg = colors.dark_fg, bg = colors.normal, gui = "bold" },
+    b = { fg = colors.light_fg, bg = colors.dark_bg },
     c = function()
-      return vim.bo.modified and { fg = colors.black, bg = colors.yellow }
-        or { fg = colors.white, bg = colors.gray }
+      return vim.bo.modified and { fg = colors.dark_fg, bg = colors.normal }
+        or { fg = colors.light_fg, bg = colors.gray_bg }
     end,
   },
   insert = {
-    a = { fg = colors.black, bg = colors.blue, gui = "bold" },
+    a = { fg = colors.dark_fg, bg = colors.insert, gui = "bold" },
 
     c = function()
-      return vim.bo.modified and { fg = colors.black, bg = colors.blue }
-        or { fg = colors.white, bg = colors.gray }
+      return vim.bo.modified and { fg = colors.dark_fg, bg = colors.insert }
+        or { fg = colors.light_fg, bg = colors.gray_bg }
     end,
   },
   replace = {
-    a = { fg = colors.black, bg = colors.red, gui = "bold" },
+    a = { fg = colors.dark_fg, bg = colors.replace, gui = "bold" },
 
     c = function()
-      return vim.bo.modified and { fg = colors.black, bg = colors.red }
-        or { fg = colors.white, bg = colors.gray }
+      return vim.bo.modified and { fg = colors.dark_fg, bg = colors.replace }
+        or { fg = colors.light_fg, bg = colors.gray_bg }
     end,
   },
   visual = {
-    a = { fg = colors.black, bg = colors.green, gui = "bold" },
+    a = { fg = colors.dark_fg, bg = colors.select, gui = "bold" },
 
     c = function()
-      return vim.bo.modified and { fg = colors.black, bg = colors.green }
-        or { fg = colors.white, bg = colors.gray }
+      return vim.bo.modified and { fg = colors.dark_fg, bg = colors.select }
+        or { fg = colors.light_fg, bg = colors.gray_bg }
     end,
   },
   command = {
-    a = { fg = colors.black, bg = colors.yellow, gui = "bold" },
+    a = { fg = colors.dark_fg, bg = colors.normal, gui = "bold" },
 
     c = function()
-      return vim.bo.modified and { fg = colors.black, bg = colors.yellow }
-        or { fg = colors.white, bg = colors.gray }
+      return vim.bo.modified and { fg = colors.dark_fg, bg = colors.normal }
+        or { fg = colors.light_fg, bg = colors.gray_bg }
     end,
   },
   inactive = {
-    a = { fg = colors.light_black, bg = colors.gray },
-    b = { fg = colors.light_black, bg = colors.gray },
-    c = { fg = colors.light_black, bg = colors.gray },
+    a = { fg = colors.inactive_fg, bg = colors.gray_bg },
+    b = { fg = colors.inactive_fg, bg = colors.gray_bg },
+    c = { fg = colors.inactive_fg, bg = colors.gray_bg },
   },
 }
 
@@ -75,8 +78,8 @@ local filetype = {
   colored = false,
 }
 
--- Same as progress component, except 0% and 100% are used instead of "Top" and
--- "Bot"
+-- Same as progress component, except 0% and 100% are shown instead of "Top"
+-- and "Bot"
 local function progress()
   local curr = vim.fn.line(".")
   local total = vim.fn.line("$")
@@ -135,10 +138,10 @@ return {
           end,
 
           color = function()
-            -- For some reason, the fg color isn't inherited from the theme
-            -- if the gui option is specified
+            -- For some reason, the fg color isn't inherited from the theme if
+            -- the gui option is specified
             return {
-              fg = vim.bo.modified and colors.black or colors.white,
+              fg = vim.bo.modified and colors.dark_fg or colors.light_fg,
               gui = "bold",
             }
           end,
