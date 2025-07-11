@@ -69,6 +69,7 @@ return {
             "", -- Needed for margin to be added
             tab.number(),
             tab.name(),
+            tab.current_win().file_icon(),
             make_sep(tab, all_tabs),
 
             hl = get_tab_highlight(tab),
