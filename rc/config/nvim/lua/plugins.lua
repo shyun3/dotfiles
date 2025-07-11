@@ -23,6 +23,11 @@ return {
       vim.cmd.highlight("IndentLine guifg=#404040")
       vim.cmd.highlight("IndentLineCurrent guifg=#707070")
 
+      -- Work around nvim 0.11 statusline changes, see neovim PR #29976
+      -- Derived from https://github.com/vim-airline/vim-airline/issues/2693#issuecomment-2424151997
+      vim.cmd.highlight("TabLine cterm=NONE gui=NONE")
+      vim.cmd.highlight("TabLineFill cterm=NONE gui=NONE")
+
       vim.cmd.highlight("link WinBarNC Comment")
     end,
   },

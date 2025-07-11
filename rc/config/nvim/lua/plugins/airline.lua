@@ -21,11 +21,4 @@ return {
     vim.g["airline#extensions#tabline#show_buffers"] = 0
     vim.g["airline#extensions#tabline#show_tab_type"] = 0
   end,
-
-  config = function()
-    -- Work around nvim 0.11 statusline changes, see neovim PR #29976
-    -- Derived from https://github.com/vim-airline/vim-airline/issues/2693#issuecomment-2424151997
-    vim.cmd.highlight("TabLine cterm=NONE gui=NONE")
-    vim.cmd.highlight("TabLineFill cterm=NONE gui=NONE")
-  end,
 }
