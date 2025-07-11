@@ -43,6 +43,19 @@ local function make_sep(tab, all_tabs)
   return next_tab.is_current() and before_curr_tab_sep or inactive_tab_sep
 end
 
+local function make_tab_count()
+  return {
+    { "", hl = { fg = theme.modified.bg, bg = theme.inactive.bg } },
+
+    -- Note the space at the end. Margin doesn't seem to get added for the
+    -- final node.
+    string.format("tab %d/%d ", vim.fn.tabpagenr(), vim.fn.tabpagenr("$")),
+
+    hl = theme.modified,
+    margin = " ",
+  }
+end
+
 return {
   "nanozuki/tabby.nvim",
 
@@ -63,6 +76,8 @@ return {
           }
         end),
         line.spacer(),
+        #all_tabs.tabs > 1 and make_tab_count() or "",
+
         hl = theme.inactive,
       }
     end,
