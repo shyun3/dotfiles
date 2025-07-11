@@ -97,6 +97,14 @@ return {
 
           return tab_name .. (buf.is_changed() and "+" or "")
         end,
+
+        override = function(tab_id)
+          local win_id = vim.api.nvim_tabpage_get_win(tab_id)
+          local buf_id = vim.api.nvim_win_get_buf(win_id)
+          local buf_name = vim.api.nvim_buf_get_name(buf_id)
+
+          if vim.startswith(buf_name, "health://") then return "[Health]" end
+        end,
       },
     },
   },
