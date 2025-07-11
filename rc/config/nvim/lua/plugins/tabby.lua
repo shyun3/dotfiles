@@ -81,5 +81,22 @@ return {
         hl = theme.inactive,
       }
     end,
+
+    option = {
+      tab_name = {
+        name_fallback = function(tab_id)
+          local win = require("tabby.feature.wins").new_win(
+            vim.api.nvim_tabpage_get_win(tab_id),
+            {}
+          )
+          local buf = win.buf()
+
+          local proj_name = vim.b[buf.id].title -- From vim-project
+          local tab_name = proj_name or win.buf_name()
+
+          return tab_name .. (buf.is_changed() and "+" or "")
+        end,
+      },
+    },
   },
 }
