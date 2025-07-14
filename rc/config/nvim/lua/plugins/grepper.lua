@@ -56,12 +56,14 @@ return {
       "<Leader><Leader>",
 
       function()
-        local util = require("util")
-        util.go_to_editable_window()
+        require("util").go_to_editable_window()
 
-        local cwd = vim.fn.getcwd()
-        local cd_flag = util.oil_filter(cwd) == cwd and "-cd " .. cwd or ""
-        vim.cmd.Grepper(cd_flag)
+        -- When using 'file' or 'filecwd' for the `grepper.dir` option, Grepper
+        -- will throw an error if run on an oil buffer. For this case, just use
+        -- the current directory.
+        local cd_flag = vim.bo.filetype == "oil" and "-cd " .. vim.fn.getcwd()
+          or ""
+        vim.cmd("Grepper " .. cd_flag)
       end,
 
       desc = "Grepper: Prompt",
