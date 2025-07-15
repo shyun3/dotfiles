@@ -204,13 +204,13 @@ return {
     init = function() vim.g.wordmotion_nomap = 1 end,
 
     keys = {
-      { "<Leader>w", "<Plug>WordMotion_w", mode = "" },
-      { "<Leader>e", "<Plug>WordMotion_e", mode = "" },
-      { "<Leader>b", "<Plug>WordMotion_b", mode = "" },
-      { "<Leader>ge", "<Plug>WordMotion_ge", mode = "" },
+      { "<Leader>w", "<Plug>WordMotion_w", mode = { "n", "x", "o" } },
+      { "<Leader>e", "<Plug>WordMotion_e", mode = { "n", "x", "o" } },
+      { "<Leader>b", "<Plug>WordMotion_b", mode = { "n", "x", "o" } },
+      { "<Leader>ge", "<Plug>WordMotion_ge", mode = { "n", "x", "o" } },
 
-      { "i<Leader>w", "<Plug>WordMotion_iw", mode = { "o", "v" } },
-      { "a<Leader>w", "<Plug>WordMotion_aw", mode = { "o", "v" } },
+      { "i<Leader>w", "<Plug>WordMotion_iw", mode = { "o", "x" } },
+      { "a<Leader>w", "<Plug>WordMotion_aw", mode = { "o", "x" } },
     },
   },
 

@@ -32,14 +32,14 @@ return {
   end,
 
   keys = {
-    { "<Space>", "<Cmd>HopWord<CR>", mode = "" },
-    { "<Enter>", "<Cmd>HopChar1<CR>", mode = "" },
+    { "<Space>", "<Cmd>HopWord<CR>", mode = { "n", "x", "o" } },
+    { "<Enter>", "<Cmd>HopChar1<CR>", mode = { "n", "x", "o" } },
 
     -- See `:h forced-motion` for usages of `v` and `V` in operator pending mode
     {
       "+",
       require("util.hop_hints").hintTill1,
-      mode = { "n", "v" },
+      mode = { "n", "x" },
       desc = "Hop till character",
     },
     {
@@ -52,7 +52,7 @@ return {
     {
       "_",
       require("util.hop_hints").hintLines,
-      mode = { "n", "v" },
+      mode = { "n", "x" },
       desc = "Hop to line",
     },
     {
