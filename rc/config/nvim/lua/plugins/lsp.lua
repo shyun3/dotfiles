@@ -123,6 +123,7 @@ return {
       -- This is not being included in a wildcard config as `on_attach` because
       -- it would get overriden by any LSP configs provided later
       vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("user_lsp", {}),
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if client then on_lsp_attach(client) end
