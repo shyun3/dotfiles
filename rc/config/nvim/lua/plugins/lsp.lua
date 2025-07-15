@@ -151,8 +151,6 @@ return {
           vim.fn.setqflist({}, " ", {
             items = qf,
             title = "Buffer Diagnostics",
-
-            ---@diagnostic disable-next-line: assign-type-mismatch
             nr = "$",
           })
           vim.cmd("botright copen")

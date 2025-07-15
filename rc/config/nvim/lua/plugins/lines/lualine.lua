@@ -121,21 +121,19 @@ return {
     sections = {
       lualine_a = { "mode" },
       lualine_b = { { "branch", draw_empty = true }, "diff" },
+
+      ---@class NoiceStatus
+      ---@field get fun(): boolean
+      ---@field has fun(): boolean
+
       lualine_c = {
         filename,
         {
           -- Show @recording messages
           -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#-statusline-components
 
-          function()
-            ---@diagnostic disable-next-line: undefined-field
-            return require("noice").api.status.mode.get()
-          end,
-
-          cond = function()
-            ---@diagnostic disable-next-line: undefined-field
-            return require("noice").api.status.mode.has()
-          end,
+          function() return require("noice").api.status.mode.get() end,
+          cond = function() return require("noice").api.status.mode.has() end,
 
           color = function()
             -- For some reason, the fg color isn't inherited from the theme if
@@ -152,15 +150,8 @@ return {
           -- Search count messages
           -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#-statusline-components
 
-          function()
-            ---@diagnostic disable-next-line: undefined-field
-            return require("noice").api.status.search.get()
-          end,
-
-          cond = function()
-            ---@diagnostic disable-next-line: undefined-field
-            return require("noice").api.status.search.has()
-          end,
+          function() return require("noice").api.status.search.get() end,
+          cond = function() return require("noice").api.status.search.has() end,
         },
         {
           "lsp_status",
