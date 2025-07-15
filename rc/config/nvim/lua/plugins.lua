@@ -33,7 +33,15 @@ return {
   },
 
   { "numToStr/Comment.nvim", opts = {} },
-  "vim-scripts/DoxygenToolkit.vim",
+
+  {
+    "vim-scripts/DoxygenToolkit.vim",
+
+    keys = {
+      -- Note that this is intended to overwrite the doge mapping
+      { "<Leader>d", "<Cmd>Dox<CR>", ft = { "c", "cpp" } },
+    },
+  },
 
   {
     "chrishrb/gx.nvim",
