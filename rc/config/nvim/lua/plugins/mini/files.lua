@@ -31,6 +31,11 @@ local set_cwd = function()
   )
 end
 
+-- Taken from "Set custom bookmarks" section in `MiniFiles-examples`
+local set_mark = function(id, path, desc)
+  MiniFiles.set_bookmark(id, path, { desc = desc })
+end
+
 return {
   "echasnovski/mini.files",
   version = false, -- Main branch
@@ -67,6 +72,13 @@ return {
       end,
     })
 
+    -- Derived from "Set custom bookmarks" section in `MiniFiles-examples`
+    vim.api.nvim_create_autocmd("User", {
+      group = group,
+      pattern = "MiniFilesExplorerOpen",
+      callback = function() set_mark("w", vim.fn.getcwd, "Working directory") end,
+    })
+
     -- Taken from rename snack
     vim.api.nvim_create_autocmd("User", {
       group = group,
@@ -80,12 +92,17 @@ return {
   keys = {
     {
       "<C-n>",
+
       function()
-        -- Derived from example in help
-        if not MiniFiles.close() then MiniFiles.open() end
+        -- Derived from "Toggle explorer" section in `MiniFiles-examples`
+        if not MiniFiles.close() then
+          MiniFiles.open(MiniFiles.get_latest_path())
+        end
       end,
+
       desc = "Toggle MiniFiles",
     },
+
     {
       "<A-n>",
       function()
