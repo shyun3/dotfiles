@@ -39,8 +39,11 @@ return {
   end,
 
   keys = {
-    -- Derived from https://github.com/Saghen/blink.cmp/issues/1805#issuecomment-2912427954
+    -- LuaSnip keeps a snippet session active if all the placeholders aren't
+    -- replaced, even if insert mode is left. This mapping is to manually end
+    -- a session.
     {
+      -- Derived from https://github.com/Saghen/blink.cmp/issues/1805#issuecomment-2912427954
       "<Esc>",
 
       function()
