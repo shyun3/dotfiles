@@ -69,6 +69,7 @@ dotfiles:
   d_plugins:
     src: zsh/plugins
     dst: ~/.zsh/plugins
+    link: absolute
 profiles:
   linux:
     dotfiles:

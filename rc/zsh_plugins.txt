@@ -31,13 +31,6 @@ ohmyzsh/ohmyzsh path:plugins/uv
 ohmyzsh/ohmyzsh path:plugins/zoxide
 ohmyzsh/ohmyzsh path:plugins/zsh-interactive-cd
 
-# Zsh plugins
-#
-# Refresh static plugins file if updating directory contents (e.g. adding or
-# removing scripts)
-~/.zsh/plugins
-~/.zsh/plugins/logrotate
-
 # 3rd party plugins
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting

@@ -143,6 +143,10 @@ alias cdgitroot='cd "$(git rev-parse --show-cdup)"'
 alias lg='lazygit'
 
 #######################################################################
+# Plugins
+for file (~/.zsh/plugins/**/*.zsh(N.)) source $file
+
+#######################################################################
 # fzf
 
 # Display full command on preview window, taken from:
