@@ -32,7 +32,7 @@ return {
     end,
   },
 
-  { "numToStr/Comment.nvim", opts = {} },
+  { "numToStr/Comment.nvim", keys = { "gc", "gb" }, opts = {} },
 
   {
     "vim-scripts/DoxygenToolkit.vim",
@@ -50,7 +50,6 @@ return {
     config = true,
 
     keys = { { "gx", "<Cmd>Browse<CR>", mode = { "n", "x" } } },
-    cmd = "Browse",
   },
 
   {
@@ -101,7 +100,7 @@ return {
 
   {
     "stevearc/oil.nvim",
-    lazy = false, -- To override netrw as early as possible
+    event = "VeryLazy", -- Should be loaded early to override netrw
 
     opts = {
       keymaps = {

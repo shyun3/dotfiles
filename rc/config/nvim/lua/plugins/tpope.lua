@@ -2,7 +2,7 @@ return {
   {
     "shyun3/vim-endwise",
     branch = "personal",
-    lazy = false, -- Needed for plugin to work properly
+    event = "FileType", -- Must be loaded early for plugin to work properly
 
     -- Endwise wraps <CR> with its own mapping on startup by default, so make
     -- sure autopairs performs its wrapping first
@@ -21,12 +21,14 @@ return {
     end,
   },
 
-  "tpope/vim-fugitive",
+  { "tpope/vim-fugitive", cmd = "Git" },
   "tpope/vim-projectionist",
   "tpope/vim-repeat",
 
   {
     "tpope/vim-surround",
+    event = "ModeChanged",
+
     init = function()
       -- To allow remapping i_<C-s>
       vim.g.surround_no_insert_mappings = 1
