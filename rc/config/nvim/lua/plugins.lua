@@ -188,12 +188,6 @@ return {
   },
 
   {
-    "jeetsukumaran/vim-pythonsense",
-    init = function() vim.g.is_pythonsense_suppress_object_keymaps = 1 end,
-    ft = "python",
-  },
-
-  {
     "chaoren/vim-wordmotion",
     init = function() vim.g.wordmotion_nomap = 1 end,
 
