@@ -1,4 +1,4 @@
-local highlight_disable_langs = { "c", "cpp" }
+local highlight_disable_langs = { "c", "cpp", "python" }
 
 return {
   "nvim-treesitter/nvim-treesitter",
@@ -26,6 +26,7 @@ return {
       "bash",
       "cpp",
       "meson",
+      "python",
       "regex", -- Recommended by noice
     },
 
@@ -72,8 +73,20 @@ return {
             query = "@function.inner",
             desc = "Select function, inner",
           },
+
           ["ak"] = { query = "@class.outer", desc = "Select class, outer" },
           ["ik"] = { query = "@class.inner", desc = "Select class, inner" },
+
+          ad = {
+            -- Derived from https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/439#issuecomment-1505411083
+            query = "@string.documentation",
+            query_group = "highlights",
+            desc = "Select docstring, outer",
+          },
+          id = {
+            query = "@documentation.inner",
+            desc = "Select docstring, inner",
+          },
         },
       },
     },
