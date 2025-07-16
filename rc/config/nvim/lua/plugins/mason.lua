@@ -1,6 +1,6 @@
 return {
   {
-    "mason-org/mason.nvim",
+    "mason-org/mason.nvim", -- Must be loaded before all Mason plugins
 
     -- PATH should be updated early
     priority = 100,
@@ -10,7 +10,7 @@ return {
 
   {
     "mason-org/mason-lspconfig.nvim",
-    dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
+    dependencies = "neovim/nvim-lspconfig",
     event = "VeryLazy",
 
     opts = {

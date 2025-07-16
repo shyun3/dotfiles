@@ -73,10 +73,7 @@ local filename = {
   },
 }
 
-local filetype = {
-  "filetype",
-  colored = false,
-}
+local filetype = { "filetype", colored = false }
 
 -- Same as progress component, except 0% and 100% are shown instead of "Top"
 -- and "Bot"
@@ -108,7 +105,6 @@ end
 
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = "nvim-tree/nvim-web-devicons",
   event = "UIEnter",
 
   opts = {

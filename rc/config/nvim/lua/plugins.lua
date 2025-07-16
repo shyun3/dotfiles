@@ -101,7 +101,6 @@ return {
 
   {
     "stevearc/oil.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
     lazy = false, -- To override netrw as early as possible
 
     opts = {

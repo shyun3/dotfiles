@@ -118,6 +118,7 @@ end
 return {
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" }, -- Taken from LazyVim
 
     config = function()
       -- This is not being included in a wildcard config as `on_attach` because

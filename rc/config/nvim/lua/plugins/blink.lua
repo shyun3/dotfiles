@@ -53,12 +53,7 @@ end
 return {
   "saghen/blink.cmp",
   version = "1.*",
-  dependencies = {
-    "folke/lazydev.nvim",
-    "shyun3/blink-cmp-ctags",
-
-    "onsails/lspkind.nvim",
-  },
+  dependencies = { "shyun3/blink-cmp-ctags", "onsails/lspkind.nvim" },
 
   event = { "InsertEnter", "CmdlineEnter" },
 
