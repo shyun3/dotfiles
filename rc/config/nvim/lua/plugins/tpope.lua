@@ -2,7 +2,7 @@ return {
   {
     "shyun3/vim-endwise",
     branch = "personal",
-    lazy = false,
+    lazy = false, -- Needed for plugin to work properly
 
     -- Endwise wraps <CR> with its own mapping on startup by default, so make
     -- sure autopairs performs its wrapping first
