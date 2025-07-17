@@ -60,5 +60,35 @@ return {
       mode = "o",
       desc = "Hop to line",
     },
+
+    { "f", "<Cmd>HopChar1CurrentLineAC<CR>", mode = { "n", "x", "o" } },
+    { "F", "<Cmd>HopChar1CurrentLineBC<CR>", mode = { "n", "x", "o" } },
+
+    {
+      "t",
+
+      function()
+        require("hop").hint_char1({
+          direction = require("hop.hint").HintDirection.AFTER_CURSOR,
+          current_line_only = true,
+          hint_offset = -1,
+        })
+      end,
+
+      mode = { "n", "x", "o" },
+    },
+    {
+      "T",
+
+      function()
+        require("hop").hint_char1({
+          direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
+          current_line_only = true,
+          hint_offset = 1,
+        })
+      end,
+
+      mode = { "n", "x", "o" },
+    },
   },
 }
