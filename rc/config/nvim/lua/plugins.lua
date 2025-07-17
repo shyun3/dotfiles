@@ -100,7 +100,7 @@ return {
 
   {
     "stevearc/oil.nvim",
-    event = "VeryLazy", -- Should be loaded early to override netrw
+    event = "VimEnter", -- Should be loaded early to override netrw
 
     opts = {
       keymaps = {
