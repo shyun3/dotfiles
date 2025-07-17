@@ -6,22 +6,17 @@ return {
 
     opts = {
       custom_textobjects = {
-        -- Disable built-in text objects
-        ["("] = false,
-        ["["] = false,
-        ["{"] = false,
-        ["<"] = false,
-        [")"] = false,
-        ["]"] = false,
-        ["}"] = false,
-        [">"] = false,
-        b = false,
-        ['"'] = false,
-        ["'"] = false,
-        ["`"] = false,
-        t = false,
         f = false, -- See treesitter text objects
       },
+
+      mappings = {
+        around_next = "",
+        inside_next = "",
+        around_last = "",
+        inside_last = "",
+      },
+
+      search_method = "cover",
     },
   },
 
