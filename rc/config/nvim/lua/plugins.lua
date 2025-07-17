@@ -99,6 +99,20 @@ return {
   },
 
   {
+    "yorickpeterse/nvim-window",
+
+    opts = { hint_hl = "Keyword" },
+
+    keys = {
+      {
+        "<Leader><Space>",
+        function() require("nvim-window").pick() end,
+        desc = "Jump to window",
+      },
+    },
+  },
+
+  {
     "stevearc/oil.nvim",
     event = "VimEnter", -- Should be loaded early to override netrw
 
