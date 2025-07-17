@@ -102,9 +102,11 @@ return {
     { "<Leader>fl", "<Cmd>FzfLua builtin<CR>" },
     { "<Leader>;", "<Cmd>FzfLua command_history<CR>" },
     { "<Leader>/", "<Cmd>FzfLua search_history<CR>" },
-    { "<Leader>h", "<Cmd>FzfLua help_tags<CR>" },
     { "<Leader>x", "<Cmd>FzfLua commands<CR>" },
     { "<Leader>cf", "<Cmd>FzfLua quickfix<CR>" },
+
+    { "<Leader>hh", "<Cmd>FzfLua help_tags<CR>" },
+    { "<Leader>hl", "<Cmd>FzfLua highlights<CR>" },
 
     {
       "<Leader>]",
