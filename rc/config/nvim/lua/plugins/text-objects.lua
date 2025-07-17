@@ -4,5 +4,4 @@ return {
   { "glts/vim-textobj-comment", event = "ModeChanged" },
   { "kana/vim-textobj-entire", event = "ModeChanged" },
   { "kana/vim-textobj-indent", event = "ModeChanged" },
-  { "sgur/vim-textobj-parameter", event = "ModeChanged" },
 }

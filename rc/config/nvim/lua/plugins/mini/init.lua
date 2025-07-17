@@ -21,7 +21,6 @@ return {
         ["`"] = false,
         t = false,
         f = false, -- See treesitter text objects
-        a = false, -- See vim-textobj-parameter
       },
     },
   },
