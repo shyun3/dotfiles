@@ -2,7 +2,7 @@ return {
   "folke/noice.nvim",
   dependencies = {
     "MunifTanjim/nui.nvim",
-    { "rcarriga/nvim-notify", lazy = true, opts = { stages = "slide" } },
+    { "rcarriga/nvim-notify", opts = { stages = "slide" } },
   },
 
   event = "VeryLazy",
@@ -35,6 +35,12 @@ return {
       {
         view = "notify",
         filter = { event = "msg_showmode" },
+      },
+
+      -- Suppress hop prompts
+      {
+        filter = { kind = "echo", find = "^Hop [^:]+: " },
+        opts = { skip = true },
       },
     },
 
