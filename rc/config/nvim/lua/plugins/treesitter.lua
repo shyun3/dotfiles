@@ -64,18 +64,7 @@ return {
         lookahead = false,
 
         keymaps = {
-          -- You can use the capture groups defined in textobjects.scm
-          ["af"] = {
-            query = "@function.outer",
-            desc = "Select function, outer",
-          },
-          ["if"] = {
-            query = "@function.inner",
-            desc = "Select function, inner",
-          },
-
-          ["ak"] = { query = "@class.outer", desc = "Select class, outer" },
-          ["ik"] = { query = "@class.inner", desc = "Select class, inner" },
+          -- For capture groups defined in textobjects.scm, see mini.ai config
 
           ad = {
             -- Derived from https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/439#issuecomment-1505411083
