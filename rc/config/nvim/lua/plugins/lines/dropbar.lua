@@ -70,8 +70,7 @@ return {
     icons = {
       ui = {
         bar = {
-          -- Taken from lspsaga
-          separator = " › ",
+          separator = " › ", -- Taken from lspsaga
         },
       },
     },
@@ -83,6 +82,10 @@ return {
 
   config = function(_, opts)
     highlight_dropbar_text()
+
+    -- By default, dropbar is highlighted as `WinBarNC` on inactive windows
+    vim.cmd.highlight("link WinBarNC Comment")
+
     require("dropbar").setup(opts)
   end,
 

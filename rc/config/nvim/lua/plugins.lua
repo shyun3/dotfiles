@@ -23,8 +23,6 @@ return {
       -- Derived from https://github.com/vim-airline/vim-airline/issues/2693#issuecomment-2424151997
       vim.cmd.highlight("TabLine cterm=NONE gui=NONE")
       vim.cmd.highlight("TabLineFill cterm=NONE gui=NONE")
-
-      vim.cmd.highlight("link WinBarNC Comment")
     end,
   },
 
