@@ -26,6 +26,7 @@ return {
 
       "bash",
       "cpp",
+      "luadoc",
       "meson",
       "python",
       "regex", -- Recommended by noice
