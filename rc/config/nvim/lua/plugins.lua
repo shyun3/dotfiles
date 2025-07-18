@@ -19,10 +19,6 @@ return {
       vim.api.nvim_set_hl(0, "@lsp.type.variable", { fg = "fg" })
       vim.cmd.highlight("link @lsp.type.parameter NONE")
 
-      -- Taken from default vscode theme (Dark Modern)
-      vim.cmd.highlight("IndentLine guifg=#404040")
-      vim.cmd.highlight("IndentLineCurrent guifg=#707070")
-
       -- Work around nvim 0.11 statusline changes, see neovim PR #29976
       -- Derived from https://github.com/vim-airline/vim-airline/issues/2693#issuecomment-2424151997
       vim.cmd.highlight("TabLine cterm=NONE gui=NONE")
@@ -54,13 +50,11 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
     event = "BufWinEnter",
 
     opts = {
       indent = {
         char = "│", -- center aligned solid
-        highlight = "IndentLine",
       },
 
       whitespace = { remove_blankline_trail = false },
@@ -68,11 +62,18 @@ return {
       scope = {
         show_start = false,
         show_end = false,
-        highlight = "IndentLineCurrent",
       },
 
       exclude = { filetypes = { "project" } },
     },
+
+    config = function(_, opts)
+      -- Taken from default vscode theme (Dark Modern)
+      vim.cmd.highlight("IblIndent guifg=#404040")
+      vim.cmd.highlight("IblScope guifg=#707070")
+
+      require("ibl").setup(opts)
+    end,
   },
 
   {
