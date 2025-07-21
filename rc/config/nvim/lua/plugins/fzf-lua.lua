@@ -99,7 +99,7 @@ return {
       desc = "fzf-lua: Buffer tags",
     },
     { "<C-j>", "<Cmd>FzfLua blines show_unlisted=true<CR>" },
-    { "<Leader>fl", "<Cmd>FzfLua builtin<CR>" },
+    { "<Leader>f", "<Cmd>FzfLua builtin<CR>" },
     { "<Leader>;", "<Cmd>FzfLua command_history<CR>" },
     { "<Leader>/", "<Cmd>FzfLua search_history<CR>" },
     { "<Leader>x", "<Cmd>FzfLua commands<CR>" },
