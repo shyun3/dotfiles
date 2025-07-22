@@ -21,6 +21,8 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+
     event = "BufWinEnter",
 
     opts = {
@@ -37,14 +39,6 @@ return {
 
       exclude = { filetypes = { "project" } },
     },
-
-    config = function(_, opts)
-      -- Taken from default vscode theme (Dark Modern)
-      vim.cmd.highlight("IblIndent guifg=#404040")
-      vim.cmd.highlight("IblScope guifg=#707070")
-
-      require("ibl").setup(opts)
-    end,
   },
 
   {
