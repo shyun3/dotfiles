@@ -5,8 +5,18 @@ return {
     priority = 1000,
 
     opts = {
+      styles = {
+        conditionals = {},
+      },
+
       custom_highlights = function()
-        return require("plugins.colorscheme.integrations").dropbar_overrides
+        return vim.tbl_extend(
+          "error",
+          require("plugins.colorscheme.integrations").dropbar_overrides,
+          {
+            ["@function.builtin"] = { italic = true },
+          }
+        )
       end,
 
       integrations = {
