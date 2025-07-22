@@ -1,4 +1,4 @@
-local highlight_disable_langs = { "c", "cpp", "python" }
+local highlight_disable_langs = { "python" }
 
 return {
   "nvim-treesitter/nvim-treesitter",
