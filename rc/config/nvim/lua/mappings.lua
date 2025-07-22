@@ -33,6 +33,9 @@ vim.keymap.set("n", "<Leader>qq", "<Cmd>cclose<CR>")
 -- Help
 vim.keymap.set("n", "<Leader>qh", "<Cmd>helpclose<CR>")
 
+-- Highlights
+vim.keymap.set("n", "zS", vim.show_pos, { desc = "Inspect" })
+
 -- Select mode
 -- Derived from https://github.com/Saghen/blink.cmp/issues/830#issuecomment-2566814094
 vim.keymap.set(
