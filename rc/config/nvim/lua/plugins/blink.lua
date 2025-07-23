@@ -1,7 +1,9 @@
 return {
   "saghen/blink.cmp",
-  version = "1.*",
   dependencies = { "shyun3/blink-cmp-ctags", "onsails/lspkind.nvim" },
+
+  -- Using main branch to get access to fixes: #1994, #2019
+  build = "cargo build --release",
 
   event = { "InsertEnter", "CmdlineEnter" },
 
