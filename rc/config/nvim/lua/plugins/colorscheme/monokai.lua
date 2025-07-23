@@ -13,6 +13,10 @@ return {
         hl[group] = hl_map
       end
     end,
+
+    cache = false, -- Makes adjusting highlights easier
+
+    auto_enable_plugins = false,
   },
 
   config = function(_, opts) require("monokai-nightasty").load(opts) end,
