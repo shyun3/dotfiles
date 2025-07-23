@@ -38,6 +38,10 @@ all = true
 asset_filters = ["x86"]
 target = "~/.local/bin/nvim"
 
+# On v0.11.3, treesitter related error messages can pop up when deleting
+# paragraphs of code
+tag = "nightly"
+
 ["astral-sh/uv"]
 asset_filters = ["gnu"]
 all = true
