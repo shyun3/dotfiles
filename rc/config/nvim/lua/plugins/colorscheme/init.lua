@@ -41,6 +41,8 @@ return {
         end
       end,
     },
+
+    config = function(_, opts) require("monokai-nightasty").load(opts) end,
   },
 
   {
