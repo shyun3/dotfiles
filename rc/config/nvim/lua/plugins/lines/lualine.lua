@@ -3,7 +3,6 @@ local molokai = require("util.colors").molokai
 local colors = {
   dark_fg = molokai.black,
   light_fg = molokai.white,
-  inactive_fg = molokai.light_black,
 
   dark_bg = molokai.dark_gray,
   gray_bg = molokai.gray,
@@ -55,11 +54,6 @@ local theme = {
       return vim.bo.modified and { fg = colors.dark_fg, bg = colors.normal }
         or { fg = colors.light_fg, bg = colors.gray_bg }
     end,
-  },
-  inactive = {
-    a = { fg = colors.inactive_fg, bg = colors.gray_bg },
-    b = { fg = colors.inactive_fg, bg = colors.gray_bg },
-    c = { fg = colors.inactive_fg, bg = colors.gray_bg },
   },
 }
 
@@ -180,14 +174,6 @@ return {
         },
       },
     },
-    inactive_sections = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_c = { filename },
-      lualine_x = { filetype, location },
-      lualine_y = {},
-      lualine_z = {},
-    },
     extensions = { "oil", "quickfix" },
   },
 
@@ -198,6 +184,7 @@ return {
     local oil = require("lualine.extensions.oil")
     oil.sections = {
       lualine_c = { oil.sections.lualine_a[1] },
+
       lualine_a = { "mode" },
       lualine_b = { "branch" },
       lualine_x = { filetype },
