@@ -75,22 +75,15 @@ local filename = {
 
 local filetype = { "filetype", colored = false }
 
--- Same as progress component, except 0% and 100% are shown instead of "Top"
--- and "Bot"
 local function progress()
-  local curr = vim.fn.line(".")
-  local total = vim.fn.line("$")
-
-  local percent
-  if curr == 1 then
-    percent = 0
-  elseif curr == total then
-    percent = 100
+  local prog = require("lualine.components.progress")()
+  if prog == "Top" then
+    return "0%%"
+  elseif prog == "Bot" then
+    return "100%%"
   else
-    percent = curr / total * 100
+    return vim.trim(prog)
   end
-
-  return string.format("%d%%%%", math.floor(percent))
 end
 
 -- Derived from location component
@@ -155,8 +148,6 @@ return {
             -- Remove spinner and done symbols (covered by noice)
             spinner = {},
             done = "",
-
-            separator = " ",
           },
         },
         filetype,
