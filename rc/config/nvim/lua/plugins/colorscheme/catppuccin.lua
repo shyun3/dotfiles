@@ -1,3 +1,12 @@
+local hl_overrides = {
+  ["@function.builtin"] = { italic = true },
+
+  -- Treesitter seems to think anything with :: behind it is a module
+  ["@module.cpp"] = {},
+
+  ["@lsp.typemod.variable.readonly"] = { link = "@constant" },
+}
+
 return {
   "catppuccin/nvim",
   name = "catppuccin",
@@ -12,14 +21,7 @@ return {
       return vim.tbl_extend(
         "error",
         require("plugins.colorscheme.integrations").dropbar_overrides,
-        {
-          ["@function.builtin"] = { italic = true },
-
-          -- Treesitter seems to think anything with :: behind it is a module
-          ["@module.cpp"] = {},
-
-          ["@lsp.typemod.variable.readonly"] = { link = "@constant" },
-        }
+        hl_overrides
       )
     end,
 
