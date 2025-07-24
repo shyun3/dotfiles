@@ -18,6 +18,8 @@ return {
 
             -- Treesitter seems to think anything with :: behind it is a module
             ["@module.cpp"] = {},
+
+            ["@lsp.typemod.variable.readonly"] = { link = "@constant" },
           }
         )
       end,
