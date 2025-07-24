@@ -9,12 +9,11 @@ return {
         conditionals = {},
       },
 
-      custom_highlights = function(colors)
+      custom_highlights = function()
         return vim.tbl_extend(
           "error",
           require("plugins.colorscheme.integrations").dropbar_overrides,
           {
-            WinSeparator = { fg = colors.surface2 },
             ["@function.builtin"] = { italic = true },
           }
         )
