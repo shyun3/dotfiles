@@ -15,6 +15,9 @@ return {
           require("plugins.colorscheme.integrations").dropbar_overrides,
           {
             ["@function.builtin"] = { italic = true },
+
+            -- Treesitter seems to think anything with :: behind it is a module
+            ["@module.cpp"] = {},
           }
         )
       end,
