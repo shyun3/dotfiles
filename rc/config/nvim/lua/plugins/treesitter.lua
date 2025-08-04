@@ -30,6 +30,8 @@ return {
       "meson",
       "python",
       "regex", -- Recommended by noice
+      "toml",
+      "yaml",
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
