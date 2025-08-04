@@ -1,0 +1,16 @@
+# Using a global stylua config requires the `--search-parent-directories`
+# option to be used.
+#
+# See: https://github.com/JohnnyMorganz/StyLua#finding-the-configuration
+#
+# conform.nvim should already pass this flag.
+
+column_width = 80
+indent_type = "Spaces"
+indent_width = 2
+collapse_simple_statement = "Always"
+
+[sort_requires]
+enabled = true
+
+# vim: ft=toml
