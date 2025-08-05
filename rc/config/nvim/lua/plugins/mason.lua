@@ -20,6 +20,7 @@ return {
         "jsonls",
         "lua_ls",
         "pyright",
+        "tombi",
         "vimls",
         "yamlls",
       },
