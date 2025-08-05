@@ -26,6 +26,7 @@ return {
 
       "bash",
       "cpp",
+      "git_config",
       "luadoc",
       "meson",
       "python",
