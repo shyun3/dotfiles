@@ -135,5 +135,15 @@ return {
         if parser then parser:parse() end
       end,
     })
+
+    require("nvim-treesitter-textsubjects").configure({
+      -- Disabled, to prevent interference with `,` mapping
+      prev_selection = "",
+
+      keymaps = {
+        -- Removed container mappings as they are covered by other text objects
+        ["."] = "textsubjects-smart",
+      },
+    })
   end,
 }
