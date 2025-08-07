@@ -67,8 +67,6 @@ return {
   {
     "yorickpeterse/nvim-window",
 
-    opts = { hint_hl = "Keyword" },
-
     keys = {
       {
         "<Leader><Space>",
