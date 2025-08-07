@@ -1,11 +1,6 @@
 git:
   paging:
     pager: delta --paging=never
-gui:
-  theme:
-    optionsTextColor:
-      # The default of blue was hard to see with a dark terminal background
-      - cyan
 customCommands:
   # Derived from https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium#pushing-a-specific-commit
   - key: "P"

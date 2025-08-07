@@ -97,8 +97,5 @@ return {
 
       desc = "Apply Molokai highlights",
     })
-
-    -- load the colorscheme here
-    vim.cmd([[colorscheme molokai]])
   end,
 }

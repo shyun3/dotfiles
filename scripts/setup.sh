@@ -77,6 +77,9 @@ git_take() {
 git_take jchook/ranger-zoxide ~/.config/ranger/plugins/zoxide
 git_take mattmc3/antidote ~/.antidote
 
+# Sourcing scripts, since it should be faster (?) than launching subshells
+zsh -i -c 'for file (~/.zsh/setup/**/*.zsh(N.)) source $file'
+
 #######################################################################
 # chsh (should probably be last)
 SHELL="${SHELL:-}"

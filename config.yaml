@@ -70,9 +70,20 @@ dotfiles:
     src: zsh/plugins
     dst: ~/.zsh/plugins
     link: absolute
-  f_stylua:
+  f_stylua.toml:
     src: config/stylua.toml
     dst: ~/.config/stylua.toml
+  f_config:
+    src: config/bat/config
+    dst: ~/.config/bat/config
+  d_setup:
+    src: zsh/setup
+    dst: ~/.zsh/setup
+    link: absolute
+  d_pre:
+    src: zsh/pre
+    dst: ~/.zsh/pre
+    link: absolute
 profiles:
   linux:
     dotfiles:
@@ -90,7 +101,10 @@ profiles:
       - d_nvim
       - f_zsh_plugins.txt
       - d_plugins
-      - f_stylua
+      - f_stylua.toml
+      - f_config
+      - d_setup
+      - d_pre
     actions:
       - setup_sh
   wsl-root:

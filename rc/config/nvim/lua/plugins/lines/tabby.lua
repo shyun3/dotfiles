@@ -1,21 +1,23 @@
 ---@module 'tabby'
 
-local colors = require("util.colors").molokai
+---@return table<string, TabbyHighlight>
+local theme = function()
+  local colors = require("lualine.themes.catppuccin")
 
----@type table<string, TabbyHighlight>
-local theme = {
-  current = { fg = colors.black, bg = colors.yellow },
-  modified = { fg = colors.black, bg = colors.blue },
-  inactive = { fg = colors.light_black, bg = colors.gray },
-}
+  return {
+    current = { fg = colors.normal.a.fg, bg = colors.normal.a.bg },
+    modified = { fg = colors.insert.a.fg, bg = colors.insert.a.bg },
+    inactive = { fg = colors.normal.c.fg, bg = colors.normal.c.bg },
+  }
+end
 
 ---@param tab TabbyTab
 ---
 ---@return TabbyHighlight
 local function get_tab_highlight(tab)
-  local curr_hl = tab.current_win().buf().is_changed() and theme.modified
-    or theme.current
-  return tab.is_current() and curr_hl or theme.inactive
+  local curr_hl = tab.current_win().buf().is_changed() and theme().modified
+    or theme().current
+  return tab.is_current() and curr_hl or theme().inactive
 end
 
 ---@param tab TabbyTab
@@ -25,16 +27,16 @@ end
 local function make_sep(tab, next_tab)
   local curr_tab_sep = {
     "",
-    hl = { fg = get_tab_highlight(tab).bg, bg = theme.inactive.bg },
+    hl = { fg = get_tab_highlight(tab).bg, bg = theme().inactive.bg },
   }
   if tab.is_current() then return curr_tab_sep end
 
-  local inactive_tab_sep = { "", hl = theme.inactive }
+  local inactive_tab_sep = { "", hl = theme().inactive }
   if not next_tab then return inactive_tab_sep end
 
   local before_curr_tab_sep = {
     "",
-    hl = { fg = theme.inactive.bg, bg = get_tab_highlight(next_tab).bg },
+    hl = { fg = theme().inactive.bg, bg = get_tab_highlight(next_tab).bg },
   }
   return next_tab.is_current() and before_curr_tab_sep or inactive_tab_sep
 end
@@ -42,13 +44,13 @@ end
 ---@return TabbyNode
 local function make_tab_count()
   return {
-    { "", hl = { fg = theme.modified.bg, bg = theme.inactive.bg } },
+    { "", hl = { fg = theme().modified.bg, bg = theme().inactive.bg } },
 
     -- Note the space at the end. Margin doesn't seem to get added for the
     -- final node.
     string.format("tab %d/%d ", vim.fn.tabpagenr(), vim.fn.tabpagenr("$")),
 
-    hl = theme.modified,
+    hl = theme().modified,
     margin = " ",
   }
 end
@@ -81,7 +83,7 @@ return {
         line.spacer(),
         #all_tabs.tabs > 1 and make_tab_count() or "",
 
-        hl = theme.inactive,
+        hl = theme().inactive,
       }
     end,
 

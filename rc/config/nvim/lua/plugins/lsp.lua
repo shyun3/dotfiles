@@ -1,13 +1,8 @@
----@param client vim.lsp.Client
-local function on_lsp_attach(client)
+--- @param _ vim.lsp.Client
+local function on_lsp_attach(_)
   -- Make tag commands only operate on tags, not LSP
   -- Derived from `:h lsp-defaults-disable`
   vim.bo.tagfunc = ""
-
-  if client.name == "lua_ls" then
-    -- Derived from `:h vim.lsp.semantic_tokens.start()`
-    client.server_capabilities.semanticTokensProvider = nil
-  end
 end
 
 --- Notifies user of all renames that occurred

@@ -12,6 +12,11 @@ ajeetdsouza/zoxide kind:fpath path:contrib/completions
 
 # Assets
 dandavison/delta kind:clone     # For themes
+catppuccin/bat kind:clone
+catppuccin/delta kind:clone
+catppuccin/fzf kind:clone
+catppuccin/lazygit kind:clone
+catppuccin/zsh-syntax-highlighting kind:clone
 eza-community/eza-themes kind:clone
 
 # Load this before Oh My Zsh

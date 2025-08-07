@@ -5,10 +5,6 @@ return {
 
     opts = {
       lazygit = {
-        theme = {
-          activeBorderColor = { fg = "Character", bold = true },
-          searchingActiveBorderColor = { fg = "Character", bold = true },
-        },
         win = {
           style = "lazygit",
 

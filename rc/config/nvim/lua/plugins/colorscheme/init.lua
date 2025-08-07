@@ -1,30 +1,5 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-
-    opts = {
-      custom_highlights = function()
-        return require("plugins.colorscheme.integrations").dropbar_overrides
-      end,
-
-      integrations = {
-        dropbar = {
-          enabled = true,
-          color_mode = true,
-        },
-        hop = true,
-        mason = true,
-        noice = true,
-        notify = true,
-        snacks = { enabled = true },
-        which_key = true,
-      },
-    },
-  },
-
-  {
     "polirritmico/monokai-nightasty.nvim",
     lazy = false,
     priority = 1000,
@@ -59,5 +34,6 @@ return {
     },
   },
 
+  { import = "plugins.colorscheme.catppuccin" },
   { import = "plugins.colorscheme.molokai" },
 }

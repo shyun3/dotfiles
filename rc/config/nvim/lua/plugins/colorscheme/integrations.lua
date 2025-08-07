@@ -64,9 +64,6 @@ M.dropbar = {
 M.dropbar_overrides = {
   DropBarKindFile = { link = "Comment" },
   DropBarKindFolder = { link = "Comment" },
-
-  -- By default, dropbar is highlighted as `WinBarNC` on inactive windows
-  WinBarNC = { link = "Comment" },
 }
 
 M.dropbar_custom = vim.tbl_extend("force", M.dropbar, M.dropbar_overrides)

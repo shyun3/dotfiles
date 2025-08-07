@@ -1,61 +1,29 @@
-local molokai = require("util.colors").molokai
-
-local colors = {
-  dark_fg = molokai.black,
-  light_fg = molokai.white,
-
-  dark_bg = molokai.dark_gray,
-  gray_bg = molokai.gray,
-
-  normal = molokai.yellow,
-  insert = molokai.blue,
-  replace = molokai.red,
-  select = molokai.green,
-}
-
 -- Taken from molokai in vim-airline-themes
-local theme = {
-  normal = {
-    a = { fg = colors.dark_fg, bg = colors.normal, gui = "bold" },
-    b = { fg = colors.light_fg, bg = colors.dark_bg },
-    c = function()
-      return vim.bo.modified and { fg = colors.dark_fg, bg = colors.normal }
-        or { fg = colors.light_fg, bg = colors.gray_bg }
-    end,
-  },
-  insert = {
-    a = { fg = colors.dark_fg, bg = colors.insert, gui = "bold" },
+local theme = function()
+  local colors = require("lualine.themes.catppuccin")
 
-    c = function()
-      return vim.bo.modified and { fg = colors.dark_fg, bg = colors.insert }
-        or { fg = colors.light_fg, bg = colors.gray_bg }
-    end,
-  },
-  replace = {
-    a = { fg = colors.dark_fg, bg = colors.replace, gui = "bold" },
+  --- Create a lualine c section colorscheme whose background lights up with
+  --- the mode color if buffer is modified
+  ---
+  --- @param mode string Mode name used by lualine theme
+  --- @return fun(): {fg: string|number, bg: string|number} colorscheme
+  local function make_c_section(mode)
+    return function()
+      return vim.bo.modified
+          and { fg = colors[mode].a.fg, bg = colors[mode].a.bg }
+        or colors.normal.c
+    end
+  end
 
-    c = function()
-      return vim.bo.modified and { fg = colors.dark_fg, bg = colors.replace }
-        or { fg = colors.light_fg, bg = colors.gray_bg }
-    end,
-  },
-  visual = {
-    a = { fg = colors.dark_fg, bg = colors.select, gui = "bold" },
+  local modes =
+    { "normal", "insert", "replace", "visual", "command", "terminal" }
+  local override = {}
+  for _, mode in pairs(modes) do
+    override[mode] = { c = make_c_section(mode) }
+  end
 
-    c = function()
-      return vim.bo.modified and { fg = colors.dark_fg, bg = colors.select }
-        or { fg = colors.light_fg, bg = colors.gray_bg }
-    end,
-  },
-  command = {
-    a = { fg = colors.dark_fg, bg = colors.normal, gui = "bold" },
-
-    c = function()
-      return vim.bo.modified and { fg = colors.dark_fg, bg = colors.normal }
-        or { fg = colors.light_fg, bg = colors.gray_bg }
-    end,
-  },
-}
+  return vim.tbl_deep_extend("force", colors, override)
+end
 
 local filename = {
   "filename",
@@ -118,14 +86,9 @@ return {
           function() return require("noice").api.status.mode.get() end,
           cond = function() return require("noice").api.status.mode.has() end,
 
-          color = function()
-            -- For some reason, the fg color isn't inherited from the theme if
-            -- the gui option is specified
-            return {
-              fg = vim.bo.modified and colors.dark_fg or colors.light_fg,
-              gui = "bold",
-            }
-          end,
+          -- For some reason, the fg color isn't inherited from the theme if
+          -- the gui option is specified unless a function is used
+          color = function() return { gui = "bold" } end,
         },
       },
       lualine_x = {

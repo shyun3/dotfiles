@@ -13,7 +13,8 @@ return {
 
     previewers = {
       bat = {
-        theme = "Monokai Extended",
+        -- Taken from https://github.com/ibhagwan/fzf-lua/issues/28#issuecomment-892216156
+        config = nil,
       },
     },
 
