@@ -76,13 +76,9 @@ dotfiles:
   f_config:
     src: config/bat/config
     dst: ~/.config/bat/config
-  d_setup:
-    src: zsh/setup
-    dst: ~/.zsh/setup
-    link: absolute
-  d_pre:
-    src: zsh/pre
-    dst: ~/.zsh/pre
+  d_zsh:
+    src: zsh
+    dst: ~/.zsh
     link: absolute
 profiles:
   linux:
@@ -103,8 +99,7 @@ profiles:
       - d_plugins
       - f_stylua.toml
       - f_config
-      - d_setup
-      - d_pre
+      - d_zsh
     actions:
       - setup_sh
   wsl-root:
