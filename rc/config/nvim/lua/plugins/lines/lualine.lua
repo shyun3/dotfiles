@@ -1,4 +1,4 @@
--- Taken from molokai in vim-airline-themes
+-- Derived from molokai in vim-airline-themes
 local theme = function()
   local colors = require("lualine.themes.catppuccin")
 

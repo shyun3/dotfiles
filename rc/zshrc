@@ -115,6 +115,7 @@ alias lg='lazygit'
 #######################################################################
 # User configuration
 
+# Used inside .zsh scripts
 ANTIDOTE_CACHE=$HOME/.cache/antidote
 
 for file (~/.zsh/pre/**/*.zsh(N.)) source $file
