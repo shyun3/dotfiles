@@ -1,30 +1,111 @@
+--- @alias FtKey 'f' | 'F' | 't' | 'T'
+
+--- Retrieve f/t specific hop options
+---
+--- @param key FtKey
+---
+--- @return table<FtKey, Options>
+local function ft_opts(key)
+  local hop_hint = require("hop.hint")
+  local opts = {
+    f = {
+      direction = hop_hint.HintDirection.AFTER_CURSOR,
+      current_line_only = true,
+    },
+    F = {
+      direction = hop_hint.HintDirection.BEFORE_CURSOR,
+      current_line_only = true,
+    },
+    t = {
+      direction = hop_hint.HintDirection.AFTER_CURSOR,
+      current_line_only = true,
+      hint_offset = -1,
+    },
+    T = {
+      direction = hop_hint.HintDirection.BEFORE_CURSOR,
+      current_line_only = true,
+      hint_offset = 1,
+    },
+  }
+
+  return opts[key]
+end
+
+--- Same as private `override_opts` in `hop`, but does not check options
+---
+--- @param opts Options
+---
+--- @return Options
+local function override_opts(opts)
+  return setmetatable(opts or {}, { __index = require("hop").opts })
+end
+
+--- Creates an expression function for f/t hop
+---
+--- Useful in operator expression mappings, as they support dot repeat. Default
+--- hop dot repeat behavior prompts the user for a target again. This
+--- implementation saves the target so that a dot repeat will only request a
+--- specific jump target.
+---
+--- Technique derived from mini.jump
+---
+--- @param key FtKey
+---
+--- @return fun(): string
+local function make_expr_hop_ft(key)
+  return function()
+    local target = require("hop").get_input_pattern("Hop 1 char: ", 1)
+    return target
+        and string.format("<Cmd>lua hop_ft('%s', '%s')<CR>", key, target)
+      or "<Esc>"
+  end
+end
+
+--- Performs f/t hop
+---
+--- This is global to allow use in expression mappings
+---
+--- @param key FtKey
+--- @param target string
+function _G.hop_ft(key, target)
+  -- Taken from `hop.hint_char1`
+  local opts = override_opts(ft_opts(key))
+  require("hop").hint_with_regex(
+    require("hop.jump_regex").regex_by_case_searching(target, true, opts),
+    opts
+  )
+end
+
 return {
   "smoka7/hop.nvim",
 
   config = function()
-    require("hop").setup()
-    local hopped
+    local hop = require("hop")
+    hop.setup()
 
-    -- Same as `hint_with_callback` except it resets any operator mode forced
-    -- motion if a hop was executed. Using this workaround is needed otherwise
-    -- the operator will still apply on the current cursor or line if motion is
-    -- forced, even though the hop gets cancelled. Of course, this assumes that
-    -- the hop uses this function.
-    local orig_hint_with_callback = require("hop").hint_with_callback
+    local hopped = false
+    local orig_hint_with_callback = hop.hint_with_callback
 
-    ---@diagnostic disable-next-line:duplicate-set-field
-    require("hop").hint_with_callback = function(...)
+    --- Same as `hint_with_callback` except it resets any operator mode forced
+    --- motion if a hop was executed. Using this workaround is needed otherwise
+    --- the operator will still apply on the current cursor or line if motion
+    --- is forced, even though the hop gets cancelled. Of course, this assumes
+    --- that the hop uses this function.
+    ---
+    --- @diagnostic disable-next-line:duplicate-set-field
+    hop.hint_with_callback = function(...)
       orig_hint_with_callback(...)
       if not hopped then require("util").reset_forced_motion() end
       hopped = false
     end
 
-    -- Same as `move_cursor_to` but records if a hop was executed. Of course,
-    -- this assumes that the hop uses this function.
     local orig_move_cursor_to = require("hop").move_cursor_to
 
-    ---@diagnostic disable-next-line:duplicate-set-field
-    require("hop").move_cursor_to = function(...)
+    --- Same as `move_cursor_to` but records if a hop was executed. Of course,
+    --- this assumes that the hop uses this function.
+    ---
+    --- @diagnostic disable-next-line:duplicate-set-field
+    hop.move_cursor_to = function(...)
       orig_move_cursor_to(...)
       hopped = true
     end
@@ -61,34 +142,60 @@ return {
       desc = "Hop to line",
     },
 
-    { "f", "<Cmd>HopChar1CurrentLineAC<CR>", mode = { "n", "x", "o" } },
-    { "F", "<Cmd>HopChar1CurrentLineBC<CR>", mode = { "n", "x", "o" } },
+    {
+      "f",
+      "<Cmd>HopChar1CurrentLineAC<CR>",
+      mode = { "n", "x" },
+      desc = "Hop: Enhanced f",
+    },
+    {
+      "f",
+      make_expr_hop_ft("f"),
+      mode = "o",
+      expr = true,
+      desc = "Hop: Enhanced f",
+    },
+
+    {
+      "F",
+      "<Cmd>HopChar1CurrentLineBC<CR>",
+      mode = { "n", "x" },
+      desc = "Hop: Enhanced F",
+    },
+    {
+      "F",
+      make_expr_hop_ft("F"),
+      mode = "o",
+      expr = true,
+      desc = "Hop: Enhanced F",
+    },
 
     {
       "t",
+      function() require("hop").hint_char1(ft_opts("t")) end,
+      mode = { "n", "x" },
+      desc = "Hop: Enhanced t",
+    },
+    {
+      "t",
+      make_expr_hop_ft("t"),
+      mode = "o",
+      expr = true,
+      desc = "Hop: Enhanced t",
+    },
 
-      function()
-        require("hop").hint_char1({
-          direction = require("hop.hint").HintDirection.AFTER_CURSOR,
-          current_line_only = true,
-          hint_offset = -1,
-        })
-      end,
-
-      mode = { "n", "x", "o" },
+    {
+      "T",
+      function() require("hop").hint_char1(ft_opts("T")) end,
+      mode = { "n", "x" },
+      desc = "Hop: Enhanced T",
     },
     {
       "T",
-
-      function()
-        require("hop").hint_char1({
-          direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
-          current_line_only = true,
-          hint_offset = 1,
-        })
-      end,
-
-      mode = { "n", "x", "o" },
+      make_expr_hop_ft("T"),
+      mode = "o",
+      expr = true,
+      desc = "Hop: Enhanced T",
     },
   },
 }
