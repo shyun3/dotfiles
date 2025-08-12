@@ -1,16 +1,19 @@
-local hl_overrides = {
-  Constant = { bold = true },
-  Repeat = { italic = true },
-  Statement = { italic = true },
+local function hl_overrides(colors)
+  return {
+    ["@property"] = { fg = colors.lavender },
+    ["@variable.member"] = { link = "@property" },
 
-  ["@function.builtin"] = { italic = true },
+    -- Treesitter erroneously seems to think anything with `::` behind it is a
+    -- module, so disable italic for C++
+    ["@module.cpp"] = {},
 
-  -- Treesitter erroneously seems to think anything with `::` behind it is a
-  -- module, so disable italics for C++
-  ["@module.cpp"] = {},
-
-  ["@lsp.typemod.variable.readonly"] = { link = "@constant" },
-}
+    ["@lsp.type.variable"] = { link = "@variable" },
+    ["@lsp.typemod.variable.classScope"] = { link = "@variable.member" },
+    ["@lsp.typemod.variable.defaultLibrary.lua"] = {
+      link = "@variable.builtin",
+    },
+  }
+end
 
 return {
   "catppuccin/nvim",
@@ -19,14 +22,15 @@ return {
 
   opts = {
     styles = {
+      loops = { "italic" },
       keywords = { "italic" },
     },
 
-    custom_highlights = function()
+    custom_highlights = function(colors)
       return vim.tbl_extend(
         "error",
         require("plugins.colorscheme.integrations").dropbar_overrides,
-        hl_overrides
+        hl_overrides(colors)
       )
     end,
 
