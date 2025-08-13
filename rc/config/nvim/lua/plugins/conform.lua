@@ -38,6 +38,7 @@ return {
       lua = { "stylua" },
       meson = { "meson-format" },
       python = { "isort", "black" },
+      query = { "format-queries" },
       sh = { "shfmt" },
       yaml = { "prettier" },
     },
