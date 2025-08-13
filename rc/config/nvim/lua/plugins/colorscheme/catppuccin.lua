@@ -1,14 +1,19 @@
 local function hl_overrides(colors)
   return {
-    ["@property"] = { fg = colors.lavender },
-    ["@variable.member"] = { link = "@property" },
+    Macro = { bold = true },
 
     -- Treesitter erroneously seems to think anything with `::` behind it is a
     -- module, so disable italic for C++
     ["@module.cpp"] = {},
 
+    ["@variable.parameter"] = { link = "@variable" },
+
     ["@lsp.type.variable"] = { link = "@variable" },
-    ["@lsp.typemod.variable.classScope"] = { link = "@variable.member" },
+    ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
+    ["@lsp.typemod.variable.classScope"] = { fg = colors.lavender },
+    ["@lsp.typemod.variable.fileScope"] = {
+      link = "@lsp.typemod.variable.classScope",
+    },
     ["@lsp.typemod.variable.defaultLibrary.lua"] = {
       link = "@variable.builtin",
     },
