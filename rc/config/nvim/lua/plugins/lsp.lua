@@ -1,10 +1,3 @@
---- @param _ vim.lsp.Client
-local function on_lsp_attach(_)
-  -- Make tag commands only operate on tags, not LSP
-  -- Derived from `:h lsp-defaults-disable`
-  vim.bo.tagfunc = ""
-end
-
 --- Notifies user of all renames that occurred
 ---
 --- Derived from inc-rename.nvim
@@ -112,21 +105,21 @@ local function save_multi_changes(result)
   vim.notify(msg, vim.log.levels.INFO, { replace = record and record.id })
 end
 
+-- Dummy function that replicates default 'tagfunc'
+function _G.default_tagfunc()
+  -- If tagfunc returns nil, standard tag lookup is performed
+  -- See `tag-function`
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" }, -- Taken from LazyVim
 
-    config = function()
-      -- This is not being included in a wildcard config as `on_attach` because
-      -- it would get overriden by any LSP configs provided later
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("user_lsp", {}),
-        callback = function(args)
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          if client then on_lsp_attach(client) end
-        end,
-      })
+    init = function()
+      -- Set 'tagfunc' to prevent LSP tagfunc from being assigned
+      -- See `lsp-defaults`
+      vim.o.tagfunc = "v:lua.default_tagfunc"
     end,
 
     keys = {
