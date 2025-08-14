@@ -9,25 +9,6 @@ return {
   },
 
   {
-    "mason-org/mason-lspconfig.nvim",
-    dependencies = "neovim/nvim-lspconfig",
-    event = "VeryLazy",
-
-    opts = {
-      ensure_installed = {
-        "bashls",
-        "clangd",
-        "jsonls",
-        "lua_ls",
-        "pyright",
-        "tombi",
-        "vimls",
-        "yamlls",
-      },
-    },
-  },
-
-  {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     event = "VeryLazy",
 
@@ -46,4 +27,6 @@ return {
       },
     },
   },
+
+  { import = "plugins.mason.mason-lspconfig" },
 }
