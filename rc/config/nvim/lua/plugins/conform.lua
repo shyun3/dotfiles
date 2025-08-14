@@ -1,30 +1,3 @@
--- Derived from https://www.vikasraj.dev/blog/vim-dot-repeat
--- Does not support count, visual blocks, or dot repeat for visuals
-function _G.format_range_operator(motion)
-  local visual = string.match(motion or "", "[vV]")
-  if not visual and motion == nil then
-    vim.o.operatorfunc = "v:lua.format_range_operator"
-    return "g@"
-  end
-
-  local range = {
-    starting = vim.api.nvim_buf_get_mark(0, visual and "<" or "["),
-    ending = vim.api.nvim_buf_get_mark(0, visual and ">" or "]"),
-  }
-  if motion == "V" then
-    -- Use line length instead of v:maxcol (which causes error)
-    range.ending[2] = vim.fn.col({ range.ending[1], "$" })
-  end
-
-  require("conform").format({
-    async = true,
-    range = {
-      start = range.starting,
-      ["end"] = range.ending,
-    },
-  })
-end
-
 return {
   "stevearc/conform.nvim",
 
@@ -58,6 +31,11 @@ return {
       return { timeout_ms = 1000 }
     end,
   },
+
+  init = function()
+    vim.o.formatexpr =
+      "v:lua.require'conform'.formatexpr({'lsp_format': 'never'})"
+  end,
 
   config = function(_, opts)
     require("conform").setup(opts)
@@ -100,22 +78,4 @@ return {
   -- Derived from lazy loading recipe
   event = "BufWritePre",
   cmd = { "AutoFormatDisable", "AutoFormatEnable", "ConformInfo", "Format" },
-
-  keys = {
-    {
-      "<Leader>gf",
-      _G.format_range_operator,
-      mode = "n",
-      desc = "Format selection",
-      silent = true,
-      expr = true,
-    },
-    {
-      "<Leader>gf",
-      "<Esc><Cmd>lua _G.format_range_operator(vim.fn.visualmode())<CR>",
-      mode = "x",
-      desc = "Format selection",
-      silent = true,
-    },
-  },
 }
