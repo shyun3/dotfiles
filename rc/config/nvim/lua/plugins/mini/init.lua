@@ -19,7 +19,15 @@ return {
           f = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
           k = spec_treesitter({ a = "@class.outer", i = "@class.inner" }),
 
-          g = gen_ai_spec.buffer(),
+          -- Whole buffer, linewise forced
+          g = function(ai_type)
+            return vim.tbl_extend(
+              "error",
+              gen_ai_spec.buffer()(ai_type),
+              { vis_mode = "V" }
+            )
+          end,
+
           i = gen_ai_spec.indent(),
         },
 
