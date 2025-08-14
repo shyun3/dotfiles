@@ -1,6 +1,9 @@
 local function hl_overrides(colors)
   return {
-    Macro = { bold = true },
+    --- Syntax
+    Macro = { style = { "bold" } },
+
+    --- Treesitter
 
     -- Treesitter erroneously seems to think anything with `::` behind it is a
     -- module, so disable italic for C++
@@ -8,6 +11,7 @@ local function hl_overrides(colors)
 
     ["@variable.parameter"] = { link = "@variable" },
 
+    --- LSP
     ["@lsp.type.variable"] = { link = "@variable" },
     ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
     ["@lsp.typemod.variable.classScope"] = { fg = colors.lavender },
@@ -16,6 +20,12 @@ local function hl_overrides(colors)
     },
     ["@lsp.typemod.variable.defaultLibrary.lua"] = {
       link = "@variable.builtin",
+    },
+
+    --- Plugins
+    HopNextKey = {
+      -- Remove underline as it makes it difficult to tell apart `g` and `q`
+      style = { "bold" },
     },
   }
 end
