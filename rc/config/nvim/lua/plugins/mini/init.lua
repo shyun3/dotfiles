@@ -16,15 +16,16 @@ return {
 
       mini_ai.setup({
         custom_textobjects = {
-          f = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
+          F = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
           k = spec_treesitter({ a = "@class.outer", i = "@class.inner" }),
+          [";"] = spec_treesitter({ a = "@block.outer", i = "@block.inner" }),
 
-          -- Whole buffer, linewise forced
+          -- Whole buffer
           g = function(ai_type)
             return vim.tbl_extend(
               "error",
               gen_ai_spec.buffer()(ai_type),
-              { vis_mode = "V" }
+              { vis_mode = "V" } -- Force linewise
             )
           end,
 
