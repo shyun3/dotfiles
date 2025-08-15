@@ -5,7 +5,6 @@ return {
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
     "RRethy/nvim-treesitter-endwise",
-    "RRethy/nvim-treesitter-textsubjects",
   },
   lazy = false, -- Does not support lazy loading
 
@@ -134,16 +133,6 @@ return {
           vim.treesitter.get_parser(ev.buf, lang, { error = false })
         if parser then parser:parse() end
       end,
-    })
-
-    require("nvim-treesitter-textsubjects").configure({
-      -- Disabled, to prevent interference with `,` mapping
-      prev_selection = "",
-
-      keymaps = {
-        -- Removed container mappings as they are covered by other text objects
-        ["."] = "textsubjects-smart",
-      },
     })
   end,
 }

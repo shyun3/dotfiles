@@ -1,5 +1,5 @@
 --- @type table<string, vim.lsp.Config>
-local lsp_client_configs = {
+local lsp_configs = {
   ts_query_ls = {
     settings = {
       -- Taken from `ts_query_ls` entry in `lspconfig-all`
@@ -34,7 +34,7 @@ return {
   },
 
   config = function(_, opts)
-    for client, cfg in pairs(lsp_client_configs) do
+    for client, cfg in pairs(lsp_configs) do
       vim.lsp.config(client, cfg)
     end
 
