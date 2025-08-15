@@ -82,6 +82,7 @@ return {
     },
     {
       "<A-k>",
+
       function()
         -- `FzfLua btags` by default uses an existing tags file
         -- Generate the latest tags for the current file
@@ -94,9 +95,10 @@ return {
         })
 
         -- Don't specify cwd for tags call if current file is not under cwd
-        local cwd = filePath[0] ~= "/" and vim.fn.getcwd() or ""
+        local cwd = filePath[1] ~= "/" and vim.fn.getcwd() or ""
         require("fzf-lua").btags({ ctags_file = tmp, cwd = cwd })
       end,
+
       desc = "fzf-lua: Buffer tags",
     },
     { "<C-j>", "<Cmd>FzfLua blines show_unlisted=true<CR>" },
@@ -135,11 +137,12 @@ return {
     },
 
     {
-      "<Leader>D",
+      "grt", -- Overwrites default, see `lsp-defaults`
       "<Cmd>FzfLua lsp_typedefs jump1=true<CR>",
+      desc = "LSP: Type definition",
     },
     {
-      "<Leader>sD",
+      "grst",
       function()
         require("fzf-lua").lsp_typedefs({
           jump1 = true,
@@ -149,7 +152,7 @@ return {
       desc = "LSP: Type definition, horizontal split",
     },
     {
-      "<Leader>vD",
+      "grvt",
       function()
         require("fzf-lua").lsp_typedefs({
           jump1 = true,
