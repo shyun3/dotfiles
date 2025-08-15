@@ -21,6 +21,11 @@ local function hl_overrides(colors)
       link = "@lsp.typemod.variable.classScope",
     },
 
+    -- Different highlight groups may be applied to `decltype` or `auto`
+    -- depending on what clangd deduces, e.g. built-in type or class. This can
+    -- be jarring so force highlight to keyword.
+    ["@lsp.mod.deduced.cpp"] = { link = "Keyword" },
+
     --- Plugins
     HopNextKey = {
       -- Remove underline as it makes it difficult to tell apart `g` and `q`
