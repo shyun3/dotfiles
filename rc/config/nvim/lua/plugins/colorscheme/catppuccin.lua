@@ -1,25 +1,24 @@
 local function hl_overrides(colors)
+  local color_util = require("catppuccin.utils.colors")
   return {
     --- Syntax
     Macro = { style = { "bold" } },
 
     --- Treesitter
+    ["@property"] = { fg = colors.lavender },
+
+    ["@variable.parameter"] = { link = "@variable" },
 
     -- Treesitter erroneously seems to think anything with `::` behind it is a
     -- module, so disable italic for C++
     ["@module.cpp"] = {},
 
-    ["@variable.parameter"] = { link = "@variable" },
-
     --- LSP
-    ["@lsp.type.variable"] = { link = "@variable" },
-    ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
-    ["@lsp.typemod.variable.classScope"] = { fg = colors.lavender },
+    ["@lsp.type.concept"] = { fg = color_util.darken(colors.yellow, 0.9) },
+
+    ["@lsp.typemod.variable.classScope"] = { link = "@property" },
     ["@lsp.typemod.variable.fileScope"] = {
       link = "@lsp.typemod.variable.classScope",
-    },
-    ["@lsp.typemod.variable.defaultLibrary.lua"] = {
-      link = "@variable.builtin",
     },
 
     --- Plugins
