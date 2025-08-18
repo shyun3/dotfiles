@@ -16,8 +16,9 @@ return {
 
       mini_ai.setup({
         custom_textobjects = {
-          F = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
+          f = spec_treesitter({ a = "@call.outer", i = "@call.inner" }),
           k = spec_treesitter({ a = "@class.outer", i = "@class.inner" }),
+          F = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
           [";"] = spec_treesitter({ a = "@block.outer", i = "@block.inner" }),
 
           -- Whole buffer
