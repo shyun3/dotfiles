@@ -21,11 +21,11 @@ return {
 
   opts = {
     ensure_installed = {
+      "basedpyright",
       "bashls",
       "clangd",
       "jsonls",
       "lua_ls",
-      "pyright",
       "tombi",
       "ts_query_ls",
       "vimls",
