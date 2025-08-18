@@ -12,6 +12,7 @@ return {
       python = { "isort", "black" },
       query = { "format-queries" },
       sh = { "shfmt" },
+      toml = { "tombi" },
       yaml = { "prettier" },
     },
 
