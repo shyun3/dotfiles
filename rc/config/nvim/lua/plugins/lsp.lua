@@ -74,35 +74,46 @@ local function rename(post_hook)
   end)
 end
 
---- Saves the given files, if more than one is presented
+--- Saves the given files, skipping the current buffer
 ---
 --- @param result table `result` key of an `lsp-response`
-local function save_multi_changes(result)
+local function save_other_changes(result)
   local changes = result.documentChanges or result.changes
   local total_files = vim.tbl_count(changes)
   if total_files <= 1 then return end
 
-  -- Assuming that noice is being used with notify enabled
-  local record = vim.notify("Saving changes...")
-
   local saved_files = 0
   for uri, _ in pairs(changes) do
     local file = vim.uri_to_fname(uri)
-    if file ~= uri then
-      local ok, _ = pcall(vim.cmd.write, file)
-      if ok then
-        saved_files = saved_files + 1
-      else
-        vim.notify("Could not save file: " .. file, vim.log.levels.WARN)
-      end
-    else
+    if file == uri then
       vim.notify("Could not save URI: " .. uri, vim.log.levels.WARN)
+      goto continue
     end
+
+    local buf_id = vim.uri_to_bufnr(uri)
+    if vim.fn.bufnr() == buf_id then goto continue end
+
+    local ok, err = vim.api.nvim_buf_call(
+      buf_id,
+      function() return pcall(vim.cmd.write) end
+    )
+    if ok then
+      saved_files = saved_files + 1
+    else
+      vim.notify(
+        "Could not save file: " .. file .. "\n\n" .. err,
+        vim.log.levels.WARN
+      )
+    end
+    ::continue::
   end
 
-  local msg = saved_files == total_files and "Saved all changed files"
-    or string.format("Saved %d/%d files", saved_files, total_files)
-  vim.notify(msg, vim.log.levels.INFO, { replace = record and record.id })
+  local msg = string.format(
+    "Saved %d/%d files modified due to renames (skipped current)",
+    saved_files,
+    total_files
+  )
+  vim.notify(msg)
 end
 
 -- Dummy function that replicates default 'tagfunc'
@@ -172,7 +183,7 @@ return {
 
       {
         "grn",
-        function() rename(save_multi_changes) end,
+        function() rename(save_other_changes) end,
         desc = "LSP: Rename",
       },
     },
