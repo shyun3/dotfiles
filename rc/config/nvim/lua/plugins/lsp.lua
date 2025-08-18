@@ -120,6 +120,15 @@ return {
       -- Set 'tagfunc' to prevent LSP tagfunc from being assigned
       -- See `lsp-defaults`
       vim.o.tagfunc = "v:lua.default_tagfunc"
+
+      -- Some LSP servers, like clangd, send all log messages to stderr. Neovim
+      -- saves these as ERROR messages, even though they may be harmless.
+      --
+      -- Disable LSP logging to prevent the log file from becoming excessive.
+      -- (Logging may be re-enabled as needed.)
+      --
+      -- See also `lsp-log`
+      vim.lsp.set_log_level("off")
     end,
 
     keys = {
