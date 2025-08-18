@@ -14,7 +14,7 @@ local function hl_overrides(colors)
     ["@module.cpp"] = {},
 
     --- LSP
-    ["@lsp.type.concept"] = { fg = color_util.darken(colors.yellow, 0.9) },
+    ["@lsp.type.concept.cpp"] = { fg = color_util.darken(colors.yellow, 0.9) },
 
     ["@lsp.typemod.variable.classScope"] = { link = "@property" },
     ["@lsp.typemod.variable.fileScope"] = {
