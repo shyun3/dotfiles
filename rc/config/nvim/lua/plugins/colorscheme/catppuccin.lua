@@ -1,30 +1,51 @@
 local function hl_overrides(colors)
-  local color_util = require("catppuccin.utils.colors")
   return {
     --- Syntax
+    Label = { style = { "bold" } },
     Macro = { style = { "bold" } },
 
     --- Treesitter
+
+    ["@function.builtin"] = {
+      fg = colors.blue, -- Same as function color, default was same as literals
+      style = { "italic" },
+    },
+
+    ["@module"] = {
+      -- The default of italic yellow is now used by built-in types
+      link = "Special", -- Default built-in module link
+    },
+    ["@module.builtin"] = {
+      fg = colors.pink, -- Default built-in module color
+      style = { "italic" },
+    },
+
     ["@property"] = { fg = colors.lavender },
+
+    ["@type.builtin"] = {
+      fg = colors.yellow, -- Same as type color
+      style = { "italic" },
+    },
 
     ["@variable.parameter"] = { link = "@variable" },
 
-    -- Treesitter erroneously seems to think anything with `::` behind it is a
-    -- module, so disable italic for C++
-    ["@module.cpp"] = {},
-
     --- LSP
-    ["@lsp.type.concept.cpp"] = { fg = color_util.darken(colors.yellow, 0.9) },
+    ["@lsp.type.concept.cpp"] = { fg = colors.sapphire },
+
+    -- This get applied to the `decltype` and `auto` keywords but ultimately,
+    -- different highlight groups may get attached depending on what clangd
+    -- deduces, e.g. built-in type or class. This can be jarring, so force a
+    -- single highlight.
+    ["@lsp.mod.deduced.cpp"] = { link = "Keyword" },
+
+    ["@lsp.typemod.namespace.defaultLibrary"] = { link = "@module.builtin" },
+
+    ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
 
     ["@lsp.typemod.variable.classScope"] = { link = "@property" },
     ["@lsp.typemod.variable.fileScope"] = {
       link = "@lsp.typemod.variable.classScope",
     },
-
-    -- Different highlight groups may be applied to `decltype` or `auto`
-    -- depending on what clangd deduces, e.g. built-in type or class. This can
-    -- be jarring so force highlight to keyword.
-    ["@lsp.mod.deduced.cpp"] = { link = "Keyword" },
 
     --- Plugins
     HopNextKey = {
@@ -41,6 +62,7 @@ return {
 
   opts = {
     styles = {
+      comments = {}, -- Clear italic
       loops = { "italic" },
       keywords = { "italic" },
     },
