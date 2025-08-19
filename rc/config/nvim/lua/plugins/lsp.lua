@@ -2,14 +2,13 @@
 ---
 --- Derived from inc-rename.nvim
 ---
----@param result table `result` key of an lsp-response
-local function notify_renames(result)
+--- @param changes WorkspaceChanges
+local function notify_renames(changes)
   local instances = 0
   local files = 0
 
-  local with_edits = result.documentChanges ~= nil
-  for _, change in pairs(result.documentChanges or result.changes) do
-    instances = instances + (with_edits and #(change.edits or {}) or #change)
+  for _, edits in pairs(changes) do
+    instances = instances + #edits
     files = files + 1
   end
 
@@ -23,62 +22,13 @@ local function notify_renames(result)
   vim.notify(message)
 end
 
---- Performs an LSP rename on the symbol under the cursor
----
---- Derived from inc-rename.nvim
----
----@param post_hook? fun(result: table) Callback that is run after changes are
---- applied. Takes a `result` key of an lsp-response.
-local function rename(post_hook)
-  local new_name
-  vim.ui.input(
-    { prompt = "New Name", default = vim.fn.expand("<cword>") },
-    function(input) new_name = input end
-  )
-  if not new_name or new_name == "" then return end
-
-  local method = "textDocument/rename"
-  local clients = vim.lsp.get_clients({
-    bufnr = vim.api.nvim_get_current_buf(),
-    method = method,
-  })
-
-  -- Only send request to first capable client
-  local client = clients[1]
-  if not client then
-    vim.notify("No rename capable LSP client found", vim.log.levels.ERROR)
-    return
-  end
-
-  local pos_params = vim.lsp.util.make_position_params(
-    vim.api.nvim_get_current_win(),
-    client.offset_encoding
-  )
-  local params = vim.tbl_extend("force", pos_params, { newName = new_name })
-
-  client:request(method, params, function(err, result)
-    if err then
-      vim.notify("Error while renaming: " .. err.message, vim.log.levels.ERROR)
-      return
-    end
-
-    if not result or vim.tbl_isempty(result) then
-      vim.notify("No renames were performed", vim.log.levels.WARN)
-      return
-    end
-
-    vim.lsp.util.apply_workspace_edit(result, client.offset_encoding)
-
-    notify_renames(result)
-    if post_hook then post_hook(result) end
-  end)
-end
-
 --- Saves the given files, skipping the current buffer
 ---
---- @param result table `result` key of an `lsp-response`
+--- @param result table WorkspaceEdit
 local function save_other_changes(result)
-  local changes = result.documentChanges or result.changes
+  local changes = require("util.lsp").parse_workspace_edit(result)
+  notify_renames(changes)
+
   local total_files = vim.tbl_count(changes)
   if total_files <= 1 then return end
 
@@ -183,7 +133,7 @@ return {
 
       {
         "grn",
-        function() rename(save_other_changes) end,
+        function() require("util.lsp").rename(save_other_changes) end,
         desc = "LSP: Rename",
       },
     },
