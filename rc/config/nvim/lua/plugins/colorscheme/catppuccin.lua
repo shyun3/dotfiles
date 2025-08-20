@@ -5,6 +5,7 @@ local function hl_overrides(colors)
     Macro = { style = { "bold" } },
 
     --- Treesitter
+    ["@attribute.python"] = { link = "Function" },
 
     ["@function.builtin"] = {
       fg = colors.blue, -- Same as function color, default was same as literals
@@ -31,15 +32,16 @@ local function hl_overrides(colors)
 
     --- LSP
     ["@lsp.type.concept.cpp"] = { fg = colors.sapphire },
+    ["@lsp.type.decorator.python"] = { link = "@attribute.python" },
 
-    -- This get applied to the `decltype` and `auto` keywords but ultimately,
+    -- This gets applied to the `decltype` and `auto` keywords but ultimately,
     -- different highlight groups may get attached depending on what clangd
     -- deduces, e.g. built-in type or class. This can be jarring, so force a
     -- single highlight.
     ["@lsp.mod.deduced.cpp"] = { link = "Keyword" },
 
+    ["@lsp.typemod.class.defaultLibrary"] = { link = "@type.builtin" },
     ["@lsp.typemod.namespace.defaultLibrary"] = { link = "@module.builtin" },
-
     ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
 
     ["@lsp.typemod.variable.classScope"] = { link = "@property" },
@@ -65,6 +67,7 @@ return {
       comments = {}, -- Clear italic
       loops = { "italic" },
       keywords = { "italic" },
+      booleans = { "italic" },
     },
 
     custom_highlights = function(colors)
