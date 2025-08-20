@@ -11,7 +11,7 @@ function M.parse_workspace_edit(result)
   local changes = {}
   if result.documentChanges then
     for _, doc in pairs(result.documentChanges) do
-      changes[doc.textDocument] = vim.deepcopy(doc.edits)
+      changes[doc.textDocument.uri] = vim.deepcopy(doc.edits)
     end
   elseif result.changes then
     for uri, edit in pairs(result.changes) do
