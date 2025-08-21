@@ -41,23 +41,11 @@ return {
     },
   },
 
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    opts = {},
-  },
+  { "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
 
   {
     "norcalli/nvim-colorizer.lua",
-    event = "BufWinEnter",
-
-    init = function()
-      -- 'termguicolors' is auto-detected as of nvim 0.10, but the plugin
-      -- requires the option to be set. It could be loaded later to wait for
-      -- the auto-detect, e.g. at VeryLazy, but that may result in a visual
-      -- glitch at startup. See issue #96.
-      vim.o.termguicolors = true
-    end,
+    event = "VeryLazy",
 
     config = function()
       require("colorizer").setup({ "*" }, { RGB = false, names = false })
