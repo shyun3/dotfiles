@@ -40,7 +40,9 @@ local function hl_overrides(colors)
     -- single highlight.
     ["@lsp.mod.deduced.cpp"] = { link = "Keyword" },
 
-    ["@lsp.typemod.class.defaultLibrary"] = { link = "@type.builtin" },
+    ["@lsp.typemod.class.defaultLibrary"] = {
+      link = "@lsp.typemod.type.defaultLibrary",
+    },
     ["@lsp.typemod.namespace.defaultLibrary"] = { link = "@module.builtin" },
     ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
 
