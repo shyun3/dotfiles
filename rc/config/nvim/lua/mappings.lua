@@ -54,3 +54,20 @@ vim.keymap.set("n", "z*", function()
   vim.fn.histadd("/", vim.fn.getreg("/"))
   vim.o.hlsearch = true
 end, { desc = "Highlight all occurrences of word under cursor" })
+
+-- Undo
+vim.keymap.set("n", "<A-u>", function()
+  local files = 0
+  for _, buf_id in pairs(vim.api.nvim_list_bufs()) do
+    if
+      vim.api.nvim_buf_is_valid(buf_id)
+      and vim.api.nvim_get_option_value("modified", { buf = buf_id })
+    then
+      vim.api.nvim_buf_call(buf_id, vim.cmd.undo)
+      files = files + 1
+    end
+  end
+
+  local msg = string.format("Undid changes in %d file(s)", files)
+  vim.notify(msg)
+end, { desc = "Undo changes in all modified buffers" })
