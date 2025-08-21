@@ -1,20 +1,3 @@
--- Derived from https://github.com/kevinhwang91/nvim-bqf/issues/85#issuecomment-1298008156
-local function qf_sort()
-  local qf = vim.fn.getqflist({ items = 0, title = 0 })
-  table.sort(qf.items, function(a, b)
-    if a.bufnr == b.bufnr then
-      if a.lnum == b.lnum then
-        return a.col < b.col
-      else
-        return a.lnum < b.lnum
-      end
-    else
-      return vim.fn.bufname(a.bufnr) < vim.fn.bufname(b.bufnr)
-    end
-  end)
-  vim.fn.setqflist({}, "r", qf)
-end
-
 return {
   "mhinz/vim-grepper",
 
@@ -43,8 +26,12 @@ return {
       nested = true,
 
       callback = function()
+        local curr_qf = vim.fn.getqflist({ items = 0, title = 0 })
+
         -- Although ripgrep has a sort option, it reduces performance
-        qf_sort()
+        require("util").sort_qf_list(curr_qf.items)
+
+        vim.fn.setqflist({}, "r", curr_qf)
 
         vim.cmd("botright copen")
       end,

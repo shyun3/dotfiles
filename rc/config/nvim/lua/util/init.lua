@@ -57,6 +57,21 @@ function M.oil_filter(path)
     or path
 end
 
-function M.link_hl(name, link) vim.api.nvim_set_hl(0, name, { link = link }) end
+--- Derived from https://github.com/kevinhwang91/nvim-bqf/issues/85#issuecomment-1298008156
+---
+--- @param items vim.quickfix.entry[]
+function M.sort_qf_list(items)
+  table.sort(items, function(a, b)
+    if a.bufnr == b.bufnr then
+      if a.lnum == b.lnum then
+        return a.col < b.col
+      else
+        return a.lnum < b.lnum
+      end
+    else
+      return vim.fn.bufname(a.bufnr) < vim.fn.bufname(b.bufnr)
+    end
+  end)
+end
 
 return M

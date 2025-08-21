@@ -22,48 +22,36 @@ local function notify_renames(changes)
   vim.notify(message)
 end
 
---- Saves the given files, skipping the current buffer
+--- Populates a new quickfix list with the given changes
 ---
 --- @param result table WorkspaceEdit
-local function save_other_changes(result)
+local function pop_quickfix(result)
   local changes = require("util.lsp").parse_workspace_edit(result)
   notify_renames(changes)
 
-  local total_files = vim.tbl_count(changes)
-  if total_files <= 1 then return end
-
-  local saved_files = 0
-  for uri, _ in pairs(changes) do
-    local file = vim.uri_to_fname(uri)
-    if file == uri then
-      vim.notify("Could not save URI: " .. uri, vim.log.levels.WARN)
-      goto continue
-    end
-
+  local qf_list = {}
+  for uri, edits in pairs(changes) do
     local buf_id = vim.uri_to_bufnr(uri)
-    if vim.fn.bufnr() == buf_id then goto continue end
-
-    local ok, err = vim.api.nvim_buf_call(
-      buf_id,
-      function() return pcall(vim.cmd.write) end
-    )
-    if ok then
-      saved_files = saved_files + 1
-    else
-      vim.notify(
-        "Could not save file: " .. file .. "\n\n" .. err,
-        vim.log.levels.WARN
-      )
+    for _, edit in pairs(edits) do
+      local range = edit.range
+      local row = range.start.line
+      qf_list[#qf_list + 1] = {
+        bufnr = buf_id,
+        lnum = row + 1,
+        col = range.start.character + 1,
+        text = vim.api.nvim_buf_get_lines(buf_id, row, row + 1, false)[1],
+      }
     end
-    ::continue::
   end
 
-  local msg = string.format(
-    "Saved %d/%d files modified due to renames (skipped current)",
-    saved_files,
-    total_files
-  )
-  vim.notify(msg)
+  if #qf_list == 0 then return end
+
+  require("util").sort_qf_list(qf_list)
+  vim.fn.setqflist({}, " ", {
+    title = "LSP Renames",
+    items = qf_list,
+    nr = "$",
+  })
 end
 
 -- Dummy function that replicates default 'tagfunc'
@@ -133,7 +121,7 @@ return {
 
       {
         "grn",
-        function() require("util.lsp").rename(save_other_changes) end,
+        function() require("util.lsp").rename(pop_quickfix) end,
         desc = "LSP: Rename",
       },
     },

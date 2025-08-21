@@ -1,4 +1,4 @@
---- @alias WorkspaceChanges table<string, table> # DocumentUri to TextEdit
+--- @alias WorkspaceChanges table<string, table> # DocumentUri to TextEdit[]
 
 local M = {}
 
