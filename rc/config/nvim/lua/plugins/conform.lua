@@ -17,10 +17,17 @@ return {
     },
 
     formatters = {
-      ["meson-format"] = {
-        command = "meson",
-        args = { "format", "-" },
-      },
+      ["meson-format"] = function(bufnr)
+        return {
+          command = "meson",
+          args = {
+            "format",
+            "--source-file-path", -- Added in v1.9.0
+            vim.api.nvim_buf_get_name(bufnr),
+            "-",
+          },
+        }
+      end,
     },
 
     -- Derived from recipe
