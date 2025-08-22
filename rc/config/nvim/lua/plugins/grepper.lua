@@ -24,6 +24,7 @@ return {
       group = vim.api.nvim_create_augroup("myGrepperGroup", {}),
       pattern = "Grepper",
       nested = true,
+      desc = "Show sorted results",
 
       callback = function()
         local curr_qf = vim.fn.getqflist({ items = 0, title = 0 })

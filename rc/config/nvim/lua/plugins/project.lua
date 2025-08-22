@@ -5,11 +5,12 @@ return {
   config = function()
     vim.call("project#rc")
 
-    -- Execute vim-project autocommands for paths in oil.nvim buffers
     local group = vim.api.nvim_create_augroup("user_project", {})
     vim.api.nvim_create_autocmd("BufEnter", {
       group = group,
       pattern = "oil://*",
+      desc = "Execute vim-project autocommand",
+
       callback = function(args)
         vim.cmd.doautocmd({
           "vim_project",
@@ -32,6 +33,8 @@ return {
         group = group,
         pattern = "*",
         once = true,
+        desc = "Show vim-project welcome screen",
+
         callback = function()
           if vim.fn.winnr() ~= 1 then return end
 

@@ -59,6 +59,8 @@ return {
     vim.api.nvim_create_autocmd("User", {
       group = group,
       pattern = "MiniFilesBufferCreate",
+      desc = "Add mappings",
+
       callback = function(args)
         local buf_id = args.data.buf_id
         map_split(buf_id, "<C-s>", "belowright horizontal")
@@ -76,6 +78,7 @@ return {
     vim.api.nvim_create_autocmd("User", {
       group = group,
       pattern = "MiniFilesExplorerOpen",
+      desc = "Set custom bookmarks",
       callback = function() set_mark("w", vim.fn.getcwd, "Working directory") end,
     })
 
@@ -83,6 +86,8 @@ return {
     vim.api.nvim_create_autocmd("User", {
       group = group,
       pattern = "MiniFilesActionRename",
+      desc = "LSP-integrated file renaming",
+
       callback = function(event)
         require("snacks").rename.on_rename_file(event.data.from, event.data.to)
       end,
