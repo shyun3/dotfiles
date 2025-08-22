@@ -22,6 +22,7 @@ local function hl_overrides(colors)
     },
 
     ["@property"] = { fg = colors.lavender },
+    ["@string.escape"] = { style = { "bold" } },
 
     ["@type.builtin"] = {
       fg = colors.yellow, -- Same as type color
