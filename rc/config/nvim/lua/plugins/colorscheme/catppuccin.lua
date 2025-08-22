@@ -35,12 +35,6 @@ local function hl_overrides(colors)
     ["@lsp.type.concept.cpp"] = { fg = colors.sapphire },
     ["@lsp.type.decorator.python"] = { link = "@attribute.python" },
 
-    -- This gets applied to the `decltype` and `auto` keywords but ultimately,
-    -- different highlight groups may get attached depending on what clangd
-    -- deduces, e.g. built-in type or class. This can be jarring, so force a
-    -- single highlight.
-    ["@lsp.mod.deduced.cpp"] = { link = "Keyword" },
-
     ["@lsp.typemod.class.defaultLibrary"] = {
       link = "@lsp.typemod.type.defaultLibrary",
     },
