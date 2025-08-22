@@ -6,17 +6,13 @@ return {
     bar = {
       -- Derived from default bar enable function
       enable = function(buf, win)
-        -- Note that the buffer filetype may return blank when this function is
-        -- called. Maybe a default attach event gets fired before the filetype
-        -- is detected.
+        local disabled_filetypes = { "", "oil", "help" }
         if
           not vim.api.nvim_buf_is_valid(buf)
           or not vim.api.nvim_win_is_valid(win)
           or vim.fn.win_gettype(win) ~= ""
           or vim.wo[win].winbar ~= ""
-          or vim.bo[buf].ft == "oil"
-          or vim.bo[buf].buftype == "help"
-          or vim.fn.bufname(buf) == "" -- Also applies to project welcome
+          or vim.tbl_contains(disabled_filetypes, vim.bo[buf].ft)
         then
           return false
         end
