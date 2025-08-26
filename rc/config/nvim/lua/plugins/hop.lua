@@ -1,4 +1,4 @@
---- @alias FtKey 'f' | 'F' | 't' | 'T'
+--- @alias FtKey "f" | "F" | "t" | "T"
 
 --- Retrieve f/t specific hop options
 ---
@@ -56,7 +56,11 @@ local function make_expr_hop_ft(key)
   return function()
     local target = require("hop").get_input_pattern("Hop 1 char: ", 1)
     return target
-        and string.format("<Cmd>lua hop_ft('%s', '%s')<CR>", key, target)
+        and string.format(
+          "<Cmd>lua hop_ft([=[%s]=], [=[%s]=])<CR>",
+          key,
+          target
+        )
       or "<Esc>"
   end
 end
