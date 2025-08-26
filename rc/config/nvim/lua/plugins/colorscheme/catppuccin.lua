@@ -22,6 +22,7 @@ local function hl_overrides(colors)
     },
 
     ["@property"] = { fg = colors.lavender },
+    ["@punctuation.special"] = { link = "@punctuation.delimiter" },
     ["@string.escape"] = { style = { "bold" } },
 
     ["@type.builtin"] = {
