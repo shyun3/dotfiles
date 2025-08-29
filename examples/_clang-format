@@ -1,4 +1,4 @@
-# clang-format 20.1.0
+# clang-format 21.1.0
 # vim: ft=yaml
 
 BasedOnStyle: LLVM
@@ -31,6 +31,7 @@ AllowShortNamespacesOnASingleLine: false
 AlwaysBreakBeforeMultilineStrings: false
 AttributeMacros: []
 BinPackArguments: true
+BinPackLongBracedList: false
 BinPackParameters: true
 BitFieldColonSpacing: Both
 BraceWrapping:
@@ -51,6 +52,7 @@ BraceWrapping:
   SplitEmptyFunction: false
   SplitEmptyRecord: false
   SplitEmptyNamespace: false
+# BracedInitializerIndentWidth:
 BreakAdjacentStringLiterals: true
 BreakAfterAttributes: Leave
 BreakAfterReturnType: None
@@ -58,14 +60,16 @@ BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Custom
 BreakBeforeConceptDeclarations: Always
 BreakBeforeInlineASMColon: OnlyMultiline
+BreakBeforeTemplateCloser: true
 BreakBeforeTernaryOperators: false
 BreakBinaryOperations: Never
 BreakConstructorInitializers: AfterColon
+BreakFunctionDefinitionParameters: false
 BreakInheritanceList: AfterComma
 BreakStringLiterals: true
 BreakTemplateDeclarations: Yes
 ColumnLimit: 80
-CommentPragmas: ""
+# CommentPragmas:
 CompactNamespaces: true
 ConstructorInitializerIndentWidth: 4
 ContinuationIndentWidth: 4
@@ -74,6 +78,7 @@ DerivePointerAlignment: false
 DisableFormat: false
 EmptyLineAfterAccessModifier: Never
 EmptyLineBeforeAccessModifier: Leave
+EnumTrailingComma: Leave # Warning
 FixNamespaceComments: true
 ForEachMacros: []
 IfMacros: []
@@ -87,8 +92,8 @@ IncludeCategories:
     Priority: 3
   - Regex: ".*"
     Priority: 1
-IncludeIsMainRegex: ""
-IncludeIsMainSourceRegex: ""
+# IncludeIsMainRegex:
+# IncludeIsMainSourceRegex:
 IndentAccessModifiers: false
 IndentCaseBlocks: false
 IndentCaseLabels: true
@@ -99,13 +104,13 @@ IndentPPDirectives: AfterHash
 IndentRequiresClause: true
 IndentWidth: 4
 IndentWrappedFunctionNames: false
-InsertBraces: false
-InsertNewlineAtEOF: false
+InsertBraces: false # Warning
+InsertNewlineAtEOF: true
 IntegerLiteralSeparator:
-  Binary: 0
+  Binary: 4
   BinaryMinDigits: 0
-  Decimal: 0
-  DecimalMinDigits: 0
+  Decimal: 3
+  DecimalMinDigits: 6
   Hex: 0
   HexMinDigits: 0
 KeepEmptyLines:
@@ -114,14 +119,17 @@ KeepEmptyLines:
   AtStartOfFile: false
 KeepFormFeed: false
 LambdaBodyIndentation: Signature
-Language: Cpp
+# Language: # Not set so that this config is applied to all languages
 LineEnding: LF
-MacroBlockBegin: ""
-MacroBlockEnd: ""
+# MacroBlockBegin:
+# MacroBlockEnd:
 Macros: []
+MacrosSkippedByRemoveParentheses: []
+MainIncludeChar: Quote
 MaxEmptyLinesToKeep: 1
 NamespaceIndentation: None
 NamespaceMacros: []
+# OneLineFormatOffRegex:
 PPIndentWidth: -1
 PackConstructorInitializers: BinPack
 # PenaltyBreakAssignment:
@@ -137,15 +145,25 @@ PackConstructorInitializers: BinPack
 # PenaltyIndentedWhitespace:
 # PenaltyReturnTypeOnItsOwnLine:
 PointerAlignment: Left
-QualifierAlignment: Custom
-QualifierOrder: ["inline", "static", "const", "volatile", "type"]
+QualifierAlignment: Custom # Warning
+QualifierOrder:
+  [
+    "inline",
+    "static",
+    "friend",
+    "constexpr",
+    "const",
+    "volatile",
+    "restrict",
+    "type",
+  ]
 RawStringFormats: []
 ReferenceAlignment: Pointer
-ReflowComments: true
-RemoveBracesLLVM: false
+ReflowComments: Always
+RemoveBracesLLVM: false # Warning
 RemoveEmptyLinesInUnwrappedLines: true
-RemoveParentheses: Leave
-RemoveSemicolon: false
+RemoveParentheses: MultipleParentheses # Warning
+RemoveSemicolon: true # Warning
 RequiresClausePosition: WithPreceding
 RequiresExpressionIndentation: OuterScope
 SeparateDefinitionBlocks: Leave
@@ -155,6 +173,7 @@ SortIncludes: CaseSensitive
 SortUsingDeclarations: Lexicographic
 SpaceAfterCStyleCast: false
 SpaceAfterLogicalNot: false
+SpaceAfterOperatorKeyword: false
 SpaceAfterTemplateKeyword: true
 SpaceAroundPointerQualifiers: Default
 SpaceBeforeAssignmentOperators: true
@@ -169,6 +188,7 @@ SpaceBeforeParensOptions:
   AfterFunctionDeclarationName: false
   AfterFunctionDefinitionName: false
   AfterIfMacros: false
+  AfterNot: true
   AfterOverloadedOperator: false
   AfterPlacementOperator: true
   AfterRequiresInClause: true
