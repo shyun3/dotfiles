@@ -12,5 +12,5 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = myAutoGroup,
   desc = "Highlight on yank",
-  callback = function() vim.highlight.on_yank() end,
+  callback = function() vim.hl.on_yank() end,
 })
