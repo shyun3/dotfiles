@@ -107,7 +107,5 @@ return {
         },
       },
     },
-
-    endwise = { enable = true },
   },
 }
