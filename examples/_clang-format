@@ -19,7 +19,12 @@ AlignTrailingComments:
 AllowAllArgumentsOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: true
 AllowBreakBeforeNoexceptSpecifier: Always
-AllowShortBlocksOnASingleLine: Always
+
+# As of v21.1.0, setting this to an option besides Never may prevent braces
+# from wrapping before an else block despite BreakBeforeBraces being set to
+# Custom and BraceWrapping.BeforeElse set to true
+AllowShortBlocksOnASingleLine: Never
+
 AllowShortCaseLabelsOnASingleLine: true
 AllowShortCompoundRequirementOnASingleLine: true
 AllowShortEnumsOnASingleLine: false
@@ -85,8 +90,6 @@ IfMacros: []
 IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: "<.*/.*>"
-    Priority: 2
-  - Regex: "<.*[.].*>"
     Priority: 2
   - Regex: "<.*>"
     Priority: 3
