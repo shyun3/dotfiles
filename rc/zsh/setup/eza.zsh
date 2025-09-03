@@ -1,4 +1,4 @@
 mkdir -p ~/.config/eza
 
-cp $ANTIDOTE_CACHE/eza-community/eza-themes/themes/catppuccin.yml \
+cp $ANTIDOTE_CACHE/catppuccin/eza/themes/mocha/catppuccin-mocha-lavender.yml \
     ~/.config/eza/theme.yml
