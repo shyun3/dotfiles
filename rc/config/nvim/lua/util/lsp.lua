@@ -29,13 +29,6 @@ end
 ---@param post_hook? fun(result: table) Callback that is run after changes are
 --- applied. Takes a WorkspaceEdit.
 function M.rename(post_hook)
-  local new_name
-  vim.ui.input(
-    { prompt = "New Name", default = vim.fn.expand("<cword>") },
-    function(input) new_name = input end
-  )
-  if not new_name or new_name == "" then return end
-
   local method = "textDocument/rename"
   local clients = vim.lsp.get_clients({
     bufnr = vim.api.nvim_get_current_buf(),
@@ -48,6 +41,13 @@ function M.rename(post_hook)
     vim.notify("No rename capable LSP client found", vim.log.levels.ERROR)
     return
   end
+
+  local new_name
+  vim.ui.input(
+    { prompt = "New Name", default = vim.fn.expand("<cword>") },
+    function(input) new_name = input end
+  )
+  if not new_name or new_name == "" then return end
 
   local pos_params = vim.lsp.util.make_position_params(
     vim.api.nvim_get_current_win(),
