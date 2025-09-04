@@ -58,8 +58,18 @@
     # Non-cosmetic options must be applied outside of feature definitions,
     # otherwise config may not be set properly. Note that these will apply to
     # all `--show-themes` results.
-    file-style = omit
     line-numbers = true
+
+    # Colors taken from catppuccin-mocha config
+    file-added-label = [+]
+    file-copied-label = [=]
+    file-modified-label = [*]
+    file-removed-label = [-]
+    file-renamed-label = [→]
+    file-decoration-style = "#6c7086" box ul
+    file-style = "#cdd6f4" bold
+    hunk-header-decoration-style = "#6c7086" box
+    hunk-header-style = line-number syntax
 
     # As of v0.18.2, this needs to be set for `--show-themes` to display the
     # correct colors regardless of COLORTERM
