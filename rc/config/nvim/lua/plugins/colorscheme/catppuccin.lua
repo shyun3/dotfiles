@@ -1,8 +1,10 @@
 local function hl_overrides(colors)
+  local property_color = colors.lavender
   return {
     --- Syntax
     Label = { style = { "bold" } },
     Macro = { style = { "bold" } },
+    PreProc = { link = "Keyword" },
 
     --- Treesitter
     ["@attribute.python"] = { link = "Function" },
@@ -11,6 +13,9 @@ local function hl_overrides(colors)
       fg = colors.blue, -- Same as function color, default was same as literals
       style = { "italic" },
     },
+
+    ["@keyword.import.c"] = { link = "Include" },
+    ["@keyword.import.cpp"] = { link = "@keyword.import.c" },
 
     ["@module"] = {
       -- The default of italic yellow is now used by built-in types
@@ -21,7 +26,7 @@ local function hl_overrides(colors)
       style = { "italic" },
     },
 
-    ["@property"] = { fg = colors.lavender },
+    ["@property"] = { fg = property_color },
     ["@punctuation.special"] = { link = "@punctuation.delimiter" },
     ["@string.escape"] = { style = { "bold" } },
 
@@ -33,7 +38,6 @@ local function hl_overrides(colors)
     ["@variable.parameter"] = { link = "@variable" },
 
     --- LSP
-    ["@lsp.type.concept.cpp"] = { fg = colors.sapphire },
     ["@lsp.type.decorator.python"] = { link = "@attribute.python" },
 
     ["@lsp.typemod.class.defaultLibrary"] = {
@@ -42,9 +46,20 @@ local function hl_overrides(colors)
     ["@lsp.typemod.namespace.defaultLibrary"] = { link = "@module.builtin" },
     ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
 
+    -- clangd
+    ["@lsp.type.concept"] = { fg = colors.sapphire },
     ["@lsp.typemod.variable.classScope"] = { link = "@property" },
     ["@lsp.typemod.variable.fileScope"] = {
       link = "@lsp.typemod.variable.classScope",
+    },
+    ["@lsp.typemod.variable.globalScope"] = {
+      fg = property_color,
+      style = { "bold" },
+    },
+
+    -- lua_ls
+    ["@lsp.typemod.variable.global"] = {
+      link = "@lsp.typemod.variable.globalScope",
     },
 
     --- Plugins
