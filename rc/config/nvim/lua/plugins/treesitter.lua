@@ -32,6 +32,7 @@ return {
       "python",
       "regex", -- Recommended by noice
       "toml",
+      "xml",
       "yaml",
     },
 
