@@ -2,9 +2,7 @@ return {
   {
     "echasnovski/mini.ai",
     version = false, -- Main branch
-    dependencies = {
-      { "echasnovski/mini.extra", version = false, config = true },
-    },
+    dependencies = { "echasnovski/mini.extra", version = false, config = true },
 
     event = "ModeChanged",
 
@@ -16,6 +14,10 @@ return {
 
       mini_ai.setup({
         custom_textobjects = {
+          a = spec_treesitter({
+            a = "@parameter.outer",
+            i = "@parameter.inner",
+          }),
           f = spec_treesitter({ a = "@call.outer", i = "@call.inner" }),
           k = spec_treesitter({ a = "@class.outer", i = "@class.inner" }),
           F = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
