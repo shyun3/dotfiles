@@ -41,6 +41,10 @@ return {
     event = "VeryLazy",
 
     opts = { preset = "modern" },
+
+    keys = {
+      { "<leader>?", "<Cmd>WhichKey<CR>", desc = "which-key: Show mappings" },
+    },
   },
 
   { import = "plugins.folke.noice" },
