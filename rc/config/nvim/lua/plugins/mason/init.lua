@@ -1,11 +1,16 @@
 return {
   {
     "mason-org/mason.nvim", -- Must be loaded before all Mason plugins
+    lazy = false,
 
     -- PATH should be updated early
     priority = 100,
 
     opts = {},
+
+    keys = {
+      { "<Leader>m", "<Cmd>Mason<CR>" },
+    },
   },
 
   {

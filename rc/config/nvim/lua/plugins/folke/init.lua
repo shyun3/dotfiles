@@ -43,7 +43,7 @@ return {
     opts = { preset = "modern" },
 
     keys = {
-      { "<leader>?", "<Cmd>WhichKey<CR>", desc = "which-key: Show mappings" },
+      { "<Leader>?", "<Cmd>WhichKey<CR>", desc = "which-key: Show mappings" },
     },
   },
 

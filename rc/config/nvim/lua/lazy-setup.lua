@@ -40,3 +40,4 @@ require("lazy").setup("plugins", {
 })
 
 vim.keymap.set("n", "<Leader>lz", "<Cmd>Lazy<CR>")
+vim.keymap.set("n", "<Leader>lp", "<Cmd>Lazy profile<CR>")
