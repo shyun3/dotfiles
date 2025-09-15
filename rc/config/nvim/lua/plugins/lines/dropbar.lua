@@ -6,7 +6,7 @@ return {
     bar = {
       -- Derived from default bar enable function
       enable = function(buf, win)
-        local disabled_filetypes = { "", "oil", "help" }
+        local disabled_filetypes = { "", "oil", "help", "project" }
         if
           not vim.api.nvim_buf_is_valid(buf)
           or not vim.api.nvim_win_is_valid(win)
@@ -20,8 +20,7 @@ return {
         local stat = vim.uv.fs_stat(vim.api.nvim_buf_get_name(buf))
         if stat and stat.size > 1024 * 1024 then return false end
 
-        -- Always show path
-        return true
+        return true -- Always show path
       end,
     },
 
@@ -33,9 +32,7 @@ return {
       },
     },
 
-    sources = {
-      path = { max_depth = 1 },
-    },
+    sources = { path = { max_depth = 1 } },
   },
 
   keys = {
