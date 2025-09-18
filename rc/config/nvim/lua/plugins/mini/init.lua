@@ -15,6 +15,21 @@ return {
 
       mini_ai.setup({
         custom_textobjects = {
+          -- Restore built-ins, as they are not limited by the number of lines
+          -- to search as configured by this plugin
+          ["("] = false,
+          [")"] = false,
+          ["["] = false,
+          ["]"] = false,
+          ["{"] = false,
+          ["}"] = false,
+          ["<"] = false,
+          [">"] = false,
+          ['"'] = false,
+          ["'"] = false,
+          ["`"] = false,
+          t = false,
+
           a = function(ai_type)
             return require("nvim-treesitter.parsers").has_parser()
                 and spec_treesitter({
