@@ -22,7 +22,7 @@ AllowBreakBeforeNoexceptSpecifier: Always
 
 # As of v21.1.1, setting this to an option besides Never may prevent braces
 # from wrapping before an else block despite BreakBeforeBraces being set to
-# Custom and BraceWrapping.BeforeElse set to true
+# Custom and BraceWrapping.AfterControlStatement being set to Always
 AllowShortBlocksOnASingleLine: Never
 
 AllowShortCaseLabelsOnASingleLine: true
