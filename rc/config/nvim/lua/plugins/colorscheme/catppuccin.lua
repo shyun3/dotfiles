@@ -3,7 +3,7 @@ local function hl_overrides(colors)
   return {
     --- Syntax
     Label = { style = { "bold" } },
-    Macro = { style = { "bold" } },
+    Macro = { style = { "bold", "nocombine" } },
     PreProc = { link = "Keyword" },
 
     --- Treesitter
