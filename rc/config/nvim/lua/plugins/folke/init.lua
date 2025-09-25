@@ -42,8 +42,22 @@ return {
 
     opts = { preset = "modern" },
 
+    config = function(_, opts)
+      require("which-key").setup(opts)
+
+      for _, mode in pairs({ "i", "s", "x", "c" }) do
+        vim.keymap.set(
+          mode,
+          "<C-q>",
+          function() require("which-key").show({ mode = mode }) end,
+          { desc = "which-key: Show mappings" }
+        )
+      end
+    end,
+
     keys = {
-      { "<Leader>?", "<Cmd>WhichKey<CR>", desc = "which-key: Show mappings" },
+      { "<Leader>?", "<Cmd>WhichKey<CR>" },
+      { "<C-q>", mode = { "i", "v", "c" } },
     },
   },
 
