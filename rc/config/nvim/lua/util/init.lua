@@ -1,3 +1,5 @@
+--- @alias ModeShortName "n" | "v" | "o" | "i" | "c" | "s" | "x" | "l" | "t" | ""
+
 local M = { column_limit = 80 }
 
 -- Derived from ctrlp#normcmd()
@@ -47,6 +49,20 @@ end
 
 function M.replace_termcodes(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+--- @param mode ModeShortName
+--- @param lhs string Left-hand side of mapping
+--- @param desc string New mapping description
+function M.update_keymap_desc(mode, lhs, desc)
+  local map = vim.fn.maparg(lhs, mode, false, true)
+  if vim.tbl_isempty(map) then
+    local msg = string.format("lhs %s not found for mode %s", lhs, mode)
+    error(msg)
+  end
+
+  map.desc = desc
+  vim.fn.mapset(map)
 end
 
 -- Translates paths opened in oil.nvim. Other paths are passed through

@@ -77,15 +77,6 @@ return {
   },
 
   {
-    "yssl/QFEnter",
-    init = function()
-      vim.g.qfenter_keymap = { vopen = { "<C-v>" }, hopen = { "<C-s>" } }
-    end,
-
-    ft = "qf",
-  },
-
-  {
     "majutsushi/tagbar",
     init = function()
       vim.g.tagbar_autofocus = 1 -- Move to Tagbar window when opened
