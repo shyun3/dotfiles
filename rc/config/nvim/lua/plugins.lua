@@ -1,12 +1,22 @@
 return {
-  { "numToStr/Comment.nvim", keys = { "gc", "gb" }, opts = {} },
+  {
+    "numToStr/Comment.nvim",
+    lazy = false, -- To allow which-key to load descriptions for mappings
+
+    opts = {},
+  },
 
   {
     "vim-scripts/DoxygenToolkit.vim",
 
     keys = {
       -- Note that this is intended to overwrite the doge mapping
-      { "<Leader>d", "<Cmd>Dox<CR>", ft = { "c", "cpp" } },
+      {
+        "<Leader>d",
+        "<Cmd>Dox<CR>",
+        ft = { "c", "cpp" },
+        desc = "Generate Doxygen comment",
+      },
     },
   },
 
@@ -16,7 +26,9 @@ return {
     init = function() vim.g.netrw_nogx = 1 end,
     config = true,
 
-    keys = { { "gx", "<Cmd>Browse<CR>", mode = { "n", "x" } } },
+    keys = {
+      { "gx", "<Cmd>Browse<CR>", mode = { "n", "x" } },
+    },
   },
 
   {
@@ -41,7 +53,32 @@ return {
     },
   },
 
-  { "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+
+    opts = {},
+
+    config = function(_, opts)
+      require("nvim-autopairs").setup(opts)
+
+      -- This plugin creates its mappings through an autocommand, so update
+      -- the descriptions afterwards
+      vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+        group = vim.api.nvim_create_augroup("user_autopairs", {}),
+        pattern = "*",
+
+        -- Other mappings may be overriden by blink.cmp
+        callback = function()
+          if vim.b["nvim-autopairs"] == 1 then
+            require("util").update_keymap_desc("i", "<BS>", "autopairs delete")
+          end
+        end,
+
+        desc = "nvim-autopairs: Update mapping descriptions",
+      })
+    end,
+  },
 
   {
     "norcalli/nvim-colorizer.lua",
@@ -78,12 +115,13 @@ return {
 
   {
     "majutsushi/tagbar",
+
     init = function()
       vim.g.tagbar_autofocus = 1 -- Move to Tagbar window when opened
       vim.g.tagbar_sort = 0
     end,
 
-    keys = { { "<A-t>", "<Cmd>TagbarToggle<CR>" } },
+    keys = { { "<A-t>", "<Cmd>TagbarToggle<CR>", desc = "Tagbar: Toggle" } },
   },
 
   {
@@ -109,19 +147,42 @@ return {
     build = ":call doge#install()",
 
     init = function()
-      vim.g.doge_mapping_comment_jump_forward = "<C-j>"
-      vim.g.doge_mapping_comment_jump_backward = "<C-k>"
+      vim.g.doge_enable_mappings = 0
+      vim.g.doge_buffer_mappings = 0
       vim.g.doge_comment_jump_modes = { "i", "s" }
 
       vim.g.doge_doc_standard_python = "google"
     end,
+
+    keys = {
+      {
+        "<Leader>d",
+        "<Plug>(doge-generate)",
+        silent = true,
+        desc = "doge: Generate comment",
+      },
+      {
+        "<C-j>",
+        "<Plug>(doge-comment-jump-forward)",
+        mode = { "i", "s" },
+        silent = true,
+        desc = "doge: Jump to next TODO",
+      },
+      {
+        "<C-k>",
+        "<Plug>(doge-comment-jump-backward)",
+        mode = { "i", "s" },
+        silent = true,
+        desc = "doge: Jump to previous TODO",
+      },
+    },
   },
 
   {
     "voldikss/vim-floaterm",
     cmd = "FloatermNew",
     keys = {
-      { "<Leader>t", "<Cmd>FloatermNew<CR>" },
+      { "<Leader>t", "<Cmd>FloatermNew<CR>", desc = "floaterm: Open window" },
     },
   },
 
@@ -143,13 +204,43 @@ return {
     init = function() vim.g.wordmotion_nomap = 1 end,
 
     keys = {
-      { "<Leader>w", "<Plug>WordMotion_w", mode = { "n", "x", "o" } },
-      { "<Leader>e", "<Plug>WordMotion_e", mode = { "n", "x", "o" } },
-      { "<Leader>b", "<Plug>WordMotion_b", mode = { "n", "x", "o" } },
-      { "<Leader>ge", "<Plug>WordMotion_ge", mode = { "n", "x", "o" } },
+      {
+        "<Leader>w",
+        "<Plug>WordMotion_w",
+        mode = { "n", "x", "o" },
+        desc = "N subwords forward",
+      },
+      {
+        "<Leader>e",
+        "<Plug>WordMotion_e",
+        mode = { "n", "x", "o" },
+        desc = "Forward to end of subword N",
+      },
+      {
+        "<Leader>b",
+        "<Plug>WordMotion_b",
+        mode = { "n", "x", "o" },
+        desc = "N subwords backward",
+      },
+      {
+        "<Leader>ge",
+        "<Plug>WordMotion_ge",
+        mode = { "n", "x", "o" },
+        desc = "Backward to end of subword N",
+      },
 
-      { "i<Leader>w", "<Plug>WordMotion_iw", mode = { "o", "x" } },
-      { "a<Leader>w", "<Plug>WordMotion_aw", mode = { "o", "x" } },
+      {
+        "i<Leader>w",
+        "<Plug>WordMotion_iw",
+        mode = { "o", "x" },
+        desc = "Select N inner subwords",
+      },
+      {
+        "a<Leader>w",
+        "<Plug>WordMotion_aw",
+        mode = { "o", "x" },
+        desc = "Select N subwords",
+      },
     },
   },
 
