@@ -8,26 +8,12 @@ return {
       json = { "prettier" },
       jsonc = { "prettier" },
       lua = { "stylua" },
-      meson = { "meson-format" },
+      meson = { "meson" },
       python = { "isort", "black" },
       query = { "format-queries" },
       sh = { "shfmt" },
       toml = { "tombi" },
       yaml = { "prettier" },
-    },
-
-    formatters = {
-      ["meson-format"] = function(bufnr)
-        return {
-          command = "meson",
-          args = {
-            "format",
-            "--source-file-path", -- Added in v1.9.0
-            vim.api.nvim_buf_get_name(bufnr),
-            "-",
-          },
-        }
-      end,
     },
 
     -- Derived from recipe
