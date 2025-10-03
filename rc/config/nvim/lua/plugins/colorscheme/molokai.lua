@@ -76,6 +76,7 @@ return {
     vim.api.nvim_create_autocmd("ColorScheme", {
       group = vim.api.nvim_create_augroup("molokai", {}),
       pattern = "molokai",
+      desc = "Apply highlights",
 
       callback = function()
         -- See `:h treesitter-highlight-groups`
@@ -95,8 +96,6 @@ return {
         highlight_dropbar_text()
         highlight_indent_blankline()
       end,
-
-      desc = "Apply Molokai highlights",
     })
   end,
 }

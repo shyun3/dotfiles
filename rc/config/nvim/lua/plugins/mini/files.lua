@@ -86,7 +86,7 @@ return {
     vim.api.nvim_create_autocmd("User", {
       group = group,
       pattern = "MiniFilesActionRename",
-      desc = "LSP-integrated file renaming",
+      desc = "LSP-integrated file rename",
 
       callback = function(event)
         require("snacks").rename.on_rename_file(event.data.from, event.data.to)

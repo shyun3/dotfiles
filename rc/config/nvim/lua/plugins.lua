@@ -67,6 +67,7 @@ return {
       vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
         group = vim.api.nvim_create_augroup("user_autopairs", {}),
         pattern = "*",
+        desc = "nvim-autopairs: Update mapping descriptions",
 
         -- Other mappings may be overriden by blink.cmp
         callback = function()
@@ -74,8 +75,6 @@ return {
             require("util").update_keymap_desc("i", "<BS>", "autopairs delete")
           end
         end,
-
-        desc = "nvim-autopairs: Update mapping descriptions",
       })
     end,
   },
