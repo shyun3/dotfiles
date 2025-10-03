@@ -3,7 +3,6 @@
 
 [global]
 target = "~/.local/bin"
-
 # This must be specified here, calling eget with `--download-all --upgrade_only`
 # seems to download unconditionally
 upgrade_only = true
@@ -35,6 +34,7 @@ all = true
 ["jesseduffield/lazygit"]
 
 ["neovim/neovim"]
+tag = "nightly"
 asset_filters = ["x86"]
 target = "~/.local/bin/nvim"
 
