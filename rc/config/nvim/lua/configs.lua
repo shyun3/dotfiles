@@ -12,5 +12,5 @@ vim.diagnostic.config({
   },
 
   float = { border = "single" },
-  jump = { float = true },
+  jump = { on_jump = function() vim.diagnostic.open_float() end },
 })
