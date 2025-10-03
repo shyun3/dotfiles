@@ -101,19 +101,48 @@ return {
 
       desc = "fzf-lua: Buffer tags",
     },
-    { "<C-j>", "<Cmd>FzfLua blines show_unlisted=true<CR>" },
-    { "<Leader>f", "<Cmd>FzfLua builtin<CR>" },
-    { "<Leader>;", "<Cmd>FzfLua command_history<CR>" },
-    { "<Leader>/", "<Cmd>FzfLua search_history<CR>" },
-    { "<Leader>x", "<Cmd>FzfLua commands<CR>" },
-    { "<Leader>cf", "<Cmd>FzfLua quickfix<CR>" },
+    {
+      "<C-j>",
+      "<Cmd>FzfLua blines show_unlisted=true<CR>",
+      desc = "fzf-lua: Current buffer lines",
+    },
+    {
+      "<Leader>f",
+      "<Cmd>FzfLua builtin<CR>",
+      desc = "fzf-lua: Built-in commands",
+    },
+    {
+      "<Leader>;",
+      "<Cmd>FzfLua command_history<CR>",
+      desc = "fzf-lua: Command history",
+    },
+    {
+      "<Leader>/",
+      "<Cmd>FzfLua search_history<CR>",
+      desc = "fzf-lua: Search history",
+    },
+    {
+      "<Leader>x",
+      "<Cmd>FzfLua commands<CR>",
+      desc = "fzf-lua: Neovim commands",
+    },
+    {
+      "<Leader>cf",
+      "<Cmd>FzfLua quickfix<CR>",
+      desc = "fzf-lua: Quickfix list",
+    },
 
-    { "<Leader>hh", "<Cmd>FzfLua help_tags<CR>" },
-    { "<Leader>hl", "<Cmd>FzfLua highlights<CR>" },
+    { "<Leader>hh", "<Cmd>FzfLua helptags<CR>", desc = "fzf-lua: Help tags" },
+    {
+      "<Leader>hl",
+      "<Cmd>FzfLua highlights<CR>",
+      desc = "fzf-lua: Highlight groups",
+    },
 
     {
       "<Leader>]",
       "<Cmd>FzfLua lsp_definitions jump1=true<CR>",
+      desc = "fzf-lua: LSP definitions",
     },
     {
       "<Leader>s]",
@@ -123,7 +152,7 @@ return {
           jump1_action = require("fzf-lua.actions").file_split,
         })
       end,
-      desc = "LSP: Definition, horizontal split",
+      desc = "fzf-lua: LSP definitions, horizontal split",
     },
     {
       "<Leader>v]",
@@ -133,13 +162,13 @@ return {
           jump1_action = require("fzf-lua.actions").file_vsplit,
         })
       end,
-      desc = "LSP: Definition, vertical split",
+      desc = "fzf-lua: LSP definitions, vertical split",
     },
 
     {
       "grt", -- Overwrites default, see `lsp-defaults`
       "<Cmd>FzfLua lsp_typedefs jump1=true<CR>",
-      desc = "LSP: Type definition",
+      desc = "fzf-lua: Type definitions",
     },
     {
       "grst",
@@ -149,7 +178,7 @@ return {
           jump1_action = require("fzf-lua.actions").file_split,
         })
       end,
-      desc = "LSP: Type definition, horizontal split",
+      desc = "fzf-lua: Type definitions, horizontal split",
     },
     {
       "grvt",
@@ -159,12 +188,13 @@ return {
           jump1_action = require("fzf-lua.actions").file_vsplit,
         })
       end,
-      desc = "LSP: Type definition, vertical split",
+      desc = "fzf-lua: Type definitions, vertical split",
     },
 
     {
       "<Leader>[",
       "<Cmd>FzfLua lsp_declarations jump1=true<CR>",
+      desc = "fzf-lua: LSP declarations",
     },
     {
       "<Leader>s[",
@@ -174,7 +204,7 @@ return {
           jump1_action = require("fzf-lua.actions").file_split,
         })
       end,
-      desc = "LSP: Declaration, horizontal split",
+      desc = "fzf-lua: LSP declarations, horizontal split",
     },
     {
       "<Leader>v[",
@@ -184,19 +214,27 @@ return {
           jump1_action = require("fzf-lua.actions").file_vsplit,
         })
       end,
-      desc = "LSP: Declaration, vertical split",
+      desc = "fzf-lua: LSP declarations, vertical split",
     },
 
-    { "<C-k>", "<Cmd>FzfLua lsp_document_symbols<CR>" },
+    {
+      "<C-k>",
+      "<Cmd>FzfLua lsp_document_symbols<CR>",
+      desc = "fzf-lua: LSP document symbols",
+    },
     {
       "<C-h>",
       function()
         util.go_to_editable_window()
         require("fzf-lua").lsp_workspace_symbols()
       end,
-      desc = "LSP: Workspace symbols",
+      desc = "fzf-lua: LSP workspace symbols",
     },
 
-    { "gra", "<Cmd> FzfLua lsp_code_actions silent=true<CR>" },
+    {
+      "gra",
+      "<Cmd> FzfLua lsp_code_actions silent=true<CR>",
+      desc = "fzf-lua: LSP code actions",
+    },
   },
 }

@@ -113,5 +113,29 @@ return {
 
       search_method = "cover",
     })
+
+    local key_descs = {
+      b = ")]} block",
+      q = [["'` string]],
+      ["?"] = "User prompt",
+      a = "Argument",
+      f = "Function call",
+      k = "Class",
+      F = "Function",
+      [";"] = "Treesitter block",
+      g = "Whole buffer",
+      i = "Indent level",
+    }
+    for key, desc in pairs(key_descs) do
+      for _, prefix in pairs({ "a", "i" }) do
+        require("which-key").add({
+          {
+            prefix .. key,
+            mode = { "o", "x" },
+            desc = desc,
+          },
+        })
+      end
+    end
   end,
 }

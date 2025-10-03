@@ -156,5 +156,13 @@ return {
         vim.api.nvim_set_option_value("winhighlight", "Normal:", { win = win })
       end,
     },
+
+    config = function(_, opts)
+      require("goto-preview").setup(opts)
+
+      require("which-key").add({
+        { "gp", desc = "Preview LSP" },
+      })
+    end,
   },
 }

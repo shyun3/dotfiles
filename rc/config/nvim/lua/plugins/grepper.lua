@@ -56,7 +56,16 @@ return {
 
       desc = "Grepper: Prompt",
     },
-    { "<Leader>*", "<Cmd>Grepper -cword<CR>" },
-    { "gs", "<Plug>(GrepperOperator)", mode = { "n", "x" } },
+    {
+      "<Leader>*",
+      "<Cmd>Grepper -cword<CR>",
+      desc = "Grepper: Search for current word",
+    },
+    {
+      "gs",
+      "<Plug>(GrepperOperator)",
+      mode = { "n", "x" },
+      desc = "Grepper: Search",
+    },
   },
 }

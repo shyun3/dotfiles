@@ -116,8 +116,18 @@ return {
   end,
 
   keys = {
-    { "<Space>", "<Cmd>HopWord<CR>", mode = { "n", "x", "o" } },
-    { "<Enter>", "<Cmd>HopChar1<CR>", mode = { "n", "x", "o" } },
+    {
+      "<Space>",
+      "<Cmd>HopWord<CR>",
+      mode = { "n", "x", "o" },
+      desc = "Hop to word",
+    },
+    {
+      "<Enter>",
+      "<Cmd>HopChar1<CR>",
+      mode = { "n", "x", "o" },
+      desc = "Hop to character",
+    },
 
     -- See `:h forced-motion` for usages of `v` and `V` in operator pending mode
     {

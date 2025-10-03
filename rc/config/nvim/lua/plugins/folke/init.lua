@@ -53,6 +53,10 @@ return {
           { desc = "which-key: Show mappings" }
         )
       end
+
+      require("which-key").add({
+        { "gq", mode = { "n", "x" }, desc = "Custom format lines" },
+      })
     end,
 
     keys = {

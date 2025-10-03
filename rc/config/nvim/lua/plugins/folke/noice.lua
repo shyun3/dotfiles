@@ -68,6 +68,7 @@ return {
       mode = { "n", "i", "s" },
       silent = true,
       expr = true,
+      desc = "LSP: Scroll hover information forward",
     },
     {
       "<C-b>",
@@ -77,6 +78,7 @@ return {
       mode = { "n", "i", "s" },
       silent = true,
       expr = true,
+      desc = "LSP: Scroll hover information backward",
     },
 
     {

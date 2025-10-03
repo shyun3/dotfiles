@@ -63,8 +63,8 @@ return {
 
       callback = function(args)
         local buf_id = args.data.buf_id
-        map_split(buf_id, "<C-s>", "belowright horizontal")
-        map_split(buf_id, "<C-v>", "belowright vertical")
+        map_split(buf_id, "<C-s>", "horizontal")
+        map_split(buf_id, "<C-v>", "vertical")
         vim.keymap.set(
           "n",
           "g~",
