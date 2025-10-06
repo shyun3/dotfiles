@@ -49,93 +49,96 @@ local function spec_treesitter(ai_captures, fallback)
 end
 
 return {
-  "echasnovski/mini.ai",
-  version = false, -- Main branch
-  dependencies = { "echasnovski/mini.extra", version = false, config = true },
+  { "echasnovski/mini.extra", lazy = true, version = false, config = true },
 
-  event = "ModeChanged",
+  {
+    "echasnovski/mini.ai",
+    version = false, -- Main branch
 
-  config = function()
-    local mini_ai = require("mini.ai")
+    event = "ModeChanged",
 
-    local gen_spec = mini_ai.gen_spec
-    local gen_ai_spec = require("mini.extra").gen_ai_spec
+    config = function()
+      local mini_ai = require("mini.ai")
 
-    mini_ai.setup({
-      custom_textobjects = {
-        -- Restore built-ins, as they are not limited by the number of lines
-        -- to search as configured by this plugin
-        ["("] = false,
-        [")"] = false,
-        ["["] = false,
-        ["]"] = false,
-        ["{"] = false,
-        ["}"] = false,
-        ["<"] = false,
-        [">"] = false,
-        ['"'] = false,
-        ["'"] = false,
-        ["`"] = false,
-        t = false,
+      local gen_spec = mini_ai.gen_spec
+      local gen_ai_spec = require("mini.extra").gen_ai_spec
 
-        a = spec_treesitter(
-          { a = "@parameter.outer", i = "@parameter.inner" },
-          gen_spec.argument()
-        ),
+      mini_ai.setup({
+        custom_textobjects = {
+          -- Restore built-ins, as they are not limited by the number of lines
+          -- to search as configured by this plugin
+          ["("] = false,
+          [")"] = false,
+          ["["] = false,
+          ["]"] = false,
+          ["{"] = false,
+          ["}"] = false,
+          ["<"] = false,
+          [">"] = false,
+          ['"'] = false,
+          ["'"] = false,
+          ["`"] = false,
+          t = false,
 
-        f = spec_treesitter(
-          { a = "@call.outer", i = "@call.inner" },
-          gen_spec.function_call()
-        ),
+          a = spec_treesitter(
+            { a = "@parameter.outer", i = "@parameter.inner" },
+            gen_spec.argument()
+          ),
 
-        k = spec_treesitter({ a = "@class.outer", i = "@class.inner" }),
-        F = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
-        [";"] = spec_treesitter({ a = "@block.outer", i = "@block.inner" }),
+          f = spec_treesitter(
+            { a = "@call.outer", i = "@call.inner" },
+            gen_spec.function_call()
+          ),
 
-        -- Whole buffer
-        g = function(ai_type)
-          return vim.tbl_extend(
-            "error",
-            gen_ai_spec.buffer()(ai_type),
-            { vis_mode = "V" } -- Force linewise
-          )
-        end,
+          k = spec_treesitter({ a = "@class.outer", i = "@class.inner" }),
+          F = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
+          [";"] = spec_treesitter({ a = "@block.outer", i = "@block.inner" }),
 
-        i = gen_ai_spec.indent(),
-      },
+          -- Whole buffer
+          g = function(ai_type)
+            return vim.tbl_extend(
+              "error",
+              gen_ai_spec.buffer()(ai_type),
+              { vis_mode = "V" } -- Force linewise
+            )
+          end,
 
-      mappings = {
-        around_next = "",
-        inside_next = "",
-        around_last = "",
-        inside_last = "",
-      },
+          i = gen_ai_spec.indent(),
+        },
 
-      search_method = "cover",
-    })
+        mappings = {
+          around_next = "",
+          inside_next = "",
+          around_last = "",
+          inside_last = "",
+        },
 
-    local key_descs = {
-      b = ")]} block",
-      q = [["'` string]],
-      ["?"] = "User prompt",
-      a = "Argument",
-      f = "Function call",
-      k = "Class",
-      F = "Function",
-      [";"] = "Treesitter block",
-      g = "Whole buffer",
-      i = "Indent level",
-    }
-    for key, desc in pairs(key_descs) do
-      for _, prefix in pairs({ "a", "i" }) do
-        require("which-key").add({
-          {
-            prefix .. key,
-            mode = { "o", "x" },
-            desc = desc,
-          },
-        })
+        search_method = "cover",
+      })
+
+      local key_descs = {
+        b = ")]} block",
+        q = [["'` string]],
+        ["?"] = "User prompt",
+        a = "Argument",
+        f = "Function call",
+        k = "Class",
+        F = "Function",
+        [";"] = "Treesitter block",
+        g = "Whole buffer",
+        i = "Indent level",
+      }
+      for key, desc in pairs(key_descs) do
+        for _, prefix in pairs({ "a", "i" }) do
+          require("which-key").add({
+            {
+              prefix .. key,
+              mode = { "o", "x" },
+              desc = desc,
+            },
+          })
+        end
       end
-    end
-  end,
+    end,
+  },
 }
