@@ -27,27 +27,6 @@ return {
         fzffilter = "",
       },
     },
-
-    config = function(_, opts)
-      require("bqf").setup(opts)
-
-      vim.api.nvim_create_autocmd("FileType", {
-        group = vim.api.nvim_create_augroup("user_bqf", {}),
-        pattern = "qf",
-        desc = "bqf: Update keymap descriptions",
-
-        callback = function()
-          local util = require("util")
-
-          -- Plugin only creates mouse click mappings after a delay
-          -- See bqf/preview/handler.lua
-          vim.defer_fn(function()
-            util.update_keymap_desc("n", "<LeftMouse>", "Preview item")
-            util.update_keymap_desc("n", "<2-LeftMouse>", "Open item")
-          end, 250)
-        end,
-      })
-    end,
   },
 
   { import = "plugins.quickfix.qfenter" },

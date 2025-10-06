@@ -1,5 +1,4 @@
 local function hl_overrides(colors)
-  local property_color = colors.lavender
   return {
     --- Syntax
     Label = { style = { "bold" } },
@@ -26,7 +25,6 @@ local function hl_overrides(colors)
       style = { "italic" },
     },
 
-    ["@property"] = { fg = property_color },
     ["@punctuation.special"] = { link = "@punctuation.delimiter" },
     ["@string.escape"] = { style = { "bold" } },
 
@@ -53,7 +51,7 @@ local function hl_overrides(colors)
       link = "@lsp.typemod.variable.classScope",
     },
     ["@lsp.typemod.variable.globalScope"] = {
-      fg = property_color,
+      fg = colors.lavender, -- Property color
       style = { "bold" },
     },
 
