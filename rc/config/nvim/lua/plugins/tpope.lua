@@ -1,6 +1,6 @@
 return {
   {
-    "shyun3/vim-endwise",
+    require("lazy-deps").endwise,
     branch = "personal",
     event = "FileType", -- Must be loaded early for plugin to work properly
 
