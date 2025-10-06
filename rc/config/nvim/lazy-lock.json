@@ -53,7 +53,7 @@
   "vim-endwise": { "branch": "personal", "commit": "e3785c4e09fe8df729d8d00ea7f6faf08285260a" },
   "vim-floaterm": { "branch": "master", "commit": "fd4bdd66eca56c6cc59f2119e4447496d8cde2ea" },
   "vim-fugitive": { "branch": "master", "commit": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4" },
-  "vim-grepper": { "branch": "master", "commit": "acaaf32edaa11d82fb972d2af36b949ec3042928" },
+  "vim-grepper": { "branch": "personal", "commit": "7587cd2a2374d1390892f2929223e85eae4ea5db" },
   "vim-gutentags": { "branch": "master", "commit": "aa47c5e29c37c52176c44e61c780032dfacef3dd" },
   "vim-polyglot": { "branch": "master", "commit": "f061eddb7cdcc614c8406847b2bfb53099832a4e" },
   "vim-project": { "branch": "master", "commit": "3f9c69f48293dcef67c5eef5b1846eb538431a1e" },

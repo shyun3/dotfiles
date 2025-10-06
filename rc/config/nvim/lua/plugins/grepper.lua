@@ -1,5 +1,6 @@
 return {
-  "mhinz/vim-grepper",
+  "shyun3/vim-grepper",
+  branch = "personal",
 
   config = function()
     -- Initialize g:grepper with default values
