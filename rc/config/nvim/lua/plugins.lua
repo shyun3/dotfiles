@@ -54,13 +54,13 @@ return {
   },
 
   {
-    "windwp/nvim-autopairs",
+    require("lazy-deps").autopairs,
     event = "InsertEnter",
 
     opts = {},
 
-    config = function(_, opts)
-      require("nvim-autopairs").setup(opts)
+    config = function(plugin, opts)
+      require(plugin.name).setup(opts)
 
       -- This plugin creates its mappings through an autocommand, so update
       -- the descriptions afterwards

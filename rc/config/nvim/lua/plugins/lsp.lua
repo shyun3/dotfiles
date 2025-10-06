@@ -62,7 +62,7 @@ end
 
 return {
   {
-    "neovim/nvim-lspconfig",
+    require("lazy-deps").lspconfig,
     event = { "BufReadPre", "BufNewFile" }, -- Taken from LazyVim
 
     init = function()

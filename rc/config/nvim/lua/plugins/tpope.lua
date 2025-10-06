@@ -5,8 +5,8 @@ return {
     event = "FileType", -- Must be loaded early for plugin to work properly
 
     -- Endwise wraps <CR> with its own mapping on startup by default, so make
-    -- sure autopairs performs its wrapping first
-    dependencies = "windwp/nvim-autopairs",
+    -- sure any autopairs plugins perform their mappings first
+    dependencies = require("lazy-deps").autopairs,
 
     config = function()
       -- Disable filetypes handled by treesitter

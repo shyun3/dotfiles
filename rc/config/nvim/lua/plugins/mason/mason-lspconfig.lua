@@ -16,7 +16,7 @@ local lsp_configs = {
 
 return {
   "mason-org/mason-lspconfig.nvim",
-  dependencies = "neovim/nvim-lspconfig",
+  dependencies = require("lazy-deps").lspconfig,
   event = "VeryLazy",
 
   opts = {
