@@ -6,7 +6,13 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
   desc = "Save when leaving buffer",
 
   callback = function()
-    if vim.fn.bufname() ~= "" and vim.bo.buftype == "" then vim.cmd.update() end
+    if
+      vim.fn.bufname() ~= ""
+      and vim.bo.buftype == ""
+      and not vim.bo.readonly
+    then
+      vim.cmd.update()
+    end
   end,
 })
 
