@@ -47,6 +47,7 @@
   "undotree": { "branch": "main", "commit": "1c3e7531fad0a9c27942c5438be5adbd26260470" },
   "vim-4dgl": { "branch": "main", "commit": "87a1d3100f18a124446963a0900868f6387abc9d" },
   "vim-antidote": { "branch": "main", "commit": "53b4759c1015a8dd3b78da90dae4807c55a05c9d" },
+  "vim-asterisk": { "branch": "personal", "commit": "dd5678d1b8b26305d7c8ae393680a7aee62cc68c" },
   "vim-cmake-lists": { "branch": "master", "commit": "deb9d670bc3bfb3993f3b2870e2dab5d7fd0d456" },
   "vim-ctags-mtable": { "branch": "personal", "commit": "131d774696bce5c2b1e24dd8805e2a2b2ff2fa28" },
   "vim-doge": { "branch": "master", "commit": "03a84072ef21b205237c77986c78914395d646c3" },

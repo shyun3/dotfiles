@@ -135,6 +135,22 @@ return {
     },
   },
 
+  {
+    "shyun3/vim-asterisk",
+    branch = "personal",
+
+    init = function() vim.g["asterisk#keeppos"] = 1 end,
+
+    keys = {
+      {
+        "z*",
+        "<Plug>(asterisk-z*)",
+        mode = { "n", "x" },
+        desc = "Highlight all occurrences of word",
+      },
+    },
+  },
+
   { "shyun3/vim-cmake-lists", ft = "cmake" },
 
   {

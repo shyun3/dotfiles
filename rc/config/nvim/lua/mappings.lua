@@ -126,16 +126,6 @@ vim.keymap.set(
   { desc = "Delete selection and enter insert mode" }
 )
 
--- Search
--- Derived from https://github.com/neovim/neovim/discussions/24285#discussioncomment-6445365
-vim.keymap.set("n", "z*", function()
-  local cword = vim.fn.escape(vim.fn.expand("<cword>"), [[/\]])
-  vim.fn.setreg("/", string.format([[\V\<%s\>]], cword))
-
-  vim.fn.histadd("/", vim.fn.getreg("/"))
-  vim.o.hlsearch = true
-end, { desc = "Highlight all occurrences of word under cursor" })
-
 -- Undo
 vim.keymap.set("n", "<A-u>", function()
   local files = 0
