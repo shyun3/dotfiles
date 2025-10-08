@@ -1,3 +1,7 @@
+[tool.basedpyright]
+# black with unstable breaks long strings using implicit concatenation
+reportImplicitStringConcatenation = false
+
 [tool.black]
 # For breaking long strings
 # See https://black.readthedocs.io/en/stable/the_black_code_style/future_style.html
