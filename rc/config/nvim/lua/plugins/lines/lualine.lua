@@ -51,11 +51,14 @@ end
 -- Derived from location component
 local function location()
   local line = vim.fn.line(".")
-  local col = vim.fn.charcol(".")
   local max_line = vim.fn.line("$")
 
+  local col = vim.fn.charcol(".")
+  local virt_col = vim.fn.virtcol(".")
+  local col_str = col .. (col == virt_col and "" or "-" .. virt_col)
+
   -- Symbols taken from airline
-  return string.format(":%d/%d≡ ℅:%d", line, max_line, col)
+  return string.format(":%d/%d≡ ℅:%s", line, max_line, col_str)
 end
 
 return {
