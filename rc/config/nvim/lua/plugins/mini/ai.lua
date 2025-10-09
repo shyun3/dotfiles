@@ -67,6 +67,9 @@ return {
         custom_textobjects = {
           -- Restore built-ins, as they are not limited by the number of lines
           -- to search as configured by this plugin
+          --
+          -- Note that built-in quotes and backticks are not being used as the
+          -- mini.ai versions work across line breaks
           ["("] = false,
           [")"] = false,
           ["["] = false,
@@ -75,9 +78,6 @@ return {
           ["}"] = false,
           ["<"] = false,
           [">"] = false,
-          ['"'] = false,
-          ["'"] = false,
-          ["`"] = false,
           t = false,
 
           a = spec_treesitter(
@@ -113,6 +113,7 @@ return {
           inside_last = "",
         },
 
+        n_lines = 1000,
         search_method = "cover",
       })
 
