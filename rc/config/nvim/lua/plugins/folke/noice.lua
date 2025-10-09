@@ -4,7 +4,6 @@ return {
 
   {
     "folke/noice.nvim",
-
     event = "VeryLazy",
 
     opts = {
@@ -57,6 +56,14 @@ return {
       },
     },
 
+    config = function(_, opts)
+      require("noice").setup(opts)
+
+      require("which-key").add({
+        { "<Leader>n", desc = "Noice" },
+      })
+    end,
+
     keys = {
       -- Lsp Hover Doc Scrolling
       -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#lsp-hover-doc-scrolling
@@ -68,7 +75,7 @@ return {
         mode = { "n", "i", "s" },
         silent = true,
         expr = true,
-        desc = "LSP: Scroll hover information forward",
+        desc = "Scroll forward (page or LSP hover/signature)",
       },
       {
         "<C-b>",
@@ -78,7 +85,7 @@ return {
         mode = { "n", "i", "s" },
         silent = true,
         expr = true,
-        desc = "LSP: Scroll hover information backward",
+        desc = "Scroll backward (page or LSP hover/signature)",
       },
 
       {
@@ -98,6 +105,21 @@ return {
         mode = { "n", "i", "s" },
         desc = "LSP: Toggle signature help",
       },
+
+      { "<Leader>nh", "<Cmd>Noice<CR>", desc = "Noice: Show message history" },
+      { "<Leader>nl", "<Cmd>NoiceLast<CR>", desc = "Noice: Show last message" },
+      {
+        "<Leader>nd",
+        "<Cmd>NoiceDismiss<CR>",
+        desc = "Noice: Dismiss all visible messages",
+      },
+      {
+        "<Leader>ne",
+        "<Cmd>NoiceErrors<CR>",
+        desc = "Noice: Show error messages",
+      },
+      { "<Leader>na", "<Cmd>NoiceAll<CR>", desc = "Noice: Show all messages" },
+      { "<Leader>np", "<Cmd>NoicePick<CR>", desc = "Noice: Open picker" },
     },
   },
 }
