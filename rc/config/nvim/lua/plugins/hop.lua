@@ -113,6 +113,10 @@ return {
       orig_move_cursor_to(...)
       hopped = true
     end
+
+    -- To fix hop#114
+    require("hop.jump_target").move_jump_target =
+      require("util.hop").move_jump_target
   end,
 
   keys = {
@@ -132,26 +136,26 @@ return {
     -- See `:h forced-motion` for usages of `v` and `V` in operator pending mode
     {
       "+",
-      require("util.hop_hints").hintTill1,
+      require("util.hop").hintTill1,
       mode = { "n", "x" },
       desc = "Hop till character",
     },
     {
       "+",
-      "v<Cmd>lua require('util.hop_hints').hintTill1()<CR>",
+      "v<Cmd>lua require('util.hop').hintTill1()<CR>",
       mode = "o",
       desc = "Hop till character",
     },
 
     {
       "_",
-      require("util.hop_hints").hintLines,
+      require("util.hop").hintLines,
       mode = { "n", "x" },
       desc = "Hop to line",
     },
     {
       "_",
-      "V<Cmd>lua require('util.hop_hints').hintLines()<CR>",
+      "V<Cmd>lua require('util.hop').hintLines()<CR>",
       mode = "o",
       desc = "Hop to line",
     },
