@@ -80,6 +80,13 @@ return {
       vim.lsp.log.set_level("off")
     end,
 
+    config = function()
+      require("which-key").add({
+        { "gr", desc = "LSP" },
+        { "<Leader>r", desc = "LSP" },
+      })
+    end,
+
     keys = {
       {
         "<Leader>ri",

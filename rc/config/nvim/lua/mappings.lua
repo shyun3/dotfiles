@@ -6,20 +6,6 @@ vim.keymap.set(
   { desc = "Tag: Jump to definition" }
 )
 
--- Open tags in splits
-vim.keymap.set(
-  "n",
-  "<A-]>s",
-  "<Cmd>wincmd g<C-]><CR>",
-  { desc = "Tag: Open definition in horizontal split" }
-)
-vim.keymap.set(
-  "n",
-  "<A-]>v",
-  "<Cmd>vertical wincmd g<C-]><CR>",
-  { desc = "Tag: Open definition in vertical split" }
-)
-
 -- Buffers
 vim.keymap.set(
   "n",
@@ -33,13 +19,13 @@ vim.keymap.set(
   "n",
   "]w",
   "<Cmd>wincmd w<CR>",
-  { desc = "Go to N next window (wrap around)" }
+  { desc = "Go to next window (wrap around)" }
 )
 vim.keymap.set(
   "n",
   "[w",
   "<Cmd>wincmd W<CR>",
-  { desc = "Go to N previous window (wrap around)" }
+  { desc = "Go to previous window (wrap around)" }
 )
 vim.keymap.set(
   "n",
@@ -51,25 +37,25 @@ vim.keymap.set(
   "n",
   "<Left>",
   "<Cmd>wincmd h<CR>",
-  { desc = "Go to Nth left window (stop at first)" }
+  { desc = "Go to left window (stop at first)" }
 )
 vim.keymap.set(
   "n",
   "<Down>",
   "<Cmd>wincmd j<CR>",
-  { desc = "Go N windows down (stop at last)" }
+  { desc = "Go to window below (stop at last)" }
 )
 vim.keymap.set(
   "n",
   "<Up>",
   "<Cmd>wincmd k<CR>",
-  { desc = "Go N windows up (stop at first)" }
+  { desc = "Go to window above (stop at first)" }
 )
 vim.keymap.set(
   "n",
   "<Right>",
   "<Cmd>wincmd l<CR>",
-  { desc = "Go to Nth right window (stop at last)" }
+  { desc = "Go to right window (stop at last)" }
 )
 vim.keymap.set(
   "n",
@@ -98,20 +84,6 @@ vim.keymap.set(
   "<A-q>",
   "<Cmd>botright copen<CR>",
   { desc = "Open quickfix window" }
-)
-vim.keymap.set(
-  "n",
-  "<Leader>qq",
-  "<Cmd>cclose<CR>",
-  { desc = "Close quickfix window" }
-)
-
--- Help
-vim.keymap.set(
-  "n",
-  "<Leader>qh",
-  "<Cmd>helpclose<CR>",
-  { desc = "Close one help window" }
 )
 
 -- Highlights

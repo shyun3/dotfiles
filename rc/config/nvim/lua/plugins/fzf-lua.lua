@@ -37,6 +37,15 @@ return {
     file_icon_padding = " ", -- En space, U+2002
   },
 
+  config = function(_, opts)
+    require("fzf-lua").setup(opts)
+
+    require("which-key").add({
+      { "grs", desc = "Horizontal split" },
+      { "grv", desc = "Vertical split" },
+    })
+  end,
+
   keys = {
     {
       "<C-p>",
