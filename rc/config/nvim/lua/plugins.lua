@@ -58,25 +58,6 @@ return {
     event = "InsertEnter",
 
     opts = {},
-
-    config = function(plugin, opts)
-      require(plugin.name).setup(opts)
-
-      -- This plugin creates its mappings through an autocommand, so update
-      -- the descriptions afterwards
-      vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-        group = vim.api.nvim_create_augroup("user_autopairs", {}),
-        pattern = "*",
-        desc = "nvim-autopairs: Update mapping descriptions",
-
-        -- Other mappings may be overriden by blink.cmp
-        callback = function()
-          if vim.b["nvim-autopairs"] == 1 then
-            require("util").update_keymap_desc("i", "<BS>", "autopairs delete")
-          end
-        end,
-      })
-    end,
   },
 
   {
