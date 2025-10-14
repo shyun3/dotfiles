@@ -72,12 +72,28 @@ end
 --- @param key FtKey
 --- @param target string
 function _G.hop_ft(key, target)
+  -- Gather any typed characters remaining in the input stream. These may be
+  -- present when dot repeating a 'c' operation with a hop. This is necessary
+  -- to prevent these keys from being fed to any hop char prompts that are
+  -- invoked below.
+  local chars = {}
+  local input
+  while input ~= "" do
+    input = vim.fn.getcharstr(0)
+    table.insert(chars, input)
+  end
+
   -- Taken from `hop.hint_char1`
   local opts = override_opts(ft_opts(key))
   require("hop").hint_with_regex(
     require("hop.jump_regex").regex_by_case_searching(target, true, opts),
     opts
   )
+
+  -- Now that any hop char prompts are finished, play the keys that were
+  -- collected above
+  local keys = table.concat(chars)
+  vim.api.nvim_feedkeys(keys, "n", false)
 end
 
 return {
@@ -103,7 +119,7 @@ return {
       hopped = false
     end
 
-    local orig_move_cursor_to = require("hop").move_cursor_to
+    local orig_move_cursor_to = hop.move_cursor_to
 
     --- Same as `move_cursor_to` but records if a hop was executed. Of course,
     --- this assumes that the hop uses this function.
