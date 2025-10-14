@@ -1,9 +1,10 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
+
     lazy = false, -- Does not support lazy loading
 
-    branch = "master",
     build = ":TSUpdate",
 
     main = "nvim-treesitter.configs",

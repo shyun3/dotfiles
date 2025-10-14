@@ -1,6 +1,6 @@
 return {
   "Bekaboo/dropbar.nvim",
-  event = "BufWinEnter",
+  event = "UIEnter",
 
   opts = {
     bar = {

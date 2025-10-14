@@ -35,5 +35,5 @@ return {
     end,
   },
 
-  { "tpope/vim-unimpaired", event = "BufEnter" },
+  { "tpope/vim-unimpaired", event = "VeryLazy" },
 }

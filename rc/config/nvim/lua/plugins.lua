@@ -33,9 +33,9 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
+    event = "VeryLazy",
 
-    event = "BufWinEnter",
+    main = "ibl",
 
     opts = {
       indent = {
@@ -83,7 +83,7 @@ return {
 
   {
     "stevearc/oil.nvim",
-    event = "VimEnter", -- Should be loaded early to override netrw
+    lazy = false, -- Should be loaded early to override netrw
 
     opts = {
       keymaps = {
@@ -195,6 +195,7 @@ return {
   {
     "kkoomen/vim-doge",
     lazy = false, -- Needed for build to work
+
     build = ":call doge#install()",
 
     init = function()
@@ -239,6 +240,8 @@ return {
 
   {
     "ludovicchabant/vim-gutentags",
+    event = "VeryLazy",
+
     init = function()
       vim.g.gutentags_define_advanced_commands = 1
 

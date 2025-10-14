@@ -17,7 +17,7 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
 
     -- Ensure installed does not work on VeryLazy, see #39
-    event = "VimEnter",
+    lazy = false,
 
     opts = {
       ensure_installed = {

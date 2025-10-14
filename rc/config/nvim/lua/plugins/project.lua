@@ -1,6 +1,5 @@
 return {
   "amiorin/vim-project",
-  event = "VimEnter",
 
   config = function()
     vim.call("project#rc")

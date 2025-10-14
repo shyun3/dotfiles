@@ -21,6 +21,8 @@ return {
   version = "v2.*",
   build = "make install_jsregexp",
 
+  lazy = true, -- Loaded by blink
+
   opts = {
     -- Update repeated placeholders while typing in insert mode
     -- Derived from https://github.com/L3MON4D3/LuaSnip/wiki/Migrating-from-UltiSnips#update-placeholders

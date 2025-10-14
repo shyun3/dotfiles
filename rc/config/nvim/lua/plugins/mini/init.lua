@@ -2,6 +2,8 @@ return {
   {
     "nvim-mini/mini.pairs",
     version = false,
+
+    -- Only being used in command-line mode
     event = "CmdlineEnter",
 
     opts = {

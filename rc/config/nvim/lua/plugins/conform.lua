@@ -1,6 +1,15 @@
 return {
   "stevearc/conform.nvim",
 
+  -- Derived from lazy loading recipe
+  event = "BufWritePre",
+  cmd = { "AutoFormatDisable", "AutoFormatEnable", "ConformInfo", "Format" },
+
+  init = function()
+    vim.o.formatexpr =
+      "v:lua.require'conform'.formatexpr({'lsp_format': 'never'})"
+  end,
+
   opts = {
     formatters_by_ft = {
       c = { "clang-format" },
@@ -25,11 +34,6 @@ return {
       return { timeout_ms = 1000 }
     end,
   },
-
-  init = function()
-    vim.o.formatexpr =
-      "v:lua.require'conform'.formatexpr({'lsp_format': 'never'})"
-  end,
 
   config = function(_, opts)
     require("conform").setup(opts)
@@ -68,8 +72,4 @@ return {
       if not args.bang then vim.g.disable_autoformat = false end
     end, { desc = "Re-enable autoformat-on-save", bang = true })
   end,
-
-  -- Derived from lazy loading recipe
-  event = "BufWritePre",
-  cmd = { "AutoFormatDisable", "AutoFormatEnable", "ConformInfo", "Format" },
 }
