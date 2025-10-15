@@ -133,6 +133,22 @@ return {
     -- To fix hop#114
     require("hop.jump_target").move_jump_target =
       require("util.hop").move_jump_target
+
+    local orig_get_input_pattern = hop.get_input_pattern
+
+    --- Same as `get_input_pattern` except it changes the cursor shape to the
+    --- default shape used in operator pending mode during the prompt
+    ---
+    --- @diagnostic disable-next-line: duplicate-set-field
+    hop.get_input_pattern = function(...)
+      local last_gcr = vim.o.guicursor
+
+      vim.o.guicursor = "a:hor20"
+      local input = orig_get_input_pattern(...)
+      vim.o.guicursor = last_gcr
+
+      return input
+    end
   end,
 
   keys = {
