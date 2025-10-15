@@ -52,12 +52,12 @@ return {
       {
         "Q",
         mode = "x",
-        desc = "Linewise only: Repeat last recorded register for each line",
+        desc = "Repeat last recorded register for each line (linewise only)",
       },
       {
         "@",
         mode = "x",
-        desc = "Linewise only: Execute register contents for each line",
+        desc = "Execute register contents for each line (linewise only)",
       },
       { "a%", mode = "x", desc = "Matching group" },
 
@@ -66,12 +66,12 @@ return {
       {
         "<A-]>s",
         "<Cmd>wincmd g<C-]><CR>",
-        desc = "Tag: Open definition in horizontal split",
+        desc = "Open definition in horizontal split",
       },
       {
         "<A-]>v",
         "<Cmd>vertical wincmd g<C-]><CR>",
-        desc = "Tag: Open definition in vertical split",
+        desc = "Open definition in vertical split",
       },
 
       -- Close windows
@@ -79,12 +79,12 @@ return {
       {
         "<Leader>qq",
         "<Cmd>cclose<CR>",
-        desc = "Close quickfix window",
+        desc = "Quickfix",
       },
       {
         "<Leader>qh",
         "<Cmd>helpclose<CR>",
-        desc = "Close one help window",
+        desc = "Help",
       },
     },
   },

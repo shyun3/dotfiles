@@ -43,6 +43,8 @@ return {
     require("which-key").add({
       { "grs", desc = "Horizontal split" },
       { "grv", desc = "Vertical split" },
+      { "<Leader>s", desc = "Horizontal split" },
+      { "<Leader>v", desc = "Vertical split" },
     })
   end,
 
@@ -161,7 +163,7 @@ return {
           jump1_action = require("fzf-lua.actions").file_split,
         })
       end,
-      desc = "fzf-lua: LSP definitions, horizontal split",
+      desc = "fzf-lua: LSP definitions",
     },
     {
       "<Leader>v]",
@@ -171,7 +173,7 @@ return {
           jump1_action = require("fzf-lua.actions").file_vsplit,
         })
       end,
-      desc = "fzf-lua: LSP definitions, vertical split",
+      desc = "fzf-lua: LSP definitions",
     },
 
     {
@@ -187,7 +189,7 @@ return {
           jump1_action = require("fzf-lua.actions").file_split,
         })
       end,
-      desc = "fzf-lua: Type definitions, horizontal split",
+      desc = "fzf-lua: Type definitions",
     },
     {
       "grvt",
@@ -197,7 +199,7 @@ return {
           jump1_action = require("fzf-lua.actions").file_vsplit,
         })
       end,
-      desc = "fzf-lua: Type definitions, vertical split",
+      desc = "fzf-lua: Type definitions",
     },
 
     {
@@ -213,7 +215,7 @@ return {
           jump1_action = require("fzf-lua.actions").file_split,
         })
       end,
-      desc = "fzf-lua: LSP declarations, horizontal split",
+      desc = "fzf-lua: LSP declarations",
     },
     {
       "<Leader>v[",
@@ -223,7 +225,7 @@ return {
           jump1_action = require("fzf-lua.actions").file_vsplit,
         })
       end,
-      desc = "fzf-lua: LSP declarations, vertical split",
+      desc = "fzf-lua: LSP declarations",
     },
 
     {

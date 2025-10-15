@@ -91,12 +91,12 @@ return {
       {
         "<Leader>ri",
         vim.lsp.buf.incoming_calls,
-        desc = "LSP: Incoming calls",
+        desc = "Incoming calls",
       },
       {
         "<Leader>ro",
         vim.lsp.buf.outgoing_calls,
-        desc = "LSP: Outgoing calls",
+        desc = "Outgoing calls",
       },
 
       {
@@ -129,7 +129,7 @@ return {
       {
         "grn",
         function() require("util.lsp").rename(pop_quickfix) end,
-        desc = "LSP: Rename",
+        desc = "Rename",
       },
     },
   },

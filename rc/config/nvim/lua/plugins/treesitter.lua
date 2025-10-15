@@ -82,11 +82,11 @@ return {
               -- Derived from https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/439#issuecomment-1505411083
               query = "@string.documentation",
               query_group = "highlights",
-              desc = "Select docstring, outer",
+              desc = "Docstring",
             },
             id = {
               query = "@documentation.inner",
-              desc = "Select docstring, inner",
+              desc = "Docstring",
             },
           },
         },

@@ -11,70 +11,35 @@ vim.keymap.set(
   "n",
   "<Leader><BS>",
   "<Cmd>bdelete<CR>",
-  { desc = "Unload current buffer" }
+  { desc = "Unload buffer" }
 )
 
 -- Window navigation
-vim.keymap.set(
-  "n",
-  "]w",
-  "<Cmd>wincmd w<CR>",
-  { desc = "Go to next window (wrap around)" }
-)
-vim.keymap.set(
-  "n",
-  "[w",
-  "<Cmd>wincmd W<CR>",
-  { desc = "Go to previous window (wrap around)" }
-)
+vim.keymap.set("n", "]w", "<Cmd>wincmd w<CR>", { desc = "Next window" })
+vim.keymap.set("n", "[w", "<Cmd>wincmd W<CR>", { desc = "Previous window" })
 vim.keymap.set(
   "n",
   "<BS>",
   "<Cmd>wincmd p<CR>",
-  { desc = "Go to last accessed window" }
+  { desc = "Last accessed window" }
 )
-vim.keymap.set(
-  "n",
-  "<Left>",
-  "<Cmd>wincmd h<CR>",
-  { desc = "Go to left window (stop at first)" }
-)
-vim.keymap.set(
-  "n",
-  "<Down>",
-  "<Cmd>wincmd j<CR>",
-  { desc = "Go to window below (stop at last)" }
-)
-vim.keymap.set(
-  "n",
-  "<Up>",
-  "<Cmd>wincmd k<CR>",
-  { desc = "Go to window above (stop at first)" }
-)
-vim.keymap.set(
-  "n",
-  "<Right>",
-  "<Cmd>wincmd l<CR>",
-  { desc = "Go to right window (stop at last)" }
-)
-vim.keymap.set(
-  "n",
-  "<A-c>",
-  "<Cmd>wincmd c<CR>",
-  { desc = "Close current window" }
-)
+vim.keymap.set("n", "<Left>", "<Cmd>wincmd h<CR>", { desc = "Left window" })
+vim.keymap.set("n", "<Down>", "<Cmd>wincmd j<CR>", { desc = "Below window" })
+vim.keymap.set("n", "<Up>", "<Cmd>wincmd k<CR>", { desc = "Above window" })
+vim.keymap.set("n", "<Right>", "<Cmd>wincmd l<CR>", { desc = "Right window" })
+vim.keymap.set("n", "<A-c>", "<Cmd>wincmd c<CR>", { desc = "Close window" })
 vim.keymap.set(
   "n",
   "<A-o>",
   "<Cmd>wincmd o<CR>",
-  { desc = "Close all but current window" }
+  { desc = "Close other windows" }
 )
 for i = 1, 9 do
   vim.keymap.set(
     "n",
     string.format("<A-%d>", i),
     string.format("<Cmd>%dwincmd w<CR>", i),
-    { desc = "Go to window " .. i }
+    { desc = "Window " .. i }
   )
 end
 

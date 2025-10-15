@@ -106,20 +106,16 @@ return {
         desc = "LSP: Toggle signature help",
       },
 
-      { "<Leader>nh", "<Cmd>Noice<CR>", desc = "Noice: Show message history" },
-      { "<Leader>nl", "<Cmd>NoiceLast<CR>", desc = "Noice: Show last message" },
+      { "<Leader>nh", "<Cmd>Noice<CR>", desc = "Show message history" },
+      { "<Leader>nl", "<Cmd>NoiceLast<CR>", desc = "Show last message" },
       {
         "<Leader>nd",
         "<Cmd>NoiceDismiss<CR>",
-        desc = "Noice: Dismiss all visible messages",
+        desc = "Dismiss all visible messages",
       },
-      {
-        "<Leader>ne",
-        "<Cmd>NoiceErrors<CR>",
-        desc = "Noice: Show error messages",
-      },
-      { "<Leader>na", "<Cmd>NoiceAll<CR>", desc = "Noice: Show all messages" },
-      { "<Leader>np", "<Cmd>NoicePick<CR>", desc = "Noice: Open picker" },
+      { "<Leader>ne", "<Cmd>NoiceErrors<CR>", desc = "Show error messages" },
+      { "<Leader>na", "<Cmd>NoiceAll<CR>", desc = "Show all messages" },
+      { "<Leader>np", "<Cmd>NoicePick<CR>", desc = "Open picker" },
     },
   },
 }
