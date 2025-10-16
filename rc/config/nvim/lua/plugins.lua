@@ -1,7 +1,7 @@
 return {
   {
     "numToStr/Comment.nvim",
-    lazy = false, -- To allow which-key to load descriptions for mappings
+    event = "VeryLazy", -- To allow which-key to load descriptions for mappings
 
     opts = {},
   },

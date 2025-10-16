@@ -75,7 +75,7 @@ return {
         mode = { "n", "i", "s" },
         silent = true,
         expr = true,
-        desc = "Scroll forward (page or LSP hover/signature)",
+        desc = "Scroll forward",
       },
       {
         "<C-b>",
@@ -85,7 +85,7 @@ return {
         mode = { "n", "i", "s" },
         silent = true,
         expr = true,
-        desc = "Scroll backward (page or LSP hover/signature)",
+        desc = "Scroll backward",
       },
 
       {

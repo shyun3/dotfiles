@@ -1,7 +1,6 @@
 return {
   {
     "mason-org/mason.nvim", -- Must be loaded before all Mason plugins
-    lazy = false,
 
     -- PATH should be updated early
     priority = 100,
@@ -31,6 +30,11 @@ return {
 
         -- Linters
         "shellcheck",
+      },
+
+      integrations = {
+        -- To allow lazy loading of mason-lspconfig
+        ["mason-lspconfig"] = false,
       },
     },
   },
