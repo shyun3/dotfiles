@@ -57,7 +57,7 @@
   "vim-grepper": { "branch": "personal", "commit": "b4d3050d90bb95b5de51e1f3fc072371a2706f87" },
   "vim-gutentags": { "branch": "master", "commit": "aa47c5e29c37c52176c44e61c780032dfacef3dd" },
   "vim-polyglot": { "branch": "master", "commit": "f061eddb7cdcc614c8406847b2bfb53099832a4e" },
-  "vim-project": { "branch": "master", "commit": "3f9c69f48293dcef67c5eef5b1846eb538431a1e" },
+  "vim-project": { "branch": "personal", "commit": "a18ff91ecd91219c30e39597d77ffc0b1abdb409" },
   "vim-projectionist": { "branch": "master", "commit": "5ff7bf79a6ef741036d2038a226bcb5f8b1cd296" },
   "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },

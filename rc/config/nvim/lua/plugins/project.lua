@@ -1,5 +1,10 @@
 return {
-  "amiorin/vim-project",
+  "shyun3/vim-project",
+  branch = "personal",
+
+  init = function()
+    vim.g.project_enable_welcome = 0 -- Handled in config
+  end,
 
   config = function()
     vim.call("project#rc")
