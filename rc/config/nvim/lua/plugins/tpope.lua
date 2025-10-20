@@ -25,15 +25,5 @@ return {
   "tpope/vim-projectionist",
   "tpope/vim-repeat",
 
-  {
-    "tpope/vim-surround",
-    event = "ModeChanged",
-
-    init = function()
-      -- To allow remapping i_<C-s>
-      vim.g.surround_no_insert_mappings = 1
-    end,
-  },
-
   { "tpope/vim-unimpaired", event = "VeryLazy" },
 }
