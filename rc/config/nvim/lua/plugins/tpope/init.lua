@@ -23,7 +23,6 @@ return {
 
   { "tpope/vim-fugitive", cmd = "Git" },
   "tpope/vim-projectionist",
-  "tpope/vim-repeat",
 
-  { "tpope/vim-unimpaired", event = "VeryLazy" },
+  { import = "plugins.tpope.unimpaired" },
 }
