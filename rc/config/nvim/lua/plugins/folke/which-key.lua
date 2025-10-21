@@ -6,10 +6,14 @@ return {
     preset = "modern",
 
     spec = {
+      { "u", desc = "Undo" },
+      { "U", desc = "Undo all on latest line" },
       { "K", desc = "LSP: Hover" },
       { "Y", desc = "Yank to end of line" },
+      { ".", desc = "Repeat" },
       { "&", desc = "Repeat last substitute with flags" },
       { "<C-l>", desc = "Clear and redraw screen" },
+      { "<C-r>", desc = "Redo" },
 
       { "gq", mode = { "n", "x" }, desc = "Custom format lines" },
       { "gri", desc = "Implementations" },
