@@ -87,6 +87,13 @@ return {
         desc = "Help",
       },
     },
+
+    triggers = {
+      -- Default must be specified if customizing triggers
+      { "<auto>", mode = "nixsotc" },
+
+      { "S" }, -- Used by surround plugins
+    },
   },
 
   config = function(_, opts)
