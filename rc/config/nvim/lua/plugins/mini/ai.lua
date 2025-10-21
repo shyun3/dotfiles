@@ -104,6 +104,7 @@ return {
           end,
 
           i = gen_ai_spec.indent(),
+          l = gen_ai_spec.line(),
         },
 
         mappings = {
