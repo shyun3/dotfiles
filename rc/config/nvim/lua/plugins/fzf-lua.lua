@@ -43,12 +43,26 @@ return {
     require("which-key").add({
       { "grs", desc = "Horizontal split" },
       { "grv", desc = "Vertical split" },
+      { "<Leader>f", desc = "fzf-lua" },
       { "<Leader>s", desc = "Horizontal split" },
       { "<Leader>v", desc = "Vertical split" },
     })
   end,
 
   keys = {
+    {
+      "<Leader>fb",
+      "<Cmd>FzfLua builtin<CR>",
+      desc = "Built-in commands",
+    },
+    {
+      "<Leader>fk",
+      function()
+        require("fzf-lua").keymaps({ modes = { "n", "i", "c", "v", "o", "t" } })
+      end,
+      desc = "Keymaps",
+    },
+
     {
       "<C-p>",
       function()
@@ -116,11 +130,6 @@ return {
       "<C-j>",
       "<Cmd>FzfLua blines show_unlisted=true<CR>",
       desc = "fzf-lua: Current buffer lines",
-    },
-    {
-      "<Leader>f",
-      "<Cmd>FzfLua builtin<CR>",
-      desc = "fzf-lua: Built-in commands",
     },
     {
       "<Leader>;",
