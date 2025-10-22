@@ -60,7 +60,7 @@ return {
       { "<C-u>", mode = "i", desc = "Delete characters before cursor" },
       { "<C-w>", mode = "i", desc = "Delete word before cursor" },
 
-      -- Visual mode
+      -- Visual and operator-pending modes
       {
         "Q",
         mode = "x",
@@ -72,6 +72,13 @@ return {
         desc = "Execute register contents for each line (linewise only)",
       },
       { "a%", mode = "x", desc = "Matching group" },
+      {
+        "g%",
+        mode = { "o", "x" },
+        desc = "Cycle backwards through matching groups",
+      },
+      { "[%", mode = { "o", "x" }, desc = "Previous unmatched group" },
+      { "]%", mode = { "o", "x" }, desc = "Next unmatched group" },
 
       -- Open tags in splits
       { "<A-]>", desc = "Tag" },
