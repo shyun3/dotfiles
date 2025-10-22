@@ -3,6 +3,17 @@ return {
   { "rcarriga/nvim-notify", lazy = true, opts = { stages = "slide" } },
 
   {
+    require("lazy-deps").which_key,
+    optional = true,
+
+    opts = {
+      spec = {
+        { "<Leader>n", desc = "Noice" },
+      },
+    },
+  },
+
+  {
     "folke/noice.nvim",
     event = "VeryLazy",
 
@@ -55,12 +66,6 @@ return {
         lsp_doc_border = true, -- add a border to hover docs and signature help
       },
     },
-
-    config = function(_, opts)
-      require("noice").setup(opts)
-
-      require("which-key").add({ "<Leader>n", desc = "Noice" })
-    end,
 
     keys = {
       -- Lsp Hover Doc Scrolling
