@@ -50,6 +50,12 @@ return {
       { "]<C-q>", desc = "Quickfix: Display first error in next file" },
       { "]<C-t>", desc = "Jump to next matching tag in preview window" },
 
+      -- Groups
+      { "=", mode = { "n", "x" }, desc = "Reindent" },
+      { "[", mode = { "n", "x", "o" }, desc = "Previous" },
+      { "]", mode = { "n", "x", "o" }, desc = "Next" },
+      { "<Leader>", mode = { "n", "x", "o" }, desc = "Leader" },
+
       -- Insert mode
       { "<C-u>", mode = "i", desc = "Delete characters before cursor" },
       { "<C-w>", mode = "i", desc = "Delete word before cursor" },
