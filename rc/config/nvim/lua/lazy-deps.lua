@@ -3,4 +3,5 @@ return {
   autopairs = "windwp/nvim-autopairs",
   endwise = "shyun3/vim-endwise",
   lspconfig = "neovim/nvim-lspconfig",
+  which_key = "folke/which-key.nvim",
 }

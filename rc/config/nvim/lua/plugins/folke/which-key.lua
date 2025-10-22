@@ -1,6 +1,8 @@
 return {
-  "folke/which-key.nvim",
+  require("lazy-deps").which_key,
   event = "VeryLazy",
+
+  opts_extend = { "spec", "triggers" },
 
   opts = {
     preset = "modern",
@@ -95,8 +97,6 @@ return {
     triggers = {
       -- Default must be specified if customizing triggers
       { "<auto>", mode = "nixsotc" },
-
-      { "s" }, -- Used by surround plugins
     },
   },
 
