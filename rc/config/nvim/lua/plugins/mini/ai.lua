@@ -1,44 +1,44 @@
 --- See `MiniAi-glossary`
---- @alias ComposedPatternElem string | string[] | ComposedPatternElem[]
---- @alias ComposedPattern ComposedPatternElem[]
+---@alias ComposedPatternElem string | string[] | ComposedPatternElem[]
+---@alias ComposedPattern ComposedPatternElem[]
 ---
---- @alias RegionPosition {line: integer, col: integer, vis_mode: "v" | "V" | "\22" | nil}
+---@alias RegionPosition {line: integer, col: integer, vis_mode: "v" | "V" | "\22" | nil}
 ---
---- @class Region
---- @field from RegionPosition
---- @field to? RegionPosition
+---@class Region
+---@field from RegionPosition
+---@field to? RegionPosition
 
 --- See `config.search_method`
---- @alias SearchMethod
---- | "cover"
---- | "cover_or_next"
---- | "cover_or_prev"
---- | "cover_or_nearest"
---- | "next"
---- | "prev"
---- | "nearest"
+---@alias SearchMethod
+---| "cover"
+---| "cover_or_next"
+---| "cover_or_prev"
+---| "cover_or_nearest"
+---| "next"
+---| "prev"
+---| "nearest"
 
 --- See 'MiniAi.find_textobject()'
---- @class FindTextObjectOpts
---- @field n_lines? integer Default: `config.n_lines`
---- @field n_times? integer Default: 1
---- @field reference_region? Region Default: empty region at cursor position
---- @field search_method? SearchMethod Default: `config.search_method`
+---@class FindTextObjectOpts
+---@field n_lines? integer Default: `config.n_lines`
+---@field n_times? integer Default: 1
+---@field reference_region? Region Default: empty region at cursor position
+---@field search_method? SearchMethod Default: `config.search_method`
 
 --- See `MiniAi-textobject-specification`
---- @alias TextObjectSpecPatternElem ComposedPatternElem | fun(line: integer, init: integer): [integer, integer]?
---- @alias CallableTextObjectSpec fun(ai_type: "a" | "i", id: string, opts: FindTextObjectOpts?): ComposedPattern | Region | Region[]
---- @alias TextObjectSpec TextObjectSpecPatternElem[] | CallableTextObjectSpec
+---@alias TextObjectSpecPatternElem ComposedPatternElem | fun(line: integer, init: integer): [integer, integer]?
+---@alias CallableTextObjectSpec fun(ai_type: "a" | "i", id: string, opts: FindTextObjectOpts?): ComposedPattern | Region | Region[]
+---@alias TextObjectSpec TextObjectSpecPatternElem[] | CallableTextObjectSpec
 
 --- See `MiniAi.gen_spec.treesitter`
---- @class TreesitterAiCaptures
---- @field a string | string[] Captures for `a` text objects (should start with "@")
---- @field i string | string[] Captures for `i` text objects
+---@class TreesitterAiCaptures
+---@field a string | string[] Captures for `a` text objects (should start with "@")
+---@field i string | string[] Captures for `i` text objects
 
 --- Helper for creating a treesitter text object specification
 ---
---- @param ai_captures TreesitterAiCaptures
---- @param fallback TextObjectSpec?
+---@param ai_captures TreesitterAiCaptures
+---@param fallback TextObjectSpec?
 local function spec_treesitter(ai_captures, fallback)
   return function(ai_type)
     local ts_region = require("nvim-treesitter.parsers").has_parser()

@@ -1,15 +1,15 @@
---- @alias QfTabWinFunc
---- | "QFEnter#GetTabWinNR_Open"
---- | "QFEnter#GetTabWinNR_VOpen"
---- | "QFEnter#GetTabWinNR_HOpen"
---- | "QFEnter#GetTabWinNR_TOpen"
+---@alias QfTabWinFunc
+---| "QFEnter#GetTabWinNR_Open"
+---| "QFEnter#GetTabWinNR_VOpen"
+---| "QFEnter#GetTabWinNR_HOpen"
+---| "QFEnter#GetTabWinNR_TOpen"
 
---- @alias QfOpenCmd "cc" | "cn" | "cp"
+---@alias QfOpenCmd "cc" | "cn" | "cp"
 
---- @class QfCmdSpec
---- @field tabwinfunc QfTabWinFunc
---- @field qfopencmd QfOpenCmd
---- @field keepfocus boolean
+---@class QfCmdSpec
+---@field tabwinfunc QfTabWinFunc
+---@field qfopencmd QfOpenCmd
+---@field keepfocus boolean
 
 --- Taken from plugin/QFEnter.vim
 local cmd_action_map = {
@@ -25,7 +25,7 @@ local cmd_action_map = {
   },
 }
 
---- @param cmd_spec QfCmdSpec
+---@param cmd_spec QfCmdSpec
 local function make_qfenter_cmd(cmd_spec)
   return function()
     vim.fn["QFEnter#OpenQFItem"](

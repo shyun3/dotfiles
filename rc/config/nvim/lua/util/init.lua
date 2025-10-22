@@ -1,4 +1,4 @@
---- @alias ModeShortName "n" | "v" | "o" | "i" | "c" | "s" | "x" | "l" | "t" | ""
+---@alias ModeShortName "n" | "v" | "o" | "i" | "c" | "s" | "x" | "l" | "t" | ""
 
 local M = { column_limit = 80 }
 
@@ -51,9 +51,9 @@ function M.replace_termcodes(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
---- @param mode ModeShortName
---- @param lhs string Left-hand side of mapping
---- @param desc string New mapping description
+---@param mode ModeShortName
+---@param lhs string Left-hand side of mapping
+---@param desc string New mapping description
 function M.update_keymap_desc(mode, lhs, desc)
   local map = vim.fn.maparg(lhs, mode, false, true)
   if vim.tbl_isempty(map) then
@@ -75,7 +75,7 @@ end
 
 --- Derived from https://github.com/kevinhwang91/nvim-bqf/issues/85#issuecomment-1298008156
 ---
---- @param items vim.quickfix.entry[]
+---@param items vim.quickfix.entry[]
 function M.sort_qf_list(items)
   table.sort(items, function(a, b)
     if a.bufnr == b.bufnr then

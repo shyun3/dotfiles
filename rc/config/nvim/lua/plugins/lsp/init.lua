@@ -2,7 +2,7 @@
 ---
 --- Derived from inc-rename.nvim
 ---
---- @param changes WorkspaceChanges
+---@param changes WorkspaceChanges
 local function notify_renames(changes)
   local instances = 0
   local files = 0
@@ -24,7 +24,7 @@ end
 
 --- Populates a new quickfix list with the given changes
 ---
---- @param result table WorkspaceEdit
+---@param result table WorkspaceEdit
 local function pop_quickfix(result)
   local changes = require("util.lsp").parse_workspace_edit(result)
   notify_renames(changes)

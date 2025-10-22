@@ -1,12 +1,12 @@
---- @alias WorkspaceChanges table<string, table> # DocumentUri to TextEdit[]
+---@alias WorkspaceChanges table<string, table> # DocumentUri to TextEdit[]
 
 local M = {}
 
 --- Parses a WorkspaceEdit object into a common form
 ---
---- @param result table WorkspaceEdit
+---@param result table WorkspaceEdit
 ---
---- @return WorkspaceChanges
+---@return WorkspaceChanges
 function M.parse_workspace_edit(result)
   local changes = {}
   if result.documentChanges then

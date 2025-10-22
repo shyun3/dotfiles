@@ -1,4 +1,4 @@
---- @type table<string, vim.lsp.Config>
+---@type table<string, vim.lsp.Config>
 local lsp_configs = {
   ts_query_ls = {
     settings = {

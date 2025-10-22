@@ -1,10 +1,10 @@
---- @alias FtKey "f" | "F" | "t" | "T"
+---@alias FtKey "f" | "F" | "t" | "T"
 
 --- Retrieve f/t specific hop options
 ---
---- @param key FtKey
+---@param key FtKey
 ---
---- @return table<FtKey, Options>
+---@return table<FtKey, Options>
 local function ft_opts(key)
   local hop_hint = require("hop.hint")
   local opts = {
@@ -33,9 +33,9 @@ end
 
 --- Same as private `override_opts` in `hop`, but does not check options
 ---
---- @param opts Options
+---@param opts Options
 ---
---- @return Options
+---@return Options
 local function override_opts(opts)
   return setmetatable(opts or {}, { __index = require("hop").opts })
 end
@@ -49,9 +49,9 @@ end
 ---
 --- Technique derived from mini.jump
 ---
---- @param key FtKey
+---@param key FtKey
 ---
---- @return fun(): string
+---@return fun(): string
 local function make_expr_hop_ft(key)
   return function()
     local target = require("hop").get_input_pattern("Hop 1 char: ", 1)
@@ -69,8 +69,8 @@ end
 ---
 --- This is global to allow use in expression mappings
 ---
---- @param key FtKey
---- @param target string
+---@param key FtKey
+---@param target string
 function _G.hop_ft(key, target)
   -- Gather any typed characters remaining in the input stream. These may be
   -- present when dot repeating a 'c' operation with a hop. This is necessary
@@ -112,7 +112,7 @@ return {
     --- is forced, even though the hop gets cancelled. Of course, this assumes
     --- that the hop uses this function.
     ---
-    --- @diagnostic disable-next-line:duplicate-set-field
+    ---@diagnostic disable-next-line:duplicate-set-field
     hop.hint_with_callback = function(...)
       orig_hint_with_callback(...)
       if not hopped then require("util").reset_forced_motion() end
@@ -124,7 +124,7 @@ return {
     --- Same as `move_cursor_to` but records if a hop was executed. Of course,
     --- this assumes that the hop uses this function.
     ---
-    --- @diagnostic disable-next-line:duplicate-set-field
+    ---@diagnostic disable-next-line:duplicate-set-field
     hop.move_cursor_to = function(...)
       orig_move_cursor_to(...)
       hopped = true
@@ -139,7 +139,7 @@ return {
     --- Same as `get_input_pattern` except it changes the cursor shape to the
     --- default shape used in operator pending mode during the prompt
     ---
-    --- @diagnostic disable-next-line: duplicate-set-field
+    ---@diagnostic disable-next-line: duplicate-set-field
     hop.get_input_pattern = function(...)
       local last_gcr = vim.o.guicursor
 
