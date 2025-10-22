@@ -12,7 +12,9 @@ return {
     for key, desc in pairs(key_descs) do
       for _, prefix in pairs({ "a", "i" }) do
         require("which-key").add({
-          { prefix .. key, mode = { "o", "x" }, desc = desc },
+          prefix .. key,
+          mode = { "o", "x" },
+          desc = desc,
         })
       end
     end

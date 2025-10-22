@@ -20,9 +20,7 @@ return {
     config = function(_, opts)
       require("goto-preview").setup(opts)
 
-      require("which-key").add({
-        { "gp", desc = "Preview LSP" },
-      })
+      require("which-key").add({ "gp", desc = "Preview LSP" })
     end,
   },
 }

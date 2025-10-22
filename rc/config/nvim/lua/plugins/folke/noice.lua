@@ -59,9 +59,7 @@ return {
     config = function(_, opts)
       require("noice").setup(opts)
 
-      require("which-key").add({
-        { "<Leader>n", desc = "Noice" },
-      })
+      require("which-key").add({ "<Leader>n", desc = "Noice" })
     end,
 
     keys = {

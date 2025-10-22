@@ -100,9 +100,7 @@ return {
     config = function(_, opts)
       require("nvim-surround").setup(opts)
 
-      require("which-key").add({
-        { "S", desc = "Surround" },
-      })
+      require("which-key").add({ "S", desc = "Surround" })
     end,
   },
 
