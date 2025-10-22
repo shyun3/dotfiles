@@ -13,6 +13,11 @@
 
 --- Taken from plugin/QFEnter.vim
 local cmd_action_map = {
+  open = {
+    tabwinfunc = "QFEnter#GetTabWinNR_Open",
+    qfopencmd = "cc",
+    keepfocus = false,
+  },
   vopen = {
     tabwinfunc = "QFEnter#GetTabWinNR_VOpen",
     qfopencmd = "cc",
@@ -50,6 +55,19 @@ return {
   end,
 
   keys = {
+    {
+      "<CR>",
+      make_qfenter_cmd(cmd_action_map.open),
+      ft = "qf",
+      desc = "Open item",
+    },
+    {
+      "o",
+      "<CR><Cmd>cclose<CR>",
+      ft = "qf",
+      remap = true,
+      desc = "Open item and close quickfix window",
+    },
     {
       "<C-s>",
       make_qfenter_cmd(cmd_action_map.hopen),
