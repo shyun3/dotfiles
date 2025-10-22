@@ -192,7 +192,7 @@ return {
       },
 
       {
-        "grt", -- Overwrites default, see `lsp-defaults`
+        "grt",
         "<Cmd>FzfLua lsp_typedefs jump1=true<CR>",
         desc = "fzf-lua: Type definitions",
       },
@@ -259,7 +259,8 @@ return {
 
       {
         "gra",
-        "<Cmd> FzfLua lsp_code_actions silent=true<CR>",
+        "<Cmd>FzfLua lsp_code_actions silent=true<CR>",
+        mode = { "n", "x" },
         desc = "fzf-lua: LSP code actions",
       },
     },
