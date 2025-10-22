@@ -2,6 +2,10 @@ return {
   require("lazy-deps").which_key,
   event = "VeryLazy",
 
+  init = function()
+    vim.o.timeoutlen = 500 -- To quickly trigger which-key
+  end,
+
   opts_extend = { "spec", "triggers" },
 
   opts = {
