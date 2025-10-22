@@ -27,7 +27,12 @@ return {
     config = true,
 
     keys = {
-      { "gx", "<Cmd>Browse<CR>", mode = { "n", "x" } },
+      {
+        "gx",
+        "<Cmd>Browse<CR>",
+        mode = { "n", "x" },
+        desc = "Open link in browser",
+      },
     },
   },
 
