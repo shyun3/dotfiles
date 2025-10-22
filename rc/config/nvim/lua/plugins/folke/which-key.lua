@@ -96,7 +96,7 @@ return {
       -- Default must be specified if customizing triggers
       { "<auto>", mode = "nixsotc" },
 
-      { "S" }, -- Used by surround plugins
+      { "s" }, -- Used by surround plugins
     },
   },
 

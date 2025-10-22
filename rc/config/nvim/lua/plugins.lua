@@ -71,21 +71,19 @@ return {
 
   {
     "kylechui/nvim-surround",
-
-    -- So that which-key will properly list surround group at startup
-    event = "VeryLazy",
+    event = "VeryLazy", -- To allow which-key to load mapping descriptions
 
     opts = {
       keymaps = {
-        normal = "Sy",
-        normal_cur = "Syy",
-        normal_line = "SY",
-        normal_cur_line = "SYY",
+        normal = "sy",
+        normal_cur = "syy",
+        normal_line = "sY",
+        normal_cur_line = "sYY",
 
-        delete = "Sd",
+        delete = "sd",
 
-        change = "Sc",
-        change_line = "SC",
+        change = "sc",
+        change_line = "sC",
       },
 
       aliases = {
@@ -96,12 +94,6 @@ return {
         s = false,
       },
     },
-
-    config = function(_, opts)
-      require("nvim-surround").setup(opts)
-
-      require("which-key").add({ "S", desc = "Surround" })
-    end,
   },
 
   {
