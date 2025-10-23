@@ -134,6 +134,12 @@ return {
 
   keys = {
     { "<Leader>?", "<Cmd>WhichKey<CR>", desc = "which-key: Show mappings" },
+    {
+      "<Leader>l?",
+      function() require("which-key").show({ global = false }) end,
+      desc = "which-key: Show buffer-local mappings",
+    },
+
     { "<C-q>", mode = { "i", "v", "c", "o" } },
   },
 }
