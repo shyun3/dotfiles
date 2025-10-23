@@ -13,4 +13,6 @@ return {
       { "<Leader>gb", "<Cmd>Gitsigns blame<CR>", desc = "Git: Blame" },
     },
   },
+
+  { import = "plugins.git.neogit" },
 }
