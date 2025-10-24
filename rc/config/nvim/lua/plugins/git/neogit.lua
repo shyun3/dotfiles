@@ -4,7 +4,14 @@ return {
   {
     "NeogitOrg/neogit",
 
-    config = true,
+    opts = {
+      -- Currently, this plugin is only being used for log
+      filewatcher = { enabled = false },
+      auto_refresh = false,
+
+      kind = "floating",
+      log_view = { kind = "split_below_all" },
+    },
 
     cmd = "Neogit",
 
