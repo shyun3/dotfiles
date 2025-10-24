@@ -99,11 +99,14 @@ return {
           local proj_name = vim.b[buf_id].title -- From vim-project
           if proj_name then return proj_name end
 
-          if vim.bo[buf_id].filetype == "oil" then
+          local filetype = vim.bo[buf_id].filetype
+          if filetype == "oil" then
             local raw_buf_name = vim.api.nvim_buf_get_name(buf_id)
             local path =
               vim.fn.fnamemodify(require("util").oil_filter(raw_buf_name), ":~")
             return #path < 20 and path or vim.fn.pathshorten(path)
+          elseif filetype == "gitsigns-blame" then
+            return filetype
           else
             -- Not an oil path
             return win.buf_name()
