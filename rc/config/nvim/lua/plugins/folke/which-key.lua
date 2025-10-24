@@ -99,18 +99,11 @@ return {
         desc = "Open definition in vertical split",
       },
 
-      -- Close windows
-      { "<Leader>q", desc = "Close window" },
-      {
-        "<Leader>qq",
-        "<Cmd>cclose<CR>",
-        desc = "Quickfix",
-      },
-      {
-        "<Leader>qh",
-        "<Cmd>helpclose<CR>",
-        desc = "Help",
-      },
+      -- Close
+      { "<Leader>q", desc = "Close" },
+      { "<Leader>qq", "<Cmd>cclose<CR>", desc = "Quickfix" },
+      { "<Leader>qh", "<Cmd>helpclose<CR>", desc = "Help" },
+      { "<Leader>qt", "<Cmd>tabclose<CR>", desc = "Tab" },
     },
 
     triggers = {
