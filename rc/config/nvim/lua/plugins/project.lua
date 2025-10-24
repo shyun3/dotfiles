@@ -1,51 +1,76 @@
 return {
-  "shyun3/vim-project",
-  branch = "personal",
+  {
+    require("lazy-deps").which_key,
 
-  init = function()
-    vim.g.project_enable_welcome = 0 -- Handled in config
-  end,
+    opts = {
+      spec = {
+        { "<Leader>p", desc = "Project" },
+      },
+    },
+  },
 
-  config = function()
-    vim.call("project#rc")
+  {
+    "shyun3/vim-project",
+    branch = "personal",
 
-    local group = vim.api.nvim_create_augroup("user_project", {})
-    vim.api.nvim_create_autocmd("BufEnter", {
-      group = group,
-      pattern = "oil://*",
-      desc = "Execute vim-project autocommand",
+    lazy = false, -- To show welcome screen on startup
 
-      callback = function(args)
-        vim.cmd.doautocmd({
-          "vim_project",
-          "BufEnter",
-          require("util").oil_filter(args.file),
-        })
-      end,
-    })
+    init = function()
+      vim.g.project_enable_welcome = 0 -- Handled in config
+    end,
 
-    local projects = vim.fn.stdpath("config") .. "/projects.vim"
-    if vim.fn.filereadable(projects) == 0 then return end
+    config = function()
+      vim.call("project#rc")
 
-    vim.cmd.source(projects)
-
-    if vim.fn.argc(-1) == 0 then
-      -- Show welcome screen on startup, making sure to display it on the main
-      -- window and not in the Lazy floating window which pops up when
-      -- installing missing plugins
-      vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
+      local group = vim.api.nvim_create_augroup("user_project", {})
+      vim.api.nvim_create_autocmd("BufEnter", {
         group = group,
-        pattern = "*",
-        once = true,
-        desc = "Show vim-project welcome screen",
+        pattern = "oil://*",
+        desc = "Execute vim-project autocommand",
 
-        callback = function()
-          if vim.fn.winnr() ~= 1 then return end
-
-          -- Derived from project.vim
-          if vim.fn.line2byte(vim.fn.line("$")) == -1 then vim.cmd.Welcome() end
+        callback = function(args)
+          vim.cmd.doautocmd({
+            "vim_project",
+            "BufEnter",
+            require("util").oil_filter(args.file),
+          })
         end,
       })
-    end
-  end,
+
+      local projects = vim.fn.stdpath("config") .. "/projects.vim"
+      if vim.fn.filereadable(projects) == 0 then return end
+
+      vim.cmd.source(projects)
+
+      if vim.fn.argc(-1) == 0 then
+        -- Show welcome screen on startup, making sure to display it on the main
+        -- window and not in the Lazy floating window which pops up when
+        -- installing missing plugins
+        vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter" }, {
+          group = group,
+          pattern = "*",
+          once = true,
+          desc = "Show vim-project welcome screen",
+
+          callback = function()
+            if vim.fn.winnr() ~= 1 then return end
+
+            -- Derived from project.vim
+            if vim.fn.line2byte(vim.fn.line("$")) == -1 then
+              vim.cmd.Welcome()
+            end
+          end,
+        })
+      end
+    end,
+
+    keys = {
+      { "<Leader>pw", "<Cmd>Welcome<CR>" },
+      {
+        "<Leader>pt",
+        "<Cmd>tabedit | Welcome<CR>",
+        desc = "Welcome in new tab",
+      },
+    },
+  },
 }
