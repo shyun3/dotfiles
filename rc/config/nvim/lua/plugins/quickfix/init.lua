@@ -12,9 +12,6 @@ return {
           if fsize > 100 * 1024 then
             -- skip file size greater than 100k
             ret = false
-          elseif bufname:match("^fugitive://") then
-            -- skip fugitive buffer
-            ret = false
           end
           return ret
         end,

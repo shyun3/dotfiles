@@ -21,7 +21,6 @@ return {
     end,
   },
 
-  { "tpope/vim-fugitive", cmd = "Git" },
   "tpope/vim-projectionist",
 
   { import = "plugins.tpope.unimpaired" },
