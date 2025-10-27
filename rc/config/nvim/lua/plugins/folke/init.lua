@@ -21,6 +21,11 @@ return {
         function() Snacks.lazygit() end,
         desc = "Open lazygit",
       },
+      {
+        "<Leader>lf",
+        function() Snacks.lazygit.log_file() end,
+        desc = "lazygit: Open log of current file",
+      },
     },
   },
 
