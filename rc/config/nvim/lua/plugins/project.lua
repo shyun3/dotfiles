@@ -1,6 +1,7 @@
 return {
   {
     require("lazy-deps").which_key,
+    optional = true,
 
     opts = {
       spec = {

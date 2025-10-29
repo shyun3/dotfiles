@@ -2,17 +2,6 @@ return {
   { "rmagatti/logger.nvim", lazy = true },
 
   {
-    require("lazy-deps").which_key,
-    optional = true,
-
-    opts = {
-      spec = {
-        { "gp", desc = "Preview LSP" },
-      },
-    },
-  },
-
-  {
     "rmagatti/goto-preview",
     event = "LspAttach",
 
@@ -27,5 +16,13 @@ return {
         vim.api.nvim_set_option_value("winhighlight", "Normal:", { win = win })
       end,
     },
+
+    config = function(_, opts)
+      require("goto-preview").setup(opts)
+
+      require("which-key").add({
+        { "gp", desc = "Preview LSP" },
+      })
+    end,
   },
 }
