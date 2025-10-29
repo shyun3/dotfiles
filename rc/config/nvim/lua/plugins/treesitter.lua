@@ -74,21 +74,6 @@ return {
 
           -- Automatically jump forward to textobj, similar to targets.vim
           lookahead = false,
-
-          keymaps = {
-            -- For capture groups defined in textobjects.scm, see mini.ai config
-
-            ad = {
-              -- Derived from https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/439#issuecomment-1505411083
-              query = "@string.documentation",
-              query_group = "highlights",
-              desc = "Docstring",
-            },
-            id = {
-              query = "@documentation.inner",
-              desc = "Docstring",
-            },
-          },
         },
 
         move = {

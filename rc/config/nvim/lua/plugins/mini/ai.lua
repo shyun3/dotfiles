@@ -92,6 +92,7 @@ return {
 
           k = spec_treesitter({ a = "@class.outer", i = "@class.inner" }),
           F = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
+          S = spec_treesitter({ a = "@string.outer", i = "@string.inner" }),
           [";"] = spec_treesitter({ a = "@block.outer", i = "@block.inner" }),
 
           -- Whole buffer
@@ -117,9 +118,10 @@ return {
         ["?"] = "User prompt",
         a = "Argument",
         f = "Function call",
-        k = "Class",
-        F = "Function",
-        [";"] = "Treesitter block",
+        k = "Treesitter: Class",
+        F = "Treesitter: Function",
+        S = "Treesitter: String",
+        [";"] = "Treesitter: Block",
         g = "Whole buffer",
         i = "Indent level",
       }

@@ -1,6 +1,7 @@
 ; extends
 
-; Taken from https://github.com/ColinKennedy/nvim-treesitter-textobjects/commit/92e256d32518f895f392a21dd43924f2219cde4d
-(expression_statement
-  (string
-    (string_content) @documentation.inner)) @documentation.outer
+; Taken from https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/807#issuecomment-3318666949
+(string
+  (string_start)
+  _* @string.inner
+  (string_end)) @string.outer
