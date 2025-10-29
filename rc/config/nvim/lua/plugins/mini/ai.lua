@@ -104,14 +104,7 @@ return {
           end,
 
           i = gen_ai_spec.indent(),
-          l = gen_ai_spec.line(),
-        },
-
-        mappings = {
-          around_next = "",
-          inside_next = "",
-          around_last = "",
-          inside_last = "",
+          L = gen_ai_spec.line(),
         },
 
         n_lines = 1000,

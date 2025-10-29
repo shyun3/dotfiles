@@ -65,8 +65,6 @@ return {
       { "<C-w>", mode = "i", desc = "Delete word before cursor" },
 
       -- Visual and operator-pending modes
-      { "an", mode = "x", desc = "LSP: Outer incremental selection" },
-      { "in", mode = "x", desc = "LSP: Inner incremental selection" },
       {
         "Q",
         mode = "x",
