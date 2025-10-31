@@ -46,12 +46,6 @@ return {
           view = "notify",
           filter = { event = "msg_showmode" },
         },
-
-        -- Suppress hop prompts
-        {
-          filter = { kind = "echo", find = "^Hop [^:]+: " },
-          opts = { skip = true },
-        },
       },
 
       presets = {

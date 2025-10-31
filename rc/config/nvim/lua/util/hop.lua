@@ -39,7 +39,7 @@ function M.hintTill1()
   local hop = require("hop")
   local opts = hop.opts
 
-  local c = hop.get_input_pattern("", 1)
+  local c = hop.get_input_pattern("Hop 1 char: ", 1)
   if not c then
     require("util").reset_forced_motion()
     return
