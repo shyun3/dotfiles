@@ -277,7 +277,12 @@ return {
     "tadaa/vimade",
     event = "VeryLazy",
 
-    opts = { ncmode = "windows", fadelevel = 0.6 },
+    opts = {
+      ncmode = "windows",
+      fadelevel = 0.6,
+      enablefocusfading = true,
+      usecursorhold = true,
+    },
   },
 
   {
