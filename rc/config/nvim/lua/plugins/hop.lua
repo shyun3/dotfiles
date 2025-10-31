@@ -5,6 +5,12 @@
 ---@type fun(prompt: string, maxchar: number?, opts: Options?): string?
 local orig_get_input_pattern
 
+---@type FtKey?
+local last_ft_key_
+
+---@type string?
+local last_ft_char_
+
 --- Retrieve f/t specific hop options
 ---
 ---@param key FtKey
@@ -47,31 +53,37 @@ end
 
 --- f/t hop specific `get_input_pattern`
 ---
+---@param key FtKey
 ---@param maxchar number?
 ---@param opts Options?
 ---
 ---@return string?
-local function get_ft_input_pattern(maxchar, opts)
-  vim.cmd(".,.Limelight")
+local function get_ft_input_pattern(key, maxchar, opts)
+  vim.cmd(".Limelight")
   local input = orig_get_input_pattern("", maxchar, opts)
   vim.cmd("Limelight!")
+
+  if input then
+    last_ft_key_ = key
+    last_ft_char_ = input
+  end
 
   return input
 end
 
---- Wraps a callback for use by f/t hop
+--- Creates a function for f/t hop
 ---
----@param callback fun()
+---@param key FtKey
 ---
 ---@return fun()
-local function wrap_ft(callback)
+local function make_hop_ft(key)
   return function()
     ---@diagnostic disable-next-line: duplicate-set-field
     require("hop").get_input_pattern = function(_, ...)
-      return get_ft_input_pattern(...)
+      return get_ft_input_pattern(key, ...)
     end
 
-    callback()
+    require("hop").hint_char1(ft_opts(key))
     require("hop").get_input_pattern = orig_get_input_pattern
   end
 end
@@ -90,7 +102,7 @@ end
 ---@return fun(): string
 local function make_expr_hop_ft(key)
   return function()
-    local target = get_ft_input_pattern(1)
+    local target = get_ft_input_pattern(key, 1)
     return target
         and string.format(
           "<Cmd>lua hop_ft([=[%s]=], [=[%s]=])<CR>",
@@ -222,7 +234,7 @@ return {
 
       {
         "f",
-        wrap_ft(function() vim.cmd("HopChar1CurrentLineAC") end),
+        make_hop_ft("f"),
         mode = { "n", "x" },
         desc = "Hop: Enhanced f",
       },
@@ -236,7 +248,7 @@ return {
 
       {
         "F",
-        wrap_ft(function() vim.cmd("HopChar1CurrentLineBC") end),
+        make_hop_ft("F"),
         mode = { "n", "x" },
         desc = "Hop: Enhanced F",
       },
@@ -250,7 +262,7 @@ return {
 
       {
         "t",
-        wrap_ft(function() require("hop").hint_char1(ft_opts("t")) end),
+        make_hop_ft("t"),
         mode = { "n", "x" },
         desc = "Hop: Enhanced t",
       },
@@ -264,7 +276,7 @@ return {
 
       {
         "T",
-        wrap_ft(function() require("hop").hint_char1(ft_opts("T")) end),
+        make_hop_ft("T"),
         mode = { "n", "x" },
         desc = "Hop: Enhanced T",
       },
@@ -274,6 +286,37 @@ return {
         mode = "o",
         expr = true,
         desc = "Hop: Enhanced T",
+      },
+
+      {
+        ";",
+
+        function()
+          if last_ft_key_ and last_ft_char_ then
+            return last_ft_key_ .. last_ft_char_
+          end
+        end,
+
+        mode = { "n", "x", "o" },
+        expr = true,
+        silent = true,
+        desc = "Next f/t/F/T",
+      },
+
+      {
+        ",",
+
+        function()
+          if last_ft_key_ and last_ft_char_ then
+            local key = vim.fn.tr(last_ft_key_, "ftFT", "FTft")
+            return key .. last_ft_char_
+          end
+        end,
+
+        mode = { "n", "x", "o" },
+        expr = true,
+        silent = true,
+        desc = "Previous f/t/F/T",
       },
     },
   },
