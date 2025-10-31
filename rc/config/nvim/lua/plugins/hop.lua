@@ -1,5 +1,10 @@
 ---@alias FtKey "f" | "F" | "t" | "T"
 
+--- Saved original version of hop's `get_input_pattern`
+---
+---@type fun(prompt: string, maxchar: number?, opts: Options?): string?
+local orig_get_input_pattern
+
 --- Retrieve f/t specific hop options
 ---
 ---@param key FtKey
@@ -40,6 +45,37 @@ local function override_opts(opts)
   return setmetatable(opts or {}, { __index = require("hop").opts })
 end
 
+--- f/t hop specific `get_input_pattern`
+---
+---@param maxchar number?
+---@param opts Options?
+---
+---@return string?
+local function get_ft_input_pattern(maxchar, opts)
+  vim.cmd(".,.Limelight")
+  local input = orig_get_input_pattern("", maxchar, opts)
+  vim.cmd("Limelight!")
+
+  return input
+end
+
+--- Wraps a callback for use by f/t hop
+---
+---@param callback fun()
+---
+---@return fun()
+local function wrap_ft(callback)
+  return function()
+    ---@diagnostic disable-next-line: duplicate-set-field
+    require("hop").get_input_pattern = function(_, ...)
+      return get_ft_input_pattern(...)
+    end
+
+    callback()
+    require("hop").get_input_pattern = orig_get_input_pattern
+  end
+end
+
 --- Creates an expression function for f/t hop
 ---
 --- Useful in operator expression mappings, as they support dot repeat. Default
@@ -54,7 +90,7 @@ end
 ---@return fun(): string
 local function make_expr_hop_ft(key)
   return function()
-    local target = require("hop").get_input_pattern("Hop 1 char: ", 1)
+    local target = get_ft_input_pattern(1)
     return target
         and string.format(
           "<Cmd>lua hop_ft([=[%s]=], [=[%s]=])<CR>",
@@ -97,155 +133,148 @@ function _G.hop_ft(key, target)
 end
 
 return {
-  "smoka7/hop.nvim",
+  {
+    "junegunn/limelight.vim",
+    cmd = "Limelight",
+  },
 
-  config = function()
-    local hop = require("hop")
-    hop.setup()
+  {
+    "smoka7/hop.nvim",
 
-    local hopped = false
-    local orig_hint_with_callback = hop.hint_with_callback
+    config = function()
+      local hop = require("hop")
+      hop.setup()
 
-    --- Same as `hint_with_callback` except it resets any operator mode forced
-    --- motion if a hop was executed. Using this workaround is needed otherwise
-    --- the operator will still apply on the current cursor or line if motion
-    --- is forced, even though the hop gets cancelled. Of course, this assumes
-    --- that the hop uses this function.
-    ---
-    ---@diagnostic disable-next-line:duplicate-set-field
-    hop.hint_with_callback = function(...)
-      orig_hint_with_callback(...)
-      if not hopped then require("util").reset_forced_motion() end
-      hopped = false
-    end
+      local hopped = false
+      local orig_hint_with_callback = hop.hint_with_callback
 
-    local orig_move_cursor_to = hop.move_cursor_to
+      --- Same as `hint_with_callback` except it resets any operator mode forced
+      --- motion if a hop was executed. Using this workaround is needed otherwise
+      --- the operator will still apply on the current cursor or line if motion
+      --- is forced, even though the hop gets cancelled. Of course, this assumes
+      --- that the hop uses this function.
+      ---
+      ---@diagnostic disable-next-line:duplicate-set-field
+      hop.hint_with_callback = function(...)
+        orig_hint_with_callback(...)
+        if not hopped then require("util").reset_forced_motion() end
+        hopped = false
+      end
 
-    --- Same as `move_cursor_to` but records if a hop was executed. Of course,
-    --- this assumes that the hop uses this function.
-    ---
-    ---@diagnostic disable-next-line:duplicate-set-field
-    hop.move_cursor_to = function(...)
-      orig_move_cursor_to(...)
-      hopped = true
-    end
+      local orig_move_cursor_to = hop.move_cursor_to
 
-    -- To fix hop#114
-    require("hop.jump_target").move_jump_target =
-      require("util.hop").move_jump_target
+      --- Same as `move_cursor_to` but records if a hop was executed. Of course,
+      --- this assumes that the hop uses this function.
+      ---
+      ---@diagnostic disable-next-line:duplicate-set-field
+      hop.move_cursor_to = function(...)
+        orig_move_cursor_to(...)
+        hopped = true
+      end
 
-    local orig_get_input_pattern = hop.get_input_pattern
+      -- To fix hop#114
+      require("hop.jump_target").move_jump_target =
+        require("util.hop").move_jump_target
 
-    --- Same as `get_input_pattern` except it changes the cursor shape to the
-    --- default shape used in operator pending mode during the prompt
-    ---
-    ---@diagnostic disable-next-line: duplicate-set-field
-    hop.get_input_pattern = function(...)
-      local last_gcr = vim.o.guicursor
+      orig_get_input_pattern = require("hop").get_input_pattern
+    end,
 
-      vim.o.guicursor = "a:hor20"
-      local input = orig_get_input_pattern(...)
-      vim.o.guicursor = last_gcr
+    keys = {
+      {
+        "<Space>",
+        "<Cmd>HopWord<CR>",
+        mode = { "n", "x", "o" },
+        desc = "Hop to word",
+      },
+      {
+        "<Enter>",
+        "<Cmd>HopChar1<CR>",
+        mode = { "n", "x", "o" },
+        desc = "Hop to character",
+      },
 
-      return input
-    end
-  end,
+      -- See `:h forced-motion` for usages of `v` and `V` in operator pending mode
+      {
+        "+",
+        require("util.hop").hintTill1,
+        mode = { "n", "x" },
+        desc = "Hop till character",
+      },
+      {
+        "+",
+        "v<Cmd>lua require('util.hop').hintTill1()<CR>",
+        mode = "o",
+        desc = "Hop till character",
+      },
 
-  keys = {
-    {
-      "<Space>",
-      "<Cmd>HopWord<CR>",
-      mode = { "n", "x", "o" },
-      desc = "Hop to word",
-    },
-    {
-      "<Enter>",
-      "<Cmd>HopChar1<CR>",
-      mode = { "n", "x", "o" },
-      desc = "Hop to character",
-    },
+      {
+        "_",
+        require("util.hop").hintLines,
+        mode = { "n", "x" },
+        desc = "Hop to line",
+      },
+      {
+        "_",
+        "V<Cmd>lua require('util.hop').hintLines()<CR>",
+        mode = "o",
+        desc = "Hop to line",
+      },
 
-    -- See `:h forced-motion` for usages of `v` and `V` in operator pending mode
-    {
-      "+",
-      require("util.hop").hintTill1,
-      mode = { "n", "x" },
-      desc = "Hop till character",
-    },
-    {
-      "+",
-      "v<Cmd>lua require('util.hop').hintTill1()<CR>",
-      mode = "o",
-      desc = "Hop till character",
-    },
+      {
+        "f",
+        wrap_ft(function() vim.cmd("HopChar1CurrentLineAC") end),
+        mode = { "n", "x" },
+        desc = "Hop: Enhanced f",
+      },
+      {
+        "f",
+        make_expr_hop_ft("f"),
+        mode = "o",
+        expr = true,
+        desc = "Hop: Enhanced f",
+      },
 
-    {
-      "_",
-      require("util.hop").hintLines,
-      mode = { "n", "x" },
-      desc = "Hop to line",
-    },
-    {
-      "_",
-      "V<Cmd>lua require('util.hop').hintLines()<CR>",
-      mode = "o",
-      desc = "Hop to line",
-    },
+      {
+        "F",
+        wrap_ft(function() vim.cmd("HopChar1CurrentLineBC") end),
+        mode = { "n", "x" },
+        desc = "Hop: Enhanced F",
+      },
+      {
+        "F",
+        make_expr_hop_ft("F"),
+        mode = "o",
+        expr = true,
+        desc = "Hop: Enhanced F",
+      },
 
-    {
-      "f",
-      "<Cmd>HopChar1CurrentLineAC<CR>",
-      mode = { "n", "x" },
-      desc = "Hop: Enhanced f",
-    },
-    {
-      "f",
-      make_expr_hop_ft("f"),
-      mode = "o",
-      expr = true,
-      desc = "Hop: Enhanced f",
-    },
+      {
+        "t",
+        wrap_ft(function() require("hop").hint_char1(ft_opts("t")) end),
+        mode = { "n", "x" },
+        desc = "Hop: Enhanced t",
+      },
+      {
+        "t",
+        make_expr_hop_ft("t"),
+        mode = "o",
+        expr = true,
+        desc = "Hop: Enhanced t",
+      },
 
-    {
-      "F",
-      "<Cmd>HopChar1CurrentLineBC<CR>",
-      mode = { "n", "x" },
-      desc = "Hop: Enhanced F",
-    },
-    {
-      "F",
-      make_expr_hop_ft("F"),
-      mode = "o",
-      expr = true,
-      desc = "Hop: Enhanced F",
-    },
-
-    {
-      "t",
-      function() require("hop").hint_char1(ft_opts("t")) end,
-      mode = { "n", "x" },
-      desc = "Hop: Enhanced t",
-    },
-    {
-      "t",
-      make_expr_hop_ft("t"),
-      mode = "o",
-      expr = true,
-      desc = "Hop: Enhanced t",
-    },
-
-    {
-      "T",
-      function() require("hop").hint_char1(ft_opts("T")) end,
-      mode = { "n", "x" },
-      desc = "Hop: Enhanced T",
-    },
-    {
-      "T",
-      make_expr_hop_ft("T"),
-      mode = "o",
-      expr = true,
-      desc = "Hop: Enhanced T",
+      {
+        "T",
+        wrap_ft(function() require("hop").hint_char1(ft_opts("T")) end),
+        mode = { "n", "x" },
+        desc = "Hop: Enhanced T",
+      },
+      {
+        "T",
+        make_expr_hop_ft("T"),
+        mode = "o",
+        expr = true,
+        desc = "Hop: Enhanced T",
+      },
     },
   },
 }
