@@ -1,4 +1,4 @@
-# clang-format 21.1.2
+# clang-format 21.1.5
 # vim: ft=yaml
 
 BasedOnStyle: LLVM
@@ -19,13 +19,7 @@ AlignTrailingComments:
 AllowAllArgumentsOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: true
 AllowBreakBeforeNoexceptSpecifier: Always
-
-# As of v21.1.0, setting this to an option besides `Never` may prevent braces
-# from wrapping before an else block if `AllowShortIfStatementsOnASingleLine`
-# is set to `AllIfsAndElse` despite `BreakBeforeBraces` being set to `Custom`
-# and `BraceWrapping.BeforeElse` set to true
-AllowShortBlocksOnASingleLine: Never
-
+AllowShortBlocksOnASingleLine: Always
 AllowShortCaseLabelsOnASingleLine: true
 AllowShortCompoundRequirementOnASingleLine: true
 AllowShortEnumsOnASingleLine: false
