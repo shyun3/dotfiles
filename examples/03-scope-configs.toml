@@ -1,0 +1,11 @@
+[[--scope]]
+--when.repositories = ["~/projects"]
+
+[--scope.user]
+email = "me@work.com"
+
+[[--scope]]
+--when.repositories = ["~/personal", "~/.config/dotdrop/"]
+
+[--scope.user]
+email = "me@home.com"
