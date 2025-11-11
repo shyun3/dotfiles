@@ -1,0 +1,10 @@
+#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
+
+[ui]
+default-command = "log"  # To prevent hint message on `jj`
+pager = "delta"
+diff-formatter = ":git"  # Required by `delta`
+conflict-marker-style = "git"  # Required by `delta`
+
+[working-copy]
+eol-conversion = "input"
