@@ -255,6 +255,11 @@ return {
     cmd = "FloatermNew",
     keys = {
       { "<Leader>t", "<Cmd>FloatermNew<CR>", desc = "floaterm: Open window" },
+      {
+        "<Leader>j",
+        "<Cmd>FloatermNew --title=jjui jjui<CR>",
+        desc = "floaterm: Open jjui",
+      },
     },
   },
 
