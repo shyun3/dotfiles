@@ -103,9 +103,12 @@ end
 local function make_expr_hop_ft(key)
   return function()
     local target = get_ft_input_pattern(key, 1)
+
+    -- Note the `v` before the command. Otherwise, the last character in a line
+    -- can't be deleted. See issue #85 and pull request #98.
     return target
         and string.format(
-          "<Cmd>lua hop_ft([=[%s]=], [=[%s]=])<CR>",
+          "v<Cmd>lua hop_ft([=[%s]=], [=[%s]=])<CR>",
           key,
           target
         )
@@ -115,7 +118,8 @@ end
 
 --- Performs f/t hop
 ---
---- This is global to allow use in expression mappings
+--- This is global to allow use in expression mappings. Intended for
+--- operator-pending mode.
 ---
 ---@param key FtKey
 ---@param target string
@@ -192,20 +196,33 @@ return {
     end,
 
     keys = {
+      -- See `:h forced-motion` for usages of `v` and `V` in operator pending mode
       {
         "<Space>",
         "<Cmd>HopWord<CR>",
-        mode = { "n", "x", "o" },
+        mode = { "n", "x" },
         desc = "Hop to word",
       },
       {
+        "<Space>",
+        "v<Cmd>HopWord<CR>",
+        mode = "o",
+        desc = "Hop to word",
+      },
+
+      {
         "<Enter>",
         "<Cmd>HopChar1<CR>",
-        mode = { "n", "x", "o" },
+        mode = { "n", "x" },
+        desc = "Hop to character",
+      },
+      {
+        "<Enter>",
+        "v<Cmd>HopChar1<CR>",
+        mode = "o",
         desc = "Hop to character",
       },
 
-      -- See `:h forced-motion` for usages of `v` and `V` in operator pending mode
       {
         "+",
         require("util.hop").hintTill1,
