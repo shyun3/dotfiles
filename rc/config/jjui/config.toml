@@ -1,5 +1,27 @@
 [preview]
 show_at_start = true
+# Display preview diffs with `delta`
+#
+# Derived from https://github.com/idursun/jjui/issues/314#issuecomment-3367379291
+#
+# Note that a `delta` specific `ui.diff-formatter` setting is not used because
+# then `delta` will report "left" and "right" files for the same file
+revision_command = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  "jj show -r $change_id --no-pager --summary --git --color=always | delta --paging=never",
+]
+file_command = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  "jj diff -r $change_id $file --no-pager --color=always | delta --paging=never",
+]
 
 [ui.colors]
 # Provides better contrast when using "Catppuccin Mocha"
