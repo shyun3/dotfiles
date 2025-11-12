@@ -257,7 +257,7 @@ return {
       { "<Leader>t", "<Cmd>FloatermNew<CR>", desc = "floaterm: Open window" },
       {
         "<Leader>j",
-        "<Cmd>FloatermNew --title=jjui jjui<CR>",
+        "<Cmd>FloatermNew --title=jjui --width=0.9 --height=0.9 jjui<CR>",
         desc = "floaterm: Open jjui",
       },
     },
