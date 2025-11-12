@@ -1,2 +1,6 @@
 [preview]
 show_at_start = true
+
+[ui.colors]
+# Provides better contrast when using "Catppuccin Mocha"
+"confirmation selected" = { bg = "bright black" }
