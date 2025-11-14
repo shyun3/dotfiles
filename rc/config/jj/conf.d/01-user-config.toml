@@ -1,7 +1,7 @@
 #:schema https://jj-vcs.github.io/jj/latest/config-schema.json
 
 [ui]
-default-command = "log"  # To prevent hint message on `jj`
+default-command = ["util", "exec", "jjui"]
 pager = "delta"
 diff-formatter = ":git"  # Required by `delta`
 conflict-marker-style = "git"  # Required by `delta`
