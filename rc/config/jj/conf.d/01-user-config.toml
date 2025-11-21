@@ -4,7 +4,11 @@
 default-command = ["util", "exec", "jjui"]
 pager = "delta"
 diff-formatter = ":git"  # Required by `delta`
-conflict-marker-style = "git"  # Required by `delta`
+# `delta` cannot properly render merge conflicts through `jj diff` because the
+# `:git` diff formatter does not produce combined diffs in such cases
+#
+# See https://github.com/jj-vcs/jj/discussions/4690#discussioncomment-14098877
+conflict-marker-style = "git"
 
 [working-copy]
 eol-conversion = "input"

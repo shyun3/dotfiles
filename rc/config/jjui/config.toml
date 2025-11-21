@@ -12,7 +12,7 @@ revision_command = [
   "--",
   "bash",
   "-c",
-  "jj show -r $change_id --no-pager --summary --git --color=always | delta --paging=never",
+  "jj show $change_id --no-pager --stat --git --color=always | delta --paging=never",
 ]
 file_command = [
   "util",
@@ -22,6 +22,23 @@ file_command = [
   "-c",
   "jj diff -r $change_id $file --no-pager --color=always | delta --paging=never",
 ]
+
+[custom_commands]
+# Derived from https://github.com/idursun/jjui/discussions/163#discussioncomment-13672324
+#
+# Applies to revision and file diff commands. Technique derived from:
+# https://github.com/idursun/jjui/discussions/63#discussioncomment-13415745
+delta = { key = ["d"], args = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
+  change_id= file= jj $([[ -n "$file" ]] && echo "diff -r" || echo "show") \
+    $change_id $file --stat --git --color=always | delta --paging=always
+  """,
+], show = "interactive" }
 
 [ui.colors]
 # Provides better contrast when using "Catppuccin Mocha"
