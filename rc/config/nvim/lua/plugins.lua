@@ -311,12 +311,4 @@ return {
       usecursorhold = true,
     },
   },
-
-  {
-    "jannis-baum/vivify.vim",
-
-    -- Plugin must be loaded before file load, not on command. Crucial
-    -- autocommands are created on file load, see vivify.vim.
-    ft = "markdown",
-  },
 }
