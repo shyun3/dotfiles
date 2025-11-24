@@ -8,7 +8,7 @@ return {
     opts = {},
 
     keys = {
-      { "<Leader>m", "<Cmd>Mason<CR>" },
+      { "<Leader>mm", "<Cmd>Mason<CR>" },
     },
   },
 
