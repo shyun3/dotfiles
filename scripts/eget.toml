@@ -21,12 +21,6 @@ asset_filters = ["gnu"]
 ["dandavison/delta"]
 asset_filters = ["gnu"]
 
-["jannis-baum/Vivify"]
-# Because the repo name differs from the binary, upgrades will always initiate
-# downloads even if there is no newer release
-_cmd = "viv"
-all = true
-
 ["junegunn/fzf"]
 
 ["ajeetdsouza/zoxide"]
