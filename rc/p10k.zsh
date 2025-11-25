@@ -242,6 +242,7 @@
     .citc
     .git
     .hg
+    .jj
     .node-version
     .python-version
     .go-version
