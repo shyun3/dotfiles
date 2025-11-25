@@ -40,3 +40,4 @@ ohmyzsh/ohmyzsh path:plugins/zsh-interactive-cd
 # 3rd party plugins
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
+mafredri/zsh-async
