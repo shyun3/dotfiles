@@ -1814,6 +1814,8 @@
   typeset -g _my_jj_status_modified=
   typeset -g _my_jj_status_loading=
 
+  typeset -g POWERLEVEL9K_MY_JJ_VISUAL_IDENTIFIER_EXPANSION="󱗆" # U+f15c6
+
   prompt_my_jj() {
     local workspace
 
@@ -1849,7 +1851,6 @@
   # this function is called by the async worker, and does the work
   # of calculating the jj status.
   _my_jj_async() {
-    echo "\Uf15c6" # 󱗆
   }
 
   _my_jj_callback() {
