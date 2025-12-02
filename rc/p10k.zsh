@@ -1851,25 +1851,38 @@
   # this function is called by the async worker, and does the work
   # of calculating the jj status.
   _my_jj_async() {
+    local workspace=$1
+
+    jj --at-op=@ debug snapshot
+
+    local st=$(jj log --repository "$workspace" --ignore-working-copy \
+      --no-graph --no-pager -r @ -T "if(empty, 'CLEAN', 'MODIFIED')")
+    echo ";$st"
   }
 
   _my_jj_callback() {
     local job_name=$1 exit_code=$2 output=$3 execution_time=$4 stderr=$5 next_pending=$6
+
+    local display=${output%;*}
     if [[ $exit_code == 0 ]]; then
-      _my_jj_display=$output
+      _my_jj_display=$display
     else
-      _my_jj_display="$output %F{red}$stderr%f"
+      _my_jj_display="$display %F{red}$stderr%f"
     fi
 
-    _my_jj_status_loading=
-    local empty=$(jj log --ignore-working-copy --no-graph --no-pager -r @ \
-      -T "if(empty, 1, 0)")
-    if (( $empty )); then
+    local st=${output##*;}
+    if [[ $st == CLEAN ]]; then
       _my_jj_status_clean=1
       _my_jj_status_modified=
-    else
+      _my_jj_status_loading=
+    elif [[ $st == MODIFIED ]]; then
       _my_jj_status_clean=
       _my_jj_status_modified=1
+      _my_jj_status_loading=
+    else
+      _my_jj_status_clean=
+      _my_jj_status_modified=
+      _my_jj_status_loading=1
     fi
 
     p10k display -r
