@@ -1803,10 +1803,16 @@
   #######################################################################
   # jj status
   #
-  # Derived from https://zerowidth.com/2025/async-zsh-jujutsu-prompt-with-p10k/
+  # Derived from:
+  # https://zerowidth.com/2025/async-zsh-jujutsu-prompt-with-p10k/
+  # https://andre.arko.net/2025/06/20/a-jj-prompt-for-powerlevel10k/
 
   typeset -g _my_jj_display=""
   typeset -g _my_jj_workspace=""
+
+  typeset -g _my_jj_status_clean=
+  typeset -g _my_jj_status_modified=
+  typeset -g _my_jj_status_loading=
 
   prompt_my_jj() {
     local workspace
@@ -1830,14 +1836,20 @@
     # request async job for the current workspace
     async_job _my_jj_worker _my_jj_async "$workspace"
 
+    _my_jj_status_loading=1
+    _my_jj_status_clean=
+    _my_jj_status_modified=
+
     # note the single quotes, we want this to be interpreted each time
-    p10k segment -t '$_my_jj_display' -e
+    p10k segment -b grey -c '$_my_jj_status_loading' -t 'loading' -e
+    p10k segment -b green -c '$_my_jj_status_clean' -t '$_my_jj_display' -e
+    p10k segment -b yellow -c '$_my_jj_status_modified' -t '$_my_jj_display' -e
   }
 
   # this function is called by the async worker, and does the work
   # of calculating the jj status.
   _my_jj_async() {
-    echo "%F{white}\Uf15c6%f" # 󱗆
+    echo "\Uf15c6" # 󱗆
   }
 
   _my_jj_callback() {
@@ -1847,6 +1859,18 @@
     else
       _my_jj_display="$output %F{red}$stderr%f"
     fi
+
+    _my_jj_status_loading=
+    local empty=$(jj log --ignore-working-copy --no-graph --no-pager -r @ \
+      -T "if(empty, 1, 0)")
+    if (( $empty )); then
+      _my_jj_status_clean=1
+      _my_jj_status_modified=
+    else
+      _my_jj_status_clean=
+      _my_jj_status_modified=1
+    fi
+
     p10k display -r
   }
 
