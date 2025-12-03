@@ -12,3 +12,9 @@ conflict-marker-style = "git"
 
 [working-copy]
 eol-conversion = "input"
+
+[aliases]
+prompt_log = ["log", "--ignore-working-copy", "--no-graph", "--no-pager"]
+
+[template-aliases]
+prompt_symbols = "if(!empty && description == '', '\uf448', '')"  # 

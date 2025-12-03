@@ -1855,9 +1855,13 @@
 
     jj --at-op=@ debug snapshot
 
-    local st=$(jj log --repository "$workspace" --ignore-working-copy \
-      --no-graph --no-pager -r @ -T "if(empty, 'CLEAN', 'MODIFIED')")
-    echo ";$st"
+    local symbols=$(jj prompt_log -R "$workspace" -n 1 -r @ --color never \
+      -T prompt_symbols)
+    local display=$symbols
+
+    local st=$(jj prompt_log -R "$workspace" -n 1 -r @ --color never \
+      -T "if(empty, 'CLEAN', 'MODIFIED')")
+    echo "$display;$st"
   }
 
   _my_jj_callback() {
