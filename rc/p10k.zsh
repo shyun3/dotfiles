@@ -1831,7 +1831,7 @@
 
     # track current workspace for the async worker
     if [[ $_my_jj_workspace != "$workspace" ]]; then
-      _my_jj_display=""
+      _my_jj_display="loading"
       _my_jj_workspace="$workspace"
     fi
 
@@ -1843,7 +1843,7 @@
     _my_jj_status_modified=
 
     # note the single quotes, we want this to be interpreted each time
-    p10k segment -b grey -c '$_my_jj_status_loading' -t 'loading' -e
+    p10k segment -b grey -c '$_my_jj_status_loading' -t '$_my_jj_display' -e
     p10k segment -b green -c '$_my_jj_status_clean' -t '$_my_jj_display' -e
     p10k segment -b yellow -c '$_my_jj_status_modified' -t '$_my_jj_display' -e
   }
@@ -1879,10 +1879,6 @@
       _my_jj_status_clean=
       _my_jj_status_modified=1
       _my_jj_status_loading=
-    else
-      _my_jj_status_clean=
-      _my_jj_status_modified=
-      _my_jj_status_loading=1
     fi
 
     p10k display -r
