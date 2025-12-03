@@ -17,4 +17,11 @@ eol-conversion = "input"
 prompt_log = ["log", "--ignore-working-copy", "--no-graph", "--no-pager"]
 
 [template-aliases]
-prompt_symbols = "if(!empty && description == '', '\uf448', '')"  # 
+# Needs description: 
+# Conflict: 
+prompt_symbols = """
+concat(
+    if(conflict, label('conflict', '\uf467'), '')
+    if(!empty && description == '', '\uf448', ''),
+)
+"""

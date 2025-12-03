@@ -1855,13 +1855,14 @@
 
     jj --at-op=@ debug snapshot
 
-    local symbols=$(jj prompt_log -R "$workspace" -n 1 -r @ --color never \
+    local symbols=$(jj prompt_log -R "$workspace" -n 1 -r @ --color always \
       -T prompt_symbols)
     local display=$symbols
 
     local st=$(jj prompt_log -R "$workspace" -n 1 -r @ --color never \
       -T "if(empty, 'CLEAN', 'MODIFIED')")
-    echo "$display;$st"
+
+    echo "$display;$st" | sed 's/\x1b\[[0-9;]*m/%{&%}/g'
   }
 
   _my_jj_callback() {
