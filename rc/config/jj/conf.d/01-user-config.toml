@@ -21,7 +21,7 @@ prompt_log = ["log", "--ignore-working-copy", "--no-graph", "--no-pager"]
 # Conflict: 
 prompt_symbols = """
 concat(
-    if(conflict, label('conflict', '\uf467'), '')
-    if(!empty && description == '', '\uf448', ''),
+    if(conflict, label('conflict', '\uf467'), ''),
+    if(!empty && description == '', '\uf448', '')
 )
 """
