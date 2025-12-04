@@ -1859,10 +1859,21 @@
       -T prompt_symbols)
     local display=$symbols
 
-    local st=$(jj prompt_log -R "$workspace" -n 1 -r @ --color never \
-      -T "if(empty, 'CLEAN', 'MODIFIED')")
+    local status_changes=($(jj prompt_log -R "$workspace" -n 1 --color never \
+      -r @ -T "diff.summary()" 2> /dev/null | awk 'BEGIN {a=0;d=0;m=0}
+        /^A / {a++} /^D / {d++} /^M / {m++} /^R / {m++} /^C / {a++}
+        END {print(a,m,d)}'))
 
-    echo "$display;$st" | sed 's/\x1b\[[0-9;]*m/%{&%}/g'
+    local display_changes
+    (( status_changes[1] )) && display_changes+=" +${status_changes[1]}"
+    (( status_changes[2] )) && display_changes+=" ~${status_changes[2]}"
+    (( status_changes[3] )) && display_changes+=" -${status_changes[3]}"
+    display+=$display_changes
+
+    local repo_status="CLEAN"
+    [[ -n $display_changes ]] && repo_status="MODIFIED"
+
+    echo "$display;$repo_status" | sed 's/\x1b\[[0-9;]*m/%{&%}/g'
   }
 
   _my_jj_callback() {
@@ -1875,12 +1886,12 @@
       _my_jj_display="$display %F{red}$stderr%f"
     fi
 
-    local st=${output##*;}
-    if [[ $st == CLEAN ]]; then
+    local repo_status=${output##*;}
+    if [[ $repo_status == "CLEAN" ]]; then
       _my_jj_status_clean=1
       _my_jj_status_modified=
       _my_jj_status_loading=
-    elif [[ $st == MODIFIED ]]; then
+    elif [[ $repo_status == "MODIFIED" ]]; then
       _my_jj_status_clean=
       _my_jj_status_modified=1
       _my_jj_status_loading=
