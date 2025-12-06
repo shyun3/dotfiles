@@ -14,9 +14,15 @@ prompt_log = ["log", "--ignore-working-copy", "--no-graph", "--no-pager"]
 [template-aliases]
 # Needs description: 
 # Conflict: 
+#
+# Using `label` causes rest of the prompt to be white. So, attach `label` to
+# all symbols in order to force colors.
 prompt_symbols = """
 concat(
-    if(conflict, label('conflict', '\uf467'), ''),
-    if(!empty && description == '', '\uf448', '')
+    if(conflict, label('conflict', '\uf467 '), ''),
+    if(!empty && description == '', label('normal', '\uf448'), '')
 )
 """
+
+[colors]
+normal = "black"

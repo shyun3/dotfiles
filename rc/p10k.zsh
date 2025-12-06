@@ -1859,6 +1859,10 @@
       -T prompt_symbols)
     local display=$symbols
 
+    # Using the jj `label` template function (when generating the symbols above)
+    # causes rest of the prompt to be white. So, force the color to black.
+    display+="%0F"
+
     local status_changes=($(jj prompt_log -R "$workspace" -n 1 --color never \
       -r @ -T "diff.summary()" 2> /dev/null | awk 'BEGIN {a=0;d=0;m=0}
         /^A / {a++} /^D / {d++} /^M / {m++} /^R / {m++} /^C / {a++}
@@ -1873,7 +1877,7 @@
     local repo_status="CLEAN"
     [[ -n $display_changes ]] && repo_status="MODIFIED"
 
-    echo "$display;$repo_status" | sed 's/\x1b\[[0-9;]*m/%{&%}/g'
+    echo "${display}%f;$repo_status" | sed 's/\x1b\[[0-9;]*m/%{&%}/g'
   }
 
   _my_jj_callback() {
