@@ -12,14 +12,20 @@ eol-conversion = "input"
 prompt_log = ["log", "--ignore-working-copy", "--no-graph", "--no-pager"]
 
 [template-aliases]
-# Needs description: 
 # Conflict: 
+# Divergent: 󰙁
+# Hidden: 󰈉
+# Immutable: 
+# Needs description: 
 #
 # Using `label` causes rest of the prompt to be white. So, attach `label` to
 # all symbols in order to force colors.
 prompt_symbols = """
 concat(
     if(conflict, label('conflict', '\uf467 '), ''),
+    if(divergent, label('normal', '\U000f0641 '), ''),
+    if(hidden, label('normal', '\U000f0209 '), ''),
+    if(immutable, label('normal', '\uf023 ')),
     if(!empty && description == '', label('normal', '\uf448'), '')
 )
 """
