@@ -1868,6 +1868,19 @@
         /^A / {a++} /^D / {d++} /^M / {m++} /^R / {m++} /^C / {a++}
         END {print(a,m,d)}'))
 
+    local branches=$(jj prompt_log -R "$workspace" -n 1 --color never \
+      -r "closest_named_change(@)" -T "separate(' ', bookmarks, tags)" \
+      2> /dev/null)
+
+    local branch=${branches%% *}  # Choose first bookmark or tag if none
+    branch=${branches%\*} # Remove trailing * due to local bookmark diverged
+
+    # If local branch name or tag is at most 32 characters long, show it in full.
+    # Otherwise show the first 12 … the last 12.
+    local at=${(V)branch}
+    (( $#at > 32 )) && at[13,-13]="…"
+    display+="${at//\%/%%}"  # escape %
+
     local display_changes
     (( status_changes[1] )) && display_changes+=" +${status_changes[1]}"
     (( status_changes[2] )) && display_changes+=" ~${status_changes[2]}"

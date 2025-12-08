@@ -26,7 +26,16 @@ concat(
     if(divergent, label('normal', '\U000f0641 '), ''),
     if(hidden, label('normal', '\U000f0209 '), ''),
     if(immutable, label('normal', '\uf023 ')),
-    if(!empty && description == '', label('normal', '\uf448'), '')
+    if(!empty && description == '', label('normal', '\uf448 '), '')
+)
+"""
+
+[revset-aliases]
+'closest_named_change(to)' = """
+coalesce(
+    heads(::to & (bookmarks() | remote_bookmarks() | tags())),
+    heads(to:: & (bookmarks() | remote_bookmarks() | tags())),
+    trunk()
 )
 """
 
