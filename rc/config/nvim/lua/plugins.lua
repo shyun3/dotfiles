@@ -117,6 +117,38 @@ return {
   },
 
   {
+    "chrisgrieser/nvim-spider",
+
+    keys = {
+      -- For dot-repeat to work, motions must be called as Ex commands
+      {
+        "<Leader>w",
+        "<Cmd>lua require('spider').motion('w')<CR>",
+        mode = { "n", "x", "o" },
+        desc = "Next subword",
+      },
+      {
+        "<Leader>e",
+        "<Cmd>lua require('spider').motion('e')<CR>",
+        mode = { "n", "x", "o" },
+        desc = "Next end of subword",
+      },
+      {
+        "<Leader>b",
+        "<Cmd>lua require('spider').motion('b')<CR>",
+        mode = { "n", "x", "o" },
+        desc = "Previous subword",
+      },
+      {
+        "<Leader>ge",
+        "<Cmd>lua require('spider').motion('ge')<CR>",
+        mode = { "n", "x", "o" },
+        desc = "Previous end of subword",
+      },
+    },
+  },
+
+  {
     "yorickpeterse/nvim-window",
 
     keys = {
