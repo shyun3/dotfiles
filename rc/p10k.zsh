@@ -1875,6 +1875,11 @@
     local branch=${branches%% *}  # Choose first bookmark or tag if none
     branch=${branches%\*} # Remove trailing * due to local bookmark diverged
 
+    local commits_after=$(jj prompt_log -R "$workspace" \
+      -r "non_empty($branch, @)" -T '"n"' | wc -c)
+    local commits_before=$(jj prompt_log -R "$workspace" \
+      -r "non_empty(@, $branch)" -T '"n"' | wc -c)
+
     local commit_counts=($(jj -R "$workspace" --ignore-working-copy --no-pager \
       bookmark list -r $branch -T '
         if(remote,
@@ -1897,6 +1902,11 @@
     local at=${(V)branch}
     (( $#at > 32 )) && at[13,-13]="…"
     display+="${at//\%/%%}"  # escape %
+
+    # ‹42 if before the local bookmark
+    (( commits_before )) && display+="‹${commits_before}"
+    # ›42 if beyond the local bookmark
+    (( commits_after )) && display+="›${commits_after}"
 
     # ⇣42 if behind the remote.
     (( commits_behind )) && display+=" ⇣${commits_behind}"

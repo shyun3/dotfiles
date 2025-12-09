@@ -38,6 +38,7 @@ coalesce(
     trunk()
 )
 """
+'non_empty(from, to)' = "from..to & (~empty() | merges())"
 
 [colors]
 normal = "black"
