@@ -12,20 +12,23 @@ return {
   },
 
   {
-    "chaoren/vim-wordmotion",
+    "chrisgrieser/nvim-various-textobjs",
+    event = "ModeChanged",
 
-    init = function() vim.g.wordmotion_nomap = 1 end,
+    opts = {
+      keymaps = { useDefaults = false },
+    },
 
     keys = {
       {
         "i<Leader>w",
-        "<Plug>WordMotion_iw",
+        "<Cmd>lua require('various-textobjs').subword('inner')<CR>",
         mode = { "o", "x" },
         desc = "Subword",
       },
       {
         "a<Leader>w",
-        "<Plug>WordMotion_aw",
+        "<Cmd>lua require('various-textobjs').subword('outer')<CR>",
         mode = { "o", "x" },
         desc = "Subword",
       },
