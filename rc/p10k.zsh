@@ -1875,11 +1875,36 @@
     local branch=${branches%% *}  # Choose first bookmark or tag if none
     branch=${branches%\*} # Remove trailing * due to local bookmark diverged
 
+    local commit_counts=($(jj -R "$workspace" --ignore-working-copy --no-pager \
+      bookmark list -r $branch -T '
+        if(remote,
+          separate(" ",
+            name ++ "@" ++ remote,
+            coalesce(tracking_behind_count.exact(), tracking_behind_count.lower()),
+            coalesce(tracking_ahead_count.exact(), tracking_ahead_count.lower()),
+            if(tracking_behind_count.exact(), "0", "+"),
+            if(tracking_ahead_count.exact(), "0", "+"),
+          ) ++ "\n"
+        )
+      '))
+    local commits_ahead=$commit_counts[2]
+    local commits_behind=$commit_counts[3]
+    local commits_ahead_plus=$commit_counts[4]
+    local commits_behind_plus=$commit_counts[5]
+
     # If local branch name or tag is at most 32 characters long, show it in full.
     # Otherwise show the first 12 … the last 12.
     local at=${(V)branch}
     (( $#at > 32 )) && at[13,-13]="…"
     display+="${at//\%/%%}"  # escape %
+
+    # ⇣42 if behind the remote.
+    (( commits_behind )) && display+=" ⇣${commits_behind}"
+    (( commits_behind_plus )) && display+="${commits_behind_plus}"
+    # ⇡42 if ahead of the remote; no leading space if also behind the remote: ⇣42⇡42.
+    (( commits_ahead && !commits_behind )) && display+=" "
+    (( commits_ahead  )) && display+="⇡${commits_ahead}"
+    (( commits_ahead_plus )) && display+="${commits_ahead_plus}"
 
     local display_changes
     (( status_changes[1] )) && display_changes+=" +${status_changes[1]}"
