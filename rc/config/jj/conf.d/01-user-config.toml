@@ -31,14 +31,13 @@ concat(
 """
 
 [revset-aliases]
-'closest_named_change(to)' = """
+'closest_named(to)' = """
 coalesce(
-    heads(::to & (bookmarks() | remote_bookmarks() | tags())),
-    heads(to:: & (bookmarks() | remote_bookmarks() | tags())),
-    trunk()
+    @ & (bookmarks() | remote_bookmarks() | tags()),
+    heads(::to & bookmarks())
 )
 """
-'non_empty(from, to)' = "from..to & (~empty() | merges())"
+'non_empty(from, to)' = "from::to & (~empty() | merges())"
 
 [colors]
 normal = "black"

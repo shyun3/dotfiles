@@ -1855,7 +1855,7 @@
 
     jj --at-op=@ debug snapshot
 
-    local symbols=$(jj prompt_log -R "$workspace" -n 1 -r @ --color always \
+    local symbols=$(jj prompt_log -R $workspace -n 1 -r @ --color always \
       -T prompt_symbols)
     local display=$symbols
 
@@ -1863,39 +1863,40 @@
     # causes rest of the prompt to be white. So, force the color to black.
     display+="%0F"
 
-    local status_changes=($(jj prompt_log -R "$workspace" -n 1 --color never \
+    local status_changes=($(jj prompt_log -R $workspace -n 1 --color never \
       -r @ -T "diff.summary()" 2> /dev/null | awk 'BEGIN {a=0;d=0;m=0}
         /^A / {a++} /^D / {d++} /^M / {m++} /^R / {m++} /^C / {a++}
         END {print(a,m,d)}'))
 
-    local branches=$(jj prompt_log -R "$workspace" -n 1 --color never \
-      -r "closest_named_change(@)" -T "separate(' ', bookmarks, tags)" \
+    local branches=$(jj prompt_log -R $workspace -n 1 --color never \
+      -r "closest_named(@)" -T "separate(' ', bookmarks, tags)" \
       2> /dev/null)
 
     local branch=${branches%% *}  # Choose first bookmark or tag if none
-    branch=${branches%\*} # Remove trailing * due to local bookmark diverged
+    if [[ -n $branch ]]; then
+      branch=${branches%\*} # Remove trailing * due to local bookmark diverged
 
-    local commits_after=$(jj prompt_log -R "$workspace" \
-      -r "non_empty($branch, @)" -T '"n"' | wc -c)
-    local commits_before=$(jj prompt_log -R "$workspace" \
-      -r "non_empty(@, $branch)" -T '"n"' | wc -c)
+      local commits_after=$(jj prompt_log -R $workspace --color never \
+        -r "non_empty($branch, @)" -T '"n"' 2> /dev/null | wc -c)
+      (( commits_after )) && (( --commits_after ))  # Exclude @
 
-    local commit_counts=($(jj -R "$workspace" --ignore-working-copy --no-pager \
-      bookmark list -r $branch -T '
-        if(remote,
-          separate(" ",
-            name ++ "@" ++ remote,
-            coalesce(tracking_behind_count.exact(), tracking_behind_count.lower()),
-            coalesce(tracking_ahead_count.exact(), tracking_ahead_count.lower()),
-            if(tracking_behind_count.exact(), "0", "+"),
-            if(tracking_ahead_count.exact(), "0", "+"),
-          ) ++ "\n"
-        )
-      '))
-    local commits_ahead=$commit_counts[2]
-    local commits_behind=$commit_counts[3]
-    local commits_ahead_plus=$commit_counts[4]
-    local commits_behind_plus=$commit_counts[5]
+      local commit_counts=($(jj -R $workspace --ignore-working-copy --no-pager \
+        bookmark list -r $branch --color never -T '
+          if(remote,
+            separate(" ",
+              name ++ "@" ++ remote,
+              coalesce(tracking_behind_count.exact(), tracking_behind_count.lower()),
+              coalesce(tracking_ahead_count.exact(), tracking_ahead_count.lower()),
+              if(tracking_behind_count.exact(), "0", "+"),
+              if(tracking_ahead_count.exact(), "0", "+"),
+            ) ++ "\n"
+          )
+        '))
+      local commits_ahead=$commit_counts[2]
+      local commits_behind=$commit_counts[3]
+      local commits_ahead_plus=$commit_counts[4]
+      local commits_behind_plus=$commit_counts[5]
+    fi
 
     # If local branch name or tag is at most 32 characters long, show it in full.
     # Otherwise show the first 12 … the last 12.
@@ -1903,8 +1904,6 @@
     (( $#at > 32 )) && at[13,-13]="…"
     display+="${at//\%/%%}"  # escape %
 
-    # ‹42 if before the local bookmark
-    (( commits_before )) && display+="‹${commits_before}"
     # ›42 if beyond the local bookmark
     (( commits_after )) && display+="›${commits_after}"
 
