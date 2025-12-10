@@ -34,13 +34,21 @@ separate(" ", id.shortest(len).prefix(), id.shortest(len).rest())
 """
 
 [revset-aliases]
-'closest_named(to)' = """
+'all_named()' = "bookmarks() | remote_bookmarks() | tags()"
+# Priorities for best named ancestor:
+# 1. Given revision if it has name
+# 2. Parent revision if it has name and given revision is empty
+#   - e.g. when new, empty revision is created on top of tag
+#   - Note this only handles one empty revision on top of a named revision
+# 3. Closest ancestor with name
+'best_named_ancestor(to)' = """
 coalesce(
-    @ & (bookmarks() | remote_bookmarks() | tags()),
+    to & all_named(),
+    heads(to-::(to & ~non_empty()) & all_named()),
     heads(::to & bookmarks())
 )
 """
-'non_empty(from, to)' = "from::to & (~empty() | merges())"
+'non_empty()' = "~empty() | merges()"
 
 [colors]
 normal = "black"

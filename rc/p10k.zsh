@@ -1871,7 +1871,7 @@
         END {print(a,m,d)}'))
 
     local branches=$(jj prompt_log -R $workspace -n 1 --color never \
-      -r "closest_named(@)" -T "separate(' ', bookmarks, tags)" \
+      -r "best_named_ancestor(@)" -T "separate(' ', bookmarks, tags)" \
       2> /dev/null)
 
     local branch=${branches%% *}  # Choose first bookmark or tag if none
@@ -1879,7 +1879,7 @@
       branch=${branches%\*} # Remove trailing * due to local bookmark diverged
 
       local commits_after=$(jj prompt_log -R $workspace --color never \
-        -r "non_empty($branch, @)" -T '"n"' 2> /dev/null | wc -c)
+        -r "$branch::@ & non_empty()" -T '"n"' 2> /dev/null | wc -c)
       (( commits_after )) && (( --commits_after ))  # Exclude @
 
       local commit_counts=($(jj -R $workspace --ignore-working-copy --no-pager \
