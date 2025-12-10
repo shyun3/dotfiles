@@ -29,6 +29,9 @@ concat(
     if(!empty && description == '', label('normal', '\uf448 '), '')
 )
 """
+'change_id_parts(id, len)' = """
+separate(" ", id.shortest(len).prefix(), id.shortest(len).rest())
+"""
 
 [revset-aliases]
 'closest_named(to)' = """

@@ -1853,6 +1853,8 @@
   _my_jj_async() {
     local workspace=$1
 
+    local normal='%F{black}'
+
     jj --at-op=@ debug snapshot
 
     local symbols=$(jj prompt_log -R $workspace -n 1 -r @ --color always \
@@ -1860,8 +1862,8 @@
     local display=$symbols
 
     # Using the jj `label` template function (when generating the symbols above)
-    # causes rest of the prompt to be white. So, force the color to black.
-    display+="%0F"
+    # causes rest of the prompt foreground to be white. So, force color.
+    display+="$normal"
 
     local status_changes=($(jj prompt_log -R $workspace -n 1 --color never \
       -r @ -T "diff.summary()" 2> /dev/null | awk 'BEGIN {a=0;d=0;m=0}
@@ -1896,6 +1898,17 @@
       local commits_behind=$commit_counts[3]
       local commits_ahead_plus=$commit_counts[4]
       local commits_behind_plus=$commit_counts[5]
+    else
+      local change=($(jj prompt_log -R $workspace -n 1 -r @ --color never \
+        -T 'change_id_parts(change_id, 8)'))
+
+      # Set prefix to bold. jj `label` isn't being used since setting bold
+      # causes rest of prompt to lose background color. Subsequent `label`
+      # calls don't restore the background.
+      display+="%F{red}%B${change[1]}%b"
+
+      # Set rest color, restoring foreground color afterward
+      display+="%F{white}${change[2]}${normal}"
     fi
 
     # If local branch name or tag is at most 32 characters long, show it in full.
@@ -1924,7 +1937,7 @@
     local repo_status="CLEAN"
     [[ -n $display_changes ]] && repo_status="MODIFIED"
 
-    echo "${display}%f;$repo_status" | sed 's/\x1b\[[0-9;]*m/%{&%}/g'
+    echo "${display}%f;$repo_status"
   }
 
   _my_jj_callback() {
