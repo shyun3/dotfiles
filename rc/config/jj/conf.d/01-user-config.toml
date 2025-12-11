@@ -22,11 +22,19 @@ prompt_log = ["log", "--ignore-working-copy", "--no-graph", "--no-pager"]
 # all symbols in order to force colors.
 prompt_symbols = """
 concat(
-    if(conflict, label('conflict', '\uf467 '), ''),
-    if(divergent, label('normal', '\U000f0641 '), ''),
-    if(hidden, label('normal', '\U000f0209 '), ''),
+    if(conflict, label('conflict', '\uf467 ')),
+    if(divergent, label('normal', '\U000f0641 ')),
+    if(hidden, label('normal', '\U000f0209 ')),
     if(immutable, label('normal', '\uf023 ')),
-    if(!empty && description == '', label('normal', '\uf448 '), '')
+    if(!empty && description == '', label('normal', '\uf448 '))
+)
+"""
+# Bookmark: 
+# Tag: 
+revision_symbol = """
+coalesce(
+    if(bookmarks, '\uf02e '),
+    if(tags, '\uf02b ')
 )
 """
 'change_id_parts(id, len)' = """

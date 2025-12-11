@@ -1853,17 +1853,7 @@
   _my_jj_async() {
     local workspace=$1
 
-    local normal='%F{black}'
-
     jj --at-op=@ debug snapshot
-
-    local symbols=$(jj prompt_log -R $workspace -n 1 -r @ --color always \
-      -T prompt_symbols)
-    local display=$symbols
-
-    # Using the jj `label` template function (when generating the symbols above)
-    # causes rest of the prompt foreground to be white. So, force color.
-    display+="$normal"
 
     local status_changes=($(jj prompt_log -R $workspace -n 1 --color never \
       -r @ -T "diff.summary()" 2> /dev/null | awk 'BEGIN {a=0;d=0;m=0}
@@ -1898,18 +1888,26 @@
       local commits_behind=$commit_counts[3]
       local commits_ahead_plus=$commit_counts[4]
       local commits_behind_plus=$commit_counts[5]
+
     else
       local change=($(jj prompt_log -R $workspace -n 1 -r @ --color never \
         -T 'change_id_parts(change_id, 8)'))
-
-      # Set prefix to bold. jj `label` isn't being used since setting bold
-      # causes rest of prompt to lose background color. Subsequent `label`
-      # calls don't restore the background.
-      display+="%F{red}%B${change[1]}%b"
-
-      # Set rest color, restoring foreground color afterward
-      display+="%F{white}${change[2]}${normal}"
+      local change_prefix=$change[1]
+      local change_rest=$change[2]
     fi
+
+    local rev_symbol=$(jj prompt_log -R $workspace -n 1 --color never \
+        -r ${branch:-@} -T "revision_symbol" 2> /dev/null)
+    local display=$rev_symbol
+
+    local symbols=$(jj prompt_log -R $workspace -n 1 -r @ --color always \
+      -T prompt_symbols)
+    display+=$symbols
+
+    # Using the jj `label` template function (when generating the symbols above)
+    # causes rest of the prompt foreground to be white. So, force color.
+    local normal='%F{black}'
+    display+=$normal
 
     # If local branch name or tag is at most 32 characters long, show it in full.
     # Otherwise show the first 12 … the last 12.
@@ -1919,6 +1917,13 @@
 
     # ›42 if beyond the local bookmark
     (( commits_after )) && display+="›${commits_after}"
+
+    # Bold isn't being set through jj `label` since that causes rest of prompt
+    # to lose background color. Subsequent `label` calls don't restore the
+    # background.
+    display+="%F{red}%B${change_prefix}%b"
+
+    display+="%F{white}${change_rest}${normal}"
 
     # ⇣42 if behind the remote.
     (( commits_behind )) && display+=" ⇣${commits_behind}"
