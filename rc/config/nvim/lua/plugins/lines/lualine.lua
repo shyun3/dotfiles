@@ -75,7 +75,7 @@ return {
 
     sections = {
       lualine_a = { "mode" },
-      lualine_b = { { "branch", draw_empty = true }, "diff" },
+      lualine_b = { { "vcs", draw_empty = true }, "diff" },
 
       ---@class NoiceStatus
       ---@field get fun(): boolean
