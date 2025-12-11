@@ -1921,9 +1921,9 @@
     # Bold isn't being set through jj `label` since that causes rest of prompt
     # to lose background color. Subsequent `label` calls don't restore the
     # background.
-    display+="%F{red}%B${change_prefix}%b"
+    display+="%F{red}%B${change_prefix}%b${normal}"
 
-    display+="%F{white}${change_rest}${normal}"
+    display+="$change_rest"
 
     # ⇣42 if behind the remote.
     (( commits_behind )) && display+=" ⇣${commits_behind}"
