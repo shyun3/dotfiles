@@ -1971,10 +1971,9 @@
 
   # finally, initialize and register the worker and callbacks.
   # this unregisters first so we can easily reload everything.
-  async_init
-  async_stop_worker _my_jj_worker 2>/dev/null
-  async_start_worker _my_jj_worker
-  async_unregister_callback _my_jj_worker 2>/dev/null
+  async_stop_worker _my_jj_worker
+  async_start_worker _my_jj_worker -u
+  async_unregister_callback _my_jj_worker
   async_register_callback _my_jj_worker _my_jj_callback
 
   #######################################################################
