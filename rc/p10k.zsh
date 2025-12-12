@@ -1872,17 +1872,17 @@
       (( commits_after )) && (( --commits_after ))  # Exclude @
 
       local commit_counts=($(jj -R $workspace --ignore-working-copy --no-pager \
-        bookmark list -r $branch --color never -T '
-          if(remote,
-            separate(" ",
-              name ++ "@" ++ remote,
+        bookmark list -r $branch --color never -T "
+          if(remote && name == \"$branch\",
+            separate(' ',
+              name ++ '@' ++ remote,
               coalesce(tracking_behind_count.exact(), tracking_behind_count.lower()),
               coalesce(tracking_ahead_count.exact(), tracking_ahead_count.lower()),
-              if(tracking_behind_count.exact(), "0", "+"),
-              if(tracking_ahead_count.exact(), "0", "+"),
-            ) ++ "\n"
+              if(tracking_behind_count.exact(), '0', '+'),
+              if(tracking_ahead_count.exact(), '0', '+'),
+            ) ++ '\n'
           )
-        '))
+        "))
       local commits_ahead=$commit_counts[2]
       local commits_behind=$commit_counts[3]
       local commits_ahead_plus=$commit_counts[4]
