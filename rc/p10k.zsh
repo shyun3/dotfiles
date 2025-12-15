@@ -1814,7 +1814,7 @@
   typeset -g _my_jj_status_modified=
   typeset -g _my_jj_status_loading=
 
-  typeset -g POWERLEVEL9K_MY_JJ_VISUAL_IDENTIFIER_EXPANSION="󱗆 " # U+f15c6
+  typeset -g POWERLEVEL9K_MY_JJ_VISUAL_IDENTIFIER_EXPANSION=$'\Uf15c6 ' # 󱗆
 
   prompt_my_jj() {
     local workspace
