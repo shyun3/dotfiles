@@ -1,0 +1,62 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[ui]
+default-command = ["util", "exec", "jjui"]
+pager = "delta"
+diff-formatter = ":git"  # Required by `delta`
+
+[working-copy]
+eol-conversion = "input"
+
+[aliases]
+prompt_log = ["log", "--ignore-working-copy", "--no-graph", "--no-pager"]
+
+[template-aliases]
+# Conflict: 
+# Divergent: 󰙁
+# Hidden: 󰈉
+# Immutable: 
+# Needs description: 
+#
+# Using `label` causes rest of the prompt to be white. So, attach `label` to
+# all symbols in order to force colors.
+prompt_symbols = """
+concat(
+    if(conflict, label('conflict', '\uf467 ')),
+    if(divergent, label('normal', '\U000f0641 ')),
+    if(hidden, label('normal', '\U000f0209 ')),
+    if(immutable, label('normal', '\uf023 ')),
+    if(!empty && description == '', label('normal', '\uf448 '))
+)
+"""
+# Bookmark: 
+# Tag: 
+revision_symbol = """
+coalesce(
+    if(bookmarks, '\uf02e '),
+    if(tags, '\uf02b ')
+)
+"""
+'change_id_parts(id, len)' = """
+separate(" ", id.shortest(len).prefix(), id.shortest(len).rest())
+"""
+
+[revset-aliases]
+'all_named()' = "bookmarks() | remote_bookmarks() | tags()"
+# Priorities for best named ancestor:
+# 1. Given revision if it has name
+# 2. Parent revision if it has name and given revision is empty
+#   - e.g. when new, empty revision is created on top of tag
+#   - Note this only handles one empty revision on top of a named revision
+# 3. Closest ancestor with name
+'best_named_ancestor(to)' = """
+coalesce(
+    to & all_named(),
+    heads(to-::(to & ~non_empty()) & all_named()),
+    heads(::to & bookmarks())
+)
+"""
+'non_empty()' = "~empty() | merges()"
+
+[colors]
+normal = "black"

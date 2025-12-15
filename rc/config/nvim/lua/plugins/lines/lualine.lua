@@ -75,7 +75,7 @@ return {
 
     sections = {
       lualine_a = { "mode" },
-      lualine_b = { { "branch", draw_empty = true }, "diff" },
+      lualine_b = { { "vcs", draw_empty = true }, "diff" },
 
       ---@class NoiceStatus
       ---@field get fun(): boolean
@@ -153,7 +153,7 @@ return {
       lualine_c = { oil.sections.lualine_a[1] },
 
       lualine_a = { "mode" },
-      lualine_b = { "branch" },
+      lualine_b = { { "vcs", draw_empty = true } },
       lualine_x = { filetype },
       lualine_z = { progress, location },
     }

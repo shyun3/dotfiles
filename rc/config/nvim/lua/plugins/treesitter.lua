@@ -62,6 +62,13 @@ return {
   },
 
   {
+    require("lazy-deps").treesitter_jjconfig,
+    event = "VeryLazy", -- To install on startup
+
+    opts = { ensure_installed = true },
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter-textobjects",
     event = "ModeChanged",
 

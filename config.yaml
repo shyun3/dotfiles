@@ -80,6 +80,12 @@ dotfiles:
     src: zsh
     dst: ~/.zsh
     link: absolute
+  f_01-user-config.toml:
+    src: config/jj/conf.d/01-user-config.toml
+    dst: ~/.config/jj/conf.d/01-user-config.toml
+  f_config.toml:
+    src: config/jjui/config.toml
+    dst: ~/.config/jjui/config.toml
 profiles:
   linux:
     dotfiles:
@@ -100,6 +106,8 @@ profiles:
       - f_stylua.toml
       - f_config
       - d_zsh
+      - f_01-user-config.toml
+      - f_config.toml
     actions:
       - setup_sh
   wsl-root:

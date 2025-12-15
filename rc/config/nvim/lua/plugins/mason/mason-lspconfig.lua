@@ -16,7 +16,10 @@ local lsp_configs = {
 
 return {
   "mason-org/mason-lspconfig.nvim",
-  dependencies = require("lazy-deps").lspconfig,
+  dependencies = {
+    require("lazy-deps").treesitter_jjconfig,
+    require("lazy-deps").lspconfig,
+  },
   event = "VeryLazy",
 
   opts = {

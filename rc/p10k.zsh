@@ -35,6 +35,7 @@
     os_icon                 # os identifier
     dir                     # current directory
     vcs                     # git status
+    my_jj
     # =========================[ Line #2 ]=========================
     newline                 # \n
     prompt_char             # prompt symbol
@@ -242,6 +243,7 @@
     .citc
     .git
     .hg
+    .jj
     .node-version
     .python-version
     .go-version
@@ -1797,6 +1799,183 @@
     # and regular prompts.
     prompt_example
   }
+
+  #######################################################################
+  # jj status
+  #
+  # Derived from:
+  # https://zerowidth.com/2025/async-zsh-jujutsu-prompt-with-p10k/
+  # https://andre.arko.net/2025/06/20/a-jj-prompt-for-powerlevel10k/
+
+  typeset -g _my_jj_display=""
+  typeset -g _my_jj_workspace=""
+
+  typeset -g _my_jj_status_clean=
+  typeset -g _my_jj_status_modified=
+  typeset -g _my_jj_status_loading=
+
+  typeset -g POWERLEVEL9K_MY_JJ_VISUAL_IDENTIFIER_EXPANSION="󱗆 " # U+f15c6
+
+  prompt_my_jj() {
+    local workspace
+
+    command -v jj >/dev/null 2>&1 || return
+    if workspace=$(jj workspace root 2>/dev/null); then
+      p10k display "*/jj=show"
+      p10k display "*/vcs=hide"
+    else
+      p10k display "*/jj=hide"
+      p10k display "*/vcs=show"
+      return
+    fi
+
+    # track current workspace for the async worker
+    if [[ $_my_jj_workspace != "$workspace" ]]; then
+      _my_jj_display="loading"
+      _my_jj_workspace="$workspace"
+    fi
+
+    # request async job for the current workspace
+    async_job _my_jj_worker _my_jj_async "$workspace"
+
+    _my_jj_status_loading=1
+    _my_jj_status_clean=
+    _my_jj_status_modified=
+
+    # note the single quotes, we want this to be interpreted each time
+    p10k segment -b grey -c '$_my_jj_status_loading' -t '$_my_jj_display' -e
+    p10k segment -b green -c '$_my_jj_status_clean' -t '$_my_jj_display' -e
+    p10k segment -b yellow -c '$_my_jj_status_modified' -t '$_my_jj_display' -e
+  }
+
+  # this function is called by the async worker, and does the work
+  # of calculating the jj status.
+  _my_jj_async() {
+    local workspace=$1
+
+    jj --at-op=@ debug snapshot
+
+    local status_changes=($(jj prompt_log -R $workspace -n 1 --color never \
+      -r @ -T "diff.summary()" 2> /dev/null | awk 'BEGIN {a=0;d=0;m=0}
+        /^A / {a++} /^D / {d++} /^M / {m++} /^R / {m++} /^C / {a++}
+        END {print(a,m,d)}'))
+
+    local branches=$(jj prompt_log -R $workspace -n 1 --color never \
+      -r "best_named_ancestor(@)" -T "coalesce(bookmarks, tags)" 2> /dev/null)
+
+    local branch=${branches%% *}  # Choose first bookmark or tag if none
+    if [[ -n $branch ]]; then
+      branch=${branch%\*} # Remove trailing * due to local bookmark diverged
+
+      local commits_after=$(jj prompt_log -R $workspace --color never \
+        -r "$branch::@ & non_empty()" -T '"n"' 2> /dev/null | wc -c)
+      (( commits_after )) && (( --commits_after ))  # Exclude @
+
+      local commit_counts=($(jj -R $workspace --ignore-working-copy --no-pager \
+        bookmark list -r $branch --color never -T "
+          if(remote && name == \"$branch\",
+            separate(' ',
+              name ++ '@' ++ remote,
+              coalesce(tracking_behind_count.exact(), tracking_behind_count.lower()),
+              coalesce(tracking_ahead_count.exact(), tracking_ahead_count.lower()),
+              if(tracking_behind_count.exact(), '0', '+'),
+              if(tracking_ahead_count.exact(), '0', '+'),
+            ) ++ '\n'
+          )
+        "))
+      local commits_ahead=$commit_counts[2]
+      local commits_behind=$commit_counts[3]
+      local commits_ahead_plus=$commit_counts[4]
+      local commits_behind_plus=$commit_counts[5]
+
+    else
+      local change=($(jj prompt_log -R $workspace -n 1 -r @ --color never \
+        -T 'change_id_parts(change_id, 8)'))
+      local change_prefix=$change[1]
+      local change_rest=$change[2]
+    fi
+
+    local rev_symbol=$(jj prompt_log -R $workspace -n 1 --color never \
+        -r ${branch:-@} -T "revision_symbol" 2> /dev/null)
+    local display=$rev_symbol
+
+    local symbols=$(jj prompt_log -R $workspace -n 1 -r @ --color always \
+      -T prompt_symbols)
+    display+=$symbols
+
+    # Using the jj `label` template function (when generating the symbols above)
+    # causes rest of the prompt foreground to be white. So, force color.
+    local normal='%F{black}'
+    display+=$normal
+
+    # If local branch name or tag is at most 32 characters long, show it in full.
+    # Otherwise show the first 12 … the last 12.
+    local at=${(V)branch}
+    (( $#at > 32 )) && at[13,-13]="…"
+    display+="${at//\%/%%}"  # escape %
+
+    # ›42 if beyond the local bookmark
+    (( commits_after )) && display+="›${commits_after}"
+
+    # Bold isn't being set through jj `label` since that causes rest of prompt
+    # to lose background color. Subsequent `label` calls don't restore the
+    # background.
+    display+="%F{red}%B${change_prefix}%b${normal}"
+
+    display+="$change_rest"
+
+    # ⇣42 if behind the remote.
+    (( commits_behind )) && display+=" ⇣${commits_behind}"
+    (( commits_behind_plus )) && display+="${commits_behind_plus}"
+    # ⇡42 if ahead of the remote; no leading space if also behind the remote: ⇣42⇡42.
+    (( commits_ahead && !commits_behind )) && display+=" "
+    (( commits_ahead  )) && display+="⇡${commits_ahead}"
+    (( commits_ahead_plus )) && display+="${commits_ahead_plus}"
+
+    local display_changes
+    (( status_changes[1] )) && display_changes+=" +${status_changes[1]}"
+    (( status_changes[2] )) && display_changes+=" ~${status_changes[2]}"
+    (( status_changes[3] )) && display_changes+=" -${status_changes[3]}"
+    display+=$display_changes
+
+    local repo_status="CLEAN"
+    [[ -n $display_changes ]] && repo_status="MODIFIED"
+
+    echo "${display}%f;$repo_status"
+  }
+
+  _my_jj_callback() {
+    local job_name=$1 exit_code=$2 output=$3 execution_time=$4 stderr=$5 next_pending=$6
+
+    local display=${output%;*}
+    if [[ $exit_code == 0 ]]; then
+      _my_jj_display=$display
+    else
+      _my_jj_display="$display %F{red}$stderr%f"
+    fi
+
+    local repo_status=${output##*;}
+    if [[ $repo_status == "CLEAN" ]]; then
+      _my_jj_status_clean=1
+      _my_jj_status_modified=
+      _my_jj_status_loading=
+    elif [[ $repo_status == "MODIFIED" ]]; then
+      _my_jj_status_clean=
+      _my_jj_status_modified=1
+      _my_jj_status_loading=
+    fi
+
+    p10k display -r
+  }
+
+  # finally, initialize and register the worker and callbacks.
+  # this unregisters first so we can easily reload everything.
+  async_stop_worker _my_jj_worker
+  async_start_worker _my_jj_worker -u
+  async_unregister_callback _my_jj_worker
+  async_register_callback _my_jj_worker _my_jj_callback
+
+  #######################################################################
 
   # User-defined prompt segments can be customized the same way as built-in segments.
   typeset -g POWERLEVEL9K_EXAMPLE_FOREGROUND=3

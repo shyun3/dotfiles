@@ -34,3 +34,8 @@ target = "~/.local/bin/nvim"
 ["astral-sh/uv"]
 asset_filters = ["gnu"]
 all = true
+
+["jj-vcs/jj"]
+
+["idursun/jjui"]
+target = "~/.local/bin/jjui"

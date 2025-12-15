@@ -1,0 +1,45 @@
+[preview]
+show_at_start = true
+# Display preview diffs with `delta`
+#
+# Derived from https://github.com/idursun/jjui/issues/314#issuecomment-3367379291
+#
+# Note that a `delta` specific `ui.diff-formatter` setting is not used because
+# then `delta` will report "left" and "right" files for the same file
+revision_command = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  "jj show $change_id --no-pager --stat --git --color=always | delta --paging=never",
+]
+file_command = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  "jj diff -r $change_id $file --no-pager --color=always | delta --paging=never",
+]
+
+[custom_commands]
+# Derived from https://github.com/idursun/jjui/discussions/163#discussioncomment-13672324
+#
+# Applies to revision and file diff commands. Technique derived from:
+# https://github.com/idursun/jjui/discussions/63#discussioncomment-13415745
+delta = { key = ["d"], args = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
+  change_id= file= jj $([[ -n "$file" ]] && echo "diff -r" || echo "show") \
+    $change_id $file --stat --git --color=always | delta --paging=always
+  """,
+], show = "interactive" }
+
+[ui.colors]
+# Provides better contrast when using "Catppuccin Mocha"
+"confirmation selected" = { bg = "bright black" }

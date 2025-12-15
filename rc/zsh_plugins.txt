@@ -31,6 +31,7 @@ ohmyzsh/ohmyzsh path:plugins/copyfile
 ohmyzsh/ohmyzsh path:plugins/direnv
 ohmyzsh/ohmyzsh path:plugins/eza
 ohmyzsh/ohmyzsh path:plugins/fzf
+ohmyzsh/ohmyzsh path:plugins/jj
 ohmyzsh/ohmyzsh path:plugins/ssh-agent
 ohmyzsh/ohmyzsh path:plugins/uv
 ohmyzsh/ohmyzsh path:plugins/zoxide
@@ -39,3 +40,4 @@ ohmyzsh/ohmyzsh path:plugins/zsh-interactive-cd
 # 3rd party plugins
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
+mafredri/zsh-async
