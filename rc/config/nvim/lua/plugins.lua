@@ -186,8 +186,8 @@ return {
   },
 
   {
-    "stevearc/oil.nvim",
-    lazy = false, -- Should be loaded early to override netrw
+    require("lazy-deps").oil,
+    event = "UIEnter",
 
     opts = {
       keymaps = {
