@@ -364,7 +364,7 @@ return {
 
   {
     "tadaa/vimade",
-    event = "VeryLazy",
+    event = "UIEnter",
 
     opts = {
       ncmode = "windows",
