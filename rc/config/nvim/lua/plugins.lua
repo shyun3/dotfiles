@@ -105,6 +105,24 @@ return {
     event = "InsertEnter",
 
     opts = {},
+
+    config = function(_, opts)
+      local module = require("nvim-autopairs")
+      module.setup(opts)
+
+      local rule = require("nvim-autopairs.rule")
+      local cond = require("nvim-autopairs.conds")
+
+      local toml_ft = { "toml" }
+      if require("lazy-deps").treesitter_jjconfig then
+        table.insert(toml_ft, "jjconfig.toml")
+      end
+
+      module.add_rules({
+        rule('"""', '"""', toml_ft):with_pair(cond.not_before_char('"', 3)),
+        rule("'''", "'''", toml_ft):with_pair(cond.not_before_char("'", 3)),
+      })
+    end,
   },
 
   {
