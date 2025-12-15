@@ -5,11 +5,13 @@
 ---@type fun(prompt: string, maxchar: number?, opts: Options?): string?
 local saved_get_input_pattern
 
----@type FtKey?
-local last_ft_key_
+local S = {
+  ---@type FtKey?
+  last_ft_key = nil,
 
----@type string?
-local last_ft_char_
+  ---@type string?
+  last_ft_char = nil,
+}
 
 --- Retrieve f/t specific hop options
 ---
@@ -62,8 +64,8 @@ local function get_ft_input_pattern(key, maxchar, opts)
   local input = saved_get_input_pattern("", maxchar, opts)
 
   if input then
-    last_ft_key_ = key
-    last_ft_char_ = input
+    S.last_ft_key = key
+    S.last_ft_char = input
   end
 
   return input
@@ -321,8 +323,8 @@ return {
         ";",
 
         function()
-          if last_ft_key_ and last_ft_char_ then
-            return last_ft_key_ .. last_ft_char_
+          if S.last_ft_key and S.last_ft_char then
+            return S.last_ft_key .. S.last_ft_char
           end
         end,
 
@@ -336,9 +338,9 @@ return {
         ",",
 
         function()
-          if last_ft_key_ and last_ft_char_ then
-            local key = vim.fn.tr(last_ft_key_, "ftFT", "FTft")
-            return key .. last_ft_char_
+          if S.last_ft_key and S.last_ft_char then
+            local key = vim.fn.tr(S.last_ft_key, "ftFT", "FTft")
+            return key .. S.last_ft_char
           end
         end,
 
