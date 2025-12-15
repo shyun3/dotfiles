@@ -59,9 +59,7 @@ end
 ---
 ---@return string?
 local function get_ft_input_pattern(key, maxchar, opts)
-  vim.cmd(".Limelight")
   local input = orig_get_input_pattern("", maxchar, opts)
-  vim.cmd("Limelight!")
 
   if input then
     last_ft_key_ = key
@@ -149,11 +147,6 @@ function _G.hop_ft(key, target)
 end
 
 return {
-  {
-    "junegunn/limelight.vim",
-    cmd = "Limelight",
-  },
-
   {
     "smoka7/hop.nvim",
 
