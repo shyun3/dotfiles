@@ -1,9 +1,9 @@
 ---@alias FtKey "f" | "F" | "t" | "T"
 
---- Saved original version of hop's `get_input_pattern`
+--- Saved version of hop's `get_input_pattern`
 ---
 ---@type fun(prompt: string, maxchar: number?, opts: Options?): string?
-local orig_get_input_pattern
+local saved_get_input_pattern
 
 ---@type FtKey?
 local last_ft_key_
@@ -59,7 +59,7 @@ end
 ---
 ---@return string?
 local function get_ft_input_pattern(key, maxchar, opts)
-  local input = orig_get_input_pattern("", maxchar, opts)
+  local input = saved_get_input_pattern("", maxchar, opts)
 
   if input then
     last_ft_key_ = key
@@ -76,13 +76,15 @@ end
 ---@return fun()
 local function make_hop_ft(key)
   return function()
+    local last_get_input_pattern = require("hop").get_input_pattern
+
     ---@diagnostic disable-next-line: duplicate-set-field
     require("hop").get_input_pattern = function(_, ...)
       return get_ft_input_pattern(key, ...)
     end
 
     require("hop").hint_char1(ft_opts(key))
-    require("hop").get_input_pattern = orig_get_input_pattern
+    require("hop").get_input_pattern = last_get_input_pattern
   end
 end
 
@@ -185,7 +187,24 @@ return {
       require("hop.jump_target").move_jump_target =
         require("util.hop").move_jump_target
 
-      orig_get_input_pattern = require("hop").get_input_pattern
+      local orig_get_input_pattern = require("hop").get_input_pattern
+
+      --- Same as `get_input_pattern` but blinks the cursor while waiting for
+      --- input pattern and suppresses the prompt message.
+      ---
+      ---@diagnostic disable-next-line: duplicate-set-field
+      require("hop").get_input_pattern = function(_, ...)
+        local last_guicursor = vim.o.guicursor
+        vim.o.guicursor =
+          "n-v:block-blinkon500-blinkoff500,o:hor20-blinkon500-blinkoff500"
+
+        local input = orig_get_input_pattern("", ...)
+        vim.o.guicursor = last_guicursor
+
+        return input
+      end
+
+      saved_get_input_pattern = require("hop").get_input_pattern
     end,
 
     keys = {
