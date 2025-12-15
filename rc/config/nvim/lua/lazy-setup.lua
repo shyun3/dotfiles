@@ -37,6 +37,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
   install = { colorscheme = { "default" } },
+
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "matchparen",
+      },
+    },
+  },
 })
 
 vim.keymap.set("n", "<Leader>lz", "<Cmd>Lazy<CR>")

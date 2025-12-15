@@ -101,6 +101,13 @@ return {
   },
 
   {
+    "monkoose/matchparen.nvim",
+    event = "UIEnter",
+
+    opts = {},
+  },
+
+  {
     require("lazy-deps").autopairs,
     event = "InsertEnter",
 
