@@ -41,10 +41,9 @@
 ---@param fallback TextObjectSpec?
 local function spec_treesitter(ai_captures, fallback)
   return function(ai_type)
-    local ts_region = require("nvim-treesitter.parsers").has_parser()
-        and require("mini.ai").gen_spec.treesitter(ai_captures)(ai_type)
-      or {}
-    return vim.tbl_isempty(ts_region) and fallback or ts_region
+    local ts_spec = require("mini.ai").gen_spec.treesitter(ai_captures)
+    local ok, ts_region = pcall(ts_spec, ai_type)
+    return ok and not vim.tbl_isempty(ts_region) and ts_region or fallback
   end
 end
 
