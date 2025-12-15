@@ -372,5 +372,21 @@ return {
       enablefocusfading = true,
       usecursorhold = true,
     },
+
+    config = function(_, opts)
+      -- When nvim focus is lost, lualine may not refresh before vimade fades.
+      -- The nvim display does not seem to update after fade. So, force a
+      -- lualine refresh before fade.
+      --
+      -- Make sure this autocommand is registered before vimade so that the
+      -- lualine refresh will occur before fade.
+      local lualine = require("lualine")
+      vim.api.nvim_create_autocmd("FocusLost", {
+        group = vim.api.nvim_create_augroup("user_vimade", {}),
+        callback = function() lualine.refresh({ force = true }) end,
+      })
+
+      require("vimade").setup(opts)
+    end,
   },
 }
