@@ -6,7 +6,12 @@ return {
     bar = {
       -- Derived from default bar enable function
       enable = function(buf, win)
-        local disabled_filetypes = { "", "oil", "help", "project" }
+        local disabled_filetypes = {
+          "",
+          LazyDep("oil") and "oil",
+          "help",
+          LazyDep("vim-project") and "project",
+        }
         if
           not vim.api.nvim_buf_is_valid(buf)
           or not vim.api.nvim_win_is_valid(win)

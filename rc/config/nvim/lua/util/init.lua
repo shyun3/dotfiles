@@ -69,7 +69,9 @@ end
 -- unmodified.
 function M.oil_filter(path)
   local prefix = "oil://"
-  return vim.startswith(path, prefix) and string.sub(path, #prefix + 1, -1)
+  return LazyDep("oil")
+      and vim.startswith(path, prefix)
+      and string.sub(path, #prefix + 1, -1)
     or path
 end
 

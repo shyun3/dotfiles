@@ -28,7 +28,7 @@ return {
         "luadoc",
         "meson",
         "python",
-        "regex", -- Recommended by noice
+        "regex",
         "toml",
         "xml",
         "yaml",

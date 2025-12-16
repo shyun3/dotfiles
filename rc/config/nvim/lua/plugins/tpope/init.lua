@@ -9,14 +9,15 @@ return {
     dependencies = LazyDep("nvim-autopairs"),
 
     config = function()
-      -- Disable filetypes handled by treesitter
-      local disable_langs = { "bash", "lua", "sh", "vim" }
-      for _, lang in pairs(disable_langs) do
-        vim.api.nvim_clear_autocmds({
-          group = "endwise",
-          event = "FileType",
-          pattern = lang,
-        })
+      if require("nvim-treesitter-endwise") then
+        local disable_langs = { "bash", "lua", "sh", "vim" }
+        for _, lang in pairs(disable_langs) do
+          vim.api.nvim_clear_autocmds({
+            group = "endwise",
+            event = "FileType",
+            pattern = lang,
+          })
+        end
       end
     end,
   },

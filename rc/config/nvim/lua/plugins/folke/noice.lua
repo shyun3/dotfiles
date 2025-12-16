@@ -14,7 +14,7 @@ return {
   },
 
   {
-    "folke/noice.nvim",
+    LazyDep("noice"),
     event = "VeryLazy",
 
     opts = {

@@ -77,15 +77,15 @@ return {
       lualine_a = { "mode" },
       lualine_b = { { "vcs", draw_empty = true }, "diff" },
 
-      ---@class NoiceStatus
-      ---@field get fun(): boolean
-      ---@field has fun(): boolean
-
       lualine_c = {
         filename,
         {
           -- Show @recording messages
           -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#-statusline-components
+
+          ---@class NoiceStatus
+          ---@field get fun(): boolean
+          ---@field has fun(): boolean
 
           function() return require("noice").api.status.mode.get() end,
           cond = function() return require("noice").api.status.mode.has() end,
@@ -106,9 +106,9 @@ return {
         {
           "lsp_status",
           symbols = {
-            -- Remove spinner and done symbols (covered by noice)
-            spinner = {},
-            done = "",
+            -- Remove spinner and done symbols
+            spinner = LazyDep("noice") and {},
+            done = LazyDep("noice") and "",
           },
         },
         filetype,
@@ -141,22 +141,24 @@ return {
         },
       },
     },
-    extensions = { "oil", "quickfix" },
+    extensions = { LazyDep("oil") and "oil", "quickfix" },
   },
 
   config = function(_, opts)
     require("lualine.extensions.quickfix").sections.lualine_z =
       { progress, location }
 
-    local oil = require("lualine.extensions.oil")
-    oil.sections = {
-      lualine_c = { oil.sections.lualine_a[1] },
+    if LazyDep("oil") then
+      local oil = require("lualine.extensions.oil")
+      oil.sections = {
+        lualine_c = { oil.sections.lualine_a[1] },
 
-      lualine_a = { "mode" },
-      lualine_b = { { "vcs", draw_empty = true } },
-      lualine_x = { filetype },
-      lualine_z = { progress, location },
-    }
+        lualine_a = { "mode" },
+        lualine_b = { { "vcs", draw_empty = true } },
+        lualine_x = { filetype },
+        lualine_z = { progress, location },
+      }
+    end
 
     require("lualine").setup(opts)
   end,

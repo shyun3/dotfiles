@@ -96,11 +96,11 @@ return {
           )
 
           local buf_id = win.buf().id
-          local proj_name = vim.b[buf_id].title -- From vim-project
+          local proj_name = LazyDep("vim-project") and vim.b[buf_id].title
           if proj_name then return proj_name end
 
           local filetype = vim.bo[buf_id].filetype
-          if filetype == "oil" then
+          if LazyDep("oil") and filetype == "oil" then
             local raw_buf_name = vim.api.nvim_buf_get_name(buf_id)
             local path =
               vim.fn.fnamemodify(require("util").oil_filter(raw_buf_name), ":~")

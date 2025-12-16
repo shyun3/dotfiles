@@ -50,7 +50,9 @@ return {
         -- When using 'file' or 'filecwd' for the `grepper.dir` option, Grepper
         -- will throw an error if run on an oil buffer. For this case, just use
         -- the current directory.
-        local cd_flag = vim.bo.filetype == "oil" and "-cd " .. vim.fn.getcwd()
+        local cd_flag = LazyDep("oil")
+            and vim.bo.filetype == "oil"
+            and "-cd " .. vim.fn.getcwd()
           or ""
         vim.cmd("Grepper " .. cd_flag)
       end,

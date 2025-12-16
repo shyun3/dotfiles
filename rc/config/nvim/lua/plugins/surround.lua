@@ -17,7 +17,7 @@ return {
 
   {
     "kylechui/nvim-surround",
-    event = "VeryLazy", -- To allow which-key to load mapping descriptions
+    event = LazyDep("which-key") and "VeryLazy",
 
     opts = {
       keymaps = {

@@ -11,7 +11,7 @@ return {
   },
 
   {
-    "shyun3/vim-project",
+    LazyDep("vim-project"),
     branch = "personal",
 
     lazy = false, -- To show welcome screen on startup
@@ -24,19 +24,21 @@ return {
       vim.call("project#rc")
 
       local group = vim.api.nvim_create_augroup("user_project", {})
-      vim.api.nvim_create_autocmd("BufEnter", {
-        group = group,
-        pattern = "oil://*",
-        desc = "Execute vim-project autocommand",
+      if LazyDep("oil") then
+        vim.api.nvim_create_autocmd("BufEnter", {
+          group = group,
+          pattern = "oil://*",
+          desc = "Execute vim-project autocommand",
 
-        callback = function(args)
-          vim.cmd.doautocmd({
-            "vim_project",
-            "BufEnter",
-            require("util").oil_filter(args.file),
-          })
-        end,
-      })
+          callback = function(args)
+            vim.cmd.doautocmd({
+              "vim_project",
+              "BufEnter",
+              require("util").oil_filter(args.file),
+            })
+          end,
+        })
+      end
 
       local projects = vim.fn.stdpath("config") .. "/projects.vim"
       if vim.fn.filereadable(projects) == 0 then return end

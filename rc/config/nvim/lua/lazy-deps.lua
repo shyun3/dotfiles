@@ -5,10 +5,12 @@
 local deps = {
   -- Vim plugins
   ["vim-endwise"] = "shyun3/vim-endwise",
+  ["vim-project"] = "shyun3/vim-project",
 
   -- Lua modules
   lspconfig = "neovim/nvim-lspconfig",
   ["nvim-autopairs"] = "windwp/nvim-autopairs",
+  noice = "folke/noice.nvim",
   oil = "stevearc/oil.nvim",
   ["which-key"] = "folke/which-key.nvim",
 }

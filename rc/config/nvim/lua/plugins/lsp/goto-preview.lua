@@ -8,7 +8,7 @@ return {
     opts = {
       default_mappings = true,
       references = { provider = "fzf_lua" },
-      vim_ui_input = false, -- Handled by noice
+      vim_ui_input = LazyDep("noice") and false,
 
       post_open_hook = function(_, win)
         -- Fix highlights in floating windows

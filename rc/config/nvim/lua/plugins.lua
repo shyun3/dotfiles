@@ -1,9 +1,11 @@
 return {
   {
     "numToStr/Comment.nvim",
-    event = "VeryLazy", -- To allow which-key to load descriptions for mappings
+    event = LazyDep("which-key") and "VeryLazy",
 
     opts = {},
+
+    keys = { "gc", "gb" },
   },
 
   {
@@ -69,7 +71,7 @@ return {
         show_end = false,
       },
 
-      exclude = { filetypes = { "project" } },
+      exclude = { filetypes = { LazyDep("vim-project") and "project" } },
     },
   },
 
