@@ -107,7 +107,7 @@ local function make_expr_hop_ft(key)
     local target = get_ft_input_pattern(key, 1)
 
     -- Note the `v` before the command. Otherwise, the last character in a line
-    -- can't be deleted. See issue #85 and pull request #98.
+    -- can't be hopped to. See issue #85 and pull request #98.
     return target
         and string.format(
           "v<Cmd>lua hop_ft([=[%s]=], [=[%s]=])<CR>",
@@ -118,14 +118,14 @@ local function make_expr_hop_ft(key)
   end
 end
 
---- Performs f/t hop
+--- Performs 1-character hop
 ---
 --- This is global to allow use in expression mappings. Intended for
 --- operator-pending mode.
 ---
----@param key FtKey
----@param target string
-function _G.hop_ft(key, target)
+---@param target string Single character to hop to
+---@param opts Options?
+function _G.hop_char1(target, opts)
   -- Gather any typed characters remaining in the input stream. These may be
   -- present when dot repeating a 'c' operation with a hop. This is necessary
   -- to prevent these keys from being fed to any hop char prompts that are
@@ -138,7 +138,7 @@ function _G.hop_ft(key, target)
   end
 
   -- Taken from `hop.hint_char1`
-  local opts = override_opts(ft_opts(key))
+  opts = override_opts(opts or {})
   require("hop").hint_with_regex(
     require("hop.jump_regex").regex_by_case_searching(target, true, opts),
     opts
@@ -149,6 +149,15 @@ function _G.hop_ft(key, target)
   local keys = table.concat(chars)
   vim.api.nvim_feedkeys(keys, "n", false)
 end
+
+--- Performs f/t hop
+---
+--- This is global to allow use in expression mappings. Intended for
+--- operator-pending mode.
+---
+---@param key FtKey
+---@param target string
+function _G.hop_ft(key, target) hop_char1(target, ft_opts(key)) end
 
 return {
   {
@@ -232,8 +241,19 @@ return {
       },
       {
         "<Enter>",
-        "v<Cmd>HopChar1<CR>",
+
+        function()
+          local target = require("hop").get_input_pattern("", 1)
+
+          -- Note the `v` before the command. Otherwise, the last character in
+          -- a line can't be hopped to. See issue #85 and pull request #98.
+          return target
+              and string.format("v<Cmd>lua hop_char1([=[%s]=])<CR>", target)
+            or "<Esc>"
+        end,
+
         mode = "o",
+        expr = true,
         desc = "Hop to character",
       },
 
