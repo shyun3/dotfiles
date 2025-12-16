@@ -20,6 +20,7 @@ return {
     },
 
     keys = {
+      -- For dot-repeat to work, motions must be called as Ex commands
       {
         "i<Leader>w",
         "<Cmd>lua require('various-textobjs').subword('inner')<CR>",
