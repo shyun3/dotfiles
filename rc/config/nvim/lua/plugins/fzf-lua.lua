@@ -2,7 +2,7 @@ local util = require("util")
 
 return {
   {
-    require("lazy-deps").which_key,
+    LazyDep("which-key"),
     optional = true,
 
     opts = {

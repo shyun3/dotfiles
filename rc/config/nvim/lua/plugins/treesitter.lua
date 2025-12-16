@@ -62,7 +62,7 @@ return {
   },
 
   {
-    require("lazy-deps").treesitter_jjconfig,
+    "acarapetis/nvim-treesitter-jjconfig",
     event = "VeryLazy", -- To install on startup
 
     opts = { ensure_installed = true },

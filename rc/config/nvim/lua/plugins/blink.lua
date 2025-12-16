@@ -7,7 +7,7 @@ return {
     version = "1.*",
 
     -- Load plugins that create mappings which blink may fallback to
-    dependencies = require("lazy-deps").endwise,
+    dependencies = LazyDep("vim-endwise"),
 
     event = { "InsertEnter", "CmdlineEnter" },
 

@@ -1,5 +1,5 @@
 return {
-  require("lazy-deps").which_key,
+  LazyDep("which-key"),
   event = "VeryLazy",
 
   init = function()

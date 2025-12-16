@@ -42,7 +42,7 @@ require("lazy").setup("plugins", {
     rtp = {
       disabled_plugins = {
         "matchparen",
-        require("lazy-deps").oil and "netrwPlugin",
+        LazyDep("oil") and "netrwPlugin",
       },
     },
   },

@@ -16,10 +16,7 @@ local lsp_configs = {
 
 return {
   "mason-org/mason-lspconfig.nvim",
-  dependencies = {
-    require("lazy-deps").treesitter_jjconfig,
-    require("lazy-deps").lspconfig,
-  },
+  dependencies = LazyDep("lspconfig"),
   event = "VeryLazy",
 
   opts = {
@@ -37,6 +34,8 @@ return {
   },
 
   config = function(_, opts)
+    require("nvim-treesitter-jjconfig") -- Has LSP settings
+
     for client, cfg in pairs(lsp_configs) do
       vim.lsp.config(client, cfg)
     end

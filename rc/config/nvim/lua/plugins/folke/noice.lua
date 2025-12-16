@@ -3,7 +3,7 @@ return {
   { "rcarriga/nvim-notify", lazy = true, opts = { stages = "slide" } },
 
   {
-    require("lazy-deps").which_key,
+    LazyDep("which-key"),
     optional = true,
 
     opts = {

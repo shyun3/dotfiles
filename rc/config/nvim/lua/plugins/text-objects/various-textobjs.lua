@@ -1,6 +1,6 @@
 return {
   {
-    require("lazy-deps").which_key,
+    LazyDep("which-key"),
     optional = true,
 
     opts = {

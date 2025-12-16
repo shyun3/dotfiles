@@ -108,7 +108,7 @@ return {
   },
 
   {
-    require("lazy-deps").autopairs,
+    LazyDep("nvim-autopairs"),
     event = "InsertEnter",
 
     opts = {},
@@ -121,7 +121,7 @@ return {
       local cond = require("nvim-autopairs.conds")
 
       local toml_ft = { "toml" }
-      if require("lazy-deps").treesitter_jjconfig then
+      if require("nvim-treesitter-jjconfig") then
         table.insert(toml_ft, "jjconfig.toml")
       end
 
@@ -186,7 +186,7 @@ return {
   },
 
   {
-    require("lazy-deps").oil,
+    LazyDep("oil"),
     event = "UIEnter",
 
     opts = {

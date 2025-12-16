@@ -1,12 +1,12 @@
 return {
   {
-    require("lazy-deps").endwise,
+    LazyDep("vim-endwise"),
     branch = "personal",
     event = "FileType", -- Must be loaded early for plugin to work properly
 
     -- Endwise wraps <CR> with its own mapping on startup by default, so make
     -- sure any autopairs plugins perform their mappings first
-    dependencies = require("lazy-deps").autopairs,
+    dependencies = LazyDep("nvim-autopairs"),
 
     config = function()
       -- Disable filetypes handled by treesitter
