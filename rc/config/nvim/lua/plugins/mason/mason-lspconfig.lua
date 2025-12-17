@@ -12,7 +12,6 @@ return {
 
   {
     LazyDep("mason-lspconfig"),
-    dependencies = { LazyDep("nvim-treesitter-jjconfig"), LazyDep("lspconfig") },
     event = "VeryLazy",
 
     opts_extend = { "automatic_enable.exclude" },

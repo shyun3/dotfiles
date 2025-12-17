@@ -63,7 +63,9 @@ end
 return {
   {
     LazyDep("lspconfig"),
-    event = { "BufReadPre", "BufNewFile" }, -- Taken from LazyVim
+
+    -- Defer loading to allow other plugins to override these LSP configs
+    lazy = true,
 
     init = function()
       -- Set 'tagfunc' to prevent LSP tagfunc from being assigned

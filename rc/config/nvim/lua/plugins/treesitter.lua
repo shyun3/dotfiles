@@ -63,10 +63,15 @@ return {
 
   {
     LazyDep("nvim-treesitter-jjconfig"),
+    dependencies = LazyDep("lspconfig"),
 
-    -- This has LSP configs that may need to be added in a certain order, so
-    -- defer loading to other plugins
-    lazy = true,
+    event = {
+      -- To load before filetype event, otherwise highlighting won't occur
+      "BufReadPre",
+
+      -- To install on startup, even if no file was opened
+      "VeryLazy",
+    },
 
     opts = { ensure_installed = true },
 
