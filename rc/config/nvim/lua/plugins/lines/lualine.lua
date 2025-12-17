@@ -106,6 +106,7 @@ return {
         {
           "lsp_status",
           symbols = {
+            separator = " \u{f013} ", -- Default icon: 
           },
         },
         filetype,
