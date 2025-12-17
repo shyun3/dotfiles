@@ -13,7 +13,7 @@ return {
   },
 
   {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    LazyDep("mason-tool-installer"),
 
     -- Ensure installed does not work on VeryLazy, see #39
     lazy = false,
@@ -30,10 +30,6 @@ return {
 
         -- Linters
         "shellcheck",
-      },
-
-      integrations = {
-        ["mason-lspconfig"] = false, -- To allow lazy loading
       },
     },
   },

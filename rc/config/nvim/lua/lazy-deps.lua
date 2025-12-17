@@ -9,6 +9,7 @@ local deps = {
 
   -- Lua modules
   lspconfig = "neovim/nvim-lspconfig",
+  ["mason-tool-installer"] = "WhoIsSethDaniel/mason-tool-installer.nvim",
   noice = "folke/noice.nvim",
   ["mason-lspconfig"] = "mason-org/mason-lspconfig.nvim",
   ["nvim-autopairs"] = "windwp/nvim-autopairs",
