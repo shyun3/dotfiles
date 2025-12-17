@@ -8,7 +8,7 @@ return {
 
     opts = {
       modes = {
-        insert = LazyDep("nvim-autopairs") and false,
+        insert = false,
         command = true,
       },
 

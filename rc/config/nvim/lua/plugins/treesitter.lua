@@ -72,6 +72,18 @@ return {
 
       -- LSP semantic highlighting of strings may take priority, so disable
       vim.cmd.highlight("link @lsp.type.string.jjconfig.toml NONE")
+
+      local rule = require("nvim-autopairs.rule")
+      local cond = require("nvim-autopairs.conds")
+
+      require("nvim-autopairs").add_rules({
+        rule('"""', '"""', "jjconfig.toml"):with_pair(
+          cond.not_before_char('"', 3)
+        ),
+        rule("'''", "'''", "jjconfig.toml"):with_pair(
+          cond.not_before_char("'", 3)
+        ),
+      })
     end,
   },
 
