@@ -31,6 +31,12 @@ return {
       "vimls",
       "yamlls",
     },
+
+    automatic_enable = {
+      exclude = {
+        "stylua", -- Only for formatting
+      },
+    },
   },
 
   config = function(_, opts)
