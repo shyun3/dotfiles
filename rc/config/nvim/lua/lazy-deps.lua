@@ -9,8 +9,9 @@ local deps = {
 
   -- Lua modules
   lspconfig = "neovim/nvim-lspconfig",
-  ["nvim-autopairs"] = "windwp/nvim-autopairs",
   noice = "folke/noice.nvim",
+  ["nvim-autopairs"] = "windwp/nvim-autopairs",
+  ["nvim-treesitter-jjconfig"] = "acarapetis/nvim-treesitter-jjconfig",
   oil = "stevearc/oil.nvim",
   ["which-key"] = "folke/which-key.nvim",
 }

@@ -62,8 +62,11 @@ return {
   },
 
   {
-    "acarapetis/nvim-treesitter-jjconfig",
-    event = "VeryLazy", -- To install on startup
+    LazyDep("nvim-treesitter-jjconfig"),
+
+    -- This has LSP configs that may need to be added in a certain order, so
+    -- defer loading to other plugins
+    lazy = true,
 
     opts = { ensure_installed = true },
 
