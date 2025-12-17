@@ -379,7 +379,7 @@ return {
       -- lualine refresh will occur before fade.
       local lualine = require("lualine")
       vim.api.nvim_create_autocmd("FocusLost", {
-        group = vim.api.nvim_create_augroup("user_vimade", {}),
+        group = vim.api.nvim_create_augroup("my_vimade", {}),
         callback = function() lualine.refresh({ force = true }) end,
       })
 

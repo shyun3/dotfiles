@@ -22,7 +22,7 @@ return {
     end
 
     vim.api.nvim_create_autocmd("User", {
-      group = vim.api.nvim_create_augroup("myGrepperGroup", {}),
+      group = vim.api.nvim_create_augroup("my_grepper", {}),
       pattern = "Grepper",
       nested = true,
       desc = "Show sorted results",

@@ -23,7 +23,7 @@ return {
     config = function()
       vim.call("project#rc")
 
-      local group = vim.api.nvim_create_augroup("user_project", {})
+      local group = vim.api.nvim_create_augroup("my_project", {})
       if LazyDep("oil") then
         vim.api.nvim_create_autocmd("BufEnter", {
           group = group,

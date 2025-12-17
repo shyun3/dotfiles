@@ -55,7 +55,7 @@ return {
     require("mini.files").setup(opts)
 
     -- Derived from examples in help
-    local group = vim.api.nvim_create_augroup("user_mini_files", {})
+    local group = vim.api.nvim_create_augroup("my_mini_files", {})
     vim.api.nvim_create_autocmd("User", {
       group = group,
       pattern = "MiniFilesBufferCreate",

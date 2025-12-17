@@ -1,7 +1,7 @@
-local myAutoGroup = vim.api.nvim_create_augroup("myAutoGroup", { clear = true })
+local group = vim.api.nvim_create_augroup("my_nvim", { clear = true })
 
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
-  group = myAutoGroup,
+  group = group,
   nested = true,
   desc = "Save when leaving buffer",
 
@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
 })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-  group = myAutoGroup,
+  group = group,
   desc = "Highlight on yank",
   callback = function() vim.hl.on_yank() end,
 })
