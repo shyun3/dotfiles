@@ -106,9 +106,6 @@ return {
         {
           "lsp_status",
           symbols = {
-            -- Remove spinner and done symbols
-            spinner = LazyDep("noice") and {},
-            done = LazyDep("noice") and "",
           },
         },
         filetype,
