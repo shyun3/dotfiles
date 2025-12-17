@@ -1,7 +1,9 @@
 return {
-  "mason-org/mason-lspconfig.nvim",
+  LazyDep("mason-lspconfig"),
   dependencies = { LazyDep("nvim-treesitter-jjconfig"), LazyDep("lspconfig") },
   event = "VeryLazy",
+
+  opts_extend = { "automatic_enable.exclude" },
 
   opts = {
     ensure_installed = {
@@ -14,12 +16,6 @@ return {
       "ts_query_ls",
       "vimls",
       "yamlls",
-    },
-
-    automatic_enable = {
-      exclude = {
-        "stylua", -- Only for formatting
-      },
     },
   },
 }
