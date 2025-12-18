@@ -47,7 +47,45 @@ local function spec_treesitter(ai_captures, fallback)
   end
 end
 
+local builtin_key_descs = {
+  b = ")]} block",
+  q = [["'` string]],
+  ["?"] = "User prompt",
+}
+
+local custom_key_descs = {
+  a = "Argument",
+  f = "Function call",
+  k = "Treesitter: Class",
+  F = "Treesitter: Function",
+  S = "Treesitter: String",
+  [";"] = "Treesitter: Block",
+  g = "Whole buffer",
+  i = "Indent level",
+}
+
 return {
+  {
+    LazyDep("which-key"),
+    optional = true,
+
+    opts = function(_, opts)
+      if opts.spec == nil then opts.spec = {} end
+
+      local key_descs =
+        vim.tbl_extend("error", builtin_key_descs, custom_key_descs)
+      for key, desc in pairs(key_descs) do
+        for _, prefix in pairs({ "a", "i" }) do
+          table.insert(opts.spec, {
+            prefix .. key,
+            mode = { "o", "x" },
+            desc = desc,
+          })
+        end
+      end
+    end,
+  },
+
   { "echasnovski/mini.extra", lazy = true, version = false, config = true },
 
   {
@@ -56,13 +94,14 @@ return {
 
     event = "ModeChanged",
 
-    config = function()
-      local mini_ai = require("mini.ai")
-
-      local gen_spec = mini_ai.gen_spec
+    opts = function()
+      local gen_spec = require("mini.ai").gen_spec
       local gen_ai_spec = require("mini.extra").gen_ai_spec
 
-      mini_ai.setup({
+      return {
+        n_lines = 1000,
+        search_method = "cover",
+
         custom_textobjects = {
           -- Restore built-ins, as they are not limited by the number of lines
           -- to search as configured by this plugin
@@ -106,33 +145,7 @@ return {
           i = gen_ai_spec.indent(),
           L = gen_ai_spec.line(),
         },
-
-        n_lines = 1000,
-        search_method = "cover",
-      })
-
-      local key_descs = {
-        b = ")]} block",
-        q = [["'` string]],
-        ["?"] = "User prompt",
-        a = "Argument",
-        f = "Function call",
-        k = "Treesitter: Class",
-        F = "Treesitter: Function",
-        S = "Treesitter: String",
-        [";"] = "Treesitter: Block",
-        g = "Whole buffer",
-        i = "Indent level",
       }
-      for key, desc in pairs(key_descs) do
-        for _, prefix in pairs({ "a", "i" }) do
-          require("which-key").add({
-            prefix .. key,
-            mode = { "o", "x" },
-            desc = desc,
-          })
-        end
-      end
     end,
   },
 }
