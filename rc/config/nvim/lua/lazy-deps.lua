@@ -8,11 +8,13 @@ local deps = {
   ["vim-project"] = "shyun3/vim-project",
 
   -- Lua modules
+  Comment = "numToStr/Comment.nvim",
   lspconfig = "neovim/nvim-lspconfig",
   ["mason-tool-installer"] = "WhoIsSethDaniel/mason-tool-installer.nvim",
   noice = "folke/noice.nvim",
   ["mason-lspconfig"] = "mason-org/mason-lspconfig.nvim",
   ["nvim-autopairs"] = "windwp/nvim-autopairs",
+  ["nvim-surround"] = "kylechui/nvim-surround",
   ["nvim-treesitter-jjconfig"] = "acarapetis/nvim-treesitter-jjconfig",
   oil = "stevearc/oil.nvim",
   ["which-key"] = "folke/which-key.nvim",

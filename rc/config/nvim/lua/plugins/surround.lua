@@ -16,8 +16,7 @@ return {
   },
 
   {
-    "kylechui/nvim-surround",
-    event = LazyDep("which-key") and "VeryLazy",
+    LazyDep("nvim-surround"),
 
     opts = {
       keymaps = {
@@ -42,6 +41,9 @@ return {
     },
 
     keys = {
+      { "s" },
+      { "<C-g>", mode = "i" },
+
       { "ss", "cl", desc = "Delete character and enter insert" },
     },
   },

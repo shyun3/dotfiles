@@ -1,7 +1,6 @@
 return {
   {
-    "numToStr/Comment.nvim",
-    event = LazyDep("which-key") and "VeryLazy",
+    LazyDep("Comment"),
 
     opts = {},
 
