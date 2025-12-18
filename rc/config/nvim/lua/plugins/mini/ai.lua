@@ -62,6 +62,7 @@ local custom_key_descs = {
   [";"] = "Treesitter: Block",
   g = "Whole buffer",
   i = "Indent level",
+  L = "Line",
 }
 
 return {
