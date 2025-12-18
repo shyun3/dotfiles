@@ -36,6 +36,9 @@ return {
         { "<C-l>", desc = "Clear and redraw screen" },
         { "<C-r>", desc = "Redo" },
 
+        { "gh", desc = "Select mode" },
+        { "gH", desc = "Linewise select mode" },
+        { "g<C-h>", desc = "Blockwise select mode" },
         { "gq", mode = { "n", "x" }, desc = "Custom format lines" },
         { "gri", desc = "Implementations" },
         { "grr", desc = "References" },
@@ -91,6 +94,7 @@ return {
           desc = "Execute register contents for each line (linewise only)",
         },
         { "a%", mode = "x", desc = "Matching group" },
+        { "<C-g>", mode = "x", desc = "Select mode" },
         {
           "g%",
           mode = { "o", "x" },
@@ -98,6 +102,9 @@ return {
         },
         { "[%", mode = { "o", "x" }, desc = "Previous unmatched group" },
         { "]%", mode = { "o", "x" }, desc = "Next unmatched group" },
+
+        -- Select mode
+        { "<C-g>", mode = "s", desc = "Visual mode" },
 
         -- Open tags in splits
         { "<A-]>", desc = "Tag" },
