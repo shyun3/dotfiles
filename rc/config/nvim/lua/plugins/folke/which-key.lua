@@ -125,28 +125,26 @@ return {
       },
     },
 
-    config = function(_, opts)
-      require("which-key").setup(opts)
+    keys = function()
+      local keys = {
+        { "<Leader>?", "<Cmd>WhichKey<CR>", desc = "which-key: Show mappings" },
+        {
+          "<Leader>l?",
+          function() require("which-key").show({ global = false }) end,
+          desc = "which-key: Show buffer-local mappings",
+        },
+      }
 
       for _, mode in pairs({ "i", "s", "x", "c", "o" }) do
-        vim.keymap.set(
-          mode,
+        table.insert(keys, {
           "<C-q>",
           function() require("which-key").show({ mode = mode }) end,
-          { desc = "which-key: Show mappings" }
-        )
+          mode = mode,
+          desc = "which-key: Show mappings",
+        })
       end
+
+      return keys
     end,
-
-    keys = {
-      { "<Leader>?", "<Cmd>WhichKey<CR>", desc = "which-key: Show mappings" },
-      {
-        "<Leader>l?",
-        function() require("which-key").show({ global = false }) end,
-        desc = "which-key: Show buffer-local mappings",
-      },
-
-      { "<C-q>", mode = { "i", "v", "c", "o" } },
-    },
   },
 }
