@@ -147,5 +147,27 @@ return {
         },
       }
     end,
+
+    config = function(_, opts)
+      require("mini.ai").setup(opts)
+
+      for key, spec in pairs(opts.custom_textobjects) do
+        if spec ~= false and not custom_key_descs[key] then
+          vim.notify(
+            "mini.ai: No description found for key " .. key,
+            vim.log.levels.WARN
+          )
+        end
+      end
+
+      for key, _ in pairs(custom_key_descs) do
+        if not opts.custom_textobjects[key] then
+          vim.notify(
+            "mini.ai: Description found for unspecified key " .. key,
+            vim.log.levels.WARN
+          )
+        end
+      end
+    end,
   },
 }
