@@ -62,6 +62,18 @@ end
 
 return {
   {
+    LazyDep("which-key"),
+    optional = true,
+
+    opts = {
+      spec = {
+        { "gr", desc = "LSP" },
+        { "<Leader>r", desc = "LSP" },
+      },
+    },
+  },
+
+  {
     LazyDep("lspconfig"),
 
     -- Defer loading to allow other plugins to override these LSP configs
@@ -80,13 +92,6 @@ return {
       --
       -- See also `lsp-log`
       vim.lsp.log.set_level("off")
-    end,
-
-    config = function()
-      require("which-key").add({
-        { "gr", desc = "LSP" },
-        { "<Leader>r", desc = "LSP" },
-      })
     end,
 
     keys = {
