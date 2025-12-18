@@ -52,27 +52,15 @@ local option_descs = {
   ["<Esc>"] = "Cancel",
 }
 
----@param op OptionOp
-local function set_option_map_desc(op)
-  for _, opt_op in pairs(option_ops[op]) do
-    require("which-key").add({ opt_op, desc = option_op_descs[op] })
-
-    for opt, descs in pairs(option_descs) do
-      local desc = type(descs) == "string" and descs or descs[op]
-      require("which-key").add({ opt_op .. opt, desc = desc })
-    end
-  end
-end
-
 return {
-  { "tpope/vim-repeat", event = "VeryLazy" },
-
   {
-    "tpope/vim-unimpaired",
-    event = "VeryLazy",
+    LazyDep("which-key"),
+    optional = true,
 
-    config = function()
-      require("which-key").add({
+    opts = function(_, opts)
+      if opts.spec == nil then opts.spec = {} end
+
+      local specs = {
         {
           "[n",
           mode = { "n", "x", "o" },
@@ -117,29 +105,38 @@ return {
         { "]yy", desc = "C String decode line" },
         { "]C", mode = { "n", "x" }, desc = "C String decode" },
         { "]CC", desc = "C String decode line" },
-      })
+      }
+      vim.list_extend(opts.spec, specs)
 
-      for _, op in pairs({ "on", "off", "toggle" }) do
-        set_option_map_desc(op)
+      for op, prefixes in pairs(option_ops) do
+        for _, prefix in pairs(prefixes) do
+          table.insert(opts.spec, { prefix, desc = option_op_descs[op] })
+
+          for suffix, descs in pairs(option_descs) do
+            local desc = type(descs) == "string" and descs or descs[op]
+            table.insert(opts.spec, { prefix .. suffix, desc = desc })
+          end
+        end
       end
+    end,
+  },
 
+  { "tpope/vim-repeat", event = "VeryLazy" },
+
+  {
+    "tpope/vim-unimpaired",
+    event = "VeryLazy",
+
+    config = function()
       -- Doesn't interact well with which-key
       vim.keymap.del("n", "yo")
       vim.keymap.del("n", "yo<Esc>")
     end,
 
     keys = {
-      {
-        "[f",
-        "<Plug>(unimpaired-directory-previous)",
-        desc = "Previous file",
-      },
-      {
-        "]f",
-        "<Plug>(unimpaired-directory-next)",
-        desc = "Next file",
-      },
-
+      -- which-key specs seem to apply unconditionally, so filetype-specific
+      -- descriptions are defined here. Note how the RHS is also specified
+      -- otherwise the description won't be applied.
       {
         "[f",
         "<Plug>(unimpaired-directory-previous)",
@@ -151,6 +148,17 @@ return {
         "<Plug>(unimpaired-directory-next)",
         ft = "qf",
         desc = "Newer error list",
+      },
+
+      {
+        "[f",
+        "<Plug>(unimpaired-directory-previous)",
+        desc = "Previous file",
+      },
+      {
+        "]f",
+        "<Plug>(unimpaired-directory-next)",
+        desc = "Next file",
       },
     },
   },
