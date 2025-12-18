@@ -114,19 +114,6 @@ return {
     event = "InsertEnter",
 
     opts = {},
-
-    config = function(_, opts)
-      local module = require("nvim-autopairs")
-      module.setup(opts)
-
-      local rule = require("nvim-autopairs.rule")
-      local cond = require("nvim-autopairs.conds")
-
-      module.add_rules({
-        rule('"""', '"""', "toml"):with_pair(cond.not_before_char('"', 3)),
-        rule("'''", "'''", "toml"):with_pair(cond.not_before_char("'", 3)),
-      })
-    end,
   },
 
   {
