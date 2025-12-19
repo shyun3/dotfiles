@@ -14,6 +14,33 @@ return {
   },
 
   {
+    LazyDep("dropbar"),
+    optional = true,
+
+    opts = {
+      sources = {
+        path = {
+          -- Derived from https://github.com/Bekaboo/dropbar.nvim#normalize-path-in-special-buffers
+          relative_to = function(buf, win)
+            -- Show full path in oil buffers
+            local bufname = vim.api.nvim_buf_get_name(buf)
+            if vim.startswith(bufname, "oil://") then
+              local root = bufname:gsub("^%S+://", "", 1)
+              while root and root ~= vim.fs.dirname(root) do
+                root = vim.fs.dirname(root)
+              end
+              return root
+            end
+
+            local ok, cwd = pcall(vim.fn.getcwd, win)
+            return ok and cwd or vim.fn.getcwd()
+          end,
+        },
+      },
+    },
+  },
+
+  {
     LazyDep("oil"),
     event = "UIEnter",
 

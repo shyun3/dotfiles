@@ -1,5 +1,5 @@
 return {
-  "Bekaboo/dropbar.nvim",
+  LazyDep("dropbar"),
   event = "UIEnter",
 
   opts = {
@@ -8,7 +8,6 @@ return {
       enable = function(buf, win)
         local disabled_filetypes = {
           "",
-          LazyDep("oil") and "oil",
           "help",
           LazyDep("vim-project") and "project",
         }

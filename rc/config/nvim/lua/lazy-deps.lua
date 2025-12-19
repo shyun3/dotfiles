@@ -10,6 +10,7 @@ local deps = {
 
   -- Lua modules
   Comment = "numToStr/Comment.nvim",
+  dropbar = "Bekaboo/dropbar.nvim",
   lspconfig = "neovim/nvim-lspconfig",
   ["mason-tool-installer"] = "WhoIsSethDaniel/mason-tool-installer.nvim",
   noice = "folke/noice.nvim",
