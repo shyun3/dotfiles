@@ -105,6 +105,8 @@ return {
     "monkoose/matchparen.nvim",
     event = "UIEnter",
 
+    init = function() vim.g.loaded_matchparen = 1 end,
+
     opts = {},
   },
 
