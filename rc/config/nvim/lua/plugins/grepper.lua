@@ -1,5 +1,5 @@
 return {
-  "shyun3/vim-grepper",
+  LazyDep("vim-grepper"),
   branch = "personal",
 
   config = function()
@@ -46,18 +46,10 @@ return {
 
       function()
         require("util").go_to_editable_window()
-
-        -- When using 'file' or 'filecwd' for the `grepper.dir` option, Grepper
-        -- will throw an error if run on an oil buffer. For this case, just use
-        -- the current directory.
-        local cd_flag = LazyDep("oil")
-            and vim.bo.filetype == "oil"
-            and "-cd " .. vim.fn.getcwd()
-          or ""
-        vim.cmd("Grepper " .. cd_flag)
+        vim.cmd("Grepper")
       end,
 
-      desc = "Grepper: Prompt",
+      desc = "Grepper",
     },
     {
       "<Leader>*",

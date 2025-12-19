@@ -164,18 +164,6 @@ return {
   },
 
   {
-    LazyDep("oil"),
-    event = "UIEnter",
-
-    opts = {
-      keymaps = {
-        ["<C-p>"] = false, -- Conflicts with fzf-lua
-        gp = "actions.preview",
-      },
-    },
-  },
-
-  {
     "majutsushi/tagbar",
 
     init = function()

@@ -5,6 +5,7 @@
 local deps = {
   -- Vim plugins
   ["vim-endwise"] = "shyun3/vim-endwise",
+  ["vim-grepper"] = "shyun3/vim-grepper",
   ["vim-project"] = "shyun3/vim-project",
 
   -- Lua modules
