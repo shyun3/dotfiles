@@ -1,19 +1,5 @@
 return {
   {
-    LazyDep("vim-grepper"),
-    optional = true,
-
-    keys = {
-      {
-        "<Leader><Leader>",
-        function() vim.cmd("Grepper -cd " .. require("oil").get_current_dir()) end,
-        ft = "oil",
-        desc = "Grepper (force current Oil directory)",
-      },
-    },
-  },
-
-  {
     LazyDep("dropbar"),
     optional = true,
 
