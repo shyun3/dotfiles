@@ -1,7 +1,4 @@
 return {
-  { "MunifTanjim/nui.nvim", lazy = true },
-  { "rcarriga/nvim-notify", lazy = true, opts = { stages = "slide" } },
-
   {
     LazyDep("which-key"),
     optional = true,
@@ -12,6 +9,9 @@ return {
       },
     },
   },
+
+  { "MunifTanjim/nui.nvim", lazy = true },
+  { "rcarriga/nvim-notify", lazy = true, opts = { stages = "slide" } },
 
   {
     LazyDep("noice"),

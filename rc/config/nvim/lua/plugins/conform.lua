@@ -67,6 +67,7 @@ return {
         vim.g.disable_autoformat = true
       end
     end, { desc = "Disable autoformat-on-save", bang = true })
+
     vim.api.nvim_create_user_command("AutoFormatEnable", function(args)
       vim.b.disable_autoformat = false
       if not args.bang then vim.g.disable_autoformat = false end

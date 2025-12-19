@@ -66,7 +66,7 @@ return {
     dependencies = LazyDep("lspconfig"),
 
     event = {
-      -- To load before filetype event, otherwise highlighting won't occur
+      -- To load before filetype event, otherwise highlighting may not occur
       "BufReadPre",
 
       -- To install on startup, even if no file was opened

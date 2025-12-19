@@ -109,13 +109,6 @@ return {
   },
 
   {
-    LazyDep("nvim-autopairs"),
-    event = "InsertEnter",
-
-    opts = {},
-  },
-
-  {
     "norcalli/nvim-colorizer.lua",
     event = "VeryLazy",
 

@@ -4,10 +4,6 @@ return {
     branch = "personal",
     event = "FileType", -- Must be loaded early for plugin to work properly
 
-    -- Endwise wraps <CR> with its own mapping on startup by default, so make
-    -- sure any autopairs plugins perform their mappings first
-    dependencies = LazyDep("nvim-autopairs"),
-
     config = function()
       if require("nvim-treesitter-endwise") then
         local disable_langs = { "bash", "lua", "sh", "vim" }
