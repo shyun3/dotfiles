@@ -204,7 +204,7 @@ return {
       --- input pattern and suppresses the prompt message.
       ---
       ---@diagnostic disable-next-line: duplicate-set-field
-      require("hop").get_input_pattern = function(_, ...)
+      saved_get_input_pattern = function(_, ...)
         local last_guicursor = vim.o.guicursor
         vim.o.guicursor =
           "n-v:block-blinkon500-blinkoff500,o:hor20-blinkon500-blinkoff500"
@@ -215,7 +215,7 @@ return {
         return input
       end
 
-      saved_get_input_pattern = require("hop").get_input_pattern
+      require("hop").get_input_pattern = saved_get_input_pattern
     end,
 
     keys = {
