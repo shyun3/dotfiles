@@ -44,5 +44,15 @@ return {
         gp = "actions.preview",
       },
     },
+
+    config = function(_, opts)
+      require("oil").setup(opts)
+
+      require("util.path").register_normalizer(function(path)
+        local prefix = "oil://"
+        return vim.startswith(path, prefix)
+          and string.sub(path, #prefix + 1, -1)
+      end)
+    end,
   },
 }
