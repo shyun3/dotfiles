@@ -63,7 +63,7 @@ M.dropbar = {
 
 M.dropbar_overrides = {
   DropBarKindFile = { link = "Comment" },
-  DropBarKindFolder = { link = "Comment" },
+  DropBarKindDir = { link = "Comment" },
 }
 
 M.dropbar_custom = vim.tbl_extend("force", M.dropbar, M.dropbar_overrides)
