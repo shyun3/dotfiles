@@ -155,7 +155,7 @@ end
 
 -- Finds and saves full path to VCS directory based on current directory
 function M.find_vcs_dir()
-  local curr_file_dir = require("util").oil_filter(vim.fn.expand("%:p:h"))
+  local curr_file_dir = require("util.path").normalize(vim.fn.expand("%:p:h"))
 
   -- Extract correct file directory from terminals
   if curr_file_dir and curr_file_dir:match("term://.*") then
