@@ -82,7 +82,7 @@ return {
         function()
           util.go_to_editable_window()
           require("fzf-lua").files({
-            cwd = util.oil_filter(vim.fn.expand("%:p:h")),
+            cwd = require("util.path").normalize(vim.fn.expand("%:p:h")),
           })
         end,
         desc = "fzf-lua: Files in current file directory",
