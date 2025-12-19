@@ -7,7 +7,6 @@ return {
       -- Derived from default bar enable function
       enable = function(buf, win)
         local disabled_filetypes = {
-          "",
           "help",
           LazyDep("vim-project") and "project",
         }
