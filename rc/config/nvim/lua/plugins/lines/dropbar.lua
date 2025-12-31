@@ -7,7 +7,6 @@ return {
       -- Derived from default bar enable function
       enable = function(buf, win)
         local disabled_filetypes = {
-          "help",
           LazyDep("vim-project") and "project",
         }
         if
@@ -15,6 +14,7 @@ return {
           or not vim.api.nvim_win_is_valid(win)
           or vim.fn.win_gettype(win) ~= ""
           or vim.wo[win].winbar ~= ""
+          or vim.fn.bufname(buf) == ""
           or vim.tbl_contains(disabled_filetypes, vim.bo[buf].ft)
         then
           return false
