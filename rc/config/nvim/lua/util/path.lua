@@ -16,7 +16,7 @@ function M.register_normalizer(norm) S.normalizers[#S.normalizers + 1] = norm en
 function M.normalize(path, norms)
   norms = norms or S.normalizers
 
-  for _, norm in pairs(S.normalizers) do
+  for _, norm in ipairs(S.normalizers) do
     local norm_path = norm(path)
     if norm_path then return norm_path end
   end

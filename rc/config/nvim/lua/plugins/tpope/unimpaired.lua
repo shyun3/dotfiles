@@ -109,7 +109,7 @@ return {
       vim.list_extend(opts.spec, specs)
 
       for op, prefixes in pairs(option_ops) do
-        for _, prefix in pairs(prefixes) do
+        for _, prefix in ipairs(prefixes) do
           table.insert(opts.spec, { prefix, desc = option_op_descs[op] })
 
           for suffix, descs in pairs(option_descs) do

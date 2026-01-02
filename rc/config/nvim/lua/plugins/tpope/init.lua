@@ -7,7 +7,7 @@ return {
     config = function()
       if require("nvim-treesitter-endwise") then
         local disable_langs = { "bash", "lua", "sh", "vim" }
-        for _, lang in pairs(disable_langs) do
+        for _, lang in ipairs(disable_langs) do
           vim.api.nvim_clear_autocmds({
             group = "endwise",
             event = "FileType",

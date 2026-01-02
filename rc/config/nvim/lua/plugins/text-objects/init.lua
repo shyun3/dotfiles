@@ -11,7 +11,7 @@ return {
         C = "Comment with surrounding whitespace",
       }
       for key, desc in pairs(key_descs) do
-        for _, prefix in pairs({ "a", "i" }) do
+        for _, prefix in ipairs({ "a", "i" }) do
           table.insert(opts.spec, {
             prefix .. key,
             mode = { "o", "x" },

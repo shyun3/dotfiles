@@ -19,7 +19,7 @@ local theme = function()
   local modes =
     { "normal", "insert", "replace", "visual", "command", "terminal" }
   local override = {}
-  for _, mode in pairs(modes) do
+  for _, mode in ipairs(modes) do
     override[mode] = { c = make_c_section(mode) }
   end
 

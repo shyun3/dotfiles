@@ -142,7 +142,7 @@ return {
         },
       }
 
-      for _, mode in pairs({ "i", "s", "x", "c", "o" }) do
+      for _, mode in ipairs({ "i", "s", "x", "c", "o" }) do
         table.insert(keys, {
           "<C-q>",
           function() require("which-key").show({ mode = mode }) end,

@@ -32,7 +32,7 @@ local function pop_quickfix(result)
   local qf_list = {}
   for uri, edits in pairs(changes) do
     local buf_id = vim.uri_to_bufnr(uri)
-    for _, edit in pairs(edits) do
+    for _, edit in ipairs(edits) do
       local range = edit.range
       local row = range.start.line
       qf_list[#qf_list + 1] = {

@@ -66,7 +66,7 @@ vim.keymap.set(
 -- Undo
 vim.keymap.set("n", "<A-u>", function()
   local files = 0
-  for _, buf_id in pairs(vim.api.nvim_list_bufs()) do
+  for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
     if
       vim.api.nvim_buf_is_valid(buf_id)
       and vim.api.nvim_get_option_value("modified", { buf = buf_id })
