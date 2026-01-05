@@ -1,3 +1,5 @@
+local components = require("util.lualine")
+
 local filename = {
   "filename",
   newfile_status = true,
@@ -7,32 +9,6 @@ local filename = {
     readonly = "", -- Taken from airline
   },
 }
-
-local filetype = { "filetype", colored = false }
-
-local function progress()
-  local prog = require("lualine.components.progress")()
-  if prog == "Top" then
-    return "0%%"
-  elseif prog == "Bot" then
-    return "100%%"
-  else
-    return vim.trim(prog)
-  end
-end
-
--- Derived from location component
-local function location()
-  local line = vim.fn.line(".")
-  local max_line = vim.fn.line("$")
-
-  local col = vim.fn.charcol(".")
-  local virt_col = vim.fn.virtcol(".")
-  local col_str = col .. (col == virt_col and "" or "-" .. virt_col)
-
-  -- Symbols taken from airline
-  return string.format(":%d/%d≡ ℅:%s", line, max_line, col_str)
-end
 
 return {
   "nvim-lualine/lualine.nvim",
@@ -81,12 +57,12 @@ return {
             separator = " \u{f013} ", -- Default icon: 
           },
         },
-        filetype,
+        components.filetype,
       },
       lualine_y = { "encoding", "fileformat" },
       lualine_z = {
-        progress,
-        location,
+        "my_progress",
+        "my_location",
         {
           "diagnostics",
           sources = { "nvim_diagnostic" },
@@ -116,7 +92,7 @@ return {
 
   config = function(_, opts)
     require("lualine.extensions.quickfix").sections.lualine_z =
-      { progress, location }
+      { "my_progress", "my_location" }
 
     if LazyDep("oil") then
       local oil = require("lualine.extensions.oil")
@@ -125,8 +101,8 @@ return {
 
         lualine_a = { "mode" },
         lualine_b = { { "vcs", draw_empty = true } },
-        lualine_x = { filetype },
-        lualine_z = { progress, location },
+        lualine_x = { components.filetype },
+        lualine_z = { "my_progress", "my_location" },
       }
     end
 
