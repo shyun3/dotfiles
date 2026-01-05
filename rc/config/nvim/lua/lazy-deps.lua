@@ -12,6 +12,7 @@ local deps = {
   Comment = "numToStr/Comment.nvim",
   dropbar = "Bekaboo/dropbar.nvim",
   lspconfig = "neovim/nvim-lspconfig",
+  lualine = "nvim-lualine/lualine.nvim",
   ["mason-tool-installer"] = "WhoIsSethDaniel/mason-tool-installer.nvim",
   noice = "folke/noice.nvim",
   ["mason-lspconfig"] = "mason-org/mason-lspconfig.nvim",

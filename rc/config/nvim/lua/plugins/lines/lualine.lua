@@ -1,5 +1,3 @@
-local components = require("util.lualine")
-
 local filename = {
   "filename",
   newfile_status = true,
@@ -11,8 +9,10 @@ local filename = {
 }
 
 return {
-  "nvim-lualine/lualine.nvim",
+  LazyDep("lualine"),
   event = "UIEnter",
+
+  opts_extend = { "extensions" },
 
   opts = {
     options = {
@@ -57,7 +57,7 @@ return {
             separator = " \u{f013} ", -- Default icon: 
           },
         },
-        components.filetype,
+        require("util.lualine").filetype,
       },
       lualine_y = { "encoding", "fileformat" },
       lualine_z = {
@@ -87,22 +87,7 @@ return {
         },
       },
     },
-    extensions = { LazyDep("oil") and "oil", "my_quickfix" },
+
+    extensions = { "my_quickfix" },
   },
-
-  config = function(_, opts)
-    if LazyDep("oil") then
-      local oil = require("lualine.extensions.oil")
-      oil.sections = {
-        lualine_c = { oil.sections.lualine_a[1] },
-
-        lualine_a = { "mode" },
-        lualine_b = { { "vcs", draw_empty = true } },
-        lualine_x = { components.filetype },
-        lualine_z = { "my_progress", "my_location" },
-      }
-    end
-
-    require("lualine").setup(opts)
-  end,
 }

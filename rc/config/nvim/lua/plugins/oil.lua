@@ -27,6 +27,13 @@ return {
   },
 
   {
+    LazyDep("lualine"),
+    optional = true,
+
+    opts = { extensions = { "my_oil" } },
+  },
+
+  {
     LazyDep("oil"),
     event = "UIEnter",
 
