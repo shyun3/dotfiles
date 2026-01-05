@@ -87,13 +87,10 @@ return {
         },
       },
     },
-    extensions = { LazyDep("oil") and "oil", "quickfix" },
+    extensions = { LazyDep("oil") and "oil", "my_quickfix" },
   },
 
   config = function(_, opts)
-    require("lualine.extensions.quickfix").sections.lualine_z =
-      { "my_progress", "my_location" }
-
     if LazyDep("oil") then
       local oil = require("lualine.extensions.oil")
       oil.sections = {
