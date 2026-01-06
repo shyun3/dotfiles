@@ -35,7 +35,6 @@ ohmyzsh/ohmyzsh path:plugins/jj
 ohmyzsh/ohmyzsh path:plugins/ssh-agent
 ohmyzsh/ohmyzsh path:plugins/uv
 ohmyzsh/ohmyzsh path:plugins/zoxide
-ohmyzsh/ohmyzsh path:plugins/zsh-interactive-cd
 
 # 3rd party plugins
 zsh-users/zsh-autosuggestions
