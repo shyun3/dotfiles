@@ -7,7 +7,7 @@ local colors = require("lualine.themes.catppuccin")
 ---
 ---@param mode string Mode name used by lualine theme
 ---
----@return fun(): {fg: string|number, bg: string|number} colorscheme
+---@return fun(): {["fg"]: string | number, ["bg"]: string | number} colorscheme
 local function make_c_section(mode)
   return function()
     return vim.bo.modified

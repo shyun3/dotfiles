@@ -2,7 +2,7 @@
 ---@alias ComposedPatternElem string | string[] | ComposedPatternElem[]
 ---@alias ComposedPattern ComposedPatternElem[]
 ---
----@alias RegionPosition {line: integer, col: integer, vis_mode: "v" | "V" | "\22" | nil}
+---@alias RegionPosition {["line"]: integer, ["col"]: integer, ["vis_mode"]: "v" | "V" | "\22" | nil}
 ---
 ---@class Region
 ---@field from RegionPosition
