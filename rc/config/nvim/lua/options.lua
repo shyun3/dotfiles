@@ -36,6 +36,9 @@ vim.opt.shada = {
   "h", -- Disable 'hlsearch' effect when loading shada file
 }
 
+-- Folds
+vim.o.foldenable = false
+
 -- Formatting
 vim.o.wrap = false
 vim.opt.formatoptions:append({ r = true, o = true }) -- Auto comment leaders
