@@ -1,9 +1,7 @@
 ---@alias FtKey "f" | "F" | "t" | "T"
 
---- Saved version of hop's `get_input_pattern`
----
----@type fun(prompt: string, maxchar: number?, opts: Options?): string?
-local saved_get_input_pattern
+--- Signature for hop's `get_input_pattern`
+---@alias InputPatternGetter fun(prompt: string, maxchar: number?, opts: Options?): string?
 
 local S = {
   ---@type FtKey?
@@ -58,11 +56,15 @@ end
 ---@param key FtKey
 ---@param maxchar number?
 ---@param opts Options?
+---@param get_input_pattern InputPatternGetter? Uses default if nil
 ---
 ---@return string?
-local function get_ft_input_pattern(key, maxchar, opts)
-  local input = saved_get_input_pattern("", maxchar, opts)
+local function get_ft_input_pattern(key, maxchar, opts, get_input_pattern)
+  if get_input_pattern == nil then
+    get_input_pattern = require("hop").get_input_pattern
+  end
 
+  local input = get_input_pattern("", maxchar, opts)
   if input then
     S.last_ft_key = key
     S.last_ft_char = input
@@ -82,7 +84,8 @@ local function make_hop_ft(key)
 
     ---@diagnostic disable-next-line: duplicate-set-field
     require("hop").get_input_pattern = function(_, ...)
-      return get_ft_input_pattern(key, ...)
+      local maxchar, opts = ...
+      return get_ft_input_pattern(key, maxchar, opts, last_get_input_pattern)
     end
 
     require("hop").hint_char1(ft_opts(key))
@@ -204,7 +207,7 @@ return {
       --- input pattern and suppresses the prompt message.
       ---
       ---@diagnostic disable-next-line: duplicate-set-field
-      saved_get_input_pattern = function(_, ...)
+      require("hop").get_input_pattern = function(_, ...)
         local last_guicursor = vim.o.guicursor
         vim.o.guicursor =
           "n-v:block-blinkon500-blinkoff500,o:hor20-blinkon500-blinkoff500"
@@ -214,8 +217,6 @@ return {
 
         return input
       end
-
-      require("hop").get_input_pattern = saved_get_input_pattern
     end,
 
     keys = {
