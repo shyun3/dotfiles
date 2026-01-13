@@ -123,6 +123,8 @@ return {
           elseif vim.api.nvim_win_get_config(win_id).relative ~= "" then
             -- Window is floating, see `floating-windows`
             return "[Floating]"
+          elseif vim.bo[buf_id].filetype == "qf" then
+            return "[Quickfix]"
           end
         end,
       },
