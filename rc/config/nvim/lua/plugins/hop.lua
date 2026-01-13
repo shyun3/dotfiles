@@ -166,6 +166,9 @@ return {
   {
     "smoka7/hop.nvim",
 
+    -- Loading hop while in lazy window can cause visual glitch
+    ft = "lazy",
+
     config = function()
       local hop = require("hop")
       hop.setup()
