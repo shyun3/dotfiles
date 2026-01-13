@@ -23,6 +23,7 @@ return {
         "clangd",
         "jsonls",
         "lua_ls",
+        "mesonlsp",
         "tombi",
         "ts_query_ls",
         "vimls",
