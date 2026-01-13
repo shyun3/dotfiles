@@ -5,12 +5,11 @@ return {
   event = "BufWritePre",
   cmd = { "AutoFormatDisable", "AutoFormatEnable", "ConformInfo", "Format" },
 
-  init = function()
-    vim.o.formatexpr =
-      "v:lua.require'conform'.formatexpr({'lsp_format': 'never'})"
-  end,
+  init = function() vim.o.formatexpr = "v:lua.require'conform'.formatexpr()" end,
 
   opts = {
+    default_format_opts = { lsp_format = "fallback" },
+
     formatters_by_ft = {
       c = { "clang-format" },
       cpp = { "clang-format" },
