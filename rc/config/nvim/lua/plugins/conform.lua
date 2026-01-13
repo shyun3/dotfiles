@@ -19,7 +19,7 @@ return {
       meson = { "meson" },
       python = { "isort", "black" },
       sh = { "shfmt" },
-      toml = { "tombi" },
+      toml = { "taplo" },
       yaml = { "prettier" },
     },
 

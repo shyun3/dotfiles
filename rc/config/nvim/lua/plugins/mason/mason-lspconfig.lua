@@ -24,7 +24,7 @@ return {
         "jsonls",
         "lua_ls",
         "mesonlsp",
-        "tombi",
+        "taplo",
         "ts_query_ls",
         "vimls",
         "yamlls",

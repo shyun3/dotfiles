@@ -1,5 +1,6 @@
 [preview]
 show_at_start = true
+
 # Display preview diffs with `delta`
 #
 # Derived from https://github.com/idursun/jjui/issues/314#issuecomment-3367379291
@@ -14,6 +15,7 @@ revision_command = [
   "-c",
   "jj show $change_id --no-pager --stat --git --color=always | delta --paging=never",
 ]
+
 file_command = [
   "util",
   "exec",
@@ -23,12 +25,13 @@ file_command = [
   "jj diff -r $change_id $file --no-pager --color=always | delta --paging=never",
 ]
 
-[custom_commands]
+[custom_commands.delta]
 # Derived from https://github.com/idursun/jjui/discussions/163#discussioncomment-13672324
 #
 # Applies to revision and file diff commands. Technique derived from:
 # https://github.com/idursun/jjui/discussions/63#discussioncomment-13415745
-delta = { key = ["d"], args = [
+key = ["d"]
+args = [
   "util",
   "exec",
   "--",
@@ -38,7 +41,8 @@ delta = { key = ["d"], args = [
   change_id= file= jj $([[ -n "$file" ]] && echo "diff -r" || echo "show") \
     $change_id $file --stat --git --color=always | delta --paging=always
   """,
-], show = "interactive" }
+]
+show = "interactive"
 
 [ui.colors]
 # Provides better contrast when using "Catppuccin Mocha"

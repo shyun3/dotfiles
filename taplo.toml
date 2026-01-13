@@ -1,0 +1,9 @@
+[formatting]
+align_comments = false
+
+[[rule]]
+include = ['**/jjui/config.toml']
+keys = ['custom_commands.delta']
+
+[rule.formatting]
+array_auto_collapse = false

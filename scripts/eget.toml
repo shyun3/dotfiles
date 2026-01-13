@@ -3,6 +3,7 @@
 
 [global]
 target = "~/.local/bin"
+
 # This must be specified here, calling eget with `--download-all --upgrade_only`
 # seems to download unconditionally
 upgrade_only = true

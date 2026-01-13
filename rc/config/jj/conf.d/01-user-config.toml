@@ -3,7 +3,7 @@
 [ui]
 default-command = ["util", "exec", "jjui"]
 pager = "delta"
-diff-formatter = ":git"  # Required by `delta`
+diff-formatter = ":git" # Required by `delta`
 
 [working-copy]
 eol-conversion = "input"
@@ -29,6 +29,7 @@ concat(
     if(!empty && description == '', label('normal', '\uf448 '))
 )
 """
+
 # Bookmark: 
 # Tag: 
 revision_symbol = """
@@ -37,12 +38,14 @@ coalesce(
     if(tags, '\uf02b ')
 )
 """
+
 'change_id_parts(id, len)' = """
 separate(" ", id.shortest(len).prefix(), id.shortest(len).rest())
 """
 
 [revset-aliases]
 'all_named()' = "bookmarks() | remote_bookmarks() | tags()"
+
 # Priorities for best named ancestor:
 # 1. Given revision if it has name
 # 2. Parent revision if it has name and given revision is empty
@@ -56,6 +59,7 @@ coalesce(
     heads(::to & bookmarks())
 )
 """
+
 'non_empty()' = "~empty() | merges()"
 
 [colors]
