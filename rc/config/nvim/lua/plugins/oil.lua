@@ -1,3 +1,5 @@
+local OIL_PATH_PREFIX = "oil://"
+
 return {
   {
     LazyDep("dropbar"),
@@ -10,7 +12,7 @@ return {
           relative_to = function(buf, win)
             -- Show full path in oil buffers
             local bufname = vim.api.nvim_buf_get_name(buf)
-            if vim.startswith(bufname, "oil://") then
+            if vim.startswith(bufname, OIL_PATH_PREFIX) then
               local root = bufname:gsub("^%S+://", "", 1)
               while root and root ~= vim.fs.dirname(root) do
                 root = vim.fs.dirname(root)
@@ -56,6 +58,13 @@ return {
   },
 
   {
+    LazyDep("vim-project"),
+    optional = true,
+
+    opts = { _my_autocmd_patterns = { OIL_PATH_PREFIX .. "*" } },
+  },
+
+  {
     LazyDep("oil"),
     event = "UIEnter",
 
@@ -77,11 +86,12 @@ return {
     config = function(_, opts)
       require("oil").setup(opts)
 
-      require("util.path").register_normalizer(function(path)
-        local prefix = "oil://"
-        return vim.startswith(path, prefix)
-          and string.sub(path, #prefix + 1, -1)
-      end)
+      require("util.path").register_normalizer(
+        function(path)
+          return vim.startswith(path, OIL_PATH_PREFIX)
+            and string.sub(path, #OIL_PATH_PREFIX + 1, -1)
+        end
+      )
     end,
   },
 }

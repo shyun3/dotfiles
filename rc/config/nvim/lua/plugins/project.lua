@@ -20,21 +20,23 @@ return {
       vim.g.project_enable_welcome = 0 -- Handled in config
     end,
 
-    config = function()
+    opts_extend = { "_my_autocmd_patterns" },
+
+    config = function(_, opts)
       vim.call("project#rc")
 
       local group = vim.api.nvim_create_augroup("my_project", {})
-      if LazyDep("oil") then
+      if opts._my_autocmd_patterns then
         vim.api.nvim_create_autocmd("BufEnter", {
           group = group,
-          pattern = "oil://*",
+          pattern = opts._my_autocmd_patterns,
           desc = "Execute vim-project autocommand",
 
           callback = function(args)
             vim.cmd.doautocmd({
               "vim_project",
               "BufEnter",
-              require("util").oil_filter(args.file),
+              require("util.path").normalize(args.file),
             })
           end,
         })
