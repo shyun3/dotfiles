@@ -17,46 +17,57 @@ local function stop_snippet()
 end
 
 return {
-  "L3MON4D3/LuaSnip",
-  version = "v2.*",
-  build = "make install_jsregexp",
+  {
+    LazyDep("blink.cmp"),
+    optional = true,
 
-  lazy = true, -- Loaded by blink
-
-  opts = {
-    -- Update repeated placeholders while typing in insert mode
-    -- Derived from https://github.com/L3MON4D3/LuaSnip/wiki/Migrating-from-UltiSnips#update-placeholders
-    update_events = { "TextChanged", "TextChangedI" },
+    opts = {
+      snippets = { preset = "luasnip" },
+    },
   },
 
-  config = function(_, opts)
-    for _, fmt in ipairs({ "vscode", "snipmate" }) do
-      local module = string.format("luasnip.loaders.from_%s", fmt)
-      require(module).lazy_load({
-        lazy_paths = { "./snippets/specific" },
-      })
-    end
+  {
+    "L3MON4D3/LuaSnip",
+    version = "v2.*",
+    build = "make install_jsregexp",
 
-    require("luasnip").setup(opts)
-  end,
+    lazy = true, -- Loaded by blink
 
-  keys = {
-    -- LuaSnip keeps a snippet session active if all the placeholders aren't
-    -- replaced, even if insert mode is left. This mapping is to manually end
-    -- a session.
-    {
-      -- Derived from https://github.com/Saghen/blink.cmp/issues/1805#issuecomment-2912427954
-      "<Esc>",
+    opts = {
+      -- Update repeated placeholders while typing in insert mode
+      -- Derived from https://github.com/L3MON4D3/LuaSnip/wiki/Migrating-from-UltiSnips#update-placeholders
+      update_events = { "TextChanged", "TextChangedI" },
+    },
 
-      function()
-        stop_snippet()
-        return "<Esc>"
-      end,
+    config = function(_, opts)
+      for _, fmt in ipairs({ "vscode", "snipmate" }) do
+        local module = string.format("luasnip.loaders.from_%s", fmt)
+        require(module).lazy_load({
+          lazy_paths = { "./snippets/specific" },
+        })
+      end
 
-      mode = { "n", "i", "s" },
-      silent = true,
-      expr = true,
-      desc = "Escape and stop snippet",
+      require("luasnip").setup(opts)
+    end,
+
+    keys = {
+      -- LuaSnip keeps a snippet session active if all the placeholders aren't
+      -- replaced, even if insert mode is left. This mapping is to manually end
+      -- a session.
+      {
+        -- Derived from https://github.com/Saghen/blink.cmp/issues/1805#issuecomment-2912427954
+        "<Esc>",
+
+        function()
+          stop_snippet()
+          return "<Esc>"
+        end,
+
+        mode = { "n", "i", "s" },
+        silent = true,
+        expr = true,
+        desc = "Escape and stop snippet",
+      },
     },
   },
 }

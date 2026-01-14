@@ -109,8 +109,6 @@ return {
         },
       },
 
-      snippets = { preset = "luasnip" },
-
       cmdline = {
         keymap = {
           ["<Left>"] = false,
