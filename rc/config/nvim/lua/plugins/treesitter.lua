@@ -1,7 +1,7 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    "shyun3/nvim-treesitter",
+    branch = "personal",
 
     lazy = false, -- Does not support lazy loading
 
