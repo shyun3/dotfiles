@@ -28,7 +28,6 @@ return {
     end,
   },
 
-  { "shyun3/vim-4dgl", ft = "4dgl" },
   { "shyun3/vim-antidote", ft = "antidote" },
 
   {
@@ -42,4 +41,6 @@ return {
 
     ft = "ctags",
   },
+
+  { import = "plugins.syntax.4dgl" },
 }
