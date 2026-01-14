@@ -118,14 +118,6 @@ return {
         },
         completion = {
           list = { selection = { preselect = false } },
-
-          menu = {
-            auto_show = function()
-              -- Don't show in grepper prompt
-              return vim.tbl_contains({ ":", "/", "?" }, vim.fn.getcmdtype())
-            end,
-          },
-
           ghost_text = { enabled = false },
         },
       },
