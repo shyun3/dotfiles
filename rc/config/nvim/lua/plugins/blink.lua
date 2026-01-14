@@ -3,11 +3,8 @@ return {
   { "onsails/lspkind.nvim", lazy = true },
 
   {
-    "saghen/blink.cmp",
+    LazyDep("blink.cmp"),
     version = "1.*",
-
-    -- Load plugins that create mappings which blink may fallback to
-    dependencies = LazyDep("vim-endwise"),
 
     event = { "InsertEnter", "CmdlineEnter" },
 

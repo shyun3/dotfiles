@@ -9,6 +9,7 @@ local deps = {
   ["vim-project"] = "shyun3/vim-project",
 
   -- Lua modules
+  ["blink.cmp"] = "saghen/blink.cmp",
   Comment = "numToStr/Comment.nvim",
   dropbar = "Bekaboo/dropbar.nvim",
   lspconfig = "neovim/nvim-lspconfig",
