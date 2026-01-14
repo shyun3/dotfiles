@@ -81,18 +81,6 @@ return {
           ctags = {
             name = "Ctags",
             module = "blink-cmp-ctags",
-
-            opts = {
-              tag_kinds_map = {
-                ["4DGL"] = {
-                  c = vim.lsp.protocol.CompletionItemKind.Constant,
-                  d = vim.lsp.protocol.CompletionItemKind.Constant,
-                  f = vim.lsp.protocol.CompletionItemKind.Function,
-                  u = vim.lsp.protocol.CompletionItemKind.Constant,
-                  v = vim.lsp.protocol.CompletionItemKind.Variable,
-                },
-              },
-            },
           },
 
           path = { fallbacks = {} },
