@@ -45,17 +45,18 @@ return {
 
               source_name = {
                 text = function(ctx)
-                  local name = string.lower(ctx.source_name)
+                  -- If source name is not explicitly specified by the
+                  -- provider, set to capitalized source ID
                   local map = {
-                    lsp = "[LSP]",
-                    path = "[P]",
-                    snippets = "[SNIP]",
-                    buffer = "[B]",
-                    omni = "[O]",
-                    lazydev = "[LD]",
-                    ctags = "[T]",
+                    LSP = "[LSP]",
+                    Path = "[P]",
+                    Snippets = "[SNIP]",
+                    Buffer = "[B]",
+                    Omni = "[O]",
+                    LazyDev = "[LD]",
+                    Ctags = "[T]",
                   }
-                  return map[name] or ""
+                  return map[ctx.source_name] or ""
                 end,
               },
             },
