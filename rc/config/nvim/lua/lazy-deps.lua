@@ -20,6 +20,7 @@ local deps = {
   ["nvim-surround"] = "kylechui/nvim-surround",
   ["nvim-treesitter-jjconfig"] = "acarapetis/nvim-treesitter-jjconfig",
   oil = "stevearc/oil.nvim",
+  tabby = "nanozuki/tabby.nvim",
   ["which-key"] = "folke/which-key.nvim",
 }
 

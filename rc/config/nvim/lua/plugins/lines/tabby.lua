@@ -1,5 +1,9 @@
 ---@module 'tabby'
 
+---@class MyTabbyTabNameOption: TabbyTabNameOption
+---@field _my_name_fallbacks? { [string]: fun(buf_id: integer): string }
+---  Filetype -> Name
+
 ---@return table<string, TabbyHighlight>
 local theme = function()
   local colors = require("lualine.themes.catppuccin")
@@ -56,7 +60,7 @@ local function make_tab_count()
 end
 
 return {
-  "nanozuki/tabby.nvim",
+  LazyDep("tabby"),
   event = "UIEnter",
 
   opts = {
@@ -100,15 +104,20 @@ return {
           if proj_name then return proj_name end
 
           local filetype = vim.bo[buf_id].filetype
-          if LazyDep("oil") and filetype == "oil" then
-            local raw_buf_name = vim.api.nvim_buf_get_name(buf_id)
-            local path =
-              vim.fn.fnamemodify(require("util").oil_filter(raw_buf_name), ":~")
-            return #path < 20 and path or vim.fn.pathshorten(path)
-          elseif filetype == "gitsigns-blame" then
+          local tab_name_opts = require("tabby.tabline").cfg.opt.tab_name
+
+          ---@cast tab_name_opts MyTabbyTabNameOption
+          local name_fallbacks = tab_name_opts._my_name_fallbacks or {}
+
+          for fallback_filetype, get_fallback_name in pairs(name_fallbacks) do
+            if fallback_filetype == filetype then
+              return get_fallback_name(buf_id)
+            end
+          end
+
+          if filetype == "gitsigns-blame" then
             return filetype
           else
-            -- Not an oil path
             return win.buf_name()
           end
         end,

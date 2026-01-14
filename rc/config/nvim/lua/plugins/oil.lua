@@ -34,6 +34,28 @@ return {
   },
 
   {
+    LazyDep("tabby"),
+    optional = true,
+
+    opts = {
+      option = {
+        tab_name = {
+          _my_name_fallbacks = {
+            oil = function(buf_id)
+              local raw_buf_name = vim.api.nvim_buf_get_name(buf_id)
+              local path = vim.fn.fnamemodify(
+                require("util.path").normalize(raw_buf_name),
+                ":~"
+              )
+              return #path < 20 and path or vim.fn.pathshorten(path)
+            end,
+          },
+        },
+      },
+    },
+  },
+
+  {
     LazyDep("oil"),
     event = "UIEnter",
 
