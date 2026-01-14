@@ -29,18 +29,7 @@ return {
     },
   },
 
-  {
-    "folke/lazydev.nvim",
-    ft = "lua",
-
-    opts = {
-      library = {
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      },
-    },
-  },
-
-  { import = "plugins.folke.which-key" },
+  { import = "plugins.folke.lazydev" },
   { import = "plugins.folke.noice" },
+  { import = "plugins.folke.which-key" },
 }
