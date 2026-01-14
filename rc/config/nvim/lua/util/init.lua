@@ -65,16 +65,6 @@ function M.update_keymap_desc(mode, lhs, desc)
   vim.fn.mapset(map)
 end
 
--- Translates paths opened in oil.nvim. Other paths are passed through
--- unmodified.
-function M.oil_filter(path)
-  local prefix = "oil://"
-  return LazyDep("oil")
-      and vim.startswith(path, prefix)
-      and string.sub(path, #prefix + 1, -1)
-    or path
-end
-
 --- Derived from https://github.com/kevinhwang91/nvim-bqf/issues/85#issuecomment-1298008156
 ---
 ---@param items vim.quickfix.entry[]
