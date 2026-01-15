@@ -44,20 +44,17 @@ return {
               },
 
               source_name = {
-                text = function(ctx)
+                _my_text = {
                   -- If source name is not explicitly specified by the
-                  -- provider, set to capitalized source ID
-                  local map = {
-                    LSP = "[LSP]",
-                    Path = "[P]",
-                    Snippets = "[SNIP]",
-                    Buffer = "[B]",
-                    Omni = "[O]",
-                    LazyDev = "[LD]",
-                    Ctags = "[T]",
-                  }
-                  return map[ctx.source_name] or ""
-                end,
+                  -- provider, it is set to the capitalized provider ID
+                  LSP = "[LSP]",
+                  Path = "[P]",
+                  Snippets = "[SNIP]",
+                  Buffer = "[B]",
+                  Omni = "[O]",
+                  LazyDev = "[LD]",
+                  Ctags = "[T]",
+                },
               },
             },
           },
@@ -121,5 +118,28 @@ return {
         },
       },
     },
+
+    config = function(_, opts)
+      local src_name = vim.tbl_get(
+        opts,
+        "completion",
+        "menu",
+        "draw",
+        "components",
+        "source_name"
+      )
+      if src_name then
+        local my_text = src_name._my_text
+
+        -- Clear, so that it doesn't fail blink's config validation
+        src_name._my_text = nil
+
+        if my_text then
+          src_name.text = function(ctx) return my_text[ctx.source_name] or "" end
+        end
+      end
+
+      require("blink.cmp").setup(opts)
+    end,
   },
 }
