@@ -7,6 +7,8 @@ return {
 
     event = { "InsertEnter", "CmdlineEnter" },
 
+    opts_extend = { "sources.default", "sources.providers.lsp.fallbacks" },
+
     opts = {
       keymap = {
         preset = "enter",
@@ -51,7 +53,6 @@ return {
                   Snippets = "[SNIP]",
                   Buffer = "[B]",
                   Omni = "[O]",
-                  Ctags = "[T]",
                 },
               },
             },
@@ -62,17 +63,12 @@ return {
       },
 
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "omni", "ctags" },
+        default = { "lsp", "path", "snippets", "buffer", "omni" },
 
         providers = {
           lsp = {
             -- Always show buffer source
-            fallbacks = { "ctags" },
-          },
-
-          ctags = {
-            name = "Ctags",
-            module = "blink-cmp-ctags",
+            fallbacks = {},
           },
 
           path = { fallbacks = {} },
