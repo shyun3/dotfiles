@@ -52,7 +52,6 @@ return {
                   Snippets = "[SNIP]",
                   Buffer = "[B]",
                   Omni = "[O]",
-                  LazyDev = "[LD]",
                   Ctags = "[T]",
                 },
               },
@@ -66,10 +65,6 @@ return {
       sources = {
         default = { "lsp", "path", "snippets", "buffer", "omni", "ctags" },
 
-        per_filetype = {
-          lua = { inherit_defaults = true, "lazydev" },
-        },
-
         providers = {
           lsp = {
             -- Always show buffer source
@@ -82,12 +77,6 @@ return {
           },
 
           path = { fallbacks = {} },
-
-          lazydev = {
-            name = "LazyDev",
-            module = "lazydev.integrations.blink",
-            score_offset = 100,
-          },
 
           buffer = {
             -- Recommended in https://cmp.saghen.dev/configuration/reference#providers
