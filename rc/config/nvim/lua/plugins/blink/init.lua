@@ -1,5 +1,4 @@
 return {
-  { "shyun3/blink-cmp-ctags", lazy = true },
   { "onsails/lspkind.nvim", lazy = true },
 
   {
@@ -131,4 +130,6 @@ return {
       require("blink.cmp").setup(opts)
     end,
   },
+
+  { import = "plugins.blink.ctags" },
 }
