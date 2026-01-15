@@ -97,6 +97,7 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "master",
     event = "ModeChanged",
 
     main = "nvim-treesitter.configs",
