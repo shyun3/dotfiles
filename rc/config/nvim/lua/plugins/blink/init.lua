@@ -112,15 +112,13 @@ return {
         "components",
         "source_name"
       )
-      if src_name then
+      if src_name and src_name._my_text then
         local my_text = src_name._my_text
 
         -- Clear, so that it doesn't fail blink's config validation
         src_name._my_text = nil
 
-        if my_text then
-          src_name.text = function(ctx) return my_text[ctx.source_name] or "" end
-        end
+        src_name.text = function(ctx) return my_text[ctx.source_name] or "" end
       end
 
       require("blink.cmp").setup(opts)
