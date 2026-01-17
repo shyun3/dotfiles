@@ -3,6 +3,7 @@
 ---@class MyTabbyTabNameOption: TabbyTabNameOption
 ---@field _my_name_fallbacks? { [string]: fun(buf_id: integer): string }
 ---  Filetype -> Name
+---@field _my_overrides? { [string]: string } Filetype -> Name
 
 ---@return table<string, TabbyHighlight>
 local theme = function()
@@ -127,15 +128,25 @@ return {
           local buf_id = vim.api.nvim_win_get_buf(win_id)
           local buf_name = vim.api.nvim_buf_get_name(buf_id)
 
-          if vim.startswith(buf_name, "health://") then
-            return "[Health]"
-          elseif vim.api.nvim_win_get_config(win_id).relative ~= "" then
+          if vim.api.nvim_win_get_config(win_id).relative ~= "" then
             -- Window is floating, see `floating-windows`
             return "[Floating]"
-          elseif vim.bo[buf_id].filetype == "qf" then
-            return "[Quickfix]"
+          elseif vim.startswith(buf_name, "health://") then
+            return "[Health]"
+          end
+
+          local tab_name_opts = require("tabby.tabline").cfg.opt.tab_name
+
+          ---@cast tab_name_opts MyTabbyTabNameOption
+          local ft_overrides = tab_name_opts._my_overrides or {}
+
+          local ft = vim.bo[buf_id].filetype
+          for override_ft, name in pairs(ft_overrides) do
+            if ft == override_ft then return name end
           end
         end,
+
+        _my_overrides = { qf = "[Quickfix]" },
       },
     },
   },
