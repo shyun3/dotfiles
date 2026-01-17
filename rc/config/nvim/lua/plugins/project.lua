@@ -11,6 +11,19 @@ return {
   },
 
   {
+    LazyDep("tabby"),
+    optional = true,
+
+    opts = {
+      option = {
+        tab_name = {
+          _my_overrides = { project = "[Welcome]" },
+        },
+      },
+    },
+  },
+
+  {
     LazyDep("vim-project"),
     branch = "personal",
 
