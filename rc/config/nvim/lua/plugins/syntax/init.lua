@@ -8,6 +8,8 @@ return {
         "autoindent", -- Can lead to slow buffer enter
         "ftdetect", -- Use filetype.lua
         "sensible", -- Do not update vim settings
+
+        "python-indent", -- Wrong indent in certain cases
       }
 
       -- vim-markdown
