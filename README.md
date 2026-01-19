@@ -80,6 +80,14 @@ Zsh may need restarting to apply all changes.
 The [examples](examples) directory may also contain several tips, see its
 corresponding [README](examples/README.md).
 
+Also, the [wiki](https://github.com/shyun3/dotfiles/wiki) has a lot of useful
+info.
+
+### Jujutsu
+
+Make sure to specify the user name and email. This can be done with scoped
+configs, see [example](examples/03-scope-configs.toml).
+
 ### gitconfig
 
 Add `.local_vars.yaml` under the repo root with the global Git user details
