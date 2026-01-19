@@ -19,7 +19,7 @@ compile_commands.json
 ## conform plugin
 .conform.*
 
-# pyright
+# basedpyright
 typings/
 pyrightconfig.json
 

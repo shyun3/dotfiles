@@ -13,7 +13,7 @@ renaming them, and customizing their contents as needed.
 | *03-scope-configs.toml* | Same | *~/.config/jj/conf.d* | `jj`
 | *compile_flags.txt* | Same | Project | `clangd` |
 | *projects.vim* | Same | *~/.config/nvim* | **vim-project** |
-| *pyrightconfig.json* | Same | Project | `pyright` |
+| *pyrightconfig.json* | Same | Project | `basedpyright` |
 | *ssh-config* | *config* | *~/.ssh* | `ssh-add` |
 
 Additional notes:
@@ -21,8 +21,8 @@ Additional notes:
 * *03-scope-configs.toml*: Files in directory are loaded in lexicographic
   order, see [docs][jj-config]
 * *projects.vim*: See **vim-project** Neovim config
-* *pyrightconfig.json*: `pyright` can read type stubs placed in the `typings`
-  directory. See also the `stubPath` option and [Generating Type
+* *pyrightconfig.json*: `basedpyright` can read type stubs placed in the
+  `typings` directory. See also the `stubPath` option and [Generating Type
   Stubs][type-stubs].
 
 ## Windows Terminal JSON fragment extensions
@@ -50,7 +50,7 @@ See also the [Dynamic profiles][winterm-dyn-profiles] page for additional
 examples of JSON contents.
 
 [jj-config]: https://jj-vcs.github.io/jj/latest/config/#ways-to-specify-jj-config-details
-[type-stubs]: https://github.com/microsoft/pyright/blob/main/docs/type-stubs.md#generating-type-stubs
+[type-stubs]: https://docs.basedpyright.com/latest/usage/type-stubs/#generating-type-stubs
 [winterm-dyn-profiles]: https://docs.microsoft.com/en-us/windows/terminal/dynamic-profiles
 [winterm-json-fragment-loc]: https://docs.microsoft.com/en-us/windows/terminal/json-fragment-extensions#applications-installed-from-the-web
 [winterm-json-fragment]: https://docs.microsoft.com/en-us/windows/terminal/json-fragment-extensions
