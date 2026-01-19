@@ -111,10 +111,6 @@ git config -f ~/personal/.gitprofile user.email fake@priv.tld
 ### Neovim
 
 * Run `:checkhealth` to see if there are issues that need resolving
-* See `$VIMRUNTIME` to access Neovim source files
-* To activate Gutentags operation, create an appropriate `.gutctags` file, then
-  reload the buffer being edited with `:e` (to trigger the `BufReadPost` event,
-  see [code][gutentags-detect]). Finally, run `:GutentagsUpdate!`.
 * To activate projectionist functionality, create an appropriate
   `.projections.json` file, then run `:filetype detect` on the buffer of
   interest (to trigger the `FileType` event, see [code][projectionist-detect]).
@@ -140,7 +136,6 @@ git config -f ~/personal/.gitprofile user.email fake@priv.tld
     * `$path=(/path/to/dir $path)`
     * SSH identities, see [Oh My Zsh plugin][omz-ssh-agent]
 
-[gutentags-detect]: https://github.com/ludovicchabant/vim-gutentags/blob/aa47c5e29c37c52176c44e61c780032dfacef3dd/plugin/gutentags.vim#L100
 [omz-ssh-agent]: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ssh-agent#identities
 [projectionist-detect]: https://github.com/tpope/vim-projectionist/blob/5ff7bf79a6ef741036d2038a226bcb5f8b1cd296/plugin/projectionist.vim#L139-L144
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
