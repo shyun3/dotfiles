@@ -134,8 +134,6 @@ git config -f ~/personal/.gitprofile user.email fake@priv.tld
 
 * Place machine-specific settings in `~/.zshenv`, e.g.:
     * `$path=(/path/to/dir $path)`
-    * SSH identities, see [Oh My Zsh plugin][omz-ssh-agent]
 
-[omz-ssh-agent]: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ssh-agent#identities
 [projectionist-detect]: https://github.com/tpope/vim-projectionist/blob/5ff7bf79a6ef741036d2038a226bcb5f8b1cd296/plugin/projectionist.vim#L139-L144
 [wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
