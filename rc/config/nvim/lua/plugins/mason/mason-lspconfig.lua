@@ -22,7 +22,7 @@ return {
         "bashls",
         "clangd",
         "jsonls",
-        "lua_ls",
+        "lua_ls@3.16.4", -- See lazydev.nvim#136
         "mesonlsp",
         "taplo",
         "ts_query_ls",
