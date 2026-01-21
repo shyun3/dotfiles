@@ -1,33 +1,43 @@
 return {
-  LazyDep("nvim-treesitter-jjconfig"),
-  dependencies = LazyDep("lspconfig"),
+  {
+    LazyDep("nvim-autopairs"),
+    optional = true,
 
-  event = {
-    -- To load before filetype event, otherwise highlighting may not occur
-    "BufReadPre",
-
-    -- To install on startup, even if no file was opened
-    "VeryLazy",
+    opts = {
+      _my_custom_rules = {
+        function(rule, conds)
+          return {
+            rule('"""', '"""', "jjconfig.toml"):with_pair(
+              conds.not_before_char('"', 3)
+            ),
+            rule("'''", "'''", "jjconfig.toml"):with_pair(
+              conds.not_before_char("'", 3)
+            ),
+          }
+        end,
+      },
+    },
   },
 
-  opts = { ensure_installed = true },
+  {
+    LazyDep("nvim-treesitter-jjconfig"),
+    dependencies = LazyDep("lspconfig"),
 
-  config = function(_, opts)
-    require("nvim-treesitter-jjconfig").setup(opts)
+    event = {
+      -- To load before filetype event, otherwise highlighting may not occur
+      "BufReadPre",
 
-    -- LSP semantic highlighting of strings may take priority, so disable
-    vim.cmd.highlight("link @lsp.type.string.jjconfig.toml NONE")
+      -- To install on startup, even if no file was opened
+      "VeryLazy",
+    },
 
-    local rule = require("nvim-autopairs.rule")
-    local cond = require("nvim-autopairs.conds")
+    opts = { ensure_installed = true },
 
-    require("nvim-autopairs").add_rules({
-      rule('"""', '"""', "jjconfig.toml"):with_pair(
-        cond.not_before_char('"', 3)
-      ),
-      rule("'''", "'''", "jjconfig.toml"):with_pair(
-        cond.not_before_char("'", 3)
-      ),
-    })
-  end,
+    config = function(_, opts)
+      require("nvim-treesitter-jjconfig").setup(opts)
+
+      -- LSP semantic highlighting of strings may take priority, so disable
+      vim.cmd.highlight("link @lsp.type.string.jjconfig.toml NONE")
+    end,
+  },
 }
