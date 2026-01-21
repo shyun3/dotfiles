@@ -1817,9 +1817,18 @@
   typeset -g POWERLEVEL9K_MY_JJ_VISUAL_IDENTIFIER_EXPANSION=$'\Uf15c6 ' # 󱗆
 
   prompt_my_jj() {
-    local workspace
+    _my_jj_prompt_refresh
 
+    # note the single quotes, we want this to be interpreted each time
+    p10k segment -b grey -c '$_my_jj_status_loading' -t '$_my_jj_display' -e
+    p10k segment -b green -c '$_my_jj_status_clean' -t '$_my_jj_display' -e
+    p10k segment -b yellow -c '$_my_jj_status_modified' -t '$_my_jj_display' -e
+  }
+
+  _my_jj_prompt_refresh() {
     command -v jj >/dev/null 2>&1 || return
+
+    local workspace
     if workspace=$(jj workspace root 2>/dev/null); then
       p10k display "*/jj=show"
       p10k display "*/vcs=hide"
@@ -1841,11 +1850,6 @@
     _my_jj_status_loading=1
     _my_jj_status_clean=
     _my_jj_status_modified=
-
-    # note the single quotes, we want this to be interpreted each time
-    p10k segment -b grey -c '$_my_jj_status_loading' -t '$_my_jj_display' -e
-    p10k segment -b green -c '$_my_jj_status_clean' -t '$_my_jj_display' -e
-    p10k segment -b yellow -c '$_my_jj_status_modified' -t '$_my_jj_display' -e
   }
 
   # this function is called by the async worker, and does the work
@@ -1950,6 +1954,12 @@
     local display=${output%;*}
     if [[ $exit_code == 0 ]]; then
       _my_jj_display=$display
+    elif (( exit_code == 2 )) || (( exit_code == 3 )) || (( exit_code == 130 )); then
+      # Worker crashed, reinitialize
+      # Derived from https://github.com/mafredri/zsh-async/issues/42#issuecomment-716782220
+      _my_jj_async_init
+      _my_jj_prompt_refresh
+      return
     else
       _my_jj_display="$display %F{red}$stderr%f"
     fi
@@ -1968,12 +1978,16 @@
     p10k display -r
   }
 
+  _my_jj_async_init() {
+    # this unregisters first so we can easily reload everything.
+    async_stop_worker _my_jj_worker
+    async_start_worker _my_jj_worker -u
+    async_unregister_callback _my_jj_worker
+    async_register_callback _my_jj_worker _my_jj_callback
+  }
+
   # finally, initialize and register the worker and callbacks.
-  # this unregisters first so we can easily reload everything.
-  async_stop_worker _my_jj_worker
-  async_start_worker _my_jj_worker -u
-  async_unregister_callback _my_jj_worker
-  async_register_callback _my_jj_worker _my_jj_callback
+  _my_jj_async_init
 
   #######################################################################
 
