@@ -32,12 +32,5 @@ return {
     },
 
     opts = { ensure_installed = true },
-
-    config = function(_, opts)
-      require("nvim-treesitter-jjconfig").setup(opts)
-
-      -- LSP semantic highlighting of strings may take priority, so disable
-      vim.cmd.highlight("link @lsp.type.string.jjconfig.toml NONE")
-    end,
   },
 }
