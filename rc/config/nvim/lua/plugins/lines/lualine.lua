@@ -12,7 +12,7 @@ return {
   LazyDep("lualine"),
   event = "UIEnter",
 
-  opts_extend = { "extensions" },
+  opts_extend = { "extensions", "sections.lualine_c", "sections.lualine_x" },
 
   opts = {
     options = {
@@ -24,33 +24,9 @@ return {
     sections = {
       lualine_a = { "mode" },
       lualine_b = { { "vcs", draw_empty = true }, "diff" },
+      lualine_c = { filename },
 
-      lualine_c = {
-        filename,
-        {
-          -- Show @recording messages
-          -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#-statusline-components
-
-          ---@class NoiceStatus
-          ---@field get fun(): boolean
-          ---@field has fun(): boolean
-
-          function() return require("noice").api.status.mode.get() end,
-          cond = function() return require("noice").api.status.mode.has() end,
-
-          -- For some reason, the fg color isn't inherited from the theme if
-          -- the gui option is specified unless a function is used
-          color = function() return { gui = "bold" } end,
-        },
-      },
       lualine_x = {
-        {
-          -- Search count messages
-          -- Derived from https://github.com/folke/noice.nvim?tab=readme-ov-file#-statusline-components
-
-          function() return require("noice").api.status.search.get() end,
-          cond = function() return require("noice").api.status.search.has() end,
-        },
         {
           "lsp_status",
           symbols = {

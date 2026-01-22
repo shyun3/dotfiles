@@ -1,3 +1,7 @@
+---@class NoiceStatus
+---@field get fun(): boolean
+---@field has fun(): boolean
+
 return {
   {
     LazyDep("which-key"),
