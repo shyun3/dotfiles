@@ -24,6 +24,17 @@ return {
   },
 
   {
+    LazyDep("ibl"),
+    optional = true,
+
+    opts = {
+      exclude = {
+        filetypes = { "project" },
+      },
+    },
+  },
+
+  {
     LazyDep("vim-project"),
     branch = "personal",
 

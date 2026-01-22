@@ -53,10 +53,12 @@ return {
   },
 
   {
-    "lukas-reineke/indent-blankline.nvim",
+    LazyDep("ibl"),
     event = "VeryLazy",
 
     main = "ibl",
+
+    opts_extend = { "exclude.filetypes" },
 
     opts = {
       indent = {
@@ -69,8 +71,6 @@ return {
         show_start = false,
         show_end = false,
       },
-
-      exclude = { filetypes = { LazyDep("vim-project") and "project" } },
     },
   },
 
