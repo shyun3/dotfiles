@@ -119,11 +119,7 @@ return {
             end
           end
 
-          if filetype == "gitsigns-blame" then
-            return filetype
-          else
-            return win.buf_name()
-          end
+          return win.buf_name()
         end,
 
         _my_name_fallbacks = { qf = "[Quickfix]" },
