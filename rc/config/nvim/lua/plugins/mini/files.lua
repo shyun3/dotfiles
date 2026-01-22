@@ -43,6 +43,7 @@ return {
   opts_extend = {
     "_my_event_callbacks.MiniFilesBufferCreate",
     "_my_event_callbacks.MiniFilesExplorerOpen",
+    "_my_event_callbacks.MiniFilesActionRename",
   },
 
   opts = {
@@ -53,6 +54,7 @@ return {
         -- Derived from examples in help
         {
           desc = "Add mappings",
+
           callback = function(args)
             local buf_id = args.data.buf_id
             map_split(buf_id, "<C-s>", "horizontal")
@@ -71,6 +73,7 @@ return {
         -- Derived from "Set custom bookmarks" section in `MiniFiles-examples`
         {
           desc = "Set custom bookmarks",
+
           callback = function()
             set_mark("w", vim.fn.getcwd, "Working directory")
           end,
@@ -82,9 +85,14 @@ return {
   config = function(_, opts)
     require("mini.files").setup(opts)
 
-    local group = vim.api.nvim_create_augroup("my_mini_files", {})
     if opts._my_event_callbacks then
-      local events = { "MiniFilesBufferCreate", "MiniFilesExplorerOpen" }
+      local group = vim.api.nvim_create_augroup("my_mini_files", {})
+
+      local events = {
+        "MiniFilesBufferCreate",
+        "MiniFilesExplorerOpen",
+        "MiniFilesActionRename",
+      }
       for _, ev in ipairs(events) do
         for _, autocmd_opts in ipairs(opts._my_event_callbacks[ev] or {}) do
           vim.api.nvim_create_autocmd("User", {
@@ -96,17 +104,6 @@ return {
         end
       end
     end
-
-    -- Taken from rename snack
-    vim.api.nvim_create_autocmd("User", {
-      group = group,
-      pattern = "MiniFilesActionRename",
-      desc = "LSP-integrated file rename",
-
-      callback = function(event)
-        require("snacks").rename.on_rename_file(event.data.from, event.data.to)
-      end,
-    })
   end,
 
   keys = {

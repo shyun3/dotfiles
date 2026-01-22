@@ -1,30 +1,55 @@
 ---@module 'snacks'
 
 return {
-  "folke/snacks.nvim",
+  {
+    LazyDep("mini.files"),
+    optional = true,
 
-  opts = {
-    lazygit = {
-      win = {
-        style = "lazygit",
+    opts = {
+      _my_event_callbacks = {
+        MiniFilesActionRename = {
+          -- Taken from rename snack
+          {
+            desc = "LSP-integrated file rename",
 
-        -- Disable <Esc> twice quickly to enter normal mode
-        -- Derived from https://github.com/folke/snacks.nvim/issues/280#issuecomment-2987923844
-        keys = { term_normal = false },
+            callback = function(event)
+              require("snacks").rename.on_rename_file(
+                event.data.from,
+                event.data.to
+              )
+            end,
+          },
+        },
       },
     },
   },
 
-  keys = {
-    {
-      "<Leader>lg",
-      function() Snacks.lazygit() end,
-      desc = "Open lazygit",
+  {
+    "folke/snacks.nvim",
+
+    opts = {
+      lazygit = {
+        win = {
+          style = "lazygit",
+
+          -- Disable <Esc> twice quickly to enter normal mode
+          -- Derived from https://github.com/folke/snacks.nvim/issues/280#issuecomment-2987923844
+          keys = { term_normal = false },
+        },
+      },
     },
-    {
-      "<Leader>lf",
-      function() Snacks.lazygit.log_file() end,
-      desc = "lazygit: Open log of current file",
+
+    keys = {
+      {
+        "<Leader>lg",
+        function() Snacks.lazygit() end,
+        desc = "Open lazygit",
+      },
+      {
+        "<Leader>lf",
+        function() Snacks.lazygit.log_file() end,
+        desc = "lazygit: Open log of current file",
+      },
     },
   },
 }
