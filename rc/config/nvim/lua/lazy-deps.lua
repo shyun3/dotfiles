@@ -12,6 +12,7 @@ local deps = {
   ["blink.cmp"] = "saghen/blink.cmp",
   Comment = "numToStr/Comment.nvim",
   dropbar = "Bekaboo/dropbar.nvim",
+  ["goto-preview"] = "rmagatti/goto-preview",
   lspconfig = "neovim/nvim-lspconfig",
   lualine = "nvim-lualine/lualine.nvim",
   ["mason-tool-installer"] = "WhoIsSethDaniel/mason-tool-installer.nvim",
