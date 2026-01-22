@@ -7,7 +7,6 @@ return {
 
     opts = {
       default_mappings = true,
-      references = { provider = "fzf_lua" },
 
       post_open_hook = function(_, win)
         -- Fix highlights in floating windows

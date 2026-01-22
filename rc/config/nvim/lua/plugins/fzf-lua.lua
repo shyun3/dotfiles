@@ -17,6 +17,15 @@ return {
   },
 
   {
+    LazyDep("goto-preview"),
+    optional = true,
+
+    opts = {
+      references = { provider = "fzf_lua" },
+    },
+  },
+
+  {
     "ibhagwan/fzf-lua",
 
     opts = {
@@ -61,54 +70,66 @@ return {
       },
       {
         "<Leader>fk",
+
         function()
           require("fzf-lua").keymaps({
             modes = { "n", "i", "c", "v", "o", "t" },
           })
         end,
+
         desc = "Keymaps",
       },
 
       {
         "<C-p>",
+
         function()
           util.go_to_editable_window()
           require("fzf-lua").files({ cwd = vim.fn.getcwd() })
         end,
+
         desc = "fzf-lua: Files",
       },
       {
         "<C-q>",
+
         function()
           util.go_to_editable_window()
           require("fzf-lua").files({
             cwd = require("util.path").normalize(vim.fn.expand("%:p:h")),
           })
         end,
+
         desc = "fzf-lua: Files in current file directory",
       },
       {
         [[<C-\>]],
+
         function()
           util.go_to_editable_window()
           require("fzf-lua").buffers()
         end,
+
         desc = "fzf-lua: Buffers",
       },
       {
         "<A-p>",
+
         function()
           util.go_to_editable_window()
           require("fzf-lua").oldfiles()
         end,
+
         desc = "fzf-lua: Old files",
       },
       {
         "<A-h>",
+
         function()
           require("util").go_to_editable_window()
           require("fzf-lua").tags()
         end,
+
         desc = "fzf-lua: Tags",
       },
       {
@@ -172,22 +193,26 @@ return {
       },
       {
         "<Leader>s]",
+
         function()
           require("fzf-lua").lsp_definitions({
             jump1 = true,
             jump1_action = require("fzf-lua.actions").file_split,
           })
         end,
+
         desc = "fzf-lua: LSP definitions",
       },
       {
         "<Leader>v]",
+
         function()
           require("fzf-lua").lsp_definitions({
             jump1 = true,
             jump1_action = require("fzf-lua.actions").file_vsplit,
           })
         end,
+
         desc = "fzf-lua: LSP definitions",
       },
 
@@ -198,22 +223,26 @@ return {
       },
       {
         "grst",
+
         function()
           require("fzf-lua").lsp_typedefs({
             jump1 = true,
             jump1_action = require("fzf-lua.actions").file_split,
           })
         end,
+
         desc = "fzf-lua: Type definitions",
       },
       {
         "grvt",
+
         function()
           require("fzf-lua").lsp_typedefs({
             jump1 = true,
             jump1_action = require("fzf-lua.actions").file_vsplit,
           })
         end,
+
         desc = "fzf-lua: Type definitions",
       },
 
@@ -224,22 +253,26 @@ return {
       },
       {
         "<Leader>s[",
+
         function()
           require("fzf-lua").lsp_declarations({
             jump1 = true,
             jump1_action = require("fzf-lua.actions").file_split,
           })
         end,
+
         desc = "fzf-lua: LSP declarations",
       },
       {
         "<Leader>v[",
+
         function()
           require("fzf-lua").lsp_declarations({
             jump1 = true,
             jump1_action = require("fzf-lua.actions").file_vsplit,
           })
         end,
+
         desc = "fzf-lua: LSP declarations",
       },
 
@@ -250,10 +283,12 @@ return {
       },
       {
         "<C-h>",
+
         function()
           util.go_to_editable_window()
           require("fzf-lua").lsp_workspace_symbols()
         end,
+
         desc = "fzf-lua: LSP workspace symbols",
       },
 

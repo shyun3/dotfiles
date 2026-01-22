@@ -1,9 +1,7 @@
 return {
   {
     LazyDep("Comment"),
-
     opts = {},
-
     keys = { "gc", "gb" },
   },
 
@@ -11,7 +9,6 @@ return {
     "vim-scripts/DoxygenToolkit.vim",
 
     keys = {
-      -- Note that this is intended to overwrite the doge mapping
       {
         "<Leader>d",
         "<Cmd>Dox<CR>",
@@ -214,6 +211,7 @@ return {
   {
     "voldikss/vim-floaterm",
     cmd = "FloatermNew",
+
     keys = {
       { "<Leader>t", "<Cmd>FloatermNew<CR>", desc = "floaterm: Open window" },
       {
