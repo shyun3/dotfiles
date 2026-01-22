@@ -94,7 +94,6 @@ return {
     auto_integrations = true,
 
     integrations = {
-      dropbar = { color_mode = true },
       indent_blankline = { scope_color = "lavender" },
     },
   },

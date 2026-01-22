@@ -8,6 +8,10 @@ return {
         DropBarKindFile = { link = "Comment" },
         DropBarKindDir = { link = "Comment" },
       },
+
+      integrations = {
+        dropbar = { color_mode = true },
+      },
     },
   },
 
