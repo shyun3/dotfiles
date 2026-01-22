@@ -35,6 +35,17 @@ return {
   },
 
   {
+    LazyDep("dropbar"),
+    optional = true,
+
+    opts = {
+      bar = {
+        _my_disabled_filetypes = { "project" },
+      },
+    },
+  },
+
+  {
     LazyDep("vim-project"),
     branch = "personal",
 
