@@ -35,28 +35,6 @@ return {
   },
 
   {
-    LazyDep("ibl"),
-    event = "VeryLazy",
-
-    main = "ibl",
-
-    opts_extend = { "exclude.filetypes" },
-
-    opts = {
-      indent = {
-        char = "│", -- center aligned solid
-      },
-
-      whitespace = { remove_blankline_trail = false },
-
-      scope = {
-        show_start = false,
-        show_end = false,
-      },
-    },
-  },
-
-  {
     "iamcco/markdown-preview.nvim",
 
     -- Taken from https://github.com/iamcco/markdown-preview.nvim/issues/690#issuecomment-2782326124
