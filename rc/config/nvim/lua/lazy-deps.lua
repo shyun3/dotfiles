@@ -17,6 +17,7 @@ local deps = {
   lspconfig = "neovim/nvim-lspconfig",
   lualine = "nvim-lualine/lualine.nvim",
   ["mason-tool-installer"] = "WhoIsSethDaniel/mason-tool-installer.nvim",
+  ["mini.files"] = "echasnovski/mini.files",
   noice = "folke/noice.nvim",
   ["mason-lspconfig"] = "mason-org/mason-lspconfig.nvim",
   ["nvim-autopairs"] = "windwp/nvim-autopairs",

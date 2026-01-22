@@ -26,6 +26,19 @@ return {
   },
 
   {
+    LazyDep("mini.files"),
+    optional = true,
+
+    opts = {
+      options = {
+        -- While on opened directory, current window can get closed when
+        -- launching fzf-lua
+        use_as_default_explorer = false,
+      },
+    },
+  },
+
+  {
     "ibhagwan/fzf-lua",
 
     opts = {

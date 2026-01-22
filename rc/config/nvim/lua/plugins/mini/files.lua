@@ -37,18 +37,11 @@ local set_mark = function(id, path, desc)
 end
 
 return {
-  "echasnovski/mini.files",
+  LazyDep("mini.files"),
   version = false, -- Main branch
 
   opts = {
-    options = {
-      -- When on opened directory, current window can get closed with fzf-lua
-      -- Ctrl-P
-      use_as_default_explorer = false,
-    },
-    windows = {
-      preview = true,
-    },
+    windows = { preview = true },
   },
 
   config = function(_, opts)
