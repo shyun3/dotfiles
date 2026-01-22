@@ -1,21 +1,34 @@
 return {
-  LazyDep("ibl"),
-  event = "VeryLazy",
+  {
+    LazyDep("catppuccin"),
+    optional = true,
 
-  main = "ibl",
-
-  opts_extend = { "exclude.filetypes" },
-
-  opts = {
-    indent = {
-      char = "│", -- center aligned solid
+    opts = {
+      integrations = {
+        indent_blankline = { scope_color = "lavender" },
+      },
     },
+  },
 
-    whitespace = { remove_blankline_trail = false },
+  {
+    LazyDep("ibl"),
+    event = "VeryLazy",
 
-    scope = {
-      show_start = false,
-      show_end = false,
+    main = "ibl",
+
+    opts_extend = { "exclude.filetypes" },
+
+    opts = {
+      indent = {
+        char = "│", -- center aligned solid
+      },
+
+      whitespace = { remove_blankline_trail = false },
+
+      scope = {
+        show_start = false,
+        show_end = false,
+      },
     },
   },
 }

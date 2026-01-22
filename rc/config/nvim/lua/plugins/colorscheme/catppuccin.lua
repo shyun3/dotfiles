@@ -92,10 +92,6 @@ return {
     end,
 
     auto_integrations = true,
-
-    integrations = {
-      indent_blankline = { scope_color = "lavender" },
-    },
   },
 
   config = function(_, opts)
