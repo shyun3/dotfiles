@@ -84,7 +84,6 @@ return {
 
       return vim.tbl_extend(
         "error",
-        require("plugins.colorscheme.integrations").dropbar_overrides,
         hl_overrides(colors),
 
         ---@cast opts MyCatppuccinOptions

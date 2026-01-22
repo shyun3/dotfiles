@@ -1,49 +1,63 @@
 return {
-  LazyDep("dropbar"),
-  event = "UIEnter",
+  {
+    LazyDep("catppuccin"),
+    optional = true,
 
-  opts_extend = { "bar._my_disabled_filetypes" },
-
-  opts = {
-    bar = {
-      -- Derived from default bar enable function
-      enable = function(buf, win)
-        local disabled_filetypes = require("dropbar.configs").opts.bar._my_disabled_filetypes
-          or {}
-        if
-          not vim.api.nvim_buf_is_valid(buf)
-          or not vim.api.nvim_win_is_valid(win)
-          or vim.fn.win_gettype(win) ~= ""
-          or vim.wo[win].winbar ~= ""
-          or vim.fn.bufname(buf) == ""
-          or vim.tbl_contains(disabled_filetypes, vim.bo[buf].ft)
-        then
-          return false
-        end
-
-        local stat = vim.uv.fs_stat(vim.api.nvim_buf_get_name(buf))
-        if stat and stat.size > 1024 * 1024 then return false end
-
-        return true -- Always show path
-      end,
-    },
-
-    icons = {
-      ui = {
-        bar = {
-          separator = " › ", -- Taken from lspsaga
-        },
+    opts = {
+      _my_custom_highlights = {
+        DropBarKindFile = { link = "Comment" },
+        DropBarKindDir = { link = "Comment" },
       },
     },
-
-    sources = { path = { max_depth = 1 } },
   },
 
-  keys = {
-    {
-      "[;",
-      function() require("dropbar.api").goto_context_start() end,
-      desc = "Go to start of current context",
+  {
+    LazyDep("dropbar"),
+    event = "UIEnter",
+
+    opts_extend = { "bar._my_disabled_filetypes" },
+
+    opts = {
+      bar = {
+        -- Derived from default bar enable function
+        enable = function(buf, win)
+          local disabled_filetypes = require("dropbar.configs").opts.bar._my_disabled_filetypes
+            or {}
+          if
+            not vim.api.nvim_buf_is_valid(buf)
+            or not vim.api.nvim_win_is_valid(win)
+            or vim.fn.win_gettype(win) ~= ""
+            or vim.wo[win].winbar ~= ""
+            or vim.fn.bufname(buf) == ""
+            or vim.tbl_contains(disabled_filetypes, vim.bo[buf].ft)
+          then
+            return false
+          end
+
+          local stat = vim.uv.fs_stat(vim.api.nvim_buf_get_name(buf))
+          if stat and stat.size > 1024 * 1024 then return false end
+
+          return true -- Always show path
+        end,
+      },
+
+      icons = {
+        ui = {
+          bar = {
+            separator = " › ", -- Taken from lspsaga
+          },
+        },
+      },
+
+      sources = { path = { max_depth = 1 } },
+    },
+
+    keys = {
+      {
+        "[;",
+        function() require("dropbar.api").goto_context_start() end,
+        desc = "Go to start of current context",
+      },
     },
   },
 }
