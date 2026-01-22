@@ -51,13 +51,6 @@ local function highlight_cmp_menu()
   link_hl("BlinkCmpKindEvent", "@lsp.type.event")
 end
 
-local function highlight_dropbar_text()
-  local dropbar = require("plugins.colorscheme.integrations").dropbar_custom
-  for group, hl_map in pairs(dropbar) do
-    vim.api.nvim_set_hl(0, group, hl_map)
-  end
-end
-
 local function highlight_indent_blankline()
   -- Taken from default vscode theme (Dark Modern)
   vim.cmd.highlight("IblIndent guifg=#404040")
@@ -92,7 +85,6 @@ return {
         vim.cmd.highlight("TabLineFill cterm=NONE gui=NONE")
 
         highlight_cmp_menu()
-        highlight_dropbar_text()
         highlight_indent_blankline()
       end,
     })
