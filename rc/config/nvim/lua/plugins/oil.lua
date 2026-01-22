@@ -36,6 +36,15 @@ return {
   },
 
   {
+    LazyDep("mini.files"),
+    optional = true,
+
+    opts = {
+      options = { use_as_default_explorer = false },
+    },
+  },
+
+  {
     LazyDep("tabby"),
     optional = true,
 
