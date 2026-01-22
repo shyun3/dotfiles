@@ -85,13 +85,6 @@ return {
       vim.g.loaded_netrwPlugin = 1
     end,
 
-    opts = {
-      keymaps = {
-        ["<C-p>"] = false, -- Conflicts with fzf-lua
-        gp = "actions.preview",
-      },
-    },
-
     config = function(_, opts)
       require("oil").setup(opts)
 

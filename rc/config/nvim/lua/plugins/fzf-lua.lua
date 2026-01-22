@@ -39,6 +39,19 @@ return {
   },
 
   {
+    LazyDep("oil"),
+    optional = true,
+
+    opts = {
+      keymaps = {
+        -- Remap preview key due to conflict with fzf-lua
+        ["<C-p>"] = false,
+        gp = "actions.preview",
+      },
+    },
+  },
+
+  {
     "ibhagwan/fzf-lua",
 
     opts = {
