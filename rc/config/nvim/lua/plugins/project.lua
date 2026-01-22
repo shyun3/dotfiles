@@ -18,6 +18,10 @@ return {
       option = {
         tab_name = {
           _my_name_fallbacks = { project = "[Welcome]" },
+
+          _my_overrides = {
+            function(buf_id) return vim.b[buf_id].title end,
+          },
         },
       },
     },

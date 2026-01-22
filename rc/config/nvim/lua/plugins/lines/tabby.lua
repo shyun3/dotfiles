@@ -3,7 +3,7 @@
 ---@class MyTabbyTabNameOption: TabbyTabNameOption
 ---@field _my_name_fallbacks? { [string]: string | fun(buf_id: integer): string }
 ---  Filetype -> Name
----@field _my_overrides? { [string]: string } Filetype -> Name
+---@field _my_overrides? (fun(buf_id: integer): string?)[]  Names
 
 ---@return table<string, TabbyHighlight>
 local theme = function()
@@ -64,6 +64,8 @@ return {
   LazyDep("tabby"),
   event = "UIEnter",
 
+  opts_extend = { "option.tab_name._my_overrides" },
+
   opts = {
     line = function(line)
       local all_tabs = line.tabs()
@@ -101,9 +103,6 @@ return {
           )
 
           local buf_id = win.buf().id
-          local proj_name = LazyDep("vim-project") and vim.b[buf_id].title
-          if proj_name then return proj_name end
-
           local filetype = vim.bo[buf_id].filetype
           local tab_name_opts = require("tabby.tabline").cfg.opt.tab_name
 
@@ -144,11 +143,11 @@ return {
           local tab_name_opts = require("tabby.tabline").cfg.opt.tab_name
 
           ---@cast tab_name_opts MyTabbyTabNameOption
-          local ft_overrides = tab_name_opts._my_overrides or {}
+          local custom_overrides = tab_name_opts._my_overrides or {}
 
-          local ft = vim.bo[buf_id].filetype
-          for override_ft, name in pairs(ft_overrides) do
-            if ft == override_ft then return name end
+          for _, get_override_name in ipairs(custom_overrides) do
+            local override_name = get_override_name(buf_id)
+            if override_name then return override_name end
           end
         end,
       },
