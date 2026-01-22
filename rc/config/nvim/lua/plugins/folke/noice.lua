@@ -21,6 +21,19 @@ return {
     opts = { vim_ui_input = false },
   },
 
+  {
+    LazyDep("tabby"),
+    optional = true,
+
+    opts = {
+      option = {
+        tab_name = {
+          _my_overrides = { noice = "[Noice]" },
+        },
+      },
+    },
+  },
+
   { "MunifTanjim/nui.nvim", lazy = true },
   { "rcarriga/nvim-notify", lazy = true, opts = { stages = "slide" } },
 
