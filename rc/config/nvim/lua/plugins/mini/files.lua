@@ -40,40 +40,62 @@ return {
   LazyDep("mini.files"),
   version = false, -- Main branch
 
+  opts_extend = {
+    "_my_event_callbacks.MiniFilesBufferCreate",
+    "_my_event_callbacks.MiniFilesExplorerOpen",
+  },
+
   opts = {
     windows = { preview = true },
+
+    _my_event_callbacks = {
+      MiniFilesBufferCreate = {
+        -- Derived from examples in help
+        {
+          desc = "Add mappings",
+          callback = function(args)
+            local buf_id = args.data.buf_id
+            map_split(buf_id, "<C-s>", "horizontal")
+            map_split(buf_id, "<C-v>", "vertical")
+            vim.keymap.set(
+              "n",
+              "g~",
+              set_cwd,
+              { buffer = buf_id, desc = "Set cwd" }
+            )
+          end,
+        },
+      },
+
+      MiniFilesExplorerOpen = {
+        -- Derived from "Set custom bookmarks" section in `MiniFiles-examples`
+        {
+          desc = "Set custom bookmarks",
+          callback = function()
+            set_mark("w", vim.fn.getcwd, "Working directory")
+          end,
+        },
+      },
+    },
   },
 
   config = function(_, opts)
     require("mini.files").setup(opts)
 
-    -- Derived from examples in help
     local group = vim.api.nvim_create_augroup("my_mini_files", {})
-    vim.api.nvim_create_autocmd("User", {
-      group = group,
-      pattern = "MiniFilesBufferCreate",
-      desc = "Add mappings",
-
-      callback = function(args)
-        local buf_id = args.data.buf_id
-        map_split(buf_id, "<C-s>", "horizontal")
-        map_split(buf_id, "<C-v>", "vertical")
-        vim.keymap.set(
-          "n",
-          "g~",
-          set_cwd,
-          { buffer = buf_id, desc = "Set cwd" }
-        )
-      end,
-    })
-
-    -- Derived from "Set custom bookmarks" section in `MiniFiles-examples`
-    vim.api.nvim_create_autocmd("User", {
-      group = group,
-      pattern = "MiniFilesExplorerOpen",
-      desc = "Set custom bookmarks",
-      callback = function() set_mark("w", vim.fn.getcwd, "Working directory") end,
-    })
+    if opts._my_event_callbacks then
+      local events = { "MiniFilesBufferCreate", "MiniFilesExplorerOpen" }
+      for _, ev in ipairs(events) do
+        for _, autocmd_opts in ipairs(opts._my_event_callbacks[ev] or {}) do
+          vim.api.nvim_create_autocmd("User", {
+            group = group,
+            pattern = ev,
+            desc = autocmd_opts.desc,
+            callback = autocmd_opts.callback,
+          })
+        end
+      end
+    end
 
     -- Taken from rename snack
     vim.api.nvim_create_autocmd("User", {
