@@ -37,7 +37,7 @@ return {
             separator = " \u{f013} ", -- Default icon: 
           },
         },
-        require("plugins.lualine.filetype"),
+        "my_filetype",
       },
       lualine_y = { "encoding", "fileformat" },
       lualine_z = {
