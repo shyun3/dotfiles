@@ -1,3 +1,7 @@
+---@class MyCatppuccinOptions: CatppuccinOptions
+---@field _my_custom_highlights { [string]: table }
+---  Highlight group -> Highlight definition map
+
 local function hl_overrides(colors)
   return {
     --- Syntax
@@ -59,17 +63,11 @@ local function hl_overrides(colors)
     ["@lsp.typemod.variable.global"] = {
       link = "@lsp.typemod.variable.globalScope",
     },
-
-    --- Plugins
-    HopNextKey = {
-      -- Remove underline as it makes it difficult to tell apart `g` and `q`
-      style = { "bold" },
-    },
   }
 end
 
 return {
-  "catppuccin/nvim",
+  LazyDep("catppuccin"),
   name = "catppuccin",
   priority = 1000,
 
@@ -82,10 +80,15 @@ return {
     },
 
     custom_highlights = function(colors)
+      local opts = require("catppuccin").options
+
       return vim.tbl_extend(
         "error",
         require("plugins.colorscheme.integrations").dropbar_overrides,
-        hl_overrides(colors)
+        hl_overrides(colors),
+
+        ---@cast opts MyCatppuccinOptions
+        opts._my_custom_highlights
       )
     end,
 

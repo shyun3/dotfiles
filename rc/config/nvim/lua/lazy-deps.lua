@@ -10,6 +10,7 @@ local deps = {
 
   -- Lua modules
   ["blink.cmp"] = "saghen/blink.cmp",
+  catppuccin = "catppuccin/nvim",
   Comment = "numToStr/Comment.nvim",
   dropbar = "Bekaboo/dropbar.nvim",
   ["goto-preview"] = "rmagatti/goto-preview",
