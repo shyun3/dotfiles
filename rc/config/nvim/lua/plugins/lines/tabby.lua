@@ -1,7 +1,7 @@
 ---@module 'tabby'
 
 ---@class MyTabbyTabNameOption: TabbyTabNameOption
----@field _my_name_fallbacks? { [string]: fun(buf_id: integer): string }
+---@field _my_name_fallbacks? { [string]: string | fun(buf_id: integer): string }
 ---  Filetype -> Name
 ---@field _my_overrides? { [string]: string } Filetype -> Name
 
@@ -110,9 +110,13 @@ return {
           ---@cast tab_name_opts MyTabbyTabNameOption
           local name_fallbacks = tab_name_opts._my_name_fallbacks or {}
 
-          for fallback_filetype, get_fallback_name in pairs(name_fallbacks) do
+          for fallback_filetype, fallback_name in pairs(name_fallbacks) do
             if fallback_filetype == filetype then
-              return get_fallback_name(buf_id)
+              if type(fallback_name) == "function" then
+                return fallback_name(buf_id)
+              else
+                return fallback_name
+              end
             end
           end
 
@@ -122,6 +126,8 @@ return {
             return win.buf_name()
           end
         end,
+
+        _my_name_fallbacks = { qf = "[Quickfix]" },
 
         override = function(tab_id)
           local win_id = vim.api.nvim_tabpage_get_win(tab_id)
@@ -145,8 +151,6 @@ return {
             if ft == override_ft then return name end
           end
         end,
-
-        _my_overrides = { qf = "[Quickfix]" },
       },
     },
   },

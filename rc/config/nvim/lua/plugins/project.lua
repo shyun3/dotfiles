@@ -17,7 +17,7 @@ return {
     opts = {
       option = {
         tab_name = {
-          _my_overrides = { project = "[Welcome]" },
+          _my_name_fallbacks = { project = "[Welcome]" },
         },
       },
     },

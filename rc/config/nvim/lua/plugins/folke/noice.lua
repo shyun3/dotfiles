@@ -28,7 +28,7 @@ return {
     opts = {
       option = {
         tab_name = {
-          _my_overrides = { noice = "[Noice]" },
+          _my_name_fallbacks = { noice = "[Noice]" },
         },
       },
     },
