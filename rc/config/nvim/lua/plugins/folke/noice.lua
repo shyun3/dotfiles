@@ -41,6 +41,8 @@ return {
     LazyDep("noice"),
     event = "VeryLazy",
 
+    opts_extend = { "routes" },
+
     opts = {
       cmdline = {
         format = {
@@ -69,21 +71,6 @@ return {
         {
           view = "notify",
           filter = { event = "msg_showmode" },
-        },
-
-        -- For some reason, using the `*` mapping from "vim-asterisk" after a
-        -- search has just been executed causes a search count message to be
-        -- echoed. This filter suppresses this echo.
-        --
-        -- Displaying this message as virtual text causes the text to be stuck.
-        -- Any subsequent `n` key does not seem to update the virtual text.
-        {
-          filter = {
-            event = "msg_show",
-            kind = "",
-            find = [=[^%s*W?%s*%[[^/]+/[^]]+%]]=],
-          },
-          opts = { skip = true },
         },
       },
 
