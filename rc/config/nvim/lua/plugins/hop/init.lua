@@ -3,6 +3,8 @@
 --- Signature for hop's `get_input_pattern`
 ---@alias InputPatternGetter fun(prompt: string, maxchar: number?, opts: Options?): string?
 
+local hop_util = require("plugins.hop.util")
+
 local S = {
   ---@type FtKey?
   last_ft_key = nil,
@@ -215,8 +217,7 @@ return {
       end
 
       -- To fix hop#114
-      require("hop.jump_target").move_jump_target =
-        require("util.hop").move_jump_target
+      require("hop.jump_target").move_jump_target = hop_util.move_jump_target
 
       local orig_get_input_pattern = require("hop").get_input_pattern
 
@@ -277,26 +278,26 @@ return {
 
       {
         "+",
-        require("util.hop").hintTill1,
+        hop_util.hintTill1,
         mode = { "n", "x" },
         desc = "Hop till character",
       },
       {
         "+",
-        "v<Cmd>lua require('util.hop').hintTill1()<CR>",
+        "v<Cmd>lua require('plugins.hop.util').hintTill1()<CR>",
         mode = "o",
         desc = "Hop till character",
       },
 
       {
         "_",
-        require("util.hop").hintLines,
+        hop_util.hintLines,
         mode = { "n", "x" },
         desc = "Hop to line",
       },
       {
         "_",
-        "V<Cmd>lua require('util.hop').hintLines()<CR>",
+        "V<Cmd>lua require('plugins.hop.util').hintLines()<CR>",
         mode = "o",
         desc = "Hop to line",
       },
