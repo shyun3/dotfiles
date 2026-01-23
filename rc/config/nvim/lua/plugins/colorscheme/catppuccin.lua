@@ -1,45 +1,6 @@
 ---@class MyCatppuccinOptions: CatppuccinOptions
 ---@field _my_custom_highlights (CtpHighlightOverrideFn | { [string]: CtpHighlight })[]
 
-local function hl_overrides(colors)
-  return {
-    --- Syntax
-    Label = { style = { "bold" } },
-    Macro = { style = { "bold", "nocombine" } },
-    PreProc = { link = "Keyword" },
-
-    --- Treesitter
-    ["@attribute.python"] = { link = "Function" },
-
-    ["@function.builtin"] = {
-      fg = colors.blue, -- Same as function color, default was same as literals
-      style = { "italic" },
-    },
-
-    ["@keyword.import.c"] = { link = "Include" },
-    ["@keyword.import.cpp"] = { link = "@keyword.import.c" },
-
-    ["@module"] = {
-      -- The default of italic yellow is now used by built-in types
-      link = "Special", -- Default built-in module link
-    },
-    ["@module.builtin"] = {
-      fg = colors.pink, -- Default built-in module color
-      style = { "italic" },
-    },
-
-    ["@punctuation.special"] = { link = "@punctuation.delimiter" },
-    ["@string.escape"] = { style = { "bold" } },
-
-    ["@type.builtin"] = {
-      fg = colors.yellow, -- Same as type color
-      style = { "italic" },
-    },
-
-    ["@variable.parameter"] = { link = "@variable" },
-  }
-end
-
 return {
   LazyDep("catppuccin"),
   name = "catppuccin",
@@ -58,7 +19,7 @@ return {
     custom_highlights = function(colors)
       local opts = require("catppuccin").options
 
-      local hls = hl_overrides(colors)
+      local hls = {}
 
       ---@cast opts MyCatppuccinOptions
       for _, hl_override in ipairs(opts._my_custom_highlights or {}) do
@@ -71,6 +32,46 @@ return {
     end,
 
     _my_custom_highlights = {
+      -- Syntax
+      {
+        Label = { style = { "bold" } },
+        Macro = { style = { "bold", "nocombine" } },
+        PreProc = { link = "Keyword" },
+      },
+
+      -- Treesitter
+      function(colors)
+        return {
+          ["@attribute.python"] = { link = "Function" },
+
+          ["@function.builtin"] = {
+            fg = colors.blue, -- @function
+            style = { "italic" },
+          },
+
+          ["@keyword.import.c"] = { link = "Include" },
+          ["@keyword.import.cpp"] = { link = "@keyword.import.c" },
+
+          ["@module"] = {
+            link = "Special", -- Neovim default @module.builtin
+          },
+          ["@module.builtin"] = {
+            fg = colors.pink, -- Custom @module
+            style = { "italic" },
+          },
+
+          ["@punctuation.special"] = { link = "@punctuation.delimiter" },
+          ["@string.escape"] = { style = { "bold" } },
+
+          ["@type.builtin"] = {
+            fg = colors.yellow, -- @type
+            style = { "italic" },
+          },
+
+          ["@variable.parameter"] = { link = "@variable" },
+        }
+      end,
+
       -- LSP
       {
         ["@lsp.type.decorator.python"] = { link = "@attribute.python" },
