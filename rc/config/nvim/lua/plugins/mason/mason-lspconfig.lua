@@ -14,13 +14,12 @@ return {
     LazyDep("mason-lspconfig"),
     event = "VeryLazy",
 
-    opts_extend = { "automatic_enable.exclude" },
+    opts_extend = { "ensure_installed", "automatic_enable.exclude" },
 
     opts = {
       ensure_installed = {
         "basedpyright",
         "bashls",
-        "clangd",
         "jsonls",
         "lua_ls@3.16.4", -- See lazydev.nvim#136
         "mesonlsp",

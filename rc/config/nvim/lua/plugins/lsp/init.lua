@@ -14,4 +14,5 @@ return {
 
   { import = "plugins.lsp.lspconfig" },
   { import = "plugins.lsp.goto-preview" },
+  { import = "plugins.lsp.servers" },
 }
