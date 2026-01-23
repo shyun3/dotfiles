@@ -1,5 +1,5 @@
 ---@class MyCatppuccinOptions: CatppuccinOptions
----@field _my_custom_highlights { [string]: table }
+---@field _my_custom_highlights { [string]: table }[]
 ---  Highlight group -> Highlight definition map
 
 local function hl_overrides(colors)
@@ -71,6 +71,8 @@ return {
   name = "catppuccin",
   priority = 1000,
 
+  opts_extend = { "_my_custom_highlights" },
+
   opts = {
     styles = {
       comments = {}, -- Clear italic
@@ -82,13 +84,14 @@ return {
     custom_highlights = function(colors)
       local opts = require("catppuccin").options
 
-      return vim.tbl_extend(
-        "error",
-        hl_overrides(colors),
+      local hls = hl_overrides(colors)
 
-        ---@cast opts MyCatppuccinOptions
-        opts._my_custom_highlights
-      )
+      ---@cast opts MyCatppuccinOptions
+      for _, hl_def in ipairs(opts._my_custom_highlights) do
+        hls = vim.tbl_extend("error", hls, hl_def)
+      end
+
+      return hls
     end,
 
     auto_integrations = true,

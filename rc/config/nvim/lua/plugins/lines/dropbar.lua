@@ -5,8 +5,10 @@ return {
 
     opts = {
       _my_custom_highlights = {
-        DropBarKindFile = { link = "Comment" },
-        DropBarKindDir = { link = "Comment" },
+        {
+          DropBarKindFile = { link = "Comment" },
+          DropBarKindDir = { link = "Comment" },
+        },
       },
 
       integrations = {
