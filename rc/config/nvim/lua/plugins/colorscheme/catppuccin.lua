@@ -1,6 +1,5 @@
 ---@class MyCatppuccinOptions: CatppuccinOptions
----@field _my_custom_highlights { [string]: table }[]
----  Highlight group -> Highlight definition map
+---@field _my_custom_highlights (CtpHighlightOverrideFn | { [string]: CtpHighlight })[]
 
 local function hl_overrides(colors)
   return {
@@ -48,17 +47,6 @@ local function hl_overrides(colors)
     ["@lsp.typemod.namespace.defaultLibrary"] = { link = "@module.builtin" },
     ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
 
-    -- clangd
-    ["@lsp.type.concept"] = { fg = colors.sapphire },
-    ["@lsp.typemod.variable.classScope"] = { link = "@property" },
-    ["@lsp.typemod.variable.fileScope"] = {
-      link = "@lsp.typemod.variable.classScope",
-    },
-    ["@lsp.typemod.variable.globalScope"] = {
-      fg = colors.lavender, -- Property color
-      style = { "bold" },
-    },
-
     -- lua_ls
     ["@lsp.typemod.variable.global"] = {
       link = "@lsp.typemod.variable.globalScope",
@@ -87,7 +75,9 @@ return {
       local hls = hl_overrides(colors)
 
       ---@cast opts MyCatppuccinOptions
-      for _, hl_def in ipairs(opts._my_custom_highlights) do
+      for _, hl_override in ipairs(opts._my_custom_highlights or {}) do
+        local hl_def = type(hl_override) == "function" and hl_override(colors)
+          or hl_override
         hls = vim.tbl_extend("error", hls, hl_def)
       end
 
