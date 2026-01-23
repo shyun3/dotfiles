@@ -37,15 +37,6 @@ local function hl_overrides(colors)
     },
 
     ["@variable.parameter"] = { link = "@variable" },
-
-    --- LSP
-    ["@lsp.type.decorator.python"] = { link = "@attribute.python" },
-
-    ["@lsp.typemod.class.defaultLibrary"] = {
-      link = "@lsp.typemod.type.defaultLibrary",
-    },
-    ["@lsp.typemod.namespace.defaultLibrary"] = { link = "@module.builtin" },
-    ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
   }
 end
 
@@ -80,6 +71,17 @@ return {
     end,
 
     _my_custom_highlights = {
+      -- LSP
+      {
+        ["@lsp.type.decorator.python"] = { link = "@attribute.python" },
+
+        ["@lsp.typemod.class.defaultLibrary"] = {
+          link = "@lsp.typemod.type.defaultLibrary",
+        },
+        ["@lsp.typemod.namespace.defaultLibrary"] = { link = "@module.builtin" },
+        ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
+      },
+
       -- User created
       function(colors)
         return {
