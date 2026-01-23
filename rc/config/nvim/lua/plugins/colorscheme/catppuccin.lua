@@ -46,11 +46,6 @@ local function hl_overrides(colors)
     },
     ["@lsp.typemod.namespace.defaultLibrary"] = { link = "@module.builtin" },
     ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
-
-    -- lua_ls
-    ["@lsp.typemod.variable.global"] = {
-      link = "@lsp.typemod.variable.globalScope",
-    },
   }
 end
 
@@ -83,6 +78,18 @@ return {
 
       return hls
     end,
+
+    _my_custom_highlights = {
+      -- User created
+      function(colors)
+        return {
+          MyGlobalVariable = {
+            fg = colors.lavender, -- @property
+            style = { "bold" },
+          },
+        }
+      end,
+    },
 
     auto_integrations = true,
   },

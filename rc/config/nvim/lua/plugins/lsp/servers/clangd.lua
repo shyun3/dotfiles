@@ -13,8 +13,7 @@ return {
               link = "@lsp.typemod.variable.classScope",
             },
             ["@lsp.typemod.variable.globalScope"] = {
-              fg = colors.lavender, -- @property
-              style = { "bold" },
+              link = "MyGlobalVariable",
             },
           }
         end,
