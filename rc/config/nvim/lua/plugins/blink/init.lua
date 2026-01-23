@@ -32,16 +32,6 @@ return {
             },
 
             components = {
-              -- Derived from https://cmp.saghen.dev/recipes#nvim-web-devicons-lspkind
-              kind_icon = {
-                text = function(ctx)
-                  return require("lspkind").symbolic(
-                    ctx.kind,
-                    { mode = "symbol" }
-                  ) .. ctx.icon_gap
-                end,
-              },
-
               source_name = {
                 _my_text = {
                   -- If source name is not explicitly specified by the
