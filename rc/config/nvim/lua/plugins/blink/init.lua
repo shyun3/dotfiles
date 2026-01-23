@@ -1,6 +1,4 @@
 return {
-  { "onsails/lspkind.nvim", lazy = true },
-
   {
     LazyDep("blink.cmp"),
     version = "1.*",
@@ -126,4 +124,5 @@ return {
   },
 
   { import = "plugins.blink.ctags" },
+  { import = "plugins.blink.lspkind" },
 }
