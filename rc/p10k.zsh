@@ -1818,6 +1818,7 @@
 
   prompt_my_jj() {
     _my_jj_prompt_refresh
+    (( $? != 0 )) && return
 
     # note the single quotes, we want this to be interpreted each time
     p10k segment -b grey -c '$_my_jj_status_loading' -t '$_my_jj_display' -e
@@ -1826,7 +1827,7 @@
   }
 
   _my_jj_prompt_refresh() {
-    command -v jj >/dev/null 2>&1 || return
+    command -v jj >/dev/null 2>&1 || return 1
 
     local workspace
     if workspace=$(jj workspace root 2>/dev/null); then
@@ -1835,7 +1836,7 @@
     else
       p10k display "*/jj=hide"
       p10k display "*/vcs=show"
-      return
+      return 1
     fi
 
     # track current workspace for the async worker
