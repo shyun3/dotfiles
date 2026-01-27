@@ -10,6 +10,8 @@ return {
 
   {
     LazyDep("nvim-autopairs"),
+    branch = "personal",
+
     event = "InsertEnter",
 
     opts_extend = { "_my_custom_rules" },

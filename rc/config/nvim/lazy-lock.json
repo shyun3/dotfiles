@@ -31,7 +31,7 @@
   "molokai": { "branch": "personal", "commit": "5446b5cbaccece376134ad0572a5e7dd6090d67a" },
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
-  "nvim-autopairs": { "branch": "master", "commit": "c2a0dd0d931d0fb07665e1fedb1ea688da3b80b4" },
+  "nvim-autopairs": { "branch": "personal", "commit": "b96f80819a713f52af6c1561a19fab6676031a0b" },
   "nvim-bqf": { "branch": "main", "commit": "daa1a130632dc2b05a9a73538bac058dfa4e0b86" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "a065833f35a3a7cc3ef137ac88b5381da2ba302e" },
   "nvim-lightbulb": { "branch": "master", "commit": "aa3a8b0f4305b25cfe368f6c9be9923a7c9d0805" },
