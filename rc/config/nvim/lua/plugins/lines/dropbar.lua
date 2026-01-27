@@ -8,6 +8,10 @@ return {
         {
           DropBarKindFile = { link = "Comment" },
           DropBarKindDir = { link = "Comment" },
+
+          -- Must be different from WinBar for dimming to be enabled
+          -- See dropbar/hlgroups.lua
+          WinBarNC = { link = "Comment" },
         },
       },
 
