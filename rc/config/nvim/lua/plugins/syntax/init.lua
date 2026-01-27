@@ -1,6 +1,8 @@
 return {
   {
-    "sheerun/vim-polyglot",
+    "shyun3/vim-polyglot",
+    branch = "personal",
+
     event = "FileType",
 
     init = function()
