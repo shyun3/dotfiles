@@ -26,6 +26,7 @@ local deps = {
   ["nvim-treesitter-jjconfig"] = "acarapetis/nvim-treesitter-jjconfig",
   oil = "stevearc/oil.nvim",
   tabby = "nanozuki/tabby.nvim",
+  vimade = "tadaa/vimade",
   ["which-key"] = "folke/which-key.nvim",
 }
 

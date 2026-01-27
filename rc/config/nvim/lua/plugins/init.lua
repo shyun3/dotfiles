@@ -216,8 +216,10 @@ return {
   },
 
   {
-    "tadaa/vimade",
+    LazyDep("vimade"),
     event = "UIEnter",
+
+    opts_extend = { "_my_event_callbacks.FocusLost" },
 
     opts = {
       ncmode = "windows",
@@ -227,17 +229,20 @@ return {
     },
 
     config = function(_, opts)
-      -- When nvim focus is lost, lualine may not refresh before vimade fades.
-      -- The nvim display does not seem to update after fade. So, force a
-      -- lualine refresh before fade.
-      --
-      -- Make sure this autocommand is registered before vimade so that the
-      -- lualine refresh will occur before fade.
-      vim.api.nvim_create_autocmd("FocusLost", {
-        group = vim.api.nvim_create_augroup("my_vimade", {}),
-        desc = "Force lualine refresh",
-        callback = function() require("lualine").refresh({ force = true }) end,
-      })
+      if opts._my_event_callbacks then
+        local group = vim.api.nvim_create_augroup("my_vimade", {})
+
+        local events = { "FocusLost" }
+        for _, ev in ipairs(events) do
+          for _, autocmd_opts in ipairs(opts._my_event_callbacks[ev] or {}) do
+            vim.api.nvim_create_autocmd(ev, {
+              group = group,
+              desc = autocmd_opts.desc,
+              callback = autocmd_opts.callback,
+            })
+          end
+        end
+      end
 
       require("vimade").setup(opts)
     end,
