@@ -55,7 +55,7 @@ return {
         },
       },
 
-      sources = { path = { max_depth = 1 } },
+      sources = { path = { max_depth = 2 } },
     },
 
     keys = {
