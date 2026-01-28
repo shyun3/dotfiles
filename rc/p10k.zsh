@@ -1818,7 +1818,7 @@
 
   prompt_my_jj() {
     _my_jj_prompt_refresh
-    (( $? != 0 )) && return
+    (( $? != 0 ))
 
     # note the single quotes, we want this to be interpreted each time
     p10k segment -b grey -c '$_my_jj_status_loading' -t '$_my_jj_display' -e

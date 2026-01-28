@@ -1,23 +1,29 @@
 -- Derived from lualine "branch" component
 
+---@class VcsBranch
+---@field [1] string
+---@field icon? string
+
 local M = {}
 
 local utils = require("lualine.utils.utils")
 
 local S = {
-  curr_branch = "",
+  ---@type VcsBranch
+  curr_branch = { "" },
 
   ---@type string?
   curr_vcs_dir = "",
 
-  ---@type table<integer, string>
-  branch_cache = {}, -- bufnr: branch
+  ---@type { [integer]: VcsBranch } bufnr -> branch
+  branch_cache = {},
 
   active_bufnr = -1,
   head_file_watch = vim.uv.new_fs_event(),
 
-  ---@type table<string, string>
-  vcs_dir_cache = {}, -- directory: corresponding VCS directory (.git or .jj)
+  ---@type { [string]: string }
+  ---  directory -> corresponding VCS directory (.git or .jj)
+  vcs_dir_cache = {},
 }
 
 --- Checks if the given path if a .jj directory
@@ -35,8 +41,8 @@ end
 --- Reads the current jj branch asynchronously
 ---
 ---@param workspace_dir string jj workspace directory
----@param callback fun(branch: string) Callback executed on read completion.
----  Takes the read branch name. This parameter will be empty on error.
+---@param callback fun(branch: VcsBranch) Callback executed on read completion.
+---  Branch name will be empty on error.
 local function read_jj_branch(workspace_dir, callback)
   pcall(vim.system, {
     "jj",
@@ -52,9 +58,11 @@ local function read_jj_branch(workspace_dir, callback)
     "-T",
     "coalesce(bookmarks, tags, change_id.shortest(6))",
   }, function(obj)
-    -- If multiple bookmarks/tags, grab only the first
-    local branch = obj.code == 0 and obj.stdout:gsub("%s.*", "") or ""
-    callback(branch)
+    callback({
+      -- If multiple bookmarks/tags, grab only the first
+      obj.code == 0 and obj.stdout:gsub("%s.*", "") or "",
+      icon = "", -- e0a0
+    })
   end)
 end
 
@@ -62,16 +70,19 @@ end
 ---
 ---@param head_file_path string Full path to .git/HEAD file
 ---
----@return string
+---@return VcsBranch
 local function read_git_head(head_file_path)
   local head_file = io.open(head_file_path)
-  if not head_file then return "" end
+  if not head_file then return { "" } end
 
   local head = head_file:read()
   head_file:close()
 
   local branch = head:match("ref: refs/heads/(.+)$")
-  return branch or head:sub(1, 6)
+  return {
+    branch or head:sub(1, 6),
+    icon = "", -- e0a0
+  }
 end
 
 -- Updates last saved branch and begins watch on VCS head file
@@ -80,7 +91,7 @@ local function update_branch()
   S.active_bufnr = bufnr
   S.head_file_watch:stop()
 
-  ---@param branch string
+  ---@param branch VcsBranch
   local function save_branch(branch)
     S.curr_branch = branch
     S.branch_cache[bufnr] = branch
@@ -100,7 +111,7 @@ local function update_branch()
 
     S.head_file_watch:start(head_file, {}, vim.schedule_wrap(update_branch))
   else
-    branch = ""
+    branch = { "" }
   end
 
   save_branch(branch)
