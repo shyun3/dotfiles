@@ -49,6 +49,8 @@ return {
 
           return true -- Always show path
         end,
+
+        _my_disabled_filetypes = { "help" },
       },
 
       icons = {
