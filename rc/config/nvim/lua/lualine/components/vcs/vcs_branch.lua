@@ -61,7 +61,7 @@ local function read_jj_branch(workspace_dir, callback)
     callback({
       -- If multiple bookmarks/tags, grab only the first
       obj.code == 0 and obj.stdout:gsub("%s.*", "") or "",
-      icon = "", -- e0a0
+      icon = "\u{e0a0}", -- 
     })
   end)
 end
@@ -81,10 +81,10 @@ local function read_git_head(head_file_path)
   local branch = head:match("ref: refs/heads/(.+)$")
   return branch and {
     branch,
-    icon = "", -- U+e0a0
+    icon = "\u{e0a0}", -- 
   } or {
     head:sub(1, 6),
-    icon = " ", -- U+f1d3
+    icon = "\u{f1d3} ", -- 
   }
 end
 
