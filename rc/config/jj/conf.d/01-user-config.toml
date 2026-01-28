@@ -12,7 +12,7 @@ eol-conversion = "input"
 prompt_log = ["log", "--ignore-working-copy", "--no-graph", "--no-pager"]
 
 [template-aliases]
-# Conflict: 
+# Conflict: 
 # Divergent: 󰙁
 # Hidden: 󰈉
 # Immutable: 
@@ -22,7 +22,7 @@ prompt_log = ["log", "--ignore-working-copy", "--no-graph", "--no-pager"]
 # all symbols in order to force colors.
 prompt_symbols = """
 concat(
-    if(conflict, label('conflict', '\uf467 ')),
+    if(conflict, label('conflict', '\uf00d ')),
     if(divergent, label('normal', '\U000f0641 ')),
     if(hidden, label('normal', '\U000f0209 ')),
     if(immutable, label('normal', '\uf023 ')),
