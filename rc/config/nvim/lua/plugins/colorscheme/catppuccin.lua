@@ -68,6 +68,10 @@ return {
             style = { "italic" },
           },
 
+          ["@variable.builtin"] = {
+            fg = colors.text, -- @variable
+            style = { "italic" },
+          },
           ["@variable.parameter"] = { link = "@variable" },
         }
       end,
