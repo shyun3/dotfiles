@@ -79,9 +79,12 @@ local function read_git_head(head_file_path)
   head_file:close()
 
   local branch = head:match("ref: refs/heads/(.+)$")
-  return {
-    branch or head:sub(1, 6),
-    icon = "", -- e0a0
+  return branch and {
+    branch,
+    icon = "", -- U+e0a0
+  } or {
+    head:sub(1, 6),
+    icon = " ", -- U+f1d3
   }
 end
 
