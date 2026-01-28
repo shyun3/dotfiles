@@ -56,12 +56,18 @@ local function read_jj_branch(workspace_dir, callback)
     "--color",
     "never",
     "-T",
-    "coalesce(bookmarks, tags, change_id.shortest(6))",
+    "coalesce(bookmarks, tags, change_id.shortest(6)) ++ ':' ++ revision_symbol",
   }, function(obj)
+    if obj.code ~= 0 then
+      callback({ "" })
+      return
+    end
+
+    local refs, sym = unpack(vim.split(obj.stdout, ":"))
     callback({
       -- If multiple bookmarks/tags, grab only the first
-      obj.code == 0 and obj.stdout:gsub("%s.*", "") or "",
-      icon = "\u{e0a0}", -- 
+      refs:gsub("%s.*", ""),
+      icon = sym ~= "" and vim.trim(sym) or "\u{f15c6}", -- 󱗆
     })
   end)
 end
