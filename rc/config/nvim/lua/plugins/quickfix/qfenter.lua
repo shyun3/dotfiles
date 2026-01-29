@@ -33,7 +33,8 @@ local cmd_action_map = {
 ---@param cmd_spec QfCmdSpec
 local function make_qfenter_cmd(cmd_spec)
   return function()
-    vim.fn["QFEnter#OpenQFItem"](
+    vim.call(
+      "QFEnter#OpenQFItem",
       cmd_spec.tabwinfunc,
       cmd_spec.qfopencmd,
       cmd_spec.keepfocus and 1 or 0,
