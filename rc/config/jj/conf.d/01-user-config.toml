@@ -11,6 +11,16 @@ eol-conversion = "input"
 [aliases]
 prompt_log = ["log", "--ignore-working-copy", "--no-graph", "--no-pager"]
 
+[templates]
+# Taken from https://docs.jj-vcs.dev/latest/config/#default-description
+draft_commit_description = '''
+concat(
+  builtin_draft_commit_description,
+  "\nJJ: ignore-rest\n",
+  diff.git(),
+)
+'''
+
 [template-aliases]
 # Conflict: 
 # Divergent: 󰙁
