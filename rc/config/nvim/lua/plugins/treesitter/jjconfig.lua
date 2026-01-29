@@ -5,14 +5,14 @@ return {
 
     opts = {
       _my_custom_rules = {
-        function(rule, conds)
+        function(autopairs)
           return {
-            rule('"""', '"""', "jjconfig.toml"):with_pair(
-              conds.not_before_char('"', 3)
-            ),
-            rule("'''", "'''", "jjconfig.toml"):with_pair(
-              conds.not_before_char("'", 3)
-            ),
+            autopairs
+              .rule('"""', '"""', "jjconfig.toml")
+              :with_pair(autopairs.conds.not_before_char('"', 3)),
+            autopairs
+              .rule("'''", "'''", "jjconfig.toml")
+              :with_pair(autopairs.conds.not_before_char("'", 3)),
           }
         end,
       },
