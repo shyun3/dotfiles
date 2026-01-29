@@ -1858,7 +1858,7 @@
   _my_jj_async() {
     local workspace=$1
 
-    jj --at-op=@ debug snapshot
+    jj -R $workspace --at-op=@ debug snapshot
 
     local status_changes=($(jj prompt_log -R $workspace -n 1 --color never \
       -r @ -T "diff.summary()" 2> /dev/null | awk 'BEGIN {a=0;d=0;m=0}
