@@ -33,13 +33,11 @@ return {
       local my_lsp_configs = opts._my_lsp_configs
       if my_lsp_configs then
         for lsp, config in pairs(my_lsp_configs) do
-          if opts.ensure_installed then
-            if not vim.list_contains(opts.ensure_installed, lsp) then
-              local msg = "mason-lspconfig: Custom LSP config for '"
-                .. lsp
-                .. "' found, but server is not ensured to be installed"
-              vim.notify(msg, vim.log.levels.WARN)
-            end
+          if not vim.list_contains(opts.ensure_installed or {}, lsp) then
+            local msg = "mason-lspconfig: "
+              .. ("Custom LSP config for '%s' found, "):format(lsp)
+              .. "but server is not ensured to be installed"
+            vim.notify(msg, vim.log.levels.WARN)
           end
 
           vim.lsp.config(lsp, config)
