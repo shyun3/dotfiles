@@ -18,7 +18,7 @@ return {
   },
 
   {
-    LazyDep("vim-grepper"),
+    "shyun3/vim-grepper",
     branch = "personal",
 
     config = function()

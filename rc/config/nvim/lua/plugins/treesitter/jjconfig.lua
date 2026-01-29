@@ -20,7 +20,7 @@ return {
   },
 
   {
-    LazyDep("nvim-treesitter-jjconfig"),
+    "acarapetis/nvim-treesitter-jjconfig",
     dependencies = LazyDep("lspconfig"),
 
     event = {

@@ -5,7 +5,6 @@
 local deps = {
   -- Vim plugins
   ["vim-endwise"] = "shyun3/vim-endwise",
-  ["vim-grepper"] = "shyun3/vim-grepper",
   ["vim-project"] = "shyun3/vim-project",
 
   -- Lua modules
@@ -23,7 +22,6 @@ local deps = {
   ["mason-lspconfig"] = "mason-org/mason-lspconfig.nvim",
   ["nvim-autopairs"] = "shyun3/nvim-autopairs",
   ["nvim-surround"] = "kylechui/nvim-surround",
-  ["nvim-treesitter-jjconfig"] = "acarapetis/nvim-treesitter-jjconfig",
   oil = "stevearc/oil.nvim",
   tabby = "nanozuki/tabby.nvim",
   vimade = "tadaa/vimade",
