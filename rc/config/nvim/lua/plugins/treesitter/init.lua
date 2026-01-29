@@ -46,6 +46,7 @@ return {
         "bash",
         "cpp",
         "doxygen",
+        "editorconfig",
         "git_config",
         "luadoc",
         "meson",
