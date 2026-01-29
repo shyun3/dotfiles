@@ -58,7 +58,7 @@
   "vim-cmake-lists": { "branch": "master", "commit": "deb9d670bc3bfb3993f3b2870e2dab5d7fd0d456" },
   "vim-ctags-mtable": { "branch": "personal", "commit": "131d774696bce5c2b1e24dd8805e2a2b2ff2fa28" },
   "vim-doge": { "branch": "master", "commit": "03a84072ef21b205237c77986c78914395d646c3" },
-  "vim-endwise": { "branch": "personal", "commit": "e3785c4e09fe8df729d8d00ea7f6faf08285260a" },
+  "vim-endwise": { "branch": "master", "commit": "4994afb0cdf956d9a665a14b9c834869e602c396" },
   "vim-floaterm": { "branch": "master", "commit": "a11b930f55324e9b05e2ef16511fe713f1b456a7" },
   "vim-grepper": { "branch": "personal", "commit": "aafa40bc514a63ed3dacc4a905671db05381c472" },
   "vim-gutentags": { "branch": "master", "commit": "aa47c5e29c37c52176c44e61c780032dfacef3dd" },

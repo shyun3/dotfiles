@@ -4,7 +4,7 @@
 ---@type table<string, string> plugin: lazy.nvim URL
 local deps = {
   -- Vim plugins
-  ["vim-endwise"] = "shyun3/vim-endwise",
+  ["vim-endwise"] = "tpope/vim-endwise",
   ["vim-project"] = "shyun3/vim-project",
 
   -- Lua modules
