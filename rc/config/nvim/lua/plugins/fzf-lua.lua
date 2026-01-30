@@ -1,5 +1,7 @@
 local util = require("util")
 
+local FD_OPTS_BASE = "--color=never --exclude .git --exclude .jj "
+
 return {
   {
     LazyDep("which-key"),
@@ -111,7 +113,9 @@ return {
 
         function()
           util.go_to_editable_window()
-          require("fzf-lua").files({ cwd = vim.fn.getcwd() })
+          require("fzf-lua").files({
+            fd_opts = FD_OPTS_BASE .. "--type f --type l",
+          })
         end,
 
         desc = "fzf-lua: Files",
@@ -121,9 +125,7 @@ return {
 
         function()
           util.go_to_editable_window()
-          require("fzf-lua").files({
-            fd_opts = "--color=never --type d --hidden --exclude .git",
-          })
+          require("fzf-lua").files({ fd_opts = FD_OPTS_BASE .. "--type d" })
         end,
 
         desc = "fzf-lua: Directories",
