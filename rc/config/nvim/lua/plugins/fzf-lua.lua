@@ -64,30 +64,13 @@ return {
         },
       },
 
-      previewers = {
-        bat = {
-          -- Taken from https://github.com/ibhagwan/fzf-lua/issues/28#issuecomment-892216156
-          config = nil,
-        },
-      },
-
-      -- Git icons are disabled for performance reasons
-      files = {
-        git_icons = false,
-      },
       oldfiles = {
         include_current_session = true,
 
         -- Disabled for performance, see #1336
         stat_file = false,
       },
-      tags = {
-        git_icons = false,
-      },
-      btags = {
-        git_icons = false,
-      },
-      file_icon_padding = " ", -- En space, U+2002
+      file_icon_padding = " ",
     },
 
     keys = {
