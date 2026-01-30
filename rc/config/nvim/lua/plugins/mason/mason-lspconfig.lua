@@ -30,6 +30,11 @@ return {
     },
 
     config = function(_, opts)
+      -- LSP configs seem to get merged when LSP servers are enabled. If
+      -- plugins are loaded afterward, their LSP configs do not appear to get
+      -- applied.
+      vim.api.nvim_exec_autocmds("User", { pattern = "LspEnablePre" })
+
       local my_lsp_configs = opts._my_lsp_configs
       if my_lsp_configs then
         for lsp, config in pairs(my_lsp_configs) do

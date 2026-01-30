@@ -21,7 +21,6 @@ return {
 
   {
     "acarapetis/nvim-treesitter-jjconfig",
-    dependencies = LazyDep("lspconfig"),
 
     event = {
       -- To load before filetype event, otherwise highlighting may not occur
@@ -29,6 +28,8 @@ return {
 
       -- To install on startup, even if no file was opened
       "VeryLazy",
+
+      "User LspEnablePre",
     },
 
     opts = { ensure_installed = true },

@@ -74,10 +74,8 @@ return {
   },
 
   {
-    LazyDep("lspconfig"),
-
-    -- Defer loading to allow other plugins to override these LSP configs
-    lazy = true,
+    "neovim/nvim-lspconfig",
+    event = "User LspEnablePre",
 
     init = function()
       -- Set 'tagfunc' to prevent LSP tagfunc from being assigned
