@@ -117,6 +117,19 @@ return {
         desc = "fzf-lua: Files",
       },
       {
+        "<Leader><C-p>",
+
+        function()
+          util.go_to_editable_window()
+          require("fzf-lua").files({
+            fd_opts = "--color=never --type d --hidden --exclude .git",
+          })
+        end,
+
+        desc = "fzf-lua: Directories",
+      },
+
+      {
         "<C-q>",
 
         function()
