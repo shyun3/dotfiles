@@ -64,12 +64,21 @@ return {
         },
       },
 
+      previewers = {
+        tree = {
+          cmd = "tree",
+          args = "-C",
+          _ctor = function() return require("fzf-lua.previewer.fzf").cmd end,
+        },
+      },
+
       oldfiles = {
         include_current_session = true,
 
         -- Disabled for performance, see #1336
         stat_file = false,
       },
+
       file_icon_padding = " ",
     },
 
@@ -108,7 +117,10 @@ return {
 
         function()
           util.go_to_editable_window()
-          require("fzf-lua").files({ fd_opts = FD_OPTS_BASE .. "--type d" })
+          require("fzf-lua").files({
+            fd_opts = FD_OPTS_BASE .. "--type d",
+            previewer = "tree",
+          })
         end,
 
         desc = "fzf-lua: Directories",
