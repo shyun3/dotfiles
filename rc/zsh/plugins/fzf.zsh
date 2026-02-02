@@ -3,6 +3,9 @@
 source $ANTIDOTE_CACHE/catppuccin/fzf/themes/catppuccin-fzf-mocha.sh
 export FZF_DEFAULT_OPTS="$(echo "$FZF_DEFAULT_OPTS" | sed -E 's/,bg:[^,]+//g')"
 
+# Add jj folder to default skipped
+FZF_DEFAULT_OPTS+=' --walker-skip=.git,node_modules,.jj'
+
 # Display full command on preview window, taken from:
 # https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#full-command-on-preview-window
 #
