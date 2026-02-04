@@ -181,6 +181,22 @@ return {
   },
 
   {
+    LazyDep("noice"),
+    optional = true,
+
+    opts = {
+      lsp = {
+        progress = {
+          -- For some reason, noice interferes with the hop operator pending
+          -- mappings when showing LSP progress. The mapping might not work
+          -- and the progress display gets stuck.
+          enabled = false,
+        },
+      },
+    },
+  },
+
+  {
     "smoka7/hop.nvim",
 
     -- Loading hop while in lazy window can cause visual glitch
