@@ -44,19 +44,6 @@ return {
     opts_extend = { "routes" },
 
     opts = {
-      cmdline = {
-        format = {
-          -- Not concealing helps with aligning the pop-up menu to the cursor
-          cmdline = { conceal = false },
-          search_down = { conceal = false },
-          search_up = { conceal = false },
-          filter = { conceal = false },
-          lua = { conceal = false },
-          help = { conceal = false },
-          input = { conceal = false },
-        },
-      },
-
       lsp = {
         -- override markdown rendering so that plugins use **Treesitter**
         override = {
@@ -76,11 +63,7 @@ return {
 
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
-
-        -- position the cmdline and popupmenu together
-        -- blink should already do this
-        command_palette = false,
-
+        command_palette = false, -- Prefer command menu in middle
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = true, -- add a border to hover docs and signature help

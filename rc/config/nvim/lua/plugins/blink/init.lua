@@ -1,5 +1,25 @@
 return {
   {
+    LazyDep("noice"),
+    optional = true,
+
+    opts = {
+      cmdline = {
+        format = {
+          -- Not concealing helps with aligning the pop-up menu to the cursor
+          cmdline = { conceal = false },
+          search_down = { conceal = false },
+          search_up = { conceal = false },
+          filter = { conceal = false },
+          lua = { conceal = false },
+          help = { conceal = false },
+          input = { conceal = false },
+        },
+      },
+    },
+  },
+
+  {
     LazyDep("blink.cmp"),
     version = "1.*",
 
