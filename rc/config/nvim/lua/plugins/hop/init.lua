@@ -57,16 +57,15 @@ end
 ---
 ---@param key FtKey
 ---@param maxchar number?
----@param opts Options?
 ---@param get_input_pattern InputPatternGetter? Uses default if nil
 ---
 ---@return string?
-local function get_ft_input_pattern(key, maxchar, opts, get_input_pattern)
+local function get_ft_input_pattern(key, maxchar, get_input_pattern)
   if get_input_pattern == nil then
     get_input_pattern = require("hop").get_input_pattern
   end
 
-  local input = get_input_pattern("", maxchar, opts)
+  local input = get_input_pattern("", maxchar)
   if input then
     S.last_ft_key = key
     S.last_ft_char = input
@@ -86,8 +85,8 @@ local function make_hop_ft(key)
 
     ---@diagnostic disable-next-line: duplicate-set-field
     require("hop").get_input_pattern = function(_, ...)
-      local maxchar, opts = ...
-      return get_ft_input_pattern(key, maxchar, opts, last_get_input_pattern)
+      local maxchar, _ = ...
+      return get_ft_input_pattern(key, maxchar, last_get_input_pattern)
     end
 
     require("hop").hint_char1(ft_opts(key))
