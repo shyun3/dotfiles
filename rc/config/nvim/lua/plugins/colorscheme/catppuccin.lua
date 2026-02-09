@@ -33,11 +33,13 @@ return {
 
     _my_custom_highlights = {
       -- Syntax
-      {
-        Label = { style = { "bold" } },
-        Macro = { style = { "bold", "nocombine" } },
-        PreProc = { link = "Keyword" },
-      },
+      function(colors)
+        return {
+          Label = { style = { "bold" } },
+          Macro = { fg = colors.red, style = { "bold", "nocombine" } },
+          PreProc = { link = "Keyword" },
+        }
+      end,
 
       -- Treesitter
       function(colors)
