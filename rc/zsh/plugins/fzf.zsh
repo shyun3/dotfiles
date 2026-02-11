@@ -9,11 +9,11 @@ FZF_DEFAULT_OPTS+=' --walker-skip=.git,node_modules,.jj'
 # Display full command on preview window, taken from:
 # https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#full-command-on-preview-window
 #
-# CTRL-Y to copy the command into clipboard using wl-copy, derived from:
+# CTRL-Y to copy the command into clipboard, derived from:
 # https://junegunn.github.io/fzf/shell-integration/#ctrl-r
 export FZF_CTRL_R_OPTS="
   --preview 'echo {}' --preview-window down:3:wrap --bind '?:toggle-preview'
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | xclip -i -sel clip)+abort'
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
 
