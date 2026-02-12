@@ -29,6 +29,7 @@ asset_filters = ["gnu"]
 ["jesseduffield/lazygit"]
 
 ["neovim/neovim"]
+tag = "nightly"
 asset_filters = ["x86"]
 target = "~/.local/bin/nvim"
 
