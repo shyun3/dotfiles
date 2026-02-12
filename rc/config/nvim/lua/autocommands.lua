@@ -21,3 +21,20 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight on yank",
   callback = function() vim.hl.on_yank() end,
 })
+
+-- Show colorcolumn only on insert
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = group,
+  desc = "Set colorcolumn",
+
+  callback = function(args)
+    local tw = vim.bo[args.buf].textwidth
+    local cc = tw == 0 and require("util").column_limit or tw + 1
+    vim.wo.colorcolumn = tostring(cc)
+  end,
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = group,
+  desc = "Clear colorcolumn",
+  callback = function() vim.wo.colorcolumn = "" end,
+})
