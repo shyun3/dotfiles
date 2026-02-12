@@ -124,6 +124,20 @@ return {
   },
 
   {
+    "lewis6991/satellite.nvim",
+    event = "BufWinEnter",
+
+    opts = {
+      current_only = true,
+
+      handlers = {
+        -- Seems to prevent scrollbar from displaying on window enter
+        gitsigns = { enable = false },
+      },
+    },
+  },
+
+  {
     "majutsushi/tagbar",
 
     init = function()
