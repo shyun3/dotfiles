@@ -28,7 +28,13 @@ vim.api.nvim_create_autocmd("InsertEnter", {
   desc = "Set colorcolumn",
 
   callback = function(args)
-    local tw = vim.bo[args.buf].textwidth
+    local bufnr = args.buf
+    if vim.b[bufnr].my_disable_colorcolumn then
+      vim.wo.colorcolumn = ""
+      return
+    end
+
+    local tw = vim.bo[bufnr].textwidth
     local cc = tw == 0 and require("util").column_limit or tw + 1
     vim.wo.colorcolumn = tostring(cc)
   end,
