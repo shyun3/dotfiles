@@ -41,3 +41,6 @@ all = true
 
 ["idursun/jjui"]
 target = "~/.local/bin/jjui"
+
+["tealdeer-rs/tealdeer"]
+target = "~/.local/bin/tldr"
