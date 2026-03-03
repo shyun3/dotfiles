@@ -76,7 +76,7 @@ return {
 
   {
     LazyDep("oil"),
-    event = "UIEnter",
+    lazy = false, -- To handle opening directory as CLI argument ASAP
 
     init = function()
       -- Although oil can disable netrw when it loads, the latter must be

@@ -54,6 +54,24 @@ return {
   },
 
   {
+    LazyDep("project"),
+    optional = true,
+
+    opts = {
+      fzf_lua = { enabled = true },
+    },
+
+    keys = {
+      { "<Leader>pf", "<Cmd>ProjectFzf<CR>", desc = "Open" },
+      {
+        "<Leader>pt",
+        "<Cmd>tabedit | ProjectFzf<CR>",
+        desc = "Open in new tab",
+      },
+    },
+  },
+
+  {
     "ibhagwan/fzf-lua",
 
     opts = {
