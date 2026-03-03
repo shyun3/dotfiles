@@ -58,7 +58,15 @@ return {
                 require("util.path").normalize(raw_buf_name),
                 ":~"
               )
-              return #path < 20 and path or vim.fn.pathshorten(path)
+
+              if #path < 20 then
+                return path
+              else
+                -- Path ends with slash. Remove it so that the last component
+                -- won't also be shortened.
+                local dir = vim.fn.fnamemodify(path, ":h")
+                return vim.fn.pathshorten(dir)
+              end
             end,
           },
         },
