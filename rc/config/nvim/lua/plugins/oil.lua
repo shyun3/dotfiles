@@ -95,5 +95,9 @@ return {
         end
       )
     end,
+
+    keys = {
+      { "-", "<Cmd>Oil<CR>" },
+    },
   },
 }
