@@ -5,7 +5,6 @@
 local deps = {
   -- Vim plugins
   ["vim-endwise"] = "tpope/vim-endwise",
-  ["vim-project"] = "shyun3/vim-project",
 
   -- Lua modules
   ["blink.cmp"] = "saghen/blink.cmp",

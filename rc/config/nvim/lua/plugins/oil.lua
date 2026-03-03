@@ -75,13 +75,6 @@ return {
   },
 
   {
-    LazyDep("vim-project"),
-    optional = true,
-
-    opts = { _my_autocmd_patterns = { OIL_PATH_PREFIX .. "*" } },
-  },
-
-  {
     LazyDep("oil"),
     event = "UIEnter",
 

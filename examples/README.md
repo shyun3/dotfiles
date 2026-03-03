@@ -12,7 +12,6 @@ renaming them, and customizing their contents as needed.
 | *_projections.json* | *.projections.json* | Project | **vim-projectionist** |
 | *03-scope-configs.toml* | Same | *~/.config/jj/conf.d* | `jj`
 | *compile_flags.txt* | Same | Project | `clangd` |
-| *projects.vim* | Same | *~/.config/nvim* | **vim-project** |
 | *pyrightconfig.json* | Same | Project | `basedpyright` |
 | *ssh-config* | *config* | *~/.ssh* | `ssh-add` |
 
@@ -20,7 +19,6 @@ Additional notes:
 * *.gutctags*: See `g:gutentags_project_root`
 * *03-scope-configs.toml*: Files in directory are loaded in lexicographic
   order, see [docs][jj-config]
-* *projects.vim*: See **vim-project** Neovim config
 * *pyrightconfig.json*: `basedpyright` can read type stubs placed in the
   `typings` directory. See also the `stubPath` option and [Generating Type
   Stubs][type-stubs].
