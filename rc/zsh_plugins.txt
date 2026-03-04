@@ -9,6 +9,7 @@ eza-community/eza kind:fpath path:completions/zsh
 sharkdp/fd kind:fpath path:contrib/completion
 mesonbuild/meson kind:fpath path:data/shell-completions/zsh
 ajeetdsouza/zoxide kind:fpath path:contrib/completions
+tealdeer-rs/tealdeer kind:clone
 
 # Assets
 dandavison/delta kind:clone     # For themes
