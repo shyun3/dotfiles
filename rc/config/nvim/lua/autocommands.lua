@@ -10,6 +10,8 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
       vim.fn.bufname() ~= ""
       and vim.bo.buftype == ""
       and not vim.bo.readonly
+      -- Don't autosave new files
+      and vim.fn.filereadable(vim.api.nvim_buf_get_name(0)) == 1
     then
       vim.cmd.update()
     end
