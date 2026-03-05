@@ -43,6 +43,14 @@ for i = 1, 9 do
   )
 end
 
+-- Tabs
+vim.keymap.set(
+  "n",
+  "<Leader><Tab>",
+  "<Cmd>tabedit<CR>",
+  { desc = "Open new tab" }
+)
+
 -- Quickfix
 vim.keymap.set(
   "n",
