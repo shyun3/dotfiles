@@ -14,6 +14,7 @@ renaming them, and customizing their contents as needed.
 | *compile_flags.txt* | Same | Project | `clangd` |
 | *pyrightconfig.json* | Same | Project | `basedpyright` |
 | *ssh-config* | *config* | *~/.ssh* | `ssh-add` |
+| *nvim.lua* | *.nvim.lua* | Project | **nvim-config-local** |
 
 Additional notes:
 * *.gutctags*: See `g:gutentags_project_root`

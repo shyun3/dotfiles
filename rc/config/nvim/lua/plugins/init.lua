@@ -80,6 +80,21 @@ return {
   },
 
   {
+    "klen/nvim-config-local",
+    lazy = false, -- To accommodate all possible local configs
+
+    opts = { lookup_parents = true },
+
+    config = function(_, opts)
+      require("config-local").setup(opts)
+
+      -- By default, local configs are sourced on VimEnter and DirChanged which
+      -- may be too late. So, source any local config early as possible.
+      require("config-local").source()
+    end,
+  },
+
+  {
     "chrisgrieser/nvim-spider",
 
     keys = {
