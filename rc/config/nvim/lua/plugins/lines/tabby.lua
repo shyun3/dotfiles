@@ -119,23 +119,17 @@ return {
             end
           end
 
+          if vim.api.nvim_win_get_config(win.id).relative ~= "" then
+            -- Window is floating, see `floating-windows`
+            return "[Floating]"
+          end
+
           return win.buf_name()
         end,
 
-        _my_name_fallbacks = { qf = "[Quickfix]" },
+        _my_name_fallbacks = { qf = "[Quickfix]", checkhealth = "[Health]" },
 
         override = function(tab_id)
-          local win_id = vim.api.nvim_tabpage_get_win(tab_id)
-          local buf_id = vim.api.nvim_win_get_buf(win_id)
-          local buf_name = vim.api.nvim_buf_get_name(buf_id)
-
-          if vim.api.nvim_win_get_config(win_id).relative ~= "" then
-            -- Window is floating, see `floating-windows`
-            return "[Floating]"
-          elseif vim.startswith(buf_name, "health://") then
-            return "[Health]"
-          end
-
           local tab_name_opts = require("tabby.tabline").cfg.opt.tab_name
 
           ---@cast tab_name_opts MyTabbyTabNameOption
