@@ -3,7 +3,7 @@
 ---@class MyTabbyTabNameOption: TabbyTabNameOption
 ---@field _my_name_fallbacks? { [string]: string | fun(buf_id: integer): string }
 ---  Filetype -> Name
----@field _my_overrides? (fun(buf_id: integer): string?)[]  Names
+---@field _my_overrides? (fun(tab_id: integer): string?)[]  Names
 
 ---@return table<string, TabbyHighlight>
 local theme = function()
@@ -142,7 +142,7 @@ return {
           local custom_overrides = tab_name_opts._my_overrides or {}
 
           for _, get_override_name in ipairs(custom_overrides) do
-            local override_name = get_override_name(buf_id)
+            local override_name = get_override_name(tab_id)
             if override_name then return override_name end
           end
         end,

@@ -54,6 +54,90 @@ return {
   },
 
   {
+    LazyDep("workspaces"),
+    optional = true,
+
+    keys = {
+      {
+        [[<A-\>]],
+
+        -- Derived from workspaces.nvim#47 and project.nvim
+        function()
+          local fzf_lua = require("fzf-lua")
+          local workspaces = require("workspaces")
+
+          local sep = " \u{2192} " -- →
+          local function contents(fzf_cb)
+            for _, workspace in ipairs(workspaces.get()) do
+              fzf_cb(workspace.name .. sep .. workspace.path)
+            end
+            fzf_cb()
+          end
+
+          local function split_selected(selected)
+            local parts = vim.split(selected, sep)
+            assert(#parts == 2, "Separator found in workspace name/path")
+            return unpack(parts)
+          end
+
+          local opts = {
+            header_separator = " | ",
+
+            winopts = {
+              title = "Workspaces",
+            },
+
+            actions = {
+              default = function(selected)
+                local name, _ = split_selected(selected[1])
+                workspaces.open(name)
+              end,
+
+              ["ctrl-t"] = {
+                -- See fzf-lua.core.set_header() for these key usages
+                header = "open in new tab",
+
+                fn = function(selected)
+                  local name, _ = split_selected(selected[1])
+                  vim.cmd(
+                    "tabedit | WorkspacesOpen " .. vim.fn.fnameescape(name)
+                  )
+                end,
+              },
+            },
+
+            preview = {
+              type = "cmd",
+              fn = function(items)
+                local _, path = split_selected(items[1])
+                return "tree -C " .. vim.fn.shellescape(path)
+              end,
+            },
+          }
+
+          opts.actions["ctrl-x"] = {
+            header = "remove",
+
+            fn = function(selected)
+              for _, sel in ipairs(selected) do
+                local name, _ = split_selected(sel)
+                workspaces.remove(name)
+              end
+
+              -- Refresh window, see fzf-lua#196. Causes window to blink though.
+              fzf_lua.fzf_exec(contents, opts)
+            end,
+          }
+
+          fzf_lua.fzf_exec(contents, opts)
+        end,
+
+        desc = "Workspaces: Pick",
+      },
+    },
+  },
+
+  {
     "ibhagwan/fzf-lua",
 
     opts = {

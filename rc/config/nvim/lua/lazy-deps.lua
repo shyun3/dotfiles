@@ -24,6 +24,7 @@ local deps = {
   tabby = "nanozuki/tabby.nvim",
   vimade = "tadaa/vimade",
   ["which-key"] = "folke/which-key.nvim",
+  workspaces = "natecraddock/workspaces.nvim",
 }
 
 --- Gets the lazy.nvim URL corresponding to the given plugin name
