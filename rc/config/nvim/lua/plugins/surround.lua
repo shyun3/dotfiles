@@ -18,19 +18,9 @@ return {
   {
     LazyDep("nvim-surround"),
 
+    init = function() vim.g.nvim_surround_no_normal_mappings = true end,
+
     opts = {
-      keymaps = {
-        normal = "sy",
-        normal_cur = "syy",
-        normal_line = "sY",
-        normal_cur_line = "sYY",
-
-        delete = "sd",
-
-        change = "sc",
-        change_line = "sC",
-      },
-
       aliases = {
         a = false,
         b = { ")", "}", "]" },
@@ -41,8 +31,47 @@ return {
     },
 
     keys = {
-      { "s" },
+      {
+        "sy",
+        "<Plug>(nvim-surround-normal)",
+        desc = "Add a surrounding pair around a motion",
+      },
+      {
+        "syy",
+        "<Plug>(nvim-surround-normal-cur)",
+        desc = "Add a surrounding pair around the current line",
+      },
+      {
+        "sY",
+        "<Plug>(nvim-surround-normal-line)",
+        desc = "Add a surrounding pair around a motion, on new lines",
+      },
+      {
+        "sYY",
+        "<Plug>(nvim-surround-normal-cur-line)",
+        desc = "Add a surrounding pair around the current line, on new lines",
+      },
+
+      {
+        "sd",
+        "<Plug>(nvim-surround-delete)",
+        desc = "Delete a surrounding pair",
+      },
+
+      {
+        "sc",
+        "<Plug>(nvim-surround-change)",
+        desc = "Change a surrounding pair",
+      },
+      {
+        "sC",
+        "<Plug>(nvim-surround-change-line)",
+        desc = "Change a surrounding pair, putting replacements on new lines",
+      },
+
       { "<C-g>", mode = "i" },
+      { "S", mode = "x" },
+      { "gS", mode = "x" },
 
       { "ss", "cl", desc = "Delete character and enter insert" },
     },
