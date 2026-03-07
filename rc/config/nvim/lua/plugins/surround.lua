@@ -72,8 +72,6 @@ return {
       { "<C-g>", mode = "i" },
       { "S", mode = "x" },
       { "gS", mode = "x" },
-
-      { "ss", "cl", desc = "Delete character and enter insert" },
     },
   },
 }
