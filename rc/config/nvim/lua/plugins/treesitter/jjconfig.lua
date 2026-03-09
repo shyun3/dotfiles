@@ -8,10 +8,10 @@ return {
         function(autopairs)
           return {
             autopairs
-              .rule('"""', '"""', "jjconfig.toml")
+              .rule('"""', '"""', { "jjconfig.toml", "jjui.toml" })
               :with_pair(autopairs.conds.not_before_char('"', 3)),
             autopairs
-              .rule("'''", "'''", "jjconfig.toml")
+              .rule("'''", "'''", { "jjconfig.toml", "jjui.toml" })
               :with_pair(autopairs.conds.not_before_char("'", 3)),
           }
         end,
