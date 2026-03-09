@@ -81,19 +81,22 @@ return {
           end
 
           local opts = {
-            winopts = {
-              title = "Workspaces",
-            },
+            winopts = { title = "Workspaces" },
 
             actions = {
-              default = function(selected)
-                local name, _ = split_selected(selected[1])
-                workspaces.open(name)
-              end,
+              default = {
+                fn = function(selected)
+                  local name, _ = split_selected(selected[1])
+                  workspaces.open(name)
+                end,
+
+                desc = "workspace-open", -- F1 help
+              },
 
               ["ctrl-t"] = {
                 -- See fzf-lua.core.set_header() for these key usages
                 header = "open in new tab",
+                desc = "workspace-tab-open",
 
                 fn = function(selected)
                   local name, _ = split_selected(selected[1])
@@ -105,6 +108,7 @@ return {
 
               ["ctrl-x"] = {
                 header = "remove",
+                desc = "workspace-remove",
 
                 fn = function(selected)
                   for _, sel in ipairs(selected) do
@@ -119,6 +123,7 @@ return {
 
             preview = {
               type = "cmd",
+
               fn = function(items)
                 local _, path = split_selected(items[1])
                 return "tree -C " .. vim.fn.shellescape(path)
