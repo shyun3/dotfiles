@@ -102,6 +102,19 @@ return {
                   )
                 end,
               },
+
+              ["ctrl-x"] = {
+                header = "remove",
+
+                fn = function(selected)
+                  for _, sel in ipairs(selected) do
+                    local name, _ = split_selected(sel)
+                    workspaces.remove(name)
+                  end
+                end,
+
+                reload = true,
+              },
             },
 
             preview = {
@@ -111,20 +124,6 @@ return {
                 return "tree -C " .. vim.fn.shellescape(path)
               end,
             },
-          }
-
-          opts.actions["ctrl-x"] = {
-            header = "remove",
-
-            fn = function(selected)
-              for _, sel in ipairs(selected) do
-                local name, _ = split_selected(sel)
-                workspaces.remove(name)
-              end
-
-              -- Refresh window, see fzf-lua#196. Causes window to blink though.
-              fzf_lua.fzf_exec(contents, opts)
-            end,
           }
 
           fzf_lua.fzf_exec(contents, opts)
