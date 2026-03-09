@@ -81,8 +81,6 @@ return {
           end
 
           local opts = {
-            header_separator = " | ",
-
             winopts = {
               title = "Workspaces",
             },
@@ -141,6 +139,8 @@ return {
     "ibhagwan/fzf-lua",
 
     opts = {
+      defaults = { header_separator = ", " },
+
       winopts = {
         preview = {
           default = "bat",
