@@ -1,9 +1,9 @@
-# clang-format 21.1.5
+# clang-format 22.1.0
 # vim: ft=yaml
 
 BasedOnStyle: LLVM
 AccessModifierOffset: -4
-AlignAfterOpenBracket: Align
+AlignAfterOpenBracket: true
 AlignArrayOfStructures: None
 AlignConsecutiveAssignments: None
 AlignConsecutiveBitFields: Consecutive
@@ -16,6 +16,7 @@ AlignOperands: Align
 AlignTrailingComments:
   Kind: Always
   OverEmptyLines: 0
+  AlignPPAndNotPP: false
 AllowAllArgumentsOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: true
 AllowBreakBeforeNoexceptSpecifier: Always
@@ -56,8 +57,18 @@ BraceWrapping:
 BreakAdjacentStringLiterals: true
 BreakAfterAttributes: Leave
 BreakAfterReturnType: None
+BreakAfterOpenBracketBracedList: false
+BreakAfterOpenBracketFunction: false
+BreakAfterOpenBracketIf: false
+BreakAfterOpenBracketLoop: false
+BreakAfterOpenBracketSwitch: false
 BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Custom
+BreakBeforeCloseBracketBracedList: false
+BreakBeforeCloseBracketFunction: false
+BreakBeforeCloseBracketIf: false
+BreakBeforeCloseBracketLoop: false
+BreakBeforeCloseBracketSwitch: false
 BreakBeforeConceptDeclarations: Always
 BreakBeforeInlineASMColon: OnlyMultiline
 BreakBeforeTemplateCloser: true
@@ -73,7 +84,7 @@ ColumnLimit: 80
 CompactNamespaces: true
 ConstructorInitializerIndentWidth: 4
 ContinuationIndentWidth: 4
-Cpp11BracedListStyle: true
+Cpp11BracedListStyle: FunctionCall
 DerivePointerAlignment: false
 DisableFormat: false
 EmptyLineAfterAccessModifier: Never
@@ -107,10 +118,13 @@ InsertNewlineAtEOF: true
 IntegerLiteralSeparator:
   Binary: 4
   BinaryMinDigits: 0
+  BinaryMaxDigitsRemove: 0
   Decimal: 3
   DecimalMinDigits: 6
+  DecimalMaxDigitsRemove: 0
   Hex: 0
   HexMinDigits: 0
+  HexMaxDigitsRemove: 0
 KeepEmptyLines:
   AtEndOfFile: false
   AtStartOfBlock: false
@@ -127,6 +141,11 @@ MainIncludeChar: Quote
 MaxEmptyLinesToKeep: 1
 NamespaceIndentation: None
 NamespaceMacros: []
+NumericLiteralCase:
+  ExponentLetter: Lower
+  HexDigit: Upper
+  Prefix: Lower
+  Suffix: Leave
 # OneLineFormatOffRegex:
 PPIndentWidth: -1
 PackConstructorInitializers: BinPack
@@ -194,7 +213,7 @@ SpaceBeforeParensOptions:
   BeforeNonEmptyParentheses: false
 SpaceBeforeRangeBasedForLoopColon: true
 SpaceBeforeSquareBrackets: false
-SpaceInEmptyBlock: false
+SpaceInEmptyBraces: Never
 SpacesBeforeTrailingComments: 2
 SpacesInAngles: Never
 SpacesInLineCommentPrefix:
