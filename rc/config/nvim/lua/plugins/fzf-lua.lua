@@ -6,7 +6,16 @@ local FILES_OPTS = { fd_opts = FD_OPTS_BASE .. "--type f --type l" }
 
 local FILES_DIR_OPTS = {
   fd_opts = FD_OPTS_BASE .. "--type d",
-  previewer = "tree",
+
+  -- Derived from discussion fzf-lua#2591
+  previewer = false,
+  preview = {
+    type = "cmd",
+    fn = function(selected)
+      local entry = require("fzf-lua.path").entry_to_file(selected[1])
+      return string.format("tree -C %s", entry.path)
+    end,
+  },
 
   -- Same as default file picker actions but opening buffers using `:edit` et
   -- al. The default actions use lower level methods of opening selections
@@ -215,19 +224,9 @@ return {
         },
       },
 
-      previewers = {
-        tree = {
-          cmd = "tree",
-          args = "-C",
-          _ctor = function() return require("fzf-lua.previewer.fzf").cmd end,
-        },
-      },
-
       oldfiles = {
         include_current_session = true,
-
-        -- Disabled for performance, see #1336
-        stat_file = false,
+        stat_file = false, -- Disabled for performance, see #1336
       },
 
       file_icon_padding = " ",
