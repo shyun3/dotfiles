@@ -74,6 +74,34 @@ return {
   },
 
   {
+    LazyDep("mason-lspconfig"),
+    optional = true,
+
+    opts = {
+      _my_lsp_configs = {
+        taplo = {
+          root_dir = function(bufnr, on_dir)
+            local buf_name = vim.api.nvim_buf_get_name(bufnr)
+            local dir_name = vim.fs.dirname(buf_name)
+
+            local find_root = require("lspconfig.util").root_pattern(
+              -- Taken from lspconfig root markers
+              ".taplo.toml",
+              "taplo.toml",
+              ".git",
+
+              -- Fallback to enable Taplo on standalone TOML files, see issue
+              -- dotfiles#5
+              "*.toml"
+            )
+            on_dir(find_root(dir_name))
+          end,
+        },
+      },
+    },
+  },
+
+  {
     "neovim/nvim-lspconfig",
     event = "User LspEnablePre",
 
