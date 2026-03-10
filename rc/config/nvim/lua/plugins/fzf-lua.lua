@@ -4,6 +4,67 @@ local FD_OPTS_BASE = "--color=never --exclude .git --exclude .jj "
 
 local FILES_OPTS = { fd_opts = FD_OPTS_BASE .. "--type f --type l" }
 
+local FILES_DIR_OPTS = {
+  fd_opts = FD_OPTS_BASE .. "--type d",
+  previewer = "tree",
+
+  -- Same as default file picker actions but opening buffers using `:edit` et
+  -- al. The default actions use lower level methods of opening selections
+  -- which can interfere with directory plugin operations. See discussion
+  -- fzf-lua#2608.
+  actions = {
+    default = {
+      -- Derived from `actions.file_edit_or_qf`
+      fn = function(selected, opts)
+        if #selected > 1 then
+          require("fzf-lua.actions").file_sel_to_qf(selected, opts)
+        else
+          local entry = require("fzf-lua.path").entry_to_file(selected[1], opts)
+          vim.cmd.edit(entry.path)
+        end
+      end,
+
+      desc = "dir-open-or-qf", -- F1 help
+    },
+
+    ["ctrl-s"] = {
+      -- Derived from `actions.file_split`
+      fn = function(selected, opts)
+        for _, sel in ipairs(selected) do
+          local entry = require("fzf-lua.path").entry_to_file(sel, opts)
+          vim.cmd.split(entry.path)
+        end
+      end,
+
+      desc = "dir-split",
+    },
+
+    ["ctrl-v"] = {
+      -- Derived from `actions.file_vsplit`
+      fn = function(selected, opts)
+        for _, sel in ipairs(selected) do
+          local entry = require("fzf-lua.path").entry_to_file(sel, opts)
+          vim.cmd.vsplit(entry.path)
+        end
+      end,
+
+      desc = "dir-vsplit",
+    },
+
+    ["ctrl-t"] = {
+      -- Derived from `actions.file_tabedit`
+      fn = function(selected, opts)
+        for _, sel in ipairs(selected) do
+          local entry = require("fzf-lua.path").entry_to_file(sel, opts)
+          vim.cmd.tabnew(entry.path)
+        end
+      end,
+
+      desc = "dir-tabedit",
+    },
+  },
+}
+
 return {
   {
     LazyDep("which-key"),
@@ -205,10 +266,7 @@ return {
 
         function()
           util.go_to_editable_window()
-          require("fzf-lua").files({
-            fd_opts = FD_OPTS_BASE .. "--type d",
-            previewer = "tree",
-          })
+          require("fzf-lua").files(FILES_DIR_OPTS)
         end,
 
         desc = "fzf-lua: Directories",
