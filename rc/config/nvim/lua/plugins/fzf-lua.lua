@@ -2,6 +2,8 @@ local util = require("util")
 
 local FD_OPTS_BASE = "--color=never --exclude .git --exclude .jj "
 
+local FILES_OPTS = { fd_opts = FD_OPTS_BASE .. "--type f --type l" }
+
 return {
   {
     LazyDep("which-key"),
@@ -193,9 +195,7 @@ return {
 
         function()
           util.go_to_editable_window()
-          require("fzf-lua").files({
-            fd_opts = FD_OPTS_BASE .. "--type f --type l",
-          })
+          require("fzf-lua").files(FILES_OPTS)
         end,
 
         desc = "fzf-lua: Files",
@@ -219,9 +219,13 @@ return {
 
         function()
           util.go_to_editable_window()
-          require("fzf-lua").files({
-            cwd = require("util.path").normalize(vim.fn.expand("%:p:h")),
-          })
+
+          local opts = vim.tbl_extend(
+            "error",
+            FILES_OPTS,
+            { cwd = require("util.path").normalize(vim.fn.expand("%:p:h")) }
+          )
+          require("fzf-lua").files(opts)
         end,
 
         desc = "fzf-lua: Files in current file directory",
