@@ -16,21 +16,11 @@ return {
 
   {
     LazyDep("workspaces"),
-
-    cmd = {
-      "WorkspacesAdd",
-      "WorkspacesAddDir",
-      "WorkspacesRemove",
-      "WorkspacesRemoveDir",
-      "WorkspacesRename",
-      "WorkspacesList",
-      "WorkspacesListDirs",
-      "WorkspacesOpen",
-      "WorkspacesSyncDirs",
-    },
+    lazy = false, -- Needed for `auto_open`
 
     opts = {
       cd_type = "tab",
+      auto_open = true, -- Does not work if nvim launched with arguments
 
       hooks = {
         open = {
