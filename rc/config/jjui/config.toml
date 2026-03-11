@@ -25,26 +25,6 @@ file_command = [
   "jj diff -r $change_id $file --no-pager --color=always | delta --paging=never",
 ]
 
-[[actions]]
-name = "delta"
-
-# Derived from https://github.com/idursun/jjui/discussions/163#discussioncomment-13672324
-#
-# Applies to revision and file diff commands. Technique derived from:
-# https://github.com/idursun/jjui/discussions/63#discussioncomment-13415745
-lua = '''
-jj_interactive("util", "exec", "--", "bash", "-c", [=[
-    change_id= file= jj $([[ -n "$file" ]] && echo "diff -r" || echo "show") \
-        $change_id $file --stat --git --color=always | delta --paging=always
-]=])
-'''
-
-[[bindings]]
-action = "delta"
-key = "d"
-scope = "revisions"
-desc = "delta"
-
 [ui.colors]
 # Provides better contrast when using "Catppuccin Mocha"
 "confirmation selected" = { bg = "bright black" }

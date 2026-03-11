@@ -86,6 +86,9 @@ dotfiles:
   f_config.toml:
     src: config/jjui/config.toml
     dst: ~/.config/jjui/config.toml
+  f_config.lua:
+    src: config/jjui/config.lua
+    dst: ~/.config/jjui/config.lua
 profiles:
   linux:
     dotfiles:
@@ -108,6 +111,7 @@ profiles:
       - d_zsh
       - f_01-user-config.toml
       - f_config.toml
+      - f_config.lua
     actions:
       - setup_sh
   wsl-root:
