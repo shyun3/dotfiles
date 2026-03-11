@@ -279,8 +279,12 @@ return {
 
           local opts = vim.tbl_extend(
             "error",
-            FILES_OPTS,
-            { cwd = require("util.path").normalize(vim.fn.expand("%:p:h")) }
+            { cwd = require("util.path").normalize(vim.fn.expand("%:p:h")) },
+
+            -- For some reason, a new table needs to be used here. Otherwise,
+            -- using the toggle ignore action (default: Alt-i) in the resulting
+            -- picker will reset the cwd. See fzf-lua#2612.
+            { fd_opts = FILES_OPTS.fd_opts }
           )
           require("fzf-lua").files(opts)
         end,
