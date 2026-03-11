@@ -29,6 +29,18 @@ local function delta_file()
   )
 end
 
+local function delta_evolog()
+  local commit_id = context.commit_id()
+  assert(commit_id and commit_id ~= "", "No revision selected")
+
+  exec_shell(
+    string.format(
+      "jj evolog -r %q -n 1 -G --no-pager --stat --git --color=always | delta --paging=always",
+      commit_id
+    )
+  )
+end
+
 function setup(config)
   config.action("revisions.diff", delta_rev)
 
@@ -36,5 +48,11 @@ function setup(config)
     "delta-file",
     delta_file,
     { key = "d", scope = "revisions.details", desc = "delta" }
+  )
+
+  config.action(
+    "delta-evolog",
+    delta_evolog,
+    { key = "d", scope = "revisions.evolog", desc = "delta" }
   )
 end

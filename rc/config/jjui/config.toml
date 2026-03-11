@@ -25,6 +25,15 @@ file_command = [
   "jj diff -r $change_id $file --no-pager --stat --git --color=always | delta --paging=never",
 ]
 
+evolog_command = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  "jj evolog -r $commit_id -n 1 -G --no-pager --stat --git --color=always | delta --paging=never",
+]
+
 [ui.colors]
 # Provides better contrast when using "Catppuccin Mocha"
 "confirmation selected" = { bg = "bright black" }
