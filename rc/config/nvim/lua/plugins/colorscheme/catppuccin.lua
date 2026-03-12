@@ -87,6 +87,9 @@ return {
         },
         ["@lsp.typemod.namespace.defaultLibrary"] = { link = "@module.builtin" },
         ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
+        ["@lsp.typemod.variable.defaultLibrary"] = {
+          style = { "italic" }, -- Not linking to avoid overriding colors
+        },
       },
 
       -- User created
