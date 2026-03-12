@@ -13,9 +13,29 @@ return {
             desc = "LSP-integrated file rename",
 
             callback = function(event)
-              require("snacks").rename.on_rename_file(
-                event.data.from,
-                event.data.to
+              Snacks.rename.on_rename_file(event.data.from, event.data.to)
+            end,
+          },
+        },
+      },
+    },
+  },
+
+  {
+    LazyDep("oil"),
+    optional = true,
+
+    opts = {
+      _my_event_callbacks = {
+        OilActionsPost = {
+          -- Taken from rename snack
+          {
+            desc = "LSP-integrated file rename",
+
+            callback = function(event)
+              Snacks.rename.on_rename_file(
+                event.data.actions[1].src_url,
+                event.data.actions[1].dest_url
               )
             end,
           },
