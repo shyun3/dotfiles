@@ -1,5 +1,3 @@
----@diagnostic disable: undefined-global, lowercase-global
-
 local JJ_DELTA_OPTS = "--no-pager --stat --git --color=always"
 
 -- Derived from https://idursun.github.io/jjui/lua-cookbook/#open-diff-in-an-external-viewer
@@ -43,6 +41,7 @@ local function delta_evolog()
   exec_shell(cmd)
 end
 
+---@diagnostic disable-next-line: lowercase-global
 function setup(config)
   config.action("revisions.diff", delta_rev)
 
