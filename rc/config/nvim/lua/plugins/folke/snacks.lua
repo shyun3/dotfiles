@@ -45,7 +45,7 @@ return {
   },
 
   {
-    "folke/snacks.nvim",
+    LazyDep("snacks"),
 
     opts = {
       lazygit = {

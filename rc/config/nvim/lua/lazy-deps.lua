@@ -21,6 +21,7 @@ local deps = {
   ["nvim-autopairs"] = "windwp/nvim-autopairs",
   ["nvim-surround"] = "kylechui/nvim-surround",
   oil = "stevearc/oil.nvim",
+  snacks = "folke/snacks.nvim",
   tabby = "nanozuki/tabby.nvim",
   vimade = "tadaa/vimade",
   ["which-key"] = "folke/which-key.nvim",
