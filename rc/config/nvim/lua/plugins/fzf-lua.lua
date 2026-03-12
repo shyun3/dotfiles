@@ -1,8 +1,9 @@
 local util = require("util")
 
+-- Beware not to share an options table across different picker calls, see
+-- issue jjui#2612
 local FD_OPTS_BASE = "--color=never --exclude .git --exclude .jj "
-
-local FILES_OPTS = { fd_opts = FD_OPTS_BASE .. "--type f --type l" }
+local FD_OPTS_FILES = FD_OPTS_BASE .. "--type f --type l"
 
 local FILES_DIR_OPTS = {
   fd_opts = FD_OPTS_BASE .. "--type d",
@@ -255,7 +256,7 @@ return {
 
         function()
           util.go_to_editable_window()
-          require("fzf-lua").files(FILES_OPTS)
+          require("fzf-lua").files({ fd_opts = FD_OPTS_FILES })
         end,
 
         desc = "fzf-lua: Files",
@@ -277,16 +278,10 @@ return {
         function()
           util.go_to_editable_window()
 
-          local opts = vim.tbl_extend(
-            "error",
-            { cwd = require("util.path").normalize(vim.fn.expand("%:p:h")) },
-
-            -- For some reason, a new table needs to be used here. Otherwise,
-            -- using the toggle ignore action (default: Alt-i) in the resulting
-            -- picker will reset the cwd. See fzf-lua#2612.
-            { fd_opts = FILES_OPTS.fd_opts }
-          )
-          require("fzf-lua").files(opts)
+          require("fzf-lua").files({
+            cwd = require("util.path").normalize(vim.fn.expand("%:p:h")),
+            fd_opts = FD_OPTS_FILES,
+          })
         end,
 
         desc = "fzf-lua: Files in current file directory",
