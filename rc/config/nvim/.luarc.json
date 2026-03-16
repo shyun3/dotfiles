@@ -2,6 +2,5 @@
   "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
 
   "completion.callSnippet": "Replace",
-  "runtime.version": "LuaJIT",
-  "hint.enable": true
+  "runtime.version": "LuaJIT"
 }
