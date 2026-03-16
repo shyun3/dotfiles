@@ -18,6 +18,16 @@ return {
 
     opts = {
       ensure_installed = { "lua_ls" },
+
+      _my_lsp_configs = {
+        lua_ls = {
+          settings = {
+            Lua = {
+              completion = { callSnippet = "Replace" },
+            },
+          },
+        },
+      },
     },
   },
 }
