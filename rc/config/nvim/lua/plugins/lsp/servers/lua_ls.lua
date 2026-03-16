@@ -17,9 +17,7 @@ return {
     optional = true,
 
     opts = {
-      ensure_installed = {
-        "lua_ls@3.16.4", -- See lazydev.nvim#136
-      },
+      ensure_installed = { "lua_ls" },
     },
   },
 }
