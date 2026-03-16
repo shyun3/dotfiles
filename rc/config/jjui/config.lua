@@ -44,18 +44,6 @@ end
 ---@diagnostic disable-next-line: lowercase-global
 function setup(config)
   config.action("revisions.diff", delta_rev)
-
-  -- Currently, cannot override the built-in actions for the following. See
-  -- issue jjui#586.
-  config.action(
-    "delta-file",
-    delta_file,
-    { key = "d", scope = "revisions.details", desc = "delta" }
-  )
-
-  config.action(
-    "delta-evolog",
-    delta_evolog,
-    { key = "d", scope = "revisions.evolog", desc = "delta" }
-  )
+  config.action("revisions.details.diff", delta_file)
+  config.action("revisions.evolog.diff", delta_evolog)
 end

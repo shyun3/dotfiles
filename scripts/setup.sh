@@ -34,6 +34,7 @@ install_if_missing archivemount atool avfs direnv nodejs npm ranger ripgrep \
     tree universal-ctags update-notifier-common xclip xdg-utils zsh
 
 if [[ $(uname -r) =~ WSL ]]; then
+    # This is needed so that `xdg-open` can open links in Windows browser
     install_if_missing wslu
 fi
 
