@@ -50,6 +50,7 @@ return {
             fg = colors.blue, -- @function
             style = { "italic" },
           },
+          ["@function.macro"] = { link = "Macro" },
 
           ["@keyword.import.c"] = { link = "Include" },
           ["@keyword.import.cpp"] = { link = "@keyword.import.c" },
