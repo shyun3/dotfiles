@@ -22,7 +22,7 @@ return {
   },
 
   {
-    "shyun3/nvim-treesitter",
+    LazyDep("treesitter"),
     branch = "personal",
 
     lazy = false, -- Does not support lazy loading
@@ -30,6 +30,8 @@ return {
     build = ":TSUpdate",
 
     main = "nvim-treesitter.configs",
+
+    opts_extend = { "ensure_installed" },
 
     opts = {
       -- A list of parser names, or "all"
@@ -45,10 +47,8 @@ return {
 
         "bash",
         "cpp",
-        "doxygen",
         "editorconfig",
         "git_config",
-        "luadoc",
         "meson",
         "python",
         "regex",
@@ -83,6 +83,9 @@ return {
       },
     },
   },
+
+  { import = "plugins.treesitter.doxygen" },
+  { import = "plugins.treesitter.luadoc" },
 
   { import = "plugins.treesitter.endwise" },
   { import = "plugins.treesitter.jjconfig" },

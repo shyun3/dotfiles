@@ -23,6 +23,7 @@ local deps = {
   oil = "stevearc/oil.nvim",
   snacks = "folke/snacks.nvim",
   tabby = "nanozuki/tabby.nvim",
+  treesitter = "shyun3/nvim-treesitter",
   vimade = "tadaa/vimade",
   ["which-key"] = "folke/which-key.nvim",
   workspaces = "natecraddock/workspaces.nvim",

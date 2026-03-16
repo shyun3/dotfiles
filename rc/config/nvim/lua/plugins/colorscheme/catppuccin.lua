@@ -1,6 +1,64 @@
 ---@class MyCatppuccinOptions: CatppuccinOptions
 ---@field _my_custom_highlights (CtpHighlightOverrideFn | { [string]: CtpHighlight })[]
 
+local DIM_HLS = {
+  "@constant.builtin",
+  "@function",
+  "@function.macro",
+  "@keyword",
+  "@keyword.coroutine",
+  "@keyword.function",
+  "@keyword.import",
+  "@keyword.modifier",
+  "@keyword.return",
+  "@label",
+  "@markup.italic",
+  "@module",
+  "@number",
+  "@operator",
+  "@string",
+  "@tag",
+  "@type",
+  "@type.builtin",
+  "@variable",
+  "@variable.builtin",
+  "@variable.member",
+  "@variable.parameter",
+}
+
+---@param color integer Color value, such as the `fg` field in the return value
+---  of `vim.api.nvim_get_hl()`
+---
+---@return string Input converted to hex string in "#HHHHHH" format
+local function to_color_hex_str(color)
+  return color and string.format("#%06X", color)
+end
+
+---@param color string Color hex string in format "#HHHHHH"
+---
+---@return integer Converted input
+local function from_color_hex_str(color) return tonumber(color:sub(2), 16) end
+
+--- Creates a dim version of the input highlight group
+---
+--- Resulting highlight group name will be "my_dim" followed by the input name
+---
+---@param ref_name string Highlight group name
+local function make_dim_hl(ref_name)
+  local ref_hl = vim.api.nvim_get_hl(0, { name = ref_name, link = false })
+  assert(ref_hl.fg, "Expected foreground color")
+
+  local hex_fg = to_color_hex_str(ref_hl.fg)
+  local dim_fg = require("catppuccin.utils.colors").darken(hex_fg, 0.8)
+  ref_hl.fg = from_color_hex_str(dim_fg)
+
+  vim.api.nvim_set_hl(
+    0,
+    "my_dim" .. ref_name,
+    ref_hl --[[@as vim.api.keyset.highlight]]
+  )
+end
+
 return {
   LazyDep("catppuccin"),
   name = "catppuccin",
@@ -110,5 +168,11 @@ return {
   config = function(_, opts)
     require("catppuccin").setup(opts)
     vim.cmd.colorscheme("catppuccin-nvim")
+
+    -- Should be done after colorscheme is updated to make use of the final
+    -- colors
+    for _, name in ipairs(DIM_HLS) do
+      make_dim_hl(name)
+    end
   end,
 }
