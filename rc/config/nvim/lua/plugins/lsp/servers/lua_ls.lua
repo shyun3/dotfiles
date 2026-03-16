@@ -7,6 +7,10 @@ return {
       _my_custom_highlights = {
         {
           ["@lsp.typemod.variable.global"] = { link = "MyGlobalVariable" },
+
+          -- For some reason, lua_ls still highlights annotation keywords
+          -- even if `semantic.annotation` is disabled
+          ["@lsp.type.keyword.lua"] = { link = "NONE" },
         },
       },
     },
@@ -24,6 +28,7 @@ return {
           settings = {
             Lua = {
               completion = { callSnippet = "Replace" },
+              semantic = { annotation = false },
             },
           },
         },
