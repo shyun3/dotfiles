@@ -33,10 +33,12 @@ return {
             desc = "LSP-integrated file rename",
 
             callback = function(event)
-              Snacks.rename.on_rename_file(
-                event.data.actions[1].src_url,
-                event.data.actions[1].dest_url
-              )
+              local action = event.data.actions[1]
+              if not action then return end
+
+              if action.type == "move" then
+                Snacks.rename.on_rename_file(action.src_url, action.dest_url)
+              end
             end,
           },
         },
