@@ -7,7 +7,7 @@
 
 ---@return table<string, TabbyHighlight>
 local theme = function()
-  local colors = require("lualine.themes.catppuccin")
+  local colors = require("lualine.themes.catppuccin-nvim")
 
   return {
     current = { fg = colors.normal.a.fg, bg = colors.normal.a.bg },

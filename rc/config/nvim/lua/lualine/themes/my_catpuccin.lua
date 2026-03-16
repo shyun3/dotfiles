@@ -1,6 +1,6 @@
 -- Derived from molokai in vim-airline-themes
 
-local colors = require("lualine.themes.catppuccin")
+local colors = require("lualine.themes.catppuccin-nvim")
 
 --- Create a lualine c section colorscheme whose background lights up with
 --- the mode color if buffer is modified
