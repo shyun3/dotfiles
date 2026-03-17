@@ -122,6 +122,33 @@ local function make_expr_hop_ft(key)
   end
 end
 
+--- Helper for creating ;/, mappings
+---
+---@param key FtKey?
+local function repeat_ft(key)
+  local target = S.last_ft_char
+  if not key or not target then return end
+
+  local function make_rep_cmd(count)
+    return string.format("<Cmd>norm! %d%s%s<CR>", count, key, target)
+  end
+
+  if key:lower() == "f" then
+    return make_rep_cmd(vim.v.count1)
+  elseif vim.v.count > 0 then
+    return make_rep_cmd(vim.v.count)
+  else
+    -- Account for repeatedly hitting t/T when cursor is right next to target,
+    -- see dotfiles#9
+    local cur_line = vim.fn.getline(".")
+    local cur_col = vim.fn.charcol(".") - 1
+    local dir = key == "t" and 1 or -1
+    local adj_char = vim.fn.strcharpart(cur_line, cur_col + dir, 1)
+
+    return make_rep_cmd(adj_char == target and 2 or 1)
+  end
+end
+
 --- Performs 1-character hop
 ---
 --- This is global to allow use in expression mappings. Intended for
@@ -378,11 +405,7 @@ return {
       {
         ";",
 
-        function()
-          if S.last_ft_key and S.last_ft_char then
-            return S.last_ft_key .. S.last_ft_char
-          end
-        end,
+        function() return repeat_ft(S.last_ft_key) end,
 
         mode = { "n", "x", "o" },
         expr = true,
@@ -394,9 +417,10 @@ return {
         ",",
 
         function()
-          if S.last_ft_key and S.last_ft_char then
-            local key = vim.fn.tr(S.last_ft_key, "ftFT", "FTft")
-            return key .. S.last_ft_char
+          local last_key = S.last_ft_key
+          if last_key then
+            local key = vim.fn.tr(last_key, "ftFT", "FTft")
+            return repeat_ft(key)
           end
         end,
 
