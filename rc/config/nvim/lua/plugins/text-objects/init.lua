@@ -24,10 +24,12 @@ return {
 
   {
     "glts/vim-textobj-comment",
-    dependencies = "kana/vim-textobj-user",
+    dependencies = LazyDep("vim-textobj-user"),
 
     event = "ModeChanged",
   },
+
+  { import = "plugins.text-objects.conflict" },
 
   { import = "plugins.text-objects.various-textobjs" },
 }
