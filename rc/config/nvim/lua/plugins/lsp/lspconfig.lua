@@ -134,23 +134,6 @@ return {
       },
 
       {
-        "<Leader>gd",
-
-        function()
-          local diag = vim.diagnostic.get(0)
-          local qf = vim.diagnostic.toqflist(diag)
-          vim.fn.setqflist({}, " ", {
-            items = qf,
-            title = "Buffer Diagnostics",
-            nr = "$",
-          })
-          vim.cmd("botright copen")
-        end,
-
-        desc = "LSP: Buffer diagnostics",
-      },
-
-      {
         "<Leader>ch",
 
         function()

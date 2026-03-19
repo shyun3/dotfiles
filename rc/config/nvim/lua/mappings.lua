@@ -87,3 +87,15 @@ vim.keymap.set("n", "<A-u>", function()
   local msg = string.format("Undid changes in %d file(s)", files)
   vim.notify(msg)
 end, { desc = "Undo changes in all modified buffers" })
+
+-- Diagnostics
+vim.keymap.set("n", "<Leader>gd", function()
+  local diag = vim.diagnostic.get(0)
+  local qf = vim.diagnostic.toqflist(diag)
+  vim.fn.setqflist({}, " ", {
+    items = qf,
+    title = "Buffer Diagnostics",
+    nr = "$",
+  })
+  vim.cmd("botright copen")
+end, { desc = "Buffer diagnostics" })
