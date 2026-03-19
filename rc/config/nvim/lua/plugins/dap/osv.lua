@@ -28,6 +28,16 @@ return {
 
   {
     "jbyuki/one-small-step-for-vimkind",
+    lazy = false, -- To debug plugins on startup
+    priority = 5000, -- Highest, to debug any plugin
+
+    config = function()
+      --- See `:h osv-init-debug`
+      ---@diagnostic disable-next-line: undefined-field
+      if _G.init_debug then
+        require("osv").launch({ port = 8086, blocking = true })
+      end
+    end,
 
     keys = {
       {
