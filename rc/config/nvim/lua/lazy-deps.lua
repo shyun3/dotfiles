@@ -11,6 +11,7 @@ local deps = {
   ["blink.cmp"] = "saghen/blink.cmp",
   catppuccin = "catppuccin/nvim",
   Comment = "numToStr/Comment.nvim",
+  dap = "mfussenegger/nvim-dap",
   dropbar = "Bekaboo/dropbar.nvim",
   ["goto-preview"] = "rmagatti/goto-preview",
   ibl = "lukas-reineke/indent-blankline.nvim",
