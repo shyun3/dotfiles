@@ -42,5 +42,6 @@ return {
     end,
   },
 
+  { import = "plugins.dap.dap-view" },
   { import = "plugins.dap.osv" },
 }
