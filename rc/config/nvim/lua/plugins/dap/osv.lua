@@ -41,7 +41,7 @@ return {
 
     keys = {
       {
-        "<Leader>D",
+        "<Leader>Do",
         function() require("osv").launch({ port = 8086 }) end,
         desc = "osv: Launch",
       },
