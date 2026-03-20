@@ -1,15 +1,27 @@
 return {
-  "igorlfs/nvim-dap-view",
-  version = "1.*",
+  {
+    LazyDep("tabby"),
+    optional = true,
 
-  -- let the plugin lazy load itself
-  lazy = false,
-
-  opts = {
-    winbar = {
-      default_section = "scopes",
+    opts = {
+      option = {
+        tab_name = {
+          _my_name_fallbacks = { ["dap-view"] = "[DAP]" },
+        },
+      },
     },
+  },
 
-    auto_toggle = true,
+  {
+    "igorlfs/nvim-dap-view",
+    version = "1.*",
+
+    -- let the plugin lazy load itself
+    lazy = false,
+
+    opts = {
+      winbar = { default_section = "scopes" },
+      auto_toggle = true,
+    },
   },
 }

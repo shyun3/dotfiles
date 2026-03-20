@@ -1,5 +1,18 @@
 return {
   {
+    LazyDep("tabby"),
+    optional = true,
+
+    opts = {
+      option = {
+        tab_name = {
+          _my_name_fallbacks = { ["dap-repl"] = "[DAP]" },
+        },
+      },
+    },
+  },
+
+  {
     LazyDep("dap"),
 
     config = function(_, opts)
