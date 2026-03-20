@@ -21,6 +21,7 @@ return {
 
   {
     "acarapetis/nvim-treesitter-jjconfig",
+    branch = "master",
 
     event = {
       -- To load before filetype event, otherwise highlighting may not occur
