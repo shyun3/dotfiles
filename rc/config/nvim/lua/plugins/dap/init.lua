@@ -21,6 +21,22 @@ return {
       local dap = require("dap")
       dap.defaults.fallback.switchbuf = "usetab,uselast"
 
+      local signs = {
+        DapBreakpoint = "\u{f111}", -- 
+        DapBreakpointCondition = "\u{f059}", -- 
+        DapLogPoint = "\u{f05a}", -- 
+        DapBreakpointRejected = "\u{f06a}", -- 
+      }
+      for group, icon in pairs(signs) do
+        vim.fn.sign_define(group, { text = icon, texthl = group })
+      end
+
+      vim.fn.sign_define("DapStopped", {
+        text = "\u{f101}", -- 
+        texthl = "DapStopped",
+        linehl = "debugPC",
+      })
+
       for lang, cfg in pairs(opts._my_configs) do
         dap.configurations[lang] = cfg
       end
