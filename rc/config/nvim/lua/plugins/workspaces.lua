@@ -95,7 +95,9 @@ return {
 
     opts = {
       cd_type = "tab",
-      auto_open = true, -- Does not work if nvim launched with arguments
+
+      -- Doesn't interact well with lazy.nvim when installing plugins on startup
+      auto_open = false,
 
       hooks = {
         open = {
