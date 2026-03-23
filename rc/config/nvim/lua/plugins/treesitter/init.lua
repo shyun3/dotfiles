@@ -84,9 +84,11 @@ return {
     },
   },
 
+  -- Parsers
   { import = "plugins.treesitter.doxygen" },
   { import = "plugins.treesitter.luadoc" },
 
+  -- Plugins
   { import = "plugins.treesitter.endwise" },
   { import = "plugins.treesitter.jjconfig" },
   { import = "plugins.treesitter.textobjects" },

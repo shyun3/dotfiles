@@ -10,6 +10,8 @@ return {
     },
   },
 
-  { import = "plugins.mason.mason-tool-installer" },
-  { import = "plugins.mason.mason-lspconfig" },
+  -- opts_extend
+  { import = "plugins.03-mason.mason-lspconfig" },
+
+  { import = "plugins.03-mason.mason-tool-installer" },
 }
