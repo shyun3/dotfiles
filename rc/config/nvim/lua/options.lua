@@ -14,6 +14,7 @@ vim.opt.wildmode = { "longest:full", "full" }
 
 -- Display
 vim.o.number = true -- Line numbers
+vim.opt.fillchars = { eob = " " }
 vim.opt.listchars =
   { tab = "» ", trail = "·", precedes = "◄", extends = "►" }
 vim.o.list = true -- Show invisible characters
