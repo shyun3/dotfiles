@@ -83,10 +83,10 @@ DISABLE_LS_COLORS="true"
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='nvim'
+  export EDITOR='vim'
 fi
 
-export VISUAL=nvim
+export VISUAL="nvim --cmd 'lua my_no_install_missing=false'"
 
 # Windows Terminal does not currently set COLORTERM, see:
 # https://github.com/microsoft/terminal/issues/11057
