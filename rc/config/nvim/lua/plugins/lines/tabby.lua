@@ -64,8 +64,6 @@ return {
   LazyDep("tabby"),
   event = "UIEnter",
 
-  opts_extend = { "option.tab_name._my_overrides" },
-
   opts = {
     line = function(line)
       local all_tabs = line.tabs()
@@ -135,7 +133,7 @@ return {
           ---@cast tab_name_opts MyTabbyTabNameOption
           local custom_overrides = tab_name_opts._my_overrides or {}
 
-          for _, get_override_name in ipairs(custom_overrides) do
+          for _, get_override_name in pairs(custom_overrides) do
             local override_name = get_override_name(tab_id)
             if override_name then return override_name end
           end

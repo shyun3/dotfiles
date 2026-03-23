@@ -7,7 +7,7 @@ return {
       option = {
         tab_name = {
           _my_overrides = {
-            function(tab_id) return vim.t[tab_id].my_project_title end,
+            workspaces = function(tab_id) return vim.t[tab_id].my_project_title end,
           },
         },
       },

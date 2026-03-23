@@ -197,7 +197,7 @@ return {
 
     opts = {
       _my_custom_highlights = {
-        {
+        hop = {
           HopNextKey = {
             -- Remove underline as it makes it difficult to tell apart `g` and `q`
             style = { "bold" },

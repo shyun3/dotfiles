@@ -234,8 +234,6 @@ return {
     LazyDep("vimade"),
     event = "UIEnter",
 
-    opts_extend = { "_my_event_callbacks.FocusLost" },
-
     opts = {
       ncmode = "windows",
       fadelevel = 0.6,
@@ -244,19 +242,13 @@ return {
     },
 
     config = function(_, opts)
-      if opts._my_event_callbacks then
-        local group = vim.api.nvim_create_augroup("my_vimade", {})
-
-        local events = { "FocusLost" }
-        for _, ev in ipairs(events) do
-          for _, autocmd_opts in ipairs(opts._my_event_callbacks[ev] or {}) do
-            vim.api.nvim_create_autocmd(ev, {
-              group = group,
-              desc = autocmd_opts.desc,
-              callback = autocmd_opts.callback,
-            })
-          end
-        end
+      local group = vim.api.nvim_create_augroup("my_vimade", {})
+      for _, autocmd_opts in pairs(opts._my_focus_lost_callbacks or {}) do
+        vim.api.nvim_create_autocmd("FocusLost", {
+          group = group,
+          desc = autocmd_opts.desc,
+          callback = autocmd_opts.callback,
+        })
       end
 
       require("vimade").setup(opts)

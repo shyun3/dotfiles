@@ -14,18 +14,16 @@ return {
     optional = true,
 
     opts = {
-      _my_event_callbacks = {
-        FocusLost = {
-          -- When nvim focus is lost, lualine may not refresh before vimade
-          -- fades. The nvim display does not seem to update after fade. So,
-          -- force a lualine refresh before fade.
-          --
-          -- Make sure this autocommand is registered before vimade so that the
-          -- lualine refresh will occur before fade.
-          {
-            desc = "Force lualine refresh",
-            callback = function() require("lualine").refresh({ force = true }) end,
-          },
+      _my_focus_lost_callbacks = {
+        -- When nvim focus is lost, lualine may not refresh before vimade
+        -- fades. The nvim display does not seem to update after fade. So,
+        -- force a lualine refresh before fade.
+        --
+        -- Make sure this autocommand is registered before vimade so that the
+        -- lualine refresh will occur before fade.
+        lualine = {
+          desc = "Force lualine refresh",
+          callback = function() require("lualine").refresh({ force = true }) end,
         },
       },
     },

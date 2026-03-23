@@ -5,7 +5,7 @@ return {
 
     opts = {
       _my_custom_highlights = {
-        function(colors)
+        clangd = function(colors)
           return {
             ["@lsp.type.concept"] = { fg = colors.sapphire },
             ["@lsp.typemod.variable.classScope"] = { link = "@property" },

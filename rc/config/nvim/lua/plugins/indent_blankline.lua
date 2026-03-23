@@ -11,12 +11,10 @@ return {
   },
 
   {
-    LazyDep("ibl"),
+    "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
 
     main = "ibl",
-
-    opts_extend = { "exclude.filetypes" },
 
     opts = {
       indent = {

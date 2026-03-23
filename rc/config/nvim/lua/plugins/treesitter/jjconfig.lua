@@ -5,7 +5,7 @@ return {
 
     opts = {
       _my_custom_rules = {
-        function(autopairs)
+        jjconfig = function(autopairs)
           return {
             autopairs
               .rule('"""', '"""', { "jjconfig.toml", "jjui.toml" })

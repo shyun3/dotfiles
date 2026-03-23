@@ -14,7 +14,6 @@ local deps = {
   dap = "mfussenegger/nvim-dap",
   dropbar = "Bekaboo/dropbar.nvim",
   ["goto-preview"] = "rmagatti/goto-preview",
-  ibl = "lukas-reineke/indent-blankline.nvim",
   lualine = "nvim-lualine/lualine.nvim",
   ["mason-tool-installer"] = "WhoIsSethDaniel/mason-tool-installer.nvim",
   ["mini.files"] = "echasnovski/mini.files",

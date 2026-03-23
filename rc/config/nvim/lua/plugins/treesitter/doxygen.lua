@@ -14,7 +14,7 @@ return {
 
     opts = {
       _my_custom_highlights = {
-        {
+        doxygen = {
           ["@keyword.doxygen"] = { link = "my_dim@keyword" },
           ["@variable.parameter.doxygen"] = {
             link = "my_dim@variable.parameter",

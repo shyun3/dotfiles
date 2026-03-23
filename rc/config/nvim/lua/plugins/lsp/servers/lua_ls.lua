@@ -5,7 +5,7 @@ return {
 
     opts = {
       _my_custom_highlights = {
-        {
+        lua_ls = {
           ["@lsp.typemod.variable.global"] = { link = "MyGlobalVariable" },
 
           -- For some reason, lua_ls still highlights annotation keywords

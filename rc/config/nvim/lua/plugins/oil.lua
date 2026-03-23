@@ -86,8 +86,6 @@ return {
       vim.g.loaded_netrwPlugin = 1
     end,
 
-    opts_extend = { "_my_event_callbacks.OilActionsPost" },
-
     config = function(_, opts)
       require("oil").setup(opts)
 
@@ -98,20 +96,14 @@ return {
         end
       )
 
-      if opts._my_event_callbacks then
-        local group = vim.api.nvim_create_augroup("my_oil", {})
-
-        local events = { "OilActionsPost" }
-        for _, ev in ipairs(events) do
-          for _, autocmd_opts in ipairs(opts._my_event_callbacks[ev] or {}) do
-            vim.api.nvim_create_autocmd("User", {
-              group = group,
-              pattern = ev,
-              desc = autocmd_opts.desc,
-              callback = autocmd_opts.callback,
-            })
-          end
-        end
+      local group = vim.api.nvim_create_augroup("my_oil", {})
+      for _, autocmd_opts in pairs(opts._my_post_actions or {}) do
+        vim.api.nvim_create_autocmd("User", {
+          group = group,
+          pattern = "OilActionsPost",
+          desc = autocmd_opts.desc,
+          callback = autocmd_opts.callback,
+        })
       end
     end,
 

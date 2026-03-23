@@ -5,7 +5,7 @@ return {
 
     opts = {
       _my_custom_highlights = {
-        {
+        dropbar = {
           DropBarKindFile = { link = "Comment" },
           DropBarKindDir = { link = "Comment" },
 
@@ -25,21 +25,17 @@ return {
     LazyDep("dropbar"),
     event = "UIEnter",
 
-    opts_extend = { "bar._my_disabled_filetypes" },
-
     opts = {
       bar = {
         -- Derived from default bar enable function
         enable = function(buf, win)
-          local disabled_filetypes = require("dropbar.configs").opts.bar._my_disabled_filetypes
-            or {}
           if
             not vim.api.nvim_buf_is_valid(buf)
             or not vim.api.nvim_win_is_valid(win)
             or vim.fn.win_gettype(win) ~= ""
             or vim.wo[win].winbar ~= ""
             or vim.fn.bufname(buf) == ""
-            or vim.tbl_contains(disabled_filetypes, vim.bo[buf].ft)
+            or vim.bo[buf].ft == "help"
           then
             return false
           end
@@ -49,8 +45,6 @@ return {
 
           return true -- Always show path
         end,
-
-        _my_disabled_filetypes = { "help" },
       },
 
       icons = {

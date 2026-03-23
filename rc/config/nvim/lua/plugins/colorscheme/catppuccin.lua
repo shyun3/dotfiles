@@ -1,5 +1,5 @@
 ---@class MyCatppuccinOptions: CatppuccinOptions
----@field _my_custom_highlights (CtpHighlightOverrideFn | { [string]: CtpHighlight })[]
+---@field _my_custom_highlights { [string]: CtpHighlight | CtpHighlightOverrideFn }
 
 local DIM_HLS = {
   "@constant.builtin",
@@ -64,8 +64,6 @@ return {
   name = "catppuccin",
   priority = 1000,
 
-  opts_extend = { "_my_custom_highlights" },
-
   opts = {
     styles = {
       comments = {}, -- Clear italic
@@ -80,7 +78,7 @@ return {
       local hls = {}
 
       ---@cast opts MyCatppuccinOptions
-      for _, hl_override in ipairs(opts._my_custom_highlights or {}) do
+      for _, hl_override in pairs(opts._my_custom_highlights or {}) do
         local hl_def = type(hl_override) == "function" and hl_override(colors)
           or hl_override
         hls = vim.tbl_extend("error", hls, hl_def)
@@ -90,8 +88,7 @@ return {
     end,
 
     _my_custom_highlights = {
-      -- Syntax
-      function(colors)
+      syntax = function(colors)
         return {
           Label = { style = { "bold" } },
           Macro = { fg = colors.red, style = { "bold", "nocombine" } },
@@ -99,8 +96,7 @@ return {
         }
       end,
 
-      -- Treesitter
-      function(colors)
+      treesitter = function(colors)
         return {
           ["@attribute.python"] = { link = "Function" },
 
@@ -137,8 +133,7 @@ return {
         }
       end,
 
-      -- LSP
-      {
+      lsp = {
         ["@lsp.type.decorator.python"] = { link = "@attribute.python" },
 
         ["@lsp.typemod.class.defaultLibrary"] = {
@@ -151,8 +146,7 @@ return {
         },
       },
 
-      -- User created
-      function(colors)
+      user = function(colors)
         return {
           MyGlobalVariable = {
             fg = colors.lavender, -- @property

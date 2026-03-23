@@ -12,11 +12,9 @@ return {
     LazyDep("nvim-autopairs"),
     event = "InsertEnter",
 
-    opts_extend = { "_my_custom_rules" },
-
     opts = {
       _my_custom_rules = {
-        function(autopairs)
+        meson = function(autopairs)
           -- Derived from Python rules, see rules/basic.lua
           return {
             autopairs
@@ -40,9 +38,7 @@ return {
       autopairs.setup(opts)
 
       local basic_rules = require("nvim-autopairs.rules.basic")
-
-      local custom_rules = opts._my_custom_rules or {}
-      for _, gen_rules in ipairs(custom_rules) do
+      for _, gen_rules in pairs(opts._my_custom_rules or {}) do
         autopairs.add_rules(gen_rules({
           rule = require("nvim-autopairs.rule"),
           conds = require("nvim-autopairs.conds"),

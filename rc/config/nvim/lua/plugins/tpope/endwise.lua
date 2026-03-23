@@ -11,8 +11,6 @@ return {
     LazyDep("vim-endwise"),
     event = "FileType", -- Must be loaded early for plugin to work properly
 
-    opts_extend = { "_my_disable_filetypes" },
-
     opts = {
       _my_filetypes = {
         meson = {
@@ -41,12 +39,14 @@ return {
         })
       end
 
-      for _, ft in ipairs(opts._my_disable_filetypes or {}) do
-        vim.api.nvim_clear_autocmds({
-          group = "endwise",
-          event = "FileType",
-          pattern = ft,
-        })
+      for ft, ok in pairs(opts._my_disable_filetypes or {}) do
+        if ok then
+          vim.api.nvim_clear_autocmds({
+            group = "endwise",
+            event = "FileType",
+            pattern = ft,
+          })
+        end
       end
     end,
   },

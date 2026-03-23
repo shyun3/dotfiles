@@ -14,7 +14,7 @@ return {
 
     opts = {
       _my_custom_highlights = {
-        {
+        luadoc = {
           ["@keyword.luadoc"] = { link = "my_dim@keyword" },
           ["@keyword.import.luadoc"] = { link = "my_dim@keyword.import" },
           ["@keyword.coroutine.luadoc"] = { link = "my_dim@keyword.coroutine" },
