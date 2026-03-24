@@ -23,6 +23,7 @@ return {
         toml = false,
         xml = false,
         yaml = false,
+        zsh = false,
       },
     },
 
