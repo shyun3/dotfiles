@@ -48,6 +48,12 @@ return {
           if ok and stats and stats.size <= max_filesize then
             pcall(vim.treesitter.start, bufnr)
           end
+
+          local parser, _ = vim.treesitter.get_parser(bufnr)
+          if parser then
+            vim.bo[bufnr].indentexpr =
+              "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
         end,
       })
     end,

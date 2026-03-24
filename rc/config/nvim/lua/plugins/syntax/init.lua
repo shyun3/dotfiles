@@ -1,7 +1,6 @@
 return {
   {
-    "shyun3/vim-polyglot",
-    branch = "personal",
+    "sheerun/vim-polyglot",
 
     event = "FileType",
 
