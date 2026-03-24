@@ -21,7 +21,8 @@ return {
 
   {
     "acarapetis/nvim-treesitter-jjconfig",
-    branch = "master",
+    branch = "main",
+    build = ":TSUpdate",
 
     event = {
       -- To load before filetype event, otherwise highlighting may not occur
@@ -33,6 +34,15 @@ return {
       "User LspEnablePre",
     },
 
-    opts = { ensure_installed = true },
+    config = function()
+      require("nvim-treesitter-jjconfig").setup()
+
+      require("nvim-treesitter").install({
+        "jjconfig",
+        "jjrevset",
+        "jjtemplate",
+        "jjui",
+      })
+    end,
   },
 }

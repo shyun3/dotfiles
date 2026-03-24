@@ -44,3 +44,6 @@ target = "~/.local/bin/jjui"
 
 ["tealdeer-rs/tealdeer"]
 target = "~/.local/bin/tldr"
+
+["tree-sitter/tree-sitter"]
+asset_filters = ["cli"]

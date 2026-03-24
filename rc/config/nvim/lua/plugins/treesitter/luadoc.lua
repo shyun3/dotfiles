@@ -1,10 +1,10 @@
 return {
   {
-    LazyDep("treesitter"),
+    LazyDep("nvim-treesitter"),
     optional = true,
 
     opts = {
-      ensure_installed = { "luadoc" },
+      ensure_installed = { luadoc = false },
     },
   },
 

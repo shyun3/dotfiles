@@ -1,87 +1,55 @@
 return {
   {
-    LazyDep("mason-lspconfig"),
-    optional = true,
-
-    opts = {
-      _my_lsp_configs = {
-        ts_query_ls = {
-          -- Taken from https://github.com/ribru17/ts_query_ls#example-setup-for-neovim
-          init_options = {
-            parser_install_directories = {
-              -- If using nvim-treesitter with lazy.nvim
-              vim.fs.joinpath(
-                vim.fn.stdpath("data"),
-                "/lazy/nvim-treesitter/parser/"
-              ),
-            },
-          },
-        },
-      },
-    },
-  },
-
-  {
-    LazyDep("treesitter"),
-    branch = "personal",
-
+    LazyDep("nvim-treesitter"),
     lazy = false, -- Does not support lazy loading
-
     build = ":TSUpdate",
 
-    main = "nvim-treesitter.configs",
-
-    opts_extend = { "ensure_installed" },
-
     opts = {
-      -- A list of parser names, or "all"
-      ensure_installed = {
-        -- These parsers MUST always be installed
-        "c",
-        "lua",
-        "vim",
-        "vimdoc",
-        "query",
-        "markdown",
-        "markdown_inline",
-
-        "bash",
-        "cpp",
-        "editorconfig",
-        "git_config",
-        "meson",
-        "python",
-        "regex",
-        "toml",
-        "xml",
-        "yaml",
+      _my_parsers = {
+        c = false,
+        lua = false,
+        vim = false,
+        vimdoc = false,
+        query = false,
+        markdown = false,
+        markdown_inline = false,
+        bash = false,
+        cpp = false,
+        editorconfig = false,
+        git_config = false,
+        meson = false,
+        python = false,
+        regex = false,
+        toml = false,
+        xml = false,
+        yaml = false,
       },
+    },
 
-      -- Install parsers synchronously (only applied to `ensure_installed`)
-      sync_install = false,
+    config = function(_, opts)
+      local ts = require("nvim-treesitter")
+      ts.setup(opts)
 
-      -- Automatically install missing parsers when entering buffer
-      -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-      auto_install = false,
+      local parsers = opts._my_parsers or {}
+      ts.install(vim.tbl_keys(parsers))
 
-      highlight = {
-        enable = true,
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("my_treesitter", {}),
+        desc = "Treesitter: Highlight",
 
-        disable = function(_, buf)
+        callback = function(args)
+          local bufnr = args.buf
+
           -- disable slow treesitter highlight for large files
           local max_filesize = 100 * 1024 -- 100 KB
           local ok, stats =
-            pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
-          if ok and stats and stats.size > max_filesize then return true end
+            pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+          if ok and stats and stats.size <= max_filesize then
+            pcall(vim.treesitter.start, bufnr)
+          end
         end,
-
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = false,
-      },
-    },
+      })
+    end,
   },
 
   -- Parsers
