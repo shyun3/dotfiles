@@ -152,6 +152,12 @@ return {
             fg = colors.lavender, -- @property
             style = { "bold" },
           },
+          MyInvisibleCursor = {
+            blend = 100, -- See `:h tui-cursor-shape`
+
+            -- Need to specify something here or highlight won't be invisible
+            fg = colors.base,
+          },
         }
       end,
     },

@@ -71,3 +71,23 @@ vim.api.nvim_create_autocmd({ "WinLeave", "FocusLost" }, {
     end
   end,
 })
+
+-- Show cursor only when focused
+vim.api.nvim_create_autocmd("FocusLost", {
+  group = group,
+  desc = "Hide cursor",
+
+  callback = function()
+    local gcr = vim.o.guicursor
+    local delim = gcr:len() > 0 and "," or ""
+    vim.o.guicursor = gcr .. delim .. "a:MyInvisibleCursor"
+  end,
+})
+vim.api.nvim_create_autocmd("FocusGained", {
+  group = group,
+  desc = "Show cursor",
+
+  callback = function()
+    vim.o.guicursor = vim.o.guicursor:gsub(",?a:MyInvisibleCursor", "")
+  end,
+})
