@@ -47,7 +47,13 @@ return {
         lualine_b = { { "my_vcs", draw_empty = true }, "diff" },
         lualine_c = {
           filename,
-          { "my_noice_mode", color = { gui = "bold" } },
+          {
+            "my_noice_mode",
+
+            -- Must be function, otherwise color isn't dynamically updated
+            -- as specified by the theme
+            color = function() return { gui = "bold" } end,
+          },
         },
 
         lualine_x = {
