@@ -44,14 +44,14 @@ return {
 
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { { "vcs", draw_empty = true }, "diff" },
+        lualine_b = { { "my_vcs", draw_empty = true }, "diff" },
         lualine_c = {
           filename,
-          { "noice_mode", color = { gui = "bold" } },
+          { "my_noice_mode", color = { gui = "bold" } },
         },
 
         lualine_x = {
-          "noice_search",
+          "my_noice_search",
           {
             "lsp_status",
             symbols = {

@@ -3,7 +3,7 @@
 local M = require("lualine.component"):extend()
 
 local modules = require("lualine_require").lazy_require({
-  vcs_branch = "lualine.components.vcs.vcs_branch",
+  vcs_branch = "lualine.components.my_vcs.vcs_branch",
   utils = "lualine.utils.utils",
 })
 

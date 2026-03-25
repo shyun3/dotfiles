@@ -243,7 +243,7 @@ function M.init()
   ---@diagnostic disable-next-line: missing-parameter
   utils.define_autocmd(
     "BufEnter",
-    "lua require'lualine.components.vcs.vcs_branch'.find_vcs_dir()"
+    "lua require'lualine.components.my_vcs.vcs_branch'.find_vcs_dir()"
   )
 end
 
