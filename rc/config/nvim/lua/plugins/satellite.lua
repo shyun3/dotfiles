@@ -26,5 +26,21 @@ return {
         gitsigns = { enable = false },
       },
     },
+
+    config = function(_, opts)
+      require("satellite").setup(opts)
+
+      local group = vim.api.nvim_create_augroup("my_satellite", {})
+      vim.api.nvim_create_autocmd("FocusLost", {
+        group = group,
+        desc = "Satellite: Hide scrollbar",
+        command = "SatelliteDisable",
+      })
+      vim.api.nvim_create_autocmd("FocusGained", {
+        group = group,
+        desc = "Satellite: Show scrollbar",
+        command = "SatelliteEnable",
+      })
+    end,
   },
 }
