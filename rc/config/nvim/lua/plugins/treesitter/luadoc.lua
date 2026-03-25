@@ -4,7 +4,7 @@ return {
     optional = true,
 
     opts = {
-      ensure_installed = { luadoc = false },
+      _my_parsers = { luadoc = false },
     },
   },
 

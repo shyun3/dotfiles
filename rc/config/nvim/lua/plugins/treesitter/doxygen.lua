@@ -4,7 +4,7 @@ return {
     optional = true,
 
     opts = {
-      ensure_installed = { doxygen = false },
+      _my_parsers = { doxygen = false },
     },
   },
 
