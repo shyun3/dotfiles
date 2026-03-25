@@ -46,3 +46,28 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   desc = "Clear colorcolumn",
   callback = function() vim.wo.colorcolumn = "" end,
 })
+
+-- Enable cursorline only on active window
+-- Derived from https://github.com/LazyVim/LazyVim/discussions/2031#discussioncomment-7595365
+vim.api.nvim_create_autocmd({ "WinEnter", "FocusGained" }, {
+  group = group,
+  desc = "Enable cursorline",
+
+  callback = function()
+    if vim.w.my_last_cursorline then
+      vim.w.my_last_cursorline = nil
+      vim.wo.cursorline = true
+    end
+  end,
+})
+vim.api.nvim_create_autocmd({ "WinLeave", "FocusLost" }, {
+  group = group,
+  desc = "Disable cursorline",
+
+  callback = function()
+    if vim.wo.cursorline then
+      vim.w.my_last_cursorline = true
+      vim.wo.cursorline = false
+    end
+  end,
+})
