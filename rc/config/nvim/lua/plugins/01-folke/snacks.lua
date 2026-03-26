@@ -48,11 +48,23 @@ return {
     opts = {
       lazygit = {
         win = {
-          style = "lazygit",
-
           -- Disable <Esc> twice quickly to enter normal mode
           -- Derived from https://github.com/folke/snacks.nvim/issues/280#issuecomment-2987923844
           keys = { term_normal = false },
+        },
+      },
+
+      -- Also applies to lazygit
+      terminal = {
+        win = {
+          -- Default close action seems to be run from a non-nested
+          -- autocommand. So, fire WinEnter when entering previous window.
+          on_close = function(win)
+            vim.cmd.wincmd("p")
+            if vim.api.nvim_get_current_win() ~= win.win then
+              vim.cmd.doautocmd("WinEnter")
+            end
+          end,
         },
       },
     },
