@@ -202,20 +202,6 @@ return {
   },
 
   {
-    "voldikss/vim-floaterm",
-    cmd = "FloatermNew",
-
-    keys = {
-      { "<Leader>t", "<Cmd>FloatermNew<CR>", desc = "floaterm: Open window" },
-      {
-        "<Leader>j",
-        "<Cmd>FloatermNew --title=jjui --width=0.9 --height=0.9 jjui<CR>",
-        desc = "floaterm: Open jjui",
-      },
-    },
-  },
-
-  {
     "ludovicchabant/vim-gutentags",
     event = "VeryLazy",
 

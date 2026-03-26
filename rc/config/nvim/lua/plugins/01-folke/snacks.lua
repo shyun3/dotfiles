@@ -80,6 +80,26 @@ return {
         function() Snacks.lazygit.log_file() end,
         desc = "lazygit: Open log of current file",
       },
+
+      {
+        "<Leader>t",
+        function() Snacks.terminal() end,
+        desc = "Open terminal",
+      },
+      {
+        "<Leader>j",
+        function()
+          Snacks.terminal("jjui", {
+            win = {
+              keys = {
+                -- Disable <Esc> twice quickly to enter normal mode
+                term_normal = false,
+              },
+            },
+          })
+        end,
+        desc = "Open jjui",
+      },
     },
   },
 }
