@@ -88,12 +88,6 @@ fi
 
 export VISUAL="nvim --cmd 'lua my_no_install_missing=false'"
 
-# Windows Terminal does not currently set COLORTERM, see:
-# https://github.com/microsoft/terminal/issues/11057
-#
-# Programs like `delta` use this to detect true color capability
-export COLORTERM=${COLORTERM:-truecolor}
-
 setopt histignorealldups incappendhistory sharehistory
 
 # Compilation flags
