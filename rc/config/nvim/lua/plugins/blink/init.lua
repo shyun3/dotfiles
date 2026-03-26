@@ -20,6 +20,48 @@ return {
   },
 
   {
+    LazyDep("catppuccin"),
+    optional = true,
+
+    opts = {
+      _my_custom_highlights = {
+        blink = {
+          BlinkCmpKindFunction = { link = "@lsp.type.function" },
+          BlinkCmpKindMethod = { link = "@lsp.type.method" },
+          BlinkCmpKindConstructor = { link = "BlinkCmpKindMethod" },
+
+          BlinkCmpKindText = { link = "String" },
+
+          BlinkCmpKindProperty = { link = "@lsp.type.property" },
+          BlinkCmpKindField = { link = "BlinkCmpKindProperty" },
+
+          BlinkCmpKindVariable = { link = "@variable" },
+          BlinkCmpKindTypeParameter = { link = "@lsp.type.typeParameter" },
+          BlinkCmpKindReference = { link = "BlinkCmpKindVariable" },
+
+          BlinkCmpKindClass = { link = "@lsp.type.class" },
+          BlinkCmpKindStruct = { link = "@lsp.type.struct" },
+          BlinkCmpKindInterface = { link = "@lsp.type.interface" },
+          BlinkCmpKindEnum = { link = "@lsp.type.enum" },
+
+          BlinkCmpKindKeyword = { link = "@lsp.type.keyword" },
+          BlinkCmpKindOperator = { link = "@lsp.type.operator" },
+
+          BlinkCmpKindModule = { link = "@lsp.type.namespace" },
+
+          BlinkCmpKindFile = { link = "@module" },
+          BlinkCmpKindFolder = { link = "BlinkCmpKindFile" },
+
+          BlinkCmpKindEnumMember = { link = "@lsp.type.enumMember" },
+          BlinkCmpKindConstant = { link = "@constant" },
+
+          BlinkCmpKindEvent = { link = "@lsp.type.event" },
+        },
+      },
+    },
+  },
+
+  {
     LazyDep("blink.cmp"),
     version = "1.*",
 
