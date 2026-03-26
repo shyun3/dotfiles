@@ -37,6 +37,7 @@ return {
             or vim.fn.win_gettype(win) ~= ""
             or vim.wo[win].winbar ~= ""
             or vim.fn.bufname(buf) == ""
+            or vim.bo[buf].buftype == "terminal"
             or vim.bo[buf].ft == "help"
           then
             return false

@@ -57,6 +57,11 @@ return {
       -- Also applies to lazygit
       terminal = {
         win = {
+          wo = {
+            -- winbar is added by default when terminal is opened in split
+            winbar = "",
+          },
+
           -- Default close action seems to be run from a non-nested
           -- autocommand. So, fire WinEnter when entering previous window.
           on_close = function(win)
