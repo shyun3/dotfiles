@@ -93,16 +93,21 @@ return {
       },
       {
         "<Leader>j",
+
         function()
-          Snacks.terminal("jjui", {
+          local opts = {
             win = {
+              border = "rounded",
+
               keys = {
                 -- Disable <Esc> twice quickly to enter normal mode
                 term_normal = false,
               },
             },
-          })
+          }
+          Snacks.terminal("jjui", opts)
         end,
+
         desc = "Open jjui",
       },
     },
