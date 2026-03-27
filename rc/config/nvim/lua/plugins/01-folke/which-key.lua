@@ -42,6 +42,7 @@ return {
         { "gq", mode = { "n", "x" }, desc = "Custom format lines" },
         { "gri", desc = "Implementations" },
         { "grr", desc = "References" },
+        { "grx", desc = "Run code lens" },
         { "gO", desc = "Show outline" },
 
         { "[a", desc = "Edit previous file in argument list" },
