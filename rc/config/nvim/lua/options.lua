@@ -18,7 +18,7 @@ vim.opt.fillchars = { eob = " " }
 vim.opt.listchars =
   { tab = "» ", trail = "·", precedes = "◄", extends = "►" }
 vim.o.list = true -- Show invisible characters
-vim.o.cursorline = true
+vim.o.cursorline = require("util").cursorline
 vim.o.cmdheight = 2
 vim.opt.shortmess:append("c") -- Don't give completion menu messages
 vim.o.signcolumn = "number" -- Replace line number with diagnostic mark
