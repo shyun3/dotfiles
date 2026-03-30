@@ -61,17 +61,6 @@ return {
       if opts.spec == nil then opts.spec = {} end
 
       local specs = {
-        {
-          "[n",
-          mode = { "n", "x", "o" },
-          desc = "Previous SCM conflict marker or hunk",
-        },
-        {
-          "]n",
-          mode = { "n", "x", "o" },
-          desc = "Next SCM conflict marker or hunk",
-        },
-
         { "[e", mode = { "n", "x" }, desc = "Exchange line with above" },
         { "]e", mode = { "n", "x" }, desc = "Exchange line with below" },
 
@@ -127,6 +116,16 @@ return {
     "tpope/vim-unimpaired",
     event = "VeryLazy",
 
+    init = function()
+      -- Disable default SCM conflict marker maps, as they conflict with Neovim
+      -- defaults. See `:h treesitter-defaults`.
+      --
+      -- See vim-unimpaired#163 for more details on disabling.
+      vim.g.nremap = { ["[n"] = "", ["]n"] = "" }
+      vim.g.xremap = { ["[n"] = "", ["]n"] = "" }
+      vim.g.oremap = { ["[n"] = "", ["]n"] = "" }
+    end,
+
     config = function()
       -- Doesn't interact well with which-key
       vim.keymap.del("n", "yo")
@@ -134,6 +133,19 @@ return {
     end,
 
     keys = {
+      {
+        "[=",
+        "<Plug>(unimpaired-context-previous)",
+        mode = { "n", "x", "o" },
+        desc = "Previous SCM conflict marker or hunk",
+      },
+      {
+        "]=",
+        "<Plug>(unimpaired-context-next)",
+        mode = { "n", "x", "o" },
+        desc = "Next SCM conflict marker or hunk",
+      },
+
       -- which-key specs seem to apply unconditionally, so filetype-specific
       -- descriptions are defined here. Note how the RHS is also specified
       -- otherwise the description won't be applied.
