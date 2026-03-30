@@ -103,6 +103,16 @@ return {
         n_lines = 1000,
         search_method = "cover",
 
+        mappings = {
+          -- Defaults conflicted with Neovim defaults
+          -- See `:h treesitter-defaults`
+          around_next = "a<Right>",
+          inside_next = "i<Right>",
+
+          around_last = "a<Left>",
+          inside_last = "i<Left>",
+        },
+
         custom_textobjects = {
           -- Restore built-ins, as they are not limited by the number of lines
           -- to search as configured by this plugin
