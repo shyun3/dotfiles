@@ -18,8 +18,6 @@ return {
     LazyDep("snacks"),
     optional = true,
 
-    event = "UIEnter", -- Needed by dashboard
-
     opts = {
       dashboard = {
         preset = {
