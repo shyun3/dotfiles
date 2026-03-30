@@ -1,18 +1,9 @@
 return {
   {
-    "kevinhwang91/nvim-bqf",
+    LazyDep("bqf"),
     ft = "qf",
 
     opts = {
-      preview = {
-        should_preview_cb = function(bufnr)
-          local ret = true
-          local bufname = vim.api.nvim_buf_get_name(bufnr)
-          local fsize = vim.fn.getfsize(bufname)
-          if fsize > 1024 * 1024 then ret = false end
-          return ret
-        end,
-      },
       func_map = {
         -- These don't seem to open in the last focused window
         open = "",

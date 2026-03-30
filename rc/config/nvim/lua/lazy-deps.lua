@@ -9,6 +9,7 @@ local deps = {
 
   -- Lua modules
   ["blink.cmp"] = "saghen/blink.cmp",
+  bqf = "kevinhwang91/nvim-bqf",
   catppuccin = "catppuccin/nvim",
   Comment = "numToStr/Comment.nvim",
   dap = "mfussenegger/nvim-dap",

@@ -31,22 +31,14 @@ return {
       bar = {
         -- Derived from default bar enable function
         enable = function(buf, win)
-          if
-            not vim.api.nvim_buf_is_valid(buf)
-            or not vim.api.nvim_win_is_valid(win)
-            or vim.fn.win_gettype(win) ~= ""
-            or vim.wo[win].winbar ~= ""
-            or vim.fn.bufname(buf) == ""
-            or vim.bo[buf].buftype == "terminal"
-            or vim.bo[buf].ft == "help"
-          then
-            return false
-          end
-
-          local stat = vim.uv.fs_stat(vim.api.nvim_buf_get_name(buf))
-          if stat and stat.size > 1024 * 1024 then return false end
-
-          return true -- Always show path
+          -- Always show path
+          return vim.api.nvim_buf_is_valid(buf)
+            and vim.api.nvim_win_is_valid(win)
+            and vim.fn.win_gettype(win) == ""
+            and vim.wo[win].winbar == ""
+            and vim.fn.bufname(buf) ~= ""
+            and vim.bo[buf].buftype ~= "terminal"
+            and vim.bo[buf].ft ~= "help"
         end,
       },
 
