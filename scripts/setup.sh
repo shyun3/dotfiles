@@ -48,13 +48,7 @@ SCRIPT_DIR="$(dirname "$0")"
 
 #######################################################################
 # uv
-NVIM_DIR="$HOME/.config/nvim"
-if [[ ! -d "$NVIM_DIR/.venv" ]]; then
-    uv --directory "$NVIM_DIR" venv
-    uv --directory "$NVIM_DIR" pip install pynvim
-fi
-
-pip_pkgs=(dotdrop ipython)
+pip_pkgs=(dotdrop pynvim ipython)
 for pkg in "${pip_pkgs[@]}"; do
     uv tool install "$pkg"
 done
