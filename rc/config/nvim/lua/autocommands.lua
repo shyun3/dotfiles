@@ -71,21 +71,12 @@ vim.api.nvim_create_autocmd({ "WinLeave", "FocusLost" }, {
     end
   end,
 })
-vim.api.nvim_create_autocmd(
-  -- 'cursorline' doesn't seem to be "inherited" to new tabs
-  "TabNewEntered",
 
-  {
-    group = group,
-    desc = "Enable cursorline",
-
-    callback = function()
-      -- For some reason, `:setlocal cursorline` doesn't seem to be "inherited"
-      -- to new windows in a new tab
-      vim.wo.cursorline = true
-    end,
-  }
-)
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  group = group,
+  desc = "Enable cursorline",
+  callback = function() vim.wo.cursorline = true end,
+})
 
 -- Show cursor only when focused
 vim.api.nvim_create_autocmd("FocusLost", {
