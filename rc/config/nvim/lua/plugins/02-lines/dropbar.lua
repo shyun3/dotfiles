@@ -174,6 +174,21 @@ return {
 
       setup_file_icon_dim()
       setup_focus_dim()
+
+      vim.api.nvim_create_autocmd("LspProgress", {
+        group = GROUP,
+        pattern = "end",
+        desc = "Update dropbar",
+
+        callback = function(args)
+          vim.defer_fn(
+            function()
+              require("dropbar.utils").bar.exec("update", { buf = args.buf })
+            end,
+            require("dropbar.configs").opts.sources.lsp.request.interval + 50
+          )
+        end,
+      })
     end,
 
     keys = {
