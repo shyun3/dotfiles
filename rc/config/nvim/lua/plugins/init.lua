@@ -22,7 +22,32 @@ return {
     "chrishrb/gx.nvim",
 
     init = function() vim.g.netrw_nogx = 1 end,
-    config = true,
+
+    opts = {
+      handlers = {
+        help = {
+          name = "help",
+          filetype = { "help" },
+
+          handle = function(mode, line)
+            -- Taken from built-in `gx`
+            local url_prefix = "https://neovim.io/doc/user/helptag/?tag="
+
+            -- See "TAGS" section in `:h help-writing`
+            local patterns = {
+              tag_def = "%*([^%s*]+)%*",
+              tag_link = "|([^%s|]+)|",
+              opt = "('%l+')",
+            }
+
+            for _, pat in pairs(patterns) do
+              local match = require("gx.helper").find(line, mode, pat)
+              if match then return url_prefix .. match end
+            end
+          end,
+        },
+      },
+    },
 
     keys = {
       {
