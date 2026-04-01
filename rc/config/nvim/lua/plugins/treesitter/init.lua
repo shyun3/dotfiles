@@ -2,7 +2,6 @@ return {
   {
     LazyDep("nvim-treesitter"),
     lazy = false, -- Does not support lazy loading
-    build = ":TSUpdate",
 
     opts = {
       _my_parsers = {
