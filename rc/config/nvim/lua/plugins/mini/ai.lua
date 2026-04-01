@@ -106,11 +106,11 @@ return {
         mappings = {
           -- Defaults conflicted with Neovim defaults
           -- See `:h treesitter-defaults`
-          around_next = "a<Right>",
-          inside_next = "i<Right>",
+          around_next = "a<C-l>",
+          inside_next = "i<C-l>",
 
-          around_last = "a<Left>",
-          inside_last = "i<Left>",
+          around_last = "a<C-h>",
+          inside_last = "i<C-h>",
         },
 
         custom_textobjects = {
