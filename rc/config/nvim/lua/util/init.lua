@@ -1,6 +1,6 @@
 ---@alias ModeShortName "n" | "v" | "o" | "i" | "c" | "s" | "x" | "l" | "t" | ""
 
-local M = { column_limit = 80, cursorline = true }
+local M = { column_limit = 80 }
 
 -- Derived from ctrlp#normcmd()
 function M.go_to_editable_window()
