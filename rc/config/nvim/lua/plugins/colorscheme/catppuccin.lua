@@ -41,7 +41,7 @@ local function from_color_hex_str(color) return tonumber(color:sub(2), 16) end
 
 --- Creates a dim version of the input highlight group
 ---
---- Resulting highlight group name will be "my_dim" followed by the input name
+--- Resulting highlight group name will be "my_dim_" followed by the input name
 ---
 ---@param ref_name string Highlight group name
 local function make_dim_hl(ref_name)
@@ -54,7 +54,7 @@ local function make_dim_hl(ref_name)
 
   vim.api.nvim_set_hl(
     0,
-    "my_dim" .. ref_name,
+    "my_dim_" .. ref_name,
     ref_hl --[[@as vim.api.keyset.highlight]]
   )
 end
