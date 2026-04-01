@@ -235,6 +235,11 @@ return {
 
     keys = {
       {
+        "<Leader>fa",
+        "<Cmd>FzfLua autocmds<CR>",
+        desc = "Autocommands",
+      },
+      {
         "<Leader>fb",
         "<Cmd>FzfLua builtin<CR>",
         desc = "Built-in commands",
