@@ -19,6 +19,19 @@ return {
   },
 
   {
+    "willothy/flatten.nvim",
+
+    -- Ensure that it runs first to minimize delay when opening file from terminal
+    lazy = false,
+    priority = 2000,
+
+    opts = {
+      block_for = { jjdescription = true },
+      window = { open = "tab" },
+    },
+  },
+
+  {
     "chrishrb/gx.nvim",
 
     init = function() vim.g.netrw_nogx = 1 end,

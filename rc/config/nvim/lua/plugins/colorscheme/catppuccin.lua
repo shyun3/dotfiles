@@ -67,7 +67,7 @@ end
 return {
   LazyDep("catppuccin"),
   name = "catppuccin",
-  priority = 5000,
+  priority = 1001,
 
   opts = {
     styles = {
