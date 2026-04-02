@@ -86,7 +86,7 @@ else
   export EDITOR='vim'
 fi
 
-export VISUAL="nvim --cmd 'lua my_no_install_missing=false'"
+export VISUAL=nvim
 
 setopt histignorealldups incappendhistory sharehistory
 

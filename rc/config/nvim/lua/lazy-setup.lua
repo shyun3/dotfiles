@@ -37,9 +37,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
   install = {
-    ---@diagnostic disable-next-line: undefined-field
-    missing = _G.my_no_install_missing,
-
     colorscheme = {
       -- Otherwise, colors can get messed up in terminal buffers after lazy
       -- installed missing plugins on startup
