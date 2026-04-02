@@ -18,6 +18,27 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufHidden", {
+  group = group,
+  desc = "Clean up no name buffer",
+
+  callback = function(args)
+    local bufnr = args.buf
+
+    -- Using schedule, otherwise may get error about deleting buffer in use
+    vim.schedule(function()
+      if
+        vim.api.nvim_buf_is_valid(bufnr)
+        and vim.fn.bufname(bufnr) == ""
+        and vim.bo[bufnr].buflisted
+        and not vim.bo[bufnr].modified
+      then
+        vim.cmd.bdelete(bufnr)
+      end
+    end)
+  end,
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = group,
   desc = "Highlight on yank",
