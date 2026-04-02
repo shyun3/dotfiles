@@ -14,6 +14,7 @@ local deps = {
   Comment = "numToStr/Comment.nvim",
   dap = "mfussenegger/nvim-dap",
   dropbar = "Bekaboo/dropbar.nvim",
+  flatten = "willothy/flatten.nvim",
   ["goto-preview"] = "rmagatti/goto-preview",
   lualine = "nvim-lualine/lualine.nvim",
   ["mason-tool-installer"] = "WhoIsSethDaniel/mason-tool-installer.nvim",
