@@ -26,18 +26,9 @@ local DIM_HLS = {
   "@variable.parameter",
 
   -- Built-in
-  "Normal",
   "Added",
   "Changed",
   "Removed",
-
-  -- diff
-  "diffFile",
-  "diffIndexLine",
-  "diffOldFile",
-  "diffNewFile",
-  "diffAdded",
-  "diffRemoved",
 }
 
 ---@param color integer Color value, such as the `fg` field in the return value
@@ -107,13 +98,14 @@ return {
           Label = { style = { "bold" } },
           Macro = { fg = colors.red, style = { "bold", "nocombine" } },
           PreProc = { link = "Keyword" },
-
-          jjCommitDiff = { link = "my_dim_Normal" },
-          jjAdded = { link = "my_dim_Added" },
-          jjRemoved = { link = "my_dim_Removed" },
-          jjChanged = { link = "my_dim_Changed" },
         }
       end,
+
+      jjdescription = {
+        jjAdded = { link = "my_dim_Added" },
+        jjRemoved = { link = "my_dim_Removed" },
+        jjChanged = { link = "my_dim_Changed" },
+      },
 
       treesitter = function(colors)
         return {
