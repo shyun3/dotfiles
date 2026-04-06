@@ -117,6 +117,41 @@ return {
             and vim.bo[buf].buftype ~= "terminal"
             and vim.bo[buf].ft ~= "help"
         end,
+
+        -- Derived from default
+        sources = function(buf)
+          local sources = require("dropbar.sources")
+          local uniq_path = require("plugins.dropbar.unique_path")
+          if vim.bo[buf].ft == "markdown" then
+            return { uniq_path, sources.markdown }
+          elseif vim.bo[buf].buftype == "terminal" then
+            return { sources.terminal }
+          end
+
+          return {
+            uniq_path,
+            require("dropbar.utils").source.fallback({
+              sources.lsp,
+              sources.treesitter,
+            }),
+          }
+        end,
+
+        update_events = {
+          global = {
+            -- Defaults
+            "DirChanged",
+            "VimResized",
+
+            -- Unique path support
+            "WinNew",
+            "WinClosed",
+            "BufWinEnter",
+            "BufWinLeave",
+            "BufDelete",
+            "TabEnter",
+          },
+        },
       },
 
       icons = {
@@ -166,7 +201,9 @@ return {
         },
       },
 
-      sources = { path = { max_depth = 2 } },
+      sources = {
+        path = { max_depth = 2 },
+      },
     },
 
     config = function(_, opts)
