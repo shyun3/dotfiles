@@ -6,7 +6,7 @@
 set -euo pipefail
 
 cmd_exists() {
-    hash "$1" 2> /dev/null
+    command -v "$1" &> /dev/null
 }
 
 install_if_missing() {
@@ -25,13 +25,16 @@ LOCAL_DIR="$HOME/.local"
 BIN_HOME="$LOCAL_DIR/bin"
 mkdir -p ~/bin "$BIN_HOME"
 
+# Custom zsh completions
+mkdir -p ~/.zsh-complete
+
 # Neovim 'undodir'
 mkdir -p "$LOCAL_DIR/share/nvim/undo"
 
 #######################################################################
 # Packages
-install_if_missing atool avfs direnv nodejs npm ranger ripgrep tree \
-    universal-ctags update-notifier-common xclip xdg-utils zsh
+install_if_missing atool avfs tree universal-ctags update-notifier-common \
+    xclip xdg-utils zsh
 
 if [[ $(uname -r) =~ WSL ]]; then
     # This is needed so that `xdg-open` can open links in Windows browser
@@ -39,41 +42,20 @@ if [[ $(uname -r) =~ WSL ]]; then
 fi
 
 #######################################################################
-# GitHub binaries
-cmd_exists eget || (cd "$BIN_HOME" && curl https://zyedidia.github.io/eget.sh |
-    sh)
+# mise
 
-SCRIPT_DIR="$(dirname "$0")"
-(cd "$SCRIPT_DIR" && ./eget_noclobber.py eget.toml)
+# Using exact location since PATH updates may not have been applied yet
+MISE="$BIN_HOME/mise"
 
-#######################################################################
-# uv
-pip_pkgs=(dotdrop pynvim ipython)
-for pkg in "${pip_pkgs[@]}"; do
-    uv tool install "$pkg"
-done
+cmd_exists "$MISE" || curl https://mise.run | sh
+"$MISE" install
 
 #######################################################################
-# Assets
+# antidote
 
-# Performs a shallow git clone.
-#
-# $1: GitHub slug, in the form "owner/repo".
-# $2: Destination directory. Silently skipped if directory exists.
-git_take() {
-    local slug="${1:?}"
-    local dir="${2:?}"
-
-    if [[ ! -d "$dir" ]]; then
-        git clone --depth=1 "https://github.com/$slug.git" "$dir"
-    fi
-}
-
-git_take jchook/ranger-zoxide ~/.config/ranger/plugins/zoxide
-git_take mattmc3/antidote ~/.antidote
-
-# Sourcing scripts, since it should be faster (?) than launching subshells
-zsh -i -c 'for file (~/.zsh/setup/**/*.zsh(N.)) source $file'
+if [[ ! -d ~/.antidote ]]; then
+    git clone --depth=1 "https://github.com/mattmc3/antidote.git" ~/.antidote
+fi
 
 #######################################################################
 # chsh (should probably be last)

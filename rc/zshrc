@@ -121,6 +121,9 @@ fi
 
 for file (~/.zsh/plugins/**/*.zsh(N.)) source $file
 
+# Custom zsh completions, see setup
+fpath=(~/.zsh-complete $fpath)
+
 #######################################################################
 # ranger
 

@@ -12,12 +12,13 @@ ajeetdsouza/zoxide kind:fpath path:contrib/completions
 tealdeer-rs/tealdeer kind:clone
 
 # Assets
-dandavison/delta kind:clone     # For themes
 catppuccin/delta kind:clone
 catppuccin/eza kind:clone
 catppuccin/fzf kind:clone
 catppuccin/lazygit kind:clone
 catppuccin/zsh-syntax-highlighting kind:clone
+dandavison/delta kind:clone     # For themes
+jchook/ranger-zoxide kind:clone
 
 # Load this before Oh My Zsh
 getantidote/use-omz
@@ -26,9 +27,9 @@ getantidote/use-omz
 ohmyzsh/ohmyzsh path:lib
 
 # Oh My Zsh plugins
+ohmyzsh/ohmyzsh path:plugins/mise   # Should be first to update PATH
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/copyfile
-ohmyzsh/ohmyzsh path:plugins/direnv
 ohmyzsh/ohmyzsh path:plugins/eza
 ohmyzsh/ohmyzsh path:plugins/fzf
 ohmyzsh/ohmyzsh path:plugins/jj
