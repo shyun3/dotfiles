@@ -89,6 +89,9 @@ dotfiles:
   f_config.lua:
     src: config/jjui/config.lua
     dst: ~/.config/jjui/config.lua
+  f_mise_config.toml:
+    src: config/mise/global-config.toml
+    dst: ~/.config/mise/config.toml
 profiles:
   linux:
     dotfiles:
@@ -112,6 +115,7 @@ profiles:
       - f_01-user-config.toml
       - f_config.toml
       - f_config.lua
+      - f_mise_config.toml
     actions:
       - setup_sh
   wsl-root:

@@ -39,12 +39,8 @@ if [[ $(uname -r) =~ WSL ]]; then
 fi
 
 #######################################################################
-# GitHub binaries
-cmd_exists eget || (cd "$BIN_HOME" && curl https://zyedidia.github.io/eget.sh |
-    sh)
-
-SCRIPT_DIR="$(dirname "$0")"
-(cd "$SCRIPT_DIR" && ./eget_noclobber.py eget.toml)
+# mise
+cmd_exists mise || curl https://mise.run | sh
 
 #######################################################################
 # uv
