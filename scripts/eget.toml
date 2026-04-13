@@ -46,3 +46,6 @@ target = "~/.local/bin/tldr"
 
 ["tree-sitter/tree-sitter"]
 asset_filters = ["cli"]
+
+["mxmlnkn/ratarmount"]
+asset_filters = ["x86", "^slim"]
