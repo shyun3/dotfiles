@@ -33,8 +33,11 @@ mkdir -p "$LOCAL_DIR/share/nvim/undo"
 
 #######################################################################
 # Packages
-install_if_missing atool avfs tree universal-ctags update-notifier-common \
-    xclip xdg-utils zsh
+install_if_missing atool avfs tree universal-ctags xclip xdg-utils zsh
+
+if [[ $(lsb_release -si 2> /dev/null) == Ubuntu ]]; then
+    install_if_missing update-notifier-common
+fi
 
 if [[ $(uname -r) =~ WSL ]]; then
     # This is needed so that `xdg-open` can open links in Windows browser
