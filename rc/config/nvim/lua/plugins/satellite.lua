@@ -20,6 +20,7 @@ return {
 
     opts = {
       current_only = true,
+      winblend = 30,
 
       handlers = {
         -- Seems to prevent scrollbar from displaying on window enter
