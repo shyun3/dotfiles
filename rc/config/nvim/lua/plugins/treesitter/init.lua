@@ -22,7 +22,6 @@ return {
         toml = false,
         xml = false,
         yaml = false,
-        zsh = false,
       },
     },
 
@@ -53,6 +52,7 @@ return {
   -- Parsers
   { import = "plugins.treesitter.doxygen" },
   { import = "plugins.treesitter.luadoc" },
+  { import = "plugins.treesitter.zsh" },
 
   -- Plugins
   { import = "plugins.treesitter.endwise" },
