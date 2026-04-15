@@ -13,7 +13,6 @@ tealdeer-rs/tealdeer kind:clone
 
 # Assets
 dandavison/delta kind:clone     # For themes
-catppuccin/bat kind:clone
 catppuccin/delta kind:clone
 catppuccin/eza kind:clone
 catppuccin/fzf kind:clone
