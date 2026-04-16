@@ -104,7 +104,6 @@ setopt histignorealldups incappendhistory sharehistory
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias cdgitroot='cd "$(git rev-parse --show-cdup)"'
-alias lg='lazygit'
 
 #######################################################################
 # User configuration
@@ -123,42 +122,3 @@ for file (~/.zsh/plugins/**/*.zsh(N.)) source $file
 
 # Custom zsh completions, see setup
 fpath=(~/.zsh-complete $fpath)
-
-#######################################################################
-# ranger
-
-# Taken from https://github.com/ranger/ranger/wiki/Integration-with-other-programs#bash-compatible-shells-1
-function ranger {
-    local IFS=$'\t\n'
-    local tempfile="$(mktemp -t tmp.XXXXXX)"
-    local ranger_cmd=(
-        command
-        ranger
-        --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
-    )
-
-    ${ranger_cmd[@]} "$@"
-    if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
-        cd -- "$(cat "$tempfile")" || return
-    fi
-    command rm -f -- "$tempfile" 2>/dev/null
-}
-
-#######################################################################
-# zoxide
-
-# Derived from CTRL-T in fzf key-bindings.zsh
-fzf_zoxide() {
-  LBUFFER="$LBUFFER$(zoxide query -i)"
-  local ret=$?
-  zle reset-prompt
-  return $ret
-}
-
-zle -N fzf_zoxide
-bindkey '\ez' fzf_zoxide  # Alt-z
-
-#######################################################################
-# zsh-autosuggestions
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
