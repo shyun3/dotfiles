@@ -81,3 +81,7 @@ for cmd in ${cmds[@]}; do
     $cmd --print-completion zsh > ~/.zsh-complete/_$cmd
 done
 """
+
+[tools.yazi]
+version = "latest"
+postinstall = "ya pkg install"

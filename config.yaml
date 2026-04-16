@@ -95,6 +95,19 @@ dotfiles:
   f_settings.toml:
     src: config/mise/conf.d/settings.toml
     dst: ~/.config/mise/conf.d/settings.toml
+  f_theme.toml:
+    src: config/yazi/theme.toml
+    dst: ~/.config/yazi/theme.toml
+  f_package.toml:
+    src: config/yazi/package.toml
+    dst: ~/.config/yazi/package.toml
+    link: absolute
+  f_keymap.toml:
+    src: config/yazi/keymap.toml
+    dst: ~/.config/yazi/keymap.toml
+  f_yazi.toml:
+    src: config/yazi/yazi.toml
+    dst: ~/.config/yazi/yazi.toml
 profiles:
   linux:
     dotfiles:
@@ -120,6 +133,10 @@ profiles:
       - f_mise.lock
       - f_tools.toml
       - f_settings.toml
+      - f_theme.toml
+      - f_package.toml
+      - f_keymap.toml
+      - f_yazi.toml
     actions:
       - setup_sh
   wsl-root:
