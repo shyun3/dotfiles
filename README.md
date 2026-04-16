@@ -36,18 +36,19 @@ Assuming the Windows steps above were completed, install WSL using `pwsh` in
 wsl --install
 ```
 
-### Ubuntu
-
-Install `dotdrop`:
-```sh
-sudo apt update
-sudo apt install dotdrop
-```
+### Linux
 
 Clone the repo:
 ```sh
 git clone git@github.com:shyun3/dotfiles.git ~/.config/dotdrop
 ```
+
+Get a temporary copy of `dotdrop`:
+```sh
+git clone https://github.com/deadc0de6/dotdrop.git /tmp/dotdrop
+cd /tmp/dotdrop
+```
+The installation process will include a permanent version of `dotdrop`.
 
 ## Installation
 
@@ -64,14 +65,14 @@ PowerShell may need restarting to apply all changes.
 
 If using WSL, apply the following first:
 ```sh
-sudo env HOME="$HOME" "$(which dotdrop)" -p wsl-root install
+sudo ./dotdrop.sh -c ~/.config/dotdrop/config.yaml -p wsl-root install
 ```
 WSL needs restarting to apply all changes. A distribution can be shutdown in
 PowerShell by running `wsl --terminate <distroName>`.
 
 For all Linux distributions:
 ```sh
-dotdrop -p linux install
+./dotdrop.sh -c ~/.config/dotdrop/config.yaml -p linux install
 ```
 Zsh may need restarting to apply all changes.
 
@@ -126,29 +127,3 @@ git config -f ~/personal/.gitprofile user.email fake@priv.tld
 ### Neovim
 
 * Run `:checkhealth` to see if there are issues that need resolving
-* To activate projectionist functionality, create an appropriate
-  `.projections.json` file, then run `:filetype detect` on the buffer of
-  interest (to trigger the `FileType` event, see [code][projectionist-detect]).
-
-### Windows Terminal
-
-* To regenerate dynamic profiles that have been deleted, remove
-  `$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\state.json`
-
-### WSL
-
-* If Windows applications cannot be called from WSL, try entering the
-  following:
-  ```sh
-  sudo systemctl mask systemd-binfmt.service
-  ```
-  Taken from this [comment][wsl-interop-comment]. More details can be found in
-  issue [#8843](https://github.com/microsoft/WSL/issues/8843).
-
-### Zsh
-
-* Place machine-specific settings in `~/.zshenv`, e.g.:
-    * `$path=(/path/to/dir $path)`
-
-[projectionist-detect]: https://github.com/tpope/vim-projectionist/blob/5ff7bf79a6ef741036d2038a226bcb5f8b1cd296/plugin/projectionist.vim#L139-L144
-[wsl-interop-comment]: https://github.com/microsoft/WSL/issues/8843#issuecomment-1624028222
