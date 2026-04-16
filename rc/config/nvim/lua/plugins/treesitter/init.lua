@@ -51,6 +51,7 @@ return {
 
   -- Parsers
   { import = "plugins.treesitter.doxygen" },
+  { import = "plugins.treesitter.jjdescription" },
   { import = "plugins.treesitter.luadoc" },
   { import = "plugins.treesitter.zsh" },
 

@@ -2,11 +2,16 @@
 ---@field _my_custom_highlights { [string]: CtpHighlight | CtpHighlightOverrideFn }
 
 local DIM_HLS = {
+  "@constant",
   "@constant.builtin",
+  "@diff.delta",
+  "@diff.minus",
+  "@diff.plus",
   "@function",
   "@function.macro",
   "@keyword",
   "@keyword.coroutine",
+  "@keyword.directive",
   "@keyword.function",
   "@keyword.import",
   "@keyword.modifier",
@@ -17,6 +22,7 @@ local DIM_HLS = {
   "@number",
   "@operator",
   "@string",
+  "@string.special.path",
   "@tag",
   "@type",
   "@type.builtin",
@@ -24,11 +30,6 @@ local DIM_HLS = {
   "@variable.builtin",
   "@variable.member",
   "@variable.parameter",
-
-  -- Built-in
-  "Added",
-  "Changed",
-  "Removed",
 }
 
 return {
@@ -67,12 +68,6 @@ return {
           PreProc = { link = "Keyword" },
         }
       end,
-
-      jjdescription = {
-        jjAdded = { link = "my_dim_Added" },
-        jjRemoved = { link = "my_dim_Removed" },
-        jjChanged = { link = "my_dim_Changed" },
-      },
 
       treesitter = function(colors)
         return {
