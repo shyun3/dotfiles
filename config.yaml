@@ -92,6 +92,7 @@ dotfiles:
   f_mise.lock:
     src: config/mise/mise.lock
     dst: ~/.config/mise/mise.lock
+    link: absolute
   f_tools.toml:
     src: config/mise/conf.d/tools.toml
     dst: ~/.config/mise/conf.d/tools.toml
