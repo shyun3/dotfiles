@@ -4,7 +4,7 @@ return {
     optional = true,
 
     opts = {
-      _my_parsers = { doxygen = false },
+      _my_parsers = { doxygen = true },
     },
   },
 
@@ -14,18 +14,16 @@ return {
 
     opts = {
       _my_custom_highlights = {
-        doxygen = {
-          ["@keyword.doxygen"] = { link = "my_dim_@keyword" },
-          ["@variable.parameter.doxygen"] = {
-            link = "my_dim_@variable.parameter",
-          },
-          ["@tag.doxygen"] = { link = "my_dim_@tag" },
-          ["@markup.italic.doxygen"] = { link = "my_dim_@markup.italic" },
-          ["@function.doxygen"] = { link = "my_dim_@function" },
-          ["@label.doxygen"] = { link = "my_dim_@label" },
-          ["@keyword.modifier.doxygen"] = { link = "my_dim_@keyword.modifier" },
-          ["@operator.doxygen"] = { link = "my_dim_@operator" },
-        },
+        doxygen = require("util.hl").make_dim_ts_hls("doxygen", {
+          "@keyword",
+          "@variable.parameter",
+          "@tag",
+          "@markup.italic",
+          "@function",
+          "@label",
+          "@keyword.modifier",
+          "@operator",
+        }),
       },
     },
   },

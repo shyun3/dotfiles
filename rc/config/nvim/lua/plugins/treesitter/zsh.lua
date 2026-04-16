@@ -4,7 +4,7 @@ return {
     optional = true,
 
     opts = {
-      _my_parsers = { zsh = false },
+      _my_parsers = { zsh = true },
     },
   },
 
