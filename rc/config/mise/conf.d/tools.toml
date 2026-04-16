@@ -1,9 +1,11 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
 [tool_alias]
-ranger = "pipx:ranger-fm"
 ratarmount = "github:mxmlnkn/ratarmount"
 tldr = "github:tealdeer-rs/tealdeer"
+
+# Latest release v1.9.4 is several years old and missing several fixes
+ranger = "pipx:git+https://github.com/ranger/ranger.git"
 
 [tools]
 fd = "latest"
@@ -40,10 +42,6 @@ ln -sf \
 
 [tools.ranger]
 version = "latest"
-
-# Running v1.9.4 with Python 3.14 causes SyntaxWarning messages to be printed
-uvx_args = "--no-managed-python"
-
 postinstall = """
 mkdir -p ~/.config/ranger/plugins
 ln -sf ~/.cache/antidote/jchook/ranger-zoxide ~/.config/ranger/plugins/zoxide
