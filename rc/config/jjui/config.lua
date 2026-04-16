@@ -46,7 +46,7 @@ local function select_descendants()
   local last_change = parent
 
   revisions.jump_to_children()
-  revisions.refresh()
+  revisions.refresh() -- Also clears any selections
 
   local curr_change = revisions.current()
   while last_change ~= curr_change do
