@@ -144,87 +144,6 @@ url = "https://github.com/junegunn/fzf/releases/download/v0.71.0/fzf-0.71.0-darw
 checksum = "sha256:15bf30fa658c596d740f0ce9a9a97b6b5d90566124903657d09fd109dd0973d2"
 url = "https://github.com/junegunn/fzf/releases/download/v0.71.0/fzf-0.71.0-windows_amd64.zip"
 
-[[tools."github:mxmlnkn/ratarmount"]]
-version = "1.2.2"
-backend = "github:mxmlnkn/ratarmount"
-
-[tools."github:mxmlnkn/ratarmount".options]
-asset_pattern = "*{{ version }}-x86*"
-
-[tools."github:mxmlnkn/ratarmount"."platforms.linux-arm64"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[tools."github:mxmlnkn/ratarmount"."platforms.linux-arm64-musl"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[tools."github:mxmlnkn/ratarmount"."platforms.linux-x64"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[tools."github:mxmlnkn/ratarmount"."platforms.linux-x64-musl"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[tools."github:mxmlnkn/ratarmount"."platforms.macos-arm64"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[tools."github:mxmlnkn/ratarmount"."platforms.macos-x64"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[tools."github:mxmlnkn/ratarmount"."platforms.windows-x64"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[[tools."github:tealdeer-rs/tealdeer"]]
-version = "1.8.1"
-backend = "github:tealdeer-rs/tealdeer"
-
-[tools."github:tealdeer-rs/tealdeer"."platforms.linux-arm64"]
-checksum = "sha256:09d4506b3ba2efe7376e3a5ce1238aa5e6c33ae6f2532c190156540f6c4e7d69"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-linux-aarch64-musl"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243162"
-
-[tools."github:tealdeer-rs/tealdeer"."platforms.linux-arm64-musl"]
-checksum = "sha256:09d4506b3ba2efe7376e3a5ce1238aa5e6c33ae6f2532c190156540f6c4e7d69"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-linux-aarch64-musl"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243162"
-
-[tools."github:tealdeer-rs/tealdeer"."platforms.linux-x64"]
-checksum = "sha256:6f2fad4435e0110484d3f25cdc4bf20129dae03238f32d06ebdd00bdc50ae2ed"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-linux-x86_64-musl"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243169"
-
-[tools."github:tealdeer-rs/tealdeer"."platforms.linux-x64-musl"]
-checksum = "sha256:6f2fad4435e0110484d3f25cdc4bf20129dae03238f32d06ebdd00bdc50ae2ed"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-linux-x86_64-musl"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243169"
-
-[tools."github:tealdeer-rs/tealdeer"."platforms.macos-arm64"]
-checksum = "sha256:4b3ecca53bdc41bc897c35f6457a6d2bb25aedc00816fdb3c28e947ef2900a34"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-macos-aarch64"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243163"
-
-[tools."github:tealdeer-rs/tealdeer"."platforms.macos-x64"]
-checksum = "sha256:25e8638dd56998d5b3a41b4d6468484689e1487de2a25033eb6bd8ecb44a5d4a"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-macos-x86_64"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243172"
-
-[tools."github:tealdeer-rs/tealdeer"."platforms.windows-x64"]
-checksum = "sha256:0fafa28d6503ec2a96efd71c5f1a57c8c547efd72706fd26fc53015415da7eb9"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-windows-x86_64-msvc.exe"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243173"
-
 [[tools.jj]]
 version = "0.40.0"
 backend = "aqua:jj-vcs/jj"
@@ -377,6 +296,34 @@ url = "https://nodejs.org/dist/v25.9.0/node-v25.9.0-darwin-x64.tar.gz"
 [tools.node."platforms.windows-x64"]
 checksum = "sha256:929552b8305effac843ba7b4270c437aefb702fc3fbd73fcd1bffd35d4ac284e"
 url = "https://nodejs.org/dist/v25.9.0/node-v25.9.0-win-x64.zip"
+
+[[tools.ouch]]
+version = "0.6.1"
+backend = "github:ouch-org/ouch"
+
+[tools.ouch."platforms.linux-arm64"]
+url = "https://github.com/ouch-org/ouch/releases/download/0.6.1/ouch-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/248071216"
+
+[tools.ouch."platforms.linux-arm64-musl"]
+url = "https://github.com/ouch-org/ouch/releases/download/0.6.1/ouch-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/248071215"
+
+[tools.ouch."platforms.linux-x64"]
+url = "https://github.com/ouch-org/ouch/releases/download/0.6.1/ouch-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/248071207"
+
+[tools.ouch."platforms.linux-x64-musl"]
+url = "https://github.com/ouch-org/ouch/releases/download/0.6.1/ouch-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/248071213"
+
+[tools.ouch."platforms.macos-x64"]
+url = "https://github.com/ouch-org/ouch/releases/download/0.6.1/ouch-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/248071210"
+
+[tools.ouch."platforms.windows-x64"]
+url = "https://github.com/ouch-org/ouch/releases/download/0.6.1/ouch-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/248071214"
 
 [[tools."pipx:dotdrop"]]
 version = "1.16.1"

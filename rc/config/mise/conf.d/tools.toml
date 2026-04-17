@@ -1,6 +1,7 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
 [tool_alias]
+ouch = "github:ouch-org/ouch"
 ratarmount = "github:mxmlnkn/ratarmount"
 tldr = "github:tealdeer-rs/tealdeer"
 
@@ -38,6 +39,12 @@ mkdir -p ~/.config/eza
 ln -sf \
     ~/.cache/antidote/catppuccin/eza/themes/mocha/catppuccin-mocha-lavender.yml \
     ~/.config/eza/theme.yml
+"""
+
+[tools.ouch]
+version = "latest"
+postinstall = """
+cp "$MISE_TOOL_INSTALL_PATH/completions/_ouch" ~/.zsh-complete
 """
 
 [tools.ranger]
