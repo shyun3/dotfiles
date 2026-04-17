@@ -66,10 +66,6 @@ dotfiles:
   f_zsh_plugins.txt:
     src: zsh_plugins.txt
     dst: ~/.zsh_plugins.txt
-  d_plugins:
-    src: zsh/plugins
-    dst: ~/.zsh/plugins
-    link: absolute
   f_stylua.toml:
     src: config/stylua.toml
     dst: ~/.config/stylua.toml
@@ -115,7 +111,6 @@ profiles:
       - f_lazygit_config.yml
       - d_nvim
       - f_zsh_plugins.txt
-      - d_plugins
       - f_stylua.toml
       - f_config
       - d_zsh
