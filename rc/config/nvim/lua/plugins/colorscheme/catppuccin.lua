@@ -32,6 +32,27 @@ local DIM_HLS = {
   "@variable.parameter",
 }
 
+--- Creates a dim version of the input highlight group
+---
+--- Resulting highlight group name will be "my_dim_" followed by the input name
+---
+---@param ref_name string Highlight group name
+local function make_dim_hl(ref_name)
+  local ref_hl = vim.api.nvim_get_hl(0, { name = ref_name, link = false })
+  assert(ref_hl.fg, "Expected foreground color")
+
+  local hl = require("util.hl")
+  local hex_fg = hl.to_color_hex_str(ref_hl.fg)
+  local dim_fg = require("catppuccin.utils.colors").darken(hex_fg, 0.8)
+  ref_hl.fg = hl.from_color_hex_str(dim_fg)
+
+  vim.api.nvim_set_hl(
+    0,
+    hl.DIM_HL_GROUP_PREFIX .. ref_name,
+    ref_hl --[[@as vim.api.keyset.highlight]]
+  )
+end
+
 return {
   LazyDep("catppuccin"),
   name = "catppuccin",
@@ -145,7 +166,7 @@ return {
     -- Should be done after colorscheme is updated to make use of the final
     -- colors
     for _, name in ipairs(DIM_HLS) do
-      require("util.hl").make_dim_hl(name)
+      make_dim_hl(name)
     end
   end,
 }
