@@ -5,6 +5,7 @@ return {
 
     opts = {
       _my_parsers = {
+        -- Value indicates if treesitter indentexpr is enabled
         bash = true,
         c = true,
         cpp = true,
@@ -40,7 +41,7 @@ return {
           local bufnr = args.buf
           local ok, _ = pcall(vim.treesitter.start, bufnr)
 
-          if ok then
+          if ok and opts._my_parsers[args.match] then
             vim.bo[bufnr].indentexpr =
               "v:lua.require'nvim-treesitter'.indentexpr()"
           end

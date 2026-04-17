@@ -4,7 +4,10 @@ return {
     optional = true,
 
     opts = {
-      _my_parsers = { zsh = true },
+      _my_parsers = {
+        -- Treesitter indentexpr doesn't indent when entering a block
+        zsh = false,
+      },
     },
   },
 
