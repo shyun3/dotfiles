@@ -454,6 +454,13 @@ checksum = "sha256:0fafa28d6503ec2a96efd71c5f1a57c8c547efd72706fd26fc53015415da7
 url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-windows-x86_64-msvc.exe"
 url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243173"
 
+[[tools.trash-cli]]
+version = "0.24.5.26"
+backend = "pipx:trash-cli"
+
+[tools.trash-cli.options]
+extras = "completion"
+
 [[tools.tree-sitter]]
 version = "0.26.8"
 backend = "aqua:tree-sitter/tree-sitter"

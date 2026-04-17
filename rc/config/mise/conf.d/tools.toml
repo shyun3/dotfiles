@@ -4,6 +4,7 @@
 ouch = "github:ouch-org/ouch"
 ratarmount = "github:mxmlnkn/ratarmount"
 tldr = "github:tealdeer-rs/tealdeer"
+trash-cli = "pipx:trash-cli"
 
 # Latest release v1.9.4 is several years old and missing several fixes
 ranger = "pipx:git+https://github.com/ranger/ranger.git"
@@ -69,4 +70,14 @@ bin = "tldr"
 postinstall = """
 ln -sf ~/.cache/antidote/tealdeer-rs/tealdeer/completion/zsh_tealdeer \
     ~/.zsh-complete/_tldr
+"""
+
+[tools.trash-cli]
+version = "latest"
+extras = "completion"
+postinstall = """
+cmds=(trash-empty trash-list trash-restore trash-put trash)
+for cmd in ${cmds[@]}; do
+    $cmd --print-completion zsh > ~/.zsh-complete/_$cmd
+done
 """
