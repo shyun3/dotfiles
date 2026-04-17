@@ -47,6 +47,9 @@ Get a temporary copy of `dotdrop`:
 ```sh
 git clone https://github.com/deadc0de6/dotdrop.git /tmp/dotdrop
 cd /tmp/dotdrop
+python3 -m venv venv
+. venv/bin/activate
+python3 -m pip install -r requirements.txt
 ```
 The installation process will include a permanent version of `dotdrop`.
 
