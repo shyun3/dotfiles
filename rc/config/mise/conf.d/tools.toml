@@ -4,9 +4,9 @@
 dotdrop = "pipx:dotdrop"
 ipython = "pipx:ipython"
 mergiraf = "cargo:mergiraf"
-ouch = "github:ouch-org/ouch"
-ratarmount = "github:mxmlnkn/ratarmount"
-tldr = "github:tealdeer-rs/tealdeer"
+ouch = "github:ouch-org/ouch" # cargo doesn't have shell completions
+ratarmount = "pipx:ratarmount"
+tldr = "cargo:tealdeer"
 trash-cli = "pipx:trash-cli"
 
 # Latest release v1.9.4 is several years old and missing several fixes
@@ -79,8 +79,10 @@ ln -sf ~/.cache/antidote/jchook/ranger-zoxide ~/.config/ranger/plugins/zoxide
 
 [tools.ratarmount]
 version = "latest"
-bin = "ratarmount"
-asset_pattern = "*{{ version }}-x86*" # Don't use slim
+uvx_args = "--with argcomplete"
+postinstall = """
+"$MISE_TOOL_INSTALL_PATH/ratarmount/bin/register-python-argcomplete" ratarmount > ~/.zsh-complete/_ratarmount
+"""
 
 [tools.ripgrep]
 version = "latest"
@@ -88,7 +90,6 @@ postinstall = "rg --generate complete-zsh > ~/.zsh-complete/_rg"
 
 [tools.tldr]
 version = "latest"
-bin = "tldr"
 postinstall = """
 wget -O ~/.zsh-complete/_tldr \
     "https://github.com/tealdeer-rs/tealdeer/releases/download/v${MISE_TOOL_INSTALL_PATH##*/}/completions_zsh"

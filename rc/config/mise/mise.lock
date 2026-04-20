@@ -381,46 +381,11 @@ version = "latest"
 backend = "pipx:git+https://github.com/ranger/ranger.git"
 
 [[tools.ratarmount]]
-version = "1.2.2"
-backend = "github:mxmlnkn/ratarmount"
+version = "1.2.3"
+backend = "pipx:ratarmount"
 
 [tools.ratarmount.options]
-asset_pattern = "*{{ version }}-x86*"
-
-[tools.ratarmount."platforms.linux-arm64"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[tools.ratarmount."platforms.linux-arm64-musl"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[tools.ratarmount."platforms.linux-x64"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[tools.ratarmount."platforms.linux-x64-musl"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[tools.ratarmount."platforms.macos-arm64"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[tools.ratarmount."platforms.macos-x64"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
-
-[tools.ratarmount."platforms.windows-x64"]
-checksum = "sha256:4d04fba467b3e6963974d8fca9ac3db35b2bc1c39b2834063eb1326e2dd232a9"
-url = "https://github.com/mxmlnkn/ratarmount/releases/download/v1.2.2/ratarmount-1.2.2-x86_64.AppImage"
-url_api = "https://api.github.com/repos/mxmlnkn/ratarmount/releases/assets/373329158"
+uvx_args = "--with argcomplete"
 
 [[tools.ripgrep]]
 version = "15.1.0"
@@ -460,42 +425,7 @@ backend = "core:rust"
 
 [[tools.tldr]]
 version = "1.8.1"
-backend = "github:tealdeer-rs/tealdeer"
-
-[tools.tldr."platforms.linux-arm64"]
-checksum = "sha256:09d4506b3ba2efe7376e3a5ce1238aa5e6c33ae6f2532c190156540f6c4e7d69"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-linux-aarch64-musl"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243162"
-
-[tools.tldr."platforms.linux-arm64-musl"]
-checksum = "sha256:09d4506b3ba2efe7376e3a5ce1238aa5e6c33ae6f2532c190156540f6c4e7d69"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-linux-aarch64-musl"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243162"
-
-[tools.tldr."platforms.linux-x64"]
-checksum = "sha256:6f2fad4435e0110484d3f25cdc4bf20129dae03238f32d06ebdd00bdc50ae2ed"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-linux-x86_64-musl"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243169"
-
-[tools.tldr."platforms.linux-x64-musl"]
-checksum = "sha256:6f2fad4435e0110484d3f25cdc4bf20129dae03238f32d06ebdd00bdc50ae2ed"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-linux-x86_64-musl"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243169"
-
-[tools.tldr."platforms.macos-arm64"]
-checksum = "sha256:4b3ecca53bdc41bc897c35f6457a6d2bb25aedc00816fdb3c28e947ef2900a34"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-macos-aarch64"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243163"
-
-[tools.tldr."platforms.macos-x64"]
-checksum = "sha256:25e8638dd56998d5b3a41b4d6468484689e1487de2a25033eb6bd8ecb44a5d4a"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-macos-x86_64"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243172"
-
-[tools.tldr."platforms.windows-x64"]
-checksum = "sha256:0fafa28d6503ec2a96efd71c5f1a57c8c547efd72706fd26fc53015415da7eb9"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.8.1/tealdeer-windows-x86_64-msvc.exe"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/315243173"
+backend = "cargo:tealdeer"
 
 [[tools.trash-cli]]
 version = "0.24.5.26"
