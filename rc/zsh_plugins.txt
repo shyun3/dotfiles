@@ -4,7 +4,6 @@
 romkatv/powerlevel10k
 
 # Completions
-mesonbuild/meson kind:fpath path:data/shell-completions/zsh
 zsh-users/zsh-completions kind:fpath path:src
 
 # Assets

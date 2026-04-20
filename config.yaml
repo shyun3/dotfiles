@@ -108,6 +108,9 @@ dotfiles:
   f_yazi.toml:
     src: config/yazi/yazi.toml
     dst: ~/.config/yazi/yazi.toml
+  f_mise.work.toml:
+    src: config/mise/mise.work.toml
+    dst: ~/.config/mise/mise.work.toml
 profiles:
   linux:
     dotfiles:
@@ -137,6 +140,7 @@ profiles:
       - f_package.toml
       - f_keymap.toml
       - f_yazi.toml
+      - f_mise.work.toml
     actions:
       - setup_sh
   wsl-root:
