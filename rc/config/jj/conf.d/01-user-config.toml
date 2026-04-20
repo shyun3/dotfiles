@@ -4,6 +4,7 @@
 default-command = ["util", "exec", "jjui"]
 pager = "delta"
 diff-formatter = ":git" # Required by `delta`
+conflict-marker-style = "git"
 
 [working-copy]
 eol-conversion = "input"
