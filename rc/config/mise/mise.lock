@@ -176,6 +176,13 @@ url = "https://github.com/junegunn/fzf/releases/download/v0.71.0/fzf-0.71.0-darw
 checksum = "sha256:15bf30fa658c596d740f0ce9a9a97b6b5d90566124903657d09fd109dd0973d2"
 url = "https://github.com/junegunn/fzf/releases/download/v0.71.0/fzf-0.71.0-windows_amd64.zip"
 
+[[tools.ipython]]
+version = "9.12.0"
+backend = "pipx:ipython"
+
+[tools.ipython.options]
+extras = "all"
+
 [[tools.jj]]
 version = "0.40.0"
 backend = "aqua:jj-vcs/jj"
@@ -364,10 +371,6 @@ url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/248071214"
 [[tools."pipx:dotdrop"]]
 version = "1.16.1"
 backend = "pipx:dotdrop"
-
-[[tools."pipx:ipython"]]
-version = "9.12.0"
-backend = "pipx:ipython"
 
 [[tools."pipx:pynvim"]]
 version = "0.6.0"

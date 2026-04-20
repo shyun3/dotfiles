@@ -1,6 +1,7 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
 [tool_alias]
+ipython = "pipx:ipython"
 mergiraf = "cargo:mergiraf"
 ouch = "github:ouch-org/ouch"
 ratarmount = "github:mxmlnkn/ratarmount"
@@ -21,12 +22,10 @@ mergiraf = "latest"
 neovim = "latest"
 node = "latest"
 rust = "latest"
-tree-sitter = "latest"
 usage = "latest"
 uv = "latest"
 zoxide = "latest"
 "pipx:dotdrop" = "latest"
-"pipx:ipython" = "latest"
 "pipx:pynvim" = "latest"
 
 [tools.bat]
@@ -44,6 +43,13 @@ mkdir -p ~/.config/eza
 ln -sf \
     ~/.cache/antidote/catppuccin/eza/themes/mocha/catppuccin-mocha-lavender.yml \
     ~/.config/eza/theme.yml
+"""
+
+[tools.ipython]
+version = "latest"
+extras = "all"
+postinstall = """
+"$MISE_TOOL_INSTALL_PATH/ipython/bin/register-python-argcomplete" ipython > ~/.zsh-complete/_ipython
 """
 
 [tools.ouch]
@@ -86,6 +92,15 @@ for cmd in ${cmds[@]}; do
 done
 """
 
+[tools.tree-sitter]
+version = "latest"
+postinstall = "tree-sitter complete --shell zsh > ~/.zsh-complete/_tree-sitter"
+
 [tools.yazi]
 version = "latest"
-postinstall = "ya pkg install"
+postinstall = """
+ya pkg install
+
+cd "$MISE_TOOL_INSTALL_PATH"
+cp */completions/{_ya,_yazi} ~/.zsh-complete
+"""
