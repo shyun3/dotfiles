@@ -1,6 +1,7 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
 [tool_alias]
+mergiraf = "cargo:mergiraf"
 ouch = "github:ouch-org/ouch"
 ratarmount = "github:mxmlnkn/ratarmount"
 tldr = "github:tealdeer-rs/tealdeer"
@@ -10,13 +11,16 @@ trash-cli = "pipx:trash-cli"
 ranger = "pipx:git+https://github.com/ranger/ranger.git"
 
 [tools]
+cargo-binstall = "latest"
 fd = "latest"
 fzf = "latest"
 jj = "latest"
 jjui = "latest"
 lazygit = "latest"
+mergiraf = "latest"
 neovim = "latest"
 node = "latest"
+rust = "latest"
 tree-sitter = "latest"
 usage = "latest"
 uv = "latest"
