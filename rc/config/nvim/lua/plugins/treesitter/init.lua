@@ -40,8 +40,10 @@ return {
         callback = function(args)
           local bufnr = args.buf
           local ok, _ = pcall(vim.treesitter.start, bufnr)
+          if not ok then return end
 
-          if ok and opts._my_parsers[args.match] then
+          local lang = vim.treesitter.language.get_lang(args.match)
+          if opts._my_parsers[lang] then
             vim.bo[bufnr].indentexpr =
               "v:lua.require'nvim-treesitter'.indentexpr()"
           end
