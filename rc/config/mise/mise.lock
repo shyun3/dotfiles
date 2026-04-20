@@ -92,6 +92,10 @@ url = "https://github.com/dandavison/delta/releases/download/0.19.2/delta-0.19.2
 checksum = "sha256:ac8ebb4a9f1cbee8b9ea897ba119808a244181adae6f3bed1f3b6b923c50b557"
 url = "https://github.com/dandavison/delta/releases/download/0.19.2/delta-0.19.2-x86_64-pc-windows-msvc.zip"
 
+[[tools.dotdrop]]
+version = "1.16.1"
+backend = "pipx:dotdrop"
+
 [[tools.eza]]
 version = "0.23.4"
 backend = "aqua:eza-community/eza"
@@ -367,10 +371,6 @@ url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/248071210"
 [tools.ouch."platforms.windows-x64"]
 url = "https://github.com/ouch-org/ouch/releases/download/0.6.1/ouch-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/248071214"
-
-[[tools."pipx:dotdrop"]]
-version = "1.16.1"
-backend = "pipx:dotdrop"
 
 [[tools."pipx:pynvim"]]
 version = "0.6.0"

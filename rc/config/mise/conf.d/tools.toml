@@ -1,6 +1,7 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
 [tool_alias]
+dotdrop = "pipx:dotdrop"
 ipython = "pipx:ipython"
 mergiraf = "cargo:mergiraf"
 ouch = "github:ouch-org/ouch"
@@ -13,7 +14,6 @@ ranger = "pipx:git+https://github.com/ranger/ranger.git"
 
 [tools]
 cargo-binstall = "latest"
-fd = "latest"
 fzf = "latest"
 jj = "latest"
 jjui = "latest"
@@ -24,8 +24,6 @@ node = "latest"
 rust = "latest"
 usage = "latest"
 uv = "latest"
-zoxide = "latest"
-"pipx:dotdrop" = "latest"
 "pipx:pynvim" = "latest"
 
 [tools.bat]
@@ -36,14 +34,28 @@ postinstall = "bat --completion zsh > ~/.zsh-complete/_bat"
 version = "latest"
 postinstall = "delta --generate-completion zsh > ~/.zsh-complete/_delta"
 
+[tools.dotdrop]
+version = "latest"
+postinstall = """
+wget -O ~/.zsh-complete/_dotdrop \
+    "https://raw.githubusercontent.com/deadc0de6/dotdrop/refs/tags/v${MISE_TOOL_INSTALL_PATH##*/}/completion/_dotdrop-completion.zsh"
+"""
+
 [tools.eza]
 version = "latest"
 postinstall = """
+wget -P ~/.zsh-complete \
+    "https://raw.githubusercontent.com/eza-community/eza/refs/tags/v${MISE_TOOL_INSTALL_PATH##*/}/completions/zsh/_eza"
+
 mkdir -p ~/.config/eza
 ln -sf \
     ~/.cache/antidote/catppuccin/eza/themes/mocha/catppuccin-mocha-lavender.yml \
     ~/.config/eza/theme.yml
 """
+
+[tools.fd]
+version = "latest"
+postinstall = "fd --gen-completions zsh > ~/.zsh-complete/_fd"
 
 [tools.ipython]
 version = "latest"
@@ -78,8 +90,8 @@ postinstall = "rg --generate complete-zsh > ~/.zsh-complete/_rg"
 version = "latest"
 bin = "tldr"
 postinstall = """
-ln -sf ~/.cache/antidote/tealdeer-rs/tealdeer/completion/zsh_tealdeer \
-    ~/.zsh-complete/_tldr
+wget -O ~/.zsh-complete/_tldr \
+    "https://github.com/tealdeer-rs/tealdeer/releases/download/v${MISE_TOOL_INSTALL_PATH##*/}/completions_zsh"
 """
 
 [tools.trash-cli]
@@ -103,4 +115,11 @@ ya pkg install
 
 cd "$MISE_TOOL_INSTALL_PATH"
 cp */completions/{_ya,_yazi} ~/.zsh-complete
+"""
+
+[tools.zoxide]
+version = "latest"
+postinstall = """
+wget -P ~/.zsh-complete \
+    "https://raw.githubusercontent.com/ajeetdsouza/zoxide/refs/tags/v${MISE_TOOL_INSTALL_PATH##*/}/contrib/completions/_zoxide"
 """
