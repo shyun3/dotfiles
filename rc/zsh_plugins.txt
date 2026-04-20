@@ -10,6 +10,7 @@ sharkdp/fd kind:fpath path:contrib/completion
 mesonbuild/meson kind:fpath path:data/shell-completions/zsh
 ajeetdsouza/zoxide kind:fpath path:contrib/completions
 tealdeer-rs/tealdeer kind:clone
+zsh-users/zsh-completions kind:fpath path:src
 
 # Assets
 catppuccin/delta kind:clone
