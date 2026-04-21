@@ -37,14 +37,14 @@ postinstall = "delta --generate-completion zsh > ~/.zsh-complete/_delta"
 [tools.dotdrop]
 version = "latest"
 postinstall = """
-wget -O ~/.zsh-complete/_dotdrop \
+curl -Lo ~/.zsh-complete/_dotdrop \
     "https://raw.githubusercontent.com/deadc0de6/dotdrop/refs/tags/v${MISE_TOOL_INSTALL_PATH##*/}/completion/_dotdrop-completion.zsh"
 """
 
 [tools.eza]
 version = "latest"
 postinstall = """
-wget -P ~/.zsh-complete \
+curl --output-dir ~/.zsh-complete -LO \
     "https://raw.githubusercontent.com/eza-community/eza/refs/tags/v${MISE_TOOL_INSTALL_PATH##*/}/completions/zsh/_eza"
 
 mkdir -p ~/.config/eza
@@ -91,7 +91,7 @@ postinstall = "rg --generate complete-zsh > ~/.zsh-complete/_rg"
 [tools.tldr]
 version = "latest"
 postinstall = """
-wget -O ~/.zsh-complete/_tldr \
+curl -Lo ~/.zsh-complete/_tldr \
     "https://github.com/tealdeer-rs/tealdeer/releases/download/v${MISE_TOOL_INSTALL_PATH##*/}/completions_zsh"
 """
 
@@ -121,6 +121,6 @@ cp */completions/{_ya,_yazi} ~/.zsh-complete
 [tools.zoxide]
 version = "latest"
 postinstall = """
-wget -P ~/.zsh-complete \
+curl --output-dir ~/.zsh-complete -LO \
     "https://raw.githubusercontent.com/ajeetdsouza/zoxide/refs/tags/v${MISE_TOOL_INSTALL_PATH##*/}/contrib/completions/_zoxide"
 """
