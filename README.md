@@ -46,10 +46,12 @@ git clone git@github.com:shyun3/dotfiles.git ~/.config/dotdrop
 Get a temporary copy of `dotdrop`:
 ```sh
 git clone https://github.com/deadc0de6/dotdrop.git /tmp/dotdrop
+
 cd /tmp/dotdrop
 python3 -m venv venv
-. venv/bin/activate
-python3 -m pip install -r requirements.txt
+
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 The installation process will include a permanent version of `dotdrop`.
 
@@ -76,6 +78,7 @@ PowerShell by running `wsl --terminate <distroName>`.
 For all Linux distributions:
 ```sh
 ./dotdrop.sh -c ~/.config/dotdrop/config.yaml -p linux install
+deactivate
 ```
 Zsh may need restarting to apply all changes.
 

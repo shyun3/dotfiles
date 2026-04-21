@@ -67,6 +67,6 @@ case "$SHELL" in
     */zsh) ;;
     *)
         echo "Changing shell to zsh..."
-        sudo chsh -s "$(which zsh)" "$USER"
+        sudo chsh --shell "$(which zsh)" "$USER"
         ;;
 esac
