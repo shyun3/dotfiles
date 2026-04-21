@@ -24,6 +24,7 @@ local deps = {
   ["nvim-autopairs"] = "windwp/nvim-autopairs",
   ["nvim-surround"] = "kylechui/nvim-surround",
   ["nvim-treesitter"] = "nvim-treesitter/nvim-treesitter",
+  ["nvim-treesitter-jjconfig"] = "acarapetis/nvim-treesitter-jjconfig",
   oil = "stevearc/oil.nvim",
   snacks = "folke/snacks.nvim",
   tabby = "nanozuki/tabby.nvim",

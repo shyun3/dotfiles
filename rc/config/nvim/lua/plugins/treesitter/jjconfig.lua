@@ -20,7 +20,23 @@ return {
   },
 
   {
-    "acarapetis/nvim-treesitter-jjconfig",
+    LazyDep("nvim-treesitter"),
+    optional = true,
+
+    dependencies = LazyDep("nvim-treesitter-jjconfig"),
+
+    opts = {
+      _my_parsers = {
+        jjconfig = true,
+        jjrevset = true,
+        jjtemplate = true,
+        jjui = true,
+      },
+    },
+  },
+
+  {
+    LazyDep("nvim-treesitter-jjconfig"),
     branch = "main",
 
     event = {
@@ -33,15 +49,6 @@ return {
       "User LspEnablePre",
     },
 
-    config = function()
-      require("nvim-treesitter-jjconfig").setup()
-
-      require("nvim-treesitter").install({
-        "jjconfig",
-        "jjrevset",
-        "jjtemplate",
-        "jjui",
-      })
-    end,
+    opts = {},
   },
 }
