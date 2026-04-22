@@ -19,5 +19,6 @@ vim.filetype.add({
     [".gutentags"] = "tags",
     [".ignore"] = "gitignore",
     ["meson.format"] = "cfg",
+    ["mise.lock"] = "toml",
   },
 })
