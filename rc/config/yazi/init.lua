@@ -1,0 +1,1 @@
+require("ratarmount-vfs"):setup()

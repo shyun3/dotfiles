@@ -2,10 +2,10 @@
 linemode = "size"
 
 [[plugin.prepend_previewers]]
-mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}"
-run = "ouch --show-file-icons"
+mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip2,lzma}"
+run = "ratarmount-vfs"
 
 [opener]
 extract = [
-  { run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
+  { run = 'ya pub ratarmount-vfs --list %S', desc = "Enter Ratarmount VFS" },
 ]

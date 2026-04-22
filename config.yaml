@@ -102,15 +102,15 @@ dotfiles:
     src: config/yazi/package.toml
     dst: ~/.config/yazi/package.toml
     link: absolute
-  f_keymap.toml:
-    src: config/yazi/keymap.toml
-    dst: ~/.config/yazi/keymap.toml
   f_yazi.toml:
     src: config/yazi/yazi.toml
     dst: ~/.config/yazi/yazi.toml
   f_mise.work.toml:
     src: config/mise/mise.work.toml
     dst: ~/.config/mise/mise.work.toml
+  f_init.lua:
+    src: config/yazi/init.lua
+    dst: ~/.config/yazi/init.lua
 profiles:
   linux:
     dotfiles:
@@ -138,9 +138,9 @@ profiles:
       - f_settings.toml
       - f_theme.toml
       - f_package.toml
-      - f_keymap.toml
       - f_yazi.toml
       - f_mise.work.toml
+      - f_init.lua
     actions:
       - setup_sh
   wsl-root:
