@@ -3,6 +3,11 @@ use = "ndtoan96/ouch"
 rev = "406ce6c"
 hash = "f5afc904d5106ee368c8aa2ded43bd74"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:types"
+rev = "034efd6"
+hash = "4161cfa043b5ba3341d82c6869007b41"
+
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
 rev = "0670801"
