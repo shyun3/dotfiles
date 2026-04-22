@@ -1,6 +1,6 @@
 [tools.meson]
 version = "latest"
 postinstall = """
-curl --output-dir ~/.zsh-complete -LO \
+curl --output-dir ~/.zsh-complete -fsSLO \
     "https://raw.githubusercontent.com/mesonbuild/meson/refs/tags/${MISE_TOOL_INSTALL_PATH##*/}/data/shell-completions/zsh/_meson"
 """
