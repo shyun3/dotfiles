@@ -283,6 +283,31 @@ url = "https://github.com/jesseduffield/lazygit/releases/download/v0.61.1/lazygi
 checksum = "sha256:6024f3094904caaf9b9672b801cba31a65ad36729a0d2c5a03c432f739c0678b"
 url = "https://github.com/jesseduffield/lazygit/releases/download/v0.61.1/lazygit_0.61.1_windows_x86_64.zip"
 
+[[tools.lua]]
+version = "5.5.0"
+backend = "vfox:mise-plugins/vfox-lua"
+
+[tools.lua."platforms.linux-arm64"]
+url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
+
+[tools.lua."platforms.linux-arm64-musl"]
+url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
+
+[tools.lua."platforms.linux-x64"]
+url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
+
+[tools.lua."platforms.linux-x64-musl"]
+url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
+
+[tools.lua."platforms.macos-arm64"]
+url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
+
+[tools.lua."platforms.macos-x64"]
+url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
+
+[tools.lua."platforms.windows-x64"]
+url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
+
 [[tools.mergiraf]]
 version = "0.16.3"
 backend = "cargo:mergiraf"
