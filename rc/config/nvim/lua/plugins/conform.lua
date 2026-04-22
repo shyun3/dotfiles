@@ -53,8 +53,22 @@ return {
           ["end"] = { args.line2, end_line:len() },
         }
       end
-      require("conform").format({ async = true, range = range })
-    end, { desc = "Format buffer", range = true })
+
+      require("conform").format({
+        async = true,
+        range = range,
+        formatters = #args.fargs > 0 and args.fargs or nil,
+      })
+    end, {
+      desc = "Format buffer",
+      range = true,
+      nargs = "*",
+
+      complete = function()
+        local formatters = require("conform").list_all_formatters()
+        return vim.tbl_map(function(info) return info.name end, formatters)
+      end,
+    })
 
     -- Commands to enable/disable autoformatting, derived from recipe
     vim.api.nvim_create_user_command("AutoFormatDisable", function(args)
