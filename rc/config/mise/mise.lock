@@ -180,6 +180,45 @@ url = "https://github.com/junegunn/fzf/releases/download/v0.71.0/fzf-0.71.0-darw
 checksum = "sha256:15bf30fa658c596d740f0ce9a9a97b6b5d90566124903657d09fd109dd0973d2"
 url = "https://github.com/junegunn/fzf/releases/download/v0.71.0/fzf-0.71.0-windows_amd64.zip"
 
+[[tools."github:ip7z/7zip"]]
+version = "26.00"
+backend = "github:ip7z/7zip"
+
+[tools."github:ip7z/7zip"."platforms.linux-arm64"]
+checksum = "sha256:aa8f3d0a19af9674d3af0ec788b4e261501071e626cd75ad149f1c2c176cc87d"
+url = "https://github.com/ip7z/7zip/releases/download/26.00/7z2600-linux-arm64.tar.xz"
+url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/354783426"
+
+[tools."github:ip7z/7zip"."platforms.linux-arm64-musl"]
+checksum = "sha256:aa8f3d0a19af9674d3af0ec788b4e261501071e626cd75ad149f1c2c176cc87d"
+url = "https://github.com/ip7z/7zip/releases/download/26.00/7z2600-linux-arm64.tar.xz"
+url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/354783426"
+
+[tools."github:ip7z/7zip"."platforms.linux-x64"]
+checksum = "sha256:c74dc4a48492cde43f5fec10d53fb2a66f520e4a62a69d630c44cb22c477edc6"
+url = "https://github.com/ip7z/7zip/releases/download/26.00/7z2600-linux-x64.tar.xz"
+url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/354783459"
+
+[tools."github:ip7z/7zip"."platforms.linux-x64-musl"]
+checksum = "sha256:c74dc4a48492cde43f5fec10d53fb2a66f520e4a62a69d630c44cb22c477edc6"
+url = "https://github.com/ip7z/7zip/releases/download/26.00/7z2600-linux-x64.tar.xz"
+url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/354783459"
+
+[tools."github:ip7z/7zip"."platforms.macos-arm64"]
+checksum = "sha256:8a2ea734b52b2cb7d568f5f13e0a137bea3004b221bdbee53197728a9051c849"
+url = "https://github.com/ip7z/7zip/releases/download/26.00/7z2600-mac.tar.xz"
+url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/354783472"
+
+[tools."github:ip7z/7zip"."platforms.macos-x64"]
+checksum = "sha256:8a2ea734b52b2cb7d568f5f13e0a137bea3004b221bdbee53197728a9051c849"
+url = "https://github.com/ip7z/7zip/releases/download/26.00/7z2600-mac.tar.xz"
+url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/354783472"
+
+[tools."github:ip7z/7zip"."platforms.windows-x64"]
+checksum = "sha256:6fe18d5b3080e39678cabfa6cef12cfb25086377389b803a36a3c43236a8a82c"
+url = "https://github.com/ip7z/7zip/releases/download/26.00/7z2600-x64.exe"
+url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/354783494"
+
 [[tools.ipython]]
 version = "9.12.0"
 backend = "pipx:ipython"
