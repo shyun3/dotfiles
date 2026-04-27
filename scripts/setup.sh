@@ -33,7 +33,13 @@ mkdir -p "$LOCAL_DIR/share/nvim/undo"
 
 #######################################################################
 # Packages
-install_if_missing avfs tree universal-ctags xclip xdg-utils zsh
+#
+# Guidelines for inclusion:
+# - Not present in mise
+# - Same name across Linux distros and macOS
+# - Don't care about version updates
+
+install_if_missing 7zip avfs tree universal-ctags xclip xdg-utils zsh
 
 if [[ $(lsb_release -si 2> /dev/null) == Ubuntu ]]; then
     install_if_missing update-notifier-common

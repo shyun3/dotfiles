@@ -25,7 +25,6 @@ node = "latest"
 rust = "latest"
 usage = "latest"
 uv = "latest"
-"github:ip7z/7zip" = "latest"
 "pipx:pynvim" = "latest"
 
 [tools.bat]
