@@ -21,6 +21,7 @@ return {
       sh = { "shfmt" },
       toml = { "taplo" },
       yaml = { "prettier" },
+      zsh = { "shfmt" },
     },
 
     -- Derived from recipe
