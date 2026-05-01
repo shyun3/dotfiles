@@ -45,7 +45,7 @@ git clone git@github.com:shyun3/dotfiles.git ~/.config/dotdrop
 
 Get a temporary copy of `dotdrop`:
 ```sh
-git clone https://github.com/deadc0de6/dotdrop.git /tmp/dotdrop
+git clone --depth=1 https://github.com/deadc0de6/dotdrop.git /tmp/dotdrop
 
 cd /tmp/dotdrop
 python3 -m venv venv
@@ -75,7 +75,7 @@ sudo ./dotdrop.sh -c ~/.config/dotdrop/config.yaml -p wsl-root install
 WSL needs restarting to apply all changes. A distribution can be shutdown in
 PowerShell by running `wsl --terminate <distroName>`.
 
-For all Linux distributions:
+Then, install the Linux dotfiles (tested on Ubuntu):
 ```sh
 ./dotdrop.sh -c ~/.config/dotdrop/config.yaml -p linux install
 deactivate
