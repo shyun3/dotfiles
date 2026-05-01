@@ -34,26 +34,25 @@ export FZF_DEFAULT_COMMAND=""
 # Taken from: https://github.com/junegunn/fzf/wiki/Examples#git
 # fbr - checkout git branch
 fbr() {
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-           fzf --height 40% -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+    local branches branch
+    branches=$(git branch --all | grep -v HEAD) &&
+        branch=$(echo "$branches" |
+            fzf --height 40% -d $((2 + $(wc -l <<< "$branches"))) +m) &&
+        git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
 # Derived from: https://github.com/junegunn/fzf/wiki/Examples#changing-directory
 # fdr - cd to selected parent directory
 fdr() {
-  local declare dirs=()
-  get_parent_dirs() {
-    if [[ -d "${1}" ]]; then dirs+=("$1"); else return; fi
-    if [[ "${1}" == '/' ]]; then
-      for _dir in "${dirs[@]}"; do echo $_dir; done
-    else
-      get_parent_dirs "$(dirname "$1")"
-    fi
-  }
-  local DIR=$(get_parent_dirs "$(realpath "${1:-$PWD}")" | fzf --height 40% --tac)
-  cd "$DIR"
+    local declare dirs=()
+    get_parent_dirs() {
+        if [[ -d "${1}" ]]; then dirs+=("$1"); else return; fi
+        if [[ "${1}" == '/' ]]; then
+            for _dir in "${dirs[@]}"; do echo $_dir; done
+        else
+            get_parent_dirs "$(dirname "$1")"
+        fi
+    }
+    local DIR=$(get_parent_dirs "$(realpath "${1:-$PWD}")" | fzf --height 40% --tac)
+    cd "$DIR"
 }
-
