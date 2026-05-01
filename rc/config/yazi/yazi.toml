@@ -6,6 +6,9 @@ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip2,lzma}"
 run = "ratarmount-vfs"
 
 [opener]
+edit = [
+  { run = "${VISUAL:-vim} %s", desc = "$VISUAL", for = "unix", block = true },
+]
 extract = [
   { run = 'ya pub ratarmount-vfs --list %S', desc = "Enter Ratarmount VFS" },
 ]
