@@ -40,16 +40,6 @@ dotfiles:
   f_p10k.zsh:
     src: p10k.zsh
     dst: ~/.p10k.zsh
-  f_ranger_commands.py:
-    src: config/ranger/commands.py
-    dst: ~/.config/ranger/commands.py
-  f_ranger_rc.conf:
-    src: config/ranger/rc.conf
-    dst: ~/.config/ranger/rc.conf
-  f_ranger_scope.sh:
-    src: config/ranger/scope.sh
-    dst: ~/.config/ranger/scope.sh
-    chmod: 755
   f_fd_ignore:
     src: config/fd/ignore
     dst: ~/.config/fd/ignore
@@ -120,9 +110,6 @@ profiles:
       - f_zshrc
       - f_p10k.zsh
       - f_fd_ignore
-      - f_ranger_commands.py
-      - f_ranger_rc.conf
-      - f_ranger_scope.sh
       - f_global.ctags
       - f_lazygit_config.yml
       - d_nvim

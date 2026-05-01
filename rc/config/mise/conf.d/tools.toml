@@ -10,9 +10,6 @@ ratarmount = "pipx:ratarmount"
 tldr = "cargo:tealdeer"
 trash-cli = "pipx:trash-cli"
 
-# Latest release v1.9.4 is several years old and missing several fixes
-ranger = "pipx:git+https://github.com/ranger/ranger.git"
-
 [tools]
 7zip = "26"
 cargo-binstall = "latest"
@@ -71,13 +68,6 @@ postinstall = """
 version = "latest"
 postinstall = """
 cp "$MISE_TOOL_INSTALL_PATH/completions/_ouch" ~/.zsh-complete
-"""
-
-[tools.ranger]
-version = "latest"
-postinstall = """
-mkdir -p ~/.config/ranger/plugins
-ln -sf ~/.cache/antidote/jchook/ranger-zoxide ~/.config/ranger/plugins/zoxide
 """
 
 [tools.ratarmount]

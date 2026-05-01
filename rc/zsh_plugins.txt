@@ -13,7 +13,6 @@ catppuccin/fzf kind:clone
 catppuccin/lazygit kind:clone
 catppuccin/zsh-syntax-highlighting kind:clone
 dandavison/delta kind:clone     # For themes
-jchook/ranger-zoxide kind:clone
 
 # Load this before Oh My Zsh
 getantidote/use-omz

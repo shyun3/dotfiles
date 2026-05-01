@@ -446,10 +446,6 @@ url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/402080278"
 version = "0.6.0"
 backend = "pipx:pynvim"
 
-[[tools.ranger]]
-version = "latest"
-backend = "pipx:git+https://github.com/ranger/ranger.git"
-
 [[tools.ratarmount]]
 version = "1.2.3"
 backend = "pipx:ratarmount"
