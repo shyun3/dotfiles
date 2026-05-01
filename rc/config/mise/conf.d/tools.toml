@@ -5,7 +5,7 @@
 dotdrop = "pipx:dotdrop"
 ipython = "pipx:ipython"
 mergiraf = "cargo:mergiraf"
-ouch = "github:ouch-org/ouch" # cargo doesn't have shell completions
+patool = "pipx:patool"
 ratarmount = "pipx:ratarmount"
 tldr = "cargo:tealdeer"
 trash-cli = "pipx:trash-cli"
@@ -64,10 +64,11 @@ postinstall = """
 "$MISE_TOOL_INSTALL_PATH/ipython/bin/register-python-argcomplete" ipython > ~/.zsh-complete/_ipython
 """
 
-[tools.ouch]
+[tools.patool]
 version = "latest"
+extras = "argcompletion"
 postinstall = """
-cp "$MISE_TOOL_INSTALL_PATH/completions/_ouch" ~/.zsh-complete
+"$MISE_TOOL_INSTALL_PATH/patool/bin/register-python-argcomplete" patool > ~/.zsh-complete/_patool
 """
 
 [tools.ratarmount]

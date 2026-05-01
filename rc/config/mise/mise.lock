@@ -408,39 +408,12 @@ url = "https://nodejs.org/dist/v25.9.0/node-v25.9.0-darwin-x64.tar.gz"
 checksum = "sha256:929552b8305effac843ba7b4270c437aefb702fc3fbd73fcd1bffd35d4ac284e"
 url = "https://nodejs.org/dist/v25.9.0/node-v25.9.0-win-x64.zip"
 
-[[tools.ouch]]
-version = "0.7.1"
-backend = "github:ouch-org/ouch"
+[[tools.patool]]
+version = "4.0.4"
+backend = "pipx:patool"
 
-[tools.ouch."platforms.linux-arm64"]
-checksum = "sha256:00548f821e06465f227ab9d9cdf84eb428a7d510e4495eb97f4ad5eaa7588090"
-url = "https://github.com/ouch-org/ouch/releases/download/0.7.1/ouch-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/402080277"
-
-[tools.ouch."platforms.linux-arm64-musl"]
-checksum = "sha256:97f35c182acf21bee2b77d39323ce746863232404c99da11246a31fe02ddd80e"
-url = "https://github.com/ouch-org/ouch/releases/download/0.7.1/ouch-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/402080279"
-
-[tools.ouch."platforms.linux-x64"]
-checksum = "sha256:909d3dbe4b140a0648d1e9741832a8b0f38b903d5499b5eece4f69fb00eb968e"
-url = "https://github.com/ouch-org/ouch/releases/download/0.7.1/ouch-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/402080275"
-
-[tools.ouch."platforms.linux-x64-musl"]
-checksum = "sha256:abe15a6dc8bb7580696b0946dfa6f72d69cc9248593593922f7ce5698ec70ec0"
-url = "https://github.com/ouch-org/ouch/releases/download/0.7.1/ouch-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/402080272"
-
-[tools.ouch."platforms.macos-x64"]
-checksum = "sha256:cca028276945810e7c014a9a9079fe1d087e40ebb0b5d0a7d4ced91ba4c68057"
-url = "https://github.com/ouch-org/ouch/releases/download/0.7.1/ouch-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/402080280"
-
-[tools.ouch."platforms.windows-x64"]
-checksum = "sha256:46f10ae48dae0ac1faf43aa16d1a1d9f8f3cb58c26a460a361b60edd67a657fe"
-url = "https://github.com/ouch-org/ouch/releases/download/0.7.1/ouch-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/ouch-org/ouch/releases/assets/402080278"
+[tools.patool.options]
+extras = "argcompletion"
 
 [[tools."pipx:pynvim"]]
 version = "0.6.0"
