@@ -1,5 +1,3 @@
-local OPEN_MAPPING = "<Leader>t"
-
 --- Helper to create a new floating terminal and open it
 ---
 ---@param cmd string By default, this is also used as the terminal's name
@@ -51,7 +49,7 @@ return {
     version = "*",
 
     opts = {
-      open_mapping = OPEN_MAPPING,
+      open_mapping = false,
       insert_mappings = false,
       terminal_mappings = false,
 
@@ -64,7 +62,11 @@ return {
     },
 
     keys = {
-      OPEN_MAPPING,
+      {
+        "<Leader>t",
+        '<Cmd>execute v:count . "ToggleTerm"<CR>',
+        desc = "Toggle terminal",
+      },
 
       {
         "<Leader>lg",
