@@ -24,6 +24,7 @@ node = "latest"
 rust = "latest"
 usage = "latest"
 uv = "latest"
+vivid = "latest"
 "pipx:pynvim" = "latest"
 
 [tools.bat]
