@@ -35,5 +35,5 @@ evolog_command = [
 ]
 
 [ui.colors]
-# Provides better contrast when using "Catppuccin Mocha"
+# Provides better contrast when using "Catppuccin Mocha" terminal colors
 "confirmation selected" = { bg = "bright black" }
