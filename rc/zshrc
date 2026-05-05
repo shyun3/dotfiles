@@ -111,6 +111,9 @@ alias cdgitroot='cd "$(git rev-parse --show-cdup)"'
 # Used inside .zsh scripts
 ANTIDOTE_CACHE=$HOME/.cache/antidote
 
+# mise-completions-sync
+fpath=(${XDG_DATA_HOME:-$HOME/.local/share}/mise-completions/zsh $fpath)
+
 for file (~/.zsh/pre/**/*.zsh(N.)) source $file
 
 if [[ -f ~/.antidote/antidote.zsh ]]; then

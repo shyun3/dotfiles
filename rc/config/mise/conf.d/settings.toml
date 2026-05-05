@@ -1,6 +1,17 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
+[hooks.postinstall]
+shell = "bash -c"
+run = """
+if [[ -n "$MISE_INSTALLED_TOOLS" ]]; then
+    eval "$(~/.local/bin/mise activate bash)"
+    echo "$MISE_INSTALLED_TOOLS" | mise x jq -- jq -r '.[].name | @sh' |
+        xargs --no-run-if-empty misecompsync --shell zsh
+fi
+"""
+
 [settings]
 color_theme = "catppuccin"
+experimental = true
 lockfile = true
 use_versions_host_track = false

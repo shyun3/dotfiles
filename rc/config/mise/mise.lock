@@ -351,6 +351,10 @@ url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
 version = "0.17.0"
 backend = "cargo:mergiraf"
 
+[[tools.mise-completions-sync]]
+version = "0.5.7"
+backend = "cargo:mise-completions-sync"
+
 [[tools.neovim]]
 version = "0.12.2"
 backend = "vfox:mise-plugins/vfox-neovim"
