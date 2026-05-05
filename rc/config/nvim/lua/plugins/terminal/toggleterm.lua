@@ -1,3 +1,5 @@
+local OPEN_MAPPING = "<Leader>t"
+
 --- Helper to create a new floating terminal and open it
 ---
 ---@param cmd string By default, this is also used as the terminal's name
@@ -15,6 +17,17 @@ local function make_float_term(cmd, args)
 end
 
 return {
+  {
+    LazyDep("which-key"),
+    optional = true,
+
+    opts = {
+      spec = {
+        { OPEN_MAPPING, desc = "Toggle terminal" },
+      },
+    },
+  },
+
   {
     LazyDep("flatten"),
     optional = true,
@@ -49,7 +62,7 @@ return {
     version = "*",
 
     opts = {
-      open_mapping = false,
+      open_mapping = OPEN_MAPPING,
       insert_mappings = false,
       terminal_mappings = false,
 
@@ -62,11 +75,7 @@ return {
     },
 
     keys = {
-      {
-        "<Leader>t",
-        '<Cmd>execute v:count . "ToggleTerm"<CR>',
-        desc = "Toggle terminal",
-      },
+      OPEN_MAPPING,
 
       {
         "<Leader>lg",
