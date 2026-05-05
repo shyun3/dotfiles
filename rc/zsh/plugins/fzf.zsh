@@ -34,6 +34,9 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # fzf plugin updates this, but the default is good enough so reset it
 export FZF_DEFAULT_COMMAND=""
 
+# Currently, no zsh option completion support (see #3349)
+compdef _gnu_generic fzf
+
 # Taken from: https://github.com/junegunn/fzf/wiki/Examples#git
 # fbr - checkout git branch
 fbr() {
