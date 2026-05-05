@@ -4,7 +4,9 @@ fi
 
 # Derived from CTRL-T in fzf key-bindings.zsh
 fzf_zoxide() {
-    LBUFFER="$LBUFFER$(zoxide query -i)"
+    local query=$(zoxide query -i)
+    LBUFFER="$LBUFFER${(q)query}"
+
     local ret=$?
     zle reset-prompt
     return $ret
