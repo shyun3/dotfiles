@@ -24,6 +24,19 @@ return {
       zsh = { "shfmt" },
     },
 
+    formatters = {
+      prettier = {
+        options = {
+          -- By default, prettier tries to infer the parser from the filename
+          -- See formatter_options.md#prettier in conform.nvim
+          ft_parsers = {
+            -- Otherwise, .clangd and others can't be parsed
+            yaml = "yaml",
+          },
+        },
+      },
+    },
+
     -- Derived from recipe
     format_on_save = function(bufnr)
       -- Disable with a global or buffer-local variable
@@ -37,13 +50,8 @@ return {
   config = function(_, opts)
     require("conform").setup(opts)
 
-    -- Force prettier to parse certain filetypes
-    require("conform.formatters").prettier.options.ft_parsers = {
-      -- Otherwise, .clangd and others cannot be parsed
-      yaml = "yaml",
-    }
-
-    -- Command to run async formatting, taken from recipes
+    -- Command to run async formatting, derived from recipes
+    -- Names of formatters to run can be passed as arguments
     vim.api.nvim_create_user_command("Format", function(args)
       local range = nil
       if args.count ~= -1 then
