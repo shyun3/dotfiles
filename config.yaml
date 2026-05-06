@@ -101,6 +101,9 @@ dotfiles:
   f_init.lua:
     src: config/yazi/init.lua
     dst: ~/.config/yazi/init.lua
+  f_rumdl.toml:
+    src: config/rumdl/rumdl.toml
+    dst: ~/.config/rumdl/rumdl.toml
 profiles:
   linux:
     dotfiles:
@@ -128,6 +131,7 @@ profiles:
       - f_yazi.toml
       - f_mise.work.toml
       - f_init.lua
+      - f_rumdl.toml
     actions:
       - setup_sh
   wsl-root:

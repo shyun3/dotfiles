@@ -22,6 +22,7 @@ return {
         "bashls",
         "jsonls",
         "mesonlsp",
+        "rumdl",
         "taplo",
         "ts_query_ls",
         "vimls",

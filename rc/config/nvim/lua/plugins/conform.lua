@@ -16,6 +16,7 @@ return {
       json = { "prettier" },
       jsonc = { "prettier" },
       lua = { "stylua" },
+      markdown = { "rumdl" },
       meson = { "meson" },
       python = { "isort", "black" },
       sh = { "shfmt" },
