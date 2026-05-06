@@ -23,7 +23,6 @@ mergiraf = "latest"
 neovim = "latest"
 node = "latest"
 rust = "latest"
-usage = "latest"
 uv = "latest"
 vivid = "latest"
 "pipx:pynvim" = "latest"
@@ -104,6 +103,10 @@ done
 [tools.tree-sitter]
 version = "latest"
 postinstall = "tree-sitter complete --shell zsh > ~/.zsh-complete/_tree-sitter"
+
+[tools.usage]
+version = "latest"
+postinstall = "usage --completions zsh > ~/.zsh-complete/_usage"
 
 [tools.yazi]
 version = "latest"
