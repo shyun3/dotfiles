@@ -12,6 +12,7 @@ local deps = {
   bqf = "kevinhwang91/nvim-bqf",
   catppuccin = "catppuccin/nvim",
   Comment = "numToStr/Comment.nvim",
+  conform = "stevearc/conform.nvim",
   dap = "mfussenegger/nvim-dap",
   dropbar = "Bekaboo/dropbar.nvim",
   flatten = "willothy/flatten.nvim",

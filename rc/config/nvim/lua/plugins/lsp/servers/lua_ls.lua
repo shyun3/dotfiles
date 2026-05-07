@@ -17,6 +17,17 @@ return {
   },
 
   {
+    LazyDep("conform"),
+    optional = true,
+
+    opts = {
+      formatters_by_ft = {
+        lua = { filter = function(client) return client.name ~= "lua_ls" end },
+      },
+    },
+  },
+
+  {
     LazyDep("mason-lspconfig"),
     optional = true,
 

@@ -1,18 +1,5 @@
 return {
   {
-    LazyDep("mason-lspconfig"),
-    optional = true,
-
-    opts = {
-      automatic_enable = {
-        exclude = {
-          "stylua", -- Only for formatting
-        },
-      },
-    },
-  },
-
-  {
     LazyDep("mason-tool-installer"),
 
     -- Ensure installed does not work on VeryLazy, see #39
@@ -26,7 +13,6 @@ return {
         "isort",
         "prettier",
         "shfmt",
-        "stylua",
 
         -- Linters
         "shellcheck",

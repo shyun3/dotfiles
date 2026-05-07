@@ -1,5 +1,5 @@
 return {
-  "stevearc/conform.nvim",
+  LazyDep("conform"),
 
   -- Derived from lazy loading recipe
   event = "BufWritePre",
@@ -15,7 +15,6 @@ return {
       cpp = { "clang-format" },
       json = { "prettier" },
       jsonc = { "prettier" },
-      lua = { "stylua" },
       markdown = { "rumdl" },
       meson = { "meson" },
       python = { "isort", "black" },

@@ -14,7 +14,7 @@ return {
     LazyDep("mason-lspconfig"),
     event = "VeryLazy",
 
-    opts_extend = { "ensure_installed", "automatic_enable.exclude" },
+    opts_extend = { "ensure_installed" },
 
     opts = {
       ensure_installed = {
@@ -23,6 +23,7 @@ return {
         "jsonls",
         "mesonlsp",
         "rumdl",
+        "stylua",
         "taplo",
         "ts_query_ls",
         "vimls",
