@@ -10,31 +10,27 @@ return {
   opts = {
     default_format_opts = { lsp_format = "fallback" },
 
+    -- LSP is preferred since it can reduce dependencies. Neovim may also send
+    -- relevant editor settings to the LSP, see `:h vim.lsp.buf.format()`.
     formatters_by_ft = {
-      c = { "clang-format" },
-      cpp = { "clang-format" },
       json = { "prettier" },
       jsonc = { "prettier" },
-      markdown = { "rumdl" },
-      meson = { "meson" },
-      python = { "isort", "black" },
-      sh = { "shfmt" },
-      toml = { "taplo" },
-      yaml = { "prettier" },
-      zsh = { "shfmt" },
-    },
 
-    formatters = {
-      prettier = {
-        options = {
-          -- By default, prettier tries to infer the parser from the filename
-          -- See formatter_options.md#prettier in conform.nvim
-          ft_parsers = {
-            -- Otherwise, .clangd and others can't be parsed
-            yaml = "yaml",
-          },
-        },
+      meson = {
+        -- Default formatting doesn't seem to match `meson format`
+        -- See mesonlsp#198
+        "meson",
       },
+
+      python = { "isort", "black" },
+
+      sh = {
+        -- bash-language-server doesn't support `shfmt` EditorConfig extensions
+        -- See bash-language-server#1351
+        "shfmt",
+      },
+
+      zsh = { "shfmt" },
     },
 
     -- Derived from recipe

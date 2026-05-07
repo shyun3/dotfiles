@@ -9,7 +9,6 @@ return {
       ensure_installed = {
         -- Formatters
         "black",
-        { "clang-format", version = "22.1.5" },
         "isort",
         "prettier",
         "shfmt",
