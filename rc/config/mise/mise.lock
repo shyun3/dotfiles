@@ -259,36 +259,36 @@ checksum = "sha256:1c5ac3015caf0b15ae81cbafa1d94024dbd17b5dff933204d489787dfb95f
 url = "https://github.com/jj-vcs/jj/releases/download/v0.41.0/jj-v0.41.0-x86_64-pc-windows-msvc.zip"
 
 [[tools.jjui]]
-version = "0.10.4"
+version = "0.10.5"
 backend = "aqua:idursun/jjui"
 
 [tools.jjui."platforms.linux-arm64"]
-checksum = "sha256:34ff750e2525e6a34f199e507ecec93c8e2d2a2019c707591be4cabe7b40bd2d"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.4/jjui-0.10.4-linux-arm64.zip"
+checksum = "sha256:9ff372e08ec6a290fe09fbb3d3dafa22bbfe9ad69b99d0e981a370b73ed372bc"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-linux-arm64.zip"
 
 [tools.jjui."platforms.linux-arm64-musl"]
-checksum = "sha256:34ff750e2525e6a34f199e507ecec93c8e2d2a2019c707591be4cabe7b40bd2d"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.4/jjui-0.10.4-linux-arm64.zip"
+checksum = "sha256:9ff372e08ec6a290fe09fbb3d3dafa22bbfe9ad69b99d0e981a370b73ed372bc"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-linux-arm64.zip"
 
 [tools.jjui."platforms.linux-x64"]
-checksum = "sha256:9dbcfd624e9ec59d69d156c9d1d5c4da2a0f55c6c95dfec7f4ef7de2c8abd1a1"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.4/jjui-0.10.4-linux-amd64.zip"
+checksum = "sha256:f33b10edc9159a418436f23282afd3d8b52d2fb7cffa6e84f0f8cc0a9a80d4b1"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-linux-amd64.zip"
 
 [tools.jjui."platforms.linux-x64-musl"]
-checksum = "sha256:9dbcfd624e9ec59d69d156c9d1d5c4da2a0f55c6c95dfec7f4ef7de2c8abd1a1"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.4/jjui-0.10.4-linux-amd64.zip"
+checksum = "sha256:f33b10edc9159a418436f23282afd3d8b52d2fb7cffa6e84f0f8cc0a9a80d4b1"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-linux-amd64.zip"
 
 [tools.jjui."platforms.macos-arm64"]
-checksum = "sha256:2c1df5a3ceeb77404b15e9e9148d95d85ef041ff7c8aec473713878747455b08"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.4/jjui-0.10.4-darwin-arm64.zip"
+checksum = "sha256:e3c3304fa7d80cd0a2da4b21b9a4597420fce90fca44fea99b0a969708e931e2"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-darwin-arm64.zip"
 
 [tools.jjui."platforms.macos-x64"]
-checksum = "sha256:176c409f2ca22045532430318e2c138a8afff366f22c33b6c0df2348057adf31"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.4/jjui-0.10.4-darwin-amd64.zip"
+checksum = "sha256:62839294bfa9b26e5e5d74bb3b6ed96e5ed83f118173e0190aeb752ed076be7c"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-darwin-amd64.zip"
 
 [tools.jjui."platforms.windows-x64"]
-checksum = "sha256:dd3930c4612ec1b5ce0e9ef846a22f8227dd0bc6d6d5b71c4a36d47c76552680"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.4/jjui-0.10.4-windows-amd64.zip"
+checksum = "sha256:2623b2b21512123c921b02586c7d2654792f0b38516a41e08d294d3e0cf66dc0"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-windows-amd64.zip"
 
 [[tools.jq]]
 version = "1.8.1"
@@ -387,7 +387,7 @@ url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
 url = "https://www.lua.org/ftp/lua-5.5.0.tar.gz"
 
 [[tools.mergiraf]]
-version = "0.16.3"
+version = "0.17.0"
 backend = "cargo:mergiraf"
 
 [[tools.neovim]]
@@ -458,7 +458,7 @@ version = "0.6.0"
 backend = "pipx:pynvim"
 
 [[tools.ratarmount]]
-version = "1.2.3"
+version = "1.3.0"
 backend = "pipx:ratarmount"
 
 [tools.ratarmount.options]
@@ -583,42 +583,42 @@ checksum = "sha256:628b8743d552f2cff2dee2b783a4827ef555409def3fb9ec536117d96cda2
 url = "https://github.com/jdx/usage/releases/download/v3.3.0/usage-x86_64-pc-windows-msvc.zip"
 
 [[tools.uv]]
-version = "0.11.11"
+version = "0.11.14"
 backend = "aqua:astral-sh/uv"
 
 [tools.uv."platforms.linux-arm64"]
-checksum = "sha256:0fc9a49b3900f77ffaccf3ff69a70ddbc1d479e70ac5d8fd6416a7577b03c5a1"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:d7d3966e46915c5f6932692aaf152a2473eecb1d2517ca4f8e88a07484b380b6"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-aarch64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-arm64-musl"]
-checksum = "sha256:0fc9a49b3900f77ffaccf3ff69a70ddbc1d479e70ac5d8fd6416a7577b03c5a1"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:d7d3966e46915c5f6932692aaf152a2473eecb1d2517ca4f8e88a07484b380b6"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-aarch64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:80521f18ba83109acd17e0730bd8ff898c3426aa62252c627d63418b353e788a"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:077d36f45a0cc6d440b653b2d5c53e7731121e99e54b0221267eec5d1cae76ce"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-musl"]
-checksum = "sha256:80521f18ba83109acd17e0730bd8ff898c3426aa62252c627d63418b353e788a"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:077d36f45a0cc6d440b653b2d5c53e7731121e99e54b0221267eec5d1cae76ce"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-arm64"]
-checksum = "sha256:3a185bf8f46a7b7c8b910d111825907b1638d0ae503cb3c333ae205772354046"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:4333af5c0730d94323a7819bbdf87ce92dd07fc857d67fff0059e0fca31b5c02"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-aarch64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-x64"]
-checksum = "sha256:57a1a8085b4088fbcbd5080c0c30723ba6d0692c89cd071c08a4209e8da602d1"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:9836c1440b0bd6aa5f81793648a339bd01d593b7b8f575de3b855dae4ab64654"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.windows-x64"]
-checksum = "sha256:2f75a0db2c3530b6b3c24434dc38137f61ff1f4e5f2d7b4ddc5bcd142cf58b65"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:52ba5d19409aaa688a8a1a6ec8dfb6a4817230d20186e75f4006105c3e39a846"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-pc-windows-msvc.zip"
 provenance = "github-attestations"
 
 [[tools.vivid]]
