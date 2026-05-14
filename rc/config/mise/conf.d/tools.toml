@@ -67,7 +67,7 @@ postinstall = """
 """
 
 [tools.ratarmount]
-version = "latest"
+version = "1.2.3" # Due to ratarmount#191
 uvx_args = "--with argcomplete"
 postinstall = """
 "$MISE_TOOL_INSTALL_PATH/ratarmount/bin/register-python-argcomplete" ratarmount > ~/.zsh-complete/_ratarmount
