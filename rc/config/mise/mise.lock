@@ -8,36 +8,43 @@ backend = "github:ip7z/7zip"
 checksum = "sha256:39f8c9070c300a63c7484d9a983119ef3edf841e1ddf69f1affae29fdec5f612"
 url = "https://github.com/ip7z/7zip/releases/download/26.01/7z2601-linux-arm64.tar.xz"
 url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/406732445"
+github_attestations = "unavailable"
 
 [tools.7zip."platforms.linux-arm64-musl"]
 checksum = "sha256:39f8c9070c300a63c7484d9a983119ef3edf841e1ddf69f1affae29fdec5f612"
 url = "https://github.com/ip7z/7zip/releases/download/26.01/7z2601-linux-arm64.tar.xz"
 url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/406732445"
+github_attestations = "unavailable"
 
 [tools.7zip."platforms.linux-x64"]
 checksum = "sha256:8ea0fc8a135e7b848e80a4116fe22dff56c8c4518dde1f43cce67f4e340b437a"
 url = "https://github.com/ip7z/7zip/releases/download/26.01/7z2601-linux-x64.tar.xz"
 url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/406732449"
+github_attestations = "unavailable"
 
 [tools.7zip."platforms.linux-x64-musl"]
 checksum = "sha256:8ea0fc8a135e7b848e80a4116fe22dff56c8c4518dde1f43cce67f4e340b437a"
 url = "https://github.com/ip7z/7zip/releases/download/26.01/7z2601-linux-x64.tar.xz"
 url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/406732449"
+github_attestations = "unavailable"
 
 [tools.7zip."platforms.macos-arm64"]
 checksum = "sha256:0b6b930dbf82742e3f1014c35072a6b8b3aab183fece348e7f723675f1c5bea2"
 url = "https://github.com/ip7z/7zip/releases/download/26.01/7z2601-mac.tar.xz"
 url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/406732461"
+github_attestations = "unavailable"
 
 [tools.7zip."platforms.macos-x64"]
 checksum = "sha256:0b6b930dbf82742e3f1014c35072a6b8b3aab183fece348e7f723675f1c5bea2"
 url = "https://github.com/ip7z/7zip/releases/download/26.01/7z2601-mac.tar.xz"
 url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/406732461"
+github_attestations = "unavailable"
 
 [tools.7zip."platforms.windows-x64"]
 checksum = "sha256:d64a0468f5b5b0b0fc5b2188450bcd655b70809d97b1c4535f2884635094377d"
 url = "https://github.com/ip7z/7zip/releases/download/26.01/7z2601-x64.exe"
 url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/406732487"
+github_attestations = "unavailable"
 
 [[tools.bat]]
 version = "0.26.1"
@@ -78,30 +85,37 @@ backend = "aqua:cargo-bins/cargo-binstall"
 [tools.cargo-binstall."platforms.linux-arm64"]
 checksum = "sha256:2001eee8da26705ad9627e57a25c23eb4639647521205f3e4a7b4e09d067d199"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-aarch64-unknown-linux-musl.tgz"
+provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-arm64-musl"]
 checksum = "sha256:2001eee8da26705ad9627e57a25c23eb4639647521205f3e4a7b4e09d067d199"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-aarch64-unknown-linux-musl.tgz"
+provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-x64"]
 checksum = "sha256:4a50fcf01418862e2fa8e4076cb6cb80ff4061b0c0b1464e71a63ce01ee29bde"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-x64-musl"]
 checksum = "sha256:4a50fcf01418862e2fa8e4076cb6cb80ff4061b0c0b1464e71a63ce01ee29bde"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.macos-arm64"]
 checksum = "sha256:bf9da6a27e432784f361cfbc70a6d04e548abc548470ae9a7587c3cffb8fb0a7"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-aarch64-apple-darwin.zip"
+provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.macos-x64"]
 checksum = "sha256:39257851fe4fd8cc9dd81fb318f15d589b7178b74165879eddeda8062bd9fcf2"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-apple-darwin.zip"
+provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.windows-x64"]
 checksum = "sha256:dd1f425c177aa1a57c9b17883ff76257f913a5f0afb35424f0767c6984164b7f"
 url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-pc-windows-msvc.zip"
+provenance = "github-attestations"
 
 [[tools.delta]]
 version = "0.19.2"
@@ -389,7 +403,7 @@ checksum = "sha256:fcb4c339eef70c909cae72091008a6497278e2d0fcd221c0653068cf4ea4f
 url = "https://nodejs.org/dist/v26.1.0/node-v26.1.0-linux-arm64.tar.gz"
 
 [tools.node."platforms.linux-arm64-musl"]
-checksum = "sha256:16c0b1bde1a474af0ab3369fa7e7ad3c75c6d4898bfadc1acb8ef511d3324767"
+checksum = "sha256:7ced1d983bbb9245c97dbc7de329663da49bd88aca6f7baaed9baf2f6fac7d33"
 url = "https://unofficial-builds.nodejs.org/download/release/v26.1.0/node-v26.1.0-linux-arm64-musl.tar.gz"
 
 [tools.node."platforms.linux-x64"]
@@ -397,6 +411,7 @@ checksum = "sha256:62d555c329e05e3625109f2e3a8b5195b368d5ef38266292469d32f63cd98
 url = "https://nodejs.org/dist/v26.1.0/node-v26.1.0-linux-x64.tar.gz"
 
 [tools.node."platforms.linux-x64-musl"]
+checksum = "sha256:e302e820cea1007dfe68f5faaa23c8ed5a7099ad48cf068d6debf3d4958faaef"
 url = "https://unofficial-builds.nodejs.org/download/release/v26.1.0/node-v26.1.0-linux-x64-musl.tar.gz"
 
 [tools.node."platforms.macos-arm64"]
