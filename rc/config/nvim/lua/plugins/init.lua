@@ -60,33 +60,6 @@ return {
   },
 
   {
-    "iamcco/markdown-preview.nvim",
-
-    -- Taken from https://github.com/iamcco/markdown-preview.nvim/issues/690#issuecomment-2782326124
-    build = ":call mkdp#util#install()",
-
-    -- For some reason, this is needed as the key mapping fails on first use
-    ft = "markdown",
-
-    config = function()
-      -- This plugin uses `cmd.exe` even on WSL
-      -- See https://github.com/iamcco/markdown-preview.nvim/issues/710
-      if vim.fn.has("wsl") == 1 then
-        vim.env.PATH = vim.env.PATH .. ":/mnt/c/Windows/System32/"
-      end
-    end,
-
-    keys = {
-      {
-        "<Leader>mp",
-        "<Cmd>MarkdownPreview<CR>",
-        ft = "markdown",
-        desc = "Markdown preview",
-      },
-    },
-  },
-
-  {
     "monkoose/matchparen.nvim",
     event = "UIEnter",
 
@@ -264,5 +237,21 @@ return {
 
       require("vimade").setup(opts)
     end,
+  },
+
+  {
+    "jannis-baum/vivify.vim",
+
+    -- Needs to be loaded before key mapping to set up autocommands
+    ft = "markdown",
+
+    keys = {
+      {
+        "<Leader>mp",
+        "<Cmd>Vivify<CR>",
+        ft = "markdown",
+        desc = "Markdown preview",
+      },
+    },
   },
 }

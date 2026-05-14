@@ -31,6 +31,7 @@ rust = "latest"
 tree-sitter = "latest"
 uv = "latest"
 vivid = "latest"
+"github:jannis-baum/vivify" = "latest"
 "pipx:pynvim" = "latest"
 
 [tools.dotdrop]

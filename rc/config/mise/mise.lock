@@ -233,6 +233,34 @@ url = "https://github.com/junegunn/fzf/releases/download/v0.72.0/fzf-0.72.0-darw
 checksum = "sha256:cce66ae7e442030334927bfbfd917690713e63d215aba93027f99807828fe239"
 url = "https://github.com/junegunn/fzf/releases/download/v0.72.0/fzf-0.72.0-windows_amd64.zip"
 
+[[tools."github:jannis-baum/vivify"]]
+version = "0.14.0"
+backend = "github:jannis-baum/vivify"
+
+[tools."github:jannis-baum/vivify"."platforms.linux-arm64"]
+checksum = "sha256:f88696eec6eb9f10a0ca7ac4a1803d5617e31b8b65b831f992108f983ed8b1b2"
+url = "https://github.com/jannis-baum/Vivify/releases/download/v0.14.0/vivify-linux.tar.gz"
+url_api = "https://api.github.com/repos/jannis-baum/Vivify/releases/assets/397142921"
+github_attestations = "unavailable"
+
+[tools."github:jannis-baum/vivify"."platforms.linux-arm64-musl"]
+checksum = "sha256:f88696eec6eb9f10a0ca7ac4a1803d5617e31b8b65b831f992108f983ed8b1b2"
+url = "https://github.com/jannis-baum/Vivify/releases/download/v0.14.0/vivify-linux.tar.gz"
+url_api = "https://api.github.com/repos/jannis-baum/Vivify/releases/assets/397142921"
+github_attestations = "unavailable"
+
+[tools."github:jannis-baum/vivify"."platforms.linux-x64"]
+checksum = "sha256:f88696eec6eb9f10a0ca7ac4a1803d5617e31b8b65b831f992108f983ed8b1b2"
+url = "https://github.com/jannis-baum/Vivify/releases/download/v0.14.0/vivify-linux.tar.gz"
+url_api = "https://api.github.com/repos/jannis-baum/Vivify/releases/assets/397142921"
+github_attestations = "unavailable"
+
+[tools."github:jannis-baum/vivify"."platforms.linux-x64-musl"]
+checksum = "sha256:f88696eec6eb9f10a0ca7ac4a1803d5617e31b8b65b831f992108f983ed8b1b2"
+url = "https://github.com/jannis-baum/Vivify/releases/download/v0.14.0/vivify-linux.tar.gz"
+url_api = "https://api.github.com/repos/jannis-baum/Vivify/releases/assets/397142921"
+github_attestations = "unavailable"
+
 [[tools.ipython]]
 version = "9.13.0"
 backend = "pipx:ipython"
