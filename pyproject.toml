@@ -1,6 +1,0 @@
-[tool.black]
-# For breaking long strings
-unstable = true
-
-[tool.isort]
-profile = "black"
