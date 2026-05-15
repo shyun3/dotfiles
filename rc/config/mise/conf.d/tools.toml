@@ -1,7 +1,7 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
 [tool_alias]
-7zip = "github:ip7z/7zip"
+7zip = "aqua:ip7z/7zip"
 dotdrop = "pipx:dotdrop"
 ipython = "pipx:ipython"
 mergiraf = "cargo:mergiraf"

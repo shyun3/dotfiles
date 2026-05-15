@@ -2,13 +2,11 @@
 
 [[tools.7zip]]
 version = "26.01"
-backend = "github:ip7z/7zip"
+backend = "aqua:ip7z/7zip"
 
 [tools.7zip."platforms.linux-x64"]
 checksum = "sha256:8ea0fc8a135e7b848e80a4116fe22dff56c8c4518dde1f43cce67f4e340b437a"
 url = "https://github.com/ip7z/7zip/releases/download/26.01/7z2601-linux-x64.tar.xz"
-url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/406732449"
-github_attestations = "unavailable"
 
 [[tools.bat]]
 version = "0.26.1"
