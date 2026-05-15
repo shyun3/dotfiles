@@ -1,17 +1,17 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "ac82af3"
-hash = "4161cfa043b5ba3341d82c6869007b41"
+rev = "5d5c480"
+hash = "9105494e98299f392aee95340066da9f"
 
 [[plugin.deps]]
 use = "shyun3/ratarmount-vfs"
-rev = "e8b0b3e"
-hash = "925bac403e8f95812177fbcdc2feec1"
+rev = "76e57f3"
+hash = "d4f0bbf0ba270334cd64d9c2503bfe9d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "ac82af3"
-hash = "eff8ff12fa4e5f035a10d8aeeb4c258d"
+rev = "5d5c480"
+hash = "7b625412411be411153886894d9acaf"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
