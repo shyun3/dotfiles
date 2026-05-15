@@ -14,4 +14,5 @@ fi
 color_theme = "catppuccin"
 experimental = true
 lockfile = true
+lockfile_platforms = ["linux-x64"]
 use_versions_host_track = false
