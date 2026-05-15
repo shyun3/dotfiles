@@ -1,2 +1,6 @@
+# By default, Taplo only includes TOML files
+# See https://taplo.tamasfe.dev/configuration/file.html#include
+include = ["**/mise.lock", "**/*.toml"]
+
 [formatting]
 align_comments = false
