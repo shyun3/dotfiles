@@ -3,9 +3,6 @@
 source $ANTIDOTE_CACHE/catppuccin/fzf/themes/catppuccin-fzf-mocha.sh
 export FZF_DEFAULT_OPTS="$(echo "$FZF_DEFAULT_OPTS" | sed -E 's/,bg:[^,]+//g')"
 
-# Include directories to walk (default is file,follow,hidden)
-FZF_DEFAULT_OPTS+=' --walker=file,dir,follow,hidden'
-
 # Add jj folder to default skipped
 FZF_DEFAULT_OPTS+=' --walker-skip=.git,node_modules,.jj'
 
