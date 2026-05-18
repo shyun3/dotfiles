@@ -97,6 +97,7 @@
     midnight_commander      # midnight commander shell (https://midnight-commander.org/)
     nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
     chezmoi_shell           # chezmoi shell (https://www.chezmoi.io/)
+    my_mise
     # vi_mode               # vi mode (you don't need this if you've enabled prompt_char)
     # vpn_ip                # virtual private network indicator
     # load                  # CPU load
@@ -1989,6 +1990,33 @@
 
   # finally, initialize and register the worker and callbacks.
   _my_jj_async_init
+
+  #######################################################################
+
+  typeset -g POWERLEVEL9K_MY_MISE_FOREGROUND=red
+  typeset -g POWERLEVEL9K_MY_MISE_BACKGROUND=black
+  typeset -g POWERLEVEL9K_MY_MISE_VISUAL_IDENTIFIER_EXPANSION=$'\Uf0b7c ' # 󰭼
+
+  prompt_my_mise() {
+    if ! (($+commands[mise])); then
+      return
+    fi
+
+    # The last path is assumed to be the most local config. It is also assumed
+    # that `mise` resolves symlinks. But all paths seem to be abbreviated
+    # using ~ when possible.
+    local cfg_line=$(mise config ls | tail -n 1)
+
+    # There is at least 1 space between the end of the config path and the
+    # start of the list of tools on each line. The tools are always delimited
+    # by commas.
+    if [[ $cfg_line =~ '^(.*)/.*\.toml +' ]]; then
+      local cfg_dir=${match[1]/#\~/$HOME}
+      if [[ "$(pwd -P)/" == ${cfg_dir}/* ]]; then
+        p10k segment
+      fi
+    fi
+  }
 
   #######################################################################
 
