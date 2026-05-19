@@ -2002,19 +2002,9 @@
       return
     fi
 
-    # The last path is assumed to be the most local config. It is also assumed
-    # that `mise` resolves symlinks. But all paths seem to be abbreviated
-    # using ~ when possible.
-    local cfg_line=$(mise config ls | tail -n 1)
-
-    # There is at least 1 space between the end of the config path and the
-    # start of the list of tools on each line. The tools are always delimited
-    # by commas.
-    if [[ $cfg_line =~ '^(.*)/.*\.toml +' ]]; then
-      local cfg_dir=${match[1]/#\~/$HOME}
-      if [[ "$(pwd -P)/" == ${cfg_dir}/* ]]; then
-        p10k segment
-      fi
+    # Check for local trusted configs
+    if mise trust --show --quiet | grep ' trusted$' &> /dev/null; then
+      p10k segment
     fi
   }
 
