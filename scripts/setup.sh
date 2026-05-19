@@ -39,7 +39,7 @@ mkdir -p "$LOCAL_DIR/share/nvim/undo"
 # - Same name across Linux distros and macOS
 # - Don't care about version updates
 
-install_if_missing tree universal-ctags xclip xdg-utils zsh
+install_if_missing tree xclip xdg-utils zsh
 
 if [[ $(lsb_release -si 2> /dev/null) == Ubuntu ]]; then
     install_if_missing update-notifier-common
