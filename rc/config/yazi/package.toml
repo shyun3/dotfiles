@@ -13,6 +13,11 @@ use = "yazi-rs/plugins:full-border"
 rev = "5d5c480"
 hash = "7b625412411be411153886894d9acaf"
 
+[[plugin.deps]]
+use = "mikavilpas/easyjump.yazi:easyjump"
+rev = "eb89e99"
+hash = "b976709df0f6d3341736f053e87b2b8"
+
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
 rev = "0670801"

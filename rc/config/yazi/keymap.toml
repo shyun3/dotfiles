@@ -1,4 +1,9 @@
 [[mgr.prepend_keymap]]
+on = "<C-Space>"
+run = "plugin easyjump"
+desc = "easyjump"
+
+[[mgr.prepend_keymap]]
 on = "T"
 run = "plugin ratarmount-vfs"
 desc = "Create new tab in Ratarmount VFS"
