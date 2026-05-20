@@ -129,7 +129,6 @@ backend = "github:jannis-baum/vivify"
 checksum = "sha256:f88696eec6eb9f10a0ca7ac4a1803d5617e31b8b65b831f992108f983ed8b1b2"
 url = "https://github.com/jannis-baum/Vivify/releases/download/v0.14.0/vivify-linux.tar.gz"
 url_api = "https://api.github.com/repos/jannis-baum/Vivify/releases/assets/397142921"
-github_attestations = "unavailable"
 
 [[tools.ipython]]
 version = "9.13.0"
