@@ -1,8 +1,8 @@
-if ! (( $+commands[yazi] )); then
+alias y='yazi'
+
+if ! (($+commands[yazi])); then
     return
 fi
-
-alias y='yazi'
 
 # Derived from https://yazi-rs.github.io/docs/quick-start/#shell-wrapper
 function yazi() {
