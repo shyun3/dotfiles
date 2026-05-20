@@ -104,6 +104,9 @@ dotfiles:
   f_rumdl.toml:
     src: config/rumdl/rumdl.toml
     dst: ~/.config/rumdl/rumdl.toml
+  f_keymap.toml:
+    src: config/yazi/keymap.toml
+    dst: ~/.config/yazi/keymap.toml
 profiles:
   linux:
     dotfiles:
@@ -132,6 +135,7 @@ profiles:
       - f_mise.work.toml
       - f_init.lua
       - f_rumdl.toml
+      - f_keymap.toml
     actions:
       - setup_sh
   wsl-root:

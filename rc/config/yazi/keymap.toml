@@ -1,0 +1,4 @@
+[[mgr.prepend_keymap]]
+on = "T"
+run = "plugin ratarmount-vfs"
+desc = "Create new tab in Ratarmount VFS"
