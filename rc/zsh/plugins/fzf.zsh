@@ -3,8 +3,9 @@
 source $ANTIDOTE_CACHE/catppuccin/fzf/themes/catppuccin-fzf-mocha.sh
 export FZF_DEFAULT_OPTS="$(echo "$FZF_DEFAULT_OPTS" | sed -E 's/,bg:[^,]+//g')"
 
-# Add jj folder to default skipped
-FZF_DEFAULT_OPTS+=' --walker-skip=.git,node_modules,.jj'
+# Add jj folder to default skipped. Also, add directories to walk.
+FZF_DEFAULT_OPTS+=' --walker-skip=.git,node_modules,.jj
+    --walker file,dir,follow,hidden'
 
 # Display full command on preview window, taken from:
 # https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#full-command-on-preview-window
@@ -26,7 +27,8 @@ export FZF_CTRL_T_OPTS="
 
 # Print tree structure in the preview window, derived from:
 # https://junegunn.github.io/fzf/shell-integration/#alt-c
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'
+    --walker dir,follow,hidden"
 
 # fzf plugin updates this, but the default is good enough so reset it
 export FZF_DEFAULT_COMMAND=""
