@@ -94,7 +94,7 @@ checksum = "sha256:f1ea01ca7728ce3462debc359f39dfc7cbbc1a63224b71fefabf92042864a
 url = "https://github.com/dandavison/delta/releases/download/0.19.2/delta-0.19.2-x86_64-unknown-linux-musl.tar.gz"
 
 [[tools.dotdrop]]
-version = "1.16.1"
+version = "1.16.2"
 backend = "pipx:dotdrop"
 
 [[tools.eza]]
@@ -114,12 +114,12 @@ checksum = "sha256:e3257d48e29a6be965187dbd24ce9af564e0fe67b3e73c9bdcd180f4ec11b
 url = "https://github.com/sharkdp/fd/releases/download/v10.4.2/fd-v10.4.2-x86_64-unknown-linux-musl.tar.gz"
 
 [[tools.fzf]]
-version = "0.72.0"
+version = "0.73.1"
 backend = "aqua:junegunn/fzf"
 
 [tools.fzf."platforms.linux-x64"]
-checksum = "sha256:0e58e4bd0b3c5d68c56b54c460a6863d0de79633ed18d388575a960ab447b006"
-url = "https://github.com/junegunn/fzf/releases/download/v0.72.0/fzf-0.72.0-linux_amd64.tar.gz"
+checksum = "sha256:f3252c2c366bc1700d3c85781ec8c9695998927ac127870eb049ceea2d540f8a"
+url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-linux_amd64.tar.gz"
 
 [[tools."github:jannis-baum/vivify"]]
 version = "0.14.0"
@@ -146,20 +146,20 @@ checksum = "sha256:42181a80d316ac157874c817c9945e104275114fb461d99e06e2312502f08
 url = "https://github.com/jj-vcs/jj/releases/download/v0.41.0/jj-v0.41.0-x86_64-unknown-linux-musl.tar.gz"
 
 [[tools.jjui]]
-version = "0.10.5"
+version = "0.10.6"
 backend = "aqua:idursun/jjui"
 
 [tools.jjui."platforms.linux-x64"]
-checksum = "sha256:f33b10edc9159a418436f23282afd3d8b52d2fb7cffa6e84f0f8cc0a9a80d4b1"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.5/jjui-0.10.5-linux-amd64.zip"
+checksum = "sha256:44729642373df091cf61f2f7b498cef77bce22fd584912fa8172aa73ab5dc486"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.6/jjui-0.10.6-linux-amd64.zip"
 
 [[tools.lazygit]]
-version = "0.61.1"
+version = "0.62.1"
 backend = "aqua:jesseduffield/lazygit"
 
 [tools.lazygit."platforms.linux-x64"]
-checksum = "sha256:1b91e660700f2332696726b635202576b543e2bc49b639830dccd26bc5160d5d"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.61.1/lazygit_0.61.1_linux_x86_64.tar.gz"
+checksum = "sha256:99d78cce8883b24150c2f4ba151f6a0443644f63f63794f18d6643e99f75be09"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.62.1/lazygit_0.62.1_linux_x86_64.tar.gz"
 
 [[tools.lua]]
 version = "5.5.0"
@@ -173,7 +173,7 @@ version = "0.17.0"
 backend = "cargo:mergiraf"
 
 [[tools.mise-completions-sync]]
-version = "0.5.7"
+version = "0.5.9"
 backend = "cargo:mise-completions-sync"
 
 [[tools.neovim]]
@@ -184,15 +184,15 @@ backend = "vfox:mise-plugins/vfox-neovim"
 url = "https://github.com/neovim/neovim/releases/download/v0.12.2/nvim-linux-x86_64.tar.gz"
 
 [[tools.node]]
-version = "26.1.0"
+version = "26.2.0"
 backend = "core:node"
 
 [tools.node."platforms.linux-x64"]
-checksum = "sha256:62d555c329e05e3625109f2e3a8b5195b368d5ef38266292469d32f63cd98ffd"
-url = "https://nodejs.org/dist/v26.1.0/node-v26.1.0-linux-x64.tar.gz"
+checksum = "sha256:8e5b4b969bb2414aca2ff84d2b99608511aedca32bf8a8427e6187dbdd703bbe"
+url = "https://nodejs.org/dist/v26.2.0/node-v26.2.0-linux-x64.tar.gz"
 
 [[tools.patool]]
-version = "4.0.4"
+version = "4.0.5"
 backend = "pipx:patool"
 
 [tools.patool.options]
@@ -233,21 +233,21 @@ backend = "pipx:trash-cli"
 extras = "completion"
 
 [[tools.tree-sitter]]
-version = "0.26.8"
+version = "0.26.9"
 backend = "aqua:tree-sitter/tree-sitter"
 
 [tools.tree-sitter."platforms.linux-x64"]
-checksum = "sha256:9754a32800f0b970152782df177b4a47c711e34e651a7aceb384d8bd29fa136e"
-url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.8/tree-sitter-linux-x64.gz"
+checksum = "sha256:9ce82137caa65864e7ca8b869fd391cef88c9bd2a01c4371b9c4dd26c2585efb"
+url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.9/tree-sitter-linux-x64.gz"
 provenance = "github-attestations"
 
 [[tools.universal-ctags]]
-version = "6.2.20260517.0"
+version = "6.2.20260524.0"
 backend = "conda:universal-ctags"
 
 [tools.universal-ctags."platforms.linux-x64"]
-checksum = "sha256:b5cb35bd43d3ae5f94677dda01b8a805fa835c7d484d901e8c6a5db0b02974e1"
-url = "https://conda.anaconda.org/conda-forge/linux-64/universal-ctags-6.2.20260517.0-h85e0846_0.conda"
+checksum = "sha256:e36c30205e1368f1ccf12d4921bcc477841c41bfd56e53fbe9e9aefa1ab0eb6b"
+url = "https://conda.anaconda.org/conda-forge/linux-64/universal-ctags-6.2.20260524.0-h85e0846_0.conda"
 conda_deps = [
     "pcre2-10.47-haa7fec5_0",
     "libseccomp-2.6.0-hb03c661_0",
@@ -275,12 +275,12 @@ checksum = "sha256:9a4316d633243aa54308ff3bf6970923b18c105dea34fbc3009d51889e1dd
 url = "https://github.com/jdx/usage/releases/download/v3.3.0/usage-x86_64-unknown-linux-musl.tar.gz"
 
 [[tools.uv]]
-version = "0.11.14"
+version = "0.11.16"
 backend = "aqua:astral-sh/uv"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:077d36f45a0cc6d440b653b2d5c53e7731121e99e54b0221267eec5d1cae76ce"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:1bc4be1be0a000f893b0d1db97906cf392b63fa22fda9a0ecf33d0d4bbb4bc9a"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.16/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [[tools.vivid]]
