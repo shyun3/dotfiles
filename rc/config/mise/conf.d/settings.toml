@@ -5,8 +5,17 @@ shell = "bash -c"
 run = """
 if [[ -n "$MISE_INSTALLED_TOOLS" ]]; then
     eval "$(~/.local/bin/mise activate bash)"
-    echo "$MISE_INSTALLED_TOOLS" | mise x jq -- jq -r '.[].name | @sh' |
-        xargs --no-run-if-empty misecompsync --shell zsh
+
+    installed_tools="$(echo "$MISE_INSTALLED_TOOLS" |
+        mise x jq -- jq -r '.[].name')"
+    for tool in "$installed_tools"; do
+        if [[ "$tool" = "mise-completions-sync" ]]; then
+            misecompsync --shell zsh
+            exit
+        fi
+    done
+
+    echo "$installed_tools" | xargs --no-run-if-empty misecompsync --shell zsh
 fi
 """
 
