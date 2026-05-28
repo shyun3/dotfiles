@@ -31,6 +31,7 @@ node = "latest"
 rust = "latest"
 tree-sitter = "latest"
 universal-ctags = "latest"
+usage = "latest"
 uv = "latest"
 vivid = "latest"
 "github:jannis-baum/vivify" = "latest"
@@ -92,10 +93,6 @@ for cmd in ${cmds[@]}; do
     $cmd --print-completion zsh > ~/.zsh-complete/_$cmd
 done
 """
-
-[tools.usage]
-version = "latest"
-postinstall = "usage --completions zsh > ~/.zsh-complete/_usage"
 
 [tools.yazi]
 version = "latest"
