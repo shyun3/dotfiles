@@ -266,6 +266,34 @@ conda_deps = [
     "bzip2-1.0.8-hda65f42_9",
 ]
 
+[[tools.universal-ctags]]
+version = "6.2.20260524.0"
+backend = "conda:universal-ctags"
+
+[tools.universal-ctags.options]
+channel = "conda-forge"
+
+[tools.universal-ctags."platforms.linux-x64"]
+checksum = "sha256:e36c30205e1368f1ccf12d4921bcc477841c41bfd56e53fbe9e9aefa1ab0eb6b"
+url = "https://conda.anaconda.org/conda-forge/linux-64/universal-ctags-6.2.20260524.0-h85e0846_0.conda"
+conda_deps = [
+    "pcre2-10.47-haa7fec5_0",
+    "libseccomp-2.6.0-hb03c661_0",
+    "jansson-2.15.0-h280c20c_0",
+    "libgcc-15.2.0-he0feb66_19",
+    "libstdcxx-15.2.0-h934c35e_19",
+    "libiconv-1.18-h3b78370_2",
+    "libxml2-2.15.3-h49c6c72_0",
+    "libzlib-1.3.2-h25fd6f3_2",
+    "libxml2-16-2.15.3-hca6bf5a_0",
+    "liblzma-5.8.3-hb03c661_0",
+    "icu-78.3-h33c6efd_0",
+    "yaml-0.2.5-h280c20c_3",
+    "_openmp_mutex-4.5-20_gnu",
+    "libgomp-15.2.0-he0feb66_19",
+    "bzip2-1.0.8-hda65f42_9",
+]
+
 [[tools.usage]]
 version = "3.3.0"
 backend = "aqua:jdx/usage"
