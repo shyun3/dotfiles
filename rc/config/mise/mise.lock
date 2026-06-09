@@ -77,12 +77,12 @@ checksum = "sha256:0dcd8ac79732c0d5b136f11f4ee00e581440e16a44eab5b3105b611bbf2cf
 url = "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-musl.tar.gz"
 
 [[tools.cargo-binstall]]
-version = "1.19.1"
+version = "1.20.0"
 backend = "aqua:cargo-bins/cargo-binstall"
 
 [tools.cargo-binstall."platforms.linux-x64"]
-checksum = "sha256:4a50fcf01418862e2fa8e4076cb6cb80ff4061b0c0b1464e71a63ce01ee29bde"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+checksum = "sha256:4d7875788d0505547c220d2b02d3619aac0dd19b7033eba7005a8d09ff1dc433"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.20.0/cargo-binstall-x86_64-unknown-linux-musl.tgz"
 provenance = "github-attestations"
 
 [[tools.delta]]
@@ -131,19 +131,19 @@ url = "https://github.com/jannis-baum/Vivify/releases/download/v0.14.0/vivify-li
 url_api = "https://api.github.com/repos/jannis-baum/Vivify/releases/assets/397142921"
 
 [[tools.ipython]]
-version = "9.13.0"
+version = "9.14.1"
 backend = "pipx:ipython"
 
 [tools.ipython.options]
 extras = "all"
 
 [[tools.jj]]
-version = "0.41.0"
+version = "0.42.0"
 backend = "aqua:jj-vcs/jj"
 
 [tools.jj."platforms.linux-x64"]
-checksum = "sha256:42181a80d316ac157874c817c9945e104275114fb461d99e06e2312502f08f99"
-url = "https://github.com/jj-vcs/jj/releases/download/v0.41.0/jj-v0.41.0-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:2d91e81d649e617a81608e7401ad1106029c15ece01ac928c4a351abef42be6a"
+url = "https://github.com/jj-vcs/jj/releases/download/v0.42.0/jj-v0.42.0-x86_64-unknown-linux-musl.tar.gz"
 
 [[tools.jjui]]
 version = "0.10.6"
@@ -154,12 +154,12 @@ checksum = "sha256:44729642373df091cf61f2f7b498cef77bce22fd584912fa8172aa73ab5dc
 url = "https://github.com/idursun/jjui/releases/download/v0.10.6/jjui-0.10.6-linux-amd64.zip"
 
 [[tools.lazygit]]
-version = "0.62.1"
+version = "0.62.2"
 backend = "aqua:jesseduffield/lazygit"
 
 [tools.lazygit."platforms.linux-x64"]
-checksum = "sha256:99d78cce8883b24150c2f4ba151f6a0443644f63f63794f18d6643e99f75be09"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.62.1/lazygit_0.62.1_linux_x86_64.tar.gz"
+checksum = "sha256:8b9a4c2d0969cbea92b45c956dd2a44e1ba76900c9df49f1c60984045ce77984"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.62.2/lazygit_0.62.2_linux_x86_64.tar.gz"
 
 [[tools.lua]]
 version = "5.5.0"
@@ -173,7 +173,7 @@ version = "0.17.0"
 backend = "cargo:mergiraf"
 
 [[tools.mise-completions-sync]]
-version = "0.5.9"
+version = "0.5.10"
 backend = "cargo:mise-completions-sync"
 
 [[tools.neovim]]
@@ -184,12 +184,12 @@ backend = "vfox:mise-plugins/vfox-neovim"
 url = "https://github.com/neovim/neovim/releases/download/v0.12.2/nvim-linux-x86_64.tar.gz"
 
 [[tools.node]]
-version = "26.2.0"
+version = "26.3.0"
 backend = "core:node"
 
 [tools.node."platforms.linux-x64"]
-checksum = "sha256:8e5b4b969bb2414aca2ff84d2b99608511aedca32bf8a8427e6187dbdd703bbe"
-url = "https://nodejs.org/dist/v26.2.0/node-v26.2.0-linux-x64.tar.gz"
+checksum = "sha256:a6e65cc653e40c1653b77742f9185dbce3ff1f99fa2746d211bddb53530ef206"
+url = "https://nodejs.org/dist/v26.3.0/node-v26.3.0-linux-x64.tar.gz"
 
 [[tools.patool]]
 version = "4.0.5"
@@ -218,7 +218,7 @@ checksum = "sha256:1c9297be4a084eea7ecaedf93eb03d058d6faae29bbc57ecdaf5063921491
 url = "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz"
 
 [[tools.rust]]
-version = "1.95.0"
+version = "1.96.0"
 backend = "core:rust"
 
 [[tools.tldr]]
@@ -242,40 +242,15 @@ url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.9/tree
 provenance = "github-attestations"
 
 [[tools.universal-ctags]]
-version = "6.2.20260524.0"
-backend = "conda:universal-ctags"
-
-[tools.universal-ctags."platforms.linux-x64"]
-checksum = "sha256:e36c30205e1368f1ccf12d4921bcc477841c41bfd56e53fbe9e9aefa1ab0eb6b"
-url = "https://conda.anaconda.org/conda-forge/linux-64/universal-ctags-6.2.20260524.0-h85e0846_0.conda"
-conda_deps = [
-    "pcre2-10.47-haa7fec5_0",
-    "libseccomp-2.6.0-hb03c661_0",
-    "jansson-2.15.0-h280c20c_0",
-    "libgcc-15.2.0-he0feb66_19",
-    "libstdcxx-15.2.0-h934c35e_19",
-    "libiconv-1.18-h3b78370_2",
-    "libxml2-2.15.3-h49c6c72_0",
-    "libzlib-1.3.2-h25fd6f3_2",
-    "libxml2-16-2.15.3-hca6bf5a_0",
-    "liblzma-5.8.3-hb03c661_0",
-    "icu-78.3-h33c6efd_0",
-    "yaml-0.2.5-h280c20c_3",
-    "_openmp_mutex-4.5-20_gnu",
-    "libgomp-15.2.0-he0feb66_19",
-    "bzip2-1.0.8-hda65f42_9",
-]
-
-[[tools.universal-ctags]]
-version = "6.2.20260524.0"
+version = "6.2.20260607.0"
 backend = "conda:universal-ctags"
 
 [tools.universal-ctags.options]
 channel = "conda-forge"
 
 [tools.universal-ctags."platforms.linux-x64"]
-checksum = "sha256:e36c30205e1368f1ccf12d4921bcc477841c41bfd56e53fbe9e9aefa1ab0eb6b"
-url = "https://conda.anaconda.org/conda-forge/linux-64/universal-ctags-6.2.20260524.0-h85e0846_0.conda"
+checksum = "sha256:d1d2c58ed72eb3ab580027e3edbba20af503ffa25d5da9f756a43b82bcb003f4"
+url = "https://conda.anaconda.org/conda-forge/linux-64/universal-ctags-6.2.20260607.0-h85e0846_0.conda"
 conda_deps = [
     "pcre2-10.47-haa7fec5_0",
     "libseccomp-2.6.0-hb03c661_0",
@@ -295,20 +270,20 @@ conda_deps = [
 ]
 
 [[tools.usage]]
-version = "3.3.0"
+version = "3.4.0"
 backend = "aqua:jdx/usage"
 
 [tools.usage."platforms.linux-x64"]
-checksum = "sha256:9a4316d633243aa54308ff3bf6970923b18c105dea34fbc3009d51889e1dd03f"
-url = "https://github.com/jdx/usage/releases/download/v3.3.0/usage-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:1a54260df50f1764bc8cbabf8763f2a6314c5025d3b06b512d02898eb28768b3"
+url = "https://github.com/jdx/usage/releases/download/v3.4.0/usage-x86_64-unknown-linux-musl.tar.gz"
 
 [[tools.uv]]
-version = "0.11.16"
+version = "0.11.19"
 backend = "aqua:astral-sh/uv"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:1bc4be1be0a000f893b0d1db97906cf392b63fa22fda9a0ecf33d0d4bbb4bc9a"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.16/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:c4c0d0a383413261af5f0f0743e1292f4aafbe907987ed83bd0ac66f0a3d7e20"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.19/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [[tools.vivid]]
