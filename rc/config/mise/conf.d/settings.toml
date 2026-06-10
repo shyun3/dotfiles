@@ -4,7 +4,18 @@
 shell = "bash -c"
 run = """
 if [[ -n "$MISE_INSTALLED_TOOLS" ]]; then
-    mise x mise-completions-sync -- misecompsync -s zsh --new-only
+    eval "$(~/.local/bin/mise activate bash)"
+
+    misecompsync_up="$(echo "$MISE_INSTALLED_TOOLS" |
+        mise x jq -- jq -r 'any(.[]; .name == "mise-completions-sync")')"
+
+    # If `mise-completions-sync` was upgraded, regenerate all completions as
+    # new ones could have been added
+    if [[ "$misecompsync_up" = true ]]; then
+        misecompsync --shell zsh
+    else
+        misecompsync --shell zsh --new-only
+    fi
 fi
 """
 
