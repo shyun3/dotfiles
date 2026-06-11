@@ -71,6 +71,7 @@ return {
       -- stderr is sent to stdout, see #374
       on_exit = function(term, _, exit_code)
         if exit_code ~= 0 then term.close_on_exit = false end
+        vim.cmd.checktime()
       end,
     },
 
