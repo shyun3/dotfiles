@@ -66,6 +66,31 @@ local function select_descendants()
   end
 end
 
+local function copy_short_commit_hash()
+  local id = context.change_id()
+  if not id then return end
+
+  local sha, err = jj(
+    "log",
+    "-r",
+    id,
+    "-n=1",
+    "--no-graph",
+    "--color=never",
+    "-T=commit_id.shortest(7)"
+  )
+  if sha then
+    copy_to_clipboard(sha)
+    flash("Copied: " .. sha)
+  elseif err then
+    flash({
+      text = err,
+      error = true,
+      sticky = true,
+    })
+  end
+end
+
 ---@diagnostic disable-next-line: lowercase-global
 function setup(config)
   config.action("revisions.diff", delta_rev)
@@ -76,5 +101,11 @@ function setup(config)
     key = "ctrl+space",
     scope = "revisions",
     desc = "select descendants",
+  })
+
+  config.action("copy-short-commit-hash", copy_short_commit_hash, {
+    key = "Y",
+    scope = "revisions",
+    desc = "copy short commit hash",
   })
 end
