@@ -42,7 +42,8 @@
     autoStash = true
     updateRefs = true
 [merge]
-    conflictstyle = zdiff3
+    # For `mergiraf` support
+    conflictstyle = diff3
 [core]
     autocrlf = input
 {%@@ if os | lower != 'windows' @@%}
