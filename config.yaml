@@ -95,9 +95,6 @@ dotfiles:
   f_yazi.toml:
     src: config/yazi/yazi.toml
     dst: ~/.config/yazi/yazi.toml
-  f_mise.work.toml:
-    src: config/mise/mise.work.toml
-    dst: ~/.config/mise/mise.work.toml
   f_init.lua:
     src: config/yazi/init.lua
     dst: ~/.config/yazi/init.lua
@@ -132,7 +129,6 @@ profiles:
       - f_theme.toml
       - f_package.toml
       - f_yazi.toml
-      - f_mise.work.toml
       - f_init.lua
       - f_rumdl.toml
       - f_keymap.toml
