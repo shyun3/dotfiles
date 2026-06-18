@@ -1,5 +1,3 @@
-alias y='yazi'
-
 if ! (($+commands[yazi])); then
     return
 fi

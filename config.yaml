@@ -104,6 +104,9 @@ dotfiles:
   f_keymap.toml:
     src: config/yazi/keymap.toml
     dst: ~/.config/yazi/keymap.toml
+  f_alias.toml:
+    src: config/mise/conf.d/alias.toml
+    dst: ~/.config/mise/conf.d/alias.toml
 profiles:
   linux:
     dotfiles:
@@ -132,6 +135,7 @@ profiles:
       - f_init.lua
       - f_rumdl.toml
       - f_keymap.toml
+      - f_alias.toml
     actions:
       - setup_sh
   wsl-root:
