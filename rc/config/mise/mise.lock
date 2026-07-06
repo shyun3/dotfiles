@@ -12,9 +12,9 @@ checksum = "sha256:0b75d45f0bba3e95dc693336fa51f40ea28c980131fec438afb7ce6118ed0
 url = "https://conda.anaconda.org/conda-forge/linux-64/icu-78.3-h33c6efd_0.conda"
 checksum = "sha256:fbf86c4a59c2ed05bbffb2ba25c7ed94f6185ec30ecb691615d42342baa1a16a"
 
-[conda-packages.linux-x64."jansson-2.15.0-h280c20c_0"]
-url = "https://conda.anaconda.org/conda-forge/linux-64/jansson-2.15.0-h280c20c_0.conda"
-checksum = "sha256:cb222c50211e36b3a2fbdfdd1e824cb4bb1a6675b0112b0b1499f7901c486f66"
+[conda-packages.linux-x64."jansson-2.15.1-h280c20c_0"]
+url = "https://conda.anaconda.org/conda-forge/linux-64/jansson-2.15.1-h280c20c_0.conda"
+checksum = "sha256:e138c68824c8661e55f3184c489fe1db425c06ffae1a37edc780bcb92cde9058"
 
 [conda-packages.linux-x64."libgcc-15.2.0-he0feb66_19"]
 url = "https://conda.anaconda.org/conda-forge/linux-64/libgcc-15.2.0-he0feb66_19.conda"
@@ -32,9 +32,9 @@ checksum = "sha256:c467851a7312765447155e071752d7bf9bf44d610a5687e32706f480aad28
 url = "https://conda.anaconda.org/conda-forge/linux-64/liblzma-5.8.3-hb03c661_0.conda"
 checksum = "sha256:ec30e52a3c1bf7d0425380a189d209a52baa03f22fb66dd3eb587acaa765bd6d"
 
-[conda-packages.linux-x64."libseccomp-2.6.0-hb03c661_0"]
-url = "https://conda.anaconda.org/conda-forge/linux-64/libseccomp-2.6.0-hb03c661_0.conda"
-checksum = "sha256:5702c323cc6e1b9327f4f2aad32269301a4189944cdc847ee3ac9d6f96694d24"
+[conda-packages.linux-x64."libseccomp-2.6.1-hb03c661_0"]
+url = "https://conda.anaconda.org/conda-forge/linux-64/libseccomp-2.6.1-hb03c661_0.conda"
+checksum = "sha256:6548f947c45cdf52dc8b18d7f728b43993ed27ba60e5ac5699ec5334e0b51696"
 
 [conda-packages.linux-x64."libstdcxx-15.2.0-h934c35e_19"]
 url = "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-15.2.0-h934c35e_19.conda"
@@ -138,28 +138,31 @@ backend = "pipx:ipython"
 extras = "all"
 
 [[tools.jj]]
-version = "0.42.0"
+version = "0.43.0"
 backend = "aqua:jj-vcs/jj"
 
 [tools.jj."platforms.linux-x64"]
-checksum = "sha256:2d91e81d649e617a81608e7401ad1106029c15ece01ac928c4a351abef42be6a"
-url = "https://github.com/jj-vcs/jj/releases/download/v0.42.0/jj-v0.42.0-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:59e5588583ac82b623239929368c65b90735931c0f26b5a16c1f04d5bb97643d"
+url = "https://github.com/jj-vcs/jj/releases/download/v0.43.0/jj-v0.43.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jj-vcs/jj/releases/assets/463825498"
 
 [[tools.jjui]]
-version = "0.10.7"
+version = "0.10.8"
 backend = "aqua:idursun/jjui"
 
 [tools.jjui."platforms.linux-x64"]
-checksum = "sha256:ae89c72d37ca88b1fe0e70603bbd01dc2eee2d39ae960bce500f19e69dc4d046"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.7/jjui-0.10.7-linux-amd64.zip"
+checksum = "sha256:75dadce1d46dac386e672663ffaa77a009a5069ef5c889ed6bbadb73baac0bc1"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.8/jjui-0.10.8-linux-amd64.zip"
+url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/466661632"
 
 [[tools.lazygit]]
-version = "0.62.2"
+version = "0.63.0"
 backend = "aqua:jesseduffield/lazygit"
 
 [tools.lazygit."platforms.linux-x64"]
-checksum = "sha256:8b9a4c2d0969cbea92b45c956dd2a44e1ba76900c9df49f1c60984045ce77984"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.62.2/lazygit_0.62.2_linux_x86_64.tar.gz"
+checksum = "sha256:cf5cfa3e116d7775f3600a51ec1d9ce7ba554a08b9566c7c2da83cb0023efabf"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.63.0/lazygit_0.63.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/466324406"
 
 [[tools.lua]]
 version = "5.5.0"
@@ -177,11 +180,11 @@ version = "0.5.10"
 backend = "cargo:mise-completions-sync"
 
 [[tools.neovim]]
-version = "0.12.3"
+version = "0.12.4"
 backend = "vfox:mise-plugins/vfox-neovim"
 
 [tools.neovim."platforms.linux-x64"]
-url = "https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x86_64.tar.gz"
+url = "https://github.com/neovim/neovim/releases/download/v0.12.4/nvim-linux-x86_64.tar.gz"
 
 [[tools.node]]
 version = "26.4.0"
@@ -218,7 +221,7 @@ checksum = "sha256:1c9297be4a084eea7ecaedf93eb03d058d6faae29bbc57ecdaf5063921491
 url = "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz"
 
 [[tools.rust]]
-version = "1.96.0"
+version = "1.96.1"
 backend = "core:rust"
 
 [[tools.tldr]]
@@ -242,28 +245,28 @@ url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.10/tre
 provenance = "github-attestations"
 
 [[tools.universal-ctags]]
-version = "6.2.20260628.0"
+version = "6.2.20260705.0"
 backend = "conda:universal-ctags"
 
 [tools.universal-ctags.options]
 channel = "conda-forge"
 
 [tools.universal-ctags."platforms.linux-x64"]
-checksum = "sha256:de40ebd1f006f76e286c068a56f26531ce1b19c8b14dd2f6c6188f914b07aca0"
-url = "https://conda.anaconda.org/conda-forge/linux-64/universal-ctags-6.2.20260628.0-h85e0846_0.conda"
+checksum = "sha256:3994bf50efb38848936ef2e39579868a951e1aabbf0b9a7785a15615e141bf84"
+url = "https://conda.anaconda.org/conda-forge/linux-64/universal-ctags-6.2.20260705.0-h85e0846_0.conda"
 conda_deps = [
     "pcre2-10.47-haa7fec5_0",
-    "libseccomp-2.6.0-hb03c661_0",
-    "jansson-2.15.0-h280c20c_0",
+    "libseccomp-2.6.1-hb03c661_0",
+    "jansson-2.15.1-h280c20c_0",
+    "libiconv-1.18-h3b78370_2",
+    "yaml-0.2.5-h280c20c_3",
     "libgcc-15.2.0-he0feb66_19",
     "libstdcxx-15.2.0-h934c35e_19",
-    "libiconv-1.18-h3b78370_2",
     "libxml2-2.15.3-h49c6c72_0",
     "libzlib-1.3.2-h25fd6f3_2",
     "libxml2-16-2.15.3-hca6bf5a_0",
     "liblzma-5.8.3-hb03c661_0",
     "icu-78.3-h33c6efd_0",
-    "yaml-0.2.5-h280c20c_3",
     "_openmp_mutex-4.5-20_gnu",
     "libgomp-15.2.0-he0feb66_19",
     "bzip2-1.0.8-hda65f42_9",
@@ -303,9 +306,10 @@ checksum = "sha256:1031a02560d053301537195a6661d227c15cb4ce5c30481050b31e2b88681
 url = "https://github.com/sxyazi/yazi/releases/download/v26.5.6/yazi-x86_64-unknown-linux-musl.zip"
 
 [[tools.zoxide]]
-version = "0.9.9"
+version = "0.10.0"
 backend = "aqua:ajeetdsouza/zoxide"
 
 [tools.zoxide."platforms.linux-x64"]
-checksum = "sha256:4ff057d3c4d957946937274c2b8be7af2a9bbae7f90a1b5e9baaa7cb65a20caa"
-url = "https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.9/zoxide-0.9.9-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:2d93385b99f3e82cf2701609a1bffcad863fbeb75aa3fe7eb6be4d29be68b1ae"
+url = "https://github.com/ajeetdsouza/zoxide/releases/download/v0.10.0/zoxide-0.10.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ajeetdsouza/zoxide/releases/assets/466316293"
