@@ -91,6 +91,24 @@ local function copy_short_commit_hash()
   end
 end
 
+local function set_tag()
+  local id = context.change_id()
+  if not id then return end
+
+  local tag_name = input({ title = "Enter tag name" })
+  if not tag_name then return end
+
+  local out, err = jj("tag", "set", "-r", id, tag_name)
+  if out then
+    -- No output actually seems to be returned
+
+    -- Update UI to show newly added tag
+    revisions.refresh({ keep_selections = true, selected_revision = id })
+  elseif err then
+    flash({ text = err, error = true, sticky = true })
+  end
+end
+
 ---@diagnostic disable-next-line: lowercase-global
 function setup(config)
   config.action("revisions.diff", delta_rev)
@@ -107,5 +125,11 @@ function setup(config)
     key = "Y",
     scope = "revisions",
     desc = "copy short commit hash",
+  })
+
+  config.action("set-tag", set_tag, {
+    key = "T",
+    scope = "revisions",
+    desc = "set tag",
   })
 end
