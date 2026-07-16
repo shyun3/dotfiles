@@ -109,6 +109,45 @@ local function set_tag()
   end
 end
 
+local function delete_tag()
+  local id = context.change_id()
+  if not id then return end
+
+  local out, err = jj("tag", "list", "-r", id, "-T=name ++ ' '")
+  if err then
+    flash({ text = err, error = true, sticky = true })
+    return
+  elseif not out then
+    return
+  end
+
+  local tags = {}
+  for str in string.gmatch(out, "[^%s]+") do
+    table.insert(tags, str)
+  end
+
+  if #tags == 0 then
+    flash("No tags available at selected revision")
+    return
+  end
+
+  local sel = choose({
+    options = tags,
+    title = "Delete tag",
+  })
+  if not sel then return end
+
+  out, err = jj("tag", "delete", sel)
+  if out then
+    -- No output actually seems to be returned
+
+    -- Update UI to remove deleted tag
+    revisions.refresh({ keep_selections = true, selected_revision = id })
+  elseif err then
+    flash({ text = err, error = true, sticky = true })
+  end
+end
+
 ---@diagnostic disable-next-line: lowercase-global
 function setup(config)
   config.action("revisions.diff", delta_rev)
@@ -131,5 +170,11 @@ function setup(config)
     key = "T",
     scope = "revisions",
     desc = "set tag",
+  })
+
+  config.action("delete-tag", delete_tag, {
+    key = "t",
+    scope = "revisions",
+    desc = "delete tag",
   })
 end
