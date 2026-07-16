@@ -75,6 +75,41 @@ return {
   },
 
   {
+    LazyDep("toggleterm"),
+    optional = true,
+
+    opts = {
+      -- If a toggleterm is not set to close on exit (see `close_on_exit`),
+      -- then the window displays a "Process exited..." message when the
+      -- terminal process is shut down. Then, if any key is pressed, the window
+      -- is closed.
+      --
+      -- However, the window seems to stay open if only Oil buffers were open
+      -- at the time of exit. A workaround is to create a scratch buffer
+      -- when the terminal is launched and delete it after exit.
+      --
+      -- See dotfiles#30
+      on_create = function(term)
+        -- Buffer must be listed
+        local scratch_bufnr = vim.api.nvim_create_buf(true, true)
+
+        vim.api.nvim_create_autocmd("BufDelete", {
+          group = vim.api.nvim_create_augroup("my_toggleterm", {}),
+          nested = true,
+          once = true,
+          desc = "Delete workaround scratch buffer",
+
+          callback = function(args)
+            if args.buf == term.bufnr then
+              vim.api.nvim_buf_delete(scratch_bufnr, { force = true })
+            end
+          end,
+        })
+      end,
+    },
+  },
+
+  {
     LazyDep("oil"),
     event = "UIEnter",
 

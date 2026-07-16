@@ -58,7 +58,7 @@ return {
   },
 
   {
-    "akinsho/toggleterm.nvim",
+    LazyDep("toggleterm"),
     version = "*",
 
     opts = {
