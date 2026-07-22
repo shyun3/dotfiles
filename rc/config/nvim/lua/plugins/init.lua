@@ -93,6 +93,48 @@ return {
   },
 
   {
+    "mfussenegger/nvim-lint",
+    lazy = false,
+
+    config = function()
+      -- Derived from:
+      -- https://github.com/afadesigns/zshellcheck/blob/main/docs/USER_GUIDE.md#neovim-nvim-lint
+
+      ---@diagnostic disable-next-line: missing-fields
+      require("lint").linters.zshellcheck = {
+        cmd = "zshellcheck",
+        stdin = false,
+        args = { "-no-color" },
+        stream = "stdout",
+        ignore_exitcode = true,
+
+        parser = require("lint.parser").from_pattern(
+          "([^:]+):(%d+):(%d+): ([^:]+): (.+)",
+          { "file", "lnum", "col", "severity", "message" },
+          {
+            error = vim.diagnostic.severity.ERROR,
+            warning = vim.diagnostic.severity.WARN,
+            info = vim.diagnostic.severity.INFO,
+            style = vim.diagnostic.severity.INFO,
+          },
+          { source = "zshellcheck" }
+        ),
+      }
+
+      require("lint").linters_by_ft.zsh = { "zshellcheck" }
+
+      vim.api.nvim_create_autocmd(
+        { "BufWritePost", "BufReadPost", "CursorHold", "InsertLeave" },
+        {
+          group = vim.api.nvim_create_augroup("my_lint", {}),
+          desc = "Try lint",
+          callback = function() require("lint").try_lint() end,
+        }
+      )
+    end,
+  },
+
+  {
     "chrisgrieser/nvim-spider",
 
     keys = {
