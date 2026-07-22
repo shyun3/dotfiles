@@ -11,14 +11,16 @@ ratarmount = "pipx:ratarmount"
 tldr = "cargo:tealdeer"
 trash-cli = "pipx:trash-cli"
 universal-ctags = "conda:universal-ctags"
+zshellcheck = "go:github.com/afadesigns/zshellcheck/cmd/zshellcheck"
 
 [tools]
 7zip = "26"
 bat = "latest"
+cargo-binstall = "latest"
 delta = "latest"
 fd = "latest"
-cargo-binstall = "latest"
 fzf = "latest"
+go = "latest"
 jj = "latest"
 jjui = "latest"
 lazygit = "latest"
@@ -61,6 +63,13 @@ version = "latest"
 extras = "all"
 postinstall = """
 "$MISE_TOOL_INSTALL_PATH/ipython/bin/register-python-argcomplete" ipython > ~/.zsh-complete/_ipython
+"""
+
+[tools.zshellcheck]
+version = "latest"
+postinstall = """
+curl --output-dir ~/.zsh-complete -fsSLO \
+    "https://raw.githubusercontent.com/afadesigns/zshellcheck/refs/tags/v${MISE_TOOL_INSTALL_PATH##*/}/completions/zsh/_zshellcheck"
 """
 
 [tools.patool]

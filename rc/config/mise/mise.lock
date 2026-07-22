@@ -133,6 +133,14 @@ checksum = "sha256:f88696eec6eb9f10a0ca7ac4a1803d5617e31b8b65b831f992108f983ed8b
 url = "https://github.com/jannis-baum/Vivify/releases/download/v0.14.0/vivify-linux.tar.gz"
 url_api = "https://api.github.com/repos/jannis-baum/Vivify/releases/assets/397142921"
 
+[[tools.go]]
+version = "1.26.5"
+backend = "core:go"
+
+[tools.go."platforms.linux-x64"]
+checksum = "sha256:5c2c3b16caefa1d968a94c1daca04a7ca301a496d9b086e17ad77bb81393f053"
+url = "https://dl.google.com/go/go1.26.5.linux-amd64.tar.gz"
+
 [[tools.ipython]]
 version = "9.15.0"
 backend = "pipx:ipython"
@@ -320,3 +328,7 @@ backend = "aqua:ajeetdsouza/zoxide"
 checksum = "sha256:2d93385b99f3e82cf2701609a1bffcad863fbeb75aa3fe7eb6be4d29be68b1ae"
 url = "https://github.com/ajeetdsouza/zoxide/releases/download/v0.10.0/zoxide-0.10.0-x86_64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/ajeetdsouza/zoxide/releases/assets/466316293"
+
+[[tools.zshellcheck]]
+version = "1.7.1"
+backend = "go:github.com/afadesigns/zshellcheck/cmd/zshellcheck"
