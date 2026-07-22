@@ -28,9 +28,6 @@ mkdir -p ~/bin "$BIN_HOME"
 # Custom zsh completions
 mkdir -p ~/.zsh-complete
 
-# Neovim 'undodir'
-mkdir -p "$LOCAL_DIR/share/nvim/undo"
-
 #######################################################################
 # Packages
 #
