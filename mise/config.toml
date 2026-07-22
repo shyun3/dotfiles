@@ -1,0 +1,9 @@
+#:schema https://mise.jdx.dev/schema/mise.json
+
+[settings]
+dotfiles.default_mode = "copy"
+use_versions_host_track = false
+
+[dotfiles."~/.config/mise/config.toml"]
+source = "~/.config/dotdrop/mise/config.toml"
+mode = "symlink"

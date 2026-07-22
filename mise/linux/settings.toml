@@ -1,5 +1,8 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
+[bootstrap.hooks]
+post-tools = "dotdrop -p linux install"
+
 [hooks.postinstall]
 shell = "bash -c"
 run = """
@@ -21,7 +24,5 @@ fi
 
 [settings]
 color_theme = "catppuccin"
-experimental = true
 lockfile = true
 lockfile_platforms = ["linux-x64"]
-use_versions_host_track = false

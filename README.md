@@ -1,6 +1,7 @@
 # Dotfiles
 
-This project uses [dotdrop](https://dotdrop.readthedocs.io/en/latest/).
+This project uses [dotdrop](https://dotdrop.readthedocs.io/en/latest/) and
+[mise](https://mise.jdx.dev/).
 
 ## Prerequisites
 
@@ -43,6 +44,11 @@ Clone the repo:
 git clone git@github.com:shyun3/dotfiles.git ~/.config/dotdrop
 ```
 
+Install [mise](https://mise.jdx.dev/getting-started.html#installing-mise-cli):
+```sh
+curl https://mise.run | sh
+```
+
 Get a temporary copy of `dotdrop`:
 ```sh
 git clone --depth=1 https://github.com/deadc0de6/dotdrop.git /tmp/dotdrop
@@ -71,16 +77,19 @@ PowerShell may need restarting to apply all changes.
 If using WSL, apply the following first:
 ```sh
 sudo ./dotdrop.sh -c ~/.config/dotdrop/config.yaml -p wsl-root install
+deactivate
 ```
 WSL needs restarting to apply all changes. A distribution can be shutdown in
 PowerShell by running `wsl --terminate <distroName>`.
 
 Then, install the Linux dotfiles (tested on Ubuntu):
 ```sh
-./dotdrop.sh -c ~/.config/dotdrop/config.yaml -p linux install
-deactivate
+cd ~/.config/dotdrop
+mise trust
+mise bootstrap -E linux
 ```
-Zsh may need restarting to apply all changes.
+Zsh may need restarting to apply all changes. Future calls to `mise bootstrap`
+can be made from any directory.
 
 ## Tips
 
@@ -89,6 +98,21 @@ corresponding [README](examples/README.md).
 
 Also, the [wiki](https://github.com/shyun3/dotfiles/wiki) has a lot of useful
 info.
+
+### mise-en-place
+
+Auto-detection of the platform environment can be enabled in
+`~/.config/mise/miserc.toml`:
+```toml
+auto_env = true
+```
+See [docs](https://mise.jdx.dev/configuration/environments.html#platform-environments)
+for more details.
+
+This will simplify the call for installing dotfiles:
+```sh
+mise bootstrap
+```
 
 ### Jujutsu
 

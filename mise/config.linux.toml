@@ -1,0 +1,12 @@
+#:schema https://mise.jdx.dev/schema/mise.json
+
+[dotfiles]
+"~/.config/mise/conf.d" = "~/.config/dotdrop/mise/linux"
+
+[dotfiles."~/.config/mise/config.linux.toml"]
+source = "~/.config/dotdrop/mise/config.linux.toml"
+mode = "symlink"
+
+[dotfiles."~/.config/mise/mise.lock"]
+source = "~/.config/dotdrop/mise/mise.lock"
+mode = "symlink"

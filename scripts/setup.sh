@@ -52,15 +52,6 @@ if [[ $(uname -r) =~ WSL ]]; then
 fi
 
 #######################################################################
-# mise
-
-# Using exact location since PATH updates may not have been applied yet
-MISE="$BIN_HOME/mise"
-
-cmd_exists "$MISE" || curl https://mise.run | sh
-"$MISE" install
-
-#######################################################################
 # antidote
 
 if [[ ! -d ~/.antidote ]]; then

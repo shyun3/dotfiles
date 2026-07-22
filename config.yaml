@@ -75,16 +75,6 @@ dotfiles:
   f_config.lua:
     src: config/jjui/config.lua
     dst: ~/.config/jjui/config.lua
-  f_mise.lock:
-    src: config/mise/mise.lock
-    dst: ~/.config/mise/mise.lock
-    link: absolute
-  f_tools.toml:
-    src: config/mise/conf.d/tools.toml
-    dst: ~/.config/mise/conf.d/tools.toml
-  f_settings.toml:
-    src: config/mise/conf.d/settings.toml
-    dst: ~/.config/mise/conf.d/settings.toml
   f_theme.toml:
     src: config/yazi/theme.toml
     dst: ~/.config/yazi/theme.toml
@@ -104,9 +94,6 @@ dotfiles:
   f_keymap.toml:
     src: config/yazi/keymap.toml
     dst: ~/.config/yazi/keymap.toml
-  f_alias.toml:
-    src: config/mise/conf.d/alias.toml
-    dst: ~/.config/mise/conf.d/alias.toml
 profiles:
   linux:
     dotfiles:
@@ -126,16 +113,12 @@ profiles:
       - f_01-user-config.toml
       - f_config.toml
       - f_config.lua
-      - f_mise.lock
-      - f_tools.toml
-      - f_settings.toml
       - f_theme.toml
       - f_package.toml
       - f_yazi.toml
       - f_init.lua
       - f_rumdl.toml
       - f_keymap.toml
-      - f_alias.toml
     actions:
       - setup_sh
   wsl-root:
