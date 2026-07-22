@@ -1,11 +1,6 @@
-{#@@ vim: set ft=gitconfig: @@#}
+[include]
+    path = ~/.gitconfig-local
 [user]
-    {%@@ if git_name is defined @@%}
-    name = {{@@ git_name @@}}
-    {%@@ endif @@%}
-    {%@@ if git_email is defined @@%}
-    email = {{@@ git_email @@}}
-    {%@@ endif @@%}
     useConfigOnly = true
 [alias]
     l = log --graph --oneline --decorate
@@ -46,10 +41,6 @@
     conflictstyle = diff3
 [core]
     autocrlf = input
-{%@@ if os | lower != 'windows' @@%}
-    pager = delta
-[interactive]
-    diffFilter = delta --color-only
 [include]
     path = ~/.cache/antidote/dandavison/delta/themes.gitconfig
     path = ~/.cache/antidote/catppuccin/delta/catppuccin.gitconfig
@@ -77,11 +68,3 @@
     true-color = always
 
     navigate = true     # use n and N to move between diff sections
-{%@@ endif @@%}
-
-{%@@ if git_profiles is defined @@%}
-{%@@ for dir in git_profiles @@%}
-[includeIf "gitdir:{{@@ dir @@}}/"]
-    path = {{@@ dir @@}}/.gitprofile
-{%@@ endfor @@%}
-{%@@ endif @@%}

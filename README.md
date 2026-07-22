@@ -1,6 +1,7 @@
 # Dotfiles
 
-This project uses [dotdrop](https://dotdrop.readthedocs.io/en/latest/).
+This project uses [dotdrop](https://dotdrop.readthedocs.io/en/latest/) and
+[mise](https://mise.jdx.dev/).
 
 ## Prerequisites
 
@@ -40,24 +41,17 @@ wsl --install
 
 Clone the repo:
 ```sh
-git clone git@github.com:shyun3/dotfiles.git ~/.config/dotdrop
+git clone git@github.com:shyun3/dotfiles.git ~/.dotfiles
 ```
 
-Get a temporary copy of `dotdrop`:
+Install [mise](https://mise.jdx.dev/getting-started.html#installing-mise-cli):
 ```sh
-git clone --depth=1 https://github.com/deadc0de6/dotdrop.git /tmp/dotdrop
-
-cd /tmp/dotdrop
-python3 -m venv venv
-
-source venv/bin/activate
-pip install -r requirements.txt
+curl https://mise.run | sh
 ```
-The installation process will include a permanent version of `dotdrop`.
+
+Confirm that `mise` is on the `PATH`. If not, try restarting the shell.
 
 ## Installation
-
-To install or update the dotfiles, call `dotdrop` as listed below.
 
 ### Windows
 
@@ -70,15 +64,18 @@ PowerShell may need restarting to apply all changes.
 
 If using WSL, apply the following first:
 ```sh
-sudo ./dotdrop.sh -c ~/.config/dotdrop/config.yaml -p wsl-root install
+sudo ~/.local/bin/mise -C ~/.dotfiles -E root bootstrap
 ```
+Make sure to trust the `mise` config, if prompted.
+
 WSL needs restarting to apply all changes. A distribution can be shutdown in
 PowerShell by running `wsl --terminate <distroName>`.
 
 Then, install the Linux dotfiles (tested on Ubuntu):
 ```sh
-./dotdrop.sh -c ~/.config/dotdrop/config.yaml -p linux install
-deactivate
+cd ~/.dotfiles
+mise trust
+mise bootstrap -E linux --update
 ```
 Zsh may need restarting to apply all changes.
 
@@ -89,6 +86,21 @@ corresponding [README](examples/README.md).
 
 Also, the [wiki](https://github.com/shyun3/dotfiles/wiki) has a lot of useful
 info.
+
+### mise-en-place
+
+Auto-detection of the platform environment can be enabled in
+`~/.config/mise/miserc.toml`:
+```toml
+auto_env = true
+```
+See [docs](https://mise.jdx.dev/configuration/environments.html#platform-environments)
+for more details.
+
+This will simplify the call for installing dotfiles:
+```sh
+mise bootstrap
+```
 
 ### Jujutsu
 
@@ -104,31 +116,8 @@ name = "My Name"
 
 ### gitconfig
 
-Add `.local_vars.yaml` under the repo root with the global Git user details
-defined:
-```yaml
-variables:
-  git_name: My Name
-  git_email: name@email.tld
-```
-Run `dotdrop` install to regenerate the gitconfig.
-
-Alternatively, if per-directory user details are desired then Git profiles may
-be specified. For example:
-```yaml
-variables:
-  git_name: My Name
-  git_profiles:
-    - ~/projects
-    - ~/personal
-```
-
-The email may be set for any repos under the listed directories by including it
-in a `.gitprofile`:
-```sh
-git config -f ~/projects/.gitprofile user.email real@work.tld
-git config -f ~/personal/.gitprofile user.email fake@priv.tld
-```
+Additional global Git options are read from `~/.gitconfig-local`. This can be
+useful for setting user details. See [example](examples/_gitconfig-local).
 
 ### Neovim
 

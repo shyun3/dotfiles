@@ -1,0 +1,45 @@
+#:schema https://mise.jdx.dev/schema/mise.json
+
+[bootstrap.repos]
+"~/.antidote" = { url = "https://github.com/mattmc3/antidote.git" }
+
+[bootstrap.user]
+login_shell = "/bin/zsh"
+
+[dotfiles]
+"~/.config/bat/config" = {}
+"~/.config/fd/ignore" = {}
+"~/.config/git/ignore" = {}
+"~/.config/jj/conf.d/01-user-config.toml" = {}
+"~/.config/jjui/config.*" = {}
+"~/.config/lazygit/config.yml" = {}
+"~/.config/mise/conf.d/" = "~/.dotfiles/mise/linux"
+"~/.config/nvim/" = { mode = "symlink" }
+"~/.config/rumdl/rumdl.toml" = {}
+"~/.config/stylua.toml" = {}
+"~/.config/yazi/*.*" = {}
+"~/.config/yazi/package.toml" = { mode = "symlink" }
+"~/.ctags.d/global.ctags" = {}
+"~/.gitconfig-local/linux" = { block = """
+[core]
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+""" }
+"~/.p10k.zsh" = {}
+"~/.zprofile" = {}
+"~/.zsh/" = { mode = "symlink" }
+"~/.zsh_plugins.txt" = {}
+"~/.zshrc" = {}
+
+[dotfiles."~/.config/mise/config.toml"]
+source = "~/.dotfiles/mise/config.toml"
+mode = "symlink"
+
+[dotfiles."~/.config/mise/config.linux.toml"]
+source = "~/.dotfiles/mise/config.linux.toml"
+mode = "symlink"
+
+[dotfiles."~/.config/mise/mise.lock"]
+source = "~/.dotfiles/mise/mise.lock"
+mode = "symlink"

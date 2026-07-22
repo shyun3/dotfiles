@@ -2,20 +2,17 @@ variables:
   dotdrop_root: "{{@@ _dotdrop_dotpath @@}}/.."
   scripts_dir: "{{@@ dotdrop_root @@}}/scripts"
 actions:
-  setup_sh: "{{@@ scripts_dir @@}}/setup.sh"
   winget_install: pwsh -nop "{{@@ scripts_dir @@}}/install_pkg.ps1" {0} {1}
 config:
   banner: false
   dotpath: rc
   force_chmod: true
-  import_variables:
-    - .local_vars.yaml:optional
 dotfiles:
   f_gitconfig:
-    src: gitconfig
+    src: .gitconfig
     dst: ~/.gitconfig
   f_git_ignore:
-    src: config/git/ignore
+    src: .config/git/ignore
     dst: ~/.config/git/ignore
   f_profile.ps1:
     src: windows/profile.ps1
@@ -28,119 +25,7 @@ dotfiles:
     link: absolute
     actions:
       - winget_install Microsoft.WindowsTerminal wt
-  f_wsl.conf:
-    src: etc/wsl.conf
-    dst: /etc/wsl.conf
-  f_zprofile:
-    src: zprofile
-    dst: ~/.zprofile
-  f_zshrc:
-    src: zshrc
-    dst: ~/.zshrc
-  f_p10k.zsh:
-    src: p10k.zsh
-    dst: ~/.p10k.zsh
-  f_fd_ignore:
-    src: config/fd/ignore
-    dst: ~/.config/fd/ignore
-  f_global.ctags:
-    src: ctags.d/global.ctags
-    dst: ~/.ctags.d/global.ctags
-  f_lazygit_config.yml:
-    src: config/lazygit/config.yml
-    dst: ~/.config/lazygit/config.yml
-  d_nvim:
-    src: config/nvim
-    dst: ~/.config/nvim
-    link: absolute
-  f_zsh_plugins.txt:
-    src: zsh_plugins.txt
-    dst: ~/.zsh_plugins.txt
-  f_stylua.toml:
-    src: config/stylua.toml
-    dst: ~/.config/stylua.toml
-  f_config:
-    src: config/bat/config
-    dst: ~/.config/bat/config
-  d_zsh:
-    src: zsh
-    dst: ~/.zsh
-    link: absolute
-  f_01-user-config.toml:
-    src: config/jj/conf.d/01-user-config.toml
-    dst: ~/.config/jj/conf.d/01-user-config.toml
-  f_config.toml:
-    src: config/jjui/config.toml
-    dst: ~/.config/jjui/config.toml
-  f_config.lua:
-    src: config/jjui/config.lua
-    dst: ~/.config/jjui/config.lua
-  f_mise.lock:
-    src: config/mise/mise.lock
-    dst: ~/.config/mise/mise.lock
-    link: absolute
-  f_tools.toml:
-    src: config/mise/conf.d/tools.toml
-    dst: ~/.config/mise/conf.d/tools.toml
-  f_settings.toml:
-    src: config/mise/conf.d/settings.toml
-    dst: ~/.config/mise/conf.d/settings.toml
-  f_theme.toml:
-    src: config/yazi/theme.toml
-    dst: ~/.config/yazi/theme.toml
-  f_package.toml:
-    src: config/yazi/package.toml
-    dst: ~/.config/yazi/package.toml
-    link: absolute
-  f_yazi.toml:
-    src: config/yazi/yazi.toml
-    dst: ~/.config/yazi/yazi.toml
-  f_init.lua:
-    src: config/yazi/init.lua
-    dst: ~/.config/yazi/init.lua
-  f_rumdl.toml:
-    src: config/rumdl/rumdl.toml
-    dst: ~/.config/rumdl/rumdl.toml
-  f_keymap.toml:
-    src: config/yazi/keymap.toml
-    dst: ~/.config/yazi/keymap.toml
-  f_alias.toml:
-    src: config/mise/conf.d/alias.toml
-    dst: ~/.config/mise/conf.d/alias.toml
 profiles:
-  linux:
-    dotfiles:
-      - f_gitconfig
-      - f_git_ignore
-      - f_zprofile
-      - f_zshrc
-      - f_p10k.zsh
-      - f_fd_ignore
-      - f_global.ctags
-      - f_lazygit_config.yml
-      - d_nvim
-      - f_zsh_plugins.txt
-      - f_stylua.toml
-      - f_config
-      - d_zsh
-      - f_01-user-config.toml
-      - f_config.toml
-      - f_config.lua
-      - f_mise.lock
-      - f_tools.toml
-      - f_settings.toml
-      - f_theme.toml
-      - f_package.toml
-      - f_yazi.toml
-      - f_init.lua
-      - f_rumdl.toml
-      - f_keymap.toml
-      - f_alias.toml
-    actions:
-      - setup_sh
-  wsl-root:
-    dotfiles:
-      - f_wsl.conf
   windows:
     dotfiles:
       - f_gitconfig

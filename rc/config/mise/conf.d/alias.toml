@@ -1,5 +1,0 @@
-#:schema https://mise.jdx.dev/schema/mise.json
-
-[shell_alias]
-lg = "lazygit"
-y = "yazi"

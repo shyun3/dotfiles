@@ -1,0 +1,24 @@
+#:schema https://mise.jdx.dev/schema/mise.json
+
+# Remember that all entries in this global config should be valid for all
+# users (including root) and platforms
+
+[settings]
+dotfiles.root = "~/.dotfiles/rc"
+dotfiles.default_mode = "copy"
+use_versions_host_track = false
+
+[shell_alias]
+lg = "lazygit"
+y = "yazi"
+
+[bootstrap.packages]
+# Guidelines for inclusion:
+# - Not present in mise
+# - Don't care about version updates
+"apt:tree" = "latest"
+"apt:update-notifier-common" = "latest"
+"apt:wslu" = "latest" # So that `xdg-open` can open links in Windows browser
+"apt:xclip" = "latest"
+"apt:xdg-utils" = "latest" # Needed for `xdg-open`
+"apt:zsh" = "latest"

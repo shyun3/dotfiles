@@ -8,6 +8,7 @@ renaming them, and customizing their contents as needed.
 | ------------ | ---------------- | ------------------ | -------- |
 | *_clang-format* | *.clang-format* | Project | `clang-format`
 | *_clangd* | *.clangd* | Project | `clangd` |
+| *_gitconfig-local* | *.gitconfig-local* | *~* | `git` |
 | *_gutctags* | *.gutctags* | Project | **vim-gutentags** |
 | *_projections.json* | *.projections.json* | Project | **vim-projectionist** |
 | *03-scope-configs.toml* | Same | *~/.config/jj/conf.d* | `jj`

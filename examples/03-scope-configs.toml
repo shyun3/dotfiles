@@ -7,7 +7,7 @@
 email = "me@work.com"
 
 [[--scope]]
---when.repositories = ["~/personal", "~/.config/dotdrop/"]
+--when.repositories = ["~/personal", "~/.dotfiles"]
 
 [--scope.user]
 email = "me@home.com"

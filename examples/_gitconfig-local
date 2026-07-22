@@ -1,0 +1,16 @@
+# vim: ft=gitconfig
+
+[user]
+    name = My Name
+
+# Per-directory options can be specified through profiles
+[includeIf "gitdir:~/projects/"]
+    path = ~/projects/.gitprofile
+[includeIf "gitdir:~/personal/"]
+    path = ~/personal/.gitprofile
+
+# For example, the email may be set for any repos under the listed directories
+# by including it in a `.gitprofile`:
+#
+# $ git config -f ~/projects/.gitprofile user.email real@work.tld
+# $ git config -f ~/personal/.gitprofile user.email fake@priv.tld

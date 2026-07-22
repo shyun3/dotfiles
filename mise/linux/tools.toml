@@ -2,7 +2,6 @@
 
 [tool_alias]
 7zip = "aqua:ip7z/7zip"
-dotdrop = "pipx:dotdrop"
 ipython = "pipx:ipython"
 mergiraf = "cargo:mergiraf"
 mise-completions-sync = "cargo:mise-completions-sync"
@@ -38,13 +37,6 @@ uv = "latest"
 vivid = "latest"
 "github:jannis-baum/vivify" = "latest"
 "pipx:pynvim" = "latest"
-
-[tools.dotdrop]
-version = "latest"
-postinstall = """
-curl -fsSLo ~/.zsh-complete/_dotdrop \
-    "https://raw.githubusercontent.com/deadc0de6/dotdrop/refs/tags/v${MISE_TOOL_INSTALL_PATH##*/}/completion/_dotdrop-completion.zsh"
-"""
 
 [tools.eza]
 version = "latest"
