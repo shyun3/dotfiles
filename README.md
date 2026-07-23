@@ -76,9 +76,10 @@ PowerShell may need restarting to apply all changes.
 
 If using WSL, apply the following first:
 ```sh
-sudo ./dotdrop.sh -c ~/.config/dotdrop/config.yaml -p wsl-root install
-deactivate
+sudo ~/.local/bin/mise -C ~/.config/dotdrop -E root bootstrap
 ```
+Make sure to trust the `mise` config, if prompted.
+
 WSL needs restarting to apply all changes. A distribution can be shutdown in
 PowerShell by running `wsl --terminate <distroName>`.
 

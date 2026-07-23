@@ -28,9 +28,6 @@ dotfiles:
     link: absolute
     actions:
       - winget_install Microsoft.WindowsTerminal wt
-  f_wsl.conf:
-    src: etc/wsl.conf
-    dst: /etc/wsl.conf
   f_zprofile:
     src: zprofile
     dst: ~/.zprofile
@@ -121,9 +118,6 @@ profiles:
       - f_keymap.toml
     actions:
       - setup_sh
-  wsl-root:
-    dotfiles:
-      - f_wsl.conf
   windows:
     dotfiles:
       - f_gitconfig
