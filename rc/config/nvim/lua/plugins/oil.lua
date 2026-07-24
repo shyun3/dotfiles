@@ -85,26 +85,21 @@ return {
       -- is closed.
       --
       -- However, the window seems to stay open if only Oil buffers were open
-      -- at the time of exit. A workaround is to create a scratch buffer
-      -- when the terminal is launched and delete it after exit.
+      -- at the time of exit. A workaround is to make sure a scratch buffer
+      -- is available in this case.
       --
       -- See dotfiles#30
-      on_create = function(term)
-        -- Buffer must be listed
-        local scratch_bufnr = vim.api.nvim_create_buf(true, true)
-
-        vim.api.nvim_create_autocmd("BufDelete", {
-          group = vim.api.nvim_create_augroup("my_toggleterm", {}),
-          nested = true,
-          once = true,
-          desc = "Delete workaround scratch buffer",
-
-          callback = function(args)
-            if args.buf == term.bufnr then
-              vim.api.nvim_buf_delete(scratch_bufnr, { force = true })
-            end
-          end,
-        })
+      on_create = function()
+        local ok = vim.iter(vim.api.nvim_list_bufs()):find(function(bufnr)
+          -- Buffer must be listed for this workaround. Oil buffers seem to
+          -- be unlisted, so this check also filters those out.
+          return vim.api.nvim_buf_is_valid(bufnr) and vim.bo[bufnr].buflisted
+        end)
+        if not ok then
+          -- Can be tricky to remove the scratch buffer, so just keep one
+          -- around
+          vim.api.nvim_create_buf(true, true)
+        end
       end,
     },
   },
