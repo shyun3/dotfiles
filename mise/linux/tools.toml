@@ -2,6 +2,7 @@
 
 [tool_alias]
 7zip = "aqua:ip7z/7zip"
+argcomplete = "pipx:argcomplete"
 ipython = "pipx:ipython"
 mergiraf = "cargo:mergiraf"
 mise-completions-sync = "cargo:mise-completions-sync"
@@ -14,12 +15,14 @@ zshellcheck = "go:github.com/afadesigns/zshellcheck/cmd/zshellcheck"
 
 [tools]
 7zip = "26"
+argcomplete = "latest"
 bat = "latest"
 cargo-binstall = "latest"
 delta = "latest"
 fd = "latest"
 fzf = "latest"
 go = "latest"
+ipython = { version = "latest", extras = "all" }
 jj = "latest"
 jjui = "latest"
 lazygit = "latest"
@@ -27,6 +30,7 @@ lua = "5.5"
 mergiraf = "latest"
 mise-completions-sync = "latest"
 neovim = "latest"
+patool = { version = "latest", extras = "argcompletion" }
 ripgrep = "latest"
 node = "latest"
 rust = "latest"
@@ -50,26 +54,9 @@ ln -sf \
     ~/.config/eza/theme.yml
 """
 
-[tools.ipython]
-version = "latest"
-extras = "all"
-postinstall = """
-"$MISE_TOOL_INSTALL_PATH/ipython/bin/register-python-argcomplete" ipython > ~/.zsh-complete/_ipython
-"""
-
-[tools.patool]
-version = "latest"
-extras = "argcompletion"
-postinstall = """
-"$MISE_TOOL_INSTALL_PATH/patool/bin/register-python-argcomplete" patool > ~/.zsh-complete/_patool
-"""
-
 [tools.ratarmount]
 version = "1.2.3" # Due to ratarmount#191
 uvx_args = "--with argcomplete"
-postinstall = """
-"$MISE_TOOL_INSTALL_PATH/ratarmount/bin/register-python-argcomplete" ratarmount > ~/.zsh-complete/_ratarmount
-"""
 
 [tools.tldr]
 version = "latest"
