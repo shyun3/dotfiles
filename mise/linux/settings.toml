@@ -6,20 +6,19 @@ pre-tools = "mkdir -p ~/.zsh-complete" # Custom zsh completions
 [hooks.postinstall]
 shell = "bash -c"
 run = """
-if [[ -n "$MISE_INSTALLED_TOOLS" ]]; then
-    eval "$(~/.local/bin/mise activate bash)"
+if [[ "$MISE_INSTALLED_TOOLS" == "[]" ]]; then exit; fi
 
-    misecompsync_up="$(echo "$MISE_INSTALLED_TOOLS" |
-        mise x jq -- jq -r 'any(.[]; .name == "mise-completions-sync")')"
+misecompsync_up="$(echo "$MISE_INSTALLED_TOOLS" |
+    mise x jq -- jq -r 'any(.[]; .name == "mise-completions-sync")')"
 
-    # If `mise-completions-sync` was upgraded, regenerate all completions as
-    # new ones could have been added
-    if [[ "$misecompsync_up" = true ]]; then
-        misecompsync --shell zsh
-    else
-        misecompsync --shell zsh --new-only
-    fi
+# If `mise-completions-sync` was upgraded, regenerate all completions as
+# new ones could have been added
+new_only=
+if [[ "$misecompsync_up" != true ]]; then
+    new_only="--new-only"
 fi
+
+mise x -- misecompsync --shell zsh "$new_only"
 """
 
 [settings]
