@@ -6,12 +6,12 @@ renaming them, and customizing their contents as needed.
 
 | Example name | Destination name | Destination folder | Use with |
 | ------------ | ---------------- | ------------------ | -------- |
-| *_clang-format* | *.clang-format* | Project | `clang-format`
+| *_clang-format* | *.clang-format* | Project | `clang-format` |
 | *_clangd* | *.clangd* | Project | `clangd` |
 | *_gitconfig-local* | *.gitconfig-local* | *~* | `git` |
 | *_gutctags* | *.gutctags* | Project | **vim-gutentags** |
 | *_projections.json* | *.projections.json* | Project | **vim-projectionist** |
-| *03-scope-configs.toml* | Same | *~/.config/jj/conf.d* | `jj`
+| *03-scope-configs.toml* | Same | *~/.config/jj/conf.d* | `jj` |
 | *compile_flags.txt* | Same | Project | `clangd` |
 | *pyrightconfig.json* | Same | Project | `basedpyright` |
 | *ssh-config* | *config* | *~/.ssh* | `ssh-add` |
