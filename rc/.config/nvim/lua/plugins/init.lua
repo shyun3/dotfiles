@@ -94,7 +94,7 @@ return {
 
   {
     "mfussenegger/nvim-lint",
-    lazy = false,
+    lazy = false, -- To run on file open
 
     config = function()
       -- Derived from:
@@ -123,14 +123,11 @@ return {
 
       require("lint").linters_by_ft.zsh = { "zshellcheck" }
 
-      vim.api.nvim_create_autocmd(
-        { "BufWritePost", "BufReadPost", "CursorHold", "InsertLeave" },
-        {
-          group = vim.api.nvim_create_augroup("my_lint", {}),
-          desc = "Try lint",
-          callback = function() require("lint").try_lint() end,
-        }
-      )
+      vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
+        group = vim.api.nvim_create_augroup("my_lint", {}),
+        desc = "Try lint",
+        callback = function() require("lint").try_lint() end,
+      })
     end,
   },
 
