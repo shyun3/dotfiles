@@ -4,21 +4,22 @@
 pre-tools = "mkdir -p ~/.zsh-complete" # Custom zsh completions
 
 [hooks.postinstall]
+# Note that this hook may not run once after all tools are installed. Multiple
+# runs may occur, each with a different batch of installed tools.
+#
+# See https://github.com/jdx/mise/discussions/7489#discussioncomment-15353250
 shell = "bash -c"
 run = """
 if [[ "$MISE_INSTALLED_TOOLS" == "[]" ]]; then exit; fi
 
-misecompsync_up="$(echo "$MISE_INSTALLED_TOOLS" |
+# mise-completions-sync has its own postinstall hook
+if ! mise which misecompsync &> /dev/null; then exit; fi
+
+misecompsync_ok="$(echo "$MISE_INSTALLED_TOOLS" |
     mise x jq -- jq -r 'any(.[]; .name == "mise-completions-sync")')"
+if [[ "$misecompsync_ok" = true ]]; then exit; fi
 
-# If `mise-completions-sync` was upgraded, regenerate all completions as
-# new ones could have been added
-new_only=
-if [[ "$misecompsync_up" != true ]]; then
-    new_only="--new-only"
-fi
-
-mise x -- misecompsync --shell zsh "$new_only"
+mise x -- misecompsync --shell zsh --new-only
 """
 
 [settings]

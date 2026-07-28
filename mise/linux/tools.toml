@@ -28,7 +28,6 @@ jjui = "latest"
 lazygit = "latest"
 lua = "5.5"
 mergiraf = "latest"
-mise-completions-sync = "latest"
 neovim = "latest"
 patool = { version = "latest", extras = "argcompletion" }
 ripgrep = "latest"
@@ -53,6 +52,10 @@ ln -sf \
     ~/.cache/antidote/catppuccin/eza/themes/mocha/catppuccin-mocha-lavender.yml \
     ~/.config/eza/theme.yml
 """
+
+[tools.mise-completions-sync]
+version = "latest"
+postinstall = "misecompsync --shell zsh"
 
 [tools.ratarmount]
 version = "1.2.3" # Due to ratarmount#191
