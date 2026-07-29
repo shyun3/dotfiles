@@ -155,8 +155,6 @@ return {
         }
       end,
     },
-
-    auto_integrations = true,
   },
 
   config = function(_, opts)
