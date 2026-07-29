@@ -30,7 +30,7 @@ return {
 
         grepper.tools = { "rg", "git" }
         grepper.rg.grepprg =
-          "rg -H --no-heading --vimgrep --smart-case --follow"
+          "rg -H --no-heading --vimgrep -S -L -. -g '!.{git,jj}/'"
         grepper.dir = "filecwd"
 
         -- Prevent auto-resize of quickfix window
