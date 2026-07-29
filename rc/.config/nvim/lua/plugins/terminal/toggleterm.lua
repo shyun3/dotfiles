@@ -59,7 +59,6 @@ return {
 
   {
     LazyDep("toggleterm"),
-    version = "*",
 
     opts = {
       open_mapping = OPEN_MAPPING,
