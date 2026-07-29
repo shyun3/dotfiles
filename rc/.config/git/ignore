@@ -1,5 +1,9 @@
 .ignore
 
+# basedpyright
+typings/
+pyrightconfig.json
+
 # Bloom
 .bloom/
 bloom.yaml
@@ -18,9 +22,5 @@ compile_commands.json
 
 ## conform plugin
 .conform.*
-
-# basedpyright
-typings/
-pyrightconfig.json
 
 # vim: ft=gitignore
