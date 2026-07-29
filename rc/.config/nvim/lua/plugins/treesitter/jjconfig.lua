@@ -38,6 +38,7 @@ return {
   {
     LazyDep("nvim-treesitter-jjconfig"),
     branch = "main",
+    build = ":TSUpdate",
 
     event = {
       -- To load before filetype event, otherwise highlighting may not occur
