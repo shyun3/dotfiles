@@ -1,7 +1,7 @@
 local util = require("util")
 
 -- Beware not to share an options table across different picker calls, see
--- issue jjui#2612
+-- issue fzf-lua#2612
 local FD_OPTS_BASE = "--color=never --exclude .git --exclude .jj "
 local FD_OPTS_FILES = FD_OPTS_BASE .. "--type f --type l"
 
