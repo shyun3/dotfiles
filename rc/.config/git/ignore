@@ -1,5 +1,4 @@
 .ignore
-.prettierrc.json
 
 # Bloom
 .bloom/
