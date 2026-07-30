@@ -58,7 +58,7 @@ version = "latest"
 postinstall = "misecompsync --shell zsh"
 
 [tools.ratarmount]
-version = "1.2.3" # Due to ratarmount#191
+version = "1.2.3"  # Due to ratarmount#191
 uvx_args = "--with argcomplete"
 
 [tools.tldr]
