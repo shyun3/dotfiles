@@ -24,7 +24,7 @@ return {
         "mesonlsp",
         "rumdl",
         "stylua",
-        "taplo",
+        "tombi",
         "ts_query_ls",
         "vimls",
         "yamlls",
