@@ -105,14 +105,7 @@ mise bootstrap
 ### Jujutsu
 
 Make sure to specify the user name and email. This can be done with scoped
-configs, see [example](examples/03-scope-configs.toml). If the same user name
-will be used for all repos, a separate config can be created, e.g.:
-```toml
-# ~/.config/jj/conf.d/02-default-config.toml
-
-[user]
-name = "My Name"
-```
+configs, see [example](examples/02-user.toml).
 
 ### gitconfig
 

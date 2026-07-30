@@ -1,13 +1,12 @@
 #:schema https://docs.jj-vcs.dev/latest/config-schema.json
 
+[user]
+name = "My Name"
+
 [[--scope]]
 --when.repositories = ["~/projects"]
-
-[--scope.user]
-email = "me@work.com"
+user.email = "me@work.com"
 
 [[--scope]]
 --when.repositories = ["~/personal", "~/.dotfiles"]
-
-[--scope.user]
-email = "me@home.com"
+user.email = "me@home.com"

@@ -11,7 +11,7 @@ renaming them, and customizing their contents as needed.
 | *_gitconfig-local* | *.gitconfig-local* | *~* | `git` |
 | *_gutctags* | *.gutctags* | Project | **vim-gutentags** |
 | *_projections.json* | *.projections.json* | Project | **vim-projectionist** |
-| *03-scope-configs.toml* | Same | *~/.config/jj/conf.d* | `jj` |
+| *02-user.toml* | Same | *~/.config/jj/conf.d* | `jj` |
 | *compile_flags.txt* | Same | Project | `clangd` |
 | *pyrightconfig.json* | Same | Project | `basedpyright` |
 | *ssh-config* | *config* | *~/.ssh* | `ssh-add` |
@@ -19,7 +19,7 @@ renaming them, and customizing their contents as needed.
 
 Additional notes:
 * *.gutctags*: See `g:gutentags_project_root`
-* *03-scope-configs.toml*: Files in directory are loaded in lexicographic
+* *02-user.toml*: Files in directory are loaded in lexicographic
   order, see [docs][jj-config]
 * *pyrightconfig.json*: `basedpyright` can read type stubs placed in the
   `typings` directory. See also the `stubPath` option and [Generating Type
