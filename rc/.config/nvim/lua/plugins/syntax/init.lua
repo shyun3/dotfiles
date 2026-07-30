@@ -27,17 +27,5 @@ return {
 
   { "shyun3/vim-antidote", ft = "antidote" },
 
-  {
-    "shyun3/vim-ctags-mtable",
-    branch = "personal",
-
-    init = function()
-      -- Full color highlighting of regexes
-      vim.g.ctags_syntax_show_regexp = true
-    end,
-
-    ft = "ctags",
-  },
-
   { import = "plugins.syntax.4dgl" },
 }

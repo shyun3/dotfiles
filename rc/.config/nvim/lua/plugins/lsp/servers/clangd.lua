@@ -1,3 +1,7 @@
+vim.filetype.add({
+  filename = { [".clangd"] = "yaml" },
+})
+
 return {
   {
     LazyDep("catppuccin"),

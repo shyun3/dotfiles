@@ -239,21 +239,6 @@ return {
   },
 
   {
-    "ludovicchabant/vim-gutentags",
-    event = "VeryLazy",
-
-    init = function()
-      vim.g.gutentags_define_advanced_commands = 1
-
-      vim.g.gutentags_project_root = { ".gutctags" }
-      vim.g.gutentags_add_default_project_roots = 0
-      vim.g.gutentags_add_ctrlp_root_markers = 0
-
-      vim.g.gutentags_ctags_tagfile = ".gutentags"
-    end,
-  },
-
-  {
     LazyDep("vimade"),
     event = "UIEnter",
 
