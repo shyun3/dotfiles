@@ -21,4 +21,8 @@ vim.filetype.add({
     ["meson.format"] = "cfg",
     ["mise.lock"] = "toml",
   },
+
+  pattern = {
+    ["mise%..*%.lock"] = "toml",
+  },
 })
