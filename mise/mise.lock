@@ -69,10 +69,6 @@ checksum = "sha256:41aaba7b1235304ab5aa0624530c67ae829496cd29e875925271efdccc28c
 url = "https://github.com/ip7z/7zip/releases/download/26.02/7z2602-linux-x64.tar.xz"
 url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/458363910"
 
-[[tools.argcomplete]]
-version = "3.7.0"
-backend = "pipx:argcomplete"
-
 [[tools.bat]]
 version = "0.26.1"
 backend = "aqua:sharkdp/bat"
@@ -215,6 +211,10 @@ backend = "pipx:patool"
 
 [tools.patool.options]
 extras = "argcompletion"
+
+[[tools."pipx:argcomplete"]]
+version = "3.7.0"
+backend = "pipx:argcomplete"
 
 [[tools."pipx:pynvim"]]
 version = "0.6.0"

@@ -2,7 +2,6 @@
 
 [tool_alias]
 7zip = "aqua:ip7z/7zip"
-argcomplete = "pipx:argcomplete"
 ipython = "pipx:ipython"
 mergiraf = "cargo:mergiraf"
 mise-completions-sync = "cargo:mise-completions-sync"
@@ -15,7 +14,6 @@ zshellcheck = "go:github.com/afadesigns/zshellcheck/cmd/zshellcheck"
 
 [tools]
 7zip = "26"
-argcomplete = "latest"
 bat = "latest"
 cargo-binstall = "latest"
 delta = "latest"
@@ -39,6 +37,7 @@ usage = "latest"
 uv = "latest"
 vivid = "latest"
 "github:jannis-baum/vivify" = "latest"
+"pipx:argcomplete" = "latest"
 "pipx:pynvim" = "latest"
 
 [tools.eza]
