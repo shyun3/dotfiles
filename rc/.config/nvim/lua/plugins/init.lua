@@ -69,12 +69,17 @@ return {
   },
 
   {
-    "norcalli/nvim-colorizer.lua",
+    "catgoose/nvim-colorizer.lua",
     event = "VeryLazy",
 
-    config = function()
-      require("colorizer").setup({ "*" }, { RGB = false, names = false })
-    end,
+    opts = {
+      options = {
+        parsers = {
+          hex = { rgb = false },
+          names = { enable = false },
+        },
+      },
+    },
   },
 
   {
