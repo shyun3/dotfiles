@@ -20,6 +20,7 @@ login_shell = "/bin/zsh"
 "~/.config/yazi/*.*" = {}
 "~/.config/yazi/package.toml" = { mode = "symlink" }
 "~/.ctags.d/global.ctags" = {}
+"~/.gitconfig" = {}
 "~/.gitconfig-local/linux" = { block = """
 [core]
     pager = delta
