@@ -89,7 +89,18 @@ return {
 
   {
     LazyDep("workspaces"),
-    lazy = false, -- Needed for `auto_open`
+
+    cmd = {
+      "WorkspacesAdd",
+      "WorkspacesAddDir",
+      "WorkspacesRemove",
+      "WorkspacesRemoveDir",
+      "WorkspacesRename",
+      "WorkspacesList",
+      "WorkspacesListDirs",
+      "WorkspacesOpen",
+      "WorkspacesSyncDirs",
+    },
 
     opts = {
       cd_type = "tab",
