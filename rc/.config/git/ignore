@@ -15,12 +15,10 @@ compile_flags.txt
 compile_commands.json
 
 # nvim
+.conform.*
 .gutentags*
 .gutctags
-.nvim.lua
+.nvim.lua   # nvim-config-local
 .projections.json
-
-## conform plugin
-.conform.*
 
 # vim: ft=gitignore
