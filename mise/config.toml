@@ -18,7 +18,7 @@ y = "yazi"
 # - Don't care about version updates
 "apt:tree" = "latest"
 "apt:update-notifier-common" = "latest"
-"apt:wslu" = "latest" # So that `xdg-open` can open links in Windows browser
+"apt:wslu" = "latest"  # So that `xdg-open` can open links in Windows browser
 "apt:xclip" = "latest"
-"apt:xdg-utils" = "latest" # Needed for `xdg-open`
+"apt:xdg-utils" = "latest"  # Needed for `xdg-open`
 "apt:zsh" = "latest"
