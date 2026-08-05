@@ -22,7 +22,13 @@ return {
         "meson",
       },
 
-      python = { "isort", "black" },
+      python = {
+        "ruff_organize_imports",
+
+        -- Not using ruff format since it doesn't currently support Black's
+        -- improved string processing, see ruff#6936
+        "black",
+      },
 
       sh = {
         -- bash-language-server doesn't support `shfmt` EditorConfig extensions

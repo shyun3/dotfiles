@@ -9,7 +9,6 @@ return {
       ensure_installed = {
         -- Formatters
         "black",
-        "isort",
         "prettier",
         "shfmt",
 

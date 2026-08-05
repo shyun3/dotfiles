@@ -23,6 +23,7 @@ return {
         "jsonls",
         "mesonlsp",
         "rumdl",
+        "ruff",
         "stylua",
         "tombi",
         "ts_query_ls",
