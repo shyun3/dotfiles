@@ -45,6 +45,8 @@ return {
 
     opts = {
       lsp = {
+        hover = { silent = true },
+
         -- override markdown rendering so that plugins use **Treesitter**
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
