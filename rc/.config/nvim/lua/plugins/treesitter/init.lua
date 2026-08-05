@@ -12,6 +12,7 @@ return {
         cpp = true,
         editorconfig = true,
         git_config = true,
+        gitignore = true,
         lua = true,
         markdown = true,
         markdown_inline = true,
