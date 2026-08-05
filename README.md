@@ -64,7 +64,7 @@ PowerShell may need restarting to apply all changes.
 
 If using WSL, apply the following first:
 ```sh
-sudo ~/.local/bin/mise -C ~/.dotfiles -E root bootstrap
+mise -C ~/.dotfiles -E root bootstrap
 ```
 Make sure to trust the `mise` config, if prompted.
 
