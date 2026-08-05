@@ -75,7 +75,7 @@ return {
     opts = {
       options = {
         parsers = {
-          hex = { rgb = false },
+          hex = { rgb = false, rgba = false },
           names = { enable = false },
         },
       },
