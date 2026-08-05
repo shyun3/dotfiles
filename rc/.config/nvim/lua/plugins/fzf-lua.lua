@@ -231,6 +231,11 @@ return {
       },
 
       file_icon_padding = " ",
+
+      command_history = {
+        -- See https://github.com/ibhagwan/fzf-lua/discussions/2632#discussioncomment-17909438
+        _treesitter = false,
+      },
     },
 
     keys = {
