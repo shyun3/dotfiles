@@ -134,6 +134,9 @@ return {
           link = "@lsp.typemod.type.defaultLibrary",
         },
         ["@lsp.typemod.namespace.defaultLibrary"] = { link = "@module.builtin" },
+        ["@lsp.typemod.string.documentation.python"] = {
+          link = "@string.documentation",
+        },
         ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
         ["@lsp.typemod.variable.defaultLibrary"] = {
           style = { "italic" }, -- Not linking to avoid overriding colors
