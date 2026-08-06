@@ -246,8 +246,29 @@ return {
       file_icon_padding = " ",
 
       command_history = {
-        -- See https://github.com/ibhagwan/fzf-lua/discussions/2632#discussioncomment-17909438
-        _treesitter = false,
+        -- To fix buggy highlighting, see discussion fzf-lua#2632
+        _treesitter = function(line)
+          -- Example valid line: "▌ vim command"
+          --
+          -- The first character of a line that has a recorded command should
+          -- be the item selection indicator. Other lines may include the
+          -- prompt, separator, and header. Recall that alternative picker
+          -- layouts are possible that place the prompt at the bottom (see
+          -- `--layout=default`), so the line number cannot be relied upon.
+          local sel_start, sel_end = line:find("▌")
+          if sel_start ~= 1 then return end
+
+          return "foo.vim",
+            nil,
+            {
+              text = line,
+
+              -- The item selection indicator may throw off the vim treesitter
+              -- parser, so skip it. There should always be at least one
+              -- character after the item indicator.
+              start_col = sel_end + 1,
+            }
+        end,
       },
     },
 
