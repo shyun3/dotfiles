@@ -1,9 +1,5 @@
 .ignore
 
-# basedpyright
-typings/
-pyrightconfig.json
-
 # Bloom
 .bloom/
 bloom.yaml

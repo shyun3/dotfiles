@@ -18,7 +18,6 @@ return {
 
     opts = {
       ensure_installed = {
-        "basedpyright",
         "bashls",
         "jsonls",
         "mesonlsp",
@@ -27,6 +26,7 @@ return {
         "stylua",
         "tombi",
         "ts_query_ls",
+        "ty",
         "vimls",
         "yamlls",
       },
