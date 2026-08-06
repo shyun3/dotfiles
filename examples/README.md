@@ -11,7 +11,7 @@ renaming them, and customizing their contents as needed.
 | *_gitconfig-local* | *.gitconfig-local* | *~* | `git` |
 | *_gutctags* | *.gutctags* | Project | **vim-gutentags** |
 | *_projections.json* | *.projections.json* | Project | **vim-projectionist** |
-| *02-user.toml* | Same | *~/.config/jj/conf.d* | `jj` |
+| *user.toml* | Same | *~/.config/jj/conf.d* | `jj` |
 | *compile_flags.txt* | Same | Project | `clangd` |
 | *pyproject.toml* | Same | Project | `python` |
 | *ssh-config* | *config* | *~/.ssh* | `ssh-add` |
@@ -19,8 +19,6 @@ renaming them, and customizing their contents as needed.
 
 Additional notes:
 * *.gutctags*: See `g:gutentags_project_root`
-* *02-user.toml*: Files in directory are loaded in lexicographic
-  order, see [docs][jj-config]
 
 ## Windows Terminal JSON fragment extensions
 
@@ -46,7 +44,6 @@ Recall from the docs that the actual file name of the JSON does not matter.
 See also the [Dynamic profiles][winterm-dyn-profiles] page for additional
 examples of JSON contents.
 
-[jj-config]: https://jj-vcs.github.io/jj/latest/config/#ways-to-specify-jj-config-details
 [winterm-dyn-profiles]: https://docs.microsoft.com/en-us/windows/terminal/dynamic-profiles
 [winterm-json-fragment-loc]: https://docs.microsoft.com/en-us/windows/terminal/json-fragment-extensions#applications-installed-from-the-web
 [winterm-json-fragment]: https://docs.microsoft.com/en-us/windows/terminal/json-fragment-extensions
