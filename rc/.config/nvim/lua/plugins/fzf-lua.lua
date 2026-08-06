@@ -101,6 +101,19 @@ return {
   },
 
   {
+    LazyDep("bqf"),
+    optional = true,
+
+    opts = {
+      func_map = {
+        -- Remap to prevent conflicts
+        prevfile = "K",
+        nextfile = "J",
+      },
+    },
+  },
+
+  {
     LazyDep("mini.files"),
     optional = true,
 
