@@ -90,6 +90,16 @@ return {
       --
       -- See also `lsp-log`
       vim.lsp.log.set_level("off")
+
+      -- These commands have been removed as of nvim v0.12
+      vim.api.nvim_create_user_command("LspInfo", ":checkhealth vim.lsp", {
+        desc = "Show status of active LSP clients and servers",
+      })
+      vim.api.nvim_create_user_command(
+        "LspLog",
+        function() vim.cmd("tabnew " .. vim.lsp.log.get_filename()) end,
+        { desc = "Open the LSP client log" }
+      )
     end,
 
     keys = {
