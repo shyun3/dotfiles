@@ -16,6 +16,7 @@ y = "yazi"
 # Guidelines for inclusion:
 # - Not present in mise
 # - Don't care about version updates
+"apt:inotify-tools" = "latest"  # For Neovim LSP
 "apt:tree" = "latest"
 "apt:update-notifier-common" = "latest"
 "apt:wslu" = "latest"  # So that `xdg-open` can open links in Windows browser
