@@ -251,22 +251,23 @@ return {
           -- Example valid line: "▌ vim command"
           --
           -- The first character of a line that has a recorded command should
-          -- be the item selection indicator. Other lines may include the
-          -- prompt, separator, and header. Recall that alternative picker
-          -- layouts are possible that place the prompt at the bottom (see
-          -- `--layout=default`), so the line number cannot be relied upon.
-          local sel_start, sel_end = line:find("▌")
-          if sel_start ~= 1 then return end
+          -- be the `fzf` pointer or gutter character. Other lines may include
+          -- the prompt, header, footer, and separators. Recall that
+          -- alternative `fzf` layouts are possible that place the prompt at
+          -- the bottom (see `--layout=default`), so the line number cannot be
+          -- relied on.
+          local default_start = "▌"
+          if line:sub(1, #default_start) ~= default_start then return end
 
           return "foo.vim",
             nil,
             {
               text = line,
 
-              -- The item selection indicator may throw off the vim treesitter
-              -- parser, so skip it. There should always be at least one
-              -- character after the item indicator.
-              start_col = sel_end + 1,
+              -- The pointer/gutter character may throw off the vim treesitter
+              -- parser, so skip it. By default, the next character should be a
+              -- space (see `fzf` option `--marker`).
+              start_col = #default_start + 1,
             }
         end,
       },
