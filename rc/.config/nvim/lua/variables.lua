@@ -4,7 +4,7 @@ vim.g.c_no_curly_error = 1
 
 -- Clipboard
 -- Derived from https://github.com/neovim/neovim/issues/10223#issuecomment-703544303
-if vim.fn.exists("$WAYLAND_DISPLAY") then
+if vim.fn.has("wsl") then
   vim.g.clipboard = {
     name = "wl-clipboard with ^M Trim",
     copy = {
