@@ -2,6 +2,7 @@
 
 [tool_alias]
 7zip = "aqua:ip7z/7zip"
+clipper = "go:github.com/zyedidia/clipper/cmd/clipper"
 ipython = "pipx:ipython"
 mergiraf = "cargo:mergiraf"
 mise-completions-sync = "cargo:mise-completions-sync"
@@ -16,6 +17,7 @@ zshellcheck = "go:github.com/afadesigns/zshellcheck/cmd/zshellcheck"
 7zip = "26"
 bat = "latest"
 cargo-binstall = "latest"
+clipper = "latest"
 delta = "latest"
 fd = "latest"
 fzf = "latest"

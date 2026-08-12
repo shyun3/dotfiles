@@ -88,6 +88,10 @@ url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.21.1/ca
 url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/489425174"
 provenance = "github-attestations"
 
+[[tools.clipper]]
+version = "0.1.1"
+backend = "go:github.com/zyedidia/clipper/cmd/clipper"
+
 [[tools.delta]]
 version = "0.19.2"
 backend = "aqua:dandavison/delta"
