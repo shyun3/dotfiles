@@ -14,7 +14,7 @@ FZF_DEFAULT_OPTS+=' --walker-skip=.git,node_modules,.jj
 # https://junegunn.github.io/fzf/shell-integration/#ctrl-r
 export FZF_CTRL_R_OPTS="
   --preview 'echo {}' --preview-window down:3:wrap --bind '?:toggle-preview'
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | clipper -copy)+abort'
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
 
