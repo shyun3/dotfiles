@@ -30,7 +30,7 @@ neovim = "latest"
 patool = { version = "latest", extras = "argcompletion" }
 ripgrep = "latest"
 node = "latest"
-rust = "latest"
+rust = "stable"
 tree-sitter = "latest"
 universal-ctags = "latest"
 usage = "latest"
