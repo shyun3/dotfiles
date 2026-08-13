@@ -13,7 +13,7 @@ login_shell = "/bin/zsh"
 "~/.config/jj/conf.d/config.toml" = {}
 "~/.config/jjui/config.*" = {}
 "~/.config/lazygit/config.yml" = {}
-"~/.config/mise/conf.d/" = "~/.dotfiles/mise/linux"
+"~/.config/mise/conf.d/" = "~/.dotfiles/mise/unix/"
 "~/.config/nvim/" = { mode = "symlink" }
 "~/.config/rumdl/rumdl.toml" = {}
 "~/.config/stylua.toml" = {}
@@ -21,7 +21,7 @@ login_shell = "/bin/zsh"
 "~/.config/yazi/package.toml" = { mode = "symlink" }
 "~/.ctags.d/global.ctags" = {}
 "~/.gitconfig" = {}
-"~/.gitconfig-local/linux" = { block = """
+"~/.gitconfig-local/unix" = { block = """
 [core]
     pager = delta
 [interactive]
@@ -37,8 +37,8 @@ login_shell = "/bin/zsh"
 source = "~/.dotfiles/mise/config.toml"
 mode = "symlink"
 
-[dotfiles."~/.config/mise/config.linux.toml"]
-source = "~/.dotfiles/mise/config.linux.toml"
+[dotfiles."~/.config/mise/config.unix.toml"]
+source = "~/.dotfiles/mise/config.unix.toml"
 mode = "symlink"
 
 [dotfiles."~/.config/mise/mise.lock"]
