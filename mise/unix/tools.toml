@@ -73,6 +73,7 @@ curl -fsSLo ~/.zsh-complete/_tldr \
 
 [tools.trash-cli]
 version = "latest"
+os = ["linux"]
 extras = "completion"
 postinstall = """
 cmds=(trash-empty trash-list trash-restore trash-put trash)
