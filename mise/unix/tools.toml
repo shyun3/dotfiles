@@ -12,6 +12,7 @@ tldr = "cargo:tealdeer"
 tree = "conda:tree"
 trash-cli = "pipx:trash-cli"
 universal-ctags = "conda:universal-ctags"
+xclip = "conda:xclip"
 zshellcheck = "go:github.com/afadesigns/zshellcheck/cmd/zshellcheck"
 
 [tools]
@@ -40,6 +41,7 @@ universal-ctags = "latest"
 usage = "latest"
 uv = "latest"
 vivid = "latest"
+xclip = { version = "latest", os = ["linux"] }
 "github:jannis-baum/vivify" = "latest"
 "pipx:argcomplete" = "latest"
 "pipx:pynvim" = "latest"
