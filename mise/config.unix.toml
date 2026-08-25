@@ -1,5 +1,16 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
+[bootstrap.packages]
+# Guidelines for inclusion:
+# - Not present in mise
+# - Don't care about version updates
+# - Requires installation in system directories
+"apt:inotify-tools" = "latest"  # For Neovim LSP
+"apt:update-notifier-common" = "latest"
+"apt:wslu" = "latest"  # So that `xdg-open` can open links in Windows browser
+"apt:xdg-utils" = "latest"  # Needed for `xdg-open`
+"apt:zsh" = "latest"
+
 [bootstrap.repos]
 "~/.antidote" = { url = "https://github.com/mattmc3/antidote.git" }
 
