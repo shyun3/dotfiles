@@ -8,12 +8,6 @@ config:
   dotpath: rc
   force_chmod: true
 dotfiles:
-  f_gitconfig:
-    src: .gitconfig
-    dst: ~/.gitconfig
-  f_git_ignore:
-    src: .config/git/ignore
-    dst: ~/.config/git/ignore
   f_profile.ps1:
     src: windows/profile.ps1
     dst: "{{@@ env['UserProfile'] @@}}/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
@@ -28,7 +22,5 @@ dotfiles:
 profiles:
   windows:
     dotfiles:
-      - f_gitconfig
-      - f_git_ignore
       - f_profile.ps1
       - f_winterm_settings.json

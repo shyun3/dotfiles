@@ -20,7 +20,6 @@ login_shell = "/bin/zsh"
 [dotfiles]
 "~/.config/bat/config" = {}
 "~/.config/fd/ignore" = {}
-"~/.config/git/ignore" = {}
 "~/.config/jj/conf.d/config.toml" = {}
 "~/.config/jjui/config.*" = {}
 "~/.config/lazygit/config.yml" = {}
@@ -31,7 +30,6 @@ login_shell = "/bin/zsh"
 "~/.config/yazi/*.*" = {}
 "~/.config/yazi/package.toml" = { mode = "symlink" }
 "~/.ctags.d/global.ctags" = {}
-"~/.gitconfig" = {}
 "~/.gitconfig-local/unix" = { block = """
 [core]
     pager = delta
@@ -43,10 +41,6 @@ login_shell = "/bin/zsh"
 "~/.zsh/" = { mode = "symlink" }
 "~/.zsh_plugins.txt" = {}
 "~/.zshrc" = {}
-
-[dotfiles."~/.config/mise/config.toml"]
-source = "~/.dotfiles/mise/config.toml"
-mode = "symlink"
 
 [dotfiles."~/.config/mise/config.unix.toml"]
 source = "~/.dotfiles/mise/config.unix.toml"

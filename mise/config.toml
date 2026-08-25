@@ -11,3 +11,11 @@ use_versions_host_track = false
 [shell_alias]
 lg = "lazygit"
 y = "yazi"
+
+[dotfiles]
+"~/.config/git/ignore" = {}
+"~/.gitconfig" = {}
+
+[dotfiles."~/.config/mise/config.toml"]
+source = "~/.dotfiles/mise/config.toml"
+mode = "symlink"
