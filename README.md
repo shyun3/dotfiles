@@ -1,7 +1,6 @@
 # Dotfiles
 
-This project uses [dotdrop](https://dotdrop.readthedocs.io/en/latest/) and
-[mise](https://mise.jdx.dev/).
+This project uses [mise](https://mise.jdx.dev/).
 
 ## Prerequisites
 
@@ -23,11 +22,10 @@ This will also install Git.
 
 Clone the repo:
 ```pwsh
-git clone https://github.com/shyun3/dotfiles.git $Env:UserProfile/.config/dotdrop
+git clone https://github.com/shyun3/dotfiles.git ~/.dotfiles
 ```
 
-Run `bootstrap.ps1`. This will install `dotdrop` and all dependencies. Restart
-PowerShell to apply any changes to `PATH`.
+Run `bootstrap.ps1`. This will install `mise` and all dependencies.
 
 ### WSL
 
@@ -56,7 +54,9 @@ Confirm that `mise` is on the `PATH`. If not, try restarting the shell.
 ### Windows
 
 ```pwsh
-dotdrop -p windows install
+cd ~/.dotfiles
+mise trust
+mise bootstrap -E windows
 ```
 PowerShell may need restarting to apply all changes.
 

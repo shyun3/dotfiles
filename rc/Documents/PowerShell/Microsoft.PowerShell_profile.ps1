@@ -1,9 +1,34 @@
-. "{{@@ scripts_dir @@}}/util.ps1"
+#######################################################################
+# Utilities
+
+# See https://stackoverflow.com/a/29424207
+function Check-Command($cmdname)
+{
+    return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
+}
+
+# See https://stackoverflow.com/a/16949127
+function which($name)
+{
+    Get-Command $name | Select-Object -ExpandProperty Definition
+}
+
+#######################################################################
+
+# See https://powershellmagazine.com/2013/05/13/pstip-detecting-if-the-console-is-in-interactive-mode/
+if ([Environment]::GetCommandLineArgs() -like '-noni*')
+{
+    return
+}
+
+if (Check-Command mise)
+{
+    (&mise activate pwsh) | Out-String | Invoke-Expression
+}
 
 if (Check-Command oh-my-posh)
 {
-    oh-my-posh init pwsh --config "{{@@ _dotdrop_dotpath @@}}/mytheme.omp.json" |
-        Invoke-Expression
+    oh-my-posh init pwsh --config ~/.mytheme.omp.json | Invoke-Expression
 }
 
 #######################################################################

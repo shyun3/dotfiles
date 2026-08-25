@@ -7,6 +7,8 @@
 dotfiles.root = "~/.dotfiles/rc"
 dotfiles.default_mode = "copy"
 use_versions_host_track = false
+windows_default_inline_shell_args = "pwsh -noni -c"
+windows_powershell_no_profile = false
 
 [shell_alias]
 lg = "lazygit"
