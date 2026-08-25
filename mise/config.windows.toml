@@ -1,7 +1,7 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
 [dotfiles]
-"~/mytheme.omp.json" = {}
+"~/.mytheme.omp.json" = {}
 "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" = {}
 
 [dotfiles."~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"]
