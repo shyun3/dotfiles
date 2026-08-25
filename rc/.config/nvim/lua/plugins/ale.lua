@@ -9,9 +9,7 @@ local function zshellcheck(_, lines)
       type = "E"
     elseif severity == "warning" then
       type = "W"
-    elseif severity == "info" then
-      type = "I"
-    elseif severity == "style" then
+    elseif severity == "info" or severity == "style" then
       type = "I"
     end
 
@@ -28,7 +26,7 @@ local function zshellcheck(_, lines)
   return out
 end
 
-local function zshellcheck_fix(_)
+local function zshellcheck_fix()
   return {
     command = "zshellcheck -no-color -fix %t",
     read_temporary_file = 1,
