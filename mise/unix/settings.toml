@@ -1,15 +1,14 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
 [bootstrap.hooks]
-pre-tools = "mkdir -p ~/.zsh-complete" # Custom zsh completions
+pre-tools = "mkdir -p ~/.zsh-complete"  # Custom zsh completions
 
-[hooks.postinstall]
+[hooks]
 # Note that this hook may not run once after all tools are installed. Multiple
 # runs may occur, each with a different batch of installed tools.
 #
 # See https://github.com/jdx/mise/discussions/7489#discussioncomment-15353250
-shell = "bash -c"
-run = """
+postinstall = """
 if [[ "$MISE_INSTALLED_TOOLS" == "[]" ]]; then exit; fi
 
 # mise-completions-sync has its own postinstall hook

@@ -89,10 +89,8 @@ version = "latest"
 postinstall = """
 ya pkg install
 
-# Remember this hook is run with `sh`, not necessarily `bash`
 cd "$MISE_TOOL_INSTALL_PATH"
-cd */completions
-cp _ya _yazi ~/.zsh-complete
+cp */completions/{_ya,_yazi} ~/.zsh-complete
 """
 
 [tools.zoxide]
