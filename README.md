@@ -105,7 +105,7 @@ mise bootstrap
 ### Jujutsu
 
 Make sure to specify the user name and email. This can be done with scoped
-configs, see [example](examples/02-user.toml).
+configs, see [example](examples/user.toml).
 
 ### gitconfig
 
