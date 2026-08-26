@@ -3,9 +3,12 @@
 [bootstrap.hooks]
 pre-tools = "mkdir -p ~/.zsh-complete"  # Custom zsh completions
 
+[bootstrap.user]
+login_shell = "/bin/zsh"
+
 [hooks]
-# Note that this hook may not run once after all tools are installed. Multiple
-# runs may occur, each with a different batch of installed tools.
+# Note that this hook may not run only once after all tools are installed.
+# Multiple runs may occur, each with a different batch of installed tools.
 #
 # See https://github.com/jdx/mise/discussions/7489#discussioncomment-15353250
 postinstall = """

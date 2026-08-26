@@ -14,9 +14,6 @@
 [bootstrap.repos]
 "~/.antidote" = { url = "https://github.com/mattmc3/antidote.git" }
 
-[bootstrap.user]
-login_shell = "/bin/zsh"
-
 [dotfiles]
 "~/.config/bat/config" = {}
 "~/.config/fd/ignore" = {}
