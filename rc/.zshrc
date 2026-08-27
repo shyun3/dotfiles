@@ -88,8 +88,6 @@ fi
 
 export VISUAL=nvim
 
-setopt histignorealldups incappendhistory sharehistory
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -103,7 +101,7 @@ setopt histignorealldups incappendhistory sharehistory
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias cdgitroot='cd "$(git rev-parse --show-cdup)"'
+cdgitroot() { cd "$(git rev-parse --show-cdup)" || return }
 
 #######################################################################
 # User configuration
@@ -114,14 +112,14 @@ ANTIDOTE_CACHE=$HOME/.cache/antidote
 # mise-completions-sync
 fpath=(${XDG_DATA_HOME:-$HOME/.local/share}/mise-completions/zsh $fpath)
 
-for file (~/.zsh/pre/**/*.zsh(N.)) source $file
+for file (~/.zsh/pre/**/*.zsh(N.)) source "$file"
 
 if [[ -f ~/.antidote/antidote.zsh ]]; then
   source ~/.antidote/antidote.zsh
   antidote load
 fi
 
-for file (~/.zsh/plugins/**/*.zsh(N.)) source $file
+for file (~/.zsh/plugins/**/*.zsh(N.)) source "$file"
 
-# Custom zsh completions, see setup
+# Custom zsh completions, see mise config
 fpath=(~/.zsh-complete $fpath)
