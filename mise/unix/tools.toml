@@ -27,6 +27,7 @@ go = "latest"
 ipython = { version = "latest", extras = "all" }
 jj = "latest"
 jjui = "latest"
+jq = { version = "latest", lazy = true }
 lazygit = "latest"
 lua = "5.5"
 mergiraf = "latest"
@@ -43,7 +44,6 @@ uv = "latest"
 vivid = "latest"
 xclip = { version = "latest", os = ["linux"] }
 "github:jannis-baum/vivify" = "latest"
-"pipx:argcomplete" = "latest"
 "pipx:pynvim" = "latest"
 
 [tools.eza]
@@ -106,3 +106,11 @@ postinstall = """
 curl --output-dir ~/.zsh-complete -fsSLO \
     "https://raw.githubusercontent.com/afadesigns/zshellcheck/refs/tags/v${MISE_TOOL_INSTALL_PATH##*/}/completions/zsh/_zshellcheck"
 """
+
+[tools."pipx:argcomplete"]
+version = "latest"
+lazy = true
+lazy_bins = [
+  "register-python-argcomplete",
+  "activate-global-python-argcomplete"
+]
