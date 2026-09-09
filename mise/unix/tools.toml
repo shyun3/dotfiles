@@ -36,6 +36,7 @@ patool = { version = "latest", extras = "argcompletion" }
 ripgrep = "latest"
 node = "latest"
 rust = "stable"
+trash-cli = { version = "latest", os = ["linux"], extras = "completion" }
 tree = "latest"
 tree-sitter = "latest"
 universal-ctags = "latest"
@@ -43,6 +44,7 @@ usage = "latest"
 uv = "latest"
 vivid = "latest"
 xclip = { version = "latest", os = ["linux"] }
+yazi = { version = "latest", postinstall = "ya pkg install" }
 "github:jannis-baum/vivify" = "latest"
 "pipx:pynvim" = "latest"
 
@@ -71,26 +73,6 @@ version = "latest"
 postinstall = """
 curl -fsSLo ~/.zsh-complete/_tldr \
     "https://github.com/tealdeer-rs/tealdeer/releases/download/v${MISE_TOOL_INSTALL_PATH##*/}/completions_zsh"
-"""
-
-[tools.trash-cli]
-version = "latest"
-os = ["linux"]
-extras = "completion"
-postinstall = """
-cmds=(trash-empty trash-list trash-restore trash-put trash)
-for cmd in ${cmds[@]}; do
-    $cmd --print-completion zsh > ~/.zsh-complete/_$cmd
-done
-"""
-
-[tools.yazi]
-version = "latest"
-postinstall = """
-ya pkg install
-
-cd "$MISE_TOOL_INSTALL_PATH"
-cp */completions/{_ya,_yazi} ~/.zsh-complete
 """
 
 [tools.zoxide]
