@@ -57,19 +57,13 @@ mise bootstrap --adopt git@github.com:shyun3/dotfiles.git --yes
 ```
 Zsh may need restarting to apply all changes.
 
-If using WSL, make sure to restart in order to apply all changes. A
+If using WSL, make sure to restart it in order to apply the latest updates. A
 distribution can be shutdown in PowerShell by running `wsl --terminate
 <distroName>`.
 
 ## Updates
 
-Applying future changes is simpler:
-```sh
-mise bs
-```
-
-Remember that updates to WSL configurations require a restart of the Linux
-distribution.
+Applying future changes is simpler: `mise bs`
 
 ## Tips
 
