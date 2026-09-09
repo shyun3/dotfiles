@@ -8,5 +8,5 @@ name = "My Name"
 user.email = "me@work.com"
 
 [[--scope]]
---when.repositories = ["~/personal", "~/.dotfiles"]
+--when.repositories = ["~/personal", "~/.config/mise/"]
 user.email = "me@home.com"

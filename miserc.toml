@@ -1,0 +1,7 @@
+# Enabled by default starting v2027.6.0
+# See https://mise.jdx.dev/configuration/environments.html#rollout
+auto_env = true
+
+# Opt-in until v2027.8.10
+# See https://mise.jdx.dev/configuration/environments.html#conf-d-environments
+env_conf_d = true

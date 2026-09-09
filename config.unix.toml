@@ -1,5 +1,8 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
+# To suppress Tombi warning on `bootstrap.files`
+#:tombi schema.strict = false
+
 [bootstrap.packages]
 # Guidelines for inclusion:
 # - Not present in mise
@@ -11,6 +14,12 @@
 "apt:xdg-utils" = "latest"  # Needed for `xdg-open`
 "apt:zsh" = "latest"
 
+[bootstrap.files."/etc/wsl.conf"]
+source = "rc/etc/wsl.conf"
+owner = "root"
+group = "root"
+mode = "0644"
+
 [bootstrap.repos]
 "~/.antidote" = { url = "https://github.com/mattmc3/antidote.git" }
 
@@ -20,7 +29,6 @@
 "~/.config/jj/conf.d/config.toml" = {}
 "~/.config/jjui/config.*" = {}
 "~/.config/lazygit/config.yml" = {}
-"~/.config/mise/conf.d/" = "~/.dotfiles/mise/unix/"
 "~/.config/nvim/" = { mode = "symlink" }
 "~/.config/rumdl/rumdl.toml" = {}
 "~/.config/stylua.toml" = {}
@@ -38,11 +46,3 @@
 "~/.zsh/" = { mode = "symlink" }
 "~/.zsh_plugins.txt" = {}
 "~/.zshrc" = {}
-
-[dotfiles."~/.config/mise/config.unix.toml"]
-source = "~/.dotfiles/mise/config.unix.toml"
-mode = "symlink"
-
-[dotfiles."~/.config/mise/mise.lock"]
-source = "~/.dotfiles/mise/mise.lock"
-mode = "symlink"

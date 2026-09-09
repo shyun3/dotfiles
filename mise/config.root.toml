@@ -1,7 +1,0 @@
-#:schema https://mise.jdx.dev/schema/mise.json
-
-[bootstrap.files."/etc/wsl.conf"]
-source = "../rc/etc/wsl.conf"
-owner = "root"
-group = "root"
-mode = "0644"

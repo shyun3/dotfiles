@@ -20,11 +20,6 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 ```
 This will also install Git.
 
-Clone the repo:
-```pwsh
-git clone https://github.com/shyun3/dotfiles.git ~/.dotfiles
-```
-
 Run `bootstrap.ps1`. This will install `mise` and all dependencies.
 
 ### WSL
@@ -37,11 +32,6 @@ wsl --install
 
 ### Linux
 
-Clone the repo:
-```sh
-git clone git@github.com:shyun3/dotfiles.git ~/.dotfiles
-```
-
 Install [mise](https://mise.jdx.dev/getting-started.html#installing-mise-cli):
 ```sh
 curl https://mise.run | sh
@@ -53,31 +43,22 @@ Confirm that `mise` is on the `PATH`. If not, try restarting the shell.
 
 ### Windows
 
+Bootstrap `mise`:
 ```pwsh
-cd ~/.dotfiles
-mise trust
-mise bootstrap -E windows
 ```
 PowerShell may need restarting to apply all changes.
 
 ### Linux
 
-If using WSL, apply the following first:
+Bootstrap `mise` (tested on WSL Ubuntu):
 ```sh
-mise -C ~/.dotfiles -E root bootstrap
-```
-Make sure to trust the `mise` config, if prompted.
-
-WSL needs restarting to apply all changes. A distribution can be shutdown in
-PowerShell by running `wsl --terminate <distroName>`.
-
-Then, install the Linux dotfiles (tested on Ubuntu):
-```sh
-cd ~/.dotfiles
-mise trust
-mise bootstrap -E linux --update
+mise bootstrap --adopt shyun3/dotfiles
 ```
 Zsh may need restarting to apply all changes.
+
+If using WSL, make sure to restart in order to apply all changes. A
+distribution can be shutdown in PowerShell by running `wsl --terminate
+<distroName>`.
 
 ## Tips
 
@@ -86,21 +67,6 @@ corresponding [README](examples/README.md).
 
 Also, the [wiki](https://github.com/shyun3/dotfiles/wiki) has a lot of useful
 info.
-
-### mise-en-place
-
-Auto-detection of the platform environment can be enabled in
-`~/.config/mise/miserc.toml`:
-```toml
-auto_env = true
-```
-See [docs](https://mise.jdx.dev/configuration/environments.html#platform-environments)
-for more details.
-
-This will simplify the call for installing dotfiles:
-```sh
-mise bootstrap
-```
 
 ### Jujutsu
 
