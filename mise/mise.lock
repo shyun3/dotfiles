@@ -441,4 +441,11 @@ url_api = "https://api.github.com/repos/ajeetdsouza/zoxide/releases/assets/46631
 
 [[tools.zshellcheck]]
 version = "1.7.3"
-backend = "go:github.com/afadesigns/zshellcheck/cmd/zshellcheck"
+backend = "github:afadesigns/zshellcheck"
+
+[tools.zshellcheck."platforms.linux-x64"]
+checksum = "sha256:d2734dcf0bebf66ee9a5891851f55339d7e1e0d921908196fccfb37d9b560bf0"
+url = "https://github.com/afadesigns/zshellcheck/releases/download/v1.7.3/zshellcheck_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/afadesigns/zshellcheck/releases/assets/530428569"
+provenance = "github-attestations"
+provenance_verified = true

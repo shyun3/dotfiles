@@ -13,7 +13,7 @@ tree = "conda:tree"
 trash-cli = "pipx:trash-cli"
 universal-ctags = "conda:universal-ctags"
 xclip = "conda:xclip"
-zshellcheck = "go:github.com/afadesigns/zshellcheck/cmd/zshellcheck"
+zshellcheck = "github:afadesigns/zshellcheck"
 
 [tools]
 7zip = "26"
@@ -84,8 +84,7 @@ cp $MISE_TOOL_INSTALL_PATH/completions/_zoxide ~/.zsh-complete
 [tools.zshellcheck]
 version = "latest"
 postinstall = """
-curl --output-dir ~/.zsh-complete -fsSLO \
-    "https://raw.githubusercontent.com/afadesigns/zshellcheck/refs/tags/v${MISE_TOOL_INSTALL_PATH##*/}/completions/zsh/_zshellcheck"
+cp $MISE_TOOL_INSTALL_PATH/completions/zsh/_zshellcheck ~/.zsh-complete
 """
 
 [tools."pipx:argcomplete"]
