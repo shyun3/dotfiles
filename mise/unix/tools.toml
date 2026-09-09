@@ -78,8 +78,7 @@ curl -fsSLo ~/.zsh-complete/_tldr \
 [tools.zoxide]
 version = "latest"
 postinstall = """
-curl --output-dir ~/.zsh-complete -fsSLO \
-    "https://raw.githubusercontent.com/ajeetdsouza/zoxide/refs/tags/v${MISE_TOOL_INSTALL_PATH##*/}/contrib/completions/_zoxide"
+cp $MISE_TOOL_INSTALL_PATH/completions/_zoxide ~/.zsh-complete
 """
 
 [tools.zshellcheck]
