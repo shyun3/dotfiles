@@ -1,5 +1,9 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
+[bootstrap.packages]
+"winget:JanDeDobbeleer.OhMyPosh" = "latest"
+"winget:Microsoft.WindowsTerminal" = "latest"
+
 [dotfiles]
 "~/.mytheme.omp.json" = {}
 "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" = {}
@@ -10,17 +14,3 @@ mode = "symlink"
 [dotfiles."~/.config/mise/config.windows.toml"]
 source = "~/.dotfiles/mise/config.windows.toml"
 mode = "symlink"
-
-[bootstrap.hooks]
-post-dotfiles = """
-function winget_install($pkg, $cmd)
-{
-    if (!(Check-Command $cmd))
-    {
-        winget install --id $pkg --source winget --exact
-    }
-}
-
-winget_install JanDeDobbeleer.OhMyPosh oh-my-posh
-winget_install Microsoft.WindowsTerminal wt
-"""
