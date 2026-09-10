@@ -3,6 +3,8 @@
 # Remember that all entries in this global config should be valid for all
 # environments/platforms
 
+min_version = "2026.7.4"
+
 [settings]
 dotfiles.root = "~/.config/mise/rc"
 dotfiles.default_mode = "copy"
