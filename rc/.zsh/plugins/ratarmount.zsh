@@ -10,7 +10,7 @@ if [[ -d $USER_RUN_DIR ]] && [[ -w $USER_RUN_DIR ]]; then
         ratarmount --index-file ':memory:' --lazy --debug 0 -r / "$RATARMOUNT_VFS"
     fi
 else
-    print -r -- "ratarmount: Could not access $USER_RUN_DIR" >&2
+    print -r -u 2 -- "ratarmount: Could not access $USER_RUN_DIR"
 fi
 
 unset USER_RUN_DIR RATARMOUNT_VFS
