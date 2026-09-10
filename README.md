@@ -41,6 +41,8 @@ Confirm that `mise` is on the `PATH`. If not, try restarting the shell.
 
 ## Installation
 
+The following instructions require a minimum `mise` version of **v2026.9.3**.
+
 ### Windows
 
 Bootstrap `mise`:
