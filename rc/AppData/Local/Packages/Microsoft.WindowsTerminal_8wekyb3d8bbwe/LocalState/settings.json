@@ -58,6 +58,10 @@
         {
             "id": null,
             "keys": "win+sc(41)"
+        },
+        {
+            "id": null,
+            "keys": "alt+enter"
         }
     ],
     "launchMode": "maximized",
