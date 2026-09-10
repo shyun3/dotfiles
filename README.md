@@ -20,7 +20,7 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 ```
 This will also install Git.
 
-Run `bootstrap.ps1`. This will install `mise` and all dependencies.
+Run `setup.ps1`. This will install `mise` and all dependencies.
 
 ### WSL
 
