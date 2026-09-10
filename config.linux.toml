@@ -1,0 +1,14 @@
+#:schema https://mise.jdx.dev/schema/mise.json
+
+# To suppress Tombi warning on `bootstrap.files`
+#:tombi schema.strict = false
+
+min_version = "2026.8.2"
+
+[bootstrap.files."/etc/wsl.conf"]
+# WSL needs to be restarted to apply configuration updates
+# See https://learn.microsoft.com/en-us/windows/wsl/wsl-config#the-8-second-rule-for-configuration-changes
+source = "rc/etc/wsl.conf"
+owner = "root"
+group = "root"
+mode = "0644"

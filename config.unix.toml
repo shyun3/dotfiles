@@ -1,8 +1,5 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
-# To suppress Tombi warning on `bootstrap.files`
-#:tombi schema.strict = false
-
 [bootstrap.packages]
 # Guidelines for inclusion:
 # - Not present in mise
@@ -13,14 +10,6 @@
 "apt:wslu" = "latest"  # So that `xdg-open` can open links in Windows browser
 "apt:xdg-utils" = "latest"  # Needed for `xdg-open`
 "apt:zsh" = "latest"
-
-[bootstrap.files."/etc/wsl.conf"]
-# WSL needs to be restarted to apply configuration updates
-# See https://learn.microsoft.com/en-us/windows/wsl/wsl-config#the-8-second-rule-for-configuration-changes
-source = "rc/etc/wsl.conf"
-owner = "root"
-group = "root"
-mode = "0644"
 
 [bootstrap.repos]
 "~/.antidote" = { url = "https://github.com/mattmc3/antidote.git" }
