@@ -7,7 +7,7 @@ RATARMOUNT_VFS="$USER_RUN_DIR/ratarmount"
 if [[ -d $USER_RUN_DIR ]] && [[ -w $USER_RUN_DIR ]]; then
     mkdir -p "$RATARMOUNT_VFS"
     if ! mountpoint -q "$RATARMOUNT_VFS"; then
-        ratarmount --index-file ':memory:' --lazy -r / "$RATARMOUNT_VFS"
+        ratarmount --index-file ':memory:' --lazy --debug 0 -r / "$RATARMOUNT_VFS"
     fi
 else
     print -r -- "ratarmount: Could not access $USER_RUN_DIR" >&2
