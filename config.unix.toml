@@ -1,5 +1,8 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
+[settings]
+unix_default_inline_shell_args = "bash -c -o errexit"
+
 [bootstrap.packages]
 # Guidelines for inclusion:
 # - Not present in mise
