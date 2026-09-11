@@ -6,6 +6,9 @@ lockfile = true
 lockfile_platforms = ["linux-x64"]
 unix_default_inline_shell_args = "bash -c -o errexit"
 
+[env]
+VISUAL = "nvim"
+
 [shell_alias]
 cdgitroot = 'cd "$(git rev-parse --show-cdup)"'
 lg = "lazygit"

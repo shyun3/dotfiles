@@ -86,8 +86,6 @@ else
   export EDITOR='vim'
 fi
 
-export VISUAL=nvim
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
