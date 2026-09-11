@@ -3,7 +3,9 @@
 # Remember that all entries in this global config should be valid for all
 # environments/platforms
 
-min_version = { hard = "2026.7.4", soft = "2026.8.13" }
+[min_version]
+hard = "2026.7.4"  # bootstrap
+soft = "2026.8.13"  # conf.d environments
 
 [settings]
 dotfiles.root = "~/.config/mise/rc"

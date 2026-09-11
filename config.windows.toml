@@ -1,6 +1,6 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
-min_version = "2026.9.3"
+min_version = "2026.9.3"  # winget
 
 [settings]
 windows_default_inline_shell_args = "pwsh -noni -c"
