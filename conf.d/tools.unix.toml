@@ -2,6 +2,27 @@
 
 min_version = "2026.9.0"  # lazy tools
 
+[bootstrap.hooks]
+pre-tools = "mkdir -p ~/.zsh-complete"  # Custom zsh completions
+
+[hooks]
+# Note that this hook may not run only once after all tools are installed.
+# Multiple runs may occur, each with a different batch of installed tools.
+#
+# See https://github.com/jdx/mise/discussions/7489#discussioncomment-15353250
+postinstall = """
+if [[ "$MISE_INSTALLED_TOOLS" == "[]" ]]; then exit; fi
+
+# mise-completions-sync has its own postinstall hook
+if ! mise which misecompsync &> /dev/null; then exit; fi
+
+misecompsync_ok="$(echo "$MISE_INSTALLED_TOOLS" |
+    mise x jq -- jq -r 'any(.[]; .name == "mise-completions-sync")')"
+if [[ "$misecompsync_ok" = true ]]; then exit; fi
+
+mise x -- misecompsync --shell zsh --new-only
+"""
+
 [tool_alias]
 7zip = "aqua:ip7z/7zip"
 clipper = "go:github.com/zyedidia/clipper/cmd/clipper"
