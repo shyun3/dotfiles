@@ -12,11 +12,6 @@ dotfiles.root = "~/.config/mise/rc"
 dotfiles.default_mode = "copy"
 use_versions_host_track = false
 
-[shell_alias]
-cdgitroot = 'cd "$(git rev-parse --show-cdup)"'
-lg = "lazygit"
-y = "yazi"
-
 [dotfiles]
 "~/.config/git/ignore" = {}
 "~/.gitconfig" = {}
