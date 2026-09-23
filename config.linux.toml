@@ -12,3 +12,10 @@ source = "rc/etc/wsl.conf"
 owner = "root"
 group = "root"
 mode = "0644"
+
+[bootstrap.files."/usr/lib/binfmt.d/WSLInterop.conf"]
+# Taken from https://github.com/microsoft/WSL/issues/8843#issuecomment-1337127239
+source = "rc/usr/lib/binfmt.d/WSLInterop.conf"
+owner = "root"
+group = "root"
+mode = "0644"
