@@ -16,17 +16,17 @@ checksum = "sha256:e138c68824c8661e55f3184c489fe1db425c06ffae1a37edc780bcb92cde9
 url = "https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.1.0-ha9f2e26_1.conda"
 checksum = "sha256:d5cb8475131c31680f8fd30512c418f373064e272e452063276a8fb14c9fa42f"
 
-[conda-packages.linux-x64."libgcc-16.2.0-ha9f2e26_4"]
-url = "https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.2.0-ha9f2e26_4.conda"
-checksum = "sha256:24090e675d34403b4ee1cd4372d8f6c0937da7ecfd66a19a57cac2ed0f4ea793"
+[conda-packages.linux-x64."libgcc-16.2.0-ha9f2e26_5"]
+url = "https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.2.0-ha9f2e26_5.conda"
+checksum = "sha256:33d1b5d57c5a55a474330c5ec41fe7001a5aa600d9639389e8ce5edafae216a4"
 
 [conda-packages.linux-x64."libgomp-16.1.0-he0feb66_1"]
 url = "https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.1.0-he0feb66_1.conda"
 checksum = "sha256:62cb599ad0539d99386515326d9d5e8f51f75a60c69c2131b21df76edf35bd89"
 
-[conda-packages.linux-x64."libgomp-16.2.0-he0feb66_4"]
-url = "https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.2.0-he0feb66_4.conda"
-checksum = "sha256:0fe5cb8e0752241ab55e11656ed1b9726248b522d23b929fe7c95b83eb55b9bb"
+[conda-packages.linux-x64."libgomp-16.2.0-he0feb66_5"]
+url = "https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.2.0-he0feb66_5.conda"
+checksum = "sha256:224a5a09e258a1a257089a9af310e9336e1d36834959718a9fab8679742dd822"
 
 [conda-packages.linux-x64."libiconv-1.18-h0cb94f2_3"]
 url = "https://conda.anaconda.org/conda-forge/linux-64/libiconv-1.18-h0cb94f2_3.conda"
@@ -40,9 +40,9 @@ checksum = "sha256:9787df8c22a59c9a70d3e5a10db9ad663485e75e9ccc3f09bd092cb7b95e0
 url = "https://conda.anaconda.org/conda-forge/linux-64/libseccomp-2.6.1-h7cc23a3_2.conda"
 checksum = "sha256:36b717f86c1f5c1fe56733c4e0b964c602ec4621f686c3e7ce651a651b0c991b"
 
-[conda-packages.linux-x64."libstdcxx-16.2.0-h934c35e_4"]
-url = "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-16.2.0-h934c35e_4.conda"
-checksum = "sha256:40b792b0186c1e8859280a1f6f19a54fc50a11b32724fc7b637009c1a9bd302b"
+[conda-packages.linux-x64."libstdcxx-16.2.0-h934c35e_5"]
+url = "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-16.2.0-h934c35e_5.conda"
+checksum = "sha256:38cadde30fad8f7c101f9eec79f60bf03fc99310c7195d23f8b30832516d666f"
 
 [conda-packages.linux-x64."libuuid-2.42.2-h5347b49_0"]
 url = "https://conda.anaconda.org/conda-forge/linux-64/libuuid-2.42.2-h5347b49_0.conda"
@@ -168,22 +168,22 @@ url = "https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-x86_64
 url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/530481615"
 
 [[tools.fzf]]
-version = "0.74.3"
+version = "0.74.4"
 backend = "aqua:junegunn/fzf"
 
 [tools.fzf."platforms.linux-x64"]
-checksum = "sha256:3501a595e4b5c40a6b047340a0e8f805c46fd4e61ef95ef8a136ba8c61cf6f22"
-url = "https://github.com/junegunn/fzf/releases/download/v0.74.3/fzf-0.74.3-linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/517537066"
+checksum = "sha256:05e6813a337cc722c3ed07e54a764b75cc5d671e2e60459db0ba696ee5fa7504"
+url = "https://github.com/junegunn/fzf/releases/download/v0.74.4/fzf-0.74.4-linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/558287768"
 
 [[tools."github:jannis-baum/vivify"]]
-version = "0.14.0"
+version = "0.15.0"
 backend = "github:jannis-baum/vivify"
 
 [tools."github:jannis-baum/vivify"."platforms.linux-x64"]
-checksum = "sha256:f88696eec6eb9f10a0ca7ac4a1803d5617e31b8b65b831f992108f983ed8b1b2"
-url = "https://github.com/jannis-baum/Vivify/releases/download/v0.14.0/vivify-linux.tar.gz"
-url_api = "https://api.github.com/repos/jannis-baum/Vivify/releases/assets/397142921"
+checksum = "sha256:c0ac90de759ffa51aae048589338f4774d9e6d357354a992e665ef96bb738386"
+url = "https://github.com/jannis-baum/Vivify/releases/download/v0.15.0/vivify-linux.tar.gz"
+url_api = "https://api.github.com/repos/jannis-baum/Vivify/releases/assets/579371782"
 
 [[tools.go]]
 version = "1.27.1"
@@ -210,13 +210,13 @@ url = "https://github.com/jj-vcs/jj/releases/download/v0.45.1/jj-v0.45.1-x86_64-
 url_api = "https://api.github.com/repos/jj-vcs/jj/releases/assets/543032052"
 
 [[tools.jjui]]
-version = "0.10.10"
+version = "0.10.11"
 backend = "aqua:idursun/jjui"
 
 [tools.jjui."platforms.linux-x64"]
-checksum = "sha256:515a94e15f02dec708c28b8d83bd8da803fe5f27ba52f2bfc4fd0fd7609acfef"
-url = "https://github.com/idursun/jjui/releases/download/v0.10.10/jjui-0.10.10-linux-amd64.zip"
-url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/551485150"
+checksum = "sha256:cffa8892f25e762a114d8483ad7b98920a8f408ace0200b44e222f0c067ba7d4"
+url = "https://github.com/idursun/jjui/releases/download/v0.10.11/jjui-0.10.11-linux-amd64.zip"
+url_api = "https://api.github.com/repos/idursun/jjui/releases/assets/580032469"
 
 [[tools.jq]]
 version = "1.8.2"
@@ -229,13 +229,13 @@ url_api = "https://api.github.com/repos/jqlang/jq/releases/assets/453012752"
 provenance = "github-attestations"
 
 [[tools.lazygit]]
-version = "0.65.0"
+version = "0.65.1"
 backend = "aqua:jesseduffield/lazygit"
 
 [tools.lazygit."platforms.linux-x64"]
-checksum = "sha256:44d8e7dd1484b4a66e191bd4ab25a71e8b4b3a65ab122f838e65677ef58c5506"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.0/lazygit_0.65.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/545957203"
+checksum = "sha256:02beacbcda0fa342e50ae3480ba8147307353af3fb28e1d5f790e02329c201a6"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658266"
 
 [[tools.lua]]
 version = "5.5.1"
@@ -260,12 +260,12 @@ backend = "vfox:mise-plugins/vfox-neovim"
 url = "https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-linux-x86_64.tar.gz"
 
 [[tools.node]]
-version = "26.8.2"
+version = "26.10.0"
 backend = "core:node"
 
 [tools.node."platforms.linux-x64"]
-checksum = "sha256:badb3fe6a61b85e1352ca6564dc56b8b7bd5ecd5c474c52acc21dd0cdd586f35"
-url = "https://nodejs.org/dist/v26.8.2/node-v26.8.2-linux-x64.tar.gz"
+checksum = "sha256:cb5c9ce9c80d7b8821e3a258543c71b939138cf17c74d5cc44bbe85d6dbc5ad8"
+url = "https://nodejs.org/dist/v26.10.0/node-v26.10.0-linux-x64.tar.gz"
 
 [[tools.patool]]
 version = "4.1.0"
@@ -312,7 +312,7 @@ url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.0/tealdeer
 url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/527792725"
 
 [[tools.trash-cli]]
-version = "0.24.5.26"
+version = "0.26.9.14"
 backend = "pipx:trash-cli"
 
 [tools.trash-cli.options]
@@ -345,49 +345,49 @@ url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/
 provenance = "github-attestations"
 
 [[tools.universal-ctags]]
-version = "6.2.20260906.0"
+version = "6.2.20260920.0"
 backend = "conda:universal-ctags"
 
 [tools.universal-ctags.options]
 channel = "conda-forge"
 
 [tools.universal-ctags."platforms.linux-x64"]
-checksum = "sha256:2a0a2fdda0a277f78f2f6ed19a4043f4648df524635d3068f281260c2f9c7213"
-url = "https://conda.anaconda.org/conda-forge/linux-64/universal-ctags-6.2.20260906.0-hf32d8a9_0.conda"
+checksum = "sha256:f7e730ea990fd1d032291610964731ad46d12ce857763f8a89deb649e0fac1b0"
+url = "https://conda.anaconda.org/conda-forge/linux-64/universal-ctags-6.2.20260920.0-hf32d8a9_0.conda"
 conda_deps = [
     "jansson-2.15.1-h280c20c_0",
     "libseccomp-2.6.1-h7cc23a3_2",
     "libxml2-16-2.15.4-hbdfff7e_0",
     "libxml2-2.15.4-ha7a5771_0",
     "pcre2-10.47-h8b3dc9c_1",
-    "libgcc-16.2.0-ha9f2e26_4",
-    "libstdcxx-16.2.0-h934c35e_4",
+    "libgcc-16.2.0-ha9f2e26_5",
+    "libstdcxx-16.2.0-h934c35e_5",
     "libiconv-1.18-h0cb94f2_3",
     "yaml-0.2.5-hebe6cf0_3",
     "_openmp_mutex-4.5-20_gnu",
-    "libgomp-16.2.0-he0feb66_4",
+    "libgomp-16.2.0-he0feb66_5",
     "liblzma-5.8.3-hb03c661_1",
     "libzlib-1.3.2-h25fd6f3_3",
     "bzip2-1.0.8-hda65f42_10",
 ]
 
 [[tools.usage]]
-version = "6.8.0"
+version = "6.11.0"
 backend = "aqua:jdx/usage"
 
 [tools.usage."platforms.linux-x64"]
-checksum = "sha256:468c27b16302250cf74f2bddb0d0539b958ae3a391d226acc73bdd714c2a18cb"
-url = "https://github.com/jdx/usage/releases/download/v6.8.0/usage-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/547479229"
+checksum = "sha256:2ebc293d1645a80e3b7c4d87cd2cca35d34c6582733260fe1d13e537bb3d1e2e"
+url = "https://github.com/jdx/usage/releases/download/v6.11.0/usage-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/usage/releases/assets/579392440"
 
 [[tools.uv]]
-version = "0.12.11"
+version = "0.12.17"
 backend = "aqua:astral-sh/uv"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:4ae93e0f148a18434cc094072547cec88912fc4a72b984183c7d0d0e9586cb5e"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.11/uv-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/551278642"
+checksum = "sha256:fa82fd8dde8e8eefdecada6aa0889666556cfceb690d06e0c3bca49eb3070a63"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.17/uv-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/573253080"
 provenance = "github-attestations"
 
 [[tools.vivid]]
@@ -445,12 +445,12 @@ url = "https://github.com/ajeetdsouza/zoxide/releases/download/v0.10.0/zoxide-0.
 url_api = "https://api.github.com/repos/ajeetdsouza/zoxide/releases/assets/466316293"
 
 [[tools.zshellcheck]]
-version = "1.7.3"
+version = "1.8.0"
 backend = "github:afadesigns/zshellcheck"
 
 [tools.zshellcheck."platforms.linux-x64"]
-checksum = "sha256:d2734dcf0bebf66ee9a5891851f55339d7e1e0d921908196fccfb37d9b560bf0"
-url = "https://github.com/afadesigns/zshellcheck/releases/download/v1.7.3/zshellcheck_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/afadesigns/zshellcheck/releases/assets/530428569"
+checksum = "sha256:35c7bcd803831603f06907370a0f6f5353487f94457e27951bb00b40e1ab3435"
+url = "https://github.com/afadesigns/zshellcheck/releases/download/v1.8.0/zshellcheck_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/afadesigns/zshellcheck/releases/assets/575695588"
 provenance = "github-attestations"
 provenance_verified = true
