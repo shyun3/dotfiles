@@ -30,7 +30,7 @@ return {
     optional = true,
 
     opts = {
-      ensure_installed = { "clangd@22.1.0" },
+      ensure_installed = { "clangd@23.1.0" },
     },
   },
 }
