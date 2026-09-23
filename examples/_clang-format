@@ -1,4 +1,4 @@
-# clang-format 22.1.0
+# clang-format 23.1.0
 # vim: ft=yaml
 
 BasedOnStyle: LLVM
@@ -29,11 +29,10 @@ AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: true
 AllowShortNamespacesOnASingleLine: false
+AllowShortRecordOnASingleLine: Empty
 AlwaysBreakBeforeMultilineStrings: false
 AttributeMacros: []
-BinPackArguments: true
 BinPackLongBracedList: false
-BinPackParameters: true
 BitFieldColonSpacing: Both
 BraceWrapping:
   AfterCaseLabel: true
@@ -71,10 +70,12 @@ BreakBeforeCloseBracketLoop: false
 BreakBeforeCloseBracketSwitch: false
 BreakBeforeConceptDeclarations: Always
 BreakBeforeInlineASMColon: OnlyMultiline
+BreakBeforeReturnType: None
 BreakBeforeTemplateCloser: true
 BreakBeforeTernaryOperators: false
 BreakBinaryOperations: Never
 BreakConstructorInitializers: AfterColon
+BreakFunctionDeclarationParameters: false
 BreakFunctionDefinitionParameters: false
 BreakInheritanceList: AfterComma
 BreakStringLiterals: true
@@ -148,7 +149,11 @@ NumericLiteralCase:
   Suffix: Leave
 # OneLineFormatOffRegex:
 PPIndentWidth: -1
+PackArguments:
+  BinPack: BinPack
 PackConstructorInitializers: BinPack
+PackParameters:
+  BinPack: BinPack
 # PenaltyBreakAssignment:
 # PenaltyBreakBeforeFirstCallParameter:
 # PenaltyBreakBeforeMemberAccess:
