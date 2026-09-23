@@ -20,6 +20,7 @@ return {
         python = true,
         query = true,
         regex = true,
+        rust = true,
         toml = true,
         vim = true,
         vimdoc = true,

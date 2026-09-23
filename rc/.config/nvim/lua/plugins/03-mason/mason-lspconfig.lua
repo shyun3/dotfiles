@@ -23,6 +23,7 @@ return {
         "mesonlsp",
         "rumdl",
         "ruff",
+        "rust_analyzer",
         "stylua",
         "tombi",
         "ts_query_ls",
