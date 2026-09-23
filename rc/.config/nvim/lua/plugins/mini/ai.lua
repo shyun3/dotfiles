@@ -22,7 +22,8 @@
 ---@class FindTextObjectOpts
 ---@field n_lines? integer Default: `config.n_lines`
 ---@field n_times? integer Default: 1
----@field reference_region? Region Default: empty region at cursor position
+---@field reference_region? Region Default: current selection in Visual mode,
+--- empty region at cursor position in other modes
 ---@field search_method? SearchMethod Default: `config.search_method`
 
 --- See `MiniAi-textobject-specification`
