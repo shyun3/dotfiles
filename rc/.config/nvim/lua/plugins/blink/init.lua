@@ -76,8 +76,23 @@ return {
         ["<Tab>"] = { "select_next", "fallback" },
         ["<S-Tab>"] = { "select_prev", "fallback" },
 
-        ["<C-j>"] = { "snippet_forward", "fallback_to_mappings" },
-        ["<C-k>"] = { "snippet_backward", "fallback_to_mappings" },
+        ["<C-j>"] = {
+          function(cmp)
+            cmp.hide()
+            return cmp.snippet_forward()
+          end,
+
+          "fallback_to_mappings",
+        },
+
+        ["<C-k>"] = {
+          function(cmp)
+            cmp.hide()
+            return cmp.snippet_backward()
+          end,
+
+          "fallback_to_mappings",
+        },
       },
 
       completion = {
