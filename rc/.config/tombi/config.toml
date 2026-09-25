@@ -3,3 +3,13 @@ respect-ignore-files = false
 
 [format.rules]
 line-width = 80
+
+# Suppress validation for mise dotfile entries. Workaround for tombi#2210.
+[[schemas]]
+# Minimal schema, treated as empty
+# See https://github.com/tombi-toml/tombi/issues/624#issuecomment-3021289483
+path = "tombi:///json/catalog.json"
+
+root = "dotfiles"
+include = ["**/mise/config.toml", "**/mise/config.*.toml"]
+strict = false
