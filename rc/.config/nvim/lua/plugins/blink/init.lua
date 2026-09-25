@@ -140,12 +140,10 @@ return {
             fallbacks = {},
 
             should_show_items = function(ctx)
-              local blink = require("blink.cmp")
-
               -- Some LSPs (like rust-analyzer) might force a completion
               -- trigger right when entering a snippet. Prevent the completion
               -- pop-up for this case.
-              return not blink.snippet_active()
+              return not require("blink.cmp").snippet_active()
                 or ctx.trigger.initial_kind ~= "trigger_character"
             end,
           },
