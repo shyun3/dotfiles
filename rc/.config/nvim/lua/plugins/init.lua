@@ -175,7 +175,14 @@ return {
     init = function()
       vim.g.doge_enable_mappings = 0
       vim.g.doge_buffer_mappings = 0
-      vim.g.doge_comment_jump_modes = { "i", "s" }
+
+      -- If a jump is invalid, the jump mapping is emitted instead as a sort of
+      -- fallback. See doge#comment#jump().
+      --
+      -- By default, these are set to Tab and Shift-Tab. Disable these to
+      -- prevent any action for this case.
+      vim.g.doge_mapping_comment_jump_forward = ""
+      vim.g.doge_mapping_comment_jump_backward = ""
 
       vim.g.doge_doc_standard_python = "google"
     end,
