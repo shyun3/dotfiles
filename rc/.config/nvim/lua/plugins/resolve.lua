@@ -33,6 +33,24 @@ return {
   },
 
   {
+    LazyDep("noice"),
+    optional = true,
+
+    opts = {
+      routes = {
+        -- Suppress found conflict messages, see resolve.nvim#14
+        {
+          filter = {
+            event = "notify",
+            find = "^Found %d+ conflict%(s%)$",
+          },
+          opts = { skip = true },
+        },
+      },
+    },
+  },
+
+  {
     "spacedentist/resolve.nvim",
     event = "BufReadPre",
 
