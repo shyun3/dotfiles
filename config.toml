@@ -1,5 +1,3 @@
-#:schema https://mise.jdx.dev/schema/mise.json
-
 # Remember that all entries in this global config should be valid for all
 # environments/platforms
 

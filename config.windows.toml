@@ -1,5 +1,3 @@
-#:schema https://mise.jdx.dev/schema/mise.json
-
 min_version = "2026.9.3"  # winget
 
 [settings]

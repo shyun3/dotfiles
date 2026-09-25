@@ -1,5 +1,3 @@
-#:schema https://mise.jdx.dev/schema/mise.json
-
 [settings]
 color_theme = "catppuccin"
 lockfile = true
