@@ -11,6 +11,7 @@ compile_flags.txt
 compile_commands.json
 
 # mise
+locks/mise.local/
 mise.local.lock
 
 # nvim
