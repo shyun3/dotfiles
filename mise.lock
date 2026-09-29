@@ -16,17 +16,17 @@ checksum = "sha256:e138c68824c8661e55f3184c489fe1db425c06ffae1a37edc780bcb92cde9
 url = "https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.1.0-ha9f2e26_1.conda"
 checksum = "sha256:d5cb8475131c31680f8fd30512c418f373064e272e452063276a8fb14c9fa42f"
 
-[conda-packages.linux-x64."libgcc-16.2.0-ha9f2e26_5"]
-url = "https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.2.0-ha9f2e26_5.conda"
-checksum = "sha256:33d1b5d57c5a55a474330c5ec41fe7001a5aa600d9639389e8ce5edafae216a4"
+[conda-packages.linux-x64."libgcc-16.2.0-ha9f2e26_7"]
+url = "https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.2.0-ha9f2e26_7.conda"
+checksum = "sha256:e031634c3a928f9594eba868bc46ef5230d6571a364a0c63215b06c4563bfcea"
 
 [conda-packages.linux-x64."libgomp-16.1.0-he0feb66_1"]
 url = "https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.1.0-he0feb66_1.conda"
 checksum = "sha256:62cb599ad0539d99386515326d9d5e8f51f75a60c69c2131b21df76edf35bd89"
 
-[conda-packages.linux-x64."libgomp-16.2.0-he0feb66_5"]
-url = "https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.2.0-he0feb66_5.conda"
-checksum = "sha256:224a5a09e258a1a257089a9af310e9336e1d36834959718a9fab8679742dd822"
+[conda-packages.linux-x64."libgomp-16.2.0-he0feb66_7"]
+url = "https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.2.0-he0feb66_7.conda"
+checksum = "sha256:92a0bb350c7be6a4eedcb4e111c60aefd176018e6b1c009a6e025dbe9bbcd758"
 
 [conda-packages.linux-x64."libiconv-1.18-h0cb94f2_3"]
 url = "https://conda.anaconda.org/conda-forge/linux-64/libiconv-1.18-h0cb94f2_3.conda"
@@ -40,9 +40,9 @@ checksum = "sha256:9787df8c22a59c9a70d3e5a10db9ad663485e75e9ccc3f09bd092cb7b95e0
 url = "https://conda.anaconda.org/conda-forge/linux-64/libseccomp-2.6.1-h7cc23a3_2.conda"
 checksum = "sha256:36b717f86c1f5c1fe56733c4e0b964c602ec4621f686c3e7ce651a651b0c991b"
 
-[conda-packages.linux-x64."libstdcxx-16.2.0-h934c35e_5"]
-url = "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-16.2.0-h934c35e_5.conda"
-checksum = "sha256:38cadde30fad8f7c101f9eec79f60bf03fc99310c7195d23f8b30832516d666f"
+[conda-packages.linux-x64."libstdcxx-16.2.0-h934c35e_7"]
+url = "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-16.2.0-h934c35e_7.conda"
+checksum = "sha256:fa7018298629fc429971fffd6ecba3d27a7b02e4e890d6a93ea01ffebe8cb745"
 
 [conda-packages.linux-x64."libuuid-2.42.2-h5347b49_0"]
 url = "https://conda.anaconda.org/conda-forge/linux-64/libuuid-2.42.2-h5347b49_0.conda"
@@ -127,13 +127,13 @@ url = "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_
 url_api = "https://api.github.com/repos/sharkdp/bat/releases/assets/323549429"
 
 [[tools.cargo-binstall]]
-version = "1.23.0"
+version = "1.24.0"
 backend = "aqua:cargo-bins/cargo-binstall"
 
 [tools.cargo-binstall."platforms.linux-x64"]
-checksum = "sha256:cdada45ad6bb501185ab309f5eef3f628b6bc44460746565cb3e0c7538815bf3"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.23.0/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/546062151"
+checksum = "sha256:ab139b59b86ce14baf9a8da0592dd4c73fdc8b8a7d74a9746881bd68d411f4d8"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.24.0/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/590638764"
 provenance = "github-attestations"
 
 [[tools.clipper]]
@@ -245,11 +245,11 @@ backend = "vfox:mise-plugins/vfox-lua"
 url = "https://www.lua.org/ftp/lua-5.5.1.tar.gz"
 
 [[tools.mergiraf]]
-version = "0.19.1"
+version = "0.20.0"
 backend = "cargo:mergiraf"
 
 [[tools.mise-completions-sync]]
-version = "0.5.16"
+version = "0.5.17"
 backend = "cargo:mise-completions-sync"
 
 [[tools.neovim]]
@@ -345,49 +345,49 @@ url_api = "https://api.github.com/repos/tree-sitter/tree-sitter/releases/assets/
 provenance = "github-attestations"
 
 [[tools.universal-ctags]]
-version = "6.2.20260920.0"
+version = "6.2.20260927.0"
 backend = "conda:universal-ctags"
 
 [tools.universal-ctags.options]
 channel = "conda-forge"
 
 [tools.universal-ctags."platforms.linux-x64"]
-checksum = "sha256:f7e730ea990fd1d032291610964731ad46d12ce857763f8a89deb649e0fac1b0"
-url = "https://conda.anaconda.org/conda-forge/linux-64/universal-ctags-6.2.20260920.0-hf32d8a9_0.conda"
+checksum = "sha256:4e6a5a841e13a36d02292051afd0d15789d8d5f69f3f6de4ead4b545e9111191"
+url = "https://conda.anaconda.org/conda-forge/linux-64/universal-ctags-6.2.20260927.0-hf32d8a9_0.conda"
 conda_deps = [
     "jansson-2.15.1-h280c20c_0",
     "libseccomp-2.6.1-h7cc23a3_2",
     "libxml2-16-2.15.4-hbdfff7e_0",
     "libxml2-2.15.4-ha7a5771_0",
     "pcre2-10.47-h8b3dc9c_1",
-    "libgcc-16.2.0-ha9f2e26_5",
-    "libstdcxx-16.2.0-h934c35e_5",
+    "libgcc-16.2.0-ha9f2e26_7",
+    "libstdcxx-16.2.0-h934c35e_7",
     "libiconv-1.18-h0cb94f2_3",
     "yaml-0.2.5-hebe6cf0_3",
     "_openmp_mutex-4.5-20_gnu",
-    "libgomp-16.2.0-he0feb66_5",
+    "libgomp-16.2.0-he0feb66_7",
     "liblzma-5.8.3-hb03c661_1",
     "libzlib-1.3.2-h25fd6f3_3",
     "bzip2-1.0.8-hda65f42_10",
 ]
 
 [[tools.usage]]
-version = "6.11.0"
+version = "6.11.1"
 backend = "aqua:jdx/usage"
 
 [tools.usage."platforms.linux-x64"]
-checksum = "sha256:2ebc293d1645a80e3b7c4d87cd2cca35d34c6582733260fe1d13e537bb3d1e2e"
-url = "https://github.com/jdx/usage/releases/download/v6.11.0/usage-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/usage/releases/assets/579392440"
+checksum = "sha256:afa6cb0e76f88cc6392aeecf21bbcd869747d4eeb60ab84c98d6e6178edc359a"
+url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/usage/releases/assets/584024165"
 
 [[tools.uv]]
-version = "0.12.17"
+version = "0.12.19"
 backend = "aqua:astral-sh/uv"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:fa82fd8dde8e8eefdecada6aa0889666556cfceb690d06e0c3bca49eb3070a63"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.17/uv-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/573253080"
+checksum = "sha256:23bf5552d220e0842b65c862097b2ebaeba0064b74eda5e565e77fd25969d8c8"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.19/uv-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/587159011"
 provenance = "github-attestations"
 
 [[tools.vivid]]

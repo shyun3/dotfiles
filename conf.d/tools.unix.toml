@@ -65,6 +65,8 @@ uv = "latest"
 vivid = "latest"
 xclip = { version = "latest", os = ["linux"] }
 yazi = { version = "latest", postinstall = "ya pkg install" }
+zoxide = "latest"
+zshellcheck = "latest"
 "github:jannis-baum/vivify" = "latest"
 "pipx:pynvim" = "latest"
 
@@ -93,18 +95,6 @@ version = "latest"
 postinstall = """
 curl -fsSLo ~/.zsh-complete/_tldr \
     "https://github.com/tealdeer-rs/tealdeer/releases/download/v${MISE_TOOL_INSTALL_PATH##*/}/completions_zsh"
-"""
-
-[tools.zoxide]
-version = "latest"
-postinstall = """
-cp $MISE_TOOL_INSTALL_PATH/completions/_zoxide ~/.zsh-complete
-"""
-
-[tools.zshellcheck]
-version = "latest"
-postinstall = """
-cp $MISE_TOOL_INSTALL_PATH/completions/zsh/_zshellcheck ~/.zsh-complete
 """
 
 [tools."pipx:argcomplete"]
