@@ -52,6 +52,7 @@ lua = "5.5"
 mergiraf = "latest"
 neovim = "latest"
 patool = { version = "latest", extras = "argcompletion" }
+python = "latest"
 ripgrep = "latest"
 node = "latest"
 rust = "stable"

@@ -282,6 +282,15 @@ backend = "pipx:argcomplete"
 version = "0.6.0"
 backend = "pipx:pynvim"
 
+[[tools.python]]
+version = "3.14.7"
+backend = "core:python"
+
+[tools.python."platforms.linux-x64"]
+checksum = "blake3:9d2b653bf30104304204e3d804e5fb1796bcbd76533ce971952cbdd0a737af92"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260924/cpython-3.14.7+20260924-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
+provenance = "github-attestations"
+
 [[tools.ratarmount]]
 version = "1.2.3"
 backend = "pipx:ratarmount"
