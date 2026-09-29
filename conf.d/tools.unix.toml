@@ -1,4 +1,4 @@
-min_version = "2026.9.0"  # lazy tools
+min_version = "2026.9.16"  # Lockfile revision 3
 
 [bootstrap.hooks]
 pre-tools = "mkdir -p ~/.zsh-complete"  # Custom zsh completions
@@ -43,7 +43,6 @@ delta = "latest"
 fd = "latest"
 fzf = "latest"
 go = "latest"
-ipython = { version = "latest", extras = "all" }
 jj = "latest"
 jjui = "latest"
 jq = { version = "latest", lazy = true }
@@ -56,7 +55,6 @@ python = "latest"
 ripgrep = "latest"
 node = "latest"
 rust = "stable"
-trash-cli = { version = "latest", os = ["linux"], extras = "completion" }
 tree = "latest"
 tree-sitter = "latest"
 universal-ctags = "latest"
@@ -82,13 +80,23 @@ ln -sf \
     ~/.config/eza/theme.yml
 """
 
+[tools.ipython]
+version = "latest"
+extras = "all"
+
+# Disable graph locking, as `all` extra has dependencies with no wheels
+uvx = false
+
 [tools.mise-completions-sync]
 version = "latest"
 postinstall = "misecompsync --shell zsh"
 
 [tools.ratarmount]
 version = "1.2.3"  # Due to ratarmount#191
-uvx_args = "--with argcomplete"
+
+# Disable graph locking, due to dependencies with no wheels
+uvx = false
+pipx_args = "--preinstall argcomplete"
 
 [tools.tealdeer]
 version = "latest"
@@ -96,6 +104,12 @@ postinstall = """
 curl -fsSLo ~/.zsh-complete/_tldr \
     "https://github.com/tealdeer-rs/tealdeer/releases/download/v${MISE_TOOL_INSTALL_PATH##*/}/completions_zsh"
 """
+
+[tools.trash-cli]
+version = "latest"
+os = ["linux"]
+extras = "completion"
+uvx = false  # Disable graph locking, as this tool has no wheels
 
 [tools."pipx:argcomplete"]
 version = "latest"
