@@ -23,13 +23,13 @@ mise x -- misecompsync --shell zsh --new-only
 
 [tool_alias]
 clipper = "go:github.com/zyedidia/clipper/cmd/clipper"
-ipython = "pipx:ipython"
+ipython = "pypi:ipython"
 mergiraf = "cargo:mergiraf"
 mise-completions-sync = "cargo:mise-completions-sync"
-patool = "pipx:patool"
-ratarmount = "pipx:ratarmount"
+patool = "pypi:patool"
+ratarmount = "pypi:ratarmount"
 tree = "conda:tree"
-trash-cli = "pipx:trash-cli"
+trash-cli = "pypi:trash-cli"
 universal-ctags = "conda:universal-ctags"
 xclip = "conda:xclip"
 zshellcheck = "github:afadesigns/zshellcheck"
@@ -66,7 +66,7 @@ yazi = { version = "latest", postinstall = "ya pkg install" }
 zoxide = "latest"
 zshellcheck = "latest"
 "github:jannis-baum/vivify" = "latest"
-"pipx:pynvim" = "latest"
+"pypi:pynvim" = "latest"
 
 [tools.eza]
 version = "latest"
@@ -111,7 +111,7 @@ os = ["linux"]
 extras = "completion"
 uvx = false  # Disable graph locking, as this tool has no wheels
 
-[tools."pipx:argcomplete"]
+[tools."pypi:argcomplete"]
 version = "latest"
 lazy = true
 lazy_bins = [

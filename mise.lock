@@ -199,7 +199,7 @@ url = "https://dl.google.com/go/go1.27.1.linux-amd64.tar.gz"
 
 [[tools.ipython]]
 version = "9.17.1"
-backend = "pipx:ipython"
+backend = "pypi:ipython"
 specifiers = ["latest"]
 
 [tools.ipython.options]
@@ -284,24 +284,24 @@ url = "https://nodejs.org/dist/v26.10.0/node-v26.10.0-linux-x64.tar.gz"
 
 [[tools.patool]]
 version = "4.1.0"
-backend = "pipx:patool"
+backend = "pypi:patool"
 specifiers = ["latest"]
-uv = { path = "locks/patool/4.1.0~d2027078", digest = "sha256:26b69aea46ccd4020b64ba8a95c57dbdfb8c75899d03dde2584715e70e9a35e0" }
+uv = { path = "locks/patool/4.1.0~8f75e7d3", digest = "sha256:182e65885eedef7084c6de51428a3da26b8b2c0c71b95067eee9f2201a470497" }
 
 [tools.patool.options]
 extras = "argcompletion"
 
-[[tools."pipx:argcomplete"]]
+[[tools."pypi:argcomplete"]]
 version = "3.7.2"
-backend = "pipx:argcomplete"
+backend = "pypi:argcomplete"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-argcomplete/3.7.2", digest = "sha256:370e974757dc8a611056ed3c2f539be605641649336a0a6a4f4cb495cc0eda26" }
+uv = { path = "locks/pypi-argcomplete/3.7.2", digest = "sha256:26647b98c9e97e64f64c349ac7bb5fca7653b99ca6334ee339180b66315db813" }
 
-[[tools."pipx:pynvim"]]
+[[tools."pypi:pynvim"]]
 version = "0.6.0"
-backend = "pipx:pynvim"
+backend = "pypi:pynvim"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-pynvim/0.6.0", digest = "sha256:9d3ad1383f3db83845cf4460ca76ae20f641edaa9463526361053607a8c0980f" }
+uv = { path = "locks/pypi-pynvim/0.6.0", digest = "sha256:75b143cc2b50deda612fa93816cbd400b3d0ceb090ee215dd8a50ee05fbea2fc" }
 
 [[tools.python]]
 version = "3.14.7"
@@ -315,7 +315,7 @@ provenance = "github-attestations"
 
 [[tools.ratarmount]]
 version = "1.2.3"
-backend = "pipx:ratarmount"
+backend = "pypi:ratarmount"
 specifiers = ["1.2.3"]
 
 [tools.ratarmount.options]
@@ -349,7 +349,7 @@ url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/527
 
 [[tools.trash-cli]]
 version = "0.26.9.14"
-backend = "pipx:trash-cli"
+backend = "pypi:trash-cli"
 specifiers = ["latest"]
 
 [tools.trash-cli.options]
