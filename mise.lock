@@ -302,11 +302,11 @@ url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/47812
 version = "stable"
 backend = "core:rust"
 
-[[tools.tldr]]
+[[tools.tealdeer]]
 version = "1.9.0"
 backend = "aqua:tealdeer-rs/tealdeer"
 
-[tools.tldr."platforms.linux-x64"]
+[tools.tealdeer."platforms.linux-x64"]
 checksum = "sha256:dc7263b550e90c0689ea2cb434e3144469805d5dddecbb1f7fc534e1185b7408"
 url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.0/tealdeer-linux-x86_64-musl"
 url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/527792725"

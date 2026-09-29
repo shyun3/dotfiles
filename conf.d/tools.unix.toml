@@ -28,7 +28,6 @@ mergiraf = "cargo:mergiraf"
 mise-completions-sync = "cargo:mise-completions-sync"
 patool = "pipx:patool"
 ratarmount = "pipx:ratarmount"
-tldr = "tealdeer"  # Using alias due to misecompsync#159
 tree = "conda:tree"
 trash-cli = "pipx:trash-cli"
 universal-ctags = "conda:universal-ctags"
@@ -90,7 +89,7 @@ postinstall = "misecompsync --shell zsh"
 version = "1.2.3"  # Due to ratarmount#191
 uvx_args = "--with argcomplete"
 
-[tools.tldr]
+[tools.tealdeer]
 version = "latest"
 postinstall = """
 curl -fsSLo ~/.zsh-complete/_tldr \
