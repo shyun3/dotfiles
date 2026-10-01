@@ -55,7 +55,7 @@ PowerShell may need restarting to apply all changes.
 
 Bootstrap `mise` (tested on WSL Ubuntu):
 ```sh
-mise bootstrap --adopt git@github.com:shyun3/dotfiles.git --yes
+mise bootstrap --adopt git@github.com:shyun3/dotfiles.git --yes --update
 ```
 Zsh may need restarting to apply all changes.
 
