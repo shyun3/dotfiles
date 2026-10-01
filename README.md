@@ -41,8 +41,6 @@ Confirm that `mise` is on the `PATH`. If not, try restarting the shell.
 
 ## Installation
 
-The following instructions require a minimum `mise` version of **v2026.9.3**.
-
 ### Windows
 
 Bootstrap `mise`:
@@ -53,11 +51,22 @@ PowerShell may need restarting to apply all changes.
 
 ### Linux
 
-Bootstrap `mise` (tested on WSL Ubuntu):
+Clone the repo:
 ```sh
-mise bootstrap --adopt git@github.com:shyun3/dotfiles.git --yes --update
+git clone git@github.com:shyun3/dotfiles.git ~/.config/mise
 ```
-Zsh may need restarting to apply all changes.
+
+If using WSL, specify the machine environment by creating `miserc.local.toml`
+in the repo root with the following contents:
+```toml
+env = ["wsl"]
+```
+
+Bootstrap `mise`:
+```sh
+mise bootstrap --yes --update
+```
+The shell may need restarting to apply all changes.
 
 If using WSL, make sure to restart it in order to apply the latest updates. A
 distribution can be shutdown in PowerShell by running `wsl --terminate
