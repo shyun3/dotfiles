@@ -1,3 +1,8 @@
+[env]
+# Derived from https://github.com/microsoft/WSL/issues/8892#issuecomment-1964338674
+# `explorer.exe` has an issue where `xdg-open` launches 2 browser tabs for a URL
+BROWSER = "/mnt/c/Windows/System32/cmd.exe /c start"
+
 [bootstrap.files."/etc/wsl.conf"]
 # WSL needs to be restarted to apply configuration updates
 # See https://learn.microsoft.com/en-us/windows/wsl/wsl-config#the-8-second-rule-for-configuration-changes
