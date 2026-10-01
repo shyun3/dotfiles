@@ -291,6 +291,16 @@ uv = { path = "locks/patool/4.1.0~8f75e7d3", digest = "sha256:182e65885eedef7084
 [tools.patool.options]
 extras = "argcompletion"
 
+[[tools.pipx]]
+version = "1.17.8"
+backend = "aqua:pypa/pipx"
+specifiers = ["latest"]
+
+[tools.pipx."platforms.linux-x64"]
+checksum = "sha256:a5827798e78767c7f83c7261400e3521a68c18cae9f6635ad7fe739290cb3e87"
+url = "https://github.com/pypa/pipx/releases/download/1.17.8/pipx.pyz"
+url_api = "https://api.github.com/repos/pypa/pipx/releases/assets/598951216"
+
 [[tools."pypi:argcomplete"]]
 version = "3.7.2"
 backend = "pypi:argcomplete"
