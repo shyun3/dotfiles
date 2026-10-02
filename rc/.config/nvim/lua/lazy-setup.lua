@@ -4,6 +4,7 @@ if not vim.uv.fs_stat(lazypath) then
   local out = vim.fn.system({
     "git",
     "clone",
+    "--filter=blob:none",
     "--single-branch",
     "https://github.com/folke/lazy.nvim.git",
     lazypath,
