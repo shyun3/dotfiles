@@ -1,6 +1,6 @@
 git:
-  pagers:
-    - pager: delta --paging=never
+  diffRenderers:
+    - command: delta --paging=never
 customCommands:
   # Derived from https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium#pushing-a-specific-commit
   - key: "P"
