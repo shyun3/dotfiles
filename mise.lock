@@ -422,6 +422,23 @@ conda_deps = [
     "bzip2-1.0.8-hda65f42_10",
 ]
 
+[[tools.unzip]]
+version = "6.0"
+backend = "conda:unzip"
+specifiers = ["latest"]
+
+[tools.unzip.options]
+channel = "conda-forge"
+
+[tools.unzip."platforms.linux-x64"]
+checksum = "sha256:489ee14dcc1080e45d07531e89b1c690a8df68ca6a817ade536e6ef4cdc77b9e"
+url = "https://conda.anaconda.org/conda-forge/linux-64/unzip-6.0-hb03c661_4.conda"
+conda_deps = [
+    "libgcc-16.2.0-ha9f2e26_7",
+    "_openmp_mutex-4.5-20_gnu",
+    "libgomp-16.2.0-he0feb66_7",
+]
+
 [[tools.usage]]
 version = "6.11.1"
 backend = "packslip:github.com/jdx/usage"
