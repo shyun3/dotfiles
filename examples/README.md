@@ -11,11 +11,11 @@ renaming them, and customizing their contents as needed.
 | *_gitconfig-local* | *.gitconfig-local* | *~* | `git` |
 | *_gutctags* | *.gutctags* | Project | **vim-gutentags** |
 | *_projections.json* | *.projections.json* | Project | **vim-projectionist** |
-| *user.toml* | Same | *~/.config/jj/conf.d* | `jj` |
 | *compile_flags.txt* | Same | Project | `clangd` |
+| *nvim.lua* | *.nvim.lua* | Project | **nvim-config-local** |
 | *pyproject.toml* | Same | Project | `python` |
 | *ssh-config* | *config* | *~/.ssh* | `ssh-add` |
-| *nvim.lua* | *.nvim.lua* | Project | **nvim-config-local** |
+| *user.toml* | Same | *~/.config/jj/conf.d* | `jj` |
 
 Additional notes:
 * *.gutctags*: See `g:gutentags_project_root`
