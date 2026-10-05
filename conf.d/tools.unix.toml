@@ -60,7 +60,7 @@ rust = "stable"
 tree = "latest"
 tree-sitter = "latest"
 universal-ctags = "latest"
-unzip = "latest"
+unzip = { version = "latest", os = ["linux"] }
 usage = "latest"
 uv = "latest"
 vivid = "latest"
