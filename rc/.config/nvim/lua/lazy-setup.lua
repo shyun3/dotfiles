@@ -1,6 +1,7 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
+  vim.cmd.echomsg([["Cloning lazy.nvim..."]])
   local out = vim.fn.system({
     "git",
     "clone",
