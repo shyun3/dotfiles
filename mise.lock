@@ -123,14 +123,14 @@ url = "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_
 url_api = "https://api.github.com/repos/sharkdp/bat/releases/assets/323549181"
 
 [[tools.cargo-binstall]]
-version = "1.24.0"
+version = "1.25.1"
 backend = "aqua:cargo-bins/cargo-binstall"
 specifiers = ["latest"]
 
 [tools.cargo-binstall."platforms.linux-x64"]
-checksum = "sha256:ab139b59b86ce14baf9a8da0592dd4c73fdc8b8a7d74a9746881bd68d411f4d8"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.24.0/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/590638764"
+checksum = "sha256:7566158bf76a99974e081abe442978b8a3e5f4e834ee8247d847902b588b2133"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.1/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/607777440"
 provenance = "github-attestations"
 
 [[tools.clipper]]
@@ -139,14 +139,14 @@ backend = "go:github.com/zyedidia/clipper/cmd/clipper"
 specifiers = ["latest"]
 
 [[tools.delta]]
-version = "0.19.2"
+version = "0.20.1"
 backend = "aqua:dandavison/delta"
 specifiers = ["latest"]
 
 [tools.delta."platforms.linux-x64"]
-checksum = "sha256:8e695c5f586a8c53d6c3b01be0b4a422ed218bfed2a56191caebe373a1c18ab2"
-url = "https://github.com/dandavison/delta/releases/download/0.19.2/delta-0.19.2-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/dandavison/delta/releases/assets/383662069"
+checksum = "sha256:50f08c879f84c81ceb220e476491a7f492d2c9c671e79918cc44badf961a6240"
+url = "https://github.com/dandavison/delta/releases/download/0.20.1/delta-0.20.1-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/dandavison/delta/releases/assets/610498121"
 
 [[tools.eza]]
 version = "0.23.5"
@@ -261,7 +261,7 @@ backend = "cargo:mergiraf"
 specifiers = ["latest"]
 
 [[tools.mise-completions-sync]]
-version = "0.5.17"
+version = "0.5.18"
 backend = "cargo:mise-completions-sync"
 specifiers = ["latest"]
 
@@ -292,14 +292,14 @@ uv = { path = "locks/patool/4.1.0~8f75e7d3", digest = "sha256:182e65885eedef7084
 extras = "argcompletion"
 
 [[tools.pipx]]
-version = "1.17.8"
+version = "1.17.11"
 backend = "aqua:pypa/pipx"
 specifiers = ["latest"]
 
 [tools.pipx."platforms.linux-x64"]
-checksum = "sha256:a5827798e78767c7f83c7261400e3521a68c18cae9f6635ad7fe739290cb3e87"
-url = "https://github.com/pypa/pipx/releases/download/1.17.8/pipx.pyz"
-url_api = "https://api.github.com/repos/pypa/pipx/releases/assets/598951216"
+checksum = "sha256:ea1a87594acaddb6ed3956d587c07bcd28122c98943018d5469a225bcbc9d554"
+url = "https://github.com/pypa/pipx/releases/download/1.17.11/pipx.pyz"
+url_api = "https://api.github.com/repos/pypa/pipx/releases/assets/608756700"
 
 [[tools."pypi:argcomplete"]]
 version = "3.7.2"
@@ -314,13 +314,13 @@ specifiers = ["latest"]
 uv = { path = "locks/pypi-pynvim/0.6.0", digest = "sha256:75b143cc2b50deda612fa93816cbd400b3d0ceb090ee215dd8a50ee05fbea2fc" }
 
 [[tools.python]]
-version = "3.14.7"
+version = "3.14.8"
 backend = "core:python"
 specifiers = ["latest"]
 
 [tools.python."platforms.linux-x64"]
-checksum = "sha256:bd0d0568ccded07bbf1c87727230dc5dd0187e706a87da23c4de78388a229b78"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20260924/cpython-3.14.7+20260924-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
+checksum = "blake3:d12d9677c747e6fc0df2ab58073e142f84d516567e42a2832e003832763c827e"
+url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261003/cpython-3.14.8+20261003-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
 provenance = "github-attestations"
 
 [[tools.ratarmount]]
@@ -358,7 +358,7 @@ url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.0/tealdeer
 url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/527792725"
 
 [[tools.trash-cli]]
-version = "0.26.9.14"
+version = "0.26.9.29"
 backend = "pypi:trash-cli"
 specifiers = ["latest"]
 
@@ -440,25 +440,25 @@ conda_deps = [
 ]
 
 [[tools.usage]]
-version = "6.11.1"
+version = "6.12.0"
 backend = "packslip:github.com/jdx/usage"
 specifiers = ["latest"]
 
 [tools.usage."platforms.linux-x64"]
-checksum = "sha256:afa6cb0e76f88cc6392aeecf21bbcd869747d4eeb60ab84c98d6e6178edc359a"
-url = "https://github.com/jdx/usage/releases/download/v6.11.1/usage-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:c82b39ca9c64e3256284667ca8ddd4c27b7141d842ba054a645ee73d6ab99b17"
+url = "https://github.com/jdx/usage/releases/download/v6.12.0/usage-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 repository_ids = { repository = "677629099", owner = "216188" }
 
 [[tools.uv]]
-version = "0.12.19"
+version = "0.12.23"
 backend = "aqua:astral-sh/uv"
 specifiers = ["latest"]
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:23bf5552d220e0842b65c862097b2ebaeba0064b74eda5e565e77fd25969d8c8"
-url = "https://github.com/astral-sh/uv/releases/download/0.12.19/uv-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/587159011"
+checksum = "sha256:9167d72b3319674b6303c4cbe071854bba13ebdf3d76b1a7cbdc175471fb66d6"
+url = "https://github.com/astral-sh/uv/releases/download/0.12.23/uv-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/608232628"
 provenance = "github-attestations"
 
 [[tools.vivid]]
