@@ -114,7 +114,8 @@ os = ["linux"]
 extras = "completion"
 uvx = false  # Disable graph locking, as this tool has no wheels
 
-[tools."pypi:argcomplete"]
+[tools."pipx:argcomplete"]
+# Used by mise-completions-sync
 version = "latest"
 lazy = true
 lazy_bins = [

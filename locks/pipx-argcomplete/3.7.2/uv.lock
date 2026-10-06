@@ -1,9 +1,9 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.10"
 
 [options]
-exclude-newer = "2026-09-28T20:44:25.229300331Z"
+exclude-newer = "2026-10-05T16:05:01.178840843Z"
 
 [[package]]
 name = "argcomplete"
