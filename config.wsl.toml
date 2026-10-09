@@ -1,8 +1,3 @@
-[env]
-# Derived from https://github.com/microsoft/WSL/issues/8892#issuecomment-1964338674
-# `explorer.exe` has an issue where `xdg-open` launches 2 browser tabs for a URL
-BROWSER = "/mnt/c/Windows/System32/cmd.exe /c start"
-
 [bootstrap.files."/etc/wsl.conf"]
 # WSL needs to be restarted to apply configuration updates
 # See https://learn.microsoft.com/en-us/windows/wsl/wsl-config#the-8-second-rule-for-configuration-changes
@@ -17,3 +12,14 @@ source = "rc/usr/lib/binfmt.d/WSLInterop.conf"
 owner = "root"
 group = "root"
 mode = "0644"
+
+[bootstrap.files."/etc/apt/sources.list.d/wslutilities-ubuntu-wslu-noble.sources"]
+# Taken from `sudo add-apt-repository ppa:wslutilities/wslu`
+phase = "pre-packages"
+source = "rc/etc/apt/sources.list.d/wslutilities-ubuntu-wslu-noble.sources"
+owner = "root"
+group = "root"
+mode = "0644"
+
+[bootstrap.packages]
+"apt:wslu" = "latest"  # For `wslview`
