@@ -351,15 +351,16 @@ version = "stable"
 backend = "core:rust"
 specifiers = ["stable"]
 
-[[tools.tealdeer]]
-version = "1.9.0"
-backend = "aqua:tealdeer-rs/tealdeer"
+[[tools.tlrc]]
+version = "1.13.1"
+backend = "aqua:tldr-pages/tlrc"
 specifiers = ["latest"]
 
-[tools.tealdeer."platforms.linux-x64"]
-checksum = "sha256:dc7263b550e90c0689ea2cb434e3144469805d5dddecbb1f7fc534e1185b7408"
-url = "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.0/tealdeer-linux-x86_64-musl"
-url_api = "https://api.github.com/repos/tealdeer-rs/tealdeer/releases/assets/527792725"
+[tools.tlrc."platforms.linux-x64"]
+checksum = "sha256:a0d7d963f2bced8a4fa7ab1a42f24140abdb40ba6033f0996dea2e826e341819"
+url = "https://github.com/tldr-pages/tlrc/releases/download/v1.13.1/tlrc-v1.13.1-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/tldr-pages/tlrc/releases/assets/427272471"
+provenance = "github-attestations"
 
 [[tools.trash-cli]]
 version = "0.26.9.29"

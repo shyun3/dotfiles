@@ -47,6 +47,7 @@ login_shell = "/bin/zsh"
 [interactive]
     diffFilter = delta --color-only
 """ }
+"~/.local/share/mise-completions-sync/registry.toml" = {}
 "~/.p10k.zsh" = {}
 "~/.zprofile" = {}
 "~/.zsh/" = { mode = "symlink" }

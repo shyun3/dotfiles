@@ -57,6 +57,7 @@ pipx = "latest"
 python = "latest"
 ripgrep = "latest"
 rust = "stable"
+tlrc = "latest"
 tree = "latest"
 tree-sitter = "latest"
 universal-ctags = "latest"
@@ -100,13 +101,6 @@ version = "1.2.3"  # Due to ratarmount#191
 # Disable graph locking, due to dependencies with no wheels
 uvx = false
 pipx_args = "--preinstall argcomplete"
-
-[tools.tealdeer]
-version = "latest"
-postinstall = """
-curl -fsSLo ~/.zsh-complete/_tldr \
-    "https://github.com/tealdeer-rs/tealdeer/releases/download/v${MISE_TOOL_INSTALL_PATH##*/}/completions_zsh"
-"""
 
 [tools.trash-cli]
 version = "latest"
