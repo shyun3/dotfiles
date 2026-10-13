@@ -86,10 +86,11 @@ ln -sf \
 
 [tools.ipython]
 version = "latest"
-extras = "all"
 
-# Disable graph locking, as `all` extra has dependencies with no wheels
-uvx = false
+# Official install instructions note that the "all" extras should be included
+# to enable shell completions. However, some of its dependencies may not have
+# wheels. This prevents graph locking.
+with = ["argcomplete"]
 
 [tools.mise-completions-sync]
 version = "latest"

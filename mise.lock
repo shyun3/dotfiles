@@ -205,10 +205,10 @@ url = "https://dl.google.com/go/go1.27.2.linux-amd64.tar.gz"
 version = "9.17.1"
 backend = "pypi:ipython"
 specifiers = ["latest"]
+uv = { path = "locks/ipython/9.17.1~28bd65c9", digest = "sha256:a5309f7dc9ed95396ad3e434fe126609ee904258df136bc4905498d0d4e56d55" }
 
 [tools.ipython.options]
-extras = "all"
-uvx = "false"
+with = '["argcomplete"]'
 
 [[tools.jj]]
 version = "0.46.0"
