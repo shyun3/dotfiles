@@ -388,7 +388,7 @@ uv = { path = "locks/pypi-pynvim/0.6.0", digest = "sha256:75b143cc2b50deda612fa9
 [[tools.python]]
 version = "3.15.0"
 backend = "core:python"
-specifiers = ["latest"]
+specifiers = ["3.15"]
 
 [tools.python."platforms.linux-x64"]
 checksum = "blake3:c2864b47f038fa84c83a94d908b3dfe3135976403a7a0c3cc25823b778ff240f"
