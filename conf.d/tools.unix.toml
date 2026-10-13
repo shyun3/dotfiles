@@ -29,7 +29,7 @@ mise-completions-sync = "cargo:mise-completions-sync"
 patool = "pypi:patool"
 ratarmount = "pypi:ratarmount"
 tree = "conda:tree"
-trash-cli = "pypi:trash-cli"
+trash-cli = "conda:trash-cli"
 universal-ctags = "conda:universal-ctags"
 unzip = "conda:unzip"  # Needed by mason.nvim for some tools
 xclip = "conda:xclip"
@@ -58,6 +58,7 @@ python = "latest"
 ripgrep = "latest"
 rust = "stable"
 tlrc = "latest"
+trash-cli = { version = "latest", os = ["linux"] }
 tree = "latest"
 tree-sitter = "latest"
 universal-ctags = "latest"
@@ -102,12 +103,6 @@ version = "1.2.3"  # Due to ratarmount#191
 # Disable graph locking, due to dependencies with no wheels
 uvx = false
 pipx_args = "--preinstall argcomplete"
-
-[tools.trash-cli]
-version = "latest"
-os = ["linux"]
-extras = "completion"
-uvx = false  # Disable graph locking, as this tool has no wheels
 
 [tools."pipx:argcomplete"]
 # Used by mise-completions-sync
