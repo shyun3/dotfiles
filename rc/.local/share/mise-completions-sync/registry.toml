@@ -1,4 +1,3 @@
 schema_version = 1
 
 [tools]
-tlrc = { completion_name = "tldr", bundled = true, zsh = "_tldr", bash = "tldr.bash", fish = "tldr.fish" }
