@@ -1,10 +1,11 @@
-min_version = "2026.9.3"  # winget
+min_version = "2026.9.12"  # scoop
 
 [settings]
 windows_default_inline_shell_args = "pwsh -noni -c"
 windows_powershell_no_profile = false
 
 [bootstrap.packages]
+"scoop:nerd-fonts/JetBrainsMono-NF" = "latest"
 "winget:JanDeDobbeleer.OhMyPosh" = "latest"
 "winget:Microsoft.WindowsTerminal" = "latest"
 

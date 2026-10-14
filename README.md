@@ -20,7 +20,10 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 ```
 This will also install Git.
 
-Run `setup.ps1`. This will install `mise` and all dependencies.
+Install [mise][mise-install]:
+```pwsh
+winget install jdx.mise
+```
 
 ### WSL
 
@@ -32,7 +35,7 @@ wsl --install
 
 ### Linux
 
-Install [mise](https://mise.jdx.dev/getting-started.html#installing-mise-cli):
+Install [mise][mise-install]:
 ```sh
 curl https://mise.run | sh
 ```
@@ -45,7 +48,7 @@ Confirm that `mise` is on the `PATH`. If not, try restarting the shell.
 
 Bootstrap `mise`:
 ```pwsh
-mise bootstrap --adopt shyun3/dotfiles --yes
+mise bootstrap --adopt shyun3/dotfiles --yes --update
 ```
 PowerShell may need restarting to apply all changes.
 
@@ -97,3 +100,5 @@ useful for setting user details. See [example](examples/_gitconfig-local).
 ### Neovim
 
 * Run `:checkhealth` to see if there are issues that need resolving
+
+[mise-install]: https://mise.jdx.dev/getting-started.html#installing-mise-cli
