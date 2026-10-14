@@ -1,3 +1,5 @@
+min_version = "2026.10.9"  # ppa
+
 [bootstrap.files."/etc/wsl.conf"]
 # WSL needs to be restarted to apply configuration updates
 # See https://learn.microsoft.com/en-us/windows/wsl/wsl-config#the-8-second-rule-for-configuration-changes
@@ -11,12 +13,8 @@ source = "rc/usr/lib/binfmt.d/WSLInterop.conf"
 owner = "root"
 group = "root"
 
-[bootstrap.files."/etc/apt/sources.list.d/wslutilities-ubuntu-wslu-noble.sources"]
-# Taken from `sudo add-apt-repository ppa:wslutilities/wslu`
-phase = "pre-packages"
-source = "rc/etc/apt/sources.list.d/wslutilities-ubuntu-wslu-noble.sources"
-owner = "root"
-group = "root"
+[bootstrap.apt.sources]
+wslutilities = { ppa = "wslutilities/wslu" }
 
 [bootstrap.packages]
 "apt:wslu" = "latest"  # For `wslview`
