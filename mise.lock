@@ -273,7 +273,7 @@ url = "https://dl.google.com/go/go1.27.2.linux-amd64.tar.gz"
 version = "9.17.1"
 backend = "pypi:ipython"
 specifiers = ["latest"]
-uv = { path = "locks/ipython/9.17.1~28bd65c9", digest = "sha256:a5309f7dc9ed95396ad3e434fe126609ee904258df136bc4905498d0d4e56d55" }
+uv = { path = "locks/ipython/9.17.1~28bd65c9", digest = "sha256:6d097a94d5b917593ef0c0e49f614458bb1345c978178173ff2b87247f34382c" }
 
 [tools.ipython.options]
 with = '["argcomplete"]'
@@ -358,7 +358,7 @@ url = "https://nodejs.org/dist/v26.11.1/node-v26.11.1-linux-x64.tar.gz"
 version = "4.1.0"
 backend = "pypi:patool"
 specifiers = ["latest"]
-uv = { path = "locks/patool/4.1.0~8f75e7d3", digest = "sha256:182e65885eedef7084c6de51428a3da26b8b2c0c71b95067eee9f2201a470497" }
+uv = { path = "locks/patool/4.1.0~8f75e7d3", digest = "sha256:d550afbdf01fb16f2b7f002445faad7889af6db553fc0fd4d32a65a678a1c7b0" }
 
 [tools.patool.options]
 extras = "argcompletion"
@@ -377,13 +377,13 @@ url_api = "https://api.github.com/repos/pypa/pipx/releases/assets/633012947"
 version = "3.7.2"
 backend = "pipx:argcomplete"
 specifiers = ["latest"]
-uv = { path = "locks/pipx-argcomplete/3.7.2", digest = "sha256:66e6e2e3bbfef5726fc1a2e3f7a5bafda13361991ae7288ad3c491e98611006b" }
+uv = { path = "locks/pipx-argcomplete/3.7.2", digest = "sha256:a521a8d307a1b601bf4ef522eb3c9f38e689dfc5109ede6459445bbd286f8618" }
 
 [[tools."pypi:pynvim"]]
 version = "0.6.0"
 backend = "pypi:pynvim"
 specifiers = ["latest"]
-uv = { path = "locks/pypi-pynvim/0.6.0", digest = "sha256:75b143cc2b50deda612fa93816cbd400b3d0ceb090ee215dd8a50ee05fbea2fc" }
+uv = { path = "locks/pypi-pynvim/0.6.0", digest = "sha256:809199685de1cf6178815a2e3b7d397a3b0ecc60f68d42764ba37f99577624f9" }
 
 [[tools.python]]
 version = "3.14.8"
