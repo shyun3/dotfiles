@@ -1,3 +1,8 @@
 schema_version = 1
 
 [tools]
+# Provided by rust oh-my-zsh plugin
+cargo = false
+rustup = false
+
+usage = false  # Provided by Packslip
