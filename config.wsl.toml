@@ -13,8 +13,12 @@ source = "rc/usr/lib/binfmt.d/WSLInterop.conf"
 owner = "root"
 group = "root"
 
-[bootstrap.apt.sources]
-wslutilities = { ppa = "wslutilities/wslu" }
+[bootstrap.apt.sources.wslutilities]
+# Taken from https://launchpad.net/~wslutilities/+archive/ubuntu/wslu
+uris = "https://ppa.launchpadcontent.net/wslutilities/wslu/ubuntu"
+suites = "noble"
+key = "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x254f460f2970e18123046570c1d0e7e6ab4095d6"
+fingerprint = "254F460F2970E18123046570C1D0E7E6AB4095D6"
 
 [bootstrap.packages]
 "apt:wslu" = "latest"  # For `wslview`
