@@ -10,6 +10,7 @@ return {
         bash = true,
         c = true,
         cpp = true,
+        diff = true,
         editorconfig = true,
         git_config = true,
         gitignore = true,
