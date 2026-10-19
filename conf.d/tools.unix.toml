@@ -1,4 +1,4 @@
-min_version = "2026.9.16"  # Lockfile revision 3
+min_version = "2026.10.12"  # Per pypi tool Python
 
 [bootstrap.hooks]
 pre-tools = "mkdir -p ~/.zsh-complete"  # Custom zsh completions
@@ -102,10 +102,8 @@ version = "3.14"
 
 [tools.ratarmount]
 version = "1.2.3"  # Due to ratarmount#191
-
-# Disable graph locking, due to dependencies with no wheels
-uvx = false
-pipx_args = "--preinstall argcomplete"
+with = ["argcomplete"]
+python = "3.13"  # Some dependencies only have wheels for this version
 
 [tools."pipx:argcomplete"]
 # Used by mise-completions-sync

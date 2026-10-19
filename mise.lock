@@ -399,10 +399,11 @@ provenance = "github-attestations"
 version = "1.2.3"
 backend = "pypi:ratarmount"
 specifiers = ["1.2.3"]
+uv = { path = "locks/ratarmount/1.2.3~7c2bb2b2", digest = "sha256:4f4523fa51e9fa32d522500130736a91b5a4755d7f66c53854d21700552c333d" }
 
 [tools.ratarmount.options]
-pipx_args = "--preinstall argcomplete"
-uvx = "false"
+python = "3.13"
+with = '["argcomplete"]'
 
 [[tools.ripgrep]]
 version = "15.2.0"
