@@ -53,7 +53,6 @@ mergiraf = "latest"
 neovim = "latest"
 node = "latest"
 patool = { version = "latest", extras = "argcompletion" }
-pipx = "latest"
 ripgrep = "latest"
 rust = "stable"
 tlrc = "latest"
