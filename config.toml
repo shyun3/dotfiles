@@ -6,6 +6,7 @@ min_version = "2026.8.9"  # conf.d environments
 [settings]
 dotfiles.root = "~/.config/mise/rc"
 dotfiles.default_mode = "copy"
+lockfile = true
 use_versions_host_track = false
 
 [dotfiles]

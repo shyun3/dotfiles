@@ -1,7 +1,5 @@
 [settings]
 color_theme = "catppuccin"
-lockfile = true
-lockfile_platforms = ["linux-x64"]
 unix_default_inline_shell_args = "bash -c -o errexit"
 
 [env]
