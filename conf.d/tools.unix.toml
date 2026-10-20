@@ -53,6 +53,8 @@ mergiraf = "latest"
 neovim = "latest"
 node = "latest"
 patool = { version = "latest", extras = "argcompletion" }
+# Upgrading Python may require that all PyPI tools be manually reinstalled
+python = ["3.14", "3.13"]
 ripgrep = "latest"
 rust = "stable"
 tlrc = "latest"
@@ -94,10 +96,6 @@ with = ["argcomplete"]
 [tools.mise-completions-sync]
 version = "latest"
 postinstall = "misecompsync --shell zsh"
-
-[tools.python]
-# Upgrading Python may require that all PyPI tools be manually reinstalled
-version = "3.14"
 
 [tools.ratarmount]
 version = "1.2.3"  # Due to ratarmount#191
