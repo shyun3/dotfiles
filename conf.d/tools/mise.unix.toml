@@ -53,8 +53,7 @@ mergiraf = "latest"
 neovim = "latest"
 node = "latest"
 patool = { version = "latest", extras = "argcompletion" }
-# Upgrading Python may require that all PyPI tools be manually reinstalled
-python = ["3.14", "3.13"]
+python = ["{{ vars.python_version }}", "3.13"]
 ripgrep = "latest"
 rust = "stable"
 tlrc = "latest"
@@ -64,7 +63,6 @@ tree-sitter = "latest"
 universal-ctags = "latest"
 unzip = { version = "latest", os = ["linux"] }
 usage = "latest"
-uv = "latest"
 vivid = "latest"
 xclip = { version = "latest", os = ["linux"] }
 yazi = { version = "latest", postinstall = "ya pkg install" }

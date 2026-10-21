@@ -553,17 +553,6 @@ checksum = "sha256:1006d9659fb0c9620525a8e750b3853177a3bf772454d5984c4d78c4aa130
 url = "https://github.com/jdx/usage/releases/download/v7.0.2/usage-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
 
-[[tools.uv]]
-version = "0.13.1"
-backend = "aqua:astral-sh/uv"
-specifiers = ["latest"]
-
-[tools.uv."platforms.linux-x64"]
-checksum = "sha256:eadd9d27c134ab5ac1ffd4473b97a741407f3ea238288f03121fc4deddf90220"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.1/uv-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/639313223"
-provenance = "github-attestations"
-
 [[tools.vivid]]
 version = "0.11.1"
 backend = "aqua:sharkdp/vivid"

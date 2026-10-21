@@ -1,0 +1,2 @@
+[tools]
+python = "{{ vars.python_version }}"
