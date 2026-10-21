@@ -1,0 +1,3 @@
+[settings]
+windows_default_inline_shell_args = "pwsh -noni -c"
+windows_powershell_no_profile = false

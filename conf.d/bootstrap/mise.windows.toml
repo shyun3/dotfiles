@@ -1,7 +1,3 @@
-[settings]
-windows_default_inline_shell_args = "pwsh -noni -c"
-windows_powershell_no_profile = false
-
 [bootstrap.packages]
 "scoop:nerd-fonts/JetBrainsMono-NF" = "latest"
 "winget:JanDeDobbeleer.OhMyPosh" = "latest"
