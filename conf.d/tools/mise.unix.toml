@@ -46,7 +46,7 @@ fzf = "latest"
 go = "latest"
 jj = "latest"
 jjui = "latest"
-jq = { version = "latest", lazy = true }
+jq = "latest"
 lazygit = "latest"
 lua = { version = "5.5", lazy = true }
 mergiraf = "latest"
@@ -69,6 +69,7 @@ yazi = { version = "latest", postinstall = "ya pkg install" }
 zoxide = "latest"
 zshellcheck = "latest"
 "github:jannis-baum/vivify" = "latest"
+"pipx:argcomplete" = "latest"  # Used by mise-completions-sync
 "pypi:pynvim" = "latest"
 
 [tools.eza]
@@ -99,12 +100,3 @@ postinstall = "misecompsync --shell zsh"
 version = "1.2.3"  # Due to ratarmount#191
 with = ["argcomplete"]
 python = "3.13"  # Some dependencies only have wheels for this version
-
-[tools."pipx:argcomplete"]
-# Used by mise-completions-sync
-version = "latest"
-lazy = true
-lazy_bins = [
-  "register-python-argcomplete",
-  "activate-global-python-argcomplete"
-]
