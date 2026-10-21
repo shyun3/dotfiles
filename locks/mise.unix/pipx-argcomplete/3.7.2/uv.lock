@@ -3,7 +3,7 @@ revision = 5
 requires-python = ">=3.10"
 
 [options]
-exclude-newer = "2026-10-13T18:54:05.295554723Z"
+exclude-newer = "2026-10-20T15:44:23.552313072Z"
 
 [[package]]
 name = "argcomplete"

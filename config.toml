@@ -1,7 +1,7 @@
 # Remember that all entries in this global config should be valid for all
 # environments/platforms
 
-min_version = "2026.8.9"  # conf.d environments
+min_version = "2026.9.14"  # conf.d folder fragments
 
 [settings]
 dotfiles.root = "~/.config/mise/rc"

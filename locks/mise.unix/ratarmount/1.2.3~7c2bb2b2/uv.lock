@@ -8,7 +8,7 @@ resolution-markers = [
 ]
 
 [options]
-exclude-newer = "2026-10-18T17:56:28.295475044Z"
+exclude-newer = "2026-10-20T15:44:23.552313072Z"
 
 [[package]]
 name = "argcomplete"

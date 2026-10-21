@@ -1,5 +1,3 @@
-min_version = "2026.9.12"  # scoop
-
 [settings]
 windows_default_inline_shell_args = "pwsh -noni -c"
 windows_powershell_no_profile = false
