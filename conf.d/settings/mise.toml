@@ -1,5 +1,3 @@
-min_version = "2026.9.14"  # conf.d folder fragments
-
 [settings]
 dotfiles.root = "~/.config/mise/rc"
 dotfiles.default_mode = "copy"
