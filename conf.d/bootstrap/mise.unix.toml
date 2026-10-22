@@ -1,3 +1,5 @@
+min_version = "2026.10.17"  # Login shell name
+
 [bootstrap.packages]
 # Guidelines for inclusion:
 # - Not present in mise
@@ -12,7 +14,7 @@
 "~/.antidote" = { url = "https://github.com/mattmc3/antidote.git" }
 
 [bootstrap.user]
-login_shell = "/bin/zsh"
+login_shell = "zsh"
 
 [dotfiles]
 "~/.config/bat/config" = {}
