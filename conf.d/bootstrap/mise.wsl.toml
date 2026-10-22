@@ -3,13 +3,13 @@ min_version = "2026.10.9"  # ppa
 [bootstrap.files."/etc/wsl.conf"]
 # WSL needs to be restarted to apply configuration updates
 # See https://learn.microsoft.com/en-us/windows/wsl/wsl-config#the-8-second-rule-for-configuration-changes
-source = "../rc/etc/wsl.conf"
+source = "files/wsl.conf"
 owner = "root"
 group = "root"
 
 [bootstrap.files."/usr/lib/binfmt.d/WSLInterop.conf"]
 # Taken from https://github.com/microsoft/WSL/issues/8843#issuecomment-1337127239
-source = "../rc/usr/lib/binfmt.d/WSLInterop.conf"
+source = "files/WSLInterop.conf"
 owner = "root"
 group = "root"
 
