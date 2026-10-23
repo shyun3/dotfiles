@@ -245,6 +245,10 @@ return {
 
       file_icon_padding = " ",
 
+      blines = {
+        winopts = { treesitter = false }, -- For performance
+      },
+
       command_history = {
         -- To fix buggy highlighting, see discussion fzf-lua#2632
         _treesitter = function(line)
