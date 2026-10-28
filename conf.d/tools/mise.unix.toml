@@ -51,7 +51,7 @@ lazygit = "latest"
 lua = { version = "5.5", lazy = true }
 mergiraf = "latest"
 neovim = "latest"
-node = "latest"
+node = "lts"
 patool = { version = "latest", extras = "argcompletion" }
 python = ["{{ vars.python_version }}", "3.13"]
 ripgrep = "latest"
