@@ -102,6 +102,11 @@ return {
       )
     end,
 
+    config = function()
+      -- Manually enabling select LSPs
+      vim.lsp.enable("mise")
+    end,
+
     keys = {
       {
         "<Leader>ri",

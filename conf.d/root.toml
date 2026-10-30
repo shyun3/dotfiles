@@ -1,1 +1,3 @@
-min_version = "2026.9.14"  # conf.d folder fragments
+[min_version]
+hard = "2026.9.14"  # conf.d folder fragments
+soft = "2026.10.18"  # mise lsp
