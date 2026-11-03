@@ -325,6 +325,7 @@ backend = "vfox:jdx/vfox-lua"
 specifiers = ["5.5"]
 
 [tools.lua."platforms.linux-x64"]
+checksum = "sha256:1c4b4068d67061f2a2231ad2b5422e77acea1487ea9890f6320af614f4373dce"
 url = "https://www.lua.org/ftp/lua-5.5.1.tar.gz"
 
 [[tools.mergiraf]]
@@ -343,6 +344,7 @@ backend = "vfox:jdx/vfox-neovim"
 specifiers = ["latest"]
 
 [tools.neovim."platforms.linux-x64"]
+checksum = "sha256:474430d53e6264f6d6dd18db42d6dc9df3a1b56ca9e88a325bbf860e1a811d87"
 url = "https://github.com/neovim/neovim/releases/download/v0.12.6/nvim-linux-x86_64.tar.gz"
 
 [[tools.node]]
@@ -383,16 +385,6 @@ specifiers = ["3.13"]
 [tools.python."platforms.linux-x64"]
 checksum = "sha256:f326b7a386bf22def82e55dc3b95d2bef8b7c938b4c98ec32dd65433e7720b50"
 url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261020/cpython-3.13.16+20261020-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
-provenance = "github-attestations"
-
-[[tools.python]]
-version = "3.14.8"
-backend = "core:python"
-specifiers = ["3.14"]
-
-[tools.python."platforms.linux-x64"]
-checksum = "sha256:b88a4ac994ac55c35a03a3672103618d5c5d5bf342db7b2093b8d328b6516b42"
-url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261020/cpython-3.14.8+20261020-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
 provenance = "github-attestations"
 
 [[tools.ratarmount]]
@@ -552,6 +544,7 @@ specifiers = ["latest"]
 checksum = "sha256:1006d9659fb0c9620525a8e750b3853177a3bf772454d5984c4d78c4aa130aaa"
 url = "https://github.com/jdx/usage/releases/download/v7.0.2/usage-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/usage/.github/workflows/publish-cli.yml"
+repository_ids = { repository = "677629099" }
 
 [[tools.vivid]]
 version = "0.11.1"

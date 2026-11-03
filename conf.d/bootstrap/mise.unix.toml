@@ -1,5 +1,3 @@
-min_version = "2026.10.17"  # Login shell name
-
 [bootstrap.packages]
 # Guidelines for inclusion:
 # - Not present in mise

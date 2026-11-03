@@ -1,5 +1,3 @@
-min_version = "2026.10.12"  # Per pypi tool Python
-
 [bootstrap.hooks]
 pre-tools = "mkdir -p ~/.zsh-complete"  # Custom zsh completions
 
@@ -53,7 +51,6 @@ mergiraf = "latest"
 neovim = "latest"
 node = "lts"
 patool = { version = "latest", extras = "argcompletion" }
-python = ["{{ vars.python_version }}", "3.13"]
 ripgrep = "latest"
 rust = "stable"
 tlrc = "latest"

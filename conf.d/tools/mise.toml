@@ -1,6 +1,3 @@
-[vars]
-# Upgrading Python may require that all PyPI tools be manually reinstalled
-python_version = "3.14"
-
 [tools]
+python = "3.14"
 uv = "latest"
