@@ -3,9 +3,9 @@
 # - Not present in mise
 # - Don't care about version updates
 # - Requires installation in system directories
-"apt:inotify-tools" = "latest"  # For Neovim LSP
+"apt:inotify-tools" = "latest"          # For Neovim LSP
 "apt:update-notifier-common" = "latest"
-"apt:xdg-utils" = "latest"  # Needed for `xdg-open`
+"apt:xdg-utils" = "latest"              # Needed for `xdg-open`
 "apt:zsh" = "latest"
 
 [bootstrap.repos]

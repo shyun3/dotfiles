@@ -19,4 +19,4 @@ key = "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x254f460f2970e1812
 fingerprint = "254F460F2970E18123046570C1D0E7E6AB4095D6"
 
 [bootstrap.packages]
-"apt:wslu" = "latest"  # For `wslview`
+"apt:wslu" = "latest" # For `wslview`
