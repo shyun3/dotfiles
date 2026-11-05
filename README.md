@@ -20,9 +20,9 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 ```
 This will also install Git.
 
-Install [mise][mise-install]:
+Install [mise](https://mise.jdx.dev/installing-mise.html#windows):
 ```pwsh
-winget install jdx.mise
+irm https://mise.run/powershell | iex
 ```
 
 ### WSL
@@ -35,7 +35,7 @@ wsl --install
 
 ### Linux
 
-Install [mise][mise-install]:
+Install [mise](https://mise.jdx.dev/getting-started.html#installing-mise-cli):
 ```sh
 curl https://mise.run | sh
 ```
@@ -100,5 +100,3 @@ useful for setting user details. See [example](examples/_gitconfig-local).
 ### Neovim
 
 * Run `:checkhealth` to see if there are issues that need resolving
-
-[mise-install]: https://mise.jdx.dev/getting-started.html#installing-mise-cli
