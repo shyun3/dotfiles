@@ -1,1 +1,1 @@
-min_version = "2026.10.24" # pypi graph lock with Python not on PATH
+min_version = "2026.11.1"  # Lockfile version 4
