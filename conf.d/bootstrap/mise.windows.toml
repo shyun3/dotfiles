@@ -1,4 +1,5 @@
 [bootstrap.packages]
+"scoop:jj" = "latest"                          # To place in PATH
 "scoop:nerd-fonts/JetBrainsMono-NF" = "latest"
 "winget:JanDeDobbeleer.OhMyPosh" = "latest"
 "winget:Microsoft.WindowsTerminal" = "latest"

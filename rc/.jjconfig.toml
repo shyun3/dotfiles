@@ -1,0 +1,9 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+# For all platforms
+
+[working-copy]
+eol-conversion = "input"
+
+[templates]
+draft_commit_description = "builtin_draft_commit_description_with_diff"

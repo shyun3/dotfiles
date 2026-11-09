@@ -7,14 +7,8 @@ diff-formatter = ":git"  # Required by `delta`
 conflict-marker-style = "git"
 merge-editor = "mergiraf"
 
-[working-copy]
-eol-conversion = "input"
-
 [aliases]
 prompt_log = ["log", "--ignore-working-copy", "--no-graph", "--no-pager"]
-
-[templates]
-draft_commit_description = "builtin_draft_commit_description_with_diff"
 
 [template-aliases]
 # Conflict: 

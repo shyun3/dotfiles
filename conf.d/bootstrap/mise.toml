@@ -1,3 +1,4 @@
 [dotfiles]
 "~/.config/git/ignore" = {}
 "~/.gitconfig" = {}
+"~/.jjconfig.toml" = {}
