@@ -3,7 +3,7 @@
 [ui]
 default-command = ["util", "exec", "jjui"]
 pager = "delta"
-diff-formatter = ":git" # Required by `delta`
+diff-formatter = ":git"  # Required by `delta`
 conflict-marker-style = "git"
 merge-editor = "mergiraf"
 
@@ -14,7 +14,7 @@ eol-conversion = "input"
 prompt_log = ["log", "--ignore-working-copy", "--no-graph", "--no-pager"]
 
 [templates]
-draft_commit_description = 'builtin_draft_commit_description_with_diff'
+draft_commit_description = "builtin_draft_commit_description_with_diff"
 
 [template-aliases]
 # Conflict: 
@@ -44,12 +44,12 @@ coalesce(
 )
 """
 
-'change_id_parts(id, len)' = """
+"change_id_parts(id, len)" = """
 separate(" ", id.shortest(len).prefix(), id.shortest(len).rest())
 """
 
 [revset-aliases]
-'all_named()' = "bookmarks() | remote_bookmarks() | tags()"
+"all_named()" = "bookmarks() | remote_bookmarks() | tags()"
 
 # Priorities for best named ancestor:
 # 1. Given revision if it has name
@@ -57,7 +57,7 @@ separate(" ", id.shortest(len).prefix(), id.shortest(len).rest())
 #   - e.g. when new, empty revision is created on top of tag
 #   - Note this only handles one empty revision on top of a named revision
 # 3. Closest ancestor with name
-'best_named_ancestor(to)' = """
+"best_named_ancestor(to)" = """
 coalesce(
     to & all_named(),
     heads(to-::(to & ~non_empty()) & all_named()),
@@ -65,7 +65,7 @@ coalesce(
 )
 """
 
-'non_empty()' = "~empty() | merges()"
+"non_empty()" = "~empty() | merges()"
 
 [colors]
 normal = "black"
