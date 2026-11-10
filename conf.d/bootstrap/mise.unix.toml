@@ -17,10 +17,11 @@ login_shell = "zsh"
 [dotfiles]
 "~/.config/bat/config" = {}
 "~/.config/fd/ignore" = {}
-"~/.config/jj/conf.d/config.toml" = {}
+"~/.config/jj/conf.d/*.toml" = {}
 "~/.config/jjui/config.*" = {}
 "~/.config/lazygit/config.yml" = {}
 "~/.config/nvim/" = { mode = "symlink" }
+"~/.config/oyui/config.rn" = {}
 "~/.config/rumdl/rumdl.toml" = {}
 "~/.config/stylua.toml" = {}
 "~/.config/tombi/config.toml" = {}
