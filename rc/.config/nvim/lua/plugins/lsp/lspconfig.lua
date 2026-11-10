@@ -104,7 +104,7 @@ return {
 
     config = function()
       -- Manually enabling select LSPs
-      vim.lsp.enable("mise")
+      vim.lsp.enable({ "mise", "oyui_ls" })
     end,
 
     keys = {
