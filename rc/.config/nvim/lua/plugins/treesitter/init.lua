@@ -9,7 +9,11 @@ return {
         -- Value indicates if treesitter indentexpr is enabled
         bash = true,
         c = true,
-        cpp = true,
+
+        -- Entering a brace on a new line for a class member function always
+        -- sends it to the first column
+        cpp = false,
+
         diff = true,
         editorconfig = true,
         git_config = true,
