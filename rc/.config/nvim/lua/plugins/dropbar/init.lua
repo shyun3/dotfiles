@@ -1,6 +1,6 @@
 local HLGROUP_PREFIX = "MyDropBar"
 
-local GROUP = vim.api.nvim_create_augroup("my_dropbar", {})
+local AUGROUP = vim.api.nvim_create_augroup("my_dropbar", {})
 
 local function setup_file_icon_dim()
   local devicons_ok, devicons = pcall(require, "nvim-web-devicons")
@@ -16,63 +16,18 @@ local function setup_file_icon_dim()
   end
 
   -- Derived from `dim()` in *dropbar/hlgroups.lua*
-  vim.api.nvim_create_autocmd({ "WinLeave", "FocusLost" }, {
-    group = GROUP,
+  vim.api.nvim_create_autocmd({ "WinEnter", "WinLeave" }, {
+    group = AUGROUP,
     desc = "Dim file icon",
 
-    callback = function()
-      if vim.wo.winbar ~= "" then vim.opt_local.winhl:append(hl_map) end
-    end,
-  })
+    callback = function(args)
+      if vim.wo.winbar == "" then return end
 
-  vim.api.nvim_create_autocmd({ "WinEnter", "FocusGained" }, {
-    group = GROUP,
-    desc = "Clear file icon dim",
-
-    callback = function()
-      if vim.wo.winbar ~= "" then
+      if args.event == "WinLeave" then
+        vim.opt_local.winhl:append(hl_map)
+      else
         vim.opt_local.winhl:remove(vim.tbl_keys(hl_map))
       end
-    end,
-  })
-end
-
-local function setup_focus_dim()
-  local dropbar_group = "dropbar.hl"
-  local dim_autocmds = vim.api.nvim_get_autocmds({
-    group = dropbar_group,
-    event = "WinLeave",
-  })
-  assert(#dim_autocmds == 1)
-
-  vim.api.nvim_create_autocmd("FocusLost", {
-    group = GROUP,
-    desc = "Dim",
-    callback = function(args)
-      dim_autocmds[1].callback(args)
-
-      if vim.wo.winbar ~= "" then
-        -- Not all dropbar text elements have `DropBarKind*` highlight groups
-        -- applied to them. By default, these seem to use `WinBar`. Neovim sets
-        -- these to `WinBarNC` when switching windows, but not when focus is
-        -- lost. So, do this manually.
-        vim.opt_local.winhl:append({ WinBar = "WinBarNC" })
-      end
-    end,
-  })
-
-  local brighten_autocmds = vim.api.nvim_get_autocmds({
-    group = dropbar_group,
-    event = "WinEnter",
-  })
-  assert(#brighten_autocmds == 1)
-
-  vim.api.nvim_create_autocmd("FocusGained", {
-    group = GROUP,
-    desc = "Clear dim",
-    callback = function(args)
-      brighten_autocmds[1].callback(args)
-      if vim.wo.winbar ~= "" then vim.opt_local.winhl:remove("WinBar") end
     end,
   })
 end
@@ -210,10 +165,9 @@ return {
       require("dropbar").setup(opts)
 
       setup_file_icon_dim()
-      setup_focus_dim()
 
       vim.api.nvim_create_autocmd("LspProgress", {
-        group = GROUP,
+        group = AUGROUP,
         pattern = "end",
         desc = "Update dropbar",
 
